@@ -1,0 +1,14 @@
+[package]
+name = "fhirbolt-codegen"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking"] }
+zip = { version = "0.5", features = ["deflate"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["raw_value"]}
+quote = "1.0"
+proc-macro2 = "1.0"
+convert_case = "0.4"
+chrono = "0.4"
