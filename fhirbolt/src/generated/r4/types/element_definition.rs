@@ -1,73 +1,4 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
-#[derive(Debug, Clone)]
-pub enum ElementDefinitionPattern {
-    Base64Binary(Box<super::super::types::Base64Binary>),
-    Boolean(Box<super::super::types::Boolean>),
-    Canonical(Box<super::super::types::Canonical>),
-    Code(Box<super::super::types::Code>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Decimal(Box<super::super::types::Decimal>),
-    Id(Box<super::super::types::Id>),
-    Instant(Box<super::super::types::Instant>),
-    Integer(Box<super::super::types::Integer>),
-    Markdown(Box<super::super::types::Markdown>),
-    Oid(Box<super::super::types::Oid>),
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    String(Box<super::super::types::String>),
-    Time(Box<super::super::types::Time>),
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
-    Uri(Box<super::super::types::Uri>),
-    Url(Box<super::super::types::Url>),
-    Uuid(Box<super::super::types::Uuid>),
-    Address(Box<super::super::types::Address>),
-    Age(Box<super::super::types::Age>),
-    Annotation(Box<super::super::types::Annotation>),
-    Attachment(Box<super::super::types::Attachment>),
-    CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Coding(Box<super::super::types::Coding>),
-    ContactPoint(Box<super::super::types::ContactPoint>),
-    Count(Box<super::super::types::Count>),
-    Distance(Box<super::super::types::Distance>),
-    Duration(Box<super::super::types::Duration>),
-    HumanName(Box<super::super::types::HumanName>),
-    Identifier(Box<super::super::types::Identifier>),
-    Money(Box<super::super::types::Money>),
-    Period(Box<super::super::types::Period>),
-    Quantity(Box<super::super::types::Quantity>),
-    Range(Box<super::super::types::Range>),
-    Ratio(Box<super::super::types::Ratio>),
-    Reference(Box<super::super::types::Reference>),
-    SampledData(Box<super::super::types::SampledData>),
-    Signature(Box<super::super::types::Signature>),
-    Timing(Box<super::super::types::Timing>),
-    ContactDetail(Box<super::super::types::ContactDetail>),
-    Contributor(Box<super::super::types::Contributor>),
-    DataRequirement(Box<super::super::types::DataRequirement>),
-    Expression(Box<super::super::types::Expression>),
-    ParameterDefinition(Box<super::super::types::ParameterDefinition>),
-    RelatedArtifact(Box<super::super::types::RelatedArtifact>),
-    TriggerDefinition(Box<super::super::types::TriggerDefinition>),
-    UsageContext(Box<super::super::types::UsageContext>),
-    Dosage(Box<super::super::types::Dosage>),
-    Meta(Box<super::super::types::Meta>),
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionSlicingDiscriminator {
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#id: Option<std::string::String>,
-    pub r#type: super::super::types::Code,
-    pub r#path: super::super::types::String,
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionSlicing {
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#discriminator: Vec<Box<super::super::types::Element>>,
-    pub r#ordered: Option<super::super::types::Boolean>,
-    pub r#id: Option<std::string::String>,
-    pub r#rules: super::super::types::Code,
-    pub r#description: Option<super::super::types::String>,
-}
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ElementDefinitionFixed {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -122,15 +53,7 @@ pub enum ElementDefinitionFixed {
     Meta(Box<super::super::types::Meta>),
 }
 #[derive(Debug, Clone)]
-pub struct ElementDefinitionBinding {
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#strength: super::super::types::Code,
-    pub r#description: Option<super::super::types::String>,
-    pub r#id: Option<std::string::String>,
-    pub r#value_set: Option<super::super::types::Canonical>,
-}
-#[derive(Debug, Clone)]
-pub enum ElementDefinitionExampleValue {
+pub enum ElementDefinitionPattern {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
     Canonical(Box<super::super::types::Canonical>),
@@ -181,76 +104,6 @@ pub enum ElementDefinitionExampleValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionExample {
-    pub r#id: Option<std::string::String>,
-    pub r#label: super::super::types::String,
-    pub r#value: ElementDefinitionExampleValue,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionType {
-    pub r#profile: Vec<super::super::types::Canonical>,
-    pub r#aggregation: Vec<super::super::types::Code>,
-    pub r#target_profile: Vec<super::super::types::Canonical>,
-    pub r#versioning: Option<super::super::types::Code>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#id: Option<std::string::String>,
-    pub r#code: super::super::types::Uri,
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionBase {
-    pub r#path: super::super::types::String,
-    pub r#min: super::super::types::UnsignedInt,
-    pub r#max: super::super::types::String,
-    pub r#id: Option<std::string::String>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionMapping {
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#identity: super::super::types::Id,
-    pub r#language: Option<super::super::types::Code>,
-    pub r#map: super::super::types::String,
-    pub r#id: Option<std::string::String>,
-    pub r#comment: Option<super::super::types::String>,
-}
-#[derive(Debug, Clone)]
-pub enum ElementDefinitionMaxValue {
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Instant(Box<super::super::types::Instant>),
-    Time(Box<super::super::types::Time>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
-    Quantity(Box<super::super::types::Quantity>),
-}
-#[derive(Debug, Clone)]
-pub struct ElementDefinitionConstraint {
-    pub r#severity: super::super::types::Code,
-    pub r#human: super::super::types::String,
-    pub r#requirements: Option<super::super::types::String>,
-    pub r#xpath: Option<super::super::types::String>,
-    pub r#key: super::super::types::Id,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#expression: Option<super::super::types::String>,
-    pub r#source: Option<super::super::types::Canonical>,
-    pub r#id: Option<std::string::String>,
-}
-#[derive(Debug, Clone)]
-pub enum ElementDefinitionMinValue {
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Instant(Box<super::super::types::Instant>),
-    Time(Box<super::super::types::Time>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
-    Quantity(Box<super::super::types::Quantity>),
 }
 #[derive(Debug, Clone)]
 pub enum ElementDefinitionDefaultValue {
@@ -306,42 +159,189 @@ pub enum ElementDefinitionDefaultValue {
     Meta(Box<super::super::types::Meta>),
 }
 #[derive(Debug, Clone)]
-pub struct ElementDefinition {
-    pub r#min: Option<super::super::types::UnsignedInt>,
+pub enum ElementDefinitionMinValue {
+    Date(Box<super::super::types::Date>),
+    DateTime(Box<super::super::types::DateTime>),
+    Instant(Box<super::super::types::Instant>),
+    Time(Box<super::super::types::Time>),
+    Decimal(Box<super::super::types::Decimal>),
+    Integer(Box<super::super::types::Integer>),
+    PositiveInt(Box<super::super::types::PositiveInt>),
+    UnsignedInt(Box<super::super::types::UnsignedInt>),
+    Quantity(Box<super::super::types::Quantity>),
+}
+#[derive(Debug, Clone)]
+pub enum ElementDefinitionMaxValue {
+    Date(Box<super::super::types::Date>),
+    DateTime(Box<super::super::types::DateTime>),
+    Instant(Box<super::super::types::Instant>),
+    Time(Box<super::super::types::Time>),
+    Decimal(Box<super::super::types::Decimal>),
+    Integer(Box<super::super::types::Integer>),
+    PositiveInt(Box<super::super::types::PositiveInt>),
+    UnsignedInt(Box<super::super::types::UnsignedInt>),
+    Quantity(Box<super::super::types::Quantity>),
+}
+#[derive(Debug, Clone)]
+pub enum ElementDefinitionExampleValue {
+    Base64Binary(Box<super::super::types::Base64Binary>),
+    Boolean(Box<super::super::types::Boolean>),
+    Canonical(Box<super::super::types::Canonical>),
+    Code(Box<super::super::types::Code>),
+    Date(Box<super::super::types::Date>),
+    DateTime(Box<super::super::types::DateTime>),
+    Decimal(Box<super::super::types::Decimal>),
+    Id(Box<super::super::types::Id>),
+    Instant(Box<super::super::types::Instant>),
+    Integer(Box<super::super::types::Integer>),
+    Markdown(Box<super::super::types::Markdown>),
+    Oid(Box<super::super::types::Oid>),
+    PositiveInt(Box<super::super::types::PositiveInt>),
+    String(Box<super::super::types::String>),
+    Time(Box<super::super::types::Time>),
+    UnsignedInt(Box<super::super::types::UnsignedInt>),
+    Uri(Box<super::super::types::Uri>),
+    Url(Box<super::super::types::Url>),
+    Uuid(Box<super::super::types::Uuid>),
+    Address(Box<super::super::types::Address>),
+    Age(Box<super::super::types::Age>),
+    Annotation(Box<super::super::types::Annotation>),
+    Attachment(Box<super::super::types::Attachment>),
+    CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Coding(Box<super::super::types::Coding>),
+    ContactPoint(Box<super::super::types::ContactPoint>),
+    Count(Box<super::super::types::Count>),
+    Distance(Box<super::super::types::Distance>),
+    Duration(Box<super::super::types::Duration>),
+    HumanName(Box<super::super::types::HumanName>),
+    Identifier(Box<super::super::types::Identifier>),
+    Money(Box<super::super::types::Money>),
+    Period(Box<super::super::types::Period>),
+    Quantity(Box<super::super::types::Quantity>),
+    Range(Box<super::super::types::Range>),
+    Ratio(Box<super::super::types::Ratio>),
+    Reference(Box<super::super::types::Reference>),
+    SampledData(Box<super::super::types::SampledData>),
+    Signature(Box<super::super::types::Signature>),
+    Timing(Box<super::super::types::Timing>),
+    ContactDetail(Box<super::super::types::ContactDetail>),
+    Contributor(Box<super::super::types::Contributor>),
+    DataRequirement(Box<super::super::types::DataRequirement>),
+    Expression(Box<super::super::types::Expression>),
+    ParameterDefinition(Box<super::super::types::ParameterDefinition>),
+    RelatedArtifact(Box<super::super::types::RelatedArtifact>),
+    TriggerDefinition(Box<super::super::types::TriggerDefinition>),
+    UsageContext(Box<super::super::types::UsageContext>),
+    Dosage(Box<super::super::types::Dosage>),
+    Meta(Box<super::super::types::Meta>),
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionConstraint {
+    pub r#severity: super::super::types::Code,
+    pub r#source: Option<super::super::types::Canonical>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#pattern: Option<ElementDefinitionPattern>,
-    pub r#is_modifier_reason: Option<super::super::types::String>,
-    pub r#requirements: Option<super::super::types::Markdown>,
-    pub r#content_reference: Option<super::super::types::Uri>,
-    pub r#comment: Option<super::super::types::Markdown>,
-    pub r#slicing: Option<Box<super::super::types::Element>>,
-    pub r#short: Option<super::super::types::String>,
-    pub r#fixed: Option<ElementDefinitionFixed>,
-    pub r#binding: Option<Box<super::super::types::Element>>,
+    pub r#xpath: Option<super::super::types::String>,
+    pub r#key: super::super::types::Id,
+    pub r#requirements: Option<super::super::types::String>,
+    pub r#human: super::super::types::String,
+    pub r#expression: Option<super::super::types::String>,
     pub r#id: Option<std::string::String>,
-    pub r#is_summary: Option<super::super::types::Boolean>,
-    pub r#code: Vec<Box<super::super::types::Coding>>,
-    pub r#example: Vec<Box<super::super::types::Element>>,
-    pub r#max: Option<super::super::types::String>,
-    pub r#representation: Vec<super::super::types::Code>,
-    pub r#must_support: Option<super::super::types::Boolean>,
-    pub r#type: Vec<Box<super::super::types::Element>>,
-    pub r#is_modifier: Option<super::super::types::Boolean>,
-    pub r#max_length: Option<super::super::types::Integer>,
-    pub r#base: Option<Box<super::super::types::Element>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#mapping: Vec<Box<super::super::types::Element>>,
-    pub r#max_value: Option<ElementDefinitionMaxValue>,
-    pub r#label: Option<super::super::types::String>,
-    pub r#constraint: Vec<Box<super::super::types::Element>>,
-    pub r#order_meaning: Option<super::super::types::String>,
-    pub r#min_value: Option<ElementDefinitionMinValue>,
-    pub r#condition: Vec<super::super::types::Id>,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionType {
+    pub r#target_profile: Vec<super::super::types::Canonical>,
+    pub r#aggregation: Vec<super::super::types::Code>,
+    pub r#profile: Vec<super::super::types::Canonical>,
+    pub r#versioning: Option<super::super::types::Code>,
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#code: super::super::types::Uri,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionMapping {
+    pub r#identity: super::super::types::Id,
+    pub r#comment: Option<super::super::types::String>,
+    pub r#id: Option<std::string::String>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#map: super::super::types::String,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionBinding {
+    pub r#id: Option<std::string::String>,
+    pub r#description: Option<super::super::types::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#value_set: Option<super::super::types::Canonical>,
+    pub r#strength: super::super::types::Code,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionExample {
+    pub r#value: ElementDefinitionExampleValue,
+    pub r#label: super::super::types::String,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#id: Option<std::string::String>,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionBase {
     pub r#path: super::super::types::String,
-    pub r#slice_name: Option<super::super::types::String>,
-    pub r#default_value: Option<ElementDefinitionDefaultValue>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#id: Option<std::string::String>,
+    pub r#min: super::super::types::UnsignedInt,
+    pub r#max: super::super::types::String,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionSlicingDiscriminator {
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#path: super::super::types::String,
+    pub r#type: super::super::types::Code,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinitionSlicing {
+    pub r#ordered: Option<super::super::types::Boolean>,
+    pub r#id: Option<std::string::String>,
+    pub r#discriminator: Vec<Box<super::super::types::Element>>,
+    pub r#rules: super::super::types::Code,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#description: Option<super::super::types::String>,
+}
+#[derive(Debug, Clone)]
+pub struct ElementDefinition {
+    pub r#content_reference: Option<super::super::types::Uri>,
+    pub r#fixed: Option<ElementDefinitionFixed>,
     pub r#definition: Option<super::super::types::Markdown>,
-    pub r#alias: Vec<super::super::types::String>,
+    pub r#short: Option<super::super::types::String>,
+    pub r#comment: Option<super::super::types::Markdown>,
+    pub r#condition: Vec<super::super::types::Id>,
+    pub r#is_modifier_reason: Option<super::super::types::String>,
+    pub r#constraint: Vec<Box<super::super::types::Element>>,
+    pub r#pattern: Option<ElementDefinitionPattern>,
     pub r#meaning_when_missing: Option<super::super::types::Markdown>,
     pub r#slice_is_constraining: Option<super::super::types::Boolean>,
+    pub r#max: Option<super::super::types::String>,
+    pub r#default_value: Option<ElementDefinitionDefaultValue>,
+    pub r#must_support: Option<super::super::types::Boolean>,
+    pub r#representation: Vec<super::super::types::Code>,
+    pub r#max_length: Option<super::super::types::Integer>,
+    pub r#min: Option<super::super::types::UnsignedInt>,
+    pub r#min_value: Option<ElementDefinitionMinValue>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#path: super::super::types::String,
+    pub r#type: Vec<Box<super::super::types::Element>>,
+    pub r#label: Option<super::super::types::String>,
+    pub r#max_value: Option<ElementDefinitionMaxValue>,
+    pub r#mapping: Vec<Box<super::super::types::Element>>,
+    pub r#code: Vec<Box<super::super::types::Coding>>,
+    pub r#binding: Option<Box<super::super::types::Element>>,
+    pub r#requirements: Option<super::super::types::Markdown>,
+    pub r#example: Vec<Box<super::super::types::Element>>,
+    pub r#id: Option<std::string::String>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#alias: Vec<super::super::types::String>,
+    pub r#base: Option<Box<super::super::types::Element>>,
+    pub r#is_modifier: Option<super::super::types::Boolean>,
+    pub r#slicing: Option<Box<super::super::types::Element>>,
+    pub r#order_meaning: Option<super::super::types::String>,
+    pub r#slice_name: Option<super::super::types::String>,
+    pub r#is_summary: Option<super::super::types::Boolean>,
 }

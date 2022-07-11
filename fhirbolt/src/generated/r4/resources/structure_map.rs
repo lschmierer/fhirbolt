@@ -1,13 +1,11 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
-pub struct StructureMapStructure {
-    pub r#id: Option<std::string::String>,
-    pub r#mode: super::super::types::Code,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#alias: Option<super::super::types::String>,
-    pub r#documentation: Option<super::super::types::String>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#url: super::super::types::Canonical,
+pub enum StructureMapGroupRuleTargetParameterValue {
+    Id(Box<super::super::types::Id>),
+    String(Box<super::super::types::String>),
+    Boolean(Box<super::super::types::Boolean>),
+    Integer(Box<super::super::types::Integer>),
+    Decimal(Box<super::super::types::Decimal>),
 }
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
@@ -63,119 +61,121 @@ pub enum StructureMapGroupRuleSourceDefaultValue {
     Meta(Box<super::super::types::Meta>),
 }
 #[derive(Debug, Clone)]
-pub struct StructureMapGroupRuleSource {
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+pub struct StructureMapStructure {
+    pub r#alias: Option<super::super::types::String>,
+    pub r#documentation: Option<super::super::types::String>,
+    pub r#url: super::super::types::Canonical,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#type: Option<super::super::types::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#id: Option<std::string::String>,
-    pub r#context: super::super::types::Id,
-    pub r#default_value: Option<StructureMapGroupRuleSourceDefaultValue>,
-    pub r#element: Option<super::super::types::String>,
-    pub r#list_mode: Option<super::super::types::Code>,
-    pub r#min: Option<super::super::types::Integer>,
-    pub r#variable: Option<super::super::types::Id>,
-    pub r#check: Option<super::super::types::String>,
-    pub r#log_message: Option<super::super::types::String>,
-    pub r#condition: Option<super::super::types::String>,
-    pub r#max: Option<super::super::types::String>,
-}
-#[derive(Debug, Clone)]
-pub enum StructureMapGroupRuleTargetParameterValue {
-    Id(Box<super::super::types::Id>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
-    Decimal(Box<super::super::types::Decimal>),
+    pub r#mode: super::super::types::Code,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMapGroupRuleTargetParameter {
-    pub r#value: StructureMapGroupRuleTargetParameterValue,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#value: StructureMapGroupRuleTargetParameterValue,
     pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMapGroupRuleTarget {
     pub r#parameter: Vec<StructureMapGroupRuleTargetParameter>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#variable: Option<super::super::types::Id>,
+    pub r#element: Option<super::super::types::String>,
     pub r#id: Option<std::string::String>,
     pub r#list_rule_id: Option<super::super::types::Id>,
-    pub r#context: Option<super::super::types::Id>,
-    pub r#context_type: Option<super::super::types::Code>,
-    pub r#variable: Option<super::super::types::Id>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#transform: Option<super::super::types::Code>,
+    pub r#context: Option<super::super::types::Id>,
     pub r#list_mode: Vec<super::super::types::Code>,
+    pub r#transform: Option<super::super::types::Code>,
+    pub r#context_type: Option<super::super::types::Code>,
+}
+#[derive(Debug, Clone)]
+pub struct StructureMapGroupRuleSource {
+    pub r#condition: Option<super::super::types::String>,
+    pub r#check: Option<super::super::types::String>,
+    pub r#log_message: Option<super::super::types::String>,
+    pub r#max: Option<super::super::types::String>,
+    pub r#id: Option<std::string::String>,
+    pub r#context: super::super::types::Id,
+    pub r#min: Option<super::super::types::Integer>,
+    pub r#default_value: Option<StructureMapGroupRuleSourceDefaultValue>,
     pub r#element: Option<super::super::types::String>,
+    pub r#list_mode: Option<super::super::types::Code>,
+    pub r#variable: Option<super::super::types::Id>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#type: Option<super::super::types::String>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMapGroupRuleDependent {
-    pub r#variable: Vec<super::super::types::String>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#id: Option<std::string::String>,
+    pub r#variable: Vec<super::super::types::String>,
     pub r#name: super::super::types::Id,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMapGroupRule {
-    pub r#name: super::super::types::Id,
-    pub r#id: Option<std::string::String>,
-    pub r#source: Vec<StructureMapGroupRuleSource>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#rule: Vec<StructureMapGroupRule>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#documentation: Option<super::super::types::String>,
+    pub r#rule: Vec<StructureMapGroupRule>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#target: Vec<StructureMapGroupRuleTarget>,
+    pub r#name: super::super::types::Id,
+    pub r#source: Vec<StructureMapGroupRuleSource>,
+    pub r#documentation: Option<super::super::types::String>,
+    pub r#id: Option<std::string::String>,
     pub r#dependent: Vec<StructureMapGroupRuleDependent>,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMapGroupInput {
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#type: Option<super::super::types::String>,
     pub r#mode: super::super::types::Code,
     pub r#documentation: Option<super::super::types::String>,
     pub r#name: super::super::types::Id,
-    pub r#id: Option<std::string::String>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMapGroup {
-    pub r#extends: Option<super::super::types::Id>,
-    pub r#documentation: Option<super::super::types::String>,
-    pub r#name: super::super::types::Id,
     pub r#rule: Vec<StructureMapGroupRule>,
+    pub r#extends: Option<super::super::types::Id>,
+    pub r#input: Vec<StructureMapGroupInput>,
     pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#input: Vec<StructureMapGroupInput>,
+    pub r#name: super::super::types::Id,
+    pub r#documentation: Option<super::super::types::String>,
     pub r#type_mode: super::super::types::Code,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
 }
 #[derive(Debug, Clone)]
 pub struct StructureMap {
-    pub r#copyright: Option<super::super::types::Markdown>,
-    pub r#purpose: Option<super::super::types::Markdown>,
-    pub r#use_context: Vec<Box<super::super::types::UsageContext>>,
-    pub r#meta: Option<Box<super::super::types::Meta>>,
-    pub r#id: Option<std::string::String>,
-    pub r#title: Option<super::super::types::String>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#experimental: Option<super::super::types::Boolean>,
-    pub r#version: Option<super::super::types::String>,
-    pub r#contained: Vec<Box<super::Resource>>,
-    pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#language: Option<super::super::types::Code>,
-    pub r#url: super::super::types::Uri,
-    pub r#name: super::super::types::String,
-    pub r#description: Option<super::super::types::Markdown>,
-    pub r#jurisdiction: Vec<Box<super::super::types::CodeableConcept>>,
-    pub r#structure: Vec<StructureMapStructure>,
-    pub r#date: Option<super::super::types::DateTime>,
-    pub r#import: Vec<super::super::types::Canonical>,
-    pub r#group: Vec<StructureMapGroup>,
-    pub r#status: super::super::types::Code,
-    pub r#publisher: Option<super::super::types::String>,
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
-    pub r#implicit_rules: Option<super::super::types::Uri>,
-    pub r#contact: Vec<Box<super::super::types::ContactDetail>>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#description: Option<super::super::types::Markdown>,
+    pub r#id: Option<std::string::String>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#name: super::super::types::String,
+    pub r#status: super::super::types::Code,
+    pub r#structure: Vec<StructureMapStructure>,
+    pub r#version: Option<super::super::types::String>,
+    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#use_context: Vec<Box<super::super::types::UsageContext>>,
+    pub r#url: super::super::types::Uri,
+    pub r#jurisdiction: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#import: Vec<super::super::types::Canonical>,
+    pub r#purpose: Option<super::super::types::Markdown>,
+    pub r#contact: Vec<Box<super::super::types::ContactDetail>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#copyright: Option<super::super::types::Markdown>,
+    pub r#implicit_rules: Option<super::super::types::Uri>,
+    pub r#group: Vec<StructureMapGroup>,
+    pub r#title: Option<super::super::types::String>,
+    pub r#experimental: Option<super::super::types::Boolean>,
+    pub r#date: Option<super::super::types::DateTime>,
+    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#meta: Option<Box<super::super::types::Meta>>,
+    pub r#publisher: Option<super::super::types::String>,
+    pub r#text: Option<Box<super::super::types::Narrative>>,
 }

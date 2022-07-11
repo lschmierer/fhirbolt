@@ -1,4 +1,4 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -54,8 +54,8 @@ pub enum ExtensionValue {
 }
 #[derive(Debug, Clone)]
 pub struct Extension {
-    pub r#id: Option<std::string::String>,
     pub r#url: std::string::String,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#value: Option<ExtensionValue>,
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
 }

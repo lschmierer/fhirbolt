@@ -1,4 +1,4 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum GroupCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -8,42 +8,42 @@ pub enum GroupCharacteristicValue {
     Reference(Box<super::super::types::Reference>),
 }
 #[derive(Debug, Clone)]
-pub struct GroupCharacteristic {
+pub struct GroupMember {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#id: Option<std::string::String>,
-    pub r#value: GroupCharacteristicValue,
-    pub r#exclude: super::super::types::Boolean,
-    pub r#code: Box<super::super::types::CodeableConcept>,
     pub r#period: Option<Box<super::super::types::Period>>,
+    pub r#inactive: Option<super::super::types::Boolean>,
+    pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#entity: Box<super::super::types::Reference>,
 }
 #[derive(Debug, Clone)]
-pub struct GroupMember {
-    pub r#entity: Box<super::super::types::Reference>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#inactive: Option<super::super::types::Boolean>,
-    pub r#period: Option<Box<super::super::types::Period>>,
+pub struct GroupCharacteristic {
     pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#code: Box<super::super::types::CodeableConcept>,
+    pub r#exclude: super::super::types::Boolean,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#value: GroupCharacteristicValue,
+    pub r#period: Option<Box<super::super::types::Period>>,
 }
 #[derive(Debug, Clone)]
 pub struct Group {
-    pub r#actual: super::super::types::Boolean,
     pub r#managing_entity: Option<Box<super::super::types::Reference>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#quantity: Option<super::super::types::UnsignedInt>,
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
-    pub r#id: Option<std::string::String>,
-    pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#type: super::super::types::Code,
-    pub r#contained: Vec<Box<super::Resource>>,
-    pub r#language: Option<super::super::types::Code>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#characteristic: Vec<GroupCharacteristic>,
+    pub r#meta: Option<Box<super::super::types::Meta>>,
     pub r#member: Vec<GroupMember>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#characteristic: Vec<GroupCharacteristic>,
     pub r#implicit_rules: Option<super::super::types::Uri>,
     pub r#name: Option<super::super::types::String>,
-    pub r#code: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#meta: Option<Box<super::super::types::Meta>>,
+    pub r#id: Option<std::string::String>,
+    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
     pub r#active: Option<super::super::types::Boolean>,
+    pub r#code: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#text: Option<Box<super::super::types::Narrative>>,
+    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#type: super::super::types::Code,
+    pub r#quantity: Option<super::super::types::UnsignedInt>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#actual: super::super::types::Boolean,
 }

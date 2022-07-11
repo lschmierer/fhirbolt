@@ -10,7 +10,7 @@ use chrono::Utc;
 use proc_macro2::TokenStream;
 use zip::read::{ZipArchive, ZipFile};
 
-use fhirbolt_codegen::{generate, model::Bundle, SourceFile};
+use fhirbolt_codegen::{generate_all, model::Bundle, SourceFile};
 
 enum FhirRelease {
     R4,
@@ -140,7 +140,18 @@ fn output_source_file(fhir_release: &FhirRelease, kind: &str, name: &str) -> Pat
     output_source_dir(fhir_release, kind).join(format!("{}.rs", name))
 }
 
-fn write_source_file(fhir_release: &FhirRelease, kind: &str, name: &str, tokens: TokenStream) {
+fn write_source_files(fhir_release: &FhirRelease, kind: &str, source_files: &[SourceFile]) {
+    println!("Writing {}...", kind);
+
+    let mut mod_names = vec![];
+    for SourceFile { name, source } in source_files {
+        write_source_file(fhir_release, kind, &name, source);
+        mod_names.push(name.as_str());
+    }
+    write_source_mod_file(&fhir_release, kind, &mod_names);
+}
+
+fn write_source_file(fhir_release: &FhirRelease, kind: &str, name: &str, tokens: &TokenStream) {
     let file_path = output_source_file(fhir_release, kind, name);
     let mut file =
         File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
@@ -170,7 +181,7 @@ fn write_release_mod_file(fhir_release: &FhirRelease) {
     write!(file, "pub mod resources;\n").unwrap();
 }
 
-fn write_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &Vec<String>) {
+fn write_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[&str]) {
     let mut file = File::create(&output_source_dir(fhir_release, kind).join("mod.rs")).unwrap();
 
     for r#type in types {
@@ -184,16 +195,19 @@ fn write_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &Vec<Str
     }
 }
 
-fn generate_and_write_bundle(fhir_release: &FhirRelease, bundle: &Bundle, kind: &str) {
-    println!("Writing {}...", kind);
-    let generated = generate(&bundle);
-    let mut mod_names = vec![];
+fn generate_and_write(
+    fhir_release: &FhirRelease,
+    types_bundle: &Bundle,
+    resources_bundle: &Bundle,
+) {
+    let generated = generate_all(types_bundle, resources_bundle);
 
-    for SourceFile { name, source } in generated {
-        write_source_file(fhir_release, kind, &name, source);
-        mod_names.push(name);
-    }
-    write_source_mod_file(&fhir_release, kind, &mod_names);
+    write_source_files(&fhir_release, "types", &generated.types_source_files);
+    write_source_files(
+        &fhir_release,
+        "resources",
+        &generated.resources_source_files,
+    );
 }
 
 fn rustfmt() {
@@ -218,11 +232,12 @@ fn main() {
 
         let types_json = read_types_from_zip_archive(&mut zip_archive);
         let types_bundle = parse_bundle(&types_json);
-        generate_and_write_bundle(fhir_release, &types_bundle, "types");
 
         let resources_json = read_resources_from_zip_archive(&mut zip_archive);
         let resources_bundle = parse_bundle(&resources_json);
-        generate_and_write_bundle(fhir_release, &resources_bundle, "resources");
+
+        generate_and_write(fhir_release, &types_bundle, &resources_bundle);
+
         println!("FHIR {} generated succesfull!", fhir_release);
     }
 

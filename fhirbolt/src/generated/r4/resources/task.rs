@@ -1,4 +1,4 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TaskInputValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -51,14 +51,6 @@ pub enum TaskInputValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
-}
-#[derive(Debug, Clone)]
-pub struct TaskInput {
-    pub r#type: Box<super::super::types::CodeableConcept>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#value: TaskInputValue,
-    pub r#id: Option<std::string::String>,
 }
 #[derive(Debug, Clone)]
 pub enum TaskOutputValue {
@@ -114,61 +106,69 @@ pub enum TaskOutputValue {
     Meta(Box<super::super::types::Meta>),
 }
 #[derive(Debug, Clone)]
-pub struct TaskOutput {
-    pub r#value: TaskOutputValue,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+pub struct TaskInput {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#type: Box<super::super::types::CodeableConcept>,
     pub r#id: Option<std::string::String>,
+    pub r#type: Box<super::super::types::CodeableConcept>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#value: TaskInputValue,
 }
 #[derive(Debug, Clone)]
 pub struct TaskRestriction {
-    pub r#repetitions: Option<super::super::types::PositiveInt>,
+    pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#recipient: Vec<Box<super::super::types::Reference>>,
+    pub r#repetitions: Option<super::super::types::PositiveInt>,
     pub r#period: Option<Box<super::super::types::Period>>,
+    pub r#recipient: Vec<Box<super::super::types::Reference>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+}
+#[derive(Debug, Clone)]
+pub struct TaskOutput {
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#value: TaskOutputValue,
+    pub r#type: Box<super::super::types::CodeableConcept>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#id: Option<std::string::String>,
 }
 #[derive(Debug, Clone)]
 pub struct Task {
-    pub r#reason_code: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#status: super::super::types::Code,
-    pub r#implicit_rules: Option<super::super::types::Uri>,
-    pub r#contained: Vec<Box<super::Resource>>,
-    pub r#insurance: Vec<Box<super::super::types::Reference>>,
-    pub r#input: Vec<TaskInput>,
-    pub r#group_identifier: Option<Box<super::super::types::Identifier>>,
-    pub r#instantiates_canonical: Option<super::super::types::Canonical>,
-    pub r#output: Vec<TaskOutput>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#priority: Option<super::super::types::Code>,
-    pub r#execution_period: Option<Box<super::super::types::Period>>,
-    pub r#id: Option<std::string::String>,
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
-    pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#instantiates_uri: Option<super::super::types::Uri>,
-    pub r#authored_on: Option<super::super::types::DateTime>,
-    pub r#last_modified: Option<super::super::types::DateTime>,
-    pub r#location: Option<Box<super::super::types::Reference>>,
-    pub r#language: Option<super::super::types::Code>,
-    pub r#focus: Option<Box<super::super::types::Reference>>,
-    pub r#owner: Option<Box<super::super::types::Reference>>,
-    pub r#for: Option<Box<super::super::types::Reference>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#intent: super::super::types::Code,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#instantiates_uri: Option<super::super::types::Uri>,
     pub r#description: Option<super::super::types::String>,
-    pub r#business_status: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#meta: Option<Box<super::super::types::Meta>>,
-    pub r#encounter: Option<Box<super::super::types::Reference>>,
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
-    pub r#status_reason: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#reason_code: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#intent: super::super::types::Code,
     pub r#reason_reference: Option<Box<super::super::types::Reference>>,
-    pub r#part_of: Vec<Box<super::super::types::Reference>>,
-    pub r#performer_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#input: Vec<TaskInput>,
+    pub r#id: Option<std::string::String>,
+    pub r#encounter: Option<Box<super::super::types::Reference>>,
+    pub r#priority: Option<super::super::types::Code>,
     pub r#requester: Option<Box<super::super::types::Reference>>,
-    pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+    pub r#location: Option<Box<super::super::types::Reference>>,
+    pub r#owner: Option<Box<super::super::types::Reference>>,
+    pub r#instantiates_canonical: Option<super::super::types::Canonical>,
+    pub r#authored_on: Option<super::super::types::DateTime>,
     pub r#restriction: Option<TaskRestriction>,
+    pub r#group_identifier: Option<Box<super::super::types::Identifier>>,
+    pub r#execution_period: Option<Box<super::super::types::Period>>,
+    pub r#part_of: Vec<Box<super::super::types::Reference>>,
+    pub r#text: Option<Box<super::super::types::Narrative>>,
+    pub r#performer_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#business_status: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#meta: Option<Box<super::super::types::Meta>>,
+    pub r#output: Vec<TaskOutput>,
+    pub r#for: Option<Box<super::super::types::Reference>>,
+    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#implicit_rules: Option<super::super::types::Uri>,
+    pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#focus: Option<Box<super::super::types::Reference>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#status: super::super::types::Code,
+    pub r#status_reason: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#insurance: Vec<Box<super::super::types::Reference>>,
+    pub r#last_modified: Option<super::super::types::DateTime>,
+    pub r#based_on: Vec<Box<super::super::types::Reference>>,
 }

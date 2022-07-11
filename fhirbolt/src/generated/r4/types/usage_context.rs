@@ -1,4 +1,4 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum UsageContextValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -8,8 +8,8 @@ pub enum UsageContextValue {
 }
 #[derive(Debug, Clone)]
 pub struct UsageContext {
-    pub r#code: Box<super::super::types::Coding>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#value: UsageContextValue,
     pub r#id: Option<std::string::String>,
+    pub r#value: UsageContextValue,
+    pub r#code: Box<super::super::types::Coding>,
 }

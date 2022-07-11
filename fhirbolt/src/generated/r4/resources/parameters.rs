@@ -1,4 +1,4 @@
-// Generated on 2022-07-09 by fhirbolt-codegen version 0.1.0
+// Generated on 2022-07-11 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -57,16 +57,16 @@ pub struct ParametersParameter {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#id: Option<std::string::String>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#name: super::super::types::String,
-    pub r#value: Option<ParametersParameterValue>,
     pub r#resource: Option<Box<super::Resource>>,
+    pub r#value: Option<ParametersParameterValue>,
+    pub r#name: super::super::types::String,
     pub r#part: Vec<ParametersParameter>,
 }
 #[derive(Debug, Clone)]
 pub struct Parameters {
     pub r#meta: Option<Box<super::super::types::Meta>>,
-    pub r#implicit_rules: Option<super::super::types::Uri>,
-    pub r#language: Option<super::super::types::Code>,
     pub r#parameter: Vec<ParametersParameter>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#implicit_rules: Option<super::super::types::Uri>,
     pub r#id: Option<std::string::String>,
 }
