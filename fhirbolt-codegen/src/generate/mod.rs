@@ -1,3 +1,5 @@
+mod ser;
+
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 
@@ -6,6 +8,8 @@ use crate::{
     SourceFile,
 };
 
+use self::ser::implement_serialze;
+
 pub fn generate_modules(modules: &[RustModule]) -> Vec<SourceFile> {
     modules.iter().map(|m| generate_module(m)).collect()
 }
@@ -13,13 +17,14 @@ pub fn generate_modules(modules: &[RustModule]) -> Vec<SourceFile> {
 pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.structs[0].name);
-        quote!(#ident(Box<super::#ident>),)
+        quote! { #ident(Box<super::#ident>), }
     });
 
     SourceFile {
         name: "resource".into(),
         source: quote! {
-            #[derive(Debug, Clone)]
+            #[derive(Debug, Clone, serde::Serialize/* , serde::Deserialize */)]
+            #[serde(tag = "resourceType")]
             pub enum Resource {
                 #(
                     #variants_tokens
@@ -30,8 +35,11 @@ pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
 }
 
 fn generate_module(module: &RustModule) -> SourceFile {
-    let structs_tokens = module.structs.iter().map(|s| generate_struct(s));
-    let enums_tokens = module.enums.iter().map(|s| generate_enum(s));
+    let structs_tokens = module
+        .structs
+        .iter()
+        .map(|s| generate_struct(s, &module.enums));
+    let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
         name: module.name.clone(),
@@ -46,9 +54,15 @@ fn generate_module(module: &RustModule) -> SourceFile {
     }
 }
 
-fn generate_struct(r#struct: &RustStruct) -> TokenStream {
+fn generate_struct(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
+
+    let serialze_impl_tokens = if !r#struct.is_fhir_primitive {
+        implement_serialze(&r#struct, enums)
+    } else {
+        quote! {}
+    };
 
     quote! {
         #[derive(Debug, Clone)]
@@ -57,24 +71,26 @@ fn generate_struct(r#struct: &RustStruct) -> TokenStream {
                 #fields_tokens
             )*
         }
+
+        #serialze_impl_tokens
     }
 }
 
 fn generate_field(field: &RustStructField) -> TokenStream {
     let name_ident = format_ident!("r#{}", field.name);
 
-    let type_tokens = field.r#type.parse().unwrap();
+    let type_tokens = field.r#type.name.parse().unwrap();
 
-    let type_tokens = if field.r#box {
-        quote!(Box<#type_tokens>)
+    let type_tokens = if field.r#type.r#box {
+        quote! { Box<#type_tokens> }
     } else {
         type_tokens
     };
 
     let type_tokens = if field.multiple {
-        quote!(Vec<#type_tokens>)
+        quote! { Vec<#type_tokens> }
     } else if field.optional {
-        quote!(Option<#type_tokens>)
+        quote! { Option<#type_tokens> }
     } else {
         type_tokens
     };
@@ -91,10 +107,10 @@ fn generate_enum(r#enum: &RustEnum) -> TokenStream {
         // type like http://hl7.org/fhirpath/System.String
         let variant_name_ident = format_ident!("{}", v.name);
 
-        let type_tokens = v.r#type.parse().unwrap();
+        let type_tokens = v.r#type.name.parse().unwrap();
 
-        let type_tokens = if v.r#box {
-            quote!(Box<#type_tokens>)
+        let type_tokens = if v.r#type.r#box {
+            quote! { Box<#type_tokens> }
         } else {
             type_tokens
         };

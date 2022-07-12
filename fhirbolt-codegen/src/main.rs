@@ -238,7 +238,7 @@ fn main() {
 
         generate_and_write(fhir_release, &types_bundle, &resources_bundle);
 
-        println!("FHIR {} generated succesfull!", fhir_release);
+        println!("FHIR {} generated succesfully!", fhir_release);
     }
 
     rustfmt()

@@ -37,15 +37,19 @@ pub struct RustModule {
 
 pub struct RustStruct {
     pub name: String,
+    pub fhir_name: String,
+    pub is_resource: bool,
+    pub is_fhir_primitive: bool,
     pub fields: Vec<RustStructField>,
 }
 
 pub struct RustStructField {
     pub name: String,
-    pub r#type: String,
+    pub fhir_name: String,
+    pub r#type: RustFieldType,
+    pub polymorph: bool,
     pub multiple: bool,
     pub optional: bool,
-    pub r#box: bool,
 }
 
 pub struct RustEnum {
@@ -55,8 +59,13 @@ pub struct RustEnum {
 
 pub struct RustEnumVariant {
     pub name: String,
-    pub r#type: String,
+    pub r#type: RustFieldType,
+}
+
+pub struct RustFieldType {
+    pub name: String,
     pub r#box: bool,
+    pub maybe_fhir_primitive: bool,
 }
 
 pub fn gather_all_modules<'a>(bundle: &Bundle) -> Vec<RustModule> {
@@ -70,6 +79,7 @@ pub fn gather_all_modules<'a>(bundle: &Bundle) -> Vec<RustModule> {
             gather_struct(
                 &mut module,
                 &s.name,
+                s.kind == "resource",
                 &s.snapshot.element.iter().collect::<Vec<_>>(),
                 &s.r#type,
             );
@@ -88,6 +98,7 @@ fn flatten_bundle(bundle: &Bundle) -> impl Iterator<Item = &StructureDefinition>
 fn gather_struct(
     module: &mut RustModule,
     name: &str,
+    is_resource: bool,
     element_definitions: &[&ElementDefinition],
     element_path_strip_prefix: &str,
 ) {
@@ -95,6 +106,9 @@ fn gather_struct(
 
     module.structs.push(RustStruct {
         name: name.to_rust_type_casing(),
+        fhir_name: name.into(),
+        is_resource,
+        is_fhir_primitive: PRIMITIVES.contains(&name),
         fields,
     })
 }
@@ -131,6 +145,7 @@ fn gather_fields(
                 gather_struct(
                     module,
                     &type_name,
+                    false,
                     &element_definitions,
                     &element_definitions[0].path,
                 );
@@ -162,8 +177,8 @@ fn gather_field(
         }
     };
 
-    let (type_name, r#box) = if polymorph {
-        let type_name = format!("{}{}", struct_name, field_name.to_rust_type_casing());
+    let field_type = if polymorph {
+        let name = format!("{}{}", struct_name, field_name.to_rust_type_casing());
 
         let variants = element_definition
             .r#type
@@ -173,48 +188,60 @@ fn gather_field(
             .map(|t| t.code.as_ref())
             .collect();
 
-        create_value_enum(module, &type_name, variants);
+        let maybe_fhir_primitive = create_value_enum(module, &name, variants);
 
-        (type_name, false)
+        RustFieldType {
+            name,
+            r#box: false,
+            maybe_fhir_primitive,
+        }
     } else {
         if let Some(types) = element_definition.r#type.as_ref() {
             let code = &types.first().unwrap().code;
             if code == "BackboneElement" {
-                (
-                    format!("{}{}", struct_name, field_name.to_rust_type_casing()),
-                    false,
-                )
+                RustFieldType {
+                    name: format!("{}{}", struct_name, field_name.to_rust_type_casing()),
+                    r#box: false,
+                    maybe_fhir_primitive: false,
+                }
             } else {
                 match_field_type(code, false)
             }
         } else {
-            (
-                map_content_reference(element_definition.content_reference.as_ref().unwrap()),
-                false,
-            )
+            RustFieldType {
+                name: map_content_reference(element_definition.content_reference.as_ref().unwrap()),
+                r#box: false,
+                maybe_fhir_primitive: false,
+            }
         }
     };
 
     RustStructField {
         name: field_name.to_rust_identifier_casing(),
-        r#type: type_name,
+        fhir_name: field_name.into(),
+        r#type: field_type,
+        polymorph,
         multiple: element_definition.max.as_ref().unwrap() != "1",
         optional: element_definition.min.unwrap() == 0,
-        r#box,
     }
 }
 
-fn create_value_enum<'a>(module: &mut RustModule, enum_name: &str, types: Vec<&str>) {
+fn create_value_enum<'a>(module: &mut RustModule, enum_name: &str, types: Vec<&str>) -> bool {
+    let mut may_contain_primitive = false;
+
     let variants = types
         .iter()
         .map(|t| {
-            let (type_name, r#box) = match_field_type(t, true);
+            let field_type = match_field_type(t, true);
+
+            if field_type.maybe_fhir_primitive {
+                may_contain_primitive = true;
+            }
 
             RustEnumVariant {
                 // type like http://hl7.org/fhirpath/System.String
                 name: t.rsplit(".").next().unwrap().to_rust_type_casing(),
-                r#type: type_name,
-                r#box,
+                r#type: field_type,
             }
         })
         .collect();
@@ -222,24 +249,62 @@ fn create_value_enum<'a>(module: &mut RustModule, enum_name: &str, types: Vec<&s
     module.enums.push(RustEnum {
         name: enum_name.into(),
         variants,
-    })
+    });
+
+    may_contain_primitive
 }
 
-fn match_field_type(code: &str, force_box: bool) -> (String, bool) {
+fn match_field_type(code: &str, force_box: bool) -> RustFieldType {
     // type like http://hl7.org/fhirpath/System.String
     match code.rsplit("/").next().unwrap() {
-        "System.Boolean" => ("bool".into(), false),
-        "System.Integer" => ("u32".into(), false),
-        "System.String" => ("std::string::String".into(), false),
-        "System.Decimal" => ("rust_decimal::Decimal".into(), false),
-        "System.Date" => ("chrono::naive::NaiveDate".into(), false),
-        "System.DateTime" => ("chrono::DateTime<chrono::Utc>".into(), false),
-        "System.Time" => ("chrono::naive::NaiveTime".into(), false),
-        "Resource" => ("super::Resource".into(), true),
-        r#type => (
-            format!("super::super::types::{}", r#type.to_rust_type_casing()),
-            !PRIMITIVES.contains(&r#type) || force_box,
-        ),
+        "System.Boolean" => RustFieldType {
+            name: "bool".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "System.Integer" => RustFieldType {
+            name: "u32".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "System.String" => RustFieldType {
+            name: "std::string::String".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "System.Decimal" => RustFieldType {
+            name: "rust_decimal::Decimal".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "System.Date" => RustFieldType {
+            name: "chrono::naive::NaiveDate".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "System.DateTime" => RustFieldType {
+            name: "chrono::DateTime<chrono::Utc>".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "System.Time" => RustFieldType {
+            name: "chrono::naive::NaiveTime".into(),
+            r#box: false,
+            maybe_fhir_primitive: false,
+        },
+        "Resource" => RustFieldType {
+            name: "super::Resource".into(),
+            r#box: true,
+            maybe_fhir_primitive: false,
+        },
+        r#type => {
+            let primitive = PRIMITIVES.contains(&r#type);
+            RustFieldType {
+                name: format!("super::super::types::{}", r#type.to_rust_type_casing()),
+                r#box: !primitive || force_box,
+                maybe_fhir_primitive: primitive,
+            }
+        }
     }
 }
 
