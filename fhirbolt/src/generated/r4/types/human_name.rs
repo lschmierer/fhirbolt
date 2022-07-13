@@ -1,23 +1,29 @@
-// Generated on 2022-07-12 by fhirbolt-codegen v0.1.0
-#[derive(Debug, Clone)]
+// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+#[derive(Default, Debug, Clone)]
 pub struct HumanName {
-    pub r#use: Option<super::super::types::Code>,
-    pub r#family: Option<super::super::types::String>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#use: Option<super::super::types::Code>,
     pub r#text: Option<super::super::types::String>,
-    pub r#prefix: Vec<super::super::types::String>,
+    pub r#family: Option<super::super::types::String>,
     pub r#given: Vec<super::super::types::String>,
-    pub r#period: Option<Box<super::super::types::Period>>,
+    pub r#prefix: Vec<super::super::types::String>,
     pub r#suffix: Vec<super::super::types::String>,
+    pub r#period: Option<Box<super::super::types::Period>>,
 }
-impl serde::Serialize for HumanName {
+impl serde::ser::Serialize for HumanName {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
+        }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
+        }
         if let Some(some) = self.r#use.as_ref() {
             if let Some(some) = some.value.as_ref() {
                 state.serialize_entry("use", some)?;
@@ -36,31 +42,6 @@ impl serde::Serialize for HumanName {
                 };
                 state.serialize_entry("_use", &primitive_element)?;
             }
-        }
-        if let Some(some) = self.r#family.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("family", some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_family", &primitive_element)?;
-            }
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
@@ -81,16 +62,11 @@ impl serde::Serialize for HumanName {
                 state.serialize_entry("_text", &primitive_element)?;
             }
         }
-        if !self.r#prefix.is_empty() {
-            let values: Vec<_> = self.r#prefix.iter().map(|v| &v.value).collect();
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("prefix", &values)?;
+        if let Some(some) = self.r#family.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("family", some)?;
             }
-            let requires_elements = self
-                .r#prefix
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
+            if some.id.is_some() || !some.extension.is_empty() {
                 #[derive(serde :: Serialize)]
                 struct PrimtiveElement<'a> {
                     #[serde(skip_serializing_if = "Option::is_none")]
@@ -98,21 +74,11 @@ impl serde::Serialize for HumanName {
                     #[serde(skip_serializing_if = "<[_]>::is_empty")]
                     extension: &'a [Box<super::super::types::Extension>],
                 }
-                let primitive_elements: Vec<_> = self
-                    .r#prefix
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
-                            })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_prefix", &primitive_elements)?;
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_family", &primitive_element)?;
             }
         }
         if !self.r#given.is_empty() {
@@ -149,8 +115,39 @@ impl serde::Serialize for HumanName {
                 state.serialize_entry("_given", &primitive_elements)?;
             }
         }
-        if let Some(some) = self.r#period.as_ref() {
-            state.serialize_entry("period", some)?;
+        if !self.r#prefix.is_empty() {
+            let values: Vec<_> = self.r#prefix.iter().map(|v| &v.value).collect();
+            if values.iter().any(|v| v.is_some()) {
+                state.serialize_entry("prefix", &values)?;
+            }
+            let requires_elements = self
+                .r#prefix
+                .iter()
+                .any(|e| e.id.is_some() || !e.extension.is_empty());
+            if requires_elements {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_elements: Vec<_> = self
+                    .r#prefix
+                    .iter()
+                    .map(|e| {
+                        if e.id.is_some() || !e.extension.is_empty() {
+                            Some(PrimtiveElement {
+                                id: &e.id,
+                                extension: &e.extension,
+                            })
+                        } else {
+                            None
+                        }
+                    })
+                    .collect();
+                state.serialize_entry("_prefix", &primitive_elements)?;
+            }
         }
         if !self.r#suffix.is_empty() {
             let values: Vec<_> = self.r#suffix.iter().map(|v| &v.value).collect();
@@ -186,6 +183,273 @@ impl serde::Serialize for HumanName {
                 state.serialize_entry("_suffix", &primitive_elements)?;
             }
         }
+        if let Some(some) = self.r#period.as_ref() {
+            state.serialize_entry("period", some)?;
+        }
         state.end()
+    }
+}
+impl<'de> serde::de::Deserialize<'de> for HumanName {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = HumanName;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("HumanName")
+            }
+            fn visit_map<V>(self, mut map_access: V) -> Result<HumanName, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#use: Option<super::super::types::Code> = None;
+                let mut r#text: Option<super::super::types::String> = None;
+                let mut r#family: Option<super::super::types::String> = None;
+                let mut r#given: Option<Vec<super::super::types::String>> = None;
+                let mut r#prefix: Option<Vec<super::super::types::String>> = None;
+                let mut r#suffix: Option<Vec<super::super::types::String>> = None;
+                let mut r#period: Option<Box<super::super::types::Period>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "use" => {
+                            let some = r#use.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("use"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_use" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#use.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_use"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "text" => {
+                            let some = r#text.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("text"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_text" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#text.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_text"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "family" => {
+                            let some = r#family.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("family"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_family" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#family.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_family"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "given" => {
+                            let values: Vec<_> = map_access.next_value()?;
+                            let vec = r#given.get_or_insert(Vec::with_capacity(values.len()));
+                            if vec.len() != values.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    values.len(),
+                                    &"primitive elements length",
+                                ));
+                            }
+                            if vec.iter().any(|v| v.value.is_some()) {
+                                return Err(serde::de::Error::duplicate_field("given"));
+                            }
+                            for (i, value) in values.into_iter().enumerate() {
+                                vec[i].value = value;
+                            }
+                        }
+                        "_given" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let vec = r#given.get_or_insert(Vec::with_capacity(elements.len()));
+                            if vec.len() != elements.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    elements.len(),
+                                    &"primitive values length",
+                                ));
+                            }
+                            if vec
+                                .iter()
+                                .any(|e| e.id.is_some() || !e.extension.is_empty())
+                            {
+                                return Err(serde::de::Error::duplicate_field("_given"));
+                            }
+                            for (i, element) in elements.into_iter().enumerate() {
+                                vec[i].id = element.id;
+                                vec[i].extension = element.extension;
+                            }
+                        }
+                        "prefix" => {
+                            let values: Vec<_> = map_access.next_value()?;
+                            let vec = r#prefix.get_or_insert(Vec::with_capacity(values.len()));
+                            if vec.len() != values.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    values.len(),
+                                    &"primitive elements length",
+                                ));
+                            }
+                            if vec.iter().any(|v| v.value.is_some()) {
+                                return Err(serde::de::Error::duplicate_field("prefix"));
+                            }
+                            for (i, value) in values.into_iter().enumerate() {
+                                vec[i].value = value;
+                            }
+                        }
+                        "_prefix" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let vec = r#prefix.get_or_insert(Vec::with_capacity(elements.len()));
+                            if vec.len() != elements.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    elements.len(),
+                                    &"primitive values length",
+                                ));
+                            }
+                            if vec
+                                .iter()
+                                .any(|e| e.id.is_some() || !e.extension.is_empty())
+                            {
+                                return Err(serde::de::Error::duplicate_field("_prefix"));
+                            }
+                            for (i, element) in elements.into_iter().enumerate() {
+                                vec[i].id = element.id;
+                                vec[i].extension = element.extension;
+                            }
+                        }
+                        "suffix" => {
+                            let values: Vec<_> = map_access.next_value()?;
+                            let vec = r#suffix.get_or_insert(Vec::with_capacity(values.len()));
+                            if vec.len() != values.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    values.len(),
+                                    &"primitive elements length",
+                                ));
+                            }
+                            if vec.iter().any(|v| v.value.is_some()) {
+                                return Err(serde::de::Error::duplicate_field("suffix"));
+                            }
+                            for (i, value) in values.into_iter().enumerate() {
+                                vec[i].value = value;
+                            }
+                        }
+                        "_suffix" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let vec = r#suffix.get_or_insert(Vec::with_capacity(elements.len()));
+                            if vec.len() != elements.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    elements.len(),
+                                    &"primitive values length",
+                                ));
+                            }
+                            if vec
+                                .iter()
+                                .any(|e| e.id.is_some() || !e.extension.is_empty())
+                            {
+                                return Err(serde::de::Error::duplicate_field("_suffix"));
+                            }
+                            for (i, element) in elements.into_iter().enumerate() {
+                                vec[i].id = element.id;
+                                vec[i].extension = element.extension;
+                            }
+                        }
+                        "period" => {
+                            if r#period.is_some() {
+                                return Err(serde::de::Error::duplicate_field("period"));
+                            }
+                            r#period = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "extension",
+                                    "use",
+                                    "text",
+                                    "family",
+                                    "given",
+                                    "prefix",
+                                    "suffix",
+                                    "period",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(HumanName {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#use,
+                    r#text,
+                    r#family,
+                    r#given: r#given.unwrap_or(vec![]),
+                    r#prefix: r#prefix.unwrap_or(vec![]),
+                    r#suffix: r#suffix.unwrap_or(vec![]),
+                    r#period,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
     }
 }

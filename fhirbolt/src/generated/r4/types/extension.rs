@@ -1,4 +1,4 @@
-// Generated on 2022-07-12 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -52,27 +52,32 @@ pub enum ExtensionValue {
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
 }
-#[derive(Debug, Clone)]
+impl Default for ExtensionValue {
+    fn default() -> ExtensionValue {
+        unimplemented!()
+    }
+}
+#[derive(Default, Debug, Clone)]
 pub struct Extension {
+    pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#url: std::string::String,
-    pub r#id: Option<std::string::String>,
     pub r#value: Option<ExtensionValue>,
 }
-impl serde::Serialize for Extension {
+impl serde::ser::Serialize for Extension {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
+        }
         if !self.r#extension.is_empty() {
             state.serialize_entry("extension", &self.r#extension)?;
         }
         state.serialize_entry("url", &self.r#url)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
         if let Some(some) = self.r#value.as_ref() {
             match some {
                 ExtensionValue::Base64Binary(ref value) => {
@@ -532,5 +537,876 @@ impl serde::Serialize for Extension {
             }
         }
         state.end()
+    }
+}
+impl<'de> serde::de::Deserialize<'de> for Extension {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = Extension;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("Extension")
+            }
+            fn visit_map<V>(self, mut map_access: V) -> Result<Extension, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#url: Option<std::string::String> = None;
+                let mut r#value: Option<ExtensionValue> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "url" => {
+                            if r#url.is_some() {
+                                return Err(serde::de::Error::duplicate_field("url"));
+                            }
+                            r#url = Some(map_access.next_value()?);
+                        }
+                        "valueBase64Binary" => {
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::Base64Binary(Default::default()));
+                            if let ExtensionValue::Base64Binary(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueBase64Binary",
+                                    ));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueBase64Binary" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::Base64Binary(Default::default()));
+                            if let ExtensionValue::Base64Binary(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_valueBase64Binary",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueBoolean" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Boolean(Default::default()));
+                            if let ExtensionValue::Boolean(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueBoolean"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueBoolean" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Boolean(Default::default()));
+                            if let ExtensionValue::Boolean(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueBoolean"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueCanonical" => {
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::Canonical(Default::default()));
+                            if let ExtensionValue::Canonical(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueCanonical",
+                                    ));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueCanonical" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::Canonical(Default::default()));
+                            if let ExtensionValue::Canonical(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_valueCanonical",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueCode" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Code(Default::default()));
+                            if let ExtensionValue::Code(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueCode"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueCode" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Code(Default::default()));
+                            if let ExtensionValue::Code(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueCode"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueDate" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Date(Default::default()));
+                            if let ExtensionValue::Date(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueDate"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueDate" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Date(Default::default()));
+                            if let ExtensionValue::Date(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueDate"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueDateTime" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::DateTime(Default::default()));
+                            if let ExtensionValue::DateTime(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueDateTime"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueDateTime" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::DateTime(Default::default()));
+                            if let ExtensionValue::DateTime(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_valueDateTime",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueDecimal" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Decimal(Default::default()));
+                            if let ExtensionValue::Decimal(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueDecimal"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueDecimal" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Decimal(Default::default()));
+                            if let ExtensionValue::Decimal(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueDecimal"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueId" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Id(Default::default()));
+                            if let ExtensionValue::Id(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueId"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueId" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Id(Default::default()));
+                            if let ExtensionValue::Id(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueId"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueInstant" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Instant(Default::default()));
+                            if let ExtensionValue::Instant(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueInstant"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueInstant" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Instant(Default::default()));
+                            if let ExtensionValue::Instant(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueInstant"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueInteger" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Integer(Default::default()));
+                            if let ExtensionValue::Integer(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueInteger"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueInteger" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Integer(Default::default()));
+                            if let ExtensionValue::Integer(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueInteger"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueMarkdown" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Markdown(Default::default()));
+                            if let ExtensionValue::Markdown(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueMarkdown"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueMarkdown" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Markdown(Default::default()));
+                            if let ExtensionValue::Markdown(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_valueMarkdown",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueOid" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Oid(Default::default()));
+                            if let ExtensionValue::Oid(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueOid"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueOid" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Oid(Default::default()));
+                            if let ExtensionValue::Oid(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueOid"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valuePositiveInt" => {
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::PositiveInt(Default::default()));
+                            if let ExtensionValue::PositiveInt(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valuePositiveInt",
+                                    ));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valuePositiveInt" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::PositiveInt(Default::default()));
+                            if let ExtensionValue::PositiveInt(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_valuePositiveInt",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueString" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::String(Default::default()));
+                            if let ExtensionValue::String(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueString"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueString" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::String(Default::default()));
+                            if let ExtensionValue::String(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueString"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueTime" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Time(Default::default()));
+                            if let ExtensionValue::Time(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueTime"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueTime" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Time(Default::default()));
+                            if let ExtensionValue::Time(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueTime"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueUnsignedInt" => {
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::UnsignedInt(Default::default()));
+                            if let ExtensionValue::UnsignedInt(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueUnsignedInt",
+                                    ));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueUnsignedInt" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum = r#value
+                                .get_or_insert(ExtensionValue::UnsignedInt(Default::default()));
+                            if let ExtensionValue::UnsignedInt(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_valueUnsignedInt",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueUri" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Uri(Default::default()));
+                            if let ExtensionValue::Uri(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueUri"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueUri" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Uri(Default::default()));
+                            if let ExtensionValue::Uri(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueUri"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueUrl" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Url(Default::default()));
+                            if let ExtensionValue::Url(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueUrl"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueUrl" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Url(Default::default()));
+                            if let ExtensionValue::Url(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueUrl"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueUuid" => {
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Uuid(Default::default()));
+                            if let ExtensionValue::Uuid(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueUuid"));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                            }
+                        }
+                        "_valueUuid" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum =
+                                r#value.get_or_insert(ExtensionValue::Uuid(Default::default()));
+                            if let ExtensionValue::Uuid(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_valueUuid"));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                            }
+                        }
+                        "valueAddress" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueAddress"));
+                            }
+                            r#value = Some(ExtensionValue::Address(map_access.next_value()?));
+                        }
+                        "valueAge" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueAge"));
+                            }
+                            r#value = Some(ExtensionValue::Age(map_access.next_value()?));
+                        }
+                        "valueAnnotation" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueAnnotation"));
+                            }
+                            r#value = Some(ExtensionValue::Annotation(map_access.next_value()?));
+                        }
+                        "valueAttachment" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueAttachment"));
+                            }
+                            r#value = Some(ExtensionValue::Attachment(map_access.next_value()?));
+                        }
+                        "valueCodeableConcept" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "valueCodeableConcept",
+                                ));
+                            }
+                            r#value =
+                                Some(ExtensionValue::CodeableConcept(map_access.next_value()?));
+                        }
+                        "valueCoding" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueCoding"));
+                            }
+                            r#value = Some(ExtensionValue::Coding(map_access.next_value()?));
+                        }
+                        "valueContactPoint" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueContactPoint"));
+                            }
+                            r#value = Some(ExtensionValue::ContactPoint(map_access.next_value()?));
+                        }
+                        "valueCount" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueCount"));
+                            }
+                            r#value = Some(ExtensionValue::Count(map_access.next_value()?));
+                        }
+                        "valueDistance" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueDistance"));
+                            }
+                            r#value = Some(ExtensionValue::Distance(map_access.next_value()?));
+                        }
+                        "valueDuration" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueDuration"));
+                            }
+                            r#value = Some(ExtensionValue::Duration(map_access.next_value()?));
+                        }
+                        "valueHumanName" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueHumanName"));
+                            }
+                            r#value = Some(ExtensionValue::HumanName(map_access.next_value()?));
+                        }
+                        "valueIdentifier" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueIdentifier"));
+                            }
+                            r#value = Some(ExtensionValue::Identifier(map_access.next_value()?));
+                        }
+                        "valueMoney" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueMoney"));
+                            }
+                            r#value = Some(ExtensionValue::Money(map_access.next_value()?));
+                        }
+                        "valuePeriod" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valuePeriod"));
+                            }
+                            r#value = Some(ExtensionValue::Period(map_access.next_value()?));
+                        }
+                        "valueQuantity" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueQuantity"));
+                            }
+                            r#value = Some(ExtensionValue::Quantity(map_access.next_value()?));
+                        }
+                        "valueRange" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueRange"));
+                            }
+                            r#value = Some(ExtensionValue::Range(map_access.next_value()?));
+                        }
+                        "valueRatio" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueRatio"));
+                            }
+                            r#value = Some(ExtensionValue::Ratio(map_access.next_value()?));
+                        }
+                        "valueReference" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueReference"));
+                            }
+                            r#value = Some(ExtensionValue::Reference(map_access.next_value()?));
+                        }
+                        "valueSampledData" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueSampledData"));
+                            }
+                            r#value = Some(ExtensionValue::SampledData(map_access.next_value()?));
+                        }
+                        "valueSignature" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueSignature"));
+                            }
+                            r#value = Some(ExtensionValue::Signature(map_access.next_value()?));
+                        }
+                        "valueTiming" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueTiming"));
+                            }
+                            r#value = Some(ExtensionValue::Timing(map_access.next_value()?));
+                        }
+                        "valueContactDetail" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "valueContactDetail",
+                                ));
+                            }
+                            r#value = Some(ExtensionValue::ContactDetail(map_access.next_value()?));
+                        }
+                        "valueContributor" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueContributor"));
+                            }
+                            r#value = Some(ExtensionValue::Contributor(map_access.next_value()?));
+                        }
+                        "valueDataRequirement" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "valueDataRequirement",
+                                ));
+                            }
+                            r#value =
+                                Some(ExtensionValue::DataRequirement(map_access.next_value()?));
+                        }
+                        "valueExpression" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueExpression"));
+                            }
+                            r#value = Some(ExtensionValue::Expression(map_access.next_value()?));
+                        }
+                        "valueParameterDefinition" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "valueParameterDefinition",
+                                ));
+                            }
+                            r#value = Some(ExtensionValue::ParameterDefinition(
+                                map_access.next_value()?,
+                            ));
+                        }
+                        "valueRelatedArtifact" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "valueRelatedArtifact",
+                                ));
+                            }
+                            r#value =
+                                Some(ExtensionValue::RelatedArtifact(map_access.next_value()?));
+                        }
+                        "valueTriggerDefinition" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "valueTriggerDefinition",
+                                ));
+                            }
+                            r#value =
+                                Some(ExtensionValue::TriggerDefinition(map_access.next_value()?));
+                        }
+                        "valueUsageContext" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueUsageContext"));
+                            }
+                            r#value = Some(ExtensionValue::UsageContext(map_access.next_value()?));
+                        }
+                        "valueDosage" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueDosage"));
+                            }
+                            r#value = Some(ExtensionValue::Dosage(map_access.next_value()?));
+                        }
+                        "valueMeta" => {
+                            if r#value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("valueMeta"));
+                            }
+                            r#value = Some(ExtensionValue::Meta(map_access.next_value()?));
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &["id", "extension", "url", "value"],
+                            ))
+                        }
+                    }
+                }
+                Ok(Extension {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#url: r#url.ok_or(serde::de::Error::missing_field("url"))?,
+                    r#value,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
     }
 }

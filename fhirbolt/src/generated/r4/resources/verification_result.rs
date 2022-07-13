@@ -1,26 +1,44 @@
-// Generated on 2022-07-12 by fhirbolt-codegen v0.1.0
-#[derive(Debug, Clone)]
+// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+#[derive(Default, Debug, Clone)]
 pub struct VerificationResultPrimarySource {
-    pub r#push_type_available: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#who: Option<Box<super::super::types::Reference>>,
+    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#communication_method: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#validation_status: Option<Box<super::super::types::CodeableConcept>>,
     pub r#validation_date: Option<super::super::types::DateTime>,
     pub r#can_push_updates: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#validation_status: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#who: Option<Box<super::super::types::Reference>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#id: Option<std::string::String>,
-    pub r#communication_method: Vec<Box<super::super::types::CodeableConcept>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#push_type_available: Vec<Box<super::super::types::CodeableConcept>>,
 }
-impl serde::Serialize for VerificationResultPrimarySource {
+impl serde::ser::Serialize for VerificationResultPrimarySource {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
-        if !self.r#push_type_available.is_empty() {
-            state.serialize_entry("pushTypeAvailable", &self.r#push_type_available)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
+        }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
+        }
+        if !self.r#modifier_extension.is_empty() {
+            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+        }
+        if let Some(some) = self.r#who.as_ref() {
+            state.serialize_entry("who", some)?;
+        }
+        if !self.r#type.is_empty() {
+            state.serialize_entry("type", &self.r#type)?;
+        }
+        if !self.r#communication_method.is_empty() {
+            state.serialize_entry("communicationMethod", &self.r#communication_method)?;
+        }
+        if let Some(some) = self.r#validation_status.as_ref() {
+            state.serialize_entry("validationStatus", some)?;
         }
         if let Some(some) = self.r#validation_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
@@ -44,51 +62,201 @@ impl serde::Serialize for VerificationResultPrimarySource {
         if let Some(some) = self.r#can_push_updates.as_ref() {
             state.serialize_entry("canPushUpdates", some)?;
         }
-        if let Some(some) = self.r#validation_status.as_ref() {
-            state.serialize_entry("validationStatus", some)?;
-        }
-        if let Some(some) = self.r#who.as_ref() {
-            state.serialize_entry("who", some)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#communication_method.is_empty() {
-            state.serialize_entry("communicationMethod", &self.r#communication_method)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#type.is_empty() {
-            state.serialize_entry("type", &self.r#type)?;
+        if !self.r#push_type_available.is_empty() {
+            state.serialize_entry("pushTypeAvailable", &self.r#push_type_available)?;
         }
         state.end()
     }
 }
-#[derive(Debug, Clone)]
-pub struct VerificationResultAttestation {
-    pub r#date: Option<super::super::types::Date>,
-    pub r#id: Option<std::string::String>,
-    pub r#communication_method: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#source_signature: Option<Box<super::super::types::Signature>>,
-    pub r#who: Option<Box<super::super::types::Reference>>,
-    pub r#proxy_identity_certificate: Option<super::super::types::String>,
-    pub r#source_identity_certificate: Option<super::super::types::String>,
-    pub r#proxy_signature: Option<Box<super::super::types::Signature>>,
+impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = VerificationResultPrimarySource;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("VerificationResultPrimarySource")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<VerificationResultPrimarySource, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#who: Option<Box<super::super::types::Reference>> = None;
+                let mut r#type: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
+                let mut r#communication_method: Option<
+                    Vec<Box<super::super::types::CodeableConcept>>,
+                > = None;
+                let mut r#validation_status: Option<Box<super::super::types::CodeableConcept>> =
+                    None;
+                let mut r#validation_date: Option<super::super::types::DateTime> = None;
+                let mut r#can_push_updates: Option<Box<super::super::types::CodeableConcept>> =
+                    None;
+                let mut r#push_type_available: Option<
+                    Vec<Box<super::super::types::CodeableConcept>>,
+                > = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "who" => {
+                            if r#who.is_some() {
+                                return Err(serde::de::Error::duplicate_field("who"));
+                            }
+                            r#who = Some(map_access.next_value()?);
+                        }
+                        "type" => {
+                            if r#type.is_some() {
+                                return Err(serde::de::Error::duplicate_field("type"));
+                            }
+                            r#type = Some(map_access.next_value()?);
+                        }
+                        "communicationMethod" => {
+                            if r#communication_method.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "communicationMethod",
+                                ));
+                            }
+                            r#communication_method = Some(map_access.next_value()?);
+                        }
+                        "validationStatus" => {
+                            if r#validation_status.is_some() {
+                                return Err(serde::de::Error::duplicate_field("validationStatus"));
+                            }
+                            r#validation_status = Some(map_access.next_value()?);
+                        }
+                        "validationDate" => {
+                            let some = r#validation_date.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("validationDate"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_validationDate" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#validation_date.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_validationDate"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "canPushUpdates" => {
+                            if r#can_push_updates.is_some() {
+                                return Err(serde::de::Error::duplicate_field("canPushUpdates"));
+                            }
+                            r#can_push_updates = Some(map_access.next_value()?);
+                        }
+                        "pushTypeAvailable" => {
+                            if r#push_type_available.is_some() {
+                                return Err(serde::de::Error::duplicate_field("pushTypeAvailable"));
+                            }
+                            r#push_type_available = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifier_extension",
+                                    "who",
+                                    "type",
+                                    "communication_method",
+                                    "validation_status",
+                                    "validation_date",
+                                    "can_push_updates",
+                                    "push_type_available",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(VerificationResultPrimarySource {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#who,
+                    r#type: r#type.unwrap_or(vec![]),
+                    r#communication_method: r#communication_method.unwrap_or(vec![]),
+                    r#validation_status,
+                    r#validation_date,
+                    r#can_push_updates,
+                    r#push_type_available: r#push_type_available.unwrap_or(vec![]),
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
+    }
 }
-impl serde::Serialize for VerificationResultAttestation {
+#[derive(Default, Debug, Clone)]
+pub struct VerificationResultAttestation {
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#who: Option<Box<super::super::types::Reference>>,
+    pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
+    pub r#communication_method: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#date: Option<super::super::types::Date>,
+    pub r#source_identity_certificate: Option<super::super::types::String>,
+    pub r#proxy_identity_certificate: Option<super::super::types::String>,
+    pub r#proxy_signature: Option<Box<super::super::types::Signature>>,
+    pub r#source_signature: Option<Box<super::super::types::Signature>>,
+}
+impl serde::ser::Serialize for VerificationResultAttestation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
+        }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
+        }
+        if !self.r#modifier_extension.is_empty() {
+            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+        }
+        if let Some(some) = self.r#who.as_ref() {
+            state.serialize_entry("who", some)?;
+        }
+        if let Some(some) = self.r#on_behalf_of.as_ref() {
+            state.serialize_entry("onBehalfOf", some)?;
+        }
+        if let Some(some) = self.r#communication_method.as_ref() {
+            state.serialize_entry("communicationMethod", some)?;
+        }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
                 state.serialize_entry("date", some)?;
@@ -106,46 +274,6 @@ impl serde::Serialize for VerificationResultAttestation {
                     extension: &some.extension,
                 };
                 state.serialize_entry("_date", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#communication_method.as_ref() {
-            state.serialize_entry("communicationMethod", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#on_behalf_of.as_ref() {
-            state.serialize_entry("onBehalfOf", some)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#source_signature.as_ref() {
-            state.serialize_entry("sourceSignature", some)?;
-        }
-        if let Some(some) = self.r#who.as_ref() {
-            state.serialize_entry("who", some)?;
-        }
-        if let Some(some) = self.r#proxy_identity_certificate.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("proxyIdentityCertificate", some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_proxyIdentityCertificate", &primitive_element)?;
             }
         }
         if let Some(some) = self.r#source_identity_certificate.as_ref() {
@@ -167,31 +295,256 @@ impl serde::Serialize for VerificationResultAttestation {
                 state.serialize_entry("_sourceIdentityCertificate", &primitive_element)?;
             }
         }
+        if let Some(some) = self.r#proxy_identity_certificate.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("proxyIdentityCertificate", some)?;
+            }
+            if some.id.is_some() || !some.extension.is_empty() {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_proxyIdentityCertificate", &primitive_element)?;
+            }
+        }
         if let Some(some) = self.r#proxy_signature.as_ref() {
             state.serialize_entry("proxySignature", some)?;
+        }
+        if let Some(some) = self.r#source_signature.as_ref() {
+            state.serialize_entry("sourceSignature", some)?;
         }
         state.end()
     }
 }
-#[derive(Debug, Clone)]
+impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = VerificationResultAttestation;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("VerificationResultAttestation")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<VerificationResultAttestation, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#who: Option<Box<super::super::types::Reference>> = None;
+                let mut r#on_behalf_of: Option<Box<super::super::types::Reference>> = None;
+                let mut r#communication_method: Option<Box<super::super::types::CodeableConcept>> =
+                    None;
+                let mut r#date: Option<super::super::types::Date> = None;
+                let mut r#source_identity_certificate: Option<super::super::types::String> = None;
+                let mut r#proxy_identity_certificate: Option<super::super::types::String> = None;
+                let mut r#proxy_signature: Option<Box<super::super::types::Signature>> = None;
+                let mut r#source_signature: Option<Box<super::super::types::Signature>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "who" => {
+                            if r#who.is_some() {
+                                return Err(serde::de::Error::duplicate_field("who"));
+                            }
+                            r#who = Some(map_access.next_value()?);
+                        }
+                        "onBehalfOf" => {
+                            if r#on_behalf_of.is_some() {
+                                return Err(serde::de::Error::duplicate_field("onBehalfOf"));
+                            }
+                            r#on_behalf_of = Some(map_access.next_value()?);
+                        }
+                        "communicationMethod" => {
+                            if r#communication_method.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "communicationMethod",
+                                ));
+                            }
+                            r#communication_method = Some(map_access.next_value()?);
+                        }
+                        "date" => {
+                            let some = r#date.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("date"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_date" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#date.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_date"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "sourceIdentityCertificate" => {
+                            let some =
+                                r#source_identity_certificate.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "sourceIdentityCertificate",
+                                ));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_sourceIdentityCertificate" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some =
+                                r#source_identity_certificate.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "_sourceIdentityCertificate",
+                                ));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "proxyIdentityCertificate" => {
+                            let some =
+                                r#proxy_identity_certificate.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "proxyIdentityCertificate",
+                                ));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_proxyIdentityCertificate" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some =
+                                r#proxy_identity_certificate.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "_proxyIdentityCertificate",
+                                ));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "proxySignature" => {
+                            if r#proxy_signature.is_some() {
+                                return Err(serde::de::Error::duplicate_field("proxySignature"));
+                            }
+                            r#proxy_signature = Some(map_access.next_value()?);
+                        }
+                        "sourceSignature" => {
+                            if r#source_signature.is_some() {
+                                return Err(serde::de::Error::duplicate_field("sourceSignature"));
+                            }
+                            r#source_signature = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifier_extension",
+                                    "who",
+                                    "on_behalf_of",
+                                    "communication_method",
+                                    "date",
+                                    "source_identity_certificate",
+                                    "proxy_identity_certificate",
+                                    "proxy_signature",
+                                    "source_signature",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(VerificationResultAttestation {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#who,
+                    r#on_behalf_of,
+                    r#communication_method,
+                    r#date,
+                    r#source_identity_certificate,
+                    r#proxy_identity_certificate,
+                    r#proxy_signature,
+                    r#source_signature,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
+    }
+}
+#[derive(Default, Debug, Clone)]
 pub struct VerificationResultValidator {
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#identity_certificate: Option<super::super::types::String>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#organization: Box<super::super::types::Reference>,
     pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#organization: Box<super::super::types::Reference>,
+    pub r#identity_certificate: Option<super::super::types::String>,
     pub r#attestation_signature: Option<Box<super::super::types::Signature>>,
 }
-impl serde::Serialize for VerificationResultValidator {
+impl serde::ser::Serialize for VerificationResultValidator {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
+        }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
+        }
         if !self.r#modifier_extension.is_empty() {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
+        state.serialize_entry("organization", &self.r#organization)?;
         if let Some(some) = self.r#identity_certificate.as_ref() {
             if let Some(some) = some.value.as_ref() {
                 state.serialize_entry("identityCertificate", some)?;
@@ -211,73 +564,163 @@ impl serde::Serialize for VerificationResultValidator {
                 state.serialize_entry("_identityCertificate", &primitive_element)?;
             }
         }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        state.serialize_entry("organization", &self.r#organization)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
         if let Some(some) = self.r#attestation_signature.as_ref() {
             state.serialize_entry("attestationSignature", some)?;
         }
         state.end()
     }
 }
-#[derive(Debug, Clone)]
-pub struct VerificationResult {
-    pub r#frequency: Option<Box<super::super::types::Timing>>,
-    pub r#next_scheduled: Option<super::super::types::Date>,
-    pub r#implicit_rules: Option<super::super::types::Uri>,
-    pub r#target_location: Vec<super::super::types::String>,
-    pub r#primary_source: Vec<VerificationResultPrimarySource>,
-    pub r#validation_process: Vec<Box<super::super::types::CodeableConcept>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#attestation: Option<VerificationResultAttestation>,
-    pub r#target: Vec<Box<super::super::types::Reference>>,
-    pub r#last_performed: Option<super::super::types::DateTime>,
-    pub r#status_date: Option<super::super::types::DateTime>,
-    pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#status: super::super::types::Code,
-    pub r#need: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#validator: Vec<VerificationResultValidator>,
-    pub r#id: Option<std::string::String>,
-    pub r#validation_type: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#meta: Option<Box<super::super::types::Meta>>,
-    pub r#language: Option<super::super::types::Code>,
-    pub r#contained: Vec<Box<super::Resource>>,
-    pub r#failure_action: Option<Box<super::super::types::CodeableConcept>>,
+impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = VerificationResultValidator;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("VerificationResultValidator")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<VerificationResultValidator, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#organization: Option<Box<super::super::types::Reference>> = None;
+                let mut r#identity_certificate: Option<super::super::types::String> = None;
+                let mut r#attestation_signature: Option<Box<super::super::types::Signature>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "organization" => {
+                            if r#organization.is_some() {
+                                return Err(serde::de::Error::duplicate_field("organization"));
+                            }
+                            r#organization = Some(map_access.next_value()?);
+                        }
+                        "identityCertificate" => {
+                            let some = r#identity_certificate.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "identityCertificate",
+                                ));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_identityCertificate" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#identity_certificate.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "_identityCertificate",
+                                ));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "attestationSignature" => {
+                            if r#attestation_signature.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "attestationSignature",
+                                ));
+                            }
+                            r#attestation_signature = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifier_extension",
+                                    "organization",
+                                    "identity_certificate",
+                                    "attestation_signature",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(VerificationResultValidator {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#organization: r#organization
+                        .ok_or(serde::de::Error::missing_field("organization"))?,
+                    r#identity_certificate,
+                    r#attestation_signature,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
+    }
 }
-impl serde::Serialize for VerificationResult {
+#[derive(Default, Debug, Clone)]
+pub struct VerificationResult {
+    pub r#id: Option<std::string::String>,
+    pub r#meta: Option<Box<super::super::types::Meta>>,
+    pub r#implicit_rules: Option<super::super::types::Uri>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#text: Option<Box<super::super::types::Narrative>>,
+    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#target: Vec<Box<super::super::types::Reference>>,
+    pub r#target_location: Vec<super::super::types::String>,
+    pub r#need: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#status: super::super::types::Code,
+    pub r#status_date: Option<super::super::types::DateTime>,
+    pub r#validation_type: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#validation_process: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#frequency: Option<Box<super::super::types::Timing>>,
+    pub r#last_performed: Option<super::super::types::DateTime>,
+    pub r#next_scheduled: Option<super::super::types::Date>,
+    pub r#failure_action: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#primary_source: Vec<VerificationResultPrimarySource>,
+    pub r#attestation: Option<VerificationResultAttestation>,
+    pub r#validator: Vec<VerificationResultValidator>,
+}
+impl serde::ser::Serialize for VerificationResult {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "VerificationResult")?;
-        if let Some(some) = self.r#frequency.as_ref() {
-            state.serialize_entry("frequency", some)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
         }
-        if let Some(some) = self.r#next_scheduled.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("nextScheduled", some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_nextScheduled", &primitive_element)?;
-            }
+        if let Some(some) = self.r#meta.as_ref() {
+            state.serialize_entry("meta", some)?;
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
@@ -297,6 +740,40 @@ impl serde::Serialize for VerificationResult {
                 };
                 state.serialize_entry("_implicitRules", &primitive_element)?;
             }
+        }
+        if let Some(some) = self.r#language.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("language", some)?;
+            }
+            if some.id.is_some() || !some.extension.is_empty() {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_language", &primitive_element)?;
+            }
+        }
+        if let Some(some) = self.r#text.as_ref() {
+            state.serialize_entry("text", some)?;
+        }
+        if !self.r#contained.is_empty() {
+            state.serialize_entry("contained", &self.r#contained)?;
+        }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
+        }
+        if !self.r#modifier_extension.is_empty() {
+            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+        }
+        if !self.r#target.is_empty() {
+            state.serialize_entry("target", &self.r#target)?;
         }
         if !self.r#target_location.is_empty() {
             let values: Vec<_> = self.r#target_location.iter().map(|v| &v.value).collect();
@@ -332,39 +809,25 @@ impl serde::Serialize for VerificationResult {
                 state.serialize_entry("_targetLocation", &primitive_elements)?;
             }
         }
-        if !self.r#primary_source.is_empty() {
-            state.serialize_entry("primarySource", &self.r#primary_source)?;
+        if let Some(some) = self.r#need.as_ref() {
+            state.serialize_entry("need", some)?;
         }
-        if !self.r#validation_process.is_empty() {
-            state.serialize_entry("validationProcess", &self.r#validation_process)?;
+        if let Some(some) = self.r#status.value.as_ref() {
+            state.serialize_entry("status", some)?;
         }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#attestation.as_ref() {
-            state.serialize_entry("attestation", some)?;
-        }
-        if !self.r#target.is_empty() {
-            state.serialize_entry("target", &self.r#target)?;
-        }
-        if let Some(some) = self.r#last_performed.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lastPerformed", some)?;
+        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+            #[derive(serde :: Serialize)]
+            struct PrimtiveElement<'a> {
+                #[serde(skip_serializing_if = "Option::is_none")]
+                id: &'a Option<std::string::String>,
+                #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                extension: &'a [Box<super::super::types::Extension>],
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_lastPerformed", &primitive_element)?;
-            }
+            let primitive_element = PrimtiveElement {
+                id: &self.r#status.id,
+                extension: &self.r#status.extension,
+            };
+            state.serialize_entry("_status", &primitive_element)?;
         }
         if let Some(some) = self.r#status_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
@@ -385,49 +848,18 @@ impl serde::Serialize for VerificationResult {
                 state.serialize_entry("_statusDate", &primitive_element)?;
             }
         }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        {
-            if let Some(some) = self.r#status.value.as_ref() {
-                state.serialize_entry("status", some)?;
-            }
-            if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &self.r#status.id,
-                    extension: &self.r#status.extension,
-                };
-                state.serialize_entry("_status", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#need.as_ref() {
-            state.serialize_entry("need", some)?;
-        }
-        if !self.r#validator.is_empty() {
-            state.serialize_entry("validator", &self.r#validator)?;
-        }
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
         if let Some(some) = self.r#validation_type.as_ref() {
             state.serialize_entry("validationType", some)?;
         }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
+        if !self.r#validation_process.is_empty() {
+            state.serialize_entry("validationProcess", &self.r#validation_process)?;
         }
-        if let Some(some) = self.r#language.as_ref() {
+        if let Some(some) = self.r#frequency.as_ref() {
+            state.serialize_entry("frequency", some)?;
+        }
+        if let Some(some) = self.r#last_performed.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                state.serialize_entry("lastPerformed", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 #[derive(serde :: Serialize)]
@@ -441,15 +873,401 @@ impl serde::Serialize for VerificationResult {
                     id: &some.id,
                     extension: &some.extension,
                 };
-                state.serialize_entry("_language", &primitive_element)?;
+                state.serialize_entry("_lastPerformed", &primitive_element)?;
             }
         }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
+        if let Some(some) = self.r#next_scheduled.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("nextScheduled", some)?;
+            }
+            if some.id.is_some() || !some.extension.is_empty() {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_nextScheduled", &primitive_element)?;
+            }
         }
         if let Some(some) = self.r#failure_action.as_ref() {
             state.serialize_entry("failureAction", some)?;
         }
+        if !self.r#primary_source.is_empty() {
+            state.serialize_entry("primarySource", &self.r#primary_source)?;
+        }
+        if let Some(some) = self.r#attestation.as_ref() {
+            state.serialize_entry("attestation", some)?;
+        }
+        if !self.r#validator.is_empty() {
+            state.serialize_entry("validator", &self.r#validator)?;
+        }
         state.end()
+    }
+}
+impl<'de> serde::de::Deserialize<'de> for VerificationResult {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = VerificationResult;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("VerificationResult")
+            }
+            fn visit_map<V>(self, mut map_access: V) -> Result<VerificationResult, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#meta: Option<Box<super::super::types::Meta>> = None;
+                let mut r#implicit_rules: Option<super::super::types::Uri> = None;
+                let mut r#language: Option<super::super::types::Code> = None;
+                let mut r#text: Option<Box<super::super::types::Narrative>> = None;
+                let mut r#contained: Option<Vec<Box<super::Resource>>> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#target: Option<Vec<Box<super::super::types::Reference>>> = None;
+                let mut r#target_location: Option<Vec<super::super::types::String>> = None;
+                let mut r#need: Option<Box<super::super::types::CodeableConcept>> = None;
+                let mut r#status: Option<super::super::types::Code> = None;
+                let mut r#status_date: Option<super::super::types::DateTime> = None;
+                let mut r#validation_type: Option<Box<super::super::types::CodeableConcept>> = None;
+                let mut r#validation_process: Option<
+                    Vec<Box<super::super::types::CodeableConcept>>,
+                > = None;
+                let mut r#frequency: Option<Box<super::super::types::Timing>> = None;
+                let mut r#last_performed: Option<super::super::types::DateTime> = None;
+                let mut r#next_scheduled: Option<super::super::types::Date> = None;
+                let mut r#failure_action: Option<Box<super::super::types::CodeableConcept>> = None;
+                let mut r#primary_source: Option<Vec<VerificationResultPrimarySource>> = None;
+                let mut r#attestation: Option<VerificationResultAttestation> = None;
+                let mut r#validator: Option<Vec<VerificationResultValidator>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "meta" => {
+                            if r#meta.is_some() {
+                                return Err(serde::de::Error::duplicate_field("meta"));
+                            }
+                            r#meta = Some(map_access.next_value()?);
+                        }
+                        "implicitRules" => {
+                            let some = r#implicit_rules.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("implicitRules"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_implicitRules" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#implicit_rules.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_implicitRules"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "language" => {
+                            let some = r#language.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("language"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_language" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#language.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_language"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "text" => {
+                            if r#text.is_some() {
+                                return Err(serde::de::Error::duplicate_field("text"));
+                            }
+                            r#text = Some(map_access.next_value()?);
+                        }
+                        "contained" => {
+                            if r#contained.is_some() {
+                                return Err(serde::de::Error::duplicate_field("contained"));
+                            }
+                            r#contained = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "target" => {
+                            if r#target.is_some() {
+                                return Err(serde::de::Error::duplicate_field("target"));
+                            }
+                            r#target = Some(map_access.next_value()?);
+                        }
+                        "targetLocation" => {
+                            let values: Vec<_> = map_access.next_value()?;
+                            let vec =
+                                r#target_location.get_or_insert(Vec::with_capacity(values.len()));
+                            if vec.len() != values.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    values.len(),
+                                    &"primitive elements length",
+                                ));
+                            }
+                            if vec.iter().any(|v| v.value.is_some()) {
+                                return Err(serde::de::Error::duplicate_field("targetLocation"));
+                            }
+                            for (i, value) in values.into_iter().enumerate() {
+                                vec[i].value = value;
+                            }
+                        }
+                        "_targetLocation" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let vec =
+                                r#target_location.get_or_insert(Vec::with_capacity(elements.len()));
+                            if vec.len() != elements.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    elements.len(),
+                                    &"primitive values length",
+                                ));
+                            }
+                            if vec
+                                .iter()
+                                .any(|e| e.id.is_some() || !e.extension.is_empty())
+                            {
+                                return Err(serde::de::Error::duplicate_field("_targetLocation"));
+                            }
+                            for (i, element) in elements.into_iter().enumerate() {
+                                vec[i].id = element.id;
+                                vec[i].extension = element.extension;
+                            }
+                        }
+                        "need" => {
+                            if r#need.is_some() {
+                                return Err(serde::de::Error::duplicate_field("need"));
+                            }
+                            r#need = Some(map_access.next_value()?);
+                        }
+                        "status" => {
+                            let some = r#status.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("status"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_status" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#status.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_status"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "statusDate" => {
+                            let some = r#status_date.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("statusDate"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_statusDate" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#status_date.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_statusDate"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "validationType" => {
+                            if r#validation_type.is_some() {
+                                return Err(serde::de::Error::duplicate_field("validationType"));
+                            }
+                            r#validation_type = Some(map_access.next_value()?);
+                        }
+                        "validationProcess" => {
+                            if r#validation_process.is_some() {
+                                return Err(serde::de::Error::duplicate_field("validationProcess"));
+                            }
+                            r#validation_process = Some(map_access.next_value()?);
+                        }
+                        "frequency" => {
+                            if r#frequency.is_some() {
+                                return Err(serde::de::Error::duplicate_field("frequency"));
+                            }
+                            r#frequency = Some(map_access.next_value()?);
+                        }
+                        "lastPerformed" => {
+                            let some = r#last_performed.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("lastPerformed"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_lastPerformed" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#last_performed.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_lastPerformed"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "nextScheduled" => {
+                            let some = r#next_scheduled.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("nextScheduled"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_nextScheduled" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#next_scheduled.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_nextScheduled"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "failureAction" => {
+                            if r#failure_action.is_some() {
+                                return Err(serde::de::Error::duplicate_field("failureAction"));
+                            }
+                            r#failure_action = Some(map_access.next_value()?);
+                        }
+                        "primarySource" => {
+                            if r#primary_source.is_some() {
+                                return Err(serde::de::Error::duplicate_field("primarySource"));
+                            }
+                            r#primary_source = Some(map_access.next_value()?);
+                        }
+                        "attestation" => {
+                            if r#attestation.is_some() {
+                                return Err(serde::de::Error::duplicate_field("attestation"));
+                            }
+                            r#attestation = Some(map_access.next_value()?);
+                        }
+                        "validator" => {
+                            if r#validator.is_some() {
+                                return Err(serde::de::Error::duplicate_field("validator"));
+                            }
+                            r#validator = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "meta",
+                                    "implicit_rules",
+                                    "language",
+                                    "text",
+                                    "contained",
+                                    "extension",
+                                    "modifier_extension",
+                                    "target",
+                                    "target_location",
+                                    "need",
+                                    "status",
+                                    "status_date",
+                                    "validation_type",
+                                    "validation_process",
+                                    "frequency",
+                                    "last_performed",
+                                    "next_scheduled",
+                                    "failure_action",
+                                    "primary_source",
+                                    "attestation",
+                                    "validator",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(VerificationResult {
+                    r#id,
+                    r#meta,
+                    r#implicit_rules,
+                    r#language,
+                    r#text,
+                    r#contained: r#contained.unwrap_or(vec![]),
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#target: r#target.unwrap_or(vec![]),
+                    r#target_location: r#target_location.unwrap_or(vec![]),
+                    r#need,
+                    r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
+                    r#status_date,
+                    r#validation_type,
+                    r#validation_process: r#validation_process.unwrap_or(vec![]),
+                    r#frequency,
+                    r#last_performed,
+                    r#next_scheduled,
+                    r#failure_action,
+                    r#primary_source: r#primary_source.unwrap_or(vec![]),
+                    r#attestation,
+                    r#validator: r#validator.unwrap_or(vec![]),
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
     }
 }

@@ -13,30 +13,30 @@ pub fn implement_serialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStr
         quote!()
     };
 
-    let serialized_fields_tokens = r#struct.fields.iter().map(|f| serialize_entry(f, enums));
+    let serialized_fields_tokens = r#struct.fields.iter().map(|f| serialize_field(f, enums));
 
     quote! {
-        impl serde::Serialize for #stuct_name_ident {
+        impl serde::ser::Serialize for #stuct_name_ident {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-        where
-            S: serde::Serializer,
-        {
-            use serde::ser::SerializeMap;
+            where
+                S: serde::ser::Serializer,
+            {
+                use serde::ser::SerializeMap;
 
-            let mut state = serializer.serialize_map(None)?;
-            #serialize_resource_type_tokens
+                let mut state = serializer.serialize_map(None)?;
+                #serialize_resource_type_tokens
 
-            #(
-                #serialized_fields_tokens
-            )*
+                #(
+                    #serialized_fields_tokens
+                )*
 
-            state.end()
-        }
+                state.end()
+            }
         }
     }
 }
 
-fn serialize_entry(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
+fn serialize_field(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
     if field.polymorph {
         serialize_enum(field, enums)
     } else {
@@ -49,7 +49,6 @@ fn serialize_entry(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
 }
 
 fn serialize_enum(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
-    let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
     let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
@@ -57,7 +56,7 @@ fn serialize_enum(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
     let enum_variants_tokens = r#enum
         .variants
         .iter()
-        .map(|v| serialize_enum_variant(fhir_name, r#enum, v));
+        .map(|v| serialize_enum_variant(field, r#enum, v));
 
     if field.optional {
         quote! {
@@ -81,39 +80,37 @@ fn serialize_enum(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
 }
 
 fn serialize_enum_variant(
-    field_name: &str,
+    field: &RustStructField,
     r#enum: &RustEnum,
-    enum_variant: &RustEnumVariant,
+    variant: &RustEnumVariant,
 ) -> TokenStream {
     let enum_ident = format_ident!("{}", r#enum.name);
-    let variant_ident = format_ident!("{}", enum_variant.name);
+    let variant_ident = format_ident!("{}", variant.name);
 
-    let fhir_name = format!("{}{}", field_name, enum_variant.name);
-    let fhir_element_name = format!("_{}", fhir_name);
+    let fhir_name = format!("{}{}", field.fhir_name, variant.name);
+    let fhir_primitive_element_name = format!("_{}", fhir_name);
 
-    let serialize_tokens = if enum_variant.r#type.maybe_fhir_primitive {
+    let serialize_tokens = if variant.r#type.maybe_fhir_primitive {
         quote! {
-            {
-                if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry(#fhir_name, some)?;
+            if let Some(some) = value.value.as_ref() {
+                state.serialize_entry(#fhir_name, some)?;
+            }
+
+            if value.id.is_some() || !value.extension.is_empty() {
+                #[derive(serde::Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
                 }
 
-                if value.id.is_some() || !value.extension.is_empty() {
-                    #[derive(serde::Serialize)]
-                    struct PrimtiveElement<'a> {
-                        #[serde(skip_serializing_if = "Option::is_none")]
-                        id: &'a Option<std::string::String>,
-                        #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                        extension: &'a [Box<super::super::types::Extension>],
-                    }
+                let primitive_element = PrimtiveElement {
+                    id: &value.id,
+                    extension: &value.extension,
+                };
 
-                    let primitive_element = PrimtiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-
-                    state.serialize_entry(#fhir_element_name, &primitive_element)?;
-                }
+                state.serialize_entry(#fhir_primitive_element_name, &primitive_element)?;
             }
         }
     } else {
@@ -210,19 +207,17 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
             },
         };
         quote! {
-            {
-                #serialize_value_tokens
+            #serialize_value_tokens
 
-                if self.#field_name_ident.id.is_some() || !self.#field_name_ident.extension.is_empty() {
-                    #primitive_element_struct_tokens
+            if self.#field_name_ident.id.is_some() || !self.#field_name_ident.extension.is_empty() {
+                #primitive_element_struct_tokens
 
-                    let primitive_element = PrimtiveElement {
-                        id: &self.#field_name_ident.id,
-                        extension: &self.#field_name_ident.extension,
-                    };
+                let primitive_element = PrimtiveElement {
+                    id: &self.#field_name_ident.id,
+                    extension: &self.#field_name_ident.extension,
+                };
 
-                    state.serialize_entry(#primitive_element_name, &primitive_element)?;
-                }
+                state.serialize_entry(#primitive_element_name, &primitive_element)?;
             }
         }
     }

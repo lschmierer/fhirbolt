@@ -1,53 +1,134 @@
-// Generated on 2022-07-12 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ClinicalImpressionEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
 }
-#[derive(Debug, Clone)]
-pub struct ClinicalImpressionInvestigation {
-    pub r#item: Vec<Box<super::super::types::Reference>>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#id: Option<std::string::String>,
-    pub r#code: Box<super::super::types::CodeableConcept>,
+impl Default for ClinicalImpressionEffective {
+    fn default() -> ClinicalImpressionEffective {
+        unimplemented!()
+    }
 }
-impl serde::Serialize for ClinicalImpressionInvestigation {
+#[derive(Default, Debug, Clone)]
+pub struct ClinicalImpressionInvestigation {
+    pub r#id: Option<std::string::String>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#code: Box<super::super::types::CodeableConcept>,
+    pub r#item: Vec<Box<super::super::types::Reference>>,
+}
+impl serde::ser::Serialize for ClinicalImpressionInvestigation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
-        if !self.r#item.is_empty() {
-            state.serialize_entry("item", &self.r#item)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
+        }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
         }
         if !self.r#modifier_extension.is_empty() {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
         state.serialize_entry("code", &self.r#code)?;
+        if !self.r#item.is_empty() {
+            state.serialize_entry("item", &self.r#item)?;
+        }
         state.end()
     }
 }
-#[derive(Debug, Clone)]
+impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionInvestigation {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = ClinicalImpressionInvestigation;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("ClinicalImpressionInvestigation")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<ClinicalImpressionInvestigation, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
+                let mut r#item: Option<Vec<Box<super::super::types::Reference>>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "code" => {
+                            if r#code.is_some() {
+                                return Err(serde::de::Error::duplicate_field("code"));
+                            }
+                            r#code = Some(map_access.next_value()?);
+                        }
+                        "item" => {
+                            if r#item.is_some() {
+                                return Err(serde::de::Error::duplicate_field("item"));
+                            }
+                            r#item = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &["id", "extension", "modifier_extension", "code", "item"],
+                            ))
+                        }
+                    }
+                }
+                Ok(ClinicalImpressionInvestigation {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#code: r#code.ok_or(serde::de::Error::missing_field("code"))?,
+                    r#item: r#item.unwrap_or(vec![]),
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
+    }
+}
+#[derive(Default, Debug, Clone)]
 pub struct ClinicalImpressionFinding {
     pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#item_codeable_concept: Option<Box<super::super::types::CodeableConcept>>,
     pub r#item_reference: Option<Box<super::super::types::Reference>>,
     pub r#basis: Option<super::super::types::String>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
 }
-impl serde::Serialize for ClinicalImpressionFinding {
+impl serde::ser::Serialize for ClinicalImpressionFinding {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
@@ -56,6 +137,9 @@ impl serde::Serialize for ClinicalImpressionFinding {
         }
         if !self.r#extension.is_empty() {
             state.serialize_entry("extension", &self.r#extension)?;
+        }
+        if !self.r#modifier_extension.is_empty() {
+            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#item_codeable_concept.as_ref() {
             state.serialize_entry("itemCodeableConcept", some)?;
@@ -82,57 +166,163 @@ impl serde::Serialize for ClinicalImpressionFinding {
                 state.serialize_entry("_basis", &primitive_element)?;
             }
         }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
         state.end()
     }
 }
-#[derive(Debug, Clone)]
+impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionFinding {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = ClinicalImpressionFinding;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("ClinicalImpressionFinding")
+            }
+            fn visit_map<V>(self, mut map_access: V) -> Result<ClinicalImpressionFinding, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#item_codeable_concept: Option<Box<super::super::types::CodeableConcept>> =
+                    None;
+                let mut r#item_reference: Option<Box<super::super::types::Reference>> = None;
+                let mut r#basis: Option<super::super::types::String> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "itemCodeableConcept" => {
+                            if r#item_codeable_concept.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "itemCodeableConcept",
+                                ));
+                            }
+                            r#item_codeable_concept = Some(map_access.next_value()?);
+                        }
+                        "itemReference" => {
+                            if r#item_reference.is_some() {
+                                return Err(serde::de::Error::duplicate_field("itemReference"));
+                            }
+                            r#item_reference = Some(map_access.next_value()?);
+                        }
+                        "basis" => {
+                            let some = r#basis.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("basis"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_basis" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#basis.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_basis"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifier_extension",
+                                    "item_codeable_concept",
+                                    "item_reference",
+                                    "basis",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(ClinicalImpressionFinding {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#item_codeable_concept,
+                    r#item_reference,
+                    r#basis,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
+    }
+}
+#[derive(Default, Debug, Clone)]
 pub struct ClinicalImpression {
-    pub r#problem: Vec<Box<super::super::types::Reference>>,
-    pub r#summary: Option<super::super::types::String>,
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#id: Option<std::string::String>,
+    pub r#meta: Option<Box<super::super::types::Meta>>,
+    pub r#implicit_rules: Option<super::super::types::Uri>,
+    pub r#language: Option<super::super::types::Code>,
+    pub r#text: Option<Box<super::super::types::Narrative>>,
     pub r#contained: Vec<Box<super::Resource>>,
+    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#status: super::super::types::Code,
+    pub r#status_reason: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#code: Option<Box<super::super::types::CodeableConcept>>,
+    pub r#description: Option<super::super::types::String>,
     pub r#subject: Box<super::super::types::Reference>,
+    pub r#encounter: Option<Box<super::super::types::Reference>>,
     pub r#effective: Option<ClinicalImpressionEffective>,
-    pub r#investigation: Vec<ClinicalImpressionInvestigation>,
+    pub r#date: Option<super::super::types::DateTime>,
+    pub r#assessor: Option<Box<super::super::types::Reference>>,
     pub r#previous: Option<Box<super::super::types::Reference>>,
+    pub r#problem: Vec<Box<super::super::types::Reference>>,
+    pub r#investigation: Vec<ClinicalImpressionInvestigation>,
+    pub r#protocol: Vec<super::super::types::Uri>,
+    pub r#summary: Option<super::super::types::String>,
     pub r#finding: Vec<ClinicalImpressionFinding>,
     pub r#prognosis_codeable_concept: Vec<Box<super::super::types::CodeableConcept>>,
-    pub r#implicit_rules: Option<super::super::types::Uri>,
-    pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
-    pub r#protocol: Vec<super::super::types::Uri>,
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
     pub r#prognosis_reference: Vec<Box<super::super::types::Reference>>,
-    pub r#assessor: Option<Box<super::super::types::Reference>>,
-    pub r#meta: Option<Box<super::super::types::Meta>>,
-    pub r#status_reason: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#status: super::super::types::Code,
-    pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#id: Option<std::string::String>,
-    pub r#code: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#language: Option<super::super::types::Code>,
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
-    pub r#description: Option<super::super::types::String>,
-    pub r#encounter: Option<Box<super::super::types::Reference>>,
-    pub r#date: Option<super::super::types::DateTime>,
+    pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
+    pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
-impl serde::Serialize for ClinicalImpression {
+impl serde::ser::Serialize for ClinicalImpression {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
-        S: serde::Serializer,
+        S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "ClinicalImpression")?;
-        if !self.r#problem.is_empty() {
-            state.serialize_entry("problem", &self.r#problem)?;
+        if let Some(some) = self.r#id.as_ref() {
+            state.serialize_entry("id", some)?;
         }
-        if let Some(some) = self.r#summary.as_ref() {
+        if let Some(some) = self.r#meta.as_ref() {
+            state.serialize_entry("meta", some)?;
+        }
+        if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("summary", some)?;
+                state.serialize_entry("implicitRules", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 #[derive(serde :: Serialize)]
@@ -146,19 +336,89 @@ impl serde::Serialize for ClinicalImpression {
                     id: &some.id,
                     extension: &some.extension,
                 };
-                state.serialize_entry("_summary", &primitive_element)?;
+                state.serialize_entry("_implicitRules", &primitive_element)?;
             }
         }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
+        if let Some(some) = self.r#language.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("language", some)?;
+            }
+            if some.id.is_some() || !some.extension.is_empty() {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_language", &primitive_element)?;
+            }
         }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
+        if let Some(some) = self.r#text.as_ref() {
+            state.serialize_entry("text", some)?;
         }
         if !self.r#contained.is_empty() {
             state.serialize_entry("contained", &self.r#contained)?;
         }
+        if !self.r#extension.is_empty() {
+            state.serialize_entry("extension", &self.r#extension)?;
+        }
+        if !self.r#modifier_extension.is_empty() {
+            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+        }
+        if !self.r#identifier.is_empty() {
+            state.serialize_entry("identifier", &self.r#identifier)?;
+        }
+        if let Some(some) = self.r#status.value.as_ref() {
+            state.serialize_entry("status", some)?;
+        }
+        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+            #[derive(serde :: Serialize)]
+            struct PrimtiveElement<'a> {
+                #[serde(skip_serializing_if = "Option::is_none")]
+                id: &'a Option<std::string::String>,
+                #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                extension: &'a [Box<super::super::types::Extension>],
+            }
+            let primitive_element = PrimtiveElement {
+                id: &self.r#status.id,
+                extension: &self.r#status.extension,
+            };
+            state.serialize_entry("_status", &primitive_element)?;
+        }
+        if let Some(some) = self.r#status_reason.as_ref() {
+            state.serialize_entry("statusReason", some)?;
+        }
+        if let Some(some) = self.r#code.as_ref() {
+            state.serialize_entry("code", some)?;
+        }
+        if let Some(some) = self.r#description.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("description", some)?;
+            }
+            if some.id.is_some() || !some.extension.is_empty() {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_description", &primitive_element)?;
+            }
+        }
         state.serialize_entry("subject", &self.r#subject)?;
+        if let Some(some) = self.r#encounter.as_ref() {
+            state.serialize_entry("encounter", some)?;
+        }
         if let Some(some) = self.r#effective.as_ref() {
             match some {
                 ClinicalImpressionEffective::DateTime(ref value) => {
@@ -185,24 +445,9 @@ impl serde::Serialize for ClinicalImpression {
                 }
             }
         }
-        if !self.r#investigation.is_empty() {
-            state.serialize_entry("investigation", &self.r#investigation)?;
-        }
-        if let Some(some) = self.r#previous.as_ref() {
-            state.serialize_entry("previous", some)?;
-        }
-        if !self.r#finding.is_empty() {
-            state.serialize_entry("finding", &self.r#finding)?;
-        }
-        if !self.r#prognosis_codeable_concept.is_empty() {
-            state.serialize_entry(
-                "prognosisCodeableConcept",
-                &self.r#prognosis_codeable_concept,
-            )?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
+        if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                state.serialize_entry("date", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 #[derive(serde :: Serialize)]
@@ -216,11 +461,20 @@ impl serde::Serialize for ClinicalImpression {
                     id: &some.id,
                     extension: &some.extension,
                 };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+                state.serialize_entry("_date", &primitive_element)?;
             }
         }
-        if !self.r#supporting_info.is_empty() {
-            state.serialize_entry("supportingInfo", &self.r#supporting_info)?;
+        if let Some(some) = self.r#assessor.as_ref() {
+            state.serialize_entry("assessor", some)?;
+        }
+        if let Some(some) = self.r#previous.as_ref() {
+            state.serialize_entry("previous", some)?;
+        }
+        if !self.r#problem.is_empty() {
+            state.serialize_entry("problem", &self.r#problem)?;
+        }
+        if !self.r#investigation.is_empty() {
+            state.serialize_entry("investigation", &self.r#investigation)?;
         }
         if !self.r#protocol.is_empty() {
             let values: Vec<_> = self.r#protocol.iter().map(|v| &v.value).collect();
@@ -256,112 +510,500 @@ impl serde::Serialize for ClinicalImpression {
                 state.serialize_entry("_protocol", &primitive_elements)?;
             }
         }
-        if !self.r#note.is_empty() {
-            state.serialize_entry("note", &self.r#note)?;
+        if let Some(some) = self.r#summary.as_ref() {
+            if let Some(some) = some.value.as_ref() {
+                state.serialize_entry("summary", some)?;
+            }
+            if some.id.is_some() || !some.extension.is_empty() {
+                #[derive(serde :: Serialize)]
+                struct PrimtiveElement<'a> {
+                    #[serde(skip_serializing_if = "Option::is_none")]
+                    id: &'a Option<std::string::String>,
+                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
+                    extension: &'a [Box<super::super::types::Extension>],
+                }
+                let primitive_element = PrimtiveElement {
+                    id: &some.id,
+                    extension: &some.extension,
+                };
+                state.serialize_entry("_summary", &primitive_element)?;
+            }
+        }
+        if !self.r#finding.is_empty() {
+            state.serialize_entry("finding", &self.r#finding)?;
+        }
+        if !self.r#prognosis_codeable_concept.is_empty() {
+            state.serialize_entry(
+                "prognosisCodeableConcept",
+                &self.r#prognosis_codeable_concept,
+            )?;
         }
         if !self.r#prognosis_reference.is_empty() {
             state.serialize_entry("prognosisReference", &self.r#prognosis_reference)?;
         }
-        if let Some(some) = self.r#assessor.as_ref() {
-            state.serialize_entry("assessor", some)?;
+        if !self.r#supporting_info.is_empty() {
+            state.serialize_entry("supportingInfo", &self.r#supporting_info)?;
         }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#status_reason.as_ref() {
-            state.serialize_entry("statusReason", some)?;
-        }
-        {
-            if let Some(some) = self.r#status.value.as_ref() {
-                state.serialize_entry("status", some)?;
-            }
-            if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &self.r#status.id,
-                    extension: &self.r#status.extension,
-                };
-                state.serialize_entry("_status", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
-            }
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_description", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#encounter.as_ref() {
-            state.serialize_entry("encounter", some)?;
-        }
-        if let Some(some) = self.r#date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_date", &primitive_element)?;
-            }
+        if !self.r#note.is_empty() {
+            state.serialize_entry("note", &self.r#note)?;
         }
         state.end()
+    }
+}
+impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor;
+        impl<'de> serde::de::Visitor<'de> for Visitor {
+            type Value = ClinicalImpression;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("ClinicalImpression")
+            }
+            fn visit_map<V>(self, mut map_access: V) -> Result<ClinicalImpression, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#meta: Option<Box<super::super::types::Meta>> = None;
+                let mut r#implicit_rules: Option<super::super::types::Uri> = None;
+                let mut r#language: Option<super::super::types::Code> = None;
+                let mut r#text: Option<Box<super::super::types::Narrative>> = None;
+                let mut r#contained: Option<Vec<Box<super::Resource>>> = None;
+                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
+                    None;
+                let mut r#identifier: Option<Vec<Box<super::super::types::Identifier>>> = None;
+                let mut r#status: Option<super::super::types::Code> = None;
+                let mut r#status_reason: Option<Box<super::super::types::CodeableConcept>> = None;
+                let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
+                let mut r#description: Option<super::super::types::String> = None;
+                let mut r#subject: Option<Box<super::super::types::Reference>> = None;
+                let mut r#encounter: Option<Box<super::super::types::Reference>> = None;
+                let mut r#effective: Option<ClinicalImpressionEffective> = None;
+                let mut r#date: Option<super::super::types::DateTime> = None;
+                let mut r#assessor: Option<Box<super::super::types::Reference>> = None;
+                let mut r#previous: Option<Box<super::super::types::Reference>> = None;
+                let mut r#problem: Option<Vec<Box<super::super::types::Reference>>> = None;
+                let mut r#investigation: Option<Vec<ClinicalImpressionInvestigation>> = None;
+                let mut r#protocol: Option<Vec<super::super::types::Uri>> = None;
+                let mut r#summary: Option<super::super::types::String> = None;
+                let mut r#finding: Option<Vec<ClinicalImpressionFinding>> = None;
+                let mut r#prognosis_codeable_concept: Option<
+                    Vec<Box<super::super::types::CodeableConcept>>,
+                > = None;
+                let mut r#prognosis_reference: Option<Vec<Box<super::super::types::Reference>>> =
+                    None;
+                let mut r#supporting_info: Option<Vec<Box<super::super::types::Reference>>> = None;
+                let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        "id" => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        "meta" => {
+                            if r#meta.is_some() {
+                                return Err(serde::de::Error::duplicate_field("meta"));
+                            }
+                            r#meta = Some(map_access.next_value()?);
+                        }
+                        "implicitRules" => {
+                            let some = r#implicit_rules.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("implicitRules"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_implicitRules" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#implicit_rules.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_implicitRules"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "language" => {
+                            let some = r#language.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("language"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_language" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#language.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_language"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "text" => {
+                            if r#text.is_some() {
+                                return Err(serde::de::Error::duplicate_field("text"));
+                            }
+                            r#text = Some(map_access.next_value()?);
+                        }
+                        "contained" => {
+                            if r#contained.is_some() {
+                                return Err(serde::de::Error::duplicate_field("contained"));
+                            }
+                            r#contained = Some(map_access.next_value()?);
+                        }
+                        "extension" => {
+                            if r#extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("extension"));
+                            }
+                            r#extension = Some(map_access.next_value()?);
+                        }
+                        "modifierExtension" => {
+                            if r#modifier_extension.is_some() {
+                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            }
+                            r#modifier_extension = Some(map_access.next_value()?);
+                        }
+                        "identifier" => {
+                            if r#identifier.is_some() {
+                                return Err(serde::de::Error::duplicate_field("identifier"));
+                            }
+                            r#identifier = Some(map_access.next_value()?);
+                        }
+                        "status" => {
+                            let some = r#status.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("status"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_status" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#status.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_status"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "statusReason" => {
+                            if r#status_reason.is_some() {
+                                return Err(serde::de::Error::duplicate_field("statusReason"));
+                            }
+                            r#status_reason = Some(map_access.next_value()?);
+                        }
+                        "code" => {
+                            if r#code.is_some() {
+                                return Err(serde::de::Error::duplicate_field("code"));
+                            }
+                            r#code = Some(map_access.next_value()?);
+                        }
+                        "description" => {
+                            let some = r#description.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("description"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_description" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#description.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_description"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "subject" => {
+                            if r#subject.is_some() {
+                                return Err(serde::de::Error::duplicate_field("subject"));
+                            }
+                            r#subject = Some(map_access.next_value()?);
+                        }
+                        "encounter" => {
+                            if r#encounter.is_some() {
+                                return Err(serde::de::Error::duplicate_field("encounter"));
+                            }
+                            r#encounter = Some(map_access.next_value()?);
+                        }
+                        "effectiveDateTime" => {
+                            let r#enum = r#effective.get_or_insert(
+                                ClinicalImpressionEffective::DateTime(Default::default()),
+                            );
+                            if let ClinicalImpressionEffective::DateTime(variant) = r#enum {
+                                if variant.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "effectiveDateTime",
+                                    ));
+                                }
+                                variant.value = Some(map_access.next_value()?);
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("effective[x]"));
+                            }
+                        }
+                        "_effectiveDateTime" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let r#enum = r#effective.get_or_insert(
+                                ClinicalImpressionEffective::DateTime(Default::default()),
+                            );
+                            if let ClinicalImpressionEffective::DateTime(variant) = r#enum {
+                                if variant.id.is_some() || !variant.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_effectiveDateTime",
+                                    ));
+                                }
+                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                variant.id = id;
+                                variant.extension = extension;
+                            } else {
+                                return Err(serde::de::Error::duplicate_field("_effective[x]"));
+                            }
+                        }
+                        "effectivePeriod" => {
+                            if r#effective.is_some() {
+                                return Err(serde::de::Error::duplicate_field("effectivePeriod"));
+                            }
+                            r#effective = Some(ClinicalImpressionEffective::Period(
+                                map_access.next_value()?,
+                            ));
+                        }
+                        "date" => {
+                            let some = r#date.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("date"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_date" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#date.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_date"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "assessor" => {
+                            if r#assessor.is_some() {
+                                return Err(serde::de::Error::duplicate_field("assessor"));
+                            }
+                            r#assessor = Some(map_access.next_value()?);
+                        }
+                        "previous" => {
+                            if r#previous.is_some() {
+                                return Err(serde::de::Error::duplicate_field("previous"));
+                            }
+                            r#previous = Some(map_access.next_value()?);
+                        }
+                        "problem" => {
+                            if r#problem.is_some() {
+                                return Err(serde::de::Error::duplicate_field("problem"));
+                            }
+                            r#problem = Some(map_access.next_value()?);
+                        }
+                        "investigation" => {
+                            if r#investigation.is_some() {
+                                return Err(serde::de::Error::duplicate_field("investigation"));
+                            }
+                            r#investigation = Some(map_access.next_value()?);
+                        }
+                        "protocol" => {
+                            let values: Vec<_> = map_access.next_value()?;
+                            let vec = r#protocol.get_or_insert(Vec::with_capacity(values.len()));
+                            if vec.len() != values.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    values.len(),
+                                    &"primitive elements length",
+                                ));
+                            }
+                            if vec.iter().any(|v| v.value.is_some()) {
+                                return Err(serde::de::Error::duplicate_field("protocol"));
+                            }
+                            for (i, value) in values.into_iter().enumerate() {
+                                vec[i].value = value;
+                            }
+                        }
+                        "_protocol" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let vec = r#protocol.get_or_insert(Vec::with_capacity(elements.len()));
+                            if vec.len() != elements.len() {
+                                return Err(serde::de::Error::invalid_length(
+                                    elements.len(),
+                                    &"primitive values length",
+                                ));
+                            }
+                            if vec
+                                .iter()
+                                .any(|e| e.id.is_some() || !e.extension.is_empty())
+                            {
+                                return Err(serde::de::Error::duplicate_field("_protocol"));
+                            }
+                            for (i, element) in elements.into_iter().enumerate() {
+                                vec[i].id = element.id;
+                                vec[i].extension = element.extension;
+                            }
+                        }
+                        "summary" => {
+                            let some = r#summary.get_or_insert(Default::default());
+                            if some.value.is_some() {
+                                return Err(serde::de::Error::duplicate_field("summary"));
+                            }
+                            some.value = Some(map_access.next_value()?);
+                        }
+                        "_summary" => {
+                            #[derive(serde :: Deserialize)]
+                            struct PrimtiveElement {
+                                id: Option<std::string::String>,
+                                extension: Vec<Box<super::super::types::Extension>>,
+                            }
+                            let some = r#summary.get_or_insert(Default::default());
+                            if some.id.is_some() || !some.extension.is_empty() {
+                                return Err(serde::de::Error::duplicate_field("_summary"));
+                            }
+                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            some.id = id;
+                            some.extension = extension;
+                        }
+                        "finding" => {
+                            if r#finding.is_some() {
+                                return Err(serde::de::Error::duplicate_field("finding"));
+                            }
+                            r#finding = Some(map_access.next_value()?);
+                        }
+                        "prognosisCodeableConcept" => {
+                            if r#prognosis_codeable_concept.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "prognosisCodeableConcept",
+                                ));
+                            }
+                            r#prognosis_codeable_concept = Some(map_access.next_value()?);
+                        }
+                        "prognosisReference" => {
+                            if r#prognosis_reference.is_some() {
+                                return Err(serde::de::Error::duplicate_field(
+                                    "prognosisReference",
+                                ));
+                            }
+                            r#prognosis_reference = Some(map_access.next_value()?);
+                        }
+                        "supportingInfo" => {
+                            if r#supporting_info.is_some() {
+                                return Err(serde::de::Error::duplicate_field("supportingInfo"));
+                            }
+                            r#supporting_info = Some(map_access.next_value()?);
+                        }
+                        "note" => {
+                            if r#note.is_some() {
+                                return Err(serde::de::Error::duplicate_field("note"));
+                            }
+                            r#note = Some(map_access.next_value()?);
+                        }
+                        _ => {
+                            return Err(serde::de::Error::unknown_field(
+                                map_access_key,
+                                &[
+                                    "id",
+                                    "meta",
+                                    "implicit_rules",
+                                    "language",
+                                    "text",
+                                    "contained",
+                                    "extension",
+                                    "modifier_extension",
+                                    "identifier",
+                                    "status",
+                                    "status_reason",
+                                    "code",
+                                    "description",
+                                    "subject",
+                                    "encounter",
+                                    "effective",
+                                    "date",
+                                    "assessor",
+                                    "previous",
+                                    "problem",
+                                    "investigation",
+                                    "protocol",
+                                    "summary",
+                                    "finding",
+                                    "prognosis_codeable_concept",
+                                    "prognosis_reference",
+                                    "supporting_info",
+                                    "note",
+                                ],
+                            ))
+                        }
+                    }
+                }
+                Ok(ClinicalImpression {
+                    r#id,
+                    r#meta,
+                    r#implicit_rules,
+                    r#language,
+                    r#text,
+                    r#contained: r#contained.unwrap_or(vec![]),
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#identifier: r#identifier.unwrap_or(vec![]),
+                    r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
+                    r#status_reason,
+                    r#code,
+                    r#description,
+                    r#subject: r#subject.ok_or(serde::de::Error::missing_field("subject"))?,
+                    r#encounter,
+                    r#effective,
+                    r#date,
+                    r#assessor,
+                    r#previous,
+                    r#problem: r#problem.unwrap_or(vec![]),
+                    r#investigation: r#investigation.unwrap_or(vec![]),
+                    r#protocol: r#protocol.unwrap_or(vec![]),
+                    r#summary,
+                    r#finding: r#finding.unwrap_or(vec![]),
+                    r#prognosis_codeable_concept: r#prognosis_codeable_concept.unwrap_or(vec![]),
+                    r#prognosis_reference: r#prognosis_reference.unwrap_or(vec![]),
+                    r#supporting_info: r#supporting_info.unwrap_or(vec![]),
+                    r#note: r#note.unwrap_or(vec![]),
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor)
     }
 }

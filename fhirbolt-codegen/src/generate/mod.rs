@@ -1,3 +1,4 @@
+mod de;
 mod ser;
 
 use proc_macro2::TokenStream;
@@ -8,7 +9,7 @@ use crate::{
     SourceFile,
 };
 
-use self::ser::implement_serialze;
+use self::{de::implement_deserialze, ser::implement_serialze};
 
 pub fn generate_modules(modules: &[RustModule]) -> Vec<SourceFile> {
     modules.iter().map(|m| generate_module(m)).collect()
@@ -23,12 +24,18 @@ pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
     SourceFile {
         name: "resource".into(),
         source: quote! {
-            #[derive(Debug, Clone, serde::Serialize/* , serde::Deserialize */)]
+            #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
             #[serde(tag = "resourceType")]
             pub enum Resource {
                 #(
                     #variants_tokens
                 )*
+            }
+
+            impl Default for Resource {
+                fn default() -> Resource {
+                    unimplemented!()
+                }
             }
         },
     }
@@ -58,21 +65,26 @@ fn generate_struct(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
 
-    let serialze_impl_tokens = if !r#struct.is_fhir_primitive {
-        implement_serialze(&r#struct, enums)
+    let serde_impl_tokens = if !r#struct.is_fhir_primitive {
+        let serialize_impl_tokens = implement_serialze(&r#struct, enums);
+        let deserialize_impl_tokens = implement_deserialze(&r#struct, enums);
+        quote! {
+            #serialize_impl_tokens
+            #deserialize_impl_tokens
+        }
     } else {
         quote! {}
     };
 
     quote! {
-        #[derive(Debug, Clone)]
+        #[derive(Default, Debug, Clone)]
         pub struct #name_ident {
             #(
                 #fields_tokens
             )*
         }
 
-        #serialze_impl_tokens
+        #serde_impl_tokens
     }
 }
 
@@ -126,6 +138,12 @@ fn generate_enum(r#enum: &RustEnum) -> TokenStream {
             #(
                 #variants_tokens
             )*
+        }
+
+        impl Default for #name_ident {
+            fn default() -> #name_ident {
+                unimplemented!()
+            }
         }
     }
 }
