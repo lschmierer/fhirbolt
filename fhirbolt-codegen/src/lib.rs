@@ -3,7 +3,7 @@ mod gather;
 mod generate;
 pub mod model;
 
-use generate::{generate_modules, generate_resource_enum};
+use generate::{generate_modules, generate_resource_enum, generate_serde_helpers};
 use proc_macro2::TokenStream;
 
 use gather::gather_all_modules;
@@ -12,6 +12,7 @@ use model::Bundle;
 pub struct Generated {
     pub types_source_files: Vec<SourceFile>,
     pub resources_source_files: Vec<SourceFile>,
+    pub serde_helpers: SourceFile
 }
 pub struct SourceFile {
     pub name: String,
@@ -30,5 +31,6 @@ pub fn generate_all<'a>(types_bundle: &'a Bundle, resources_bundle: &'a Bundle) 
     Generated {
         types_source_files,
         resources_source_files,
+        serde_helpers: generate_serde_helpers()
     }
 }

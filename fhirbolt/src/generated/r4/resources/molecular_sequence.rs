@@ -38,14 +38,7 @@ impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
                 state.serialize_entry("genomeBuild", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -57,14 +50,7 @@ impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
                 state.serialize_entry("orientation", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -82,14 +68,7 @@ impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
                 state.serialize_entry("referenceSeqString", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -101,14 +80,7 @@ impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
                 state.serialize_entry("strand", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -120,14 +92,7 @@ impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
                 state.serialize_entry("windowStart", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -139,14 +104,7 @@ impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
                 state.serialize_entry("windowEnd", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -222,16 +180,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_genomeBuild" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#genome_build.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_genomeBuild"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -243,16 +199,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_orientation" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#orientation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_orientation"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -280,18 +234,16 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_referenceSeqString" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#reference_seq_string.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "_referenceSeqString",
                                 ));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -303,16 +255,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_strand" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#strand.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_strand"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -324,16 +274,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_windowStart" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#window_start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_windowStart"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -345,16 +293,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_windowEnd" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#window_end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_windowEnd"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -431,14 +377,7 @@ impl serde::ser::Serialize for MolecularSequenceVariant {
                 state.serialize_entry("start", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -450,14 +389,7 @@ impl serde::ser::Serialize for MolecularSequenceVariant {
                 state.serialize_entry("end", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -469,14 +401,7 @@ impl serde::ser::Serialize for MolecularSequenceVariant {
                 state.serialize_entry("observedAllele", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -488,14 +413,7 @@ impl serde::ser::Serialize for MolecularSequenceVariant {
                 state.serialize_entry("referenceAllele", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -507,14 +425,7 @@ impl serde::ser::Serialize for MolecularSequenceVariant {
                 state.serialize_entry("cigar", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -580,16 +491,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_start" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -601,16 +510,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_end" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -622,16 +529,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_observedAllele" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#observed_allele.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_observedAllele"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -643,16 +548,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_referenceAllele" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#reference_allele.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_referenceAllele"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -664,16 +567,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_cigar" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#cigar.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_cigar"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -756,19 +657,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#score
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -790,19 +684,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#num_tp
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -824,19 +711,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#num_fp
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -858,19 +738,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#num_fn
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -892,19 +765,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#precision
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -926,19 +792,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#sensitivity
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -960,19 +819,12 @@ impl serde::ser::Serialize for MolecularSequenceQualityRoc {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#f_measure
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -1053,12 +905,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_score" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#score.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
@@ -1094,12 +942,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_numTP" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#num_tp.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
@@ -1135,12 +979,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_numFP" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#num_fp.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
@@ -1176,12 +1016,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_numFN" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#num_fn.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
@@ -1217,12 +1053,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_precision" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#precision.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
@@ -1258,12 +1090,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_sensitivity" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec =
                                 r#sensitivity.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
@@ -1300,12 +1128,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         "_fMeasure" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#f_measure.get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
@@ -1401,14 +1225,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
             state.serialize_entry("type", some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#type.id,
                 extension: &self.r#type.extension,
             };
@@ -1422,14 +1239,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("start", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1441,14 +1251,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("end", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1466,14 +1269,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("truthTP", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1485,14 +1281,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("queryTP", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1504,14 +1293,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("truthFN", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1523,14 +1305,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("queryFP", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1542,14 +1317,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("gtFP", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1561,14 +1329,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("precision", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1580,14 +1341,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("recall", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1599,14 +1353,7 @@ impl serde::ser::Serialize for MolecularSequenceQuality {
                 state.serialize_entry("fScore", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -1682,16 +1429,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_type" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1709,16 +1454,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_start" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1730,16 +1473,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_end" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1763,16 +1504,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_truthTP" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#truth_tp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_truthTP"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1784,16 +1523,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_queryTP" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#query_tp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_queryTP"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1805,16 +1542,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_truthFN" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#truth_fn.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_truthFN"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1826,16 +1561,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_queryFP" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#query_fp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_queryFP"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1847,16 +1580,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_gtFP" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#gt_fp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_gtFP"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1868,16 +1599,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_precision" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#precision.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_precision"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1889,16 +1618,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_recall" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#recall.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_recall"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1910,16 +1637,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_fScore" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#f_score.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_fScore"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2013,14 +1738,7 @@ impl serde::ser::Serialize for MolecularSequenceRepository {
             state.serialize_entry("type", some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#type.id,
                 extension: &self.r#type.extension,
             };
@@ -2031,14 +1749,7 @@ impl serde::ser::Serialize for MolecularSequenceRepository {
                 state.serialize_entry("url", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2050,14 +1761,7 @@ impl serde::ser::Serialize for MolecularSequenceRepository {
                 state.serialize_entry("name", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2069,14 +1773,7 @@ impl serde::ser::Serialize for MolecularSequenceRepository {
                 state.serialize_entry("datasetId", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2088,14 +1785,7 @@ impl serde::ser::Serialize for MolecularSequenceRepository {
                 state.serialize_entry("variantsetId", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2107,14 +1797,7 @@ impl serde::ser::Serialize for MolecularSequenceRepository {
                 state.serialize_entry("readsetId", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2180,16 +1863,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_type" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2201,16 +1882,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_url" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2222,16 +1901,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_name" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2243,16 +1920,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_datasetId" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#dataset_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_datasetId"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2264,16 +1939,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_variantsetId" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#variantset_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_variantsetId"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2285,16 +1958,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_readsetId" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#readset_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_readsetId"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2361,14 +2032,7 @@ impl serde::ser::Serialize for MolecularSequenceStructureVariantOuter {
                 state.serialize_entry("start", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2380,14 +2044,7 @@ impl serde::ser::Serialize for MolecularSequenceStructureVariantOuter {
                 state.serialize_entry("end", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2449,16 +2106,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                             some.value = Some(map_access.next_value()?);
                         }
                         "_start" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2470,16 +2125,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                             some.value = Some(map_access.next_value()?);
                         }
                         "_end" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2532,14 +2185,7 @@ impl serde::ser::Serialize for MolecularSequenceStructureVariantInner {
                 state.serialize_entry("start", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2551,14 +2197,7 @@ impl serde::ser::Serialize for MolecularSequenceStructureVariantInner {
                 state.serialize_entry("end", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2620,16 +2259,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                             some.value = Some(map_access.next_value()?);
                         }
                         "_start" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2641,16 +2278,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                             some.value = Some(map_access.next_value()?);
                         }
                         "_end" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2709,14 +2344,7 @@ impl serde::ser::Serialize for MolecularSequenceStructureVariant {
                 state.serialize_entry("exact", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2728,14 +2356,7 @@ impl serde::ser::Serialize for MolecularSequenceStructureVariant {
                 state.serialize_entry("length", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2812,16 +2433,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_exact" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#exact.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_exact"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2833,16 +2452,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_length" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#length.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_length"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -2936,14 +2553,7 @@ impl serde::ser::Serialize for MolecularSequence {
                 state.serialize_entry("implicitRules", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2955,14 +2565,7 @@ impl serde::ser::Serialize for MolecularSequence {
                 state.serialize_entry("language", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -2989,14 +2592,7 @@ impl serde::ser::Serialize for MolecularSequence {
                 state.serialize_entry("type", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -3007,14 +2603,7 @@ impl serde::ser::Serialize for MolecularSequence {
             state.serialize_entry("coordinateSystem", some)?;
         }
         if self.r#coordinate_system.id.is_some() || !self.r#coordinate_system.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#coordinate_system.id,
                 extension: &self.r#coordinate_system.extension,
             };
@@ -3046,14 +2635,7 @@ impl serde::ser::Serialize for MolecularSequence {
                 state.serialize_entry("observedSeq", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -3068,14 +2650,7 @@ impl serde::ser::Serialize for MolecularSequence {
                 state.serialize_entry("readCoverage", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -3156,16 +2731,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_implicitRules" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -3177,16 +2750,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_language" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -3228,16 +2799,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_type" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -3249,16 +2818,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_coordinateSystem" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#coordinate_system.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_coordinateSystem"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -3312,16 +2879,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_observedSeq" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#observed_seq.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_observedSeq"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -3339,16 +2904,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_readCoverage" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#read_coverage.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_readCoverage"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }

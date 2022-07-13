@@ -27,14 +27,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecificationPrism {
             state.serialize_entry("amount", some)?;
         }
         if self.r#amount.id.is_some() || !self.r#amount.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#amount.id,
                 extension: &self.r#amount.extension,
             };
@@ -44,14 +37,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecificationPrism {
             state.serialize_entry("base", some)?;
         }
         if self.r#base.id.is_some() || !self.r#base.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#base.id,
                 extension: &self.r#base.extension,
             };
@@ -112,16 +98,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                             some.value = Some(map_access.next_value()?);
                         }
                         "_amount" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#amount.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_amount"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -133,16 +117,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                             some.value = Some(map_access.next_value()?);
                         }
                         "_base" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#base.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_base"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -207,14 +189,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
             state.serialize_entry("eye", some)?;
         }
         if self.r#eye.id.is_some() || !self.r#eye.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#eye.id,
                 extension: &self.r#eye.extension,
             };
@@ -225,14 +200,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("sphere", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -244,14 +212,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("cylinder", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -263,14 +224,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("axis", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -285,14 +239,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("add", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -304,14 +251,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("power", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -323,14 +263,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("backCurve", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -342,14 +275,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("diameter", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -364,14 +290,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("color", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -383,14 +302,7 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
                 state.serialize_entry("brand", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -473,16 +385,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_eye" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#eye.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_eye"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -494,16 +404,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_sphere" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#sphere.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sphere"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -515,16 +423,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_cylinder" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#cylinder.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_cylinder"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -536,16 +442,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_axis" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#axis.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_axis"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -563,16 +467,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_add" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#add.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_add"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -584,16 +486,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_power" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#power.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_power"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -605,16 +505,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_backCurve" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#back_curve.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_backCurve"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -626,16 +524,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_diameter" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#diameter.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_diameter"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -653,16 +549,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_color" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#color.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_color"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -674,16 +568,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_brand" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#brand.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_brand"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -781,14 +673,7 @@ impl serde::ser::Serialize for VisionPrescription {
                 state.serialize_entry("implicitRules", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -800,14 +685,7 @@ impl serde::ser::Serialize for VisionPrescription {
                 state.serialize_entry("language", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -833,14 +711,7 @@ impl serde::ser::Serialize for VisionPrescription {
             state.serialize_entry("status", some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#status.id,
                 extension: &self.r#status.extension,
             };
@@ -850,14 +721,7 @@ impl serde::ser::Serialize for VisionPrescription {
             state.serialize_entry("created", some)?;
         }
         if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#created.id,
                 extension: &self.r#created.extension,
             };
@@ -871,14 +735,7 @@ impl serde::ser::Serialize for VisionPrescription {
             state.serialize_entry("dateWritten", some)?;
         }
         if self.r#date_written.id.is_some() || !self.r#date_written.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#date_written.id,
                 extension: &self.r#date_written.extension,
             };
@@ -946,16 +803,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_implicitRules" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -967,16 +822,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_language" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1018,16 +871,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_status" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1039,16 +890,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_created" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#created.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_created"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1072,16 +921,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_dateWritten" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#date_written.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_dateWritten"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }

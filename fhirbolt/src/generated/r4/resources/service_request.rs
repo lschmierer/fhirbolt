@@ -94,14 +94,7 @@ impl serde::ser::Serialize for ServiceRequest {
                 state.serialize_entry("implicitRules", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -113,14 +106,7 @@ impl serde::ser::Serialize for ServiceRequest {
                 state.serialize_entry("language", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -156,19 +142,12 @@ impl serde::ser::Serialize for ServiceRequest {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#instantiates_canonical
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -190,19 +169,12 @@ impl serde::ser::Serialize for ServiceRequest {
                 .iter()
                 .any(|e| e.id.is_some() || !e.extension.is_empty());
             if requires_elements {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
                 let primitive_elements: Vec<_> = self
                     .r#instantiates_uri
                     .iter()
                     .map(|e| {
                         if e.id.is_some() || !e.extension.is_empty() {
-                            Some(PrimtiveElement {
+                            Some(super::super::serde_helpers::PrimitiveElement {
                                 id: &e.id,
                                 extension: &e.extension,
                             })
@@ -227,14 +199,7 @@ impl serde::ser::Serialize for ServiceRequest {
             state.serialize_entry("status", some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#status.id,
                 extension: &self.r#status.extension,
             };
@@ -244,14 +209,7 @@ impl serde::ser::Serialize for ServiceRequest {
             state.serialize_entry("intent", some)?;
         }
         if self.r#intent.id.is_some() || !self.r#intent.extension.is_empty() {
-            #[derive(serde :: Serialize)]
-            struct PrimtiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                extension: &'a [Box<super::super::types::Extension>],
-            }
-            let primitive_element = PrimtiveElement {
+            let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#intent.id,
                 extension: &self.r#intent.extension,
             };
@@ -265,14 +223,7 @@ impl serde::ser::Serialize for ServiceRequest {
                 state.serialize_entry("priority", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -284,14 +235,7 @@ impl serde::ser::Serialize for ServiceRequest {
                 state.serialize_entry("doNotPerform", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -328,14 +272,7 @@ impl serde::ser::Serialize for ServiceRequest {
                         state.serialize_entry("occurrenceDateTime", some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
-                        #[derive(serde :: Serialize)]
-                        struct PrimtiveElement<'a> {
-                            #[serde(skip_serializing_if = "Option::is_none")]
-                            id: &'a Option<std::string::String>,
-                            #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                            extension: &'a [Box<super::super::types::Extension>],
-                        }
-                        let primitive_element = PrimtiveElement {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
                             id: &value.id,
                             extension: &value.extension,
                         };
@@ -357,14 +294,7 @@ impl serde::ser::Serialize for ServiceRequest {
                         state.serialize_entry("asNeededBoolean", some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
-                        #[derive(serde :: Serialize)]
-                        struct PrimtiveElement<'a> {
-                            #[serde(skip_serializing_if = "Option::is_none")]
-                            id: &'a Option<std::string::String>,
-                            #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                            extension: &'a [Box<super::super::types::Extension>],
-                        }
-                        let primitive_element = PrimtiveElement {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
                             id: &value.id,
                             extension: &value.extension,
                         };
@@ -381,14 +311,7 @@ impl serde::ser::Serialize for ServiceRequest {
                 state.serialize_entry("authoredOn", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -436,14 +359,7 @@ impl serde::ser::Serialize for ServiceRequest {
                 state.serialize_entry("patientInstruction", some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
-                #[derive(serde :: Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &some.id,
                     extension: &some.extension,
                 };
@@ -540,16 +456,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_implicitRules" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -561,16 +475,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_language" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -624,12 +536,8 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             }
                         }
                         "_instantiatesCanonical" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#instantiates_canonical
                                 .get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
@@ -669,12 +577,8 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             }
                         }
                         "_instantiatesUri" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
-                            let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
+                                map_access.next_value()?;
                             let vec = r#instantiates_uri
                                 .get_or_insert(Vec::with_capacity(elements.len()));
                             if vec.len() != elements.len() {
@@ -720,16 +624,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_status" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -741,16 +643,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_intent" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#intent.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_intent"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -768,16 +668,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_priority" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#priority.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_priority"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -789,16 +687,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_doNotPerform" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#do_not_perform.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_doNotPerform"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -863,11 +759,6 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             }
                         }
                         "_occurrenceDateTime" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let r#enum = r#occurrence.get_or_insert(
                                 ServiceRequestOccurrence::DateTime(Default::default()),
                             );
@@ -877,7 +768,10 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                                         "_occurrenceDateTime",
                                     ));
                                 }
-                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
                                 variant.id = id;
                                 variant.extension = extension;
                             } else {
@@ -913,11 +807,6 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             }
                         }
                         "_asNeededBoolean" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let r#enum = r#as_needed
                                 .get_or_insert(ServiceRequestAsNeeded::Boolean(Default::default()));
                             if let ServiceRequestAsNeeded::Boolean(variant) = r#enum {
@@ -926,7 +815,10 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                                         "_asNeededBoolean",
                                     ));
                                 }
-                                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
                                 variant.id = id;
                                 variant.extension = extension;
                             } else {
@@ -951,16 +843,14 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_authoredOn" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#authored_on.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_authoredOn"));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }
@@ -1046,18 +936,16 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                             some.value = Some(map_access.next_value()?);
                         }
                         "_patientInstruction" => {
-                            #[derive(serde :: Deserialize)]
-                            struct PrimtiveElement {
-                                id: Option<std::string::String>,
-                                extension: Vec<Box<super::super::types::Extension>>,
-                            }
                             let some = r#patient_instruction.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "_patientInstruction",
                                 ));
                             }
-                            let PrimtiveElement { id, extension } = map_access.next_value()?;
+                            let super::super::serde_helpers::PrimitiveElementOwned {
+                                id,
+                                extension,
+                            } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
                         }

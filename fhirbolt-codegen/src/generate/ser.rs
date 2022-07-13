@@ -97,15 +97,7 @@ fn serialize_enum_variant(
             }
 
             if value.id.is_some() || !value.extension.is_empty() {
-                #[derive(serde::Serialize)]
-                struct PrimtiveElement<'a> {
-                    #[serde(skip_serializing_if = "Option::is_none")]
-                    id: &'a Option<std::string::String>,
-                    #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                    extension: &'a [Box<super::super::types::Extension>],
-                }
-
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &value.id,
                     extension: &value.extension,
                 };
@@ -132,16 +124,6 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
 
     let primitive_element_name = format!("_{}", fhir_name);
 
-    let primitive_element_struct_tokens = quote! {
-        #[derive(serde::Serialize)]
-        struct PrimtiveElement<'a> {
-            #[serde(skip_serializing_if = "Option::is_none")]
-            id: &'a Option<std::string::String>,
-            #[serde(skip_serializing_if = "<[_]>::is_empty")]
-            extension: &'a [Box<super::super::types::Extension>],
-        }
-    };
-
     if field.multiple {
         quote! {
             if !self.#field_name_ident.is_empty() {
@@ -156,12 +138,10 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
                     .any(|e| e.id.is_some() || !e.extension.is_empty());
 
                 if requires_elements {
-                    #primitive_element_struct_tokens
-
                     let primitive_elements: Vec<_> = self.#field_name_ident
                         .iter()
                         .map(|e| if e.id.is_some() || !e.extension.is_empty() {
-                                Some(PrimtiveElement {
+                                Some(super::super::serde_helpers::PrimitiveElement {
                                     id: &e.id,
                                     extension: &e.extension,
                                 })
@@ -182,9 +162,7 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
                 }
 
                 if some.id.is_some() || !some.extension.is_empty() {
-                    #primitive_element_struct_tokens
-
-                    let primitive_element = PrimtiveElement {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
                         id: &some.id,
                         extension: &some.extension,
                     };
@@ -210,9 +188,7 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
             #serialize_value_tokens
 
             if self.#field_name_ident.id.is_some() || !self.#field_name_ident.extension.is_empty() {
-                #primitive_element_struct_tokens
-
-                let primitive_element = PrimtiveElement {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &self.#field_name_ident.id,
                     extension: &self.#field_name_ident.extension,
                 };

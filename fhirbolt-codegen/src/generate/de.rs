@@ -166,12 +166,6 @@ fn deserialize_enum_variant(
                 }
             },
             #fhir_primitive_element_name => {
-                #[derive(serde::Deserialize)]
-                struct PrimtiveElement {
-                    id: Option<std::string::String>,
-                    extension: Vec<Box<super::super::types::Extension>>,
-                }
-
                 let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
 
                 if let #enum_ident::#variant_ident(variant) = r#enum {
@@ -179,7 +173,7 @@ fn deserialize_enum_variant(
                         return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name));
                     }
 
-                    let PrimtiveElement { id, extension } = map_access.next_value()?;
+                    let super::super::serde_helpers::PrimitiveElementOwned { id, extension } = map_access.next_value()?;
                     variant.id = id;
                     variant.extension = extension;
                 } else {
@@ -205,14 +199,6 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
 
     let primitive_element_name = format!("_{}", fhir_name);
 
-    let primitive_element_struct_tokens = quote! {
-        #[derive(serde::Deserialize)]
-        struct PrimtiveElement {
-            id: Option<std::string::String>,
-            extension: Vec<Box<super::super::types::Extension>>,
-        }
-    };
-
     if field.multiple {
         quote! {
             #fhir_name => {
@@ -231,9 +217,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
                 }
             },
             #primitive_element_name => {
-                #primitive_element_struct_tokens
-
-                let elements: Vec<PrimtiveElement> = map_access.next_value()?;
+                let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> = map_access.next_value()?;
 
                 let vec = #field_name_ident.get_or_insert(Vec::with_capacity(elements.len()));
                 if vec.len() != elements.len() {
@@ -273,15 +257,13 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
                 #deserialize_value_tokens
             },
             #primitive_element_name => {
-                #primitive_element_struct_tokens
-
                 let some = #field_name_ident.get_or_insert(Default::default());
 
                 if some.id.is_some() || !some.extension.is_empty() {
                     return Err(serde::de::Error::duplicate_field(#primitive_element_name));
                 }
 
-                let PrimtiveElement { id, extension } = map_access.next_value()?;
+                let super::super::serde_helpers::PrimitiveElementOwned { id, extension } = map_access.next_value()?;
                 some.id = id;
                 some.extension = extension;
             },

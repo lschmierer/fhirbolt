@@ -179,6 +179,8 @@ fn write_release_mod_file(fhir_release: &FhirRelease) {
 
     write!(file, "pub mod types;\n").unwrap();
     write!(file, "pub mod resources;\n").unwrap();
+    write!(file, "\n").unwrap();
+    write!(file, "mod serde_helpers;\n").unwrap();
 }
 
 fn write_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[&str]) {
@@ -208,6 +210,8 @@ fn generate_and_write(
         "resources",
         &generated.resources_source_files,
     );
+
+    write_source_file(fhir_release, ".", &generated.serde_helpers.name, &generated.serde_helpers.source);
 }
 
 fn rustfmt() {
