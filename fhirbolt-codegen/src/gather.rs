@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use linked_hash_map::LinkedHashMap;
 
 use crate::casing::RustCasing;
 use crate::model::{Bundle, ElementDefinition, Resource, StructureDefinition};
@@ -119,7 +119,7 @@ fn gather_fields(
     element_definitions: &[&ElementDefinition],
     element_path_strip_prefix: &str,
 ) -> Vec<RustStructField> {
-    let mut element_definition_grouped = HashMap::<_, Vec<_>>::new();
+    let mut element_definition_grouped = LinkedHashMap::<_, Vec<_>>::new();
 
     for element_definition in element_definitions
         .iter()
