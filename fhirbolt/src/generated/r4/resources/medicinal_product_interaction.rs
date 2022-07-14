@@ -112,7 +112,13 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteractionInteractant
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "item"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "itemReference",
+                                    "itemCodeableConcept",
+                                ],
                             ))
                         }
                     }
@@ -400,12 +406,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "subject",
                                     "description",
                                     "interactant",

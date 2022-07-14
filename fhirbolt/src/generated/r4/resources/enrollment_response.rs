@@ -345,12 +345,12 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "request",
@@ -358,7 +358,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     "disposition",
                                     "created",
                                     "organization",
-                                    "request_provider",
+                                    "requestProvider",
                                 ],
                             ))
                         }

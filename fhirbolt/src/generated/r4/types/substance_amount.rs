@@ -91,7 +91,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "low_limit", "high_limit"],
+                                &["id", "extension", "lowLimit", "highLimit"],
                             ))
                         }
                     }
@@ -301,11 +301,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "amount",
-                                    "amount_type",
-                                    "amount_text",
-                                    "reference_range",
+                                    "modifierExtension",
+                                    "amountQuantity",
+                                    "amountRange",
+                                    "amountString",
+                                    "amountType",
+                                    "amountText",
+                                    "referenceRange",
                                 ],
                             ))
                         }

@@ -244,8 +244,8 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                 &[
                                     "id",
                                     "extension",
-                                    "version_id",
-                                    "last_updated",
+                                    "versionId",
+                                    "lastUpdated",
                                     "source",
                                     "profile",
                                     "security",

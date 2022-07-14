@@ -106,7 +106,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReferenceRelatesTo {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "target"],
+                                &["id", "extension", "modifierExtension", "code", "target"],
                             ))
                         }
                     }
@@ -213,7 +213,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReferenceContent {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "attachment",
                                     "format",
                                 ],
@@ -382,13 +382,13 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReferenceContext {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "encounter",
                                     "event",
                                     "period",
-                                    "facility_type",
-                                    "practice_setting",
-                                    "source_patient_info",
+                                    "facilityType",
+                                    "practiceSetting",
+                                    "sourcePatientInfo",
                                     "related",
                                 ],
                             ))
@@ -845,16 +845,16 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReference {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
-                                    "master_identifier",
+                                    "modifierExtension",
+                                    "masterIdentifier",
                                     "identifier",
                                     "status",
-                                    "doc_status",
+                                    "docStatus",
                                     "type",
                                     "category",
                                     "subject",
@@ -862,9 +862,9 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReference {
                                     "author",
                                     "authenticator",
                                     "custodian",
-                                    "relates_to",
+                                    "relatesTo",
                                     "description",
-                                    "security_label",
+                                    "securityLabel",
                                     "content",
                                     "context",
                                 ],

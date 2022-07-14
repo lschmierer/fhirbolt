@@ -133,7 +133,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesSoftware {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "name", "version"],
+                                &["id", "extension", "modifierExtension", "name", "version"],
                             ))
                         }
                     }
@@ -284,13 +284,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesImplementation 
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "description",
-                                    "url",
-                                ],
+                                &["id", "extension", "modifierExtension", "description", "url"],
                             ))
                         }
                     }
@@ -475,7 +469,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystemVersi
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "op"],
+                                &["id", "extension", "modifierExtension", "code", "op"],
                             ))
                         }
                     }
@@ -808,9 +802,9 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystemVersi
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
-                                    "is_default",
+                                    "isDefault",
                                     "compositional",
                                     "language",
                                     "filter",
@@ -986,7 +980,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystem {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "uri",
                                     "version",
                                     "subsumption",
@@ -1145,7 +1139,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesExpansionParame
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "documentation",
                                 ],
@@ -1381,12 +1375,12 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesExpansion {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "hierarchical",
                                     "paging",
                                     "incomplete",
                                     "parameter",
-                                    "text_filter",
+                                    "textFilter",
                                 ],
                             ))
                         }
@@ -1508,7 +1502,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesValidateCode {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "translations"],
+                                &["id", "extension", "modifierExtension", "translations"],
                             ))
                         }
                     }
@@ -1626,7 +1620,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesTranslation {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "needs_map"],
+                                &["id", "extension", "modifierExtension", "needsMap"],
                             ))
                         }
                     }
@@ -1745,7 +1739,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesClosure {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "translation"],
+                                &["id", "extension", "modifierExtension", "translation"],
                             ))
                         }
                     }
@@ -2498,12 +2492,12 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilities {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "version",
                                     "name",
@@ -2514,18 +2508,18 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilities {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "purpose",
                                     "copyright",
                                     "kind",
                                     "software",
                                     "implementation",
-                                    "locked_date",
-                                    "code_system",
+                                    "lockedDate",
+                                    "codeSystem",
                                     "expansion",
-                                    "code_search",
-                                    "validate_code",
+                                    "codeSearch",
+                                    "validateCode",
                                     "translation",
                                     "closure",
                                 ],

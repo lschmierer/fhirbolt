@@ -267,13 +267,13 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "device_identifier",
+                                    "modifierExtension",
+                                    "deviceIdentifier",
                                     "issuer",
                                     "jurisdiction",
-                                    "carrier_aidc",
-                                    "carrier_hrf",
-                                    "entry_type",
+                                    "carrierAIDC",
+                                    "carrierHRF",
+                                    "entryType",
                                 ],
                             ))
                         }
@@ -424,7 +424,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "name", "type"],
+                                &["id", "extension", "modifierExtension", "name", "type"],
                             ))
                         }
                     }
@@ -553,8 +553,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "system_type",
+                                    "modifierExtension",
+                                    "systemType",
                                     "version",
                                 ],
                             ))
@@ -697,7 +697,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "component",
                                     "value",
@@ -820,10 +820,10 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "value_quantity",
-                                    "value_code",
+                                    "valueQuantity",
+                                    "valueCode",
                                 ],
                             ))
                         }
@@ -1523,26 +1523,26 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "definition",
-                                    "udi_carrier",
+                                    "udiCarrier",
                                     "status",
-                                    "status_reason",
-                                    "distinct_identifier",
+                                    "statusReason",
+                                    "distinctIdentifier",
                                     "manufacturer",
-                                    "manufacture_date",
-                                    "expiration_date",
-                                    "lot_number",
-                                    "serial_number",
-                                    "device_name",
-                                    "model_number",
-                                    "part_number",
+                                    "manufactureDate",
+                                    "expirationDate",
+                                    "lotNumber",
+                                    "serialNumber",
+                                    "deviceName",
+                                    "modelNumber",
+                                    "partNumber",
                                     "type",
                                     "specialization",
                                     "version",

@@ -88,7 +88,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifestRelated {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "identifier", "ref"],
+                                &["id", "extension", "modifierExtension", "identifier", "ref"],
                             ))
                         }
                     }
@@ -493,13 +493,13 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
-                                    "master_identifier",
+                                    "modifierExtension",
+                                    "masterIdentifier",
                                     "identifier",
                                     "status",
                                     "type",

@@ -128,7 +128,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleLink {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "relation", "url"],
+                                &["id", "extension", "modifierExtension", "relation", "url"],
                             ))
                         }
                     }
@@ -278,7 +278,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntrySearch {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "mode", "score"],
+                                &["id", "extension", "modifierExtension", "mode", "score"],
                             ))
                         }
                     }
@@ -559,13 +559,13 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntryRequest {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "method",
                                     "url",
-                                    "if_none_match",
-                                    "if_modified_since",
-                                    "if_match",
-                                    "if_none_exist",
+                                    "ifNoneMatch",
+                                    "ifModifiedSince",
+                                    "ifMatch",
+                                    "ifNoneExist",
                                 ],
                             ))
                         }
@@ -798,11 +798,11 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntryResponse {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "status",
                                     "location",
                                     "etag",
-                                    "last_modified",
+                                    "lastModified",
                                     "outcome",
                                 ],
                             ))
@@ -982,9 +982,9 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntry {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "link",
-                                    "full_url",
+                                    "fullUrl",
                                     "resource",
                                     "search",
                                     "request",
@@ -1276,7 +1276,7 @@ impl<'de> serde::de::Deserialize<'de> for Bundle {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "identifier",
                                     "type",

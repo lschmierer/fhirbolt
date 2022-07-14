@@ -133,7 +133,14 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDeliverySuppliedItem {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "quantity", "item"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "quantity",
+                                    "itemCodeableConcept",
+                                    "itemReference",
+                                ],
                             ))
                         }
                     }
@@ -528,20 +535,22 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDelivery {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "based_on",
-                                    "part_of",
+                                    "basedOn",
+                                    "partOf",
                                     "status",
                                     "patient",
                                     "type",
-                                    "supplied_item",
-                                    "occurrence",
+                                    "suppliedItem",
+                                    "occurrenceDateTime",
+                                    "occurrencePeriod",
+                                    "occurrenceTiming",
                                     "supplier",
                                     "destination",
                                     "receiver",

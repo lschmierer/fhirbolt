@@ -202,7 +202,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "predecessor",
                                     "type",
@@ -374,7 +374,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "text"],
+                                &["id", "extension", "modifierExtension", "type", "text"],
                             ))
                         }
                     }
@@ -828,27 +828,27 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "period",
                                     "created",
-                                    "payment_issuer",
+                                    "paymentIssuer",
                                     "request",
                                     "requestor",
                                     "outcome",
                                     "disposition",
-                                    "payment_date",
-                                    "payment_amount",
-                                    "payment_identifier",
+                                    "paymentDate",
+                                    "paymentAmount",
+                                    "paymentIdentifier",
                                     "detail",
-                                    "form_code",
-                                    "process_note",
+                                    "formCode",
+                                    "processNote",
                                 ],
                             ))
                         }

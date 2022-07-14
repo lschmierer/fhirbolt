@@ -199,10 +199,10 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
-                                    "content_type",
-                                    "security_context",
+                                    "contentType",
+                                    "securityContext",
                                     "data",
                                 ],
                             ))

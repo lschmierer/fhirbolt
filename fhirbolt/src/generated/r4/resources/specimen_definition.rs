@@ -123,7 +123,13 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainerA
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "additive"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "additiveCodeableConcept",
+                                    "additiveReference",
+                                ],
                             ))
                         }
                     }
@@ -417,13 +423,14 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "material",
                                     "type",
                                     "cap",
                                     "description",
                                     "capacity",
-                                    "minimum_volume",
+                                    "minimumVolumeQuantity",
+                                    "minimumVolumeString",
                                     "additive",
                                     "preparation",
                                 ],
@@ -591,10 +598,10 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "temperature_qualifier",
-                                    "temperature_range",
-                                    "max_duration",
+                                    "modifierExtension",
+                                    "temperatureQualifier",
+                                    "temperatureRange",
+                                    "maxDuration",
                                     "instruction",
                                 ],
                             ))
@@ -844,14 +851,14 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "is_derived",
+                                    "modifierExtension",
+                                    "isDerived",
                                     "type",
                                     "preference",
                                     "container",
                                     "requirement",
-                                    "retention_time",
-                                    "rejection_criterion",
+                                    "retentionTime",
+                                    "rejectionCriterion",
                                     "handling",
                                 ],
                             ))
@@ -1139,18 +1146,18 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "type_collected",
-                                    "patient_preparation",
-                                    "time_aspect",
+                                    "typeCollected",
+                                    "patientPreparation",
+                                    "timeAspect",
                                     "collection",
-                                    "type_tested",
+                                    "typeTested",
                                 ],
                             ))
                         }

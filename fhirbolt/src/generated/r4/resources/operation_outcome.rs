@@ -308,7 +308,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "severity",
                                     "code",
                                     "details",
@@ -517,12 +517,12 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "issue",
                                 ],
                             ))

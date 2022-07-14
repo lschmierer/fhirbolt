@@ -116,11 +116,11 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "type",
                                     "period",
-                                    "special_precautions_for_storage",
+                                    "specialPrecautionsForStorage",
                                 ],
                             ))
                         }

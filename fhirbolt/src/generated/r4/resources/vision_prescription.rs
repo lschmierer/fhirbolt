@@ -131,7 +131,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "amount", "base"],
+                                &["id", "extension", "modifierExtension", "amount", "base"],
                             ))
                         }
                     }
@@ -591,7 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "product",
                                     "eye",
                                     "sphere",
@@ -600,7 +600,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     "prism",
                                     "add",
                                     "power",
-                                    "back_curve",
+                                    "backCurve",
                                     "diameter",
                                     "duration",
                                     "color",
@@ -950,20 +950,20 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "created",
                                     "patient",
                                     "encounter",
-                                    "date_written",
+                                    "dateWritten",
                                     "prescriber",
-                                    "lens_specification",
+                                    "lensSpecification",
                                 ],
                             ))
                         }

@@ -321,7 +321,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                 &[
                                     "id",
                                     "extension",
-                                    "content_type",
+                                    "contentType",
                                     "language",
                                     "data",
                                     "url",

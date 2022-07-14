@@ -182,11 +182,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "connectivity",
                                     "identifier",
                                     "name",
-                                    "residue_site",
+                                    "residueSite",
                                 ],
                             ))
                         }
@@ -356,10 +356,10 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "name",
-                                    "residue_site",
+                                    "residueSite",
                                 ],
                             ))
                         }
@@ -607,13 +607,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "subunit",
                                     "sequence",
                                     "length",
-                                    "sequence_attachment",
-                                    "five_prime",
-                                    "three_prime",
+                                    "sequenceAttachment",
+                                    "fivePrime",
+                                    "threePrime",
                                     "linkage",
                                     "sugar",
                                 ],
@@ -915,16 +915,16 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
-                                    "sequence_type",
-                                    "number_of_subunits",
-                                    "area_of_hybridisation",
-                                    "oligo_nucleotide_type",
+                                    "modifierExtension",
+                                    "sequenceType",
+                                    "numberOfSubunits",
+                                    "areaOfHybridisation",
+                                    "oligoNucleotideType",
                                     "subunit",
                                 ],
                             ))

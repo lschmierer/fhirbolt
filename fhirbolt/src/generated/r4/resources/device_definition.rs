@@ -176,8 +176,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "device_identifier",
+                                    "modifierExtension",
+                                    "deviceIdentifier",
                                     "issuer",
                                     "jurisdiction",
                                 ],
@@ -329,7 +329,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "name", "type"],
+                                &["id", "extension", "modifierExtension", "name", "type"],
                             ))
                         }
                     }
@@ -483,8 +483,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "system_type",
+                                    "modifierExtension",
+                                    "systemType",
                                     "version",
                                 ],
                             ))
@@ -595,7 +595,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionCapability {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "description",
                                 ],
@@ -716,10 +716,10 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionProperty {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "value_quantity",
-                                    "value_code",
+                                    "valueQuantity",
+                                    "valueCode",
                                 ],
                             ))
                         }
@@ -887,10 +887,10 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "substance",
                                     "alternate",
-                                    "allergenic_indicator",
+                                    "allergenicIndicator",
                                 ],
                             ))
                         }
@@ -1512,33 +1512,34 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "udi_device_identifier",
-                                    "manufacturer",
-                                    "device_name",
-                                    "model_number",
+                                    "udiDeviceIdentifier",
+                                    "manufacturerString",
+                                    "manufacturerReference",
+                                    "deviceName",
+                                    "modelNumber",
                                     "type",
                                     "specialization",
                                     "version",
                                     "safety",
-                                    "shelf_life_storage",
-                                    "physical_characteristics",
-                                    "language_code",
+                                    "shelfLifeStorage",
+                                    "physicalCharacteristics",
+                                    "languageCode",
                                     "capability",
                                     "property",
                                     "owner",
                                     "contact",
                                     "url",
-                                    "online_information",
+                                    "onlineInformation",
                                     "note",
                                     "quantity",
-                                    "parent_device",
+                                    "parentDevice",
                                     "material",
                                 ],
                             ))

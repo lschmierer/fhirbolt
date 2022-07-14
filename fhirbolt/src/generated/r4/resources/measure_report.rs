@@ -127,10 +127,10 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "count",
-                                    "subject_results",
+                                    "subjectResults",
                                 ],
                             ))
                         }
@@ -237,7 +237,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "value"],
+                                &["id", "extension", "modifierExtension", "code", "value"],
                             ))
                         }
                     }
@@ -382,10 +382,10 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "count",
-                                    "subject_results",
+                                    "subjectResults",
                                 ],
                             ))
                         }
@@ -523,11 +523,11 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "value",
                                     "component",
                                     "population",
-                                    "measure_score",
+                                    "measureScore",
                                 ],
                             ))
                         }
@@ -639,7 +639,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "stratum"],
+                                &["id", "extension", "modifierExtension", "code", "stratum"],
                             ))
                         }
                     }
@@ -770,10 +770,10 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "population",
-                                    "measure_score",
+                                    "measureScore",
                                     "stratifier",
                                 ],
                             ))
@@ -1169,12 +1169,12 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "type",
@@ -1183,9 +1183,9 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     "date",
                                     "reporter",
                                     "period",
-                                    "improvement_notation",
+                                    "improvementNotation",
                                     "group",
-                                    "evaluated_resource",
+                                    "evaluatedResource",
                                 ],
                             ))
                         }

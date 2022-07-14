@@ -226,7 +226,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                     "version",
                                     "code",
                                     "display",
-                                    "user_selected",
+                                    "userSelected",
                                 ],
                             ))
                         }

@@ -131,7 +131,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "value"],
+                                &["id", "extension", "modifierExtension", "code", "value"],
                             ))
                         }
                     }
@@ -615,19 +615,21 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "vaccine_code",
-                                    "target_disease",
-                                    "contraindicated_vaccine_code",
-                                    "forecast_status",
-                                    "forecast_reason",
-                                    "date_criterion",
+                                    "modifierExtension",
+                                    "vaccineCode",
+                                    "targetDisease",
+                                    "contraindicatedVaccineCode",
+                                    "forecastStatus",
+                                    "forecastReason",
+                                    "dateCriterion",
                                     "description",
                                     "series",
-                                    "dose_number",
-                                    "series_doses",
-                                    "supporting_immunization",
-                                    "supporting_patient_information",
+                                    "doseNumberPositiveInt",
+                                    "doseNumberString",
+                                    "seriesDosesPositiveInt",
+                                    "seriesDosesString",
+                                    "supportingImmunization",
+                                    "supportingPatientInformation",
                                 ],
                             ))
                         }
@@ -902,12 +904,12 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendation {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "patient",
                                     "date",

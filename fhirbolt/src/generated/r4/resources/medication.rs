@@ -155,9 +155,10 @@ impl<'de> serde::de::Deserialize<'de> for MedicationIngredient {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "item",
-                                    "is_active",
+                                    "modifierExtension",
+                                    "itemCodeableConcept",
+                                    "itemReference",
+                                    "isActive",
                                     "strength",
                                 ],
                             ))
@@ -313,9 +314,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicationBatch {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "lot_number",
-                                    "expiration_date",
+                                    "modifierExtension",
+                                    "lotNumber",
+                                    "expirationDate",
                                 ],
                             ))
                         }
@@ -613,12 +614,12 @@ impl<'de> serde::de::Deserialize<'de> for Medication {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "code",
                                     "status",

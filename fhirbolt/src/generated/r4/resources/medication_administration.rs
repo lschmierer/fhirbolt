@@ -122,7 +122,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministrationPerformer {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "function", "actor"],
+                                &["id", "extension", "modifierExtension", "function", "actor"],
                             ))
                         }
                     }
@@ -320,13 +320,14 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministrationDosage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "text",
                                     "site",
                                     "route",
                                     "method",
                                     "dose",
-                                    "rate",
+                                    "rateRatio",
+                                    "rateQuantity",
                                 ],
                             ))
                         }
@@ -884,31 +885,33 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "instantiates",
-                                    "part_of",
+                                    "partOf",
                                     "status",
-                                    "status_reason",
+                                    "statusReason",
                                     "category",
-                                    "medication",
+                                    "medicationCodeableConcept",
+                                    "medicationReference",
                                     "subject",
                                     "context",
-                                    "supporting_information",
-                                    "effective",
+                                    "supportingInformation",
+                                    "effectiveDateTime",
+                                    "effectivePeriod",
                                     "performer",
-                                    "reason_code",
-                                    "reason_reference",
+                                    "reasonCode",
+                                    "reasonReference",
                                     "request",
                                     "device",
                                     "note",
                                     "dosage",
-                                    "event_history",
+                                    "eventHistory",
                                 ],
                             ))
                         }

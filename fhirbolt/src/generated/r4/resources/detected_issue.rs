@@ -99,7 +99,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "detail"],
+                                &["id", "extension", "modifierExtension", "code", "detail"],
                             ))
                         }
                     }
@@ -239,7 +239,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "action",
                                     "date",
                                     "author",
@@ -704,18 +704,19 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "code",
                                     "severity",
                                     "patient",
-                                    "identified",
+                                    "identifiedDateTime",
+                                    "identifiedPeriod",
                                     "author",
                                     "implicated",
                                     "evidence",

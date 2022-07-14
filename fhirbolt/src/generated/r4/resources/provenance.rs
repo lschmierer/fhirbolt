@@ -122,11 +122,11 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "role",
                                     "who",
-                                    "on_behalf_of",
+                                    "onBehalfOf",
                                 ],
                             ))
                         }
@@ -267,7 +267,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "role",
                                     "what",
                                     "agent",
@@ -696,14 +696,15 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "target",
-                                    "occurred",
+                                    "occurredPeriod",
+                                    "occurredDateTime",
                                     "recorded",
                                     "policy",
                                     "location",

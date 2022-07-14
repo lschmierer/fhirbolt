@@ -205,10 +205,11 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductCollection {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "collector",
                                     "source",
-                                    "collected",
+                                    "collectedDateTime",
+                                    "collectedPeriod",
                                 ],
                             ))
                         }
@@ -426,11 +427,12 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "description",
                                     "procedure",
                                     "additive",
-                                    "time",
+                                    "timeDateTime",
+                                    "timePeriod",
                                 ],
                             ))
                         }
@@ -627,9 +629,10 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "description",
-                                    "time",
+                                    "timeDateTime",
+                                    "timePeriod",
                                 ],
                             ))
                         }
@@ -830,7 +833,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "description",
                                     "temperature",
                                     "scale",
@@ -1211,15 +1214,15 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "product_category",
-                                    "product_code",
+                                    "productCategory",
+                                    "productCode",
                                     "status",
                                     "request",
                                     "quantity",

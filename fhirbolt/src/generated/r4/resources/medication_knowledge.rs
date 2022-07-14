@@ -136,7 +136,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRelatedMedicationKn
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "reference"],
+                                &["id", "extension", "modifierExtension", "type", "reference"],
                             ))
                         }
                     }
@@ -245,7 +245,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonograph {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "source"],
+                                &["id", "extension", "modifierExtension", "type", "source"],
                             ))
                         }
                     }
@@ -410,9 +410,10 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "item",
-                                    "is_active",
+                                    "modifierExtension",
+                                    "itemCodeableConcept",
+                                    "itemReference",
+                                    "isActive",
                                     "strength",
                                 ],
                             ))
@@ -553,7 +554,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeCost {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "source",
                                     "cost",
@@ -689,7 +690,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonitoringProgram {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "name"],
+                                &["id", "extension", "modifierExtension", "type", "name"],
                             ))
                         }
                     }
@@ -796,7 +797,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "dosage"],
+                                &["id", "extension", "modifierExtension", "type", "dosage"],
                             ))
                         }
                     }
@@ -977,8 +978,9 @@ impl<'de> serde::de::Deserialize<'de>
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "characteristic",
+                                    "modifierExtension",
+                                    "characteristicCodeableConcept",
+                                    "characteristicQuantity",
                                     "value",
                                 ],
                             ))
@@ -1140,10 +1142,11 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "dosage",
-                                    "indication",
-                                    "patient_characteristics",
+                                    "indicationCodeableConcept",
+                                    "indicationReference",
+                                    "patientCharacteristics",
                                 ],
                             ))
                         }
@@ -1256,7 +1259,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMedicineClassificat
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "classification",
                                 ],
@@ -1368,7 +1371,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgePackaging {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "quantity"],
+                                &["id", "extension", "modifierExtension", "type", "quantity"],
                             ))
                         }
                     }
@@ -1608,7 +1611,16 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "type",
+                                    "valueCodeableConcept",
+                                    "valueString",
+                                    "valueQuantity",
+                                    "valueBase64Binary",
+                                ],
                             ))
                         }
                     }
@@ -1735,7 +1747,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySubstitut
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "allowed"],
+                                &["id", "extension", "modifierExtension", "type", "allowed"],
                             ))
                         }
                     }
@@ -1831,7 +1843,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySchedule 
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "schedule"],
+                                &["id", "extension", "modifierExtension", "schedule"],
                             ))
                         }
                     }
@@ -1937,13 +1949,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatoryMaxDispen
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "quantity",
-                                    "period",
-                                ],
+                                &["id", "extension", "modifierExtension", "quantity", "period"],
                             ))
                         }
                     }
@@ -2078,11 +2084,11 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatory {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "regulatory_authority",
+                                    "modifierExtension",
+                                    "regulatoryAuthority",
                                     "substitution",
                                     "schedule",
-                                    "max_dispense",
+                                    "maxDispense",
                                 ],
                             ))
                         }
@@ -2209,10 +2215,10 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeKinetics {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "area_under_curve",
-                                    "lethal_dose_50",
-                                    "half_life_period",
+                                    "modifierExtension",
+                                    "areaUnderCurve",
+                                    "lethalDose50",
+                                    "halfLifePeriod",
                                 ],
                             ))
                         }
@@ -2773,31 +2779,31 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "status",
                                     "manufacturer",
-                                    "dose_form",
+                                    "doseForm",
                                     "amount",
                                     "synonym",
-                                    "related_medication_knowledge",
-                                    "associated_medication",
-                                    "product_type",
+                                    "relatedMedicationKnowledge",
+                                    "associatedMedication",
+                                    "productType",
                                     "monograph",
                                     "ingredient",
-                                    "preparation_instruction",
-                                    "intended_route",
+                                    "preparationInstruction",
+                                    "intendedRoute",
                                     "cost",
-                                    "monitoring_program",
-                                    "administration_guidelines",
-                                    "medicine_classification",
+                                    "monitoringProgram",
+                                    "administrationGuidelines",
+                                    "medicineClassification",
                                     "packaging",
-                                    "drug_characteristic",
+                                    "drugCharacteristic",
                                     "contraindication",
                                     "regulatory",
                                     "kinetics",

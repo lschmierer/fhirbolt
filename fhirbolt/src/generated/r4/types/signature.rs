@@ -221,9 +221,9 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                     "type",
                                     "when",
                                     "who",
-                                    "on_behalf_of",
-                                    "target_format",
-                                    "sig_format",
+                                    "onBehalfOf",
+                                    "targetFormat",
+                                    "sigFormat",
                                     "data",
                                 ],
                             ))

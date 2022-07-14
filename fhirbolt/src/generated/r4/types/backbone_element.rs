@@ -66,7 +66,7 @@ impl<'de> serde::de::Deserialize<'de> for BackboneElement {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension"],
+                                &["id", "extension", "modifierExtension"],
                             ))
                         }
                     }

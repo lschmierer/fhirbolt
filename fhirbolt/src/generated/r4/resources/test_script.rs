@@ -106,7 +106,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptOrigin {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "index", "profile"],
+                                &["id", "extension", "modifierExtension", "index", "profile"],
                             ))
                         }
                     }
@@ -230,7 +230,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptDestination {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "index", "profile"],
+                                &["id", "extension", "modifierExtension", "index", "profile"],
                             ))
                         }
                     }
@@ -378,13 +378,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataLink {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "url",
-                                    "description",
-                                ],
+                                &["id", "extension", "modifierExtension", "url", "description"],
                             ))
                         }
                     }
@@ -765,7 +759,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "required",
                                     "validated",
                                     "description",
@@ -885,13 +879,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadata {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "link",
-                                    "capability",
-                                ],
+                                &["id", "extension", "modifierExtension", "link", "capability"],
                             ))
                         }
                     }
@@ -1051,7 +1039,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptFixture {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "autocreate",
                                     "autodelete",
                                     "resource",
@@ -1407,15 +1395,15 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
-                                    "default_value",
+                                    "defaultValue",
                                     "description",
                                     "expression",
-                                    "header_field",
+                                    "headerField",
                                     "hint",
                                     "path",
-                                    "source_id",
+                                    "sourceId",
                                 ],
                             ))
                         }
@@ -1571,7 +1559,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperationRequestH
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "field", "value"],
+                                &["id", "extension", "modifierExtension", "field", "value"],
                             ))
                         }
                     }
@@ -2178,23 +2166,23 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "resource",
                                     "label",
                                     "description",
                                     "accept",
-                                    "content_type",
+                                    "contentType",
                                     "destination",
-                                    "encode_request_url",
+                                    "encodeRequestUrl",
                                     "method",
                                     "origin",
                                     "params",
-                                    "request_header",
-                                    "request_id",
-                                    "response_id",
-                                    "source_id",
-                                    "target_id",
+                                    "requestHeader",
+                                    "requestId",
+                                    "responseId",
+                                    "sourceId",
+                                    "targetId",
                                     "url",
                                 ],
                             ))
@@ -3040,29 +3028,29 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "label",
                                     "description",
                                     "direction",
-                                    "compare_to_source_id",
-                                    "compare_to_source_expression",
-                                    "compare_to_source_path",
-                                    "content_type",
+                                    "compareToSourceId",
+                                    "compareToSourceExpression",
+                                    "compareToSourcePath",
+                                    "contentType",
                                     "expression",
-                                    "header_field",
-                                    "minimum_id",
-                                    "navigation_links",
+                                    "headerField",
+                                    "minimumId",
+                                    "navigationLinks",
                                     "operator",
                                     "path",
-                                    "request_method",
-                                    "request_url",
+                                    "requestMethod",
+                                    "requestURL",
                                     "resource",
                                     "response",
-                                    "response_code",
-                                    "source_id",
-                                    "validate_profile_id",
+                                    "responseCode",
+                                    "sourceId",
+                                    "validateProfileId",
                                     "value",
-                                    "warning_only",
+                                    "warningOnly",
                                 ],
                             ))
                         }
@@ -3193,7 +3181,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "operation",
                                     "assert",
                                 ],
@@ -3291,7 +3279,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetup {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "action"],
+                                &["id", "extension", "modifierExtension", "action"],
                             ))
                         }
                     }
@@ -3399,7 +3387,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTestAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "operation",
                                     "assert",
                                 ],
@@ -3566,7 +3554,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTest {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "description",
                                     "action",
@@ -3664,7 +3652,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardownAction {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "operation"],
+                                &["id", "extension", "modifierExtension", "operation"],
                             ))
                         }
                     }
@@ -3758,7 +3746,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardown {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "action"],
+                                &["id", "extension", "modifierExtension", "action"],
                             ))
                         }
                     }
@@ -4445,12 +4433,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "identifier",
                                     "version",
@@ -4462,7 +4450,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "purpose",
                                     "copyright",

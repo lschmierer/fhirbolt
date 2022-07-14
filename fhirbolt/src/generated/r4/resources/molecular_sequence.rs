@@ -310,16 +310,16 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "chromosome",
-                                    "genome_build",
+                                    "genomeBuild",
                                     "orientation",
-                                    "reference_seq_id",
-                                    "reference_seq_pointer",
-                                    "reference_seq_string",
+                                    "referenceSeqId",
+                                    "referenceSeqPointer",
+                                    "referenceSeqString",
                                     "strand",
-                                    "window_start",
-                                    "window_end",
+                                    "windowStart",
+                                    "windowEnd",
                                 ],
                             ))
                         }
@@ -590,13 +590,13 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "start",
                                     "end",
-                                    "observed_allele",
-                                    "reference_allele",
+                                    "observedAllele",
+                                    "referenceAllele",
                                     "cigar",
-                                    "variant_pointer",
+                                    "variantPointer",
                                 ],
                             ))
                         }
@@ -1154,14 +1154,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "score",
-                                    "num_tp",
-                                    "num_fp",
-                                    "num_fn",
+                                    "numTP",
+                                    "numFP",
+                                    "numFN",
                                     "precision",
                                     "sensitivity",
-                                    "f_measure",
+                                    "fMeasure",
                                 ],
                             ))
                         }
@@ -1660,21 +1660,21 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "standard_sequence",
+                                    "standardSequence",
                                     "start",
                                     "end",
                                     "score",
                                     "method",
-                                    "truth_tp",
-                                    "query_tp",
-                                    "truth_fn",
-                                    "query_fp",
-                                    "gt_fp",
+                                    "truthTP",
+                                    "queryTP",
+                                    "truthFN",
+                                    "queryFP",
+                                    "gtFP",
                                     "precision",
                                     "recall",
-                                    "f_score",
+                                    "fScore",
                                     "roc",
                                 ],
                             ))
@@ -1975,13 +1975,13 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "url",
                                     "name",
-                                    "dataset_id",
-                                    "variantset_id",
-                                    "readset_id",
+                                    "datasetId",
+                                    "variantsetId",
+                                    "readsetId",
                                 ],
                             ))
                         }
@@ -2139,7 +2139,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "start", "end"],
+                                &["id", "extension", "modifierExtension", "start", "end"],
                             ))
                         }
                     }
@@ -2292,7 +2292,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "start", "end"],
+                                &["id", "extension", "modifierExtension", "start", "end"],
                             ))
                         }
                     }
@@ -2481,8 +2481,8 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "variant_type",
+                                    "modifierExtension",
+                                    "variantType",
                                     "exact",
                                     "length",
                                     "outer",
@@ -2939,28 +2939,28 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "type",
-                                    "coordinate_system",
+                                    "coordinateSystem",
                                     "patient",
                                     "specimen",
                                     "device",
                                     "performer",
                                     "quantity",
-                                    "reference_seq",
+                                    "referenceSeq",
                                     "variant",
-                                    "observed_seq",
+                                    "observedSeq",
                                     "quality",
-                                    "read_coverage",
+                                    "readCoverage",
                                     "repository",
                                     "pointer",
-                                    "structure_variant",
+                                    "structureVariant",
                                 ],
                             ))
                         }

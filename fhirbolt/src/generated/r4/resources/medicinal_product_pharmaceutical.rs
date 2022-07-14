@@ -89,7 +89,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalCharacte
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "status"],
+                                &["id", "extension", "modifierExtension", "code", "status"],
                             ))
                         }
                     }
@@ -242,10 +242,10 @@ impl<'de> serde::de::Deserialize<'de>
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "tissue",
                                     "value",
-                                    "supporting_information",
+                                    "supportingInformation",
                                 ],
                             ))
                         }
@@ -354,9 +354,9 @@ impl<'de> serde::de::Deserialize<'de>
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
-                                    "withdrawal_period",
+                                    "withdrawalPeriod",
                                 ],
                             ))
                         }
@@ -531,14 +531,14 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
-                                    "first_dose",
-                                    "max_single_dose",
-                                    "max_dose_per_day",
-                                    "max_dose_per_treatment_period",
-                                    "max_treatment_period",
-                                    "target_species",
+                                    "firstDose",
+                                    "maxSingleDose",
+                                    "maxDosePerDay",
+                                    "maxDosePerTreatmentPeriod",
+                                    "maxTreatmentPeriod",
+                                    "targetSpecies",
                                 ],
                             ))
                         }
@@ -822,19 +822,19 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "administrable_dose_form",
-                                    "unit_of_presentation",
+                                    "administrableDoseForm",
+                                    "unitOfPresentation",
                                     "ingredient",
                                     "device",
                                     "characteristics",
-                                    "route_of_administration",
+                                    "routeOfAdministration",
                                 ],
                             ))
                         }

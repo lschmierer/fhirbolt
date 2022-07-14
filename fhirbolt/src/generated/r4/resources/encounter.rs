@@ -106,7 +106,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterStatusHistory {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "status", "period"],
+                                &["id", "extension", "modifierExtension", "status", "period"],
                             ))
                         }
                     }
@@ -208,7 +208,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterClassHistory {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "class", "period"],
+                                &["id", "extension", "modifierExtension", "class", "period"],
                             ))
                         }
                     }
@@ -328,7 +328,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterParticipant {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "period",
                                     "individual",
@@ -473,7 +473,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterDiagnosis {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "condition",
                                     "use",
                                     "rank",
@@ -676,16 +676,16 @@ impl<'de> serde::de::Deserialize<'de> for EncounterHospitalization {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "pre_admission_identifier",
+                                    "modifierExtension",
+                                    "preAdmissionIdentifier",
                                     "origin",
-                                    "admit_source",
-                                    "re_admission",
-                                    "diet_preference",
-                                    "special_courtesy",
-                                    "special_arrangement",
+                                    "admitSource",
+                                    "reAdmission",
+                                    "dietPreference",
+                                    "specialCourtesy",
+                                    "specialArrangement",
                                     "destination",
-                                    "discharge_disposition",
+                                    "dischargeDisposition",
                                 ],
                             ))
                         }
@@ -844,10 +844,10 @@ impl<'de> serde::de::Deserialize<'de> for EncounterLocation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "location",
                                     "status",
-                                    "physical_type",
+                                    "physicalType",
                                     "period",
                                 ],
                             ))
@@ -1310,35 +1310,35 @@ impl<'de> serde::de::Deserialize<'de> for Encounter {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
-                                    "status_history",
+                                    "statusHistory",
                                     "class",
-                                    "class_history",
+                                    "classHistory",
                                     "type",
-                                    "service_type",
+                                    "serviceType",
                                     "priority",
                                     "subject",
-                                    "episode_of_care",
-                                    "based_on",
+                                    "episodeOfCare",
+                                    "basedOn",
                                     "participant",
                                     "appointment",
                                     "period",
                                     "length",
-                                    "reason_code",
-                                    "reason_reference",
+                                    "reasonCode",
+                                    "reasonReference",
                                     "diagnosis",
                                     "account",
                                     "hospitalization",
                                     "location",
-                                    "service_provider",
-                                    "part_of",
+                                    "serviceProvider",
+                                    "partOf",
                                 ],
                             ))
                         }

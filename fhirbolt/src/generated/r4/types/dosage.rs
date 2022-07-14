@@ -164,7 +164,16 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "type", "dose", "rate"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "type",
+                                    "doseRange",
+                                    "doseQuantity",
+                                    "rateRatio",
+                                    "rateRange",
+                                    "rateQuantity",
+                                ],
                             ))
                         }
                     }
@@ -528,20 +537,21 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "sequence",
                                     "text",
-                                    "additional_instruction",
-                                    "patient_instruction",
+                                    "additionalInstruction",
+                                    "patientInstruction",
                                     "timing",
-                                    "as_needed",
+                                    "asNeededBoolean",
+                                    "asNeededCodeableConcept",
                                     "site",
                                     "route",
                                     "method",
-                                    "dose_and_rate",
-                                    "max_dose_per_period",
-                                    "max_dose_per_administration",
-                                    "max_dose_per_lifetime",
+                                    "doseAndRate",
+                                    "maxDosePerPeriod",
+                                    "maxDosePerAdministration",
+                                    "maxDosePerLifetime",
                                 ],
                             ))
                         }

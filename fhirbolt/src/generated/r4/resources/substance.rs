@@ -135,7 +135,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceInstance {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "expiry",
                                     "quantity",
@@ -271,9 +271,10 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceIngredient {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "quantity",
-                                    "substance",
+                                    "substanceCodeableConcept",
+                                    "substanceReference",
                                 ],
                             ))
                         }
@@ -580,12 +581,12 @@ impl<'de> serde::de::Deserialize<'de> for Substance {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "category",

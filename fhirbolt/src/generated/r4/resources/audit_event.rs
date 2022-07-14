@@ -143,7 +143,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "address", "type"],
+                                &["id", "extension", "modifierExtension", "address", "type"],
                             ))
                         }
                     }
@@ -471,18 +471,18 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "role",
                                     "who",
-                                    "alt_id",
+                                    "altId",
                                     "name",
                                     "requestor",
                                     "location",
                                     "policy",
                                     "media",
                                     "network",
-                                    "purpose_of_use",
+                                    "purposeOfUse",
                                 ],
                             ))
                         }
@@ -632,7 +632,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "site",
                                     "observer",
                                     "type",
@@ -849,7 +849,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "type",
+                                    "valueString",
+                                    "valueBase64Binary",
+                                ],
                             ))
                         }
                     }
@@ -1101,12 +1108,12 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "what",
                                     "type",
                                     "role",
                                     "lifecycle",
-                                    "security_label",
+                                    "securityLabel",
                                     "name",
                                     "description",
                                     "query",
@@ -1509,20 +1516,20 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "subtype",
                                     "action",
                                     "period",
                                     "recorded",
                                     "outcome",
-                                    "outcome_desc",
-                                    "purpose_of_event",
+                                    "outcomeDesc",
+                                    "purposeOfEvent",
                                     "agent",
                                     "source",
                                     "entity",

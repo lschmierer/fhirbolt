@@ -144,11 +144,12 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "age",
+                                    "modifierExtension",
+                                    "ageRange",
+                                    "ageCodeableConcept",
                                     "gender",
                                     "race",
-                                    "physiological_condition",
+                                    "physiologicalCondition",
                                 ],
                             ))
                         }

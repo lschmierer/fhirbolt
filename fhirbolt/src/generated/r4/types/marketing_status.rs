@@ -140,12 +140,12 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "country",
                                     "jurisdiction",
                                     "status",
-                                    "date_range",
-                                    "restore_date",
+                                    "dateRange",
+                                    "restoreDate",
                                 ],
                             ))
                         }

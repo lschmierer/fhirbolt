@@ -202,9 +202,9 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDependsOn {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "uri",
-                                    "package_id",
+                                    "packageId",
                                     "version",
                                 ],
                             ))
@@ -353,7 +353,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideGlobal {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "profile"],
+                                &["id", "extension", "modifierExtension", "type", "profile"],
                             ))
                         }
                     }
@@ -507,7 +507,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionGrouping 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "description",
                                 ],
@@ -897,13 +897,14 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionResource 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "reference",
-                                    "fhir_version",
+                                    "fhirVersion",
                                     "name",
                                     "description",
-                                    "example",
-                                    "grouping_id",
+                                    "exampleBoolean",
+                                    "exampleCanonical",
+                                    "groupingId",
                                 ],
                             ))
                         }
@@ -1132,8 +1133,9 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionPage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "name",
+                                    "modifierExtension",
+                                    "nameUrl",
+                                    "nameReference",
                                     "title",
                                     "generation",
                                     "page",
@@ -1289,7 +1291,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionParameter
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "value"],
+                                &["id", "extension", "modifierExtension", "code", "value"],
                             ))
                         }
                     }
@@ -1474,7 +1476,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionTemplate 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "source",
                                     "scope",
@@ -1624,7 +1626,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinition {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "grouping",
                                     "resource",
                                     "page",
@@ -1884,10 +1886,11 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifestResource {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "reference",
-                                    "example",
-                                    "relative_path",
+                                    "exampleBoolean",
+                                    "exampleCanonical",
+                                    "relativePath",
                                 ],
                             ))
                         }
@@ -2109,7 +2112,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifestPage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "title",
                                     "anchor",
@@ -2391,7 +2394,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifest {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "rendering",
                                     "resource",
                                     "page",
@@ -3121,12 +3124,12 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuide {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "version",
                                     "name",
@@ -3137,13 +3140,13 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuide {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "copyright",
-                                    "package_id",
+                                    "packageId",
                                     "license",
-                                    "fhir_version",
-                                    "depends_on",
+                                    "fhirVersion",
+                                    "dependsOn",
                                     "global",
                                     "definition",
                                     "manifest",

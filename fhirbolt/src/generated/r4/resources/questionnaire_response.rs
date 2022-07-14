@@ -502,7 +502,24 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItemAnswer {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "value", "item"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "valueBoolean",
+                                    "valueDecimal",
+                                    "valueInteger",
+                                    "valueDate",
+                                    "valueDateTime",
+                                    "valueTime",
+                                    "valueString",
+                                    "valueUri",
+                                    "valueAttachment",
+                                    "valueCoding",
+                                    "valueQuantity",
+                                    "valueReference",
+                                    "item",
+                                ],
                             ))
                         }
                     }
@@ -708,8 +725,8 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItem {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "link_id",
+                                    "modifierExtension",
+                                    "linkId",
                                     "definition",
                                     "text",
                                     "answer",
@@ -1089,15 +1106,15 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponse {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "based_on",
-                                    "part_of",
+                                    "basedOn",
+                                    "partOf",
                                     "questionnaire",
                                     "status",
                                     "subject",

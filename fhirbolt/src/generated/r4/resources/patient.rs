@@ -191,7 +191,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "relationship",
                                     "name",
                                     "telecom",
@@ -333,7 +333,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "language",
                                     "preferred",
                                 ],
@@ -460,7 +460,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "other", "type"],
+                                &["id", "extension", "modifierExtension", "other", "type"],
                             ))
                         }
                     }
@@ -1070,27 +1070,29 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "active",
                                     "name",
                                     "telecom",
                                     "gender",
-                                    "birth_date",
-                                    "deceased",
+                                    "birthDate",
+                                    "deceasedBoolean",
+                                    "deceasedDateTime",
                                     "address",
-                                    "marital_status",
-                                    "multiple_birth",
+                                    "maritalStatus",
+                                    "multipleBirthBoolean",
+                                    "multipleBirthInteger",
                                     "photo",
                                     "contact",
                                     "communication",
-                                    "general_practitioner",
-                                    "managing_organization",
+                                    "generalPractitioner",
+                                    "managingOrganization",
                                     "link",
                                 ],
                             ))

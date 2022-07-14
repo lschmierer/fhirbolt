@@ -119,7 +119,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "comment", "link"],
+                                &["id", "extension", "modifierExtension", "comment", "link"],
                             ))
                         }
                     }
@@ -625,30 +625,31 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "based_on",
+                                    "basedOn",
                                     "status",
                                     "category",
                                     "code",
                                     "subject",
                                     "encounter",
-                                    "effective",
+                                    "effectiveDateTime",
+                                    "effectivePeriod",
                                     "issued",
                                     "performer",
-                                    "results_interpreter",
+                                    "resultsInterpreter",
                                     "specimen",
                                     "result",
-                                    "imaging_study",
+                                    "imagingStudy",
                                     "media",
                                     "conclusion",
-                                    "conclusion_code",
-                                    "presented_form",
+                                    "conclusionCode",
+                                    "presentedForm",
                                 ],
                             ))
                         }

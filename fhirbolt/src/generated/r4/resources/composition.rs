@@ -155,7 +155,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionAttester {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "mode",
                                     "time",
                                     "party",
@@ -304,7 +304,14 @@ impl<'de> serde::de::Deserialize<'de> for CompositionRelatesTo {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "target"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "code",
+                                    "targetIdentifier",
+                                    "targetReference",
+                                ],
                             ))
                         }
                     }
@@ -424,7 +431,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionEvent {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "period",
                                     "detail",
@@ -670,16 +677,16 @@ impl<'de> serde::de::Deserialize<'de> for CompositionSection {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "title",
                                     "code",
                                     "author",
                                     "focus",
                                     "text",
                                     "mode",
-                                    "ordered_by",
+                                    "orderedBy",
                                     "entry",
-                                    "empty_reason",
+                                    "emptyReason",
                                     "section",
                                 ],
                             ))
@@ -1121,12 +1128,12 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "type",
@@ -1139,7 +1146,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     "confidentiality",
                                     "attester",
                                     "custodian",
-                                    "relates_to",
+                                    "relatesTo",
                                     "event",
                                     "section",
                                 ],

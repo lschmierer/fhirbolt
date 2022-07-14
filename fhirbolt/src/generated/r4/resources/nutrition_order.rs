@@ -102,13 +102,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "modifier",
-                                    "amount",
-                                ],
+                                &["id", "extension", "modifierExtension", "modifier", "amount"],
                             ))
                         }
                     }
@@ -220,9 +214,9 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "modifier",
-                                    "food_type",
+                                    "foodType",
                                 ],
                             ))
                         }
@@ -402,12 +396,12 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "schedule",
                                     "nutrient",
                                     "texture",
-                                    "fluid_consistency_type",
+                                    "fluidConsistencyType",
                                     "instruction",
                                 ],
                             ))
@@ -599,9 +593,9 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "product_name",
+                                    "productName",
                                     "schedule",
                                     "quantity",
                                     "instruction",
@@ -752,10 +746,11 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "schedule",
                                     "quantity",
-                                    "rate",
+                                    "rateQuantity",
+                                    "rateRatio",
                                 ],
                             ))
                         }
@@ -1036,16 +1031,16 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "base_formula_type",
-                                    "base_formula_product_name",
-                                    "additive_type",
-                                    "additive_product_name",
-                                    "caloric_density",
-                                    "routeof_administration",
+                                    "modifierExtension",
+                                    "baseFormulaType",
+                                    "baseFormulaProductName",
+                                    "additiveType",
+                                    "additiveProductName",
+                                    "caloricDensity",
+                                    "routeofAdministration",
                                     "administration",
-                                    "max_volume_to_deliver",
-                                    "administration_instruction",
+                                    "maxVolumeToDeliver",
+                                    "administrationInstruction",
                                 ],
                             ))
                         }
@@ -1676,28 +1671,28 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
-                                    "instantiates_canonical",
-                                    "instantiates_uri",
+                                    "instantiatesCanonical",
+                                    "instantiatesUri",
                                     "instantiates",
                                     "status",
                                     "intent",
                                     "patient",
                                     "encounter",
-                                    "date_time",
+                                    "dateTime",
                                     "orderer",
-                                    "allergy_intolerance",
-                                    "food_preference_modifier",
-                                    "exclude_food_modifier",
-                                    "oral_diet",
+                                    "allergyIntolerance",
+                                    "foodPreferenceModifier",
+                                    "excludeFoodModifier",
+                                    "oralDiet",
                                     "supplement",
-                                    "enteral_formula",
+                                    "enteralFormula",
                                     "note",
                                 ],
                             ))

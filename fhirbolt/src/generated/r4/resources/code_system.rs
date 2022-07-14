@@ -246,7 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemFilter {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "description",
                                     "operator",
@@ -468,7 +468,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemProperty {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "uri",
                                     "description",
@@ -640,7 +640,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptDesignation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "language",
                                     "use",
                                     "value",
@@ -1038,7 +1038,19 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptProperty {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "code",
+                                    "valueCode",
+                                    "valueCoding",
+                                    "valueString",
+                                    "valueInteger",
+                                    "valueBoolean",
+                                    "valueDateTime",
+                                    "valueDecimal",
+                                ],
                             ))
                         }
                     }
@@ -1255,7 +1267,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConcept {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "display",
                                     "definition",
@@ -2154,12 +2166,12 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystem {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "identifier",
                                     "version",
@@ -2171,15 +2183,15 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystem {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "purpose",
                                     "copyright",
-                                    "case_sensitive",
-                                    "value_set",
-                                    "hierarchy_meaning",
+                                    "caseSensitive",
+                                    "valueSet",
+                                    "hierarchyMeaning",
                                     "compositional",
-                                    "version_needed",
+                                    "versionNeeded",
                                     "content",
                                     "supplements",
                                     "count",

@@ -208,7 +208,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "value",
                                     "preferred",
@@ -716,12 +716,12 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "status",
                                     "kind",
@@ -731,10 +731,10 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     "responsible",
                                     "type",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "usage",
-                                    "unique_id",
+                                    "uniqueId",
                                 ],
                             ))
                         }

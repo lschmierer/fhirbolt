@@ -138,10 +138,10 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "material",
                                     "type",
-                                    "is_defining",
+                                    "isDefining",
                                     "amount",
                                 ],
                             ))
@@ -256,9 +256,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "ratio_type",
-                                    "starting_material",
+                                    "modifierExtension",
+                                    "ratioType",
+                                    "startingMaterial",
                                 ],
                             ))
                         }
@@ -368,7 +368,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "degree", "amount"],
+                                &["id", "extension", "modifierExtension", "degree", "amount"],
                             ))
                         }
                     }
@@ -513,7 +513,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "representation",
                                     "attachment",
@@ -700,12 +700,12 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "orientation_of_polymerisation",
-                                    "repeat_unit",
+                                    "modifierExtension",
+                                    "orientationOfPolymerisation",
+                                    "repeatUnit",
                                     "amount",
-                                    "degree_of_polymerisation",
-                                    "structural_representation",
+                                    "degreeOfPolymerisation",
+                                    "structuralRepresentation",
                                 ],
                             ))
                         }
@@ -894,11 +894,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "number_of_units",
-                                    "average_molecular_formula",
-                                    "repeat_unit_amount_type",
-                                    "repeat_unit",
+                                    "modifierExtension",
+                                    "numberOfUnits",
+                                    "averageMolecularFormula",
+                                    "repeatUnitAmountType",
+                                    "repeatUnit",
                                 ],
                             ))
                         }
@@ -1215,17 +1215,17 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "class",
                                     "geometry",
-                                    "copolymer_connectivity",
+                                    "copolymerConnectivity",
                                     "modification",
-                                    "monomer_set",
+                                    "monomerSet",
                                     "repeat",
                                 ],
                             ))

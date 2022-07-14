@@ -206,9 +206,11 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoalTarget {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "measure",
-                                    "detail",
+                                    "detailQuantity",
+                                    "detailRange",
+                                    "detailCodeableConcept",
                                     "due",
                                 ],
                             ))
@@ -374,7 +376,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoal {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "category",
                                     "description",
                                     "priority",
@@ -517,13 +519,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionCondition {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "kind",
-                                    "expression",
-                                ],
+                                &["id", "extension", "modifierExtension", "kind", "expression"],
                             ))
                         }
                     }
@@ -706,10 +702,11 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "action_id",
+                                    "modifierExtension",
+                                    "actionId",
                                     "relationship",
-                                    "offset",
+                                    "offsetDuration",
+                                    "offsetRange",
                                 ],
                             ))
                         }
@@ -841,7 +838,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionParticipant {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "role"],
+                                &["id", "extension", "modifierExtension", "type", "role"],
                             ))
                         }
                     }
@@ -972,13 +969,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionDynamicValue {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "path",
-                                    "expression",
-                                ],
+                                &["id", "extension", "modifierExtension", "path", "expression"],
                             ))
                         }
                     }
@@ -1874,33 +1865,40 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "prefix",
                                     "title",
                                     "description",
-                                    "text_equivalent",
+                                    "textEquivalent",
                                     "priority",
                                     "code",
                                     "reason",
                                     "documentation",
-                                    "goal_id",
-                                    "subject",
+                                    "goalId",
+                                    "subjectCodeableConcept",
+                                    "subjectReference",
                                     "trigger",
                                     "condition",
                                     "input",
                                     "output",
-                                    "related_action",
-                                    "timing",
+                                    "relatedAction",
+                                    "timingDateTime",
+                                    "timingAge",
+                                    "timingPeriod",
+                                    "timingDuration",
+                                    "timingRange",
+                                    "timingTiming",
                                     "participant",
                                     "type",
-                                    "grouping_behavior",
-                                    "selection_behavior",
-                                    "required_behavior",
-                                    "precheck_behavior",
-                                    "cardinality_behavior",
-                                    "definition",
+                                    "groupingBehavior",
+                                    "selectionBehavior",
+                                    "requiredBehavior",
+                                    "precheckBehavior",
+                                    "cardinalityBehavior",
+                                    "definitionCanonical",
+                                    "definitionUri",
                                     "transform",
-                                    "dynamic_value",
+                                    "dynamicValue",
                                     "action",
                                 ],
                             ))
@@ -2861,12 +2859,12 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "identifier",
                                     "version",
@@ -2876,25 +2874,26 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     "type",
                                     "status",
                                     "experimental",
-                                    "subject",
+                                    "subjectCodeableConcept",
+                                    "subjectReference",
                                     "date",
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "purpose",
                                     "usage",
                                     "copyright",
-                                    "approval_date",
-                                    "last_review_date",
-                                    "effective_period",
+                                    "approvalDate",
+                                    "lastReviewDate",
+                                    "effectivePeriod",
                                     "topic",
                                     "author",
                                     "editor",
                                     "reviewer",
                                     "endorser",
-                                    "related_artifact",
+                                    "relatedArtifact",
                                     "library",
                                     "goal",
                                     "action",

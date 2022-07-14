@@ -111,7 +111,7 @@ impl<'de> serde::de::Deserialize<'de> for AccountCoverage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "coverage",
                                     "priority",
                                 ],
@@ -254,9 +254,9 @@ impl<'de> serde::de::Deserialize<'de> for AccountGuarantor {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "party",
-                                    "on_hold",
+                                    "onHold",
                                     "period",
                                 ],
                             ))
@@ -631,23 +631,23 @@ impl<'de> serde::de::Deserialize<'de> for Account {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "type",
                                     "name",
                                     "subject",
-                                    "service_period",
+                                    "servicePeriod",
                                     "coverage",
                                     "owner",
                                     "description",
                                     "guarantor",
-                                    "part_of",
+                                    "partOf",
                                 ],
                             ))
                         }

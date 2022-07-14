@@ -324,10 +324,14 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "allowed",
-                                    "used",
+                                    "allowedUnsignedInt",
+                                    "allowedString",
+                                    "allowedMoney",
+                                    "usedUnsignedInt",
+                                    "usedString",
+                                    "usedMoney",
                                 ],
                             ))
                         }
@@ -693,9 +697,9 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "category",
-                                    "product_or_service",
+                                    "productOrService",
                                     "modifier",
                                     "provider",
                                     "excluded",
@@ -705,9 +709,9 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     "unit",
                                     "term",
                                     "benefit",
-                                    "authorization_required",
-                                    "authorization_supporting",
-                                    "authorization_url",
+                                    "authorizationRequired",
+                                    "authorizationSupporting",
+                                    "authorizationUrl",
                                 ],
                             ))
                         }
@@ -874,10 +878,10 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "coverage",
                                     "inforce",
-                                    "benefit_period",
+                                    "benefitPeriod",
                                     "item",
                                 ],
                             ))
@@ -977,7 +981,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code"],
+                                &["id", "extension", "modifierExtension", "code"],
                             ))
                         }
                     }
@@ -1536,17 +1540,18 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "purpose",
                                     "patient",
-                                    "serviced",
+                                    "servicedDate",
+                                    "servicedPeriod",
                                     "created",
                                     "requestor",
                                     "request",
@@ -1554,7 +1559,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     "disposition",
                                     "insurer",
                                     "insurance",
-                                    "pre_auth_ref",
+                                    "preAuthRef",
                                     "form",
                                     "error",
                                 ],

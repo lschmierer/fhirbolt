@@ -156,11 +156,11 @@ impl<'de> serde::de::Deserialize<'de>
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "substance",
                                     "strength",
-                                    "strength_low_limit",
-                                    "measurement_point",
+                                    "strengthLowLimit",
+                                    "measurementPoint",
                                     "country",
                                 ],
                             ))
@@ -362,14 +362,14 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "presentation",
-                                    "presentation_low_limit",
+                                    "presentationLowLimit",
                                     "concentration",
-                                    "concentration_low_limit",
-                                    "measurement_point",
+                                    "concentrationLowLimit",
+                                    "measurementPoint",
                                     "country",
-                                    "reference_strength",
+                                    "referenceStrength",
                                 ],
                             ))
                         }
@@ -508,7 +508,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "group",
                                     "confidentiality",
@@ -624,7 +624,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSubstance {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "strength"],
+                                &["id", "extension", "modifierExtension", "code", "strength"],
                             ))
                         }
                     }
@@ -905,17 +905,17 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "role",
-                                    "allergenic_indicator",
+                                    "allergenicIndicator",
                                     "manufacturer",
-                                    "specified_substance",
+                                    "specifiedSubstance",
                                     "substance",
                                 ],
                             ))

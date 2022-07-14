@@ -113,7 +113,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanContact {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "purpose",
                                     "name",
                                     "telecom",
@@ -229,7 +229,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefitLimit {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "value", "code"],
+                                &["id", "extension", "modifierExtension", "value", "code"],
                             ))
                         }
                     }
@@ -372,7 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "requirement",
                                     "limit",
@@ -495,7 +495,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverage {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "network",
                                     "benefit",
@@ -678,9 +678,9 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "group_size",
+                                    "groupSize",
                                     "cost",
                                     "comment",
                                 ],
@@ -817,7 +817,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefitCo
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "applicability",
                                     "qualifiers",
@@ -931,7 +931,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefit {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "cost"],
+                                &["id", "extension", "modifierExtension", "type", "cost"],
                             ))
                         }
                     }
@@ -1041,7 +1041,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCost {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "category",
                                     "benefit",
                                 ],
@@ -1197,13 +1197,13 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlan {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "type",
-                                    "coverage_area",
+                                    "coverageArea",
                                     "network",
-                                    "general_cost",
-                                    "specific_cost",
+                                    "generalCost",
+                                    "specificCost",
                                 ],
                             ))
                         }
@@ -1648,21 +1648,21 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "type",
                                     "name",
                                     "alias",
                                     "period",
-                                    "owned_by",
-                                    "administered_by",
-                                    "coverage_area",
+                                    "ownedBy",
+                                    "administeredBy",
+                                    "coverageArea",
                                     "contact",
                                     "endpoint",
                                     "network",

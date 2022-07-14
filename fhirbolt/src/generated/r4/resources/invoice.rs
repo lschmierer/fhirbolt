@@ -97,7 +97,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "role", "actor"],
+                                &["id", "extension", "modifierExtension", "role", "actor"],
                             ))
                         }
                     }
@@ -273,7 +273,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "code",
                                     "factor",
@@ -444,10 +444,11 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "sequence",
-                                    "charge_item",
-                                    "price_component",
+                                    "chargeItemReference",
+                                    "chargeItemCodeableConcept",
+                                    "priceComponent",
                                 ],
                             ))
                         }
@@ -901,15 +902,15 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
-                                    "cancelled_reason",
+                                    "cancelledReason",
                                     "type",
                                     "subject",
                                     "recipient",
@@ -917,11 +918,11 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     "participant",
                                     "issuer",
                                     "account",
-                                    "line_item",
-                                    "total_price_component",
-                                    "total_net",
-                                    "total_gross",
-                                    "payment_terms",
+                                    "lineItem",
+                                    "totalPriceComponent",
+                                    "totalNet",
+                                    "totalGross",
+                                    "paymentTerms",
                                     "note",
                                 ],
                             ))

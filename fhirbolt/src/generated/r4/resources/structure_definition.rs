@@ -199,7 +199,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionMapping {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identity",
                                     "uri",
                                     "name",
@@ -352,13 +352,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionContext {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "type",
-                                    "expression",
-                                ],
+                                &["id", "extension", "modifierExtension", "type", "expression"],
                             ))
                         }
                     }
@@ -457,7 +451,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionSnapshot {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "element"],
+                                &["id", "extension", "modifierExtension", "element"],
                             ))
                         }
                     }
@@ -554,7 +548,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionDifferential {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "element"],
+                                &["id", "extension", "modifierExtension", "element"],
                             ))
                         }
                     }
@@ -1457,12 +1451,12 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinition {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "identifier",
                                     "version",
@@ -1474,19 +1468,19 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinition {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "purpose",
                                     "copyright",
                                     "keyword",
-                                    "fhir_version",
+                                    "fhirVersion",
                                     "mapping",
                                     "kind",
                                     "abstract",
                                     "context",
-                                    "context_invariant",
+                                    "contextInvariant",
                                     "type",
-                                    "base_definition",
+                                    "baseDefinition",
                                     "derivation",
                                     "snapshot",
                                     "differential",

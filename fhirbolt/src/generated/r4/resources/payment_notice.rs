@@ -357,12 +357,12 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "request",
@@ -370,11 +370,11 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                     "created",
                                     "provider",
                                     "payment",
-                                    "payment_date",
+                                    "paymentDate",
                                     "payee",
                                     "recipient",
                                     "amount",
-                                    "payment_status",
+                                    "paymentStatus",
                                 ],
                             ))
                         }

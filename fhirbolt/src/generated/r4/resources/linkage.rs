@@ -106,7 +106,7 @@ impl<'de> serde::de::Deserialize<'de> for LinkageItem {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "resource"],
+                                &["id", "extension", "modifierExtension", "type", "resource"],
                             ))
                         }
                     }
@@ -348,12 +348,12 @@ impl<'de> serde::de::Deserialize<'de> for Linkage {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "active",
                                     "author",
                                     "item",

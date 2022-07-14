@@ -405,7 +405,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     "city",
                                     "district",
                                     "state",
-                                    "postal_code",
+                                    "postalCode",
                                     "country",
                                     "period",
                                 ],

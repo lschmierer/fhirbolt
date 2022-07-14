@@ -143,7 +143,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "authority", "uri"],
+                                &["id", "extension", "modifierExtension", "authority", "uri"],
                             ))
                         }
                     }
@@ -305,10 +305,10 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "verified",
-                                    "verified_with",
-                                    "verification_date",
+                                    "verifiedWith",
+                                    "verificationDate",
                                 ],
                             ))
                         }
@@ -412,7 +412,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionActor {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "role", "reference"],
+                                &["id", "extension", "modifierExtension", "role", "reference"],
                             ))
                         }
                     }
@@ -539,7 +539,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionData {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "meaning",
                                     "reference",
                                 ],
@@ -772,16 +772,16 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvision {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "period",
                                     "actor",
                                     "action",
-                                    "security_label",
+                                    "securityLabel",
                                     "purpose",
                                     "class",
                                     "code",
-                                    "data_period",
+                                    "dataPeriod",
                                     "data",
                                     "provision",
                                 ],
@@ -1179,23 +1179,24 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "scope",
                                     "category",
                                     "patient",
-                                    "date_time",
+                                    "dateTime",
                                     "performer",
                                     "organization",
-                                    "source",
+                                    "sourceAttachment",
+                                    "sourceReference",
                                     "policy",
-                                    "policy_rule",
+                                    "policyRule",
                                     "verification",
                                     "provision",
                                 ],

@@ -134,9 +134,9 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "strength",
-                                    "value_set",
+                                    "valueSet",
                                 ],
                             ))
                         }
@@ -288,13 +288,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifier_extension",
-                                    "source",
-                                    "source_id",
-                                ],
+                                &["id", "extension", "modifierExtension", "source", "sourceId"],
                             ))
                         }
                     }
@@ -709,17 +703,17 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "use",
                                     "min",
                                     "max",
                                     "documentation",
                                     "type",
-                                    "target_profile",
-                                    "search_type",
+                                    "targetProfile",
+                                    "searchType",
                                     "binding",
-                                    "referenced_from",
+                                    "referencedFrom",
                                     "part",
                                 ],
                             ))
@@ -921,8 +915,8 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "parameter_name",
+                                    "modifierExtension",
+                                    "parameterName",
                                     "comment",
                                 ],
                             ))
@@ -1879,12 +1873,12 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "version",
                                     "name",
@@ -1896,10 +1890,10 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "purpose",
-                                    "affects_state",
+                                    "affectsState",
                                     "code",
                                     "comment",
                                     "base",
@@ -1907,8 +1901,8 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     "system",
                                     "type",
                                     "instance",
-                                    "input_profile",
-                                    "output_profile",
+                                    "inputProfile",
+                                    "outputProfile",
                                     "parameter",
                                     "overload",
                                 ],

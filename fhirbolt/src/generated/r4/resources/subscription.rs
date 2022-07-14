@@ -232,7 +232,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "endpoint",
                                     "payload",
@@ -605,12 +605,12 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "status",
                                     "contact",
                                     "end",

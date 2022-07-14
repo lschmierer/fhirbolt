@@ -131,9 +131,10 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductContraindicationOtherT
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "therapy_relationship_type",
-                                    "medication",
+                                    "modifierExtension",
+                                    "therapyRelationshipType",
+                                    "medicationCodeableConcept",
+                                    "medicationReference",
                                 ],
                             ))
                         }
@@ -408,18 +409,18 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductContraindication {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "subject",
                                     "disease",
-                                    "disease_status",
+                                    "diseaseStatus",
                                     "comorbidity",
-                                    "therapeutic_indication",
-                                    "other_therapy",
+                                    "therapeuticIndication",
+                                    "otherTherapy",
                                     "population",
                                 ],
                             ))

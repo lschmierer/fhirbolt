@@ -116,9 +116,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "fraction",
-                                    "material_type",
+                                    "materialType",
                                 ],
                             ))
                         }
@@ -255,9 +255,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "author_type",
-                                    "author_description",
+                                    "modifierExtension",
+                                    "authorType",
+                                    "authorDescription",
                                 ],
                             ))
                         }
@@ -507,12 +507,12 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "maternal_organism_id",
-                                    "maternal_organism_name",
-                                    "paternal_organism_id",
-                                    "paternal_organism_name",
-                                    "hybrid_type",
+                                    "modifierExtension",
+                                    "maternalOrganismId",
+                                    "maternalOrganismName",
+                                    "paternalOrganismId",
+                                    "paternalOrganismName",
+                                    "hybridType",
                                 ],
                             ))
                         }
@@ -650,7 +650,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "kingdom",
                                     "phylum",
                                     "class",
@@ -865,15 +865,15 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "family",
                                     "genus",
                                     "species",
-                                    "intraspecific_type",
-                                    "intraspecific_description",
+                                    "intraspecificType",
+                                    "intraspecificDescription",
                                     "author",
                                     "hybrid",
-                                    "organism_general",
+                                    "organismGeneral",
                                 ],
                             ))
                         }
@@ -992,9 +992,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "part",
-                                    "part_location",
+                                    "partLocation",
                                 ],
                             ))
                         }
@@ -1495,25 +1495,25 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
-                                    "source_material_class",
-                                    "source_material_type",
-                                    "source_material_state",
-                                    "organism_id",
-                                    "organism_name",
-                                    "parent_substance_id",
-                                    "parent_substance_name",
-                                    "country_of_origin",
-                                    "geographical_location",
-                                    "development_stage",
-                                    "fraction_description",
+                                    "modifierExtension",
+                                    "sourceMaterialClass",
+                                    "sourceMaterialType",
+                                    "sourceMaterialState",
+                                    "organismId",
+                                    "organismName",
+                                    "parentSubstanceId",
+                                    "parentSubstanceName",
+                                    "countryOfOrigin",
+                                    "geographicalLocation",
+                                    "developmentStage",
+                                    "fractionDescription",
                                     "organism",
-                                    "part_description",
+                                    "partDescription",
                                 ],
                             ))
                         }

@@ -155,7 +155,7 @@ impl<'de> serde::de::Deserialize<'de> for ListEntry {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "flag",
                                     "deleted",
                                     "date",
@@ -576,12 +576,12 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "mode",
@@ -591,10 +591,10 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     "encounter",
                                     "date",
                                     "source",
-                                    "ordered_by",
+                                    "orderedBy",
                                     "note",
                                     "entry",
-                                    "empty_reason",
+                                    "emptyReason",
                                 ],
                             ))
                         }

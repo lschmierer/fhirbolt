@@ -122,7 +122,15 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "code", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "code",
+                                    "valueCodeableConcept",
+                                    "valueQuantity",
+                                    "valueRange",
+                                    "valueReference",
+                                ],
                             ))
                         }
                     }

@@ -188,7 +188,14 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "author", "time", "text"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "authorReference",
+                                    "authorString",
+                                    "time",
+                                    "text",
+                                ],
                             ))
                         }
                     }

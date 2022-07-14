@@ -106,7 +106,7 @@ impl<'de> serde::de::Deserialize<'de> for EpisodeOfCareStatusHistory {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "status", "period"],
+                                &["id", "extension", "modifierExtension", "status", "period"],
                             ))
                         }
                     }
@@ -246,7 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for EpisodeOfCareDiagnosis {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "condition",
                                     "role",
                                     "rank",
@@ -590,22 +590,22 @@ impl<'de> serde::de::Deserialize<'de> for EpisodeOfCare {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
-                                    "status_history",
+                                    "statusHistory",
                                     "type",
                                     "diagnosis",
                                     "patient",
-                                    "managing_organization",
+                                    "managingOrganization",
                                     "period",
-                                    "referral_request",
-                                    "care_manager",
+                                    "referralRequest",
+                                    "careManager",
                                     "team",
                                     "account",
                                 ],

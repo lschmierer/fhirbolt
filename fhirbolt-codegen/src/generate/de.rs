@@ -7,7 +7,11 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
     let struct_name = &r#struct.name;
     let stuct_name_ident = format_ident!("{}", struct_name);
 
-    let all_fields_names = r#struct.fields.iter().map(|f| &f.name);
+    let all_possible_fields_names = r#struct
+        .fields
+        .iter()
+        .map(|f| possible_fhir_names(f, enums))
+        .flatten();
 
     let field_mut_vars_tokens = r#struct.fields.iter().map(|f| field_mut_var(f));
     let field_struct_assign_vars_tokens =
@@ -47,7 +51,7 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
                                     map_access_key,
                                     &[
                                         #(
-                                            #all_fields_names,
+                                            #all_possible_fields_names,
                                         )*
                                     ]
                                 ))
@@ -106,6 +110,20 @@ fn field_struct_assign_var(field: &RustStructField) -> TokenStream {
         quote! {
             #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#field_name))?,
         }
+    }
+}
+
+fn possible_fhir_names(field: &RustStructField, enums: &[RustEnum]) -> Vec<String> {
+    if field.polymorph {
+        let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
+
+        r#enum
+            .variants
+            .iter()
+            .map(|v| format!("{}{}", field.fhir_name, v.name))
+            .collect()
+    } else {
+        vec![field.fhir_name.clone()]
     }
 }
 

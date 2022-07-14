@@ -163,7 +163,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConceptDesignati
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "language",
                                     "use",
                                     "value",
@@ -333,7 +333,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConcept {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "code",
                                     "display",
                                     "designation",
@@ -521,7 +521,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeFilter {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "property",
                                     "op",
                                     "value",
@@ -767,12 +767,12 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeInclude {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "system",
                                     "version",
                                     "concept",
                                     "filter",
-                                    "value_set",
+                                    "valueSet",
                                 ],
                             ))
                         }
@@ -951,8 +951,8 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetCompose {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "locked_date",
+                                    "modifierExtension",
+                                    "lockedDate",
                                     "inactive",
                                     "include",
                                     "exclude",
@@ -1385,7 +1385,19 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionParameter {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "name", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "name",
+                                    "valueString",
+                                    "valueBoolean",
+                                    "valueInteger",
+                                    "valueDecimal",
+                                    "valueUri",
+                                    "valueCode",
+                                    "valueDateTime",
+                                ],
                             ))
                         }
                     }
@@ -1692,7 +1704,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionContains {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "system",
                                     "abstract",
                                     "inactive",
@@ -1946,7 +1958,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansion {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "timestamp",
                                     "total",
@@ -2605,12 +2617,12 @@ impl<'de> serde::de::Deserialize<'de> for ValueSet {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "identifier",
                                     "version",
@@ -2622,7 +2634,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSet {
                                     "publisher",
                                     "contact",
                                     "description",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "immutable",
                                     "purpose",

@@ -164,7 +164,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportParticipant {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "uri",
                                     "display",
@@ -356,7 +356,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionOperation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "result",
                                     "message",
                                     "detail",
@@ -548,7 +548,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionAssert {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "result",
                                     "message",
                                     "detail",
@@ -662,7 +662,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "operation",
                                     "assert",
                                 ],
@@ -760,7 +760,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetup {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "action"],
+                                &["id", "extension", "modifierExtension", "action"],
                             ))
                         }
                     }
@@ -868,7 +868,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTestAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "operation",
                                     "assert",
                                 ],
@@ -1035,7 +1035,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTest {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "name",
                                     "description",
                                     "action",
@@ -1133,7 +1133,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardownAction {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "operation"],
+                                &["id", "extension", "modifierExtension", "operation"],
                             ))
                         }
                     }
@@ -1227,7 +1227,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardown {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "action"],
+                                &["id", "extension", "modifierExtension", "action"],
                             ))
                         }
                     }
@@ -1671,16 +1671,16 @@ impl<'de> serde::de::Deserialize<'de> for TestReport {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "name",
                                     "status",
-                                    "test_script",
+                                    "testScript",
                                     "result",
                                     "score",
                                     "tester",

@@ -197,8 +197,8 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioActor {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "actor_id",
+                                    "modifierExtension",
+                                    "actorId",
                                     "type",
                                     "name",
                                     "description",
@@ -356,8 +356,8 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceVersion {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "version_id",
+                                    "modifierExtension",
+                                    "versionId",
                                     "description",
                                 ],
                             ))
@@ -515,9 +515,9 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceContainedInstan
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "resource_id",
-                                    "version_id",
+                                    "modifierExtension",
+                                    "resourceId",
+                                    "versionId",
                                 ],
                             ))
                         }
@@ -758,13 +758,13 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstance {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "resource_id",
-                                    "resource_type",
+                                    "modifierExtension",
+                                    "resourceId",
+                                    "resourceType",
                                     "name",
                                     "description",
                                     "version",
-                                    "contained_instance",
+                                    "containedInstance",
                                 ],
                             ))
                         }
@@ -1145,15 +1145,15 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStepOperation {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "number",
                                     "type",
                                     "name",
                                     "initiator",
                                     "receiver",
                                     "description",
-                                    "initiator_active",
-                                    "receiver_active",
+                                    "initiatorActive",
+                                    "receiverActive",
                                     "request",
                                     "response",
                                 ],
@@ -1329,7 +1329,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStepAlternative 
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "title",
                                     "description",
                                     "step",
@@ -1487,7 +1487,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStep {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "process",
                                     "pause",
                                     "operation",
@@ -1722,11 +1722,11 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcess {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "title",
                                     "description",
-                                    "pre_conditions",
-                                    "post_conditions",
+                                    "preConditions",
+                                    "postConditions",
                                     "step",
                                 ],
                             ))
@@ -2357,12 +2357,12 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenario {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "url",
                                     "identifier",
                                     "version",
@@ -2372,7 +2372,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenario {
                                     "date",
                                     "publisher",
                                     "contact",
-                                    "use_context",
+                                    "useContext",
                                     "jurisdiction",
                                     "copyright",
                                     "purpose",

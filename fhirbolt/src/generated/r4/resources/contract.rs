@@ -310,12 +310,12 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "sub_type",
+                                    "subType",
                                     "publisher",
-                                    "publication_date",
-                                    "publication_status",
+                                    "publicationDate",
+                                    "publicationStatus",
                                     "copyright",
                                 ],
                             ))
@@ -506,7 +506,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "number",
                                     "classification",
                                     "category",
@@ -618,7 +618,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferParty {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "reference", "role"],
+                                &["id", "extension", "modifierExtension", "reference", "role"],
                             ))
                         }
                     }
@@ -1099,7 +1099,23 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "valueBoolean",
+                                    "valueDecimal",
+                                    "valueInteger",
+                                    "valueDate",
+                                    "valueDateTime",
+                                    "valueTime",
+                                    "valueString",
+                                    "valueUri",
+                                    "valueAttachment",
+                                    "valueCoding",
+                                    "valueQuantity",
+                                    "valueReference",
+                                ],
                             ))
                         }
                     }
@@ -1439,17 +1455,17 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "party",
                                     "topic",
                                     "type",
                                     "decision",
-                                    "decision_mode",
+                                    "decisionMode",
                                     "answer",
                                     "text",
-                                    "link_id",
-                                    "security_label_number",
+                                    "linkId",
+                                    "securityLabelNumber",
                                 ],
                             ))
                         }
@@ -1600,7 +1616,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetContext {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "reference",
                                     "code",
                                     "text",
@@ -2102,21 +2118,22 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "entity",
+                                    "modifierExtension",
+                                    "entityCodeableConcept",
+                                    "entityReference",
                                     "identifier",
-                                    "effective_time",
+                                    "effectiveTime",
                                     "quantity",
-                                    "unit_price",
+                                    "unitPrice",
                                     "factor",
                                     "points",
                                     "net",
                                     "payment",
-                                    "payment_date",
+                                    "paymentDate",
                                     "responsible",
                                     "recipient",
-                                    "link_id",
-                                    "security_label_number",
+                                    "linkId",
+                                    "securityLabelNumber",
                                 ],
                             ))
                         }
@@ -2547,22 +2564,22 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "scope",
                                     "type",
-                                    "type_reference",
+                                    "typeReference",
                                     "subtype",
                                     "relationship",
                                     "context",
                                     "condition",
-                                    "period_type",
+                                    "periodType",
                                     "period",
-                                    "use_period",
+                                    "usePeriod",
                                     "text",
-                                    "link_id",
+                                    "linkId",
                                     "answer",
-                                    "security_label_number",
-                                    "valued_item",
+                                    "securityLabelNumber",
+                                    "valuedItem",
                                 ],
                             ))
                         }
@@ -2682,7 +2699,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermActionSubject {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "reference", "role"],
+                                &["id", "extension", "modifierExtension", "reference", "role"],
                             ))
                         }
                     }
@@ -3489,28 +3506,30 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "do_not_perform",
+                                    "modifierExtension",
+                                    "doNotPerform",
                                     "type",
                                     "subject",
                                     "intent",
-                                    "link_id",
+                                    "linkId",
                                     "status",
                                     "context",
-                                    "context_link_id",
-                                    "occurrence",
+                                    "contextLinkId",
+                                    "occurrenceDateTime",
+                                    "occurrencePeriod",
+                                    "occurrenceTiming",
                                     "requester",
-                                    "requester_link_id",
-                                    "performer_type",
-                                    "performer_role",
+                                    "requesterLinkId",
+                                    "performerType",
+                                    "performerRole",
                                     "performer",
-                                    "performer_link_id",
-                                    "reason_code",
-                                    "reason_reference",
+                                    "performerLinkId",
+                                    "reasonCode",
+                                    "reasonReference",
                                     "reason",
-                                    "reason_link_id",
+                                    "reasonLinkId",
                                     "note",
-                                    "security_label_number",
+                                    "securityLabelNumber",
                                 ],
                             ))
                         }
@@ -3810,15 +3829,16 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "issued",
                                     "applies",
-                                    "topic",
+                                    "topicCodeableConcept",
+                                    "topicReference",
                                     "type",
-                                    "sub_type",
+                                    "subType",
                                     "text",
-                                    "security_label",
+                                    "securityLabel",
                                     "offer",
                                     "asset",
                                     "action",
@@ -3949,7 +3969,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractSigner {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "party",
                                     "signature",
@@ -4066,7 +4086,13 @@ impl<'de> serde::de::Deserialize<'de> for ContractFriendly {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "content"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "contentAttachment",
+                                    "contentReference",
+                                ],
                             ))
                         }
                     }
@@ -4176,7 +4202,13 @@ impl<'de> serde::de::Deserialize<'de> for ContractLegal {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "content"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "contentAttachment",
+                                    "contentReference",
+                                ],
                             ))
                         }
                     }
@@ -4286,7 +4318,13 @@ impl<'de> serde::de::Deserialize<'de> for ContractRule {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "content"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "contentAttachment",
+                                    "contentReference",
+                                ],
                             ))
                         }
                     }
@@ -5111,23 +5149,23 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "url",
                                     "version",
                                     "status",
-                                    "legal_state",
-                                    "instantiates_canonical",
-                                    "instantiates_uri",
-                                    "content_derivative",
+                                    "legalState",
+                                    "instantiatesCanonical",
+                                    "instantiatesUri",
+                                    "contentDerivative",
                                     "issued",
                                     "applies",
-                                    "expiration_type",
+                                    "expirationType",
                                     "subject",
                                     "authority",
                                     "domain",
@@ -5138,18 +5176,20 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     "alias",
                                     "author",
                                     "scope",
-                                    "topic",
+                                    "topicCodeableConcept",
+                                    "topicReference",
                                     "type",
-                                    "sub_type",
-                                    "content_definition",
+                                    "subType",
+                                    "contentDefinition",
                                     "term",
-                                    "supporting_info",
-                                    "relevant_history",
+                                    "supportingInfo",
+                                    "relevantHistory",
                                     "signer",
                                     "friendly",
                                     "legal",
                                     "rule",
-                                    "legally_binding",
+                                    "legallyBindingAttachment",
+                                    "legallyBindingReference",
                                 ],
                             ))
                         }

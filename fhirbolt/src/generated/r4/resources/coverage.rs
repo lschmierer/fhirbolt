@@ -153,7 +153,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageClass {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
                                     "value",
                                     "name",
@@ -265,7 +265,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiaryException {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "type", "period"],
+                                &["id", "extension", "modifierExtension", "type", "period"],
                             ))
                         }
                     }
@@ -403,9 +403,10 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiary {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "type",
-                                    "value",
+                                    "valueQuantity",
+                                    "valueMoney",
                                     "exception",
                                 ],
                             ))
@@ -910,18 +911,18 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "type",
-                                    "policy_holder",
+                                    "policyHolder",
                                     "subscriber",
-                                    "subscriber_id",
+                                    "subscriberId",
                                     "beneficiary",
                                     "dependent",
                                     "relationship",
@@ -930,7 +931,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     "class",
                                     "order",
                                     "network",
-                                    "cost_to_beneficiary",
+                                    "costToBeneficiary",
                                     "subrogation",
                                     "contract",
                                 ],

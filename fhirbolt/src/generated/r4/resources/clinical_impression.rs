@@ -100,7 +100,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionInvestigation {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "item"],
+                                &["id", "extension", "modifierExtension", "code", "item"],
                             ))
                         }
                     }
@@ -245,9 +245,9 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionFinding {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "item_codeable_concept",
-                                    "item_reference",
+                                    "modifierExtension",
+                                    "itemCodeableConcept",
+                                    "itemReference",
                                     "basis",
                                 ],
                             ))
@@ -862,20 +862,21 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
-                                    "status_reason",
+                                    "statusReason",
                                     "code",
                                     "description",
                                     "subject",
                                     "encounter",
-                                    "effective",
+                                    "effectiveDateTime",
+                                    "effectivePeriod",
                                     "date",
                                     "assessor",
                                     "previous",
@@ -884,9 +885,9 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     "protocol",
                                     "summary",
                                     "finding",
-                                    "prognosis_codeable_concept",
-                                    "prognosis_reference",
-                                    "supporting_info",
+                                    "prognosisCodeableConcept",
+                                    "prognosisReference",
+                                    "supportingInfo",
                                     "note",
                                 ],
                             ))

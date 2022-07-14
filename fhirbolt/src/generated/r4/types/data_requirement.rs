@@ -187,14 +187,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "path",
-                                    "search_param",
-                                    "value_set",
-                                    "code",
-                                ],
+                                &["id", "extension", "path", "searchParam", "valueSet", "code"],
                             ))
                         }
                     }
@@ -409,7 +402,15 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "path", "search_param", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "path",
+                                    "searchParam",
+                                    "valueDateTime",
+                                    "valuePeriod",
+                                    "valueDuration",
+                                ],
                             ))
                         }
                     }
@@ -882,10 +883,11 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                                     "extension",
                                     "type",
                                     "profile",
-                                    "subject",
-                                    "must_support",
-                                    "code_filter",
-                                    "date_filter",
+                                    "subjectCodeableConcept",
+                                    "subjectReference",
+                                    "mustSupport",
+                                    "codeFilter",
+                                    "dateFilter",
                                     "limit",
                                     "sort",
                                 ],

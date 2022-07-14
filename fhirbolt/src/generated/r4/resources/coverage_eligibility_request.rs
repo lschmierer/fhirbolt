@@ -167,10 +167,10 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "sequence",
                                     "information",
-                                    "applies_to_all",
+                                    "appliesToAll",
                                 ],
                             ))
                         }
@@ -342,10 +342,10 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "focal",
                                     "coverage",
-                                    "business_arrangement",
+                                    "businessArrangement",
                                 ],
                             ))
                         }
@@ -473,7 +473,13 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "diagnosis"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "diagnosisCodeableConcept",
+                                    "diagnosisReference",
+                                ],
                             ))
                         }
                     }
@@ -739,14 +745,14 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                                 &[
                                     "id",
                                     "extension",
-                                    "modifier_extension",
-                                    "supporting_info_sequence",
+                                    "modifierExtension",
+                                    "supportingInfoSequence",
                                     "category",
-                                    "product_or_service",
+                                    "productOrService",
                                     "modifier",
                                     "provider",
                                     "quantity",
-                                    "unit_price",
+                                    "unitPrice",
                                     "facility",
                                     "diagnosis",
                                     "detail",
@@ -1243,24 +1249,25 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "priority",
                                     "purpose",
                                     "patient",
-                                    "serviced",
+                                    "servicedDate",
+                                    "servicedPeriod",
                                     "created",
                                     "enterer",
                                     "provider",
                                     "insurer",
                                     "facility",
-                                    "supporting_info",
+                                    "supportingInfo",
                                     "insurance",
                                     "item",
                                 ],

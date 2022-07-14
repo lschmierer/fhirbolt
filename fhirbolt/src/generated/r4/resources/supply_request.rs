@@ -199,7 +199,16 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                         _ => {
                             return Err(serde::de::Error::unknown_field(
                                 map_access_key,
-                                &["id", "extension", "modifier_extension", "code", "value"],
+                                &[
+                                    "id",
+                                    "extension",
+                                    "modifierExtension",
+                                    "code",
+                                    "valueCodeableConcept",
+                                    "valueQuantity",
+                                    "valueRange",
+                                    "valueBoolean",
+                                ],
                             ))
                         }
                     }
@@ -698,27 +707,30 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                 &[
                                     "id",
                                     "meta",
-                                    "implicit_rules",
+                                    "implicitRules",
                                     "language",
                                     "text",
                                     "contained",
                                     "extension",
-                                    "modifier_extension",
+                                    "modifierExtension",
                                     "identifier",
                                     "status",
                                     "category",
                                     "priority",
-                                    "item",
+                                    "itemCodeableConcept",
+                                    "itemReference",
                                     "quantity",
                                     "parameter",
-                                    "occurrence",
-                                    "authored_on",
+                                    "occurrenceDateTime",
+                                    "occurrencePeriod",
+                                    "occurrenceTiming",
+                                    "authoredOn",
                                     "requester",
                                     "supplier",
-                                    "reason_code",
-                                    "reason_reference",
-                                    "deliver_from",
-                                    "deliver_to",
+                                    "reasonCode",
+                                    "reasonReference",
+                                    "deliverFrom",
+                                    "deliverTo",
                                 ],
                             ))
                         }
