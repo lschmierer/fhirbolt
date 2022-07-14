@@ -26,11 +26,12 @@ const PRIMITIVES: &[&str] = &[
     "xhtml",
 ];
 
-const SKIP: &[&str] = &["Resource", "DomainResource"];
+const ABSTRACT_RESOURCES: &[&str] = &["Resource", "DomainResource", "MetadataResource", "CanonicalResource"];
 
 #[derive(Default)]
 pub struct RustModule {
     pub name: String,
+    pub resource_name: Option<String>,
     pub structs: Vec<RustStruct>,
     pub enums: Vec<RustEnum>,
 }
@@ -70,16 +71,23 @@ pub struct RustFieldType {
 
 pub fn gather_all_modules<'a>(bundle: &Bundle) -> Vec<RustModule> {
     flatten_bundle(bundle)
-        .filter(|s| !SKIP.contains(&s.name.as_str()))
+        .filter(|s| s.kind != "logical")
+        .filter(|s| !ABSTRACT_RESOURCES.contains(&s.name.as_str()))
         .map(|s| {
+            let is_resource = s.kind == "resource";
             let mut module = RustModule {
                 name: s.name.to_rust_mod_casing(),
+                resource_name: if is_resource {
+                    Some(s.name.to_rust_type_casing())
+                } else {
+                    None
+                },
                 ..Default::default()
             };
             gather_struct(
                 &mut module,
                 &s.name,
-                s.kind == "resource",
+                is_resource,
                 &s.snapshot.element.iter().collect::<Vec<_>>(),
                 &s.r#type,
             );
