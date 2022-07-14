@@ -1,14 +1,15 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ObservationEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     Instant(Box<super::super::types::Instant>),
+    Invalid,
 }
 impl Default for ObservationEffective {
     fn default() -> ObservationEffective {
-        unimplemented!()
+        ObservationEffective::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -24,10 +25,11 @@ pub enum ObservationValue {
     Time(Box<super::super::types::Time>),
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ObservationValue {
     fn default() -> ObservationValue {
-        unimplemented!()
+        ObservationValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -43,10 +45,11 @@ pub enum ObservationComponentValue {
     Time(Box<super::super::types::Time>),
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ObservationComponentValue {
     fn default() -> ObservationComponentValue {
-        unimplemented!()
+        ObservationComponentValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -342,6 +345,9 @@ impl serde::ser::Serialize for ObservationComponent {
                 }
                 ObservationComponentValue::Period(ref value) => {
                     state.serialize_entry("valuePeriod", value)?;
+                }
+                ObservationComponentValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }
@@ -810,6 +816,9 @@ impl serde::ser::Serialize for Observation {
                         state.serialize_entry("_effectiveInstant", &primitive_element)?;
                     }
                 }
+                ObservationEffective::Invalid => {
+                    return Err(serde::ser::Error::custom("effective is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#issued.as_ref() {
@@ -906,6 +915,9 @@ impl serde::ser::Serialize for Observation {
                 }
                 ObservationValue::Period(ref value) => {
                     state.serialize_entry("valuePeriod", value)?;
+                }
+                ObservationValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }

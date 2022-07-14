@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
+    Invalid,
 }
 impl Default for NutritionOrderEnteralFormulaAdministrationRate {
     fn default() -> NutritionOrderEnteralFormulaAdministrationRate {
-        unimplemented!()
+        NutritionOrderEnteralFormulaAdministrationRate::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -662,6 +663,9 @@ impl serde::ser::Serialize for NutritionOrderEnteralFormulaAdministration {
                 }
                 NutritionOrderEnteralFormulaAdministrationRate::Ratio(ref value) => {
                     state.serialize_entry("rateRatio", value)?;
+                }
+                NutritionOrderEnteralFormulaAdministrationRate::Invalid => {
+                    return Err(serde::ser::Error::custom("rate is invalid"))
                 }
             }
         }

@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ContractTopic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractTopic {
     fn default() -> ContractTopic {
-        unimplemented!()
+        ContractTopic::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ContractTermTopic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractTermTopic {
     fn default() -> ContractTermTopic {
-        unimplemented!()
+        ContractTermTopic::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -33,20 +35,22 @@ pub enum ContractTermOfferAnswerValue {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractTermOfferAnswerValue {
     fn default() -> ContractTermOfferAnswerValue {
-        unimplemented!()
+        ContractTermOfferAnswerValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ContractTermAssetValuedItemEntity {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractTermAssetValuedItemEntity {
     fn default() -> ContractTermAssetValuedItemEntity {
-        unimplemented!()
+        ContractTermAssetValuedItemEntity::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -54,50 +58,55 @@ pub enum ContractTermActionOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for ContractTermActionOccurrence {
     fn default() -> ContractTermActionOccurrence {
-        unimplemented!()
+        ContractTermActionOccurrence::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ContractFriendlyContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractFriendlyContent {
     fn default() -> ContractFriendlyContent {
-        unimplemented!()
+        ContractFriendlyContent::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ContractLegalContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractLegalContent {
     fn default() -> ContractLegalContent {
-        unimplemented!()
+        ContractLegalContent::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ContractRuleContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractRuleContent {
     fn default() -> ContractRuleContent {
-        unimplemented!()
+        ContractRuleContent::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ContractLegallyBinding {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ContractLegallyBinding {
     fn default() -> ContractLegallyBinding {
-        unimplemented!()
+        ContractLegallyBinding::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -757,6 +766,9 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::Reference(ref value) => {
                 state.serialize_entry("valueReference", value)?;
+            }
+            ContractTermOfferAnswerValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()
@@ -1653,6 +1665,9 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
                 }
                 ContractTermAssetValuedItemEntity::Reference(ref value) => {
                     state.serialize_entry("entityReference", value)?;
+                }
+                ContractTermAssetValuedItemEntity::Invalid => {
+                    return Err(serde::ser::Error::custom("entity is invalid"))
                 }
             }
         }
@@ -2822,6 +2837,9 @@ impl serde::ser::Serialize for ContractTermAction {
                 ContractTermActionOccurrence::Timing(ref value) => {
                     state.serialize_entry("occurrenceTiming", value)?;
                 }
+                ContractTermActionOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
+                }
             }
         }
         if !self.r#requester.is_empty() {
@@ -3589,6 +3607,9 @@ impl serde::ser::Serialize for ContractTerm {
                 ContractTermTopic::Reference(ref value) => {
                     state.serialize_entry("topicReference", value)?;
                 }
+                ContractTermTopic::Invalid => {
+                    return Err(serde::ser::Error::custom("topic is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#type.as_ref() {
@@ -3980,6 +4001,9 @@ impl serde::ser::Serialize for ContractFriendly {
             ContractFriendlyContent::Reference(ref value) => {
                 state.serialize_entry("contentReference", value)?;
             }
+            ContractFriendlyContent::Invalid => {
+                return Err(serde::ser::Error::custom("content is a required field"))
+            }
         }
         state.end()
     }
@@ -4088,6 +4112,9 @@ impl serde::ser::Serialize for ContractLegal {
             ContractLegalContent::Reference(ref value) => {
                 state.serialize_entry("contentReference", value)?;
             }
+            ContractLegalContent::Invalid => {
+                return Err(serde::ser::Error::custom("content is a required field"))
+            }
         }
         state.end()
     }
@@ -4194,6 +4221,9 @@ impl serde::ser::Serialize for ContractRule {
             }
             ContractRuleContent::Reference(ref value) => {
                 state.serialize_entry("contentReference", value)?;
+            }
+            ContractRuleContent::Invalid => {
+                return Err(serde::ser::Error::custom("content is a required field"))
             }
         }
         state.end()
@@ -4533,6 +4563,9 @@ impl serde::ser::Serialize for Contract {
                 ContractTopic::Reference(ref value) => {
                     state.serialize_entry("topicReference", value)?;
                 }
+                ContractTopic::Invalid => {
+                    return Err(serde::ser::Error::custom("topic is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#type.as_ref() {
@@ -4572,6 +4605,9 @@ impl serde::ser::Serialize for Contract {
                 }
                 ContractLegallyBinding::Reference(ref value) => {
                     state.serialize_entry("legallyBindingReference", value)?;
+                }
+                ContractLegallyBinding::Invalid => {
+                    return Err(serde::ser::Error::custom("legally_binding is invalid"))
                 }
             }
         }

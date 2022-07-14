@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum InvoiceLineItemChargeItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for InvoiceLineItemChargeItem {
     fn default() -> InvoiceLineItemChargeItem {
-        unimplemented!()
+        InvoiceLineItemChargeItem::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -339,6 +340,9 @@ impl serde::ser::Serialize for InvoiceLineItem {
             }
             InvoiceLineItemChargeItem::CodeableConcept(ref value) => {
                 state.serialize_entry("chargeItemCodeableConcept", value)?;
+            }
+            InvoiceLineItemChargeItem::Invalid => {
+                return Err(serde::ser::Error::custom("charge_item is a required field"))
             }
         }
         if !self.r#price_component.is_empty() {

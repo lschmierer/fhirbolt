@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum QuestionnaireItemEnableWhenAnswer {
     Boolean(Box<super::super::types::Boolean>),
@@ -11,10 +11,11 @@ pub enum QuestionnaireItemEnableWhenAnswer {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for QuestionnaireItemEnableWhenAnswer {
     fn default() -> QuestionnaireItemEnableWhenAnswer {
-        unimplemented!()
+        QuestionnaireItemEnableWhenAnswer::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -25,10 +26,11 @@ pub enum QuestionnaireItemAnswerOptionValue {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for QuestionnaireItemAnswerOptionValue {
     fn default() -> QuestionnaireItemAnswerOptionValue {
-        unimplemented!()
+        QuestionnaireItemAnswerOptionValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -45,10 +47,11 @@ pub enum QuestionnaireItemInitialValue {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for QuestionnaireItemInitialValue {
     fn default() -> QuestionnaireItemInitialValue {
-        unimplemented!()
+        QuestionnaireItemInitialValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -189,6 +192,9 @@ impl serde::ser::Serialize for QuestionnaireItemEnableWhen {
             }
             QuestionnaireItemEnableWhenAnswer::Reference(ref value) => {
                 state.serialize_entry("answerReference", value)?;
+            }
+            QuestionnaireItemEnableWhenAnswer::Invalid => {
+                return Err(serde::ser::Error::custom("answer is a required field"))
             }
         }
         state.end()
@@ -635,6 +641,9 @@ impl serde::ser::Serialize for QuestionnaireItemAnswerOption {
             QuestionnaireItemAnswerOptionValue::Reference(ref value) => {
                 state.serialize_entry("valueReference", value)?;
             }
+            QuestionnaireItemAnswerOptionValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
+            }
         }
         if let Some(some) = self.r#initial_selected.as_ref() {
             if let Some(some) = some.value.as_ref() {
@@ -1011,6 +1020,9 @@ impl serde::ser::Serialize for QuestionnaireItemInitial {
             }
             QuestionnaireItemInitialValue::Reference(ref value) => {
                 state.serialize_entry("valueReference", value)?;
+            }
+            QuestionnaireItemInitialValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()

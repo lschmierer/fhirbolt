@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MediaCreated {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for MediaCreated {
     fn default() -> MediaCreated {
-        unimplemented!()
+        MediaCreated::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -142,6 +143,9 @@ impl serde::ser::Serialize for Media {
                 }
                 MediaCreated::Period(ref value) => {
                     state.serialize_entry("createdPeriod", value)?;
+                }
+                MediaCreated::Invalid => {
+                    return Err(serde::ser::Error::custom("created is invalid"))
                 }
             }
         }

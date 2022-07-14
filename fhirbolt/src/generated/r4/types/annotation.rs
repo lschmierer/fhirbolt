@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AnnotationAuthor {
     Reference(Box<super::super::types::Reference>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for AnnotationAuthor {
     fn default() -> AnnotationAuthor {
-        unimplemented!()
+        AnnotationAuthor::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -46,6 +47,9 @@ impl serde::ser::Serialize for Annotation {
                         };
                         state.serialize_entry("_authorString", &primitive_element)?;
                     }
+                }
+                AnnotationAuthor::Invalid => {
+                    return Err(serde::ser::Error::custom("author is invalid"))
                 }
             }
         }

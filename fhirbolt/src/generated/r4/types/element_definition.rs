@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ElementDefinitionDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -51,10 +51,11 @@ pub enum ElementDefinitionDefaultValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for ElementDefinitionDefaultValue {
     fn default() -> ElementDefinitionDefaultValue {
-        unimplemented!()
+        ElementDefinitionDefaultValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -109,10 +110,11 @@ pub enum ElementDefinitionFixed {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for ElementDefinitionFixed {
     fn default() -> ElementDefinitionFixed {
-        unimplemented!()
+        ElementDefinitionFixed::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -167,10 +169,11 @@ pub enum ElementDefinitionPattern {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for ElementDefinitionPattern {
     fn default() -> ElementDefinitionPattern {
-        unimplemented!()
+        ElementDefinitionPattern::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -225,10 +228,11 @@ pub enum ElementDefinitionExampleValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for ElementDefinitionExampleValue {
     fn default() -> ElementDefinitionExampleValue {
-        unimplemented!()
+        ElementDefinitionExampleValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -242,10 +246,11 @@ pub enum ElementDefinitionMinValue {
     PositiveInt(Box<super::super::types::PositiveInt>),
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     Quantity(Box<super::super::types::Quantity>),
+    Invalid,
 }
 impl Default for ElementDefinitionMinValue {
     fn default() -> ElementDefinitionMinValue {
-        unimplemented!()
+        ElementDefinitionMinValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -259,10 +264,11 @@ pub enum ElementDefinitionMaxValue {
     PositiveInt(Box<super::super::types::PositiveInt>),
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     Quantity(Box<super::super::types::Quantity>),
+    Invalid,
 }
 impl Default for ElementDefinitionMaxValue {
     fn default() -> ElementDefinitionMaxValue {
-        unimplemented!()
+        ElementDefinitionMaxValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -1452,6 +1458,9 @@ impl serde::ser::Serialize for ElementDefinitionExample {
             }
             ElementDefinitionExampleValue::Meta(ref value) => {
                 state.serialize_entry("valueMeta", value)?;
+            }
+            ElementDefinitionExampleValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()
@@ -3655,6 +3664,9 @@ impl serde::ser::Serialize for ElementDefinition {
                 ElementDefinitionDefaultValue::Meta(ref value) => {
                     state.serialize_entry("defaultValueMeta", value)?;
                 }
+                ElementDefinitionDefaultValue::Invalid => {
+                    return Err(serde::ser::Error::custom("default_value is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#meaning_when_missing.as_ref() {
@@ -4004,6 +4016,9 @@ impl serde::ser::Serialize for ElementDefinition {
                 ElementDefinitionFixed::Meta(ref value) => {
                     state.serialize_entry("fixedMeta", value)?;
                 }
+                ElementDefinitionFixed::Invalid => {
+                    return Err(serde::ser::Error::custom("fixed is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#pattern.as_ref() {
@@ -4329,6 +4344,9 @@ impl serde::ser::Serialize for ElementDefinition {
                 ElementDefinitionPattern::Meta(ref value) => {
                     state.serialize_entry("patternMeta", value)?;
                 }
+                ElementDefinitionPattern::Invalid => {
+                    return Err(serde::ser::Error::custom("pattern is invalid"))
+                }
             }
         }
         if !self.r#example.is_empty() {
@@ -4435,6 +4453,9 @@ impl serde::ser::Serialize for ElementDefinition {
                 ElementDefinitionMinValue::Quantity(ref value) => {
                     state.serialize_entry("minValueQuantity", value)?;
                 }
+                ElementDefinitionMinValue::Invalid => {
+                    return Err(serde::ser::Error::custom("min_value is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#max_value.as_ref() {
@@ -4537,6 +4558,9 @@ impl serde::ser::Serialize for ElementDefinition {
                 }
                 ElementDefinitionMaxValue::Quantity(ref value) => {
                     state.serialize_entry("maxValueQuantity", value)?;
+                }
+                ElementDefinitionMaxValue::Invalid => {
+                    return Err(serde::ser::Error::custom("max_value is invalid"))
                 }
             }
         }

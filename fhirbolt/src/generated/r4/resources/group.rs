@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum GroupCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -6,10 +6,11 @@ pub enum GroupCharacteristicValue {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for GroupCharacteristicValue {
     fn default() -> GroupCharacteristicValue {
-        unimplemented!()
+        GroupCharacteristicValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -63,6 +64,9 @@ impl serde::ser::Serialize for GroupCharacteristic {
             }
             GroupCharacteristicValue::Reference(ref value) => {
                 state.serialize_entry("valueReference", value)?;
+            }
+            GroupCharacteristicValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         if let Some(some) = self.r#exclude.value.as_ref() {

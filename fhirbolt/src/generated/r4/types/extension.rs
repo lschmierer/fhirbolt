@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -51,10 +51,11 @@ pub enum ExtensionValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for ExtensionValue {
     fn default() -> ExtensionValue {
-        unimplemented!()
+        ExtensionValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -400,6 +401,9 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Meta(ref value) => {
                     state.serialize_entry("valueMeta", value)?;
+                }
+                ExtensionValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }

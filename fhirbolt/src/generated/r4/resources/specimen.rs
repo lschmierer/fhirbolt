@@ -1,42 +1,46 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SpecimenCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for SpecimenCollectionCollected {
     fn default() -> SpecimenCollectionCollected {
-        unimplemented!()
+        SpecimenCollectionCollected::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SpecimenCollectionFastingStatus {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Duration(Box<super::super::types::Duration>),
+    Invalid,
 }
 impl Default for SpecimenCollectionFastingStatus {
     fn default() -> SpecimenCollectionFastingStatus {
-        unimplemented!()
+        SpecimenCollectionFastingStatus::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SpecimenProcessingTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for SpecimenProcessingTime {
     fn default() -> SpecimenProcessingTime {
-        unimplemented!()
+        SpecimenProcessingTime::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SpecimenContainerAdditive {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for SpecimenContainerAdditive {
     fn default() -> SpecimenContainerAdditive {
-        unimplemented!()
+        SpecimenContainerAdditive::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -88,6 +92,9 @@ impl serde::ser::Serialize for SpecimenCollection {
                 SpecimenCollectionCollected::Period(ref value) => {
                     state.serialize_entry("collectedPeriod", value)?;
                 }
+                SpecimenCollectionCollected::Invalid => {
+                    return Err(serde::ser::Error::custom("collected is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#duration.as_ref() {
@@ -109,6 +116,9 @@ impl serde::ser::Serialize for SpecimenCollection {
                 }
                 SpecimenCollectionFastingStatus::Duration(ref value) => {
                     state.serialize_entry("fastingStatusDuration", value)?;
+                }
+                SpecimenCollectionFastingStatus::Invalid => {
+                    return Err(serde::ser::Error::custom("fasting_status is invalid"))
                 }
             }
         }
@@ -352,6 +362,9 @@ impl serde::ser::Serialize for SpecimenProcessing {
                 SpecimenProcessingTime::Period(ref value) => {
                     state.serialize_entry("timePeriod", value)?;
                 }
+                SpecimenProcessingTime::Invalid => {
+                    return Err(serde::ser::Error::custom("time is invalid"))
+                }
             }
         }
         state.end()
@@ -557,6 +570,9 @@ impl serde::ser::Serialize for SpecimenContainer {
                 }
                 SpecimenContainerAdditive::Reference(ref value) => {
                     state.serialize_entry("additiveReference", value)?;
+                }
+                SpecimenContainerAdditive::Invalid => {
+                    return Err(serde::ser::Error::custom("additive is invalid"))
                 }
             }
         }

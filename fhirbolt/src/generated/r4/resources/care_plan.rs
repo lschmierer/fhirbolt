@@ -1,23 +1,25 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CarePlanActivityDetailScheduled {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for CarePlanActivityDetailScheduled {
     fn default() -> CarePlanActivityDetailScheduled {
-        unimplemented!()
+        CarePlanActivityDetailScheduled::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum CarePlanActivityDetailProduct {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for CarePlanActivityDetailProduct {
     fn default() -> CarePlanActivityDetailProduct {
-        unimplemented!()
+        CarePlanActivityDetailProduct::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -186,6 +188,9 @@ impl serde::ser::Serialize for CarePlanActivityDetail {
                         state.serialize_entry("_scheduledString", &primitive_element)?;
                     }
                 }
+                CarePlanActivityDetailScheduled::Invalid => {
+                    return Err(serde::ser::Error::custom("scheduled is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#location.as_ref() {
@@ -201,6 +206,9 @@ impl serde::ser::Serialize for CarePlanActivityDetail {
                 }
                 CarePlanActivityDetailProduct::Reference(ref value) => {
                     state.serialize_entry("productReference", value)?;
+                }
+                CarePlanActivityDetailProduct::Invalid => {
+                    return Err(serde::ser::Error::custom("product is invalid"))
                 }
             }
         }

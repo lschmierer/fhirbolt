@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum PlanDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for PlanDefinitionSubject {
     fn default() -> PlanDefinitionSubject {
-        unimplemented!()
+        PlanDefinitionSubject::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -14,30 +15,33 @@ pub enum PlanDefinitionGoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for PlanDefinitionGoalTargetDetail {
     fn default() -> PlanDefinitionGoalTargetDetail {
-        unimplemented!()
+        PlanDefinitionGoalTargetDetail::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum PlanDefinitionActionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for PlanDefinitionActionSubject {
     fn default() -> PlanDefinitionActionSubject {
-        unimplemented!()
+        PlanDefinitionActionSubject::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum PlanDefinitionActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
+    Invalid,
 }
 impl Default for PlanDefinitionActionRelatedActionOffset {
     fn default() -> PlanDefinitionActionRelatedActionOffset {
-        unimplemented!()
+        PlanDefinitionActionRelatedActionOffset::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -48,20 +52,22 @@ pub enum PlanDefinitionActionTiming {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for PlanDefinitionActionTiming {
     fn default() -> PlanDefinitionActionTiming {
-        unimplemented!()
+        PlanDefinitionActionTiming::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum PlanDefinitionActionDefinition {
     Canonical(Box<super::super::types::Canonical>),
     Uri(Box<super::super::types::Uri>),
+    Invalid,
 }
 impl Default for PlanDefinitionActionDefinition {
     fn default() -> PlanDefinitionActionDefinition {
-        unimplemented!()
+        PlanDefinitionActionDefinition::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -102,6 +108,9 @@ impl serde::ser::Serialize for PlanDefinitionGoalTarget {
                 }
                 PlanDefinitionGoalTargetDetail::CodeableConcept(ref value) => {
                     state.serialize_entry("detailCodeableConcept", value)?;
+                }
+                PlanDefinitionGoalTargetDetail::Invalid => {
+                    return Err(serde::ser::Error::custom("detail is invalid"))
                 }
             }
         }
@@ -583,6 +592,9 @@ impl serde::ser::Serialize for PlanDefinitionActionRelatedAction {
                 }
                 PlanDefinitionActionRelatedActionOffset::Range(ref value) => {
                     state.serialize_entry("offsetRange", value)?;
+                }
+                PlanDefinitionActionRelatedActionOffset::Invalid => {
+                    return Err(serde::ser::Error::custom("offset is invalid"))
                 }
             }
         }
@@ -1136,6 +1148,9 @@ impl serde::ser::Serialize for PlanDefinitionAction {
                 PlanDefinitionActionSubject::Reference(ref value) => {
                     state.serialize_entry("subjectReference", value)?;
                 }
+                PlanDefinitionActionSubject::Invalid => {
+                    return Err(serde::ser::Error::custom("subject is invalid"))
+                }
             }
         }
         if !self.r#trigger.is_empty() {
@@ -1181,6 +1196,9 @@ impl serde::ser::Serialize for PlanDefinitionAction {
                 }
                 PlanDefinitionActionTiming::Timing(ref value) => {
                     state.serialize_entry("timingTiming", value)?;
+                }
+                PlanDefinitionActionTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
                 }
             }
         }
@@ -1275,6 +1293,9 @@ impl serde::ser::Serialize for PlanDefinitionAction {
                         };
                         state.serialize_entry("_definitionUri", &primitive_element)?;
                     }
+                }
+                PlanDefinitionActionDefinition::Invalid => {
+                    return Err(serde::ser::Error::custom("definition is invalid"))
                 }
             }
         }
@@ -2110,6 +2131,9 @@ impl serde::ser::Serialize for PlanDefinition {
                 }
                 PlanDefinitionSubject::Reference(ref value) => {
                     state.serialize_entry("subjectReference", value)?;
+                }
+                PlanDefinitionSubject::Invalid => {
+                    return Err(serde::ser::Error::custom("subject is invalid"))
                 }
             }
         }

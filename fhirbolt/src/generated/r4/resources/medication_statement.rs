@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationStatementMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationStatementMedication {
     fn default() -> MedicationStatementMedication {
-        unimplemented!()
+        MedicationStatementMedication::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationStatementEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for MedicationStatementEffective {
     fn default() -> MedicationStatementEffective {
-        unimplemented!()
+        MedicationStatementEffective::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -129,6 +131,9 @@ impl serde::ser::Serialize for MedicationStatement {
             MedicationStatementMedication::Reference(ref value) => {
                 state.serialize_entry("medicationReference", value)?;
             }
+            MedicationStatementMedication::Invalid => {
+                return Err(serde::ser::Error::custom("medication is a required field"))
+            }
         }
         state.serialize_entry("subject", &self.r#subject)?;
         if let Some(some) = self.r#context.as_ref() {
@@ -150,6 +155,9 @@ impl serde::ser::Serialize for MedicationStatement {
                 }
                 MedicationStatementEffective::Period(ref value) => {
                     state.serialize_entry("effectivePeriod", value)?;
+                }
+                MedicationStatementEffective::Invalid => {
+                    return Err(serde::ser::Error::custom("effective is invalid"))
                 }
             }
         }

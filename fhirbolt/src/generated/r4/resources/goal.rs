@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum GoalStart {
     Date(Box<super::super::types::Date>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for GoalStart {
     fn default() -> GoalStart {
-        unimplemented!()
+        GoalStart::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -18,20 +19,22 @@ pub enum GoalTargetDetail {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
     Ratio(Box<super::super::types::Ratio>),
+    Invalid,
 }
 impl Default for GoalTargetDetail {
     fn default() -> GoalTargetDetail {
-        unimplemented!()
+        GoalTargetDetail::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum GoalTargetDue {
     Date(Box<super::super::types::Date>),
     Duration(Box<super::super::types::Duration>),
+    Invalid,
 }
 impl Default for GoalTargetDue {
     fn default() -> GoalTargetDue {
-        unimplemented!()
+        GoalTargetDue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -112,6 +115,9 @@ impl serde::ser::Serialize for GoalTarget {
                 GoalTargetDetail::Ratio(ref value) => {
                     state.serialize_entry("detailRatio", value)?;
                 }
+                GoalTargetDetail::Invalid => {
+                    return Err(serde::ser::Error::custom("detail is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#due.as_ref() {
@@ -131,6 +137,7 @@ impl serde::ser::Serialize for GoalTarget {
                 GoalTargetDue::Duration(ref value) => {
                     state.serialize_entry("dueDuration", value)?;
                 }
+                GoalTargetDue::Invalid => return Err(serde::ser::Error::custom("due is invalid")),
             }
         }
         state.end()
@@ -483,6 +490,7 @@ impl serde::ser::Serialize for Goal {
                 GoalStart::CodeableConcept(ref value) => {
                     state.serialize_entry("startCodeableConcept", value)?;
                 }
+                GoalStart::Invalid => return Err(serde::ser::Error::custom("start is invalid")),
             }
         }
         if !self.r#target.is_empty() {

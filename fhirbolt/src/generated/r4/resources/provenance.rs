@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ProvenanceOccurred {
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    Invalid,
 }
 impl Default for ProvenanceOccurred {
     fn default() -> ProvenanceOccurred {
-        unimplemented!()
+        ProvenanceOccurred::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -378,6 +379,9 @@ impl serde::ser::Serialize for Provenance {
                         };
                         state.serialize_entry("_occurredDateTime", &primitive_element)?;
                     }
+                }
+                ProvenanceOccurred::Invalid => {
+                    return Err(serde::ser::Error::custom("occurred is invalid"))
                 }
             }
         }

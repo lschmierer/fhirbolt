@@ -1,32 +1,35 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationAdministrationMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationAdministrationMedication {
     fn default() -> MedicationAdministrationMedication {
-        unimplemented!()
+        MedicationAdministrationMedication::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationAdministrationEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for MedicationAdministrationEffective {
     fn default() -> MedicationAdministrationEffective {
-        unimplemented!()
+        MedicationAdministrationEffective::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationAdministrationDosageRate {
     Ratio(Box<super::super::types::Ratio>),
     Quantity(Box<super::super::types::Quantity>),
+    Invalid,
 }
 impl Default for MedicationAdministrationDosageRate {
     fn default() -> MedicationAdministrationDosageRate {
-        unimplemented!()
+        MedicationAdministrationDosageRate::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -195,6 +198,9 @@ impl serde::ser::Serialize for MedicationAdministrationDosage {
                 }
                 MedicationAdministrationDosageRate::Quantity(ref value) => {
                     state.serialize_entry("rateQuantity", value)?;
+                }
+                MedicationAdministrationDosageRate::Invalid => {
+                    return Err(serde::ser::Error::custom("rate is invalid"))
                 }
             }
         }
@@ -478,6 +484,9 @@ impl serde::ser::Serialize for MedicationAdministration {
             MedicationAdministrationMedication::Reference(ref value) => {
                 state.serialize_entry("medicationReference", value)?;
             }
+            MedicationAdministrationMedication::Invalid => {
+                return Err(serde::ser::Error::custom("medication is a required field"))
+            }
         }
         state.serialize_entry("subject", &self.r#subject)?;
         if let Some(some) = self.r#context.as_ref() {
@@ -501,6 +510,9 @@ impl serde::ser::Serialize for MedicationAdministration {
             }
             MedicationAdministrationEffective::Period(ref value) => {
                 state.serialize_entry("effectivePeriod", value)?;
+            }
+            MedicationAdministrationEffective::Invalid => {
+                return Err(serde::ser::Error::custom("effective is a required field"))
             }
         }
         if !self.r#performer.is_empty() {

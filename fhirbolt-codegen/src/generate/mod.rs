@@ -24,18 +24,14 @@ pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
     SourceFile {
         name: "resource".into(),
         source: quote! {
-            #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+            #[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
             #[serde(tag = "resourceType")]
             pub enum Resource {
                 #(
                     #variants_tokens
                 )*
-            }
-
-            impl Default for Resource {
-                fn default() -> Resource {
-                    unimplemented!()
-                }
+                #[default]
+                Invalid,
             }
         },
     }
@@ -159,11 +155,12 @@ fn generate_enum(r#enum: &RustEnum) -> TokenStream {
             #(
                 #variants_tokens
             )*
+            Invalid,
         }
 
         impl Default for #name_ident {
             fn default() -> #name_ident {
-                unimplemented!()
+                #name_ident::Invalid
             }
         }
     }

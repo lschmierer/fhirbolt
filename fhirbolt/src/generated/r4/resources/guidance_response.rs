@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum GuidanceResponseModule {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for GuidanceResponseModule {
     fn default() -> GuidanceResponseModule {
-        unimplemented!()
+        GuidanceResponseModule::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -119,6 +120,9 @@ impl serde::ser::Serialize for GuidanceResponse {
             }
             GuidanceResponseModule::CodeableConcept(ref value) => {
                 state.serialize_entry("moduleCodeableConcept", value)?;
+            }
+            GuidanceResponseModule::Invalid => {
+                return Err(serde::ser::Error::custom("module is a required field"))
             }
         }
         if let Some(some) = self.r#status.value.as_ref() {

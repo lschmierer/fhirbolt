@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CoverageCostToBeneficiaryValue {
     Quantity(Box<super::super::types::Quantity>),
     Money(Box<super::super::types::Money>),
+    Invalid,
 }
 impl Default for CoverageCostToBeneficiaryValue {
     fn default() -> CoverageCostToBeneficiaryValue {
-        unimplemented!()
+        CoverageCostToBeneficiaryValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -315,6 +316,9 @@ impl serde::ser::Serialize for CoverageCostToBeneficiary {
             }
             CoverageCostToBeneficiaryValue::Money(ref value) => {
                 state.serialize_entry("valueMoney", value)?;
+            }
+            CoverageCostToBeneficiaryValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         if !self.r#exception.is_empty() {

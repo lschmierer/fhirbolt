@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityResponseServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for CoverageEligibilityResponseServiced {
     fn default() -> CoverageEligibilityResponseServiced {
-        unimplemented!()
+        CoverageEligibilityResponseServiced::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -14,10 +15,11 @@ pub enum CoverageEligibilityResponseInsuranceItemBenefitAllowed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
     Money(Box<super::super::types::Money>),
+    Invalid,
 }
 impl Default for CoverageEligibilityResponseInsuranceItemBenefitAllowed {
     fn default() -> CoverageEligibilityResponseInsuranceItemBenefitAllowed {
-        unimplemented!()
+        CoverageEligibilityResponseInsuranceItemBenefitAllowed::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -25,10 +27,11 @@ pub enum CoverageEligibilityResponseInsuranceItemBenefitUsed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
     Money(Box<super::super::types::Money>),
+    Invalid,
 }
 impl Default for CoverageEligibilityResponseInsuranceItemBenefitUsed {
     fn default() -> CoverageEligibilityResponseInsuranceItemBenefitUsed {
-        unimplemented!()
+        CoverageEligibilityResponseInsuranceItemBenefitUsed::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -86,6 +89,9 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
                 CoverageEligibilityResponseInsuranceItemBenefitAllowed::Money(ref value) => {
                     state.serialize_entry("allowedMoney", value)?;
                 }
+                CoverageEligibilityResponseInsuranceItemBenefitAllowed::Invalid => {
+                    return Err(serde::ser::Error::custom("allowed is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#used.as_ref() {
@@ -116,6 +122,9 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
                 }
                 CoverageEligibilityResponseInsuranceItemBenefitUsed::Money(ref value) => {
                     state.serialize_entry("usedMoney", value)?;
+                }
+                CoverageEligibilityResponseInsuranceItemBenefitUsed::Invalid => {
+                    return Err(serde::ser::Error::custom("used is invalid"))
                 }
             }
         }
@@ -1117,6 +1126,9 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
                 }
                 CoverageEligibilityResponseServiced::Period(ref value) => {
                     state.serialize_entry("servicedPeriod", value)?;
+                }
+                CoverageEligibilityResponseServiced::Invalid => {
+                    return Err(serde::ser::Error::custom("serviced is invalid"))
                 }
             }
         }

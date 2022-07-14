@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ConditionOnset {
     DateTime(Box<super::super::types::DateTime>),
@@ -6,10 +6,11 @@ pub enum ConditionOnset {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ConditionOnset {
     fn default() -> ConditionOnset {
-        unimplemented!()
+        ConditionOnset::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -19,10 +20,11 @@ pub enum ConditionAbatement {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ConditionAbatement {
     fn default() -> ConditionAbatement {
-        unimplemented!()
+        ConditionAbatement::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -394,6 +396,9 @@ impl serde::ser::Serialize for Condition {
                         state.serialize_entry("_onsetString", &primitive_element)?;
                     }
                 }
+                ConditionOnset::Invalid => {
+                    return Err(serde::ser::Error::custom("onset is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#abatement.as_ref() {
@@ -430,6 +435,9 @@ impl serde::ser::Serialize for Condition {
                         };
                         state.serialize_entry("_abatementString", &primitive_element)?;
                     }
+                }
+                ConditionAbatement::Invalid => {
+                    return Err(serde::ser::Error::custom("abatement is invalid"))
                 }
             }
         }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ValueSetExpansionParameterValue {
     String(Box<super::super::types::String>),
@@ -8,10 +8,11 @@ pub enum ValueSetExpansionParameterValue {
     Uri(Box<super::super::types::Uri>),
     Code(Box<super::super::types::Code>),
     DateTime(Box<super::super::types::DateTime>),
+    Invalid,
 }
 impl Default for ValueSetExpansionParameterValue {
     fn default() -> ValueSetExpansionParameterValue {
-        unimplemented!()
+        ValueSetExpansionParameterValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -1093,6 +1094,9 @@ impl serde::ser::Serialize for ValueSetExpansionParameter {
                         };
                         state.serialize_entry("_valueDateTime", &primitive_element)?;
                     }
+                }
+                ValueSetExpansionParameterValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }

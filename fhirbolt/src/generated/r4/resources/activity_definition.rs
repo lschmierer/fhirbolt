@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ActivityDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ActivityDefinitionSubject {
     fn default() -> ActivityDefinitionSubject {
-        unimplemented!()
+        ActivityDefinitionSubject::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -17,20 +18,22 @@ pub enum ActivityDefinitionTiming {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     Duration(Box<super::super::types::Duration>),
+    Invalid,
 }
 impl Default for ActivityDefinitionTiming {
     fn default() -> ActivityDefinitionTiming {
-        unimplemented!()
+        ActivityDefinitionTiming::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ActivityDefinitionProduct {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for ActivityDefinitionProduct {
     fn default() -> ActivityDefinitionProduct {
-        unimplemented!()
+        ActivityDefinitionProduct::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -496,6 +499,9 @@ impl serde::ser::Serialize for ActivityDefinition {
                 ActivityDefinitionSubject::Reference(ref value) => {
                     state.serialize_entry("subjectReference", value)?;
                 }
+                ActivityDefinitionSubject::Invalid => {
+                    return Err(serde::ser::Error::custom("subject is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#date.as_ref() {
@@ -743,6 +749,9 @@ impl serde::ser::Serialize for ActivityDefinition {
                 ActivityDefinitionTiming::Duration(ref value) => {
                     state.serialize_entry("timingDuration", value)?;
                 }
+                ActivityDefinitionTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#location.as_ref() {
@@ -758,6 +767,9 @@ impl serde::ser::Serialize for ActivityDefinition {
                 }
                 ActivityDefinitionProduct::CodeableConcept(ref value) => {
                     state.serialize_entry("productCodeableConcept", value)?;
+                }
+                ActivityDefinitionProduct::Invalid => {
+                    return Err(serde::ser::Error::custom("product is invalid"))
                 }
             }
         }

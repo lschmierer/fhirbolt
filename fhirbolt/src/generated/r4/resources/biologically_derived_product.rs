@@ -1,32 +1,35 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum BiologicallyDerivedProductCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for BiologicallyDerivedProductCollectionCollected {
     fn default() -> BiologicallyDerivedProductCollectionCollected {
-        unimplemented!()
+        BiologicallyDerivedProductCollectionCollected::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum BiologicallyDerivedProductProcessingTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for BiologicallyDerivedProductProcessingTime {
     fn default() -> BiologicallyDerivedProductProcessingTime {
-        unimplemented!()
+        BiologicallyDerivedProductProcessingTime::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum BiologicallyDerivedProductManipulationTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for BiologicallyDerivedProductManipulationTime {
     fn default() -> BiologicallyDerivedProductManipulationTime {
-        unimplemented!()
+        BiologicallyDerivedProductManipulationTime::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -76,6 +79,9 @@ impl serde::ser::Serialize for BiologicallyDerivedProductCollection {
                 }
                 BiologicallyDerivedProductCollectionCollected::Period(ref value) => {
                     state.serialize_entry("collectedPeriod", value)?;
+                }
+                BiologicallyDerivedProductCollectionCollected::Invalid => {
+                    return Err(serde::ser::Error::custom("collected is invalid"))
                 }
             }
         }
@@ -281,6 +287,9 @@ impl serde::ser::Serialize for BiologicallyDerivedProductProcessing {
                 }
                 BiologicallyDerivedProductProcessingTime::Period(ref value) => {
                     state.serialize_entry("timePeriod", value)?;
+                }
+                BiologicallyDerivedProductProcessingTime::Invalid => {
+                    return Err(serde::ser::Error::custom("time is invalid"))
                 }
             }
         }
@@ -493,6 +502,9 @@ impl serde::ser::Serialize for BiologicallyDerivedProductManipulation {
                 }
                 BiologicallyDerivedProductManipulationTime::Period(ref value) => {
                     state.serialize_entry("timePeriod", value)?;
+                }
+                BiologicallyDerivedProductManipulationTime::Invalid => {
+                    return Err(serde::ser::Error::custom("time is invalid"))
                 }
             }
         }

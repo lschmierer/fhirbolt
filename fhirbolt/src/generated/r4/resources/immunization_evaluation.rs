@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ImmunizationEvaluationDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationEvaluationDoseNumber {
     fn default() -> ImmunizationEvaluationDoseNumber {
-        unimplemented!()
+        ImmunizationEvaluationDoseNumber::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ImmunizationEvaluationSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationEvaluationSeriesDoses {
     fn default() -> ImmunizationEvaluationSeriesDoses {
-        unimplemented!()
+        ImmunizationEvaluationSeriesDoses::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -178,6 +180,9 @@ impl serde::ser::Serialize for ImmunizationEvaluation {
                         state.serialize_entry("_doseNumberString", &primitive_element)?;
                     }
                 }
+                ImmunizationEvaluationDoseNumber::Invalid => {
+                    return Err(serde::ser::Error::custom("dose_number is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#series_doses.as_ref() {
@@ -205,6 +210,9 @@ impl serde::ser::Serialize for ImmunizationEvaluation {
                         };
                         state.serialize_entry("_seriesDosesString", &primitive_element)?;
                     }
+                }
+                ImmunizationEvaluationSeriesDoses::Invalid => {
+                    return Err(serde::ser::Error::custom("series_doses is invalid"))
                 }
             }
         }

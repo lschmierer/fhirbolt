@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DiagnosticReportEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for DiagnosticReportEffective {
     fn default() -> DiagnosticReportEffective {
-        unimplemented!()
+        DiagnosticReportEffective::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -256,6 +257,9 @@ impl serde::ser::Serialize for DiagnosticReport {
                 }
                 DiagnosticReportEffective::Period(ref value) => {
                     state.serialize_entry("effectivePeriod", value)?;
+                }
+                DiagnosticReportEffective::Invalid => {
+                    return Err(serde::ser::Error::custom("effective is invalid"))
                 }
             }
         }

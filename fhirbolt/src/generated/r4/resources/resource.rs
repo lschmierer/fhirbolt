@@ -1,5 +1,5 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
-#[derive(Debug, Clone, serde :: Serialize, serde :: Deserialize)]
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+#[derive(Default, Debug, Clone, serde :: Serialize, serde :: Deserialize)]
 #[serde(tag = "resourceType")]
 pub enum Resource {
     AccountCoverage(Box<super::AccountCoverage>),
@@ -171,9 +171,6 @@ pub enum Resource {
     VerificationResultPrimarySource(Box<super::VerificationResultPrimarySource>),
     VisionPrescriptionLensSpecificationPrism(Box<super::VisionPrescriptionLensSpecificationPrism>),
     MetadataResource(Box<super::MetadataResource>),
-}
-impl Default for Resource {
-    fn default() -> Resource {
-        unimplemented!()
-    }
+    #[default]
+    Invalid,
 }

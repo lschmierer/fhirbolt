@@ -1,42 +1,46 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationMoietyAmount {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for SubstanceSpecificationMoietyAmount {
     fn default() -> SubstanceSpecificationMoietyAmount {
-        unimplemented!()
+        SubstanceSpecificationMoietyAmount::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationPropertyDefiningSubstance {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for SubstanceSpecificationPropertyDefiningSubstance {
     fn default() -> SubstanceSpecificationPropertyDefiningSubstance {
-        unimplemented!()
+        SubstanceSpecificationPropertyDefiningSubstance::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationPropertyAmount {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for SubstanceSpecificationPropertyAmount {
     fn default() -> SubstanceSpecificationPropertyAmount {
-        unimplemented!()
+        SubstanceSpecificationPropertyAmount::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationRelationshipSubstance {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for SubstanceSpecificationRelationshipSubstance {
     fn default() -> SubstanceSpecificationRelationshipSubstance {
-        unimplemented!()
+        SubstanceSpecificationRelationshipSubstance::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -45,10 +49,11 @@ pub enum SubstanceSpecificationRelationshipAmount {
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for SubstanceSpecificationRelationshipAmount {
     fn default() -> SubstanceSpecificationRelationshipAmount {
-        unimplemented!()
+        SubstanceSpecificationRelationshipAmount::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -132,6 +137,9 @@ impl serde::ser::Serialize for SubstanceSpecificationMoiety {
                         };
                         state.serialize_entry("_amountString", &primitive_element)?;
                     }
+                }
+                SubstanceSpecificationMoietyAmount::Invalid => {
+                    return Err(serde::ser::Error::custom("amount is invalid"))
                 }
             }
         }
@@ -378,6 +386,9 @@ impl serde::ser::Serialize for SubstanceSpecificationProperty {
                 SubstanceSpecificationPropertyDefiningSubstance::CodeableConcept(ref value) => {
                     state.serialize_entry("definingSubstanceCodeableConcept", value)?;
                 }
+                SubstanceSpecificationPropertyDefiningSubstance::Invalid => {
+                    return Err(serde::ser::Error::custom("defining_substance is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#amount.as_ref() {
@@ -396,6 +407,9 @@ impl serde::ser::Serialize for SubstanceSpecificationProperty {
                         };
                         state.serialize_entry("_amountString", &primitive_element)?;
                     }
+                }
+                SubstanceSpecificationPropertyAmount::Invalid => {
+                    return Err(serde::ser::Error::custom("amount is invalid"))
                 }
             }
         }
@@ -1912,6 +1926,9 @@ impl serde::ser::Serialize for SubstanceSpecificationRelationship {
                 SubstanceSpecificationRelationshipSubstance::CodeableConcept(ref value) => {
                     state.serialize_entry("substanceCodeableConcept", value)?;
                 }
+                SubstanceSpecificationRelationshipSubstance::Invalid => {
+                    return Err(serde::ser::Error::custom("substance is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#relationship.as_ref() {
@@ -1951,6 +1968,9 @@ impl serde::ser::Serialize for SubstanceSpecificationRelationship {
                         };
                         state.serialize_entry("_amountString", &primitive_element)?;
                     }
+                }
+                SubstanceSpecificationRelationshipAmount::Invalid => {
+                    return Err(serde::ser::Error::custom("amount is invalid"))
                 }
             }
         }

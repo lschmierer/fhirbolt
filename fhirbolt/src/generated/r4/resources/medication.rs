@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationIngredientItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationIngredientItem {
     fn default() -> MedicationIngredientItem {
-        unimplemented!()
+        MedicationIngredientItem::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -40,6 +41,9 @@ impl serde::ser::Serialize for MedicationIngredient {
             }
             MedicationIngredientItem::Reference(ref value) => {
                 state.serialize_entry("itemReference", value)?;
+            }
+            MedicationIngredientItem::Invalid => {
+                return Err(serde::ser::Error::custom("item is a required field"))
             }
         }
         if let Some(some) = self.r#is_active.as_ref() {

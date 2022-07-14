@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitSupportingInfoTiming {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitSupportingInfoTiming {
     fn default() -> ExplanationOfBenefitSupportingInfoTiming {
-        unimplemented!()
+        ExplanationOfBenefitSupportingInfoTiming::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -16,50 +17,55 @@ pub enum ExplanationOfBenefitSupportingInfoValue {
     Quantity(Box<super::super::types::Quantity>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitSupportingInfoValue {
     fn default() -> ExplanationOfBenefitSupportingInfoValue {
-        unimplemented!()
+        ExplanationOfBenefitSupportingInfoValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitDiagnosisDiagnosis {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitDiagnosisDiagnosis {
     fn default() -> ExplanationOfBenefitDiagnosisDiagnosis {
-        unimplemented!()
+        ExplanationOfBenefitDiagnosisDiagnosis::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitProcedureProcedure {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitProcedureProcedure {
     fn default() -> ExplanationOfBenefitProcedureProcedure {
-        unimplemented!()
+        ExplanationOfBenefitProcedureProcedure::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitAccidentLocation {
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitAccidentLocation {
     fn default() -> ExplanationOfBenefitAccidentLocation {
-        unimplemented!()
+        ExplanationOfBenefitAccidentLocation::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitItemServiced {
     fn default() -> ExplanationOfBenefitItemServiced {
-        unimplemented!()
+        ExplanationOfBenefitItemServiced::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -67,20 +73,22 @@ pub enum ExplanationOfBenefitItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitItemLocation {
     fn default() -> ExplanationOfBenefitItemLocation {
-        unimplemented!()
+        ExplanationOfBenefitItemLocation::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitAddItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitAddItemServiced {
     fn default() -> ExplanationOfBenefitAddItemServiced {
-        unimplemented!()
+        ExplanationOfBenefitAddItemServiced::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -88,10 +96,11 @@ pub enum ExplanationOfBenefitAddItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitAddItemLocation {
     fn default() -> ExplanationOfBenefitAddItemLocation {
-        unimplemented!()
+        ExplanationOfBenefitAddItemLocation::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -99,20 +108,22 @@ pub enum ExplanationOfBenefitBenefitBalanceFinancialAllowed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
     Money(Box<super::super::types::Money>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitBenefitBalanceFinancialAllowed {
     fn default() -> ExplanationOfBenefitBenefitBalanceFinancialAllowed {
-        unimplemented!()
+        ExplanationOfBenefitBenefitBalanceFinancialAllowed::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitBenefitBalanceFinancialUsed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     Money(Box<super::super::types::Money>),
+    Invalid,
 }
 impl Default for ExplanationOfBenefitBenefitBalanceFinancialUsed {
     fn default() -> ExplanationOfBenefitBenefitBalanceFinancialUsed {
-        unimplemented!()
+        ExplanationOfBenefitBenefitBalanceFinancialUsed::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -602,6 +613,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitSupportingInfo {
                 ExplanationOfBenefitSupportingInfoTiming::Period(ref value) => {
                     state.serialize_entry("timingPeriod", value)?;
                 }
+                ExplanationOfBenefitSupportingInfoTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#value.as_ref() {
@@ -638,6 +652,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitSupportingInfo {
                 }
                 ExplanationOfBenefitSupportingInfoValue::Reference(ref value) => {
                     state.serialize_entry("valueReference", value)?;
+                }
+                ExplanationOfBenefitSupportingInfoValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }
@@ -949,6 +966,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitDiagnosis {
             ExplanationOfBenefitDiagnosisDiagnosis::Reference(ref value) => {
                 state.serialize_entry("diagnosisReference", value)?;
             }
+            ExplanationOfBenefitDiagnosisDiagnosis::Invalid => {
+                return Err(serde::ser::Error::custom("diagnosis is a required field"))
+            }
         }
         if !self.r#type.is_empty() {
             state.serialize_entry("type", &self.r#type)?;
@@ -1157,6 +1177,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitProcedure {
             }
             ExplanationOfBenefitProcedureProcedure::Reference(ref value) => {
                 state.serialize_entry("procedureReference", value)?;
+            }
+            ExplanationOfBenefitProcedureProcedure::Invalid => {
+                return Err(serde::ser::Error::custom("procedure is a required field"))
             }
         }
         if !self.r#udi.is_empty() {
@@ -1565,6 +1588,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitAccident {
                 }
                 ExplanationOfBenefitAccidentLocation::Reference(ref value) => {
                     state.serialize_entry("locationReference", value)?;
+                }
+                ExplanationOfBenefitAccidentLocation::Invalid => {
+                    return Err(serde::ser::Error::custom("location is invalid"))
                 }
             }
         }
@@ -2770,6 +2796,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
                 ExplanationOfBenefitItemServiced::Period(ref value) => {
                     state.serialize_entry("servicedPeriod", value)?;
                 }
+                ExplanationOfBenefitItemServiced::Invalid => {
+                    return Err(serde::ser::Error::custom("serviced is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#location.as_ref() {
@@ -2782,6 +2811,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
                 }
                 ExplanationOfBenefitItemLocation::Reference(ref value) => {
                     state.serialize_entry("locationReference", value)?;
+                }
+                ExplanationOfBenefitItemLocation::Invalid => {
+                    return Err(serde::ser::Error::custom("location is invalid"))
                 }
             }
         }
@@ -4085,6 +4117,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
                 ExplanationOfBenefitAddItemServiced::Period(ref value) => {
                     state.serialize_entry("servicedPeriod", value)?;
                 }
+                ExplanationOfBenefitAddItemServiced::Invalid => {
+                    return Err(serde::ser::Error::custom("serviced is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#location.as_ref() {
@@ -4097,6 +4132,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
                 }
                 ExplanationOfBenefitAddItemLocation::Reference(ref value) => {
                     state.serialize_entry("locationReference", value)?;
+                }
+                ExplanationOfBenefitAddItemLocation::Invalid => {
+                    return Err(serde::ser::Error::custom("location is invalid"))
                 }
             }
         }
@@ -5152,6 +5190,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalanceFinancial {
                 ExplanationOfBenefitBenefitBalanceFinancialAllowed::Money(ref value) => {
                     state.serialize_entry("allowedMoney", value)?;
                 }
+                ExplanationOfBenefitBenefitBalanceFinancialAllowed::Invalid => {
+                    return Err(serde::ser::Error::custom("allowed is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#used.as_ref() {
@@ -5170,6 +5211,9 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalanceFinancial {
                 }
                 ExplanationOfBenefitBenefitBalanceFinancialUsed::Money(ref value) => {
                     state.serialize_entry("usedMoney", value)?;
+                }
+                ExplanationOfBenefitBenefitBalanceFinancialUsed::Invalid => {
+                    return Err(serde::ser::Error::custom("used is invalid"))
                 }
             }
         }

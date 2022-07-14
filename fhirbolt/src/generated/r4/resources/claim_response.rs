@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ClaimResponseAddItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ClaimResponseAddItemServiced {
     fn default() -> ClaimResponseAddItemServiced {
-        unimplemented!()
+        ClaimResponseAddItemServiced::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -14,10 +15,11 @@ pub enum ClaimResponseAddItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ClaimResponseAddItemLocation {
     fn default() -> ClaimResponseAddItemLocation {
-        unimplemented!()
+        ClaimResponseAddItemLocation::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -1520,6 +1522,9 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
                 ClaimResponseAddItemServiced::Period(ref value) => {
                     state.serialize_entry("servicedPeriod", value)?;
                 }
+                ClaimResponseAddItemServiced::Invalid => {
+                    return Err(serde::ser::Error::custom("serviced is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#location.as_ref() {
@@ -1532,6 +1537,9 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
                 }
                 ClaimResponseAddItemLocation::Reference(ref value) => {
                     state.serialize_entry("locationReference", value)?;
+                }
+                ClaimResponseAddItemLocation::Invalid => {
+                    return Err(serde::ser::Error::custom("location is invalid"))
                 }
             }
         }

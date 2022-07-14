@@ -1,23 +1,25 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CommunicationRequestPayloadContent {
     String(Box<super::super::types::String>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for CommunicationRequestPayloadContent {
     fn default() -> CommunicationRequestPayloadContent {
-        unimplemented!()
+        CommunicationRequestPayloadContent::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum CommunicationRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for CommunicationRequestOccurrence {
     fn default() -> CommunicationRequestOccurrence {
-        unimplemented!()
+        CommunicationRequestOccurrence::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -61,6 +63,9 @@ impl serde::ser::Serialize for CommunicationRequestPayload {
             }
             CommunicationRequestPayloadContent::Reference(ref value) => {
                 state.serialize_entry("contentReference", value)?;
+            }
+            CommunicationRequestPayloadContent::Invalid => {
+                return Err(serde::ser::Error::custom("content is a required field"))
             }
         }
         state.end()
@@ -343,6 +348,9 @@ impl serde::ser::Serialize for CommunicationRequest {
                 }
                 CommunicationRequestOccurrence::Period(ref value) => {
                     state.serialize_entry("occurrencePeriod", value)?;
+                }
+                CommunicationRequestOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
                 }
             }
         }

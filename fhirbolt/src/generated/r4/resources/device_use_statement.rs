@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DeviceUseStatementTiming {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    Invalid,
 }
 impl Default for DeviceUseStatementTiming {
     fn default() -> DeviceUseStatementTiming {
-        unimplemented!()
+        DeviceUseStatementTiming::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -123,6 +124,9 @@ impl serde::ser::Serialize for DeviceUseStatement {
                         };
                         state.serialize_entry("_timingDateTime", &primitive_element)?;
                     }
+                }
+                DeviceUseStatementTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
                 }
             }
         }

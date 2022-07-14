@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    Invalid,
 }
 impl Default for MedicinalProductAuthorizationProcedureDate {
     fn default() -> MedicinalProductAuthorizationProcedureDate {
-        unimplemented!()
+        MedicinalProductAuthorizationProcedureDate::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -214,6 +215,9 @@ impl serde::ser::Serialize for MedicinalProductAuthorizationProcedure {
                         };
                         state.serialize_entry("_dateDateTime", &primitive_element)?;
                     }
+                }
+                MedicinalProductAuthorizationProcedureDate::Invalid => {
+                    return Err(serde::ser::Error::custom("date is invalid"))
                 }
             }
         }

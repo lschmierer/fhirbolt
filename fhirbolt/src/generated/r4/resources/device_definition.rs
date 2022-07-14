@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DeviceDefinitionManufacturer {
     String(Box<super::super::types::String>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for DeviceDefinitionManufacturer {
     fn default() -> DeviceDefinitionManufacturer {
-        unimplemented!()
+        DeviceDefinitionManufacturer::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -1013,6 +1014,9 @@ impl serde::ser::Serialize for DeviceDefinition {
                 }
                 DeviceDefinitionManufacturer::Reference(ref value) => {
                     state.serialize_entry("manufacturerReference", value)?;
+                }
+                DeviceDefinitionManufacturer::Invalid => {
+                    return Err(serde::ser::Error::custom("manufacturer is invalid"))
                 }
             }
         }

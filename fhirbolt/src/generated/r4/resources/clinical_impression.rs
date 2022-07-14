@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ClinicalImpressionEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ClinicalImpressionEffective {
     fn default() -> ClinicalImpressionEffective {
-        unimplemented!()
+        ClinicalImpressionEffective::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -398,6 +399,9 @@ impl serde::ser::Serialize for ClinicalImpression {
                 }
                 ClinicalImpressionEffective::Period(ref value) => {
                     state.serialize_entry("effectivePeriod", value)?;
+                }
+                ClinicalImpressionEffective::Invalid => {
+                    return Err(serde::ser::Error::custom("effective is invalid"))
                 }
             }
         }

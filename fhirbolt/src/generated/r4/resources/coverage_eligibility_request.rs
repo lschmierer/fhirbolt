@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityRequestServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for CoverageEligibilityRequestServiced {
     fn default() -> CoverageEligibilityRequestServiced {
-        unimplemented!()
+        CoverageEligibilityRequestServiced::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityRequestItemDiagnosisDiagnosis {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for CoverageEligibilityRequestItemDiagnosisDiagnosis {
     fn default() -> CoverageEligibilityRequestItemDiagnosisDiagnosis {
-        unimplemented!()
+        CoverageEligibilityRequestItemDiagnosisDiagnosis::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -392,6 +394,9 @@ impl serde::ser::Serialize for CoverageEligibilityRequestItemDiagnosis {
                 }
                 CoverageEligibilityRequestItemDiagnosisDiagnosis::Reference(ref value) => {
                     state.serialize_entry("diagnosisReference", value)?;
+                }
+                CoverageEligibilityRequestItemDiagnosisDiagnosis::Invalid => {
+                    return Err(serde::ser::Error::custom("diagnosis is invalid"))
                 }
             }
         }
@@ -905,6 +910,9 @@ impl serde::ser::Serialize for CoverageEligibilityRequest {
                 }
                 CoverageEligibilityRequestServiced::Period(ref value) => {
                     state.serialize_entry("servicedPeriod", value)?;
+                }
+                CoverageEligibilityRequestServiced::Invalid => {
+                    return Err(serde::ser::Error::custom("serviced is invalid"))
                 }
             }
         }

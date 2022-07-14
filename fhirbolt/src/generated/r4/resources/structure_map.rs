@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -51,10 +51,11 @@ pub enum StructureMapGroupRuleSourceDefaultValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for StructureMapGroupRuleSourceDefaultValue {
     fn default() -> StructureMapGroupRuleSourceDefaultValue {
-        unimplemented!()
+        StructureMapGroupRuleSourceDefaultValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -64,10 +65,11 @@ pub enum StructureMapGroupRuleTargetParameterValue {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
     Decimal(Box<super::super::types::Decimal>),
+    Invalid,
 }
 impl Default for StructureMapGroupRuleTargetParameterValue {
     fn default() -> StructureMapGroupRuleTargetParameterValue {
-        unimplemented!()
+        StructureMapGroupRuleTargetParameterValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -915,6 +917,9 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Meta(ref value) => {
                     state.serialize_entry("defaultValueMeta", value)?;
+                }
+                StructureMapGroupRuleSourceDefaultValue::Invalid => {
+                    return Err(serde::ser::Error::custom("default_value is invalid"))
                 }
             }
         }
@@ -2442,6 +2447,9 @@ impl serde::ser::Serialize for StructureMapGroupRuleTargetParameter {
                     };
                     state.serialize_entry("_valueDecimal", &primitive_element)?;
                 }
+            }
+            StructureMapGroupRuleTargetParameterValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()

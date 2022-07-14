@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum QuestionnaireResponseItemAnswerValue {
     Boolean(Box<super::super::types::Boolean>),
@@ -13,10 +13,11 @@ pub enum QuestionnaireResponseItemAnswerValue {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for QuestionnaireResponseItemAnswerValue {
     fn default() -> QuestionnaireResponseItemAnswerValue {
-        unimplemented!()
+        QuestionnaireResponseItemAnswerValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -152,6 +153,9 @@ impl serde::ser::Serialize for QuestionnaireResponseItemAnswer {
                 }
                 QuestionnaireResponseItemAnswerValue::Reference(ref value) => {
                     state.serialize_entry("valueReference", value)?;
+                }
+                QuestionnaireResponseItemAnswerValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }

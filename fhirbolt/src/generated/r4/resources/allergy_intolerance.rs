@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AllergyIntoleranceOnset {
     DateTime(Box<super::super::types::DateTime>),
@@ -6,10 +6,11 @@ pub enum AllergyIntoleranceOnset {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for AllergyIntoleranceOnset {
     fn default() -> AllergyIntoleranceOnset {
-        unimplemented!()
+        AllergyIntoleranceOnset::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -434,6 +435,9 @@ impl serde::ser::Serialize for AllergyIntolerance {
                         };
                         state.serialize_entry("_onsetString", &primitive_element)?;
                     }
+                }
+                AllergyIntoleranceOnset::Invalid => {
+                    return Err(serde::ser::Error::custom("onset is invalid"))
                 }
             }
         }

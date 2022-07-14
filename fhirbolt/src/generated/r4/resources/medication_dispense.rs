@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationDispenseStatusReason {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationDispenseStatusReason {
     fn default() -> MedicationDispenseStatusReason {
-        unimplemented!()
+        MedicationDispenseStatusReason::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationDispenseMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationDispenseMedication {
     fn default() -> MedicationDispenseMedication {
-        unimplemented!()
+        MedicationDispenseMedication::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -398,6 +400,9 @@ impl serde::ser::Serialize for MedicationDispense {
                 MedicationDispenseStatusReason::Reference(ref value) => {
                     state.serialize_entry("statusReasonReference", value)?;
                 }
+                MedicationDispenseStatusReason::Invalid => {
+                    return Err(serde::ser::Error::custom("status_reason is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#category.as_ref() {
@@ -409,6 +414,9 @@ impl serde::ser::Serialize for MedicationDispense {
             }
             MedicationDispenseMedication::Reference(ref value) => {
                 state.serialize_entry("medicationReference", value)?;
+            }
+            MedicationDispenseMedication::Invalid => {
+                return Err(serde::ser::Error::custom("medication is a required field"))
             }
         }
         if let Some(some) = self.r#subject.as_ref() {

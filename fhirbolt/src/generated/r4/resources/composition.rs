@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CompositionRelatesToTarget {
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for CompositionRelatesToTarget {
     fn default() -> CompositionRelatesToTarget {
-        unimplemented!()
+        CompositionRelatesToTarget::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -216,6 +217,9 @@ impl serde::ser::Serialize for CompositionRelatesTo {
             }
             CompositionRelatesToTarget::Reference(ref value) => {
                 state.serialize_entry("targetReference", value)?;
+            }
+            CompositionRelatesToTarget::Invalid => {
+                return Err(serde::ser::Error::custom("target is a required field"))
             }
         }
         state.end()

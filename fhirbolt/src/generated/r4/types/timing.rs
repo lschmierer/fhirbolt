@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for TimingRepeatBounds {
     fn default() -> TimingRepeatBounds {
-        unimplemented!()
+        TimingRepeatBounds::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -53,6 +54,9 @@ impl serde::ser::Serialize for TimingRepeat {
                 }
                 TimingRepeatBounds::Period(ref value) => {
                     state.serialize_entry("boundsPeriod", value)?;
+                }
+                TimingRepeatBounds::Invalid => {
+                    return Err(serde::ser::Error::custom("bounds is invalid"))
                 }
             }
         }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CodeSystemConceptPropertyValue {
     Code(Box<super::super::types::Code>),
@@ -8,10 +8,11 @@ pub enum CodeSystemConceptPropertyValue {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
     Decimal(Box<super::super::types::Decimal>),
+    Invalid,
 }
 impl Default for CodeSystemConceptPropertyValue {
     fn default() -> CodeSystemConceptPropertyValue {
-        unimplemented!()
+        CodeSystemConceptPropertyValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -770,6 +771,9 @@ impl serde::ser::Serialize for CodeSystemConceptProperty {
                     };
                     state.serialize_entry("_valueDecimal", &primitive_element)?;
                 }
+            }
+            CodeSystemConceptPropertyValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()

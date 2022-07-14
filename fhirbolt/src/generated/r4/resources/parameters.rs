@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -51,10 +51,11 @@ pub enum ParametersParameterValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for ParametersParameterValue {
     fn default() -> ParametersParameterValue {
-        unimplemented!()
+        ParametersParameterValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -415,6 +416,9 @@ impl serde::ser::Serialize for ParametersParameter {
                 }
                 ParametersParameterValue::Meta(ref value) => {
                     state.serialize_entry("valueMeta", value)?;
+                }
+                ParametersParameterValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }

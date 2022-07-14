@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SupplyRequestItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for SupplyRequestItem {
     fn default() -> SupplyRequestItem {
-        unimplemented!()
+        SupplyRequestItem::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -15,10 +16,11 @@ pub enum SupplyRequestParameterValue {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Boolean(Box<super::super::types::Boolean>),
+    Invalid,
 }
 impl Default for SupplyRequestParameterValue {
     fn default() -> SupplyRequestParameterValue {
-        unimplemented!()
+        SupplyRequestParameterValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -26,10 +28,11 @@ pub enum SupplyRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for SupplyRequestOccurrence {
     fn default() -> SupplyRequestOccurrence {
-        unimplemented!()
+        SupplyRequestOccurrence::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -81,6 +84,9 @@ impl serde::ser::Serialize for SupplyRequestParameter {
                         };
                         state.serialize_entry("_valueBoolean", &primitive_element)?;
                     }
+                }
+                SupplyRequestParameterValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }
@@ -323,6 +329,9 @@ impl serde::ser::Serialize for SupplyRequest {
             SupplyRequestItem::Reference(ref value) => {
                 state.serialize_entry("itemReference", value)?;
             }
+            SupplyRequestItem::Invalid => {
+                return Err(serde::ser::Error::custom("item is a required field"))
+            }
         }
         state.serialize_entry("quantity", &self.r#quantity)?;
         if !self.r#parameter.is_empty() {
@@ -347,6 +356,9 @@ impl serde::ser::Serialize for SupplyRequest {
                 }
                 SupplyRequestOccurrence::Timing(ref value) => {
                     state.serialize_entry("occurrenceTiming", value)?;
+                }
+                SupplyRequestOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
                 }
             }
         }

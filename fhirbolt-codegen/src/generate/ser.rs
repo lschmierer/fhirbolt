@@ -52,11 +52,15 @@ fn serialize_enum(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
     let field_name_ident = format_ident!("r#{}", field.name);
 
     let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
+    let enum_ident = format_ident!("{}", r#enum.name);
 
     let enum_variants_tokens = r#enum
         .variants
         .iter()
         .map(|v| serialize_enum_variant(field, r#enum, v));
+
+    let value_invalid_error_message = format!("{} is invalid", field.name);
+    let value_required_error_message = format!("{} is a required field", field.name);
 
     if field.optional {
         quote! {
@@ -65,6 +69,9 @@ fn serialize_enum(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
                     #(
                         #enum_variants_tokens
                     )*
+                    #enum_ident::Invalid => {
+                        return Err(serde::ser::Error::custom(#value_invalid_error_message))
+                    }
                 }
             }
         }
@@ -74,6 +81,9 @@ fn serialize_enum(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
                 #(
                     #enum_variants_tokens
                 )*
+                #enum_ident::Invalid => {
+                    return Err(serde::ser::Error::custom(#value_required_error_message))
+                }
             }
         }
     }

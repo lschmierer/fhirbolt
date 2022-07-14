@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AuditEventEntityDetailValue {
     String(Box<super::super::types::String>),
     Base64Binary(Box<super::super::types::Base64Binary>),
+    Invalid,
 }
 impl Default for AuditEventEntityDetailValue {
     fn default() -> AuditEventEntityDetailValue {
-        unimplemented!()
+        AuditEventEntityDetailValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -711,6 +712,9 @@ impl serde::ser::Serialize for AuditEventEntityDetail {
                     };
                     state.serialize_entry("_valueBase64Binary", &primitive_element)?;
                 }
+            }
+            AuditEventEntityDetailValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()

@@ -1,32 +1,35 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for RiskAssessmentOccurrence {
     fn default() -> RiskAssessmentOccurrence {
-        unimplemented!()
+        RiskAssessmentOccurrence::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentPredictionProbability {
     Decimal(Box<super::super::types::Decimal>),
     Range(Box<super::super::types::Range>),
+    Invalid,
 }
 impl Default for RiskAssessmentPredictionProbability {
     fn default() -> RiskAssessmentPredictionProbability {
-        unimplemented!()
+        RiskAssessmentPredictionProbability::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentPredictionWhen {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
+    Invalid,
 }
 impl Default for RiskAssessmentPredictionWhen {
     fn default() -> RiskAssessmentPredictionWhen {
-        unimplemented!()
+        RiskAssessmentPredictionWhen::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -77,6 +80,9 @@ impl serde::ser::Serialize for RiskAssessmentPrediction {
                 RiskAssessmentPredictionProbability::Range(ref value) => {
                     state.serialize_entry("probabilityRange", value)?;
                 }
+                RiskAssessmentPredictionProbability::Invalid => {
+                    return Err(serde::ser::Error::custom("probability is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#qualitative_risk.as_ref() {
@@ -101,6 +107,9 @@ impl serde::ser::Serialize for RiskAssessmentPrediction {
                 }
                 RiskAssessmentPredictionWhen::Range(ref value) => {
                     state.serialize_entry("whenRange", value)?;
+                }
+                RiskAssessmentPredictionWhen::Invalid => {
+                    return Err(serde::ser::Error::custom("when is invalid"))
                 }
             }
         }
@@ -431,6 +440,9 @@ impl serde::ser::Serialize for RiskAssessment {
                 }
                 RiskAssessmentOccurrence::Period(ref value) => {
                     state.serialize_entry("occurrencePeriod", value)?;
+                }
+                RiskAssessmentOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
                 }
             }
         }

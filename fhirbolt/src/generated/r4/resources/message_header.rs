@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MessageHeaderEvent {
     Coding(Box<super::super::types::Coding>),
     Uri(Box<super::super::types::Uri>),
+    Invalid,
 }
 impl Default for MessageHeaderEvent {
     fn default() -> MessageHeaderEvent {
-        unimplemented!()
+        MessageHeaderEvent::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -679,6 +680,9 @@ impl serde::ser::Serialize for MessageHeader {
                     };
                     state.serialize_entry("_eventUri", &primitive_element)?;
                 }
+            }
+            MessageHeaderEvent::Invalid => {
+                return Err(serde::ser::Error::custom("event is a required field"))
             }
         }
         if !self.r#destination.is_empty() {

@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SubstanceAmountAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for SubstanceAmountAmount {
     fn default() -> SubstanceAmountAmount {
-        unimplemented!()
+        SubstanceAmountAmount::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -151,6 +152,9 @@ impl serde::ser::Serialize for SubstanceAmount {
                         };
                         state.serialize_entry("_amountString", &primitive_element)?;
                     }
+                }
+                SubstanceAmountAmount::Invalid => {
+                    return Err(serde::ser::Error::custom("amount is invalid"))
                 }
             }
         }

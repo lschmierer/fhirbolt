@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum EvidenceVariableCharacteristicDefinition {
     Reference(Box<super::super::types::Reference>),
@@ -7,10 +7,11 @@ pub enum EvidenceVariableCharacteristicDefinition {
     Expression(Box<super::super::types::Expression>),
     DataRequirement(Box<super::super::types::DataRequirement>),
     TriggerDefinition(Box<super::super::types::TriggerDefinition>),
+    Invalid,
 }
 impl Default for EvidenceVariableCharacteristicDefinition {
     fn default() -> EvidenceVariableCharacteristicDefinition {
-        unimplemented!()
+        EvidenceVariableCharacteristicDefinition::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -19,10 +20,11 @@ pub enum EvidenceVariableCharacteristicParticipantEffective {
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for EvidenceVariableCharacteristicParticipantEffective {
     fn default() -> EvidenceVariableCharacteristicParticipantEffective {
-        unimplemented!()
+        EvidenceVariableCharacteristicParticipantEffective::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -94,6 +96,9 @@ impl serde::ser::Serialize for EvidenceVariableCharacteristic {
             EvidenceVariableCharacteristicDefinition::TriggerDefinition(ref value) => {
                 state.serialize_entry("definitionTriggerDefinition", value)?;
             }
+            EvidenceVariableCharacteristicDefinition::Invalid => {
+                return Err(serde::ser::Error::custom("definition is a required field"))
+            }
         }
         if !self.r#usage_context.is_empty() {
             state.serialize_entry("usageContext", &self.r#usage_context)?;
@@ -133,6 +138,11 @@ impl serde::ser::Serialize for EvidenceVariableCharacteristic {
                 }
                 EvidenceVariableCharacteristicParticipantEffective::Timing(ref value) => {
                     state.serialize_entry("participantEffectiveTiming", value)?;
+                }
+                EvidenceVariableCharacteristicParticipantEffective::Invalid => {
+                    return Err(serde::ser::Error::custom(
+                        "participant_effective is invalid",
+                    ))
                 }
             }
         }

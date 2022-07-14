@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ConceptMapSource {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
+    Invalid,
 }
 impl Default for ConceptMapSource {
     fn default() -> ConceptMapSource {
-        unimplemented!()
+        ConceptMapSource::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ConceptMapTarget {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
+    Invalid,
 }
 impl Default for ConceptMapTarget {
     fn default() -> ConceptMapTarget {
-        unimplemented!()
+        ConceptMapTarget::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -1390,6 +1392,9 @@ impl serde::ser::Serialize for ConceptMap {
                         state.serialize_entry("_sourceCanonical", &primitive_element)?;
                     }
                 }
+                ConceptMapSource::Invalid => {
+                    return Err(serde::ser::Error::custom("source is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#target.as_ref() {
@@ -1417,6 +1422,9 @@ impl serde::ser::Serialize for ConceptMap {
                         };
                         state.serialize_entry("_targetCanonical", &primitive_element)?;
                     }
+                }
+                ConceptMapTarget::Invalid => {
+                    return Err(serde::ser::Error::custom("target is invalid"))
                 }
             }
         }

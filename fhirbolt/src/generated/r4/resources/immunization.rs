@@ -1,32 +1,35 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ImmunizationOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationOccurrence {
     fn default() -> ImmunizationOccurrence {
-        unimplemented!()
+        ImmunizationOccurrence::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ImmunizationProtocolAppliedDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationProtocolAppliedDoseNumber {
     fn default() -> ImmunizationProtocolAppliedDoseNumber {
-        unimplemented!()
+        ImmunizationProtocolAppliedDoseNumber::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ImmunizationProtocolAppliedSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationProtocolAppliedSeriesDoses {
     fn default() -> ImmunizationProtocolAppliedSeriesDoses {
-        unimplemented!()
+        ImmunizationProtocolAppliedSeriesDoses::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -598,6 +601,9 @@ impl serde::ser::Serialize for ImmunizationProtocolApplied {
                     state.serialize_entry("_doseNumberString", &primitive_element)?;
                 }
             }
+            ImmunizationProtocolAppliedDoseNumber::Invalid => {
+                return Err(serde::ser::Error::custom("dose_number is a required field"))
+            }
         }
         if let Some(some) = self.r#series_doses.as_ref() {
             match some {
@@ -624,6 +630,9 @@ impl serde::ser::Serialize for ImmunizationProtocolApplied {
                         };
                         state.serialize_entry("_seriesDosesString", &primitive_element)?;
                     }
+                }
+                ImmunizationProtocolAppliedSeriesDoses::Invalid => {
+                    return Err(serde::ser::Error::custom("series_doses is invalid"))
                 }
             }
         }
@@ -1034,6 +1043,9 @@ impl serde::ser::Serialize for Immunization {
                     };
                     state.serialize_entry("_occurrenceString", &primitive_element)?;
                 }
+            }
+            ImmunizationOccurrence::Invalid => {
+                return Err(serde::ser::Error::custom("occurrence is a required field"))
             }
         }
         if let Some(some) = self.r#recorded.as_ref() {

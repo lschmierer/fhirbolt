@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum LibrarySubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for LibrarySubject {
     fn default() -> LibrarySubject {
-        unimplemented!()
+        LibrarySubject::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -194,6 +195,9 @@ impl serde::ser::Serialize for Library {
                 }
                 LibrarySubject::Reference(ref value) => {
                     state.serialize_entry("subjectReference", value)?;
+                }
+                LibrarySubject::Invalid => {
+                    return Err(serde::ser::Error::custom("subject is invalid"))
                 }
             }
         }

@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SupplyDeliverySuppliedItemItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for SupplyDeliverySuppliedItemItem {
     fn default() -> SupplyDeliverySuppliedItemItem {
-        unimplemented!()
+        SupplyDeliverySuppliedItemItem::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -14,10 +15,11 @@ pub enum SupplyDeliveryOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for SupplyDeliveryOccurrence {
     fn default() -> SupplyDeliveryOccurrence {
-        unimplemented!()
+        SupplyDeliveryOccurrence::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -54,6 +56,9 @@ impl serde::ser::Serialize for SupplyDeliverySuppliedItem {
                 }
                 SupplyDeliverySuppliedItemItem::Reference(ref value) => {
                     state.serialize_entry("itemReference", value)?;
+                }
+                SupplyDeliverySuppliedItemItem::Invalid => {
+                    return Err(serde::ser::Error::custom("item is invalid"))
                 }
             }
         }
@@ -266,6 +271,9 @@ impl serde::ser::Serialize for SupplyDelivery {
                 }
                 SupplyDeliveryOccurrence::Timing(ref value) => {
                     state.serialize_entry("occurrenceTiming", value)?;
+                }
+                SupplyDeliveryOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
                 }
             }
         }

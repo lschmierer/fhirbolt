@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ConsentSource {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ConsentSource {
     fn default() -> ConsentSource {
-        unimplemented!()
+        ConsentSource::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -928,6 +929,9 @@ impl serde::ser::Serialize for Consent {
                 }
                 ConsentSource::Reference(ref value) => {
                     state.serialize_entry("sourceReference", value)?;
+                }
+                ConsentSource::Invalid => {
+                    return Err(serde::ser::Error::custom("source is invalid"))
                 }
             }
         }

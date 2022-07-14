@@ -1,23 +1,25 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ChargeItemOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for ChargeItemOccurrence {
     fn default() -> ChargeItemOccurrence {
-        unimplemented!()
+        ChargeItemOccurrence::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ChargeItemProduct {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for ChargeItemProduct {
     fn default() -> ChargeItemProduct {
-        unimplemented!()
+        ChargeItemProduct::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -310,6 +312,9 @@ impl serde::ser::Serialize for ChargeItem {
                 ChargeItemOccurrence::Timing(ref value) => {
                     state.serialize_entry("occurrenceTiming", value)?;
                 }
+                ChargeItemOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
+                }
             }
         }
         if !self.r#performer.is_empty() {
@@ -385,6 +390,9 @@ impl serde::ser::Serialize for ChargeItem {
                 }
                 ChargeItemProduct::CodeableConcept(ref value) => {
                     state.serialize_entry("productCodeableConcept", value)?;
+                }
+                ChargeItemProduct::Invalid => {
+                    return Err(serde::ser::Error::custom("product is invalid"))
                 }
             }
         }

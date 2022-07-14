@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationRecommendationRecommendationDoseNumber {
     fn default() -> ImmunizationRecommendationRecommendationDoseNumber {
-        unimplemented!()
+        ImmunizationRecommendationRecommendationDoseNumber::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ImmunizationRecommendationRecommendationSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for ImmunizationRecommendationRecommendationSeriesDoses {
     fn default() -> ImmunizationRecommendationRecommendationSeriesDoses {
-        unimplemented!()
+        ImmunizationRecommendationRecommendationSeriesDoses::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -249,6 +251,9 @@ impl serde::ser::Serialize for ImmunizationRecommendationRecommendation {
                         state.serialize_entry("_doseNumberString", &primitive_element)?;
                     }
                 }
+                ImmunizationRecommendationRecommendationDoseNumber::Invalid => {
+                    return Err(serde::ser::Error::custom("dose_number is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#series_doses.as_ref() {
@@ -276,6 +281,9 @@ impl serde::ser::Serialize for ImmunizationRecommendationRecommendation {
                         };
                         state.serialize_entry("_seriesDosesString", &primitive_element)?;
                     }
+                }
+                ImmunizationRecommendationRecommendationSeriesDoses::Invalid => {
+                    return Err(serde::ser::Error::custom("series_doses is invalid"))
                 }
             }
         }

@@ -1,14 +1,15 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TriggerDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
     Reference(Box<super::super::types::Reference>),
     Date(Box<super::super::types::Date>),
     DateTime(Box<super::super::types::DateTime>),
+    Invalid,
 }
 impl Default for TriggerDefinitionTiming {
     fn default() -> TriggerDefinitionTiming {
-        unimplemented!()
+        TriggerDefinitionTiming::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -87,6 +88,9 @@ impl serde::ser::Serialize for TriggerDefinition {
                         };
                         state.serialize_entry("_timingDateTime", &primitive_element)?;
                     }
+                }
+                TriggerDefinitionTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
                 }
             }
         }

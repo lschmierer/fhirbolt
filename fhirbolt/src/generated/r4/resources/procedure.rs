@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ProcedurePerformed {
     DateTime(Box<super::super::types::DateTime>),
@@ -6,10 +6,11 @@ pub enum ProcedurePerformed {
     String(Box<super::super::types::String>),
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
+    Invalid,
 }
 impl Default for ProcedurePerformed {
     fn default() -> ProcedurePerformed {
-        unimplemented!()
+        ProcedurePerformed::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -459,6 +460,9 @@ impl serde::ser::Serialize for Procedure {
                 }
                 ProcedurePerformed::Range(ref value) => {
                     state.serialize_entry("performedRange", value)?;
+                }
+                ProcedurePerformed::Invalid => {
+                    return Err(serde::ser::Error::custom("performed is invalid"))
                 }
             }
         }

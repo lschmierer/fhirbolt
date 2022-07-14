@@ -1,4 +1,4 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TaskInputValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -51,10 +51,11 @@ pub enum TaskInputValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for TaskInputValue {
     fn default() -> TaskInputValue {
-        unimplemented!()
+        TaskInputValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -109,10 +110,11 @@ pub enum TaskOutputValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    Invalid,
 }
 impl Default for TaskOutputValue {
     fn default() -> TaskOutputValue {
-        unimplemented!()
+        TaskOutputValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -608,6 +610,9 @@ impl serde::ser::Serialize for TaskInput {
             }
             TaskInputValue::Meta(ref value) => {
                 state.serialize_entry("valueMeta", value)?;
+            }
+            TaskInputValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()
@@ -1801,6 +1806,9 @@ impl serde::ser::Serialize for TaskOutput {
             }
             TaskOutputValue::Meta(ref value) => {
                 state.serialize_entry("valueMeta", value)?;
+            }
+            TaskOutputValue::Invalid => {
+                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()

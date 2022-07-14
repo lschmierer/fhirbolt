@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ResearchElementDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ResearchElementDefinitionSubject {
     fn default() -> ResearchElementDefinitionSubject {
-        unimplemented!()
+        ResearchElementDefinitionSubject::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -15,10 +16,11 @@ pub enum ResearchElementDefinitionCharacteristicDefinition {
     Canonical(Box<super::super::types::Canonical>),
     Expression(Box<super::super::types::Expression>),
     DataRequirement(Box<super::super::types::DataRequirement>),
+    Invalid,
 }
 impl Default for ResearchElementDefinitionCharacteristicDefinition {
     fn default() -> ResearchElementDefinitionCharacteristicDefinition {
-        unimplemented!()
+        ResearchElementDefinitionCharacteristicDefinition::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -27,10 +29,11 @@ pub enum ResearchElementDefinitionCharacteristicStudyEffective {
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for ResearchElementDefinitionCharacteristicStudyEffective {
     fn default() -> ResearchElementDefinitionCharacteristicStudyEffective {
-        unimplemented!()
+        ResearchElementDefinitionCharacteristicStudyEffective::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -39,10 +42,11 @@ pub enum ResearchElementDefinitionCharacteristicParticipantEffective {
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for ResearchElementDefinitionCharacteristicParticipantEffective {
     fn default() -> ResearchElementDefinitionCharacteristicParticipantEffective {
-        unimplemented!()
+        ResearchElementDefinitionCharacteristicParticipantEffective::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -102,6 +106,9 @@ impl serde::ser::Serialize for ResearchElementDefinitionCharacteristic {
             ResearchElementDefinitionCharacteristicDefinition::DataRequirement(ref value) => {
                 state.serialize_entry("definitionDataRequirement", value)?;
             }
+            ResearchElementDefinitionCharacteristicDefinition::Invalid => {
+                return Err(serde::ser::Error::custom("definition is a required field"))
+            }
         }
         if !self.r#usage_context.is_empty() {
             state.serialize_entry("usageContext", &self.r#usage_context)?;
@@ -155,6 +162,9 @@ impl serde::ser::Serialize for ResearchElementDefinitionCharacteristic {
                 }
                 ResearchElementDefinitionCharacteristicStudyEffective::Timing(ref value) => {
                     state.serialize_entry("studyEffectiveTiming", value)?;
+                }
+                ResearchElementDefinitionCharacteristicStudyEffective::Invalid => {
+                    return Err(serde::ser::Error::custom("study_effective is invalid"))
                 }
             }
         }
@@ -212,6 +222,11 @@ impl serde::ser::Serialize for ResearchElementDefinitionCharacteristic {
                 }
                 ResearchElementDefinitionCharacteristicParticipantEffective::Timing(ref value) => {
                     state.serialize_entry("participantEffectiveTiming", value)?;
+                }
+                ResearchElementDefinitionCharacteristicParticipantEffective::Invalid => {
+                    return Err(serde::ser::Error::custom(
+                        "participant_effective is invalid",
+                    ))
                 }
             }
         }
@@ -895,6 +910,9 @@ impl serde::ser::Serialize for ResearchElementDefinition {
                 }
                 ResearchElementDefinitionSubject::Reference(ref value) => {
                     state.serialize_entry("subjectReference", value)?;
+                }
+                ResearchElementDefinitionSubject::Invalid => {
+                    return Err(serde::ser::Error::custom("subject is invalid"))
                 }
             }
         }

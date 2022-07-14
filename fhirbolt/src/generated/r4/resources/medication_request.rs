@@ -1,32 +1,35 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationRequestReported {
     Boolean(Box<super::super::types::Boolean>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationRequestReported {
     fn default() -> MedicationRequestReported {
-        unimplemented!()
+        MedicationRequestReported::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationRequestMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationRequestMedication {
     fn default() -> MedicationRequestMedication {
-        unimplemented!()
+        MedicationRequestMedication::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationRequestSubstitutionAllowed {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for MedicationRequestSubstitutionAllowed {
     fn default() -> MedicationRequestSubstitutionAllowed {
-        unimplemented!()
+        MedicationRequestSubstitutionAllowed::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -396,6 +399,9 @@ impl serde::ser::Serialize for MedicationRequestSubstitution {
             MedicationRequestSubstitutionAllowed::CodeableConcept(ref value) => {
                 state.serialize_entry("allowedCodeableConcept", value)?;
             }
+            MedicationRequestSubstitutionAllowed::Invalid => {
+                return Err(serde::ser::Error::custom("allowed is a required field"))
+            }
         }
         if let Some(some) = self.r#reason.as_ref() {
             state.serialize_entry("reason", some)?;
@@ -682,6 +688,9 @@ impl serde::ser::Serialize for MedicationRequest {
                 MedicationRequestReported::Reference(ref value) => {
                     state.serialize_entry("reportedReference", value)?;
                 }
+                MedicationRequestReported::Invalid => {
+                    return Err(serde::ser::Error::custom("reported is invalid"))
+                }
             }
         }
         match self.r#medication {
@@ -690,6 +699,9 @@ impl serde::ser::Serialize for MedicationRequest {
             }
             MedicationRequestMedication::Reference(ref value) => {
                 state.serialize_entry("medicationReference", value)?;
+            }
+            MedicationRequestMedication::Invalid => {
+                return Err(serde::ser::Error::custom("medication is a required field"))
             }
         }
         state.serialize_entry("subject", &self.r#subject)?;

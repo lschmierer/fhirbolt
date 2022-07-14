@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DataRequirementSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for DataRequirementSubject {
     fn default() -> DataRequirementSubject {
-        unimplemented!()
+        DataRequirementSubject::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -14,10 +15,11 @@ pub enum DataRequirementDateFilterValue {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
+    Invalid,
 }
 impl Default for DataRequirementDateFilterValue {
     fn default() -> DataRequirementDateFilterValue {
-        unimplemented!()
+        DataRequirementDateFilterValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -274,6 +276,9 @@ impl serde::ser::Serialize for DataRequirementDateFilter {
                 }
                 DataRequirementDateFilterValue::Duration(ref value) => {
                     state.serialize_entry("valueDuration", value)?;
+                }
+                DataRequirementDateFilterValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }
@@ -624,6 +629,9 @@ impl serde::ser::Serialize for DataRequirement {
                 }
                 DataRequirementSubject::Reference(ref value) => {
                     state.serialize_entry("subjectReference", value)?;
+                }
+                DataRequirementSubject::Invalid => {
+                    return Err(serde::ser::Error::custom("subject is invalid"))
                 }
             }
         }

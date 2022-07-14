@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for SpecimenDefinitionTypeTestedContainerMinimumVolume {
     fn default() -> SpecimenDefinitionTypeTestedContainerMinimumVolume {
-        unimplemented!()
+        SpecimenDefinitionTypeTestedContainerMinimumVolume::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
     fn default() -> SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
-        unimplemented!()
+        SpecimenDefinitionTypeTestedContainerAdditiveAdditive::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -48,6 +50,9 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainerAdditive {
             }
             SpecimenDefinitionTypeTestedContainerAdditiveAdditive::Reference(ref value) => {
                 state.serialize_entry("additiveReference", value)?;
+            }
+            SpecimenDefinitionTypeTestedContainerAdditiveAdditive::Invalid => {
+                return Err(serde::ser::Error::custom("additive is a required field"))
             }
         }
         state.end()
@@ -204,6 +209,9 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainer {
                         };
                         state.serialize_entry("_minimumVolumeString", &primitive_element)?;
                     }
+                }
+                SpecimenDefinitionTypeTestedContainerMinimumVolume::Invalid => {
+                    return Err(serde::ser::Error::custom("minimum_volume is invalid"))
                 }
             }
         }

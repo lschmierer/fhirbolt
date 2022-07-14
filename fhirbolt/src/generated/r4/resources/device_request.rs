@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DeviceRequestCode {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for DeviceRequestCode {
     fn default() -> DeviceRequestCode {
-        unimplemented!()
+        DeviceRequestCode::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -15,10 +16,11 @@ pub enum DeviceRequestParameterValue {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Boolean(Box<super::super::types::Boolean>),
+    Invalid,
 }
 impl Default for DeviceRequestParameterValue {
     fn default() -> DeviceRequestParameterValue {
-        unimplemented!()
+        DeviceRequestParameterValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -26,10 +28,11 @@ pub enum DeviceRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for DeviceRequestOccurrence {
     fn default() -> DeviceRequestOccurrence {
-        unimplemented!()
+        DeviceRequestOccurrence::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -81,6 +84,9 @@ impl serde::ser::Serialize for DeviceRequestParameter {
                         };
                         state.serialize_entry("_valueBoolean", &primitive_element)?;
                     }
+                }
+                DeviceRequestParameterValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }
@@ -406,6 +412,9 @@ impl serde::ser::Serialize for DeviceRequest {
             DeviceRequestCode::CodeableConcept(ref value) => {
                 state.serialize_entry("codeCodeableConcept", value)?;
             }
+            DeviceRequestCode::Invalid => {
+                return Err(serde::ser::Error::custom("code is a required field"))
+            }
         }
         if !self.r#parameter.is_empty() {
             state.serialize_entry("parameter", &self.r#parameter)?;
@@ -433,6 +442,9 @@ impl serde::ser::Serialize for DeviceRequest {
                 }
                 DeviceRequestOccurrence::Timing(ref value) => {
                     state.serialize_entry("occurrenceTiming", value)?;
+                }
+                DeviceRequestOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
                 }
             }
         }

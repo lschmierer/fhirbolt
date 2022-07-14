@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum PatientDeceased {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
+    Invalid,
 }
 impl Default for PatientDeceased {
     fn default() -> PatientDeceased {
-        unimplemented!()
+        PatientDeceased::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum PatientMultipleBirth {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
+    Invalid,
 }
 impl Default for PatientMultipleBirth {
     fn default() -> PatientMultipleBirth {
-        unimplemented!()
+        PatientMultipleBirth::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -623,6 +625,9 @@ impl serde::ser::Serialize for Patient {
                         state.serialize_entry("_deceasedDateTime", &primitive_element)?;
                     }
                 }
+                PatientDeceased::Invalid => {
+                    return Err(serde::ser::Error::custom("deceased is invalid"))
+                }
             }
         }
         if !self.r#address.is_empty() {
@@ -656,6 +661,9 @@ impl serde::ser::Serialize for Patient {
                         };
                         state.serialize_entry("_multipleBirthInteger", &primitive_element)?;
                     }
+                }
+                PatientMultipleBirth::Invalid => {
+                    return Err(serde::ser::Error::custom("multiple_birth is invalid"))
                 }
             }
         }

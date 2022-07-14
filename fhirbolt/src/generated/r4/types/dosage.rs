@@ -1,22 +1,24 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DosageAsNeeded {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for DosageAsNeeded {
     fn default() -> DosageAsNeeded {
-        unimplemented!()
+        DosageAsNeeded::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum DosageDoseAndRateDose {
     Range(Box<super::super::types::Range>),
     Quantity(Box<super::super::types::Quantity>),
+    Invalid,
 }
 impl Default for DosageDoseAndRateDose {
     fn default() -> DosageDoseAndRateDose {
-        unimplemented!()
+        DosageDoseAndRateDose::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -24,10 +26,11 @@ pub enum DosageDoseAndRateRate {
     Ratio(Box<super::super::types::Ratio>),
     Range(Box<super::super::types::Range>),
     Quantity(Box<super::super::types::Quantity>),
+    Invalid,
 }
 impl Default for DosageDoseAndRateRate {
     fn default() -> DosageDoseAndRateRate {
-        unimplemented!()
+        DosageDoseAndRateRate::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -62,6 +65,9 @@ impl serde::ser::Serialize for DosageDoseAndRate {
                 DosageDoseAndRateDose::Quantity(ref value) => {
                     state.serialize_entry("doseQuantity", value)?;
                 }
+                DosageDoseAndRateDose::Invalid => {
+                    return Err(serde::ser::Error::custom("dose is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#rate.as_ref() {
@@ -74,6 +80,9 @@ impl serde::ser::Serialize for DosageDoseAndRate {
                 }
                 DosageDoseAndRateRate::Quantity(ref value) => {
                     state.serialize_entry("rateQuantity", value)?;
+                }
+                DosageDoseAndRateRate::Invalid => {
+                    return Err(serde::ser::Error::custom("rate is invalid"))
                 }
             }
         }
@@ -265,6 +274,9 @@ impl serde::ser::Serialize for Dosage {
                 }
                 DosageAsNeeded::CodeableConcept(ref value) => {
                     state.serialize_entry("asNeededCodeableConcept", value)?;
+                }
+                DosageAsNeeded::Invalid => {
+                    return Err(serde::ser::Error::custom("as_needed is invalid"))
                 }
             }
         }

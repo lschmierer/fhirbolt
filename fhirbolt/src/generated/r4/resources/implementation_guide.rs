@@ -1,32 +1,35 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ImplementationGuideDefinitionResourceExample {
     Boolean(Box<super::super::types::Boolean>),
     Canonical(Box<super::super::types::Canonical>),
+    Invalid,
 }
 impl Default for ImplementationGuideDefinitionResourceExample {
     fn default() -> ImplementationGuideDefinitionResourceExample {
-        unimplemented!()
+        ImplementationGuideDefinitionResourceExample::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ImplementationGuideDefinitionPageName {
     Url(Box<super::super::types::Url>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ImplementationGuideDefinitionPageName {
     fn default() -> ImplementationGuideDefinitionPageName {
-        unimplemented!()
+        ImplementationGuideDefinitionPageName::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ImplementationGuideManifestResourceExample {
     Boolean(Box<super::super::types::Boolean>),
     Canonical(Box<super::super::types::Canonical>),
+    Invalid,
 }
 impl Default for ImplementationGuideManifestResourceExample {
     fn default() -> ImplementationGuideManifestResourceExample {
-        unimplemented!()
+        ImplementationGuideManifestResourceExample::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -630,6 +633,9 @@ impl serde::ser::Serialize for ImplementationGuideDefinitionResource {
                         state.serialize_entry("_exampleCanonical", &primitive_element)?;
                     }
                 }
+                ImplementationGuideDefinitionResourceExample::Invalid => {
+                    return Err(serde::ser::Error::custom("example is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#grouping_id.as_ref() {
@@ -960,6 +966,9 @@ impl serde::ser::Serialize for ImplementationGuideDefinitionPage {
             }
             ImplementationGuideDefinitionPageName::Reference(ref value) => {
                 state.serialize_entry("nameReference", value)?;
+            }
+            ImplementationGuideDefinitionPageName::Invalid => {
+                return Err(serde::ser::Error::custom("name is a required field"))
             }
         }
         if let Some(some) = self.r#title.value.as_ref() {
@@ -1692,6 +1701,9 @@ impl serde::ser::Serialize for ImplementationGuideManifestResource {
                         };
                         state.serialize_entry("_exampleCanonical", &primitive_element)?;
                     }
+                }
+                ImplementationGuideManifestResourceExample::Invalid => {
+                    return Err(serde::ser::Error::custom("example is invalid"))
                 }
             }
         }

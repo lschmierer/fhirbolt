@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ClaimSupportingInfoTiming {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ClaimSupportingInfoTiming {
     fn default() -> ClaimSupportingInfoTiming {
-        unimplemented!()
+        ClaimSupportingInfoTiming::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -16,50 +17,55 @@ pub enum ClaimSupportingInfoValue {
     Quantity(Box<super::super::types::Quantity>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ClaimSupportingInfoValue {
     fn default() -> ClaimSupportingInfoValue {
-        unimplemented!()
+        ClaimSupportingInfoValue::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ClaimDiagnosisDiagnosis {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ClaimDiagnosisDiagnosis {
     fn default() -> ClaimDiagnosisDiagnosis {
-        unimplemented!()
+        ClaimDiagnosisDiagnosis::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ClaimProcedureProcedure {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ClaimProcedureProcedure {
     fn default() -> ClaimProcedureProcedure {
-        unimplemented!()
+        ClaimProcedureProcedure::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ClaimAccidentLocation {
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ClaimAccidentLocation {
     fn default() -> ClaimAccidentLocation {
-        unimplemented!()
+        ClaimAccidentLocation::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ClaimItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for ClaimItemServiced {
     fn default() -> ClaimItemServiced {
-        unimplemented!()
+        ClaimItemServiced::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -67,10 +73,11 @@ pub enum ClaimItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for ClaimItemLocation {
     fn default() -> ClaimItemLocation {
-        unimplemented!()
+        ClaimItemLocation::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -552,6 +559,9 @@ impl serde::ser::Serialize for ClaimSupportingInfo {
                 ClaimSupportingInfoTiming::Period(ref value) => {
                     state.serialize_entry("timingPeriod", value)?;
                 }
+                ClaimSupportingInfoTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#value.as_ref() {
@@ -588,6 +598,9 @@ impl serde::ser::Serialize for ClaimSupportingInfo {
                 }
                 ClaimSupportingInfoValue::Reference(ref value) => {
                     state.serialize_entry("valueReference", value)?;
+                }
+                ClaimSupportingInfoValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }
@@ -878,6 +891,9 @@ impl serde::ser::Serialize for ClaimDiagnosis {
             ClaimDiagnosisDiagnosis::Reference(ref value) => {
                 state.serialize_entry("diagnosisReference", value)?;
             }
+            ClaimDiagnosisDiagnosis::Invalid => {
+                return Err(serde::ser::Error::custom("diagnosis is a required field"))
+            }
         }
         if !self.r#type.is_empty() {
             state.serialize_entry("type", &self.r#type)?;
@@ -1081,6 +1097,9 @@ impl serde::ser::Serialize for ClaimProcedure {
             }
             ClaimProcedureProcedure::Reference(ref value) => {
                 state.serialize_entry("procedureReference", value)?;
+            }
+            ClaimProcedureProcedure::Invalid => {
+                return Err(serde::ser::Error::custom("procedure is a required field"))
             }
         }
         if !self.r#udi.is_empty() {
@@ -1577,6 +1596,9 @@ impl serde::ser::Serialize for ClaimAccident {
                 }
                 ClaimAccidentLocation::Reference(ref value) => {
                     state.serialize_entry("locationReference", value)?;
+                }
+                ClaimAccidentLocation::Invalid => {
+                    return Err(serde::ser::Error::custom("location is invalid"))
                 }
             }
         }
@@ -2444,6 +2466,9 @@ impl serde::ser::Serialize for ClaimItem {
                 ClaimItemServiced::Period(ref value) => {
                     state.serialize_entry("servicedPeriod", value)?;
                 }
+                ClaimItemServiced::Invalid => {
+                    return Err(serde::ser::Error::custom("serviced is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#location.as_ref() {
@@ -2456,6 +2481,9 @@ impl serde::ser::Serialize for ClaimItem {
                 }
                 ClaimItemLocation::Reference(ref value) => {
                     state.serialize_entry("locationReference", value)?;
+                }
+                ClaimItemLocation::Invalid => {
+                    return Err(serde::ser::Error::custom("location is invalid"))
                 }
             }
         }

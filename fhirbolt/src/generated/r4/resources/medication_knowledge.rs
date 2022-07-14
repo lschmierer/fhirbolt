@@ -1,33 +1,36 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationKnowledgeIngredientItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationKnowledgeIngredientItem {
     fn default() -> MedicationKnowledgeIngredientItem {
-        unimplemented!()
+        MedicationKnowledgeIngredientItem::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationKnowledgeAdministrationGuidelinesIndication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for MedicationKnowledgeAdministrationGuidelinesIndication {
     fn default() -> MedicationKnowledgeAdministrationGuidelinesIndication {
-        unimplemented!()
+        MedicationKnowledgeAdministrationGuidelinesIndication::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
+    Invalid,
 }
 impl Default for MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic {
     fn default() -> MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic
     {
-        unimplemented!()
+        MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -36,10 +39,11 @@ pub enum MedicationKnowledgeDrugCharacteristicValue {
     String(Box<super::super::types::String>),
     Quantity(Box<super::super::types::Quantity>),
     Base64Binary(Box<super::super::types::Base64Binary>),
+    Invalid,
 }
 impl Default for MedicationKnowledgeDrugCharacteristicValue {
     fn default() -> MedicationKnowledgeDrugCharacteristicValue {
-        unimplemented!()
+        MedicationKnowledgeDrugCharacteristicValue::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -289,6 +293,9 @@ impl serde::ser::Serialize for MedicationKnowledgeIngredient {
             }
             MedicationKnowledgeIngredientItem::Reference(ref value) => {
                 state.serialize_entry("itemReference", value)?;
+            }
+            MedicationKnowledgeIngredientItem::Invalid => {
+                return Err(serde::ser::Error::custom("item is a required field"))
             }
         }
         if let Some(some) = self.r#is_active.as_ref() {
@@ -831,7 +838,7 @@ impl serde::ser::Serialize for MedicationKnowledgeAdministrationGuidelinesPatien
         if !self.r#modifier_extension.is_empty() {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
-        match self . r#characteristic { MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (ref value) => { state . serialize_entry ("characteristicCodeableConcept" , value) ? ; } , MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (ref value) => { state . serialize_entry ("characteristicQuantity" , value) ? ; } , }
+        match self . r#characteristic { MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (ref value) => { state . serialize_entry ("characteristicCodeableConcept" , value) ? ; } , MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (ref value) => { state . serialize_entry ("characteristicQuantity" , value) ? ; } , MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Invalid => { return Err (serde :: ser :: Error :: custom ("characteristic is a required field")) } }
         if !self.r#value.is_empty() {
             let values: Vec<_> = self.r#value.iter().map(|v| &v.value).collect();
             if values.iter().any(|v| v.is_some()) {
@@ -1031,6 +1038,9 @@ impl serde::ser::Serialize for MedicationKnowledgeAdministrationGuidelines {
                 }
                 MedicationKnowledgeAdministrationGuidelinesIndication::Reference(ref value) => {
                     state.serialize_entry("indicationReference", value)?;
+                }
+                MedicationKnowledgeAdministrationGuidelinesIndication::Invalid => {
+                    return Err(serde::ser::Error::custom("indication is invalid"))
                 }
             }
         }
@@ -1433,6 +1443,9 @@ impl serde::ser::Serialize for MedicationKnowledgeDrugCharacteristic {
                         };
                         state.serialize_entry("_valueBase64Binary", &primitive_element)?;
                     }
+                }
+                MedicationKnowledgeDrugCharacteristicValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
                 }
             }
         }

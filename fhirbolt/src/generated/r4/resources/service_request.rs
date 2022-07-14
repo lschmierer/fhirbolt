@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ServiceRequestQuantity {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
     Range(Box<super::super::types::Range>),
+    Invalid,
 }
 impl Default for ServiceRequestQuantity {
     fn default() -> ServiceRequestQuantity {
-        unimplemented!()
+        ServiceRequestQuantity::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -15,20 +16,22 @@ pub enum ServiceRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for ServiceRequestOccurrence {
     fn default() -> ServiceRequestOccurrence {
-        unimplemented!()
+        ServiceRequestOccurrence::Invalid
     }
 }
 #[derive(Debug, Clone)]
 pub enum ServiceRequestAsNeeded {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Invalid,
 }
 impl Default for ServiceRequestAsNeeded {
     fn default() -> ServiceRequestAsNeeded {
-        unimplemented!()
+        ServiceRequestAsNeeded::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -259,6 +262,9 @@ impl serde::ser::Serialize for ServiceRequest {
                 ServiceRequestQuantity::Range(ref value) => {
                     state.serialize_entry("quantityRange", value)?;
                 }
+                ServiceRequestQuantity::Invalid => {
+                    return Err(serde::ser::Error::custom("quantity is invalid"))
+                }
             }
         }
         state.serialize_entry("subject", &self.r#subject)?;
@@ -285,6 +291,9 @@ impl serde::ser::Serialize for ServiceRequest {
                 ServiceRequestOccurrence::Timing(ref value) => {
                     state.serialize_entry("occurrenceTiming", value)?;
                 }
+                ServiceRequestOccurrence::Invalid => {
+                    return Err(serde::ser::Error::custom("occurrence is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#as_needed.as_ref() {
@@ -303,6 +312,9 @@ impl serde::ser::Serialize for ServiceRequest {
                 }
                 ServiceRequestAsNeeded::CodeableConcept(ref value) => {
                     state.serialize_entry("asNeededCodeableConcept", value)?;
+                }
+                ServiceRequestAsNeeded::Invalid => {
+                    return Err(serde::ser::Error::custom("as_needed is invalid"))
                 }
             }
         }

@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DetectedIssueIdentified {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    Invalid,
 }
 impl Default for DetectedIssueIdentified {
     fn default() -> DetectedIssueIdentified {
-        unimplemented!()
+        DetectedIssueIdentified::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -380,6 +381,9 @@ impl serde::ser::Serialize for DetectedIssue {
                 }
                 DetectedIssueIdentified::Period(ref value) => {
                     state.serialize_entry("identifiedPeriod", value)?;
+                }
+                DetectedIssueIdentified::Invalid => {
+                    return Err(serde::ser::Error::custom("identified is invalid"))
                 }
             }
         }

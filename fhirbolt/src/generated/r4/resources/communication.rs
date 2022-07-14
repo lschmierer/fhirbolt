@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CommunicationPayloadContent {
     String(Box<super::super::types::String>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    Invalid,
 }
 impl Default for CommunicationPayloadContent {
     fn default() -> CommunicationPayloadContent {
-        unimplemented!()
+        CommunicationPayloadContent::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -51,6 +52,9 @@ impl serde::ser::Serialize for CommunicationPayload {
             }
             CommunicationPayloadContent::Reference(ref value) => {
                 state.serialize_entry("contentReference", value)?;
+            }
+            CommunicationPayloadContent::Invalid => {
+                return Err(serde::ser::Error::custom("content is a required field"))
             }
         }
         state.end()

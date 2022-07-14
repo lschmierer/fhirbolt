@@ -1,13 +1,14 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum FamilyMemberHistoryBorn {
     Period(Box<super::super::types::Period>),
     Date(Box<super::super::types::Date>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for FamilyMemberHistoryBorn {
     fn default() -> FamilyMemberHistoryBorn {
-        unimplemented!()
+        FamilyMemberHistoryBorn::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -15,10 +16,11 @@ pub enum FamilyMemberHistoryAge {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for FamilyMemberHistoryAge {
     fn default() -> FamilyMemberHistoryAge {
-        unimplemented!()
+        FamilyMemberHistoryAge::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -28,10 +30,11 @@ pub enum FamilyMemberHistoryDeceased {
     Range(Box<super::super::types::Range>),
     Date(Box<super::super::types::Date>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for FamilyMemberHistoryDeceased {
     fn default() -> FamilyMemberHistoryDeceased {
-        unimplemented!()
+        FamilyMemberHistoryDeceased::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -40,10 +43,11 @@ pub enum FamilyMemberHistoryConditionOnset {
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
     String(Box<super::super::types::String>),
+    Invalid,
 }
 impl Default for FamilyMemberHistoryConditionOnset {
     fn default() -> FamilyMemberHistoryConditionOnset {
-        unimplemented!()
+        FamilyMemberHistoryConditionOnset::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -111,6 +115,9 @@ impl serde::ser::Serialize for FamilyMemberHistoryCondition {
                         };
                         state.serialize_entry("_onsetString", &primitive_element)?;
                     }
+                }
+                FamilyMemberHistoryConditionOnset::Invalid => {
+                    return Err(serde::ser::Error::custom("onset is invalid"))
                 }
             }
         }
@@ -506,6 +513,9 @@ impl serde::ser::Serialize for FamilyMemberHistory {
                         state.serialize_entry("_bornString", &primitive_element)?;
                     }
                 }
+                FamilyMemberHistoryBorn::Invalid => {
+                    return Err(serde::ser::Error::custom("born is invalid"))
+                }
             }
         }
         if let Some(some) = self.r#age.as_ref() {
@@ -527,6 +537,9 @@ impl serde::ser::Serialize for FamilyMemberHistory {
                         };
                         state.serialize_entry("_ageString", &primitive_element)?;
                     }
+                }
+                FamilyMemberHistoryAge::Invalid => {
+                    return Err(serde::ser::Error::custom("age is invalid"))
                 }
             }
         }
@@ -585,6 +598,9 @@ impl serde::ser::Serialize for FamilyMemberHistory {
                         };
                         state.serialize_entry("_deceasedString", &primitive_element)?;
                     }
+                }
+                FamilyMemberHistoryDeceased::Invalid => {
+                    return Err(serde::ser::Error::custom("deceased is invalid"))
                 }
             }
         }

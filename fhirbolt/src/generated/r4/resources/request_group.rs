@@ -1,12 +1,13 @@
-// Generated on 2022-07-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum RequestGroupActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
+    Invalid,
 }
 impl Default for RequestGroupActionRelatedActionOffset {
     fn default() -> RequestGroupActionRelatedActionOffset {
-        unimplemented!()
+        RequestGroupActionRelatedActionOffset::Invalid
     }
 }
 #[derive(Debug, Clone)]
@@ -17,10 +18,11 @@ pub enum RequestGroupActionTiming {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
+    Invalid,
 }
 impl Default for RequestGroupActionTiming {
     fn default() -> RequestGroupActionTiming {
-        unimplemented!()
+        RequestGroupActionTiming::Invalid
     }
 }
 #[derive(Default, Debug, Clone)]
@@ -210,6 +212,9 @@ impl serde::ser::Serialize for RequestGroupActionRelatedAction {
                 }
                 RequestGroupActionRelatedActionOffset::Range(ref value) => {
                     state.serialize_entry("offsetRange", value)?;
+                }
+                RequestGroupActionRelatedActionOffset::Invalid => {
+                    return Err(serde::ser::Error::custom("offset is invalid"))
                 }
             }
         }
@@ -485,6 +490,9 @@ impl serde::ser::Serialize for RequestGroupAction {
                 }
                 RequestGroupActionTiming::Timing(ref value) => {
                     state.serialize_entry("timingTiming", value)?;
+                }
+                RequestGroupActionTiming::Invalid => {
+                    return Err(serde::ser::Error::custom("timing is invalid"))
                 }
             }
         }
