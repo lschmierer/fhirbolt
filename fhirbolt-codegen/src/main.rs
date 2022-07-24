@@ -211,7 +211,12 @@ fn generate_and_write(
         &generated.resources_source_files,
     );
 
-    write_source_file(fhir_release, ".", &generated.serde_helpers.name, &generated.serde_helpers.source);
+    write_source_file(
+        fhir_release,
+        ".",
+        &generated.serde_helpers.name,
+        &generated.serde_helpers.source,
+    );
 }
 
 fn rustfmt() {

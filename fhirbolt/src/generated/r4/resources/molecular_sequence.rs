@@ -965,7 +965,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::Score => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#score.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#score.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -982,7 +986,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::ScorePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#score.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#score.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1002,7 +1010,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::NumTp => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#num_tp.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#num_tp.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1019,7 +1031,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::NumTpPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#num_tp.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#num_tp.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1039,7 +1055,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::NumFp => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#num_fp.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#num_fp.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1056,7 +1076,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::NumFpPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#num_fp.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#num_fp.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1076,7 +1100,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::NumFn => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#num_fn.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#num_fn.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1093,7 +1121,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::NumFnPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#num_fn.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#num_fn.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1113,7 +1145,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::Precision => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#precision.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#precision.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1130,7 +1166,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::PrecisionPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#precision.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#precision.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1150,7 +1190,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::Sensitivity => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#sensitivity.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#sensitivity.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1167,8 +1211,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::SensitivityPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#sensitivity.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#sensitivity.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1188,7 +1235,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         }
                         Field::FMeasure => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#f_measure.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#f_measure.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1205,7 +1256,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                         Field::FMeasurePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#f_measure.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#f_measure.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

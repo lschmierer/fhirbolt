@@ -1133,8 +1133,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         }
                         Field::DerivedFromUri => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#derived_from_uri.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#derived_from_uri.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1151,8 +1154,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         Field::DerivedFromUriPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#derived_from_uri
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#derived_from_uri.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1172,7 +1178,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         }
                         Field::PartOf => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#part_of.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#part_of.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1189,7 +1199,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         Field::PartOfPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#part_of.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#part_of.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1209,7 +1223,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         }
                         Field::Replaces => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#replaces.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#replaces.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1226,7 +1244,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         Field::ReplacesPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#replaces.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#replaces.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

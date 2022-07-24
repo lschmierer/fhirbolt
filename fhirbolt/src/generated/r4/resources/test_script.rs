@@ -713,7 +713,11 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                         }
                         Field::Origin => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#origin.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#origin.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -730,7 +734,11 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                         Field::OriginPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#origin.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#origin.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -769,7 +777,11 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                         }
                         Field::Link => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#link.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#link.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -786,7 +798,11 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                         Field::LinkPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#link.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#link.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

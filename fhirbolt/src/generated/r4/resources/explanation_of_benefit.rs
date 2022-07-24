@@ -1562,8 +1562,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                         }
                         Field::PreAuthRef => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#pre_auth_ref.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#pre_auth_ref.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1580,8 +1583,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                         Field::PreAuthRefPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#pre_auth_ref.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#pre_auth_ref.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -2266,7 +2272,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                         }
                         Field::NoteNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#note_number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -2283,8 +2293,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                         Field::NoteNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#note_number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -2649,7 +2662,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                         }
                         Field::NoteNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#note_number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -2666,8 +2683,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                         Field::NoteNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#note_number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3175,8 +3195,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         }
                         Field::CareTeamSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#care_team_sequence
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#care_team_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3193,8 +3216,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         Field::CareTeamSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#care_team_sequence
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#care_team_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3214,8 +3240,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         }
                         Field::DiagnosisSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#diagnosis_sequence
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#diagnosis_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3232,8 +3261,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         Field::DiagnosisSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#diagnosis_sequence
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#diagnosis_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3255,8 +3287,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         }
                         Field::ProcedureSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#procedure_sequence
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#procedure_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3273,8 +3308,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         Field::ProcedureSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#procedure_sequence
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#procedure_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3296,8 +3334,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         }
                         Field::InformationSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#information_sequence
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#information_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3316,8 +3357,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         Field::InformationSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#information_sequence
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#information_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3495,7 +3539,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         }
                         Field::NoteNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#note_number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3512,8 +3560,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                         Field::NoteNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#note_number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3799,7 +3850,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                         }
                         Field::NoteNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#note_number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3816,8 +3871,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                         Field::NoteNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#note_number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -4090,7 +4148,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                         }
                         Field::NoteNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#note_number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -4107,8 +4169,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                         Field::NoteNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#note_number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -4524,8 +4589,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         }
                         Field::ItemSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#item_sequence.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#item_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -4542,8 +4610,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         Field::ItemSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#item_sequence.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#item_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -4563,8 +4634,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         }
                         Field::DetailSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#detail_sequence.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#detail_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -4581,8 +4655,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         Field::DetailSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#detail_sequence.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#detail_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -4602,8 +4679,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         }
                         Field::SubDetailSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#sub_detail_sequence
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#sub_detail_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -4620,8 +4700,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         Field::SubDetailSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#sub_detail_sequence
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#sub_detail_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -4782,7 +4865,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         }
                         Field::NoteNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#note_number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -4799,8 +4886,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                         Field::NoteNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#note_number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#note_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -6781,8 +6871,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                         }
                         Field::PreAuthRef => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#pre_auth_ref.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#pre_auth_ref.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -6799,8 +6892,11 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                         Field::PreAuthRefPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#pre_auth_ref.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#pre_auth_ref.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

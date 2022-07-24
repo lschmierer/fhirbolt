@@ -189,12 +189,13 @@ fn field_struct_assign_var(field: &RustStructField) -> TokenStream {
         }
     } else {
         if field.polymorph {
-        quote! {
-            #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?,
-        } }else{
+            quote! {
+                #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?,
+            }
+        } else {
             quote! {
                 #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?,
-            } 
+            }
         }
     }
 }
@@ -303,7 +304,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
             Field::#field_enum_type_name => {
                 let values: Vec<_> = map_access.next_value()?;
 
-                let vec = #field_name_ident.get_or_insert(Vec::with_capacity(values.len()));
+                let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
                 if vec.len() != values.len() {
                     return Err(serde::de::Error::invalid_length(values.len(), &"primitive elements length"));
                 }
@@ -318,7 +319,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
             Field::#field_enum_type_primitive_element_name => {
                 let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> = map_access.next_value()?;
 
-                let vec = #field_name_ident.get_or_insert(Vec::with_capacity(elements.len()));
+                let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(elements.len()).collect::<Vec<_>>());
                 if vec.len() != elements.len() {
                     return Err(serde::de::Error::invalid_length(elements.len(), &"primitive values length"));
                 }

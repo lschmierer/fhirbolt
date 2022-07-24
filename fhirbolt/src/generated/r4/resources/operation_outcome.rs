@@ -261,7 +261,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                         }
                         Field::Location => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#location.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#location.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -278,7 +282,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                         Field::LocationPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#location.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#location.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -298,7 +306,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                         }
                         Field::Expression => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#expression.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#expression.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -315,8 +327,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                         Field::ExpressionPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#expression.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#expression.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

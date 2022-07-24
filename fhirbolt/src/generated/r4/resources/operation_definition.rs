@@ -689,8 +689,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                         }
                         Field::TargetProfile => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#target_profile.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#target_profile.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -707,8 +710,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                         Field::TargetProfilePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#target_profile.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#target_profile.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -916,8 +922,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                         }
                         Field::ParameterName => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#parameter_name.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#parameter_name.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -934,8 +943,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                         Field::ParameterNamePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#parameter_name.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#parameter_name.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1905,7 +1917,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                         }
                         Field::Resource => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#resource.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#resource.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1922,7 +1938,11 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                         Field::ResourcePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#resource.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#resource.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

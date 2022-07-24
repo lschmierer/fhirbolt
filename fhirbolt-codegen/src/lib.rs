@@ -12,7 +12,7 @@ use model::Bundle;
 pub struct Generated {
     pub types_source_files: Vec<SourceFile>,
     pub resources_source_files: Vec<SourceFile>,
-    pub serde_helpers: SourceFile
+    pub serde_helpers: SourceFile,
 }
 pub struct SourceFile {
     pub name: String,
@@ -31,6 +31,6 @@ pub fn generate_all<'a>(types_bundle: &'a Bundle, resources_bundle: &'a Bundle) 
     Generated {
         types_source_files,
         resources_source_files,
-        serde_helpers: generate_serde_helpers()
+        serde_helpers: generate_serde_helpers(),
     }
 }

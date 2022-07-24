@@ -278,7 +278,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                         }
                         Field::Given => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#given.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#given.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -295,7 +299,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                         Field::GivenPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#given.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#given.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -315,7 +323,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                         }
                         Field::Prefix => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#prefix.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#prefix.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -332,7 +344,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                         Field::PrefixPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#prefix.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#prefix.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -352,7 +368,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                         }
                         Field::Suffix => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#suffix.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#suffix.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -369,7 +389,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                         Field::SuffixPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#suffix.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#suffix.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

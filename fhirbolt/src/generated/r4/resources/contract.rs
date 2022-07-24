@@ -479,7 +479,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                         }
                         Field::Number => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#number.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -496,7 +500,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                         Field::NumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#number.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1461,7 +1469,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                         }
                         Field::LinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1478,7 +1490,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                         Field::LinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1498,8 +1514,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                         }
                         Field::SecurityLabelNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1518,8 +1537,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                         Field::SecurityLabelNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -2163,7 +2185,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                         }
                         Field::LinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -2180,7 +2206,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                         Field::LinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -2200,8 +2230,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                         }
                         Field::SecurityLabelNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -2220,8 +2253,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                         Field::SecurityLabelNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -2620,7 +2656,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                         }
                         Field::LinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -2637,7 +2677,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                         Field::LinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -2663,8 +2707,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                         }
                         Field::SecurityLabelNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -2683,8 +2730,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                         Field::SecurityLabelNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3333,7 +3383,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::LinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3350,7 +3404,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::LinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#link_id.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3382,8 +3440,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::ContextLinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#context_link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#context_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3400,8 +3461,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::ContextLinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#context_link_id.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#context_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3478,8 +3542,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::RequesterLinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#requester_link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#requester_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3496,8 +3563,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::RequesterLinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#requester_link_id
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#requester_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3535,8 +3605,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::PerformerLinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#performer_link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#performer_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3553,8 +3626,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::PerformerLinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#performer_link_id
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#performer_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3586,7 +3662,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::Reason => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#reason.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#reason.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3603,7 +3683,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::ReasonPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#reason.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#reason.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3623,8 +3707,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::ReasonLinkId => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#reason_link_id.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#reason_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3641,8 +3728,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::ReasonLinkIdPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec =
-                                r#reason_link_id.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#reason_link_id.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -3668,8 +3758,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         }
                         Field::SecurityLabelNumber => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -3688,8 +3781,11 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                         Field::SecurityLabelNumberPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#security_label_number
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#security_label_number.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -5328,7 +5424,11 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                         }
                         Field::Alias => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#alias.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#alias.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -5345,7 +5445,11 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                         Field::AliasPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#alias.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#alias.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

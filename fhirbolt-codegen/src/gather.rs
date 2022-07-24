@@ -26,7 +26,12 @@ const PRIMITIVES: &[&str] = &[
     "xhtml",
 ];
 
-const ABSTRACT_RESOURCES: &[&str] = &["Resource", "DomainResource", "MetadataResource", "CanonicalResource"];
+const ABSTRACT_RESOURCES: &[&str] = &[
+    "Resource",
+    "DomainResource",
+    "MetadataResource",
+    "CanonicalResource",
+];
 
 #[derive(Default)]
 pub struct RustModule {
@@ -196,7 +201,8 @@ fn gather_field(
             .map(|t| t.code.as_ref())
             .collect();
 
-        let maybe_fhir_primitive = create_value_enum(module, &element_definition.path, &name, variants);
+        let maybe_fhir_primitive =
+            create_value_enum(module, &element_definition.path, &name, variants);
 
         RustFieldType {
             name,
@@ -234,13 +240,18 @@ fn gather_field(
     }
 }
 
-fn create_value_enum<'a>(module: &mut RustModule, path: &str, enum_name: &str, types: Vec<&str>) -> bool {
+fn create_value_enum<'a>(
+    module: &mut RustModule,
+    path: &str,
+    enum_name: &str,
+    types: Vec<&str>,
+) -> bool {
     let mut may_contain_primitive = false;
 
     let variants = types
         .iter()
         .map(|t| {
-            let field_type = match_field_type(path,t, true);
+            let field_type = match_field_type(path, t, true);
 
             if field_type.maybe_fhir_primitive {
                 may_contain_primitive = true;
@@ -276,16 +287,17 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFieldType {
             maybe_fhir_primitive: false,
         },
         "System.String" => match path {
-            "unsignedInt.value"| "positiveInt.value" => RustFieldType {
+            "unsignedInt.value" | "positiveInt.value" => RustFieldType {
                 name: "u32".into(),
                 r#box: false,
                 maybe_fhir_primitive: false,
             },
             _ => RustFieldType {
-            name: "std::string::String".into(),
-            r#box: false,
-            maybe_fhir_primitive: false,
-        }},
+                name: "std::string::String".into(),
+                r#box: false,
+                maybe_fhir_primitive: false,
+            },
+        },
         "System.Decimal" => RustFieldType {
             name: "rust_decimal::Decimal".into(),
             r#box: false,

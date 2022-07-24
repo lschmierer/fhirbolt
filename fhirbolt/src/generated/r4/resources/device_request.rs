@@ -743,8 +743,11 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                         }
                         Field::InstantiatesCanonical => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#instantiates_canonical
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#instantiates_canonical.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -763,8 +766,11 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                         Field::InstantiatesCanonicalPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#instantiates_canonical
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#instantiates_canonical.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -786,8 +792,11 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                         }
                         Field::InstantiatesUri => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#instantiates_uri.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#instantiates_uri.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -804,8 +813,11 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                         Field::InstantiatesUriPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#instantiates_uri
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#instantiates_uri.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

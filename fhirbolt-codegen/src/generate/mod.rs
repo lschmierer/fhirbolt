@@ -40,7 +40,7 @@ pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
 pub fn generate_serde_helpers() -> SourceFile {
     SourceFile {
         name: "serde_helpers".into(),
-        source: quote! {  
+        source: quote! {
             #[derive(serde::Serialize)]
             pub struct PrimitiveElement<'a> {
                 #[serde(skip_serializing_if = "Option::is_none")]

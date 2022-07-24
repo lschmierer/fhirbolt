@@ -433,8 +433,11 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                         }
                         Field::PayloadMimeType => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec =
-                                r#payload_mime_type.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#payload_mime_type.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -451,8 +454,11 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                         Field::PayloadMimeTypePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#payload_mime_type
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#payload_mime_type.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -491,7 +497,11 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                         }
                         Field::Header => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#header.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#header.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -508,7 +518,11 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                         Field::HeaderPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#header.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#header.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

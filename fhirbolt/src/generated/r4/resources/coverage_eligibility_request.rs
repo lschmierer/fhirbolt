@@ -692,8 +692,11 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                         }
                         Field::SupportingInfoSequence => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#supporting_info_sequence
-                                .get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#supporting_info_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -712,8 +715,11 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                         Field::SupportingInfoSequencePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#supporting_info_sequence
-                                .get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#supporting_info_sequence.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
@@ -1203,7 +1209,11 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                         }
                         Field::Purpose => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#purpose.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#purpose.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -1220,7 +1230,11 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                         Field::PurposePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#purpose.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#purpose.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),

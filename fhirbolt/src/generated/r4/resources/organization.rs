@@ -510,7 +510,11 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                         }
                         Field::Alias => {
                             let values: Vec<_> = map_access.next_value()?;
-                            let vec = r#alias.get_or_insert(Vec::with_capacity(values.len()));
+                            let vec = r#alias.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(values.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != values.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     values.len(),
@@ -527,7 +531,11 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                         Field::AliasPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
-                            let vec = r#alias.get_or_insert(Vec::with_capacity(elements.len()));
+                            let vec = r#alias.get_or_insert(
+                                std::iter::repeat(Default::default())
+                                    .take(elements.len())
+                                    .collect::<Vec<_>>(),
+                            );
                             if vec.len() != elements.len() {
                                 return Err(serde::de::Error::invalid_length(
                                     elements.len(),
