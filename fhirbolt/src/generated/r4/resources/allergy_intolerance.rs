@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AllergyIntoleranceOnset {
     DateTime(Box<super::super::types::DateTime>),
@@ -98,6 +98,36 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "substance")]
+            Substance,
+            #[serde(rename = "manifestation")]
+            Manifestation,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "onset")]
+            Onset,
+            #[serde(rename = "_onset")]
+            OnsetPrimitiveElement,
+            #[serde(rename = "severity")]
+            Severity,
+            #[serde(rename = "_severity")]
+            SeverityPrimitiveElement,
+            #[serde(rename = "exposureRoute")]
+            ExposureRoute,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AllergyIntoleranceReaction;
@@ -122,44 +152,44 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "substance" => {
+                        Field::Substance => {
                             if r#substance.is_some() {
                                 return Err(serde::de::Error::duplicate_field("substance"));
                             }
                             r#substance = Some(map_access.next_value()?);
                         }
-                        "manifestation" => {
+                        Field::Manifestation => {
                             if r#manifestation.is_some() {
                                 return Err(serde::de::Error::duplicate_field("manifestation"));
                             }
                             r#manifestation = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -171,14 +201,14 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "onset" => {
+                        Field::Onset => {
                             let some = r#onset.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onset"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_onset" => {
+                        Field::OnsetPrimitiveElement => {
                             let some = r#onset.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_onset"));
@@ -190,14 +220,14 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "severity" => {
+                        Field::Severity => {
                             let some = r#severity.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("severity"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_severity" => {
+                        Field::SeverityPrimitiveElement => {
                             let some = r#severity.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_severity"));
@@ -209,34 +239,17 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "exposureRoute" => {
+                        Field::ExposureRoute => {
                             if r#exposure_route.is_some() {
                                 return Err(serde::de::Error::duplicate_field("exposureRoute"));
                             }
                             r#exposure_route = Some(map_access.next_value()?);
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "substance",
-                                    "manifestation",
-                                    "description",
-                                    "onset",
-                                    "severity",
-                                    "exposureRoute",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -485,6 +498,84 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "clinicalStatus")]
+            ClinicalStatus,
+            #[serde(rename = "verificationStatus")]
+            VerificationStatus,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "_category")]
+            CategoryPrimitiveElement,
+            #[serde(rename = "criticality")]
+            Criticality,
+            #[serde(rename = "_criticality")]
+            CriticalityPrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "encounter")]
+            Encounter,
+            #[serde(rename = "onsetDateTime")]
+            OnsetDateTime,
+            #[serde(rename = "_onsetDateTime")]
+            OnsetDateTimePrimitiveElement,
+            #[serde(rename = "onsetAge")]
+            OnsetAge,
+            #[serde(rename = "onsetPeriod")]
+            OnsetPeriod,
+            #[serde(rename = "onsetRange")]
+            OnsetRange,
+            #[serde(rename = "onsetString")]
+            OnsetString,
+            #[serde(rename = "_onsetString")]
+            OnsetStringPrimitiveElement,
+            #[serde(rename = "recordedDate")]
+            RecordedDate,
+            #[serde(rename = "_recordedDate")]
+            RecordedDatePrimitiveElement,
+            #[serde(rename = "recorder")]
+            Recorder,
+            #[serde(rename = "asserter")]
+            Asserter,
+            #[serde(rename = "lastOccurrence")]
+            LastOccurrence,
+            #[serde(rename = "_lastOccurrence")]
+            LastOccurrencePrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+            #[serde(rename = "reaction")]
+            Reaction,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AllergyIntolerance;
@@ -523,26 +614,26 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                 let mut r#reaction: Option<Vec<AllergyIntoleranceReaction>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -554,14 +645,14 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -573,43 +664,43 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "clinicalStatus" => {
+                        Field::ClinicalStatus => {
                             if r#clinical_status.is_some() {
                                 return Err(serde::de::Error::duplicate_field("clinicalStatus"));
                             }
                             r#clinical_status = Some(map_access.next_value()?);
                         }
-                        "verificationStatus" => {
+                        Field::VerificationStatus => {
                             if r#verification_status.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "verificationStatus",
@@ -617,14 +708,14 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             }
                             r#verification_status = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -636,7 +727,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "category" => {
+                        Field::Category => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#category.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -652,7 +743,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 vec[i].value = value;
                             }
                         }
-                        "_category" => {
+                        Field::CategoryPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#category.get_or_insert(Vec::with_capacity(elements.len()));
@@ -673,14 +764,14 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "criticality" => {
+                        Field::Criticality => {
                             let some = r#criticality.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("criticality"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_criticality" => {
+                        Field::CriticalityPrimitiveElement => {
                             let some = r#criticality.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_criticality"));
@@ -692,25 +783,25 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "encounter" => {
+                        Field::Encounter => {
                             if r#encounter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("encounter"));
                             }
                             r#encounter = Some(map_access.next_value()?);
                         }
-                        "onsetDateTime" => {
+                        Field::OnsetDateTime => {
                             let r#enum = r#onset.get_or_insert(AllergyIntoleranceOnset::DateTime(
                                 Default::default(),
                             ));
@@ -723,7 +814,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 return Err(serde::de::Error::duplicate_field("onset[x]"));
                             }
                         }
-                        "_onsetDateTime" => {
+                        Field::OnsetDateTimePrimitiveElement => {
                             let r#enum = r#onset.get_or_insert(AllergyIntoleranceOnset::DateTime(
                                 Default::default(),
                             ));
@@ -743,27 +834,27 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 return Err(serde::de::Error::duplicate_field("_onset[x]"));
                             }
                         }
-                        "onsetAge" => {
+                        Field::OnsetAge => {
                             if r#onset.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onsetAge"));
                             }
                             r#onset = Some(AllergyIntoleranceOnset::Age(map_access.next_value()?));
                         }
-                        "onsetPeriod" => {
+                        Field::OnsetPeriod => {
                             if r#onset.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onsetPeriod"));
                             }
                             r#onset =
                                 Some(AllergyIntoleranceOnset::Period(map_access.next_value()?));
                         }
-                        "onsetRange" => {
+                        Field::OnsetRange => {
                             if r#onset.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onsetRange"));
                             }
                             r#onset =
                                 Some(AllergyIntoleranceOnset::Range(map_access.next_value()?));
                         }
-                        "onsetString" => {
+                        Field::OnsetString => {
                             let r#enum = r#onset
                                 .get_or_insert(AllergyIntoleranceOnset::String(Default::default()));
                             if let AllergyIntoleranceOnset::String(variant) = r#enum {
@@ -775,7 +866,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 return Err(serde::de::Error::duplicate_field("onset[x]"));
                             }
                         }
-                        "_onsetString" => {
+                        Field::OnsetStringPrimitiveElement => {
                             let r#enum = r#onset
                                 .get_or_insert(AllergyIntoleranceOnset::String(Default::default()));
                             if let AllergyIntoleranceOnset::String(variant) = r#enum {
@@ -792,14 +883,14 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 return Err(serde::de::Error::duplicate_field("_onset[x]"));
                             }
                         }
-                        "recordedDate" => {
+                        Field::RecordedDate => {
                             let some = r#recorded_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recordedDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_recordedDate" => {
+                        Field::RecordedDatePrimitiveElement => {
                             let some = r#recorded_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_recordedDate"));
@@ -811,26 +902,26 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "recorder" => {
+                        Field::Recorder => {
                             if r#recorder.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recorder"));
                             }
                             r#recorder = Some(map_access.next_value()?);
                         }
-                        "asserter" => {
+                        Field::Asserter => {
                             if r#asserter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("asserter"));
                             }
                             r#asserter = Some(map_access.next_value()?);
                         }
-                        "lastOccurrence" => {
+                        Field::LastOccurrence => {
                             let some = r#last_occurrence.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastOccurrence"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lastOccurrence" => {
+                        Field::LastOccurrencePrimitiveElement => {
                             let some = r#last_occurrence.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lastOccurrence"));
@@ -842,52 +933,17 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
                         }
-                        "reaction" => {
+                        Field::Reaction => {
                             if r#reaction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reaction"));
                             }
                             r#reaction = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "clinicalStatus",
-                                    "verificationStatus",
-                                    "type",
-                                    "category",
-                                    "criticality",
-                                    "code",
-                                    "patient",
-                                    "encounter",
-                                    "onsetDateTime",
-                                    "onsetAge",
-                                    "onsetPeriod",
-                                    "onsetRange",
-                                    "onsetString",
-                                    "recordedDate",
-                                    "recorder",
-                                    "asserter",
-                                    "lastOccurrence",
-                                    "note",
-                                    "reaction",
-                                ],
-                            ))
                         }
                     }
                 }

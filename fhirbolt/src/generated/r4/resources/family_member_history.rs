@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum FamilyMemberHistoryBorn {
     Period(Box<super::super::types::Period>),
@@ -132,6 +132,36 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "outcome")]
+            Outcome,
+            #[serde(rename = "contributedToDeath")]
+            ContributedToDeath,
+            #[serde(rename = "_contributedToDeath")]
+            ContributedToDeathPrimitiveElement,
+            #[serde(rename = "onsetAge")]
+            OnsetAge,
+            #[serde(rename = "onsetRange")]
+            OnsetRange,
+            #[serde(rename = "onsetPeriod")]
+            OnsetPeriod,
+            #[serde(rename = "onsetString")]
+            OnsetString,
+            #[serde(rename = "_onsetString")]
+            OnsetStringPrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = FamilyMemberHistoryCondition;
@@ -156,37 +186,37 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "outcome" => {
+                        Field::Outcome => {
                             if r#outcome.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
                             r#outcome = Some(map_access.next_value()?);
                         }
-                        "contributedToDeath" => {
+                        Field::ContributedToDeath => {
                             let some = r#contributed_to_death.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -195,7 +225,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_contributedToDeath" => {
+                        Field::ContributedToDeathPrimitiveElement => {
                             let some = r#contributed_to_death.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -209,7 +239,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "onsetAge" => {
+                        Field::OnsetAge => {
                             if r#onset.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onsetAge"));
                             }
@@ -217,7 +247,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 map_access.next_value()?,
                             ));
                         }
-                        "onsetRange" => {
+                        Field::OnsetRange => {
                             if r#onset.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onsetRange"));
                             }
@@ -225,7 +255,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 map_access.next_value()?,
                             ));
                         }
-                        "onsetPeriod" => {
+                        Field::OnsetPeriod => {
                             if r#onset.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onsetPeriod"));
                             }
@@ -233,7 +263,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 map_access.next_value()?,
                             ));
                         }
-                        "onsetString" => {
+                        Field::OnsetString => {
                             let r#enum = r#onset.get_or_insert(
                                 FamilyMemberHistoryConditionOnset::String(Default::default()),
                             );
@@ -246,7 +276,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 return Err(serde::de::Error::duplicate_field("onset[x]"));
                             }
                         }
-                        "_onsetString" => {
+                        Field::OnsetStringPrimitiveElement => {
                             let r#enum = r#onset.get_or_insert(
                                 FamilyMemberHistoryConditionOnset::String(Default::default()),
                             );
@@ -264,29 +294,11 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 return Err(serde::de::Error::duplicate_field("_onset[x]"));
                             }
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "outcome",
-                                    "contributedToDeath",
-                                    "onsetAge",
-                                    "onsetRange",
-                                    "onsetPeriod",
-                                    "onsetString",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -627,6 +639,106 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "instantiatesCanonical")]
+            InstantiatesCanonical,
+            #[serde(rename = "_instantiatesCanonical")]
+            InstantiatesCanonicalPrimitiveElement,
+            #[serde(rename = "instantiatesUri")]
+            InstantiatesUri,
+            #[serde(rename = "_instantiatesUri")]
+            InstantiatesUriPrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "dataAbsentReason")]
+            DataAbsentReason,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "relationship")]
+            Relationship,
+            #[serde(rename = "sex")]
+            Sex,
+            #[serde(rename = "bornPeriod")]
+            BornPeriod,
+            #[serde(rename = "bornDate")]
+            BornDate,
+            #[serde(rename = "_bornDate")]
+            BornDatePrimitiveElement,
+            #[serde(rename = "bornString")]
+            BornString,
+            #[serde(rename = "_bornString")]
+            BornStringPrimitiveElement,
+            #[serde(rename = "ageAge")]
+            AgeAge,
+            #[serde(rename = "ageRange")]
+            AgeRange,
+            #[serde(rename = "ageString")]
+            AgeString,
+            #[serde(rename = "_ageString")]
+            AgeStringPrimitiveElement,
+            #[serde(rename = "estimatedAge")]
+            EstimatedAge,
+            #[serde(rename = "_estimatedAge")]
+            EstimatedAgePrimitiveElement,
+            #[serde(rename = "deceasedBoolean")]
+            DeceasedBoolean,
+            #[serde(rename = "_deceasedBoolean")]
+            DeceasedBooleanPrimitiveElement,
+            #[serde(rename = "deceasedAge")]
+            DeceasedAge,
+            #[serde(rename = "deceasedRange")]
+            DeceasedRange,
+            #[serde(rename = "deceasedDate")]
+            DeceasedDate,
+            #[serde(rename = "_deceasedDate")]
+            DeceasedDatePrimitiveElement,
+            #[serde(rename = "deceasedString")]
+            DeceasedString,
+            #[serde(rename = "_deceasedString")]
+            DeceasedStringPrimitiveElement,
+            #[serde(rename = "reasonCode")]
+            ReasonCode,
+            #[serde(rename = "reasonReference")]
+            ReasonReference,
+            #[serde(rename = "note")]
+            Note,
+            #[serde(rename = "condition")]
+            Condition,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = FamilyMemberHistory;
@@ -669,26 +781,26 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                 let mut r#condition: Option<Vec<FamilyMemberHistoryCondition>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -700,14 +812,14 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -719,37 +831,37 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "instantiatesCanonical" => {
+                        Field::InstantiatesCanonical => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#instantiates_canonical
                                 .get_or_insert(Vec::with_capacity(values.len()));
@@ -768,7 +880,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiatesCanonical" => {
+                        Field::InstantiatesCanonicalPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#instantiates_canonical
@@ -792,7 +904,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "instantiatesUri" => {
+                        Field::InstantiatesUri => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#instantiates_uri.get_or_insert(Vec::with_capacity(values.len()));
@@ -809,7 +921,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiatesUri" => {
+                        Field::InstantiatesUriPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#instantiates_uri
@@ -831,14 +943,14 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -850,26 +962,26 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "dataAbsentReason" => {
+                        Field::DataAbsentReason => {
                             if r#data_absent_reason.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dataAbsentReason"));
                             }
                             r#data_absent_reason = Some(map_access.next_value()?);
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -881,14 +993,14 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -900,26 +1012,26 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "relationship" => {
+                        Field::Relationship => {
                             if r#relationship.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relationship"));
                             }
                             r#relationship = Some(map_access.next_value()?);
                         }
-                        "sex" => {
+                        Field::Sex => {
                             if r#sex.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sex"));
                             }
                             r#sex = Some(map_access.next_value()?);
                         }
-                        "bornPeriod" => {
+                        Field::BornPeriod => {
                             if r#born.is_some() {
                                 return Err(serde::de::Error::duplicate_field("bornPeriod"));
                             }
                             r#born =
                                 Some(FamilyMemberHistoryBorn::Period(map_access.next_value()?));
                         }
-                        "bornDate" => {
+                        Field::BornDate => {
                             let r#enum = r#born
                                 .get_or_insert(FamilyMemberHistoryBorn::Date(Default::default()));
                             if let FamilyMemberHistoryBorn::Date(variant) = r#enum {
@@ -931,7 +1043,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("born[x]"));
                             }
                         }
-                        "_bornDate" => {
+                        Field::BornDatePrimitiveElement => {
                             let r#enum = r#born
                                 .get_or_insert(FamilyMemberHistoryBorn::Date(Default::default()));
                             if let FamilyMemberHistoryBorn::Date(variant) = r#enum {
@@ -948,7 +1060,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("_born[x]"));
                             }
                         }
-                        "bornString" => {
+                        Field::BornString => {
                             let r#enum = r#born
                                 .get_or_insert(FamilyMemberHistoryBorn::String(Default::default()));
                             if let FamilyMemberHistoryBorn::String(variant) = r#enum {
@@ -960,7 +1072,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("born[x]"));
                             }
                         }
-                        "_bornString" => {
+                        Field::BornStringPrimitiveElement => {
                             let r#enum = r#born
                                 .get_or_insert(FamilyMemberHistoryBorn::String(Default::default()));
                             if let FamilyMemberHistoryBorn::String(variant) = r#enum {
@@ -977,19 +1089,19 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("_born[x]"));
                             }
                         }
-                        "ageAge" => {
+                        Field::AgeAge => {
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ageAge"));
                             }
                             r#age = Some(FamilyMemberHistoryAge::Age(map_access.next_value()?));
                         }
-                        "ageRange" => {
+                        Field::AgeRange => {
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ageRange"));
                             }
                             r#age = Some(FamilyMemberHistoryAge::Range(map_access.next_value()?));
                         }
-                        "ageString" => {
+                        Field::AgeString => {
                             let r#enum = r#age
                                 .get_or_insert(FamilyMemberHistoryAge::String(Default::default()));
                             if let FamilyMemberHistoryAge::String(variant) = r#enum {
@@ -1001,7 +1113,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("age[x]"));
                             }
                         }
-                        "_ageString" => {
+                        Field::AgeStringPrimitiveElement => {
                             let r#enum = r#age
                                 .get_or_insert(FamilyMemberHistoryAge::String(Default::default()));
                             if let FamilyMemberHistoryAge::String(variant) = r#enum {
@@ -1018,14 +1130,14 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("_age[x]"));
                             }
                         }
-                        "estimatedAge" => {
+                        Field::EstimatedAge => {
                             let some = r#estimated_age.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("estimatedAge"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_estimatedAge" => {
+                        Field::EstimatedAgePrimitiveElement => {
                             let some = r#estimated_age.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_estimatedAge"));
@@ -1037,7 +1149,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "deceasedBoolean" => {
+                        Field::DeceasedBoolean => {
                             let r#enum = r#deceased.get_or_insert(
                                 FamilyMemberHistoryDeceased::Boolean(Default::default()),
                             );
@@ -1052,7 +1164,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("deceased[x]"));
                             }
                         }
-                        "_deceasedBoolean" => {
+                        Field::DeceasedBooleanPrimitiveElement => {
                             let r#enum = r#deceased.get_or_insert(
                                 FamilyMemberHistoryDeceased::Boolean(Default::default()),
                             );
@@ -1072,21 +1184,21 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("_deceased[x]"));
                             }
                         }
-                        "deceasedAge" => {
+                        Field::DeceasedAge => {
                             if r#deceased.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deceasedAge"));
                             }
                             r#deceased =
                                 Some(FamilyMemberHistoryDeceased::Age(map_access.next_value()?));
                         }
-                        "deceasedRange" => {
+                        Field::DeceasedRange => {
                             if r#deceased.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deceasedRange"));
                             }
                             r#deceased =
                                 Some(FamilyMemberHistoryDeceased::Range(map_access.next_value()?));
                         }
-                        "deceasedDate" => {
+                        Field::DeceasedDate => {
                             let r#enum = r#deceased.get_or_insert(
                                 FamilyMemberHistoryDeceased::Date(Default::default()),
                             );
@@ -1099,7 +1211,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("deceased[x]"));
                             }
                         }
-                        "_deceasedDate" => {
+                        Field::DeceasedDatePrimitiveElement => {
                             let r#enum = r#deceased.get_or_insert(
                                 FamilyMemberHistoryDeceased::Date(Default::default()),
                             );
@@ -1117,7 +1229,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("_deceased[x]"));
                             }
                         }
-                        "deceasedString" => {
+                        Field::DeceasedString => {
                             let r#enum = r#deceased.get_or_insert(
                                 FamilyMemberHistoryDeceased::String(Default::default()),
                             );
@@ -1132,7 +1244,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("deceased[x]"));
                             }
                         }
-                        "_deceasedString" => {
+                        Field::DeceasedStringPrimitiveElement => {
                             let r#enum = r#deceased.get_or_insert(
                                 FamilyMemberHistoryDeceased::String(Default::default()),
                             );
@@ -1152,70 +1264,29 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 return Err(serde::de::Error::duplicate_field("_deceased[x]"));
                             }
                         }
-                        "reasonCode" => {
+                        Field::ReasonCode => {
                             if r#reason_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonCode"));
                             }
                             r#reason_code = Some(map_access.next_value()?);
                         }
-                        "reasonReference" => {
+                        Field::ReasonReference => {
                             if r#reason_reference.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonReference"));
                             }
                             r#reason_reference = Some(map_access.next_value()?);
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
                         }
-                        "condition" => {
+                        Field::Condition => {
                             if r#condition.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
                             r#condition = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "instantiatesCanonical",
-                                    "instantiatesUri",
-                                    "status",
-                                    "dataAbsentReason",
-                                    "patient",
-                                    "date",
-                                    "name",
-                                    "relationship",
-                                    "sex",
-                                    "bornPeriod",
-                                    "bornDate",
-                                    "bornString",
-                                    "ageAge",
-                                    "ageRange",
-                                    "ageString",
-                                    "estimatedAge",
-                                    "deceasedBoolean",
-                                    "deceasedAge",
-                                    "deceasedRange",
-                                    "deceasedDate",
-                                    "deceasedString",
-                                    "reasonCode",
-                                    "reasonReference",
-                                    "note",
-                                    "condition",
-                                ],
-                            ))
                         }
                     }
                 }

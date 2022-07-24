@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ProdCharacteristic {
     pub r#id: Option<std::string::String>,
@@ -130,6 +130,44 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "height")]
+            Height,
+            #[serde(rename = "width")]
+            Width,
+            #[serde(rename = "depth")]
+            Depth,
+            #[serde(rename = "weight")]
+            Weight,
+            #[serde(rename = "nominalVolume")]
+            NominalVolume,
+            #[serde(rename = "externalDiameter")]
+            ExternalDiameter,
+            #[serde(rename = "shape")]
+            Shape,
+            #[serde(rename = "_shape")]
+            ShapePrimitiveElement,
+            #[serde(rename = "color")]
+            Color,
+            #[serde(rename = "_color")]
+            ColorPrimitiveElement,
+            #[serde(rename = "imprint")]
+            Imprint,
+            #[serde(rename = "_imprint")]
+            ImprintPrimitiveElement,
+            #[serde(rename = "image")]
+            Image,
+            #[serde(rename = "scoring")]
+            Scoring,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ProdCharacteristic;
@@ -157,68 +195,68 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                 let mut r#scoring: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "height" => {
+                        Field::Height => {
                             if r#height.is_some() {
                                 return Err(serde::de::Error::duplicate_field("height"));
                             }
                             r#height = Some(map_access.next_value()?);
                         }
-                        "width" => {
+                        Field::Width => {
                             if r#width.is_some() {
                                 return Err(serde::de::Error::duplicate_field("width"));
                             }
                             r#width = Some(map_access.next_value()?);
                         }
-                        "depth" => {
+                        Field::Depth => {
                             if r#depth.is_some() {
                                 return Err(serde::de::Error::duplicate_field("depth"));
                             }
                             r#depth = Some(map_access.next_value()?);
                         }
-                        "weight" => {
+                        Field::Weight => {
                             if r#weight.is_some() {
                                 return Err(serde::de::Error::duplicate_field("weight"));
                             }
                             r#weight = Some(map_access.next_value()?);
                         }
-                        "nominalVolume" => {
+                        Field::NominalVolume => {
                             if r#nominal_volume.is_some() {
                                 return Err(serde::de::Error::duplicate_field("nominalVolume"));
                             }
                             r#nominal_volume = Some(map_access.next_value()?);
                         }
-                        "externalDiameter" => {
+                        Field::ExternalDiameter => {
                             if r#external_diameter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("externalDiameter"));
                             }
                             r#external_diameter = Some(map_access.next_value()?);
                         }
-                        "shape" => {
+                        Field::Shape => {
                             let some = r#shape.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("shape"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_shape" => {
+                        Field::ShapePrimitiveElement => {
                             let some = r#shape.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_shape"));
@@ -230,7 +268,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "color" => {
+                        Field::Color => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#color.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -246,7 +284,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 vec[i].value = value;
                             }
                         }
-                        "_color" => {
+                        Field::ColorPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#color.get_or_insert(Vec::with_capacity(elements.len()));
@@ -267,7 +305,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "imprint" => {
+                        Field::Imprint => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#imprint.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -283,7 +321,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 vec[i].value = value;
                             }
                         }
-                        "_imprint" => {
+                        Field::ImprintPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#imprint.get_or_insert(Vec::with_capacity(elements.len()));
@@ -304,38 +342,17 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "image" => {
+                        Field::Image => {
                             if r#image.is_some() {
                                 return Err(serde::de::Error::duplicate_field("image"));
                             }
                             r#image = Some(map_access.next_value()?);
                         }
-                        "scoring" => {
+                        Field::Scoring => {
                             if r#scoring.is_some() {
                                 return Err(serde::de::Error::duplicate_field("scoring"));
                             }
                             r#scoring = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "height",
-                                    "width",
-                                    "depth",
-                                    "weight",
-                                    "nominalVolume",
-                                    "externalDiameter",
-                                    "shape",
-                                    "color",
-                                    "imprint",
-                                    "image",
-                                    "scoring",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct InsurancePlanContact {
     pub r#id: Option<std::string::String>,
@@ -45,6 +45,24 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanContact {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "purpose")]
+            Purpose,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "telecom")]
+            Telecom,
+            #[serde(rename = "address")]
+            Address,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanContact;
@@ -65,61 +83,47 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanContact {
                 let mut r#address: Option<Box<super::super::types::Address>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "purpose" => {
+                        Field::Purpose => {
                             if r#purpose.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             r#purpose = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             if r#name.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             r#name = Some(map_access.next_value()?);
                         }
-                        "telecom" => {
+                        Field::Telecom => {
                             if r#telecom.is_some() {
                                 return Err(serde::de::Error::duplicate_field("telecom"));
                             }
                             r#telecom = Some(map_access.next_value()?);
                         }
-                        "address" => {
+                        Field::Address => {
                             if r#address.is_some() {
                                 return Err(serde::de::Error::duplicate_field("address"));
                             }
                             r#address = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "purpose",
-                                    "name",
-                                    "telecom",
-                                    "address",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -175,6 +179,20 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefitLimit {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "value")]
+            Value,
+            #[serde(rename = "code")]
+            Code,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanCoverageBenefitLimit;
@@ -196,41 +214,35 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefitLimit {
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "value" => {
+                        Field::Value => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             r#value = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "value", "code"],
-                            ))
                         }
                     }
                 }
@@ -295,6 +307,24 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "requirement")]
+            Requirement,
+            #[serde(rename = "_requirement")]
+            RequirementPrimitiveElement,
+            #[serde(rename = "limit")]
+            Limit,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanCoverageBenefit;
@@ -317,38 +347,38 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
                 let mut r#limit: Option<Vec<InsurancePlanCoverageBenefitLimit>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "requirement" => {
+                        Field::Requirement => {
                             let some = r#requirement.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requirement"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_requirement" => {
+                        Field::RequirementPrimitiveElement => {
                             let some = r#requirement.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_requirement"));
@@ -360,24 +390,11 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "limit" => {
+                        Field::Limit => {
                             if r#limit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("limit"));
                             }
                             r#limit = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "requirement",
-                                    "limit",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -434,6 +451,22 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverage {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "network")]
+            Network,
+            #[serde(rename = "benefit")]
+            Benefit,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanCoverage;
@@ -453,54 +486,41 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverage {
                 let mut r#benefit: Option<Vec<InsurancePlanCoverageBenefit>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "network" => {
+                        Field::Network => {
                             if r#network.is_some() {
                                 return Err(serde::de::Error::duplicate_field("network"));
                             }
                             r#network = Some(map_access.next_value()?);
                         }
-                        "benefit" => {
+                        Field::Benefit => {
                             if r#benefit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("benefit"));
                             }
                             r#benefit = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "network",
-                                    "benefit",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -581,6 +601,28 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "groupSize")]
+            GroupSize,
+            #[serde(rename = "_groupSize")]
+            GroupSizePrimitiveElement,
+            #[serde(rename = "cost")]
+            Cost,
+            #[serde(rename = "comment")]
+            Comment,
+            #[serde(rename = "_comment")]
+            CommentPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanPlanGeneralCost;
@@ -604,38 +646,38 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
                 let mut r#comment: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "groupSize" => {
+                        Field::GroupSize => {
                             let some = r#group_size.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("groupSize"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_groupSize" => {
+                        Field::GroupSizePrimitiveElement => {
                             let some = r#group_size.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_groupSize"));
@@ -647,20 +689,20 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "cost" => {
+                        Field::Cost => {
                             if r#cost.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cost"));
                             }
                             r#cost = Some(map_access.next_value()?);
                         }
-                        "comment" => {
+                        Field::Comment => {
                             let some = r#comment.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_comment" => {
+                        Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_comment"));
@@ -671,20 +713,6 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "groupSize",
-                                    "cost",
-                                    "comment",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -746,6 +774,24 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefitCo
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "applicability")]
+            Applicability,
+            #[serde(rename = "qualifiers")]
+            Qualifiers,
+            #[serde(rename = "value")]
+            Value,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanPlanSpecificCostBenefitCost;
@@ -769,61 +815,47 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefitCo
                 let mut r#value: Option<Box<super::super::types::Quantity>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "applicability" => {
+                        Field::Applicability => {
                             if r#applicability.is_some() {
                                 return Err(serde::de::Error::duplicate_field("applicability"));
                             }
                             r#applicability = Some(map_access.next_value()?);
                         }
-                        "qualifiers" => {
+                        Field::Qualifiers => {
                             if r#qualifiers.is_some() {
                                 return Err(serde::de::Error::duplicate_field("qualifiers"));
                             }
                             r#qualifiers = Some(map_access.next_value()?);
                         }
-                        "value" => {
+                        Field::Value => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             r#value = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "applicability",
-                                    "qualifiers",
-                                    "value",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -877,6 +909,20 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefit {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "cost")]
+            Cost,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanPlanSpecificCostBenefit;
@@ -898,41 +944,35 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefit {
                 let mut r#cost: Option<Vec<InsurancePlanPlanSpecificCostBenefitCost>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "cost" => {
+                        Field::Cost => {
                             if r#cost.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cost"));
                             }
                             r#cost = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "type", "cost"],
-                            ))
                         }
                     }
                 }
@@ -984,6 +1024,20 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCost {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "benefit")]
+            Benefit,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanPlanSpecificCost;
@@ -1005,47 +1059,35 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCost {
                 let mut r#benefit: Option<Vec<InsurancePlanPlanSpecificCostBenefit>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "category" => {
+                        Field::Category => {
                             if r#category.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             r#category = Some(map_access.next_value()?);
                         }
-                        "benefit" => {
+                        Field::Benefit => {
                             if r#benefit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("benefit"));
                             }
                             r#benefit = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "category",
-                                    "benefit",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1115,6 +1157,28 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlan {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "coverageArea")]
+            CoverageArea,
+            #[serde(rename = "network")]
+            Network,
+            #[serde(rename = "generalCost")]
+            GeneralCost,
+            #[serde(rename = "specificCost")]
+            SpecificCost,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlanPlan;
@@ -1137,75 +1201,59 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlan {
                 let mut r#specific_cost: Option<Vec<InsurancePlanPlanSpecificCost>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "coverageArea" => {
+                        Field::CoverageArea => {
                             if r#coverage_area.is_some() {
                                 return Err(serde::de::Error::duplicate_field("coverageArea"));
                             }
                             r#coverage_area = Some(map_access.next_value()?);
                         }
-                        "network" => {
+                        Field::Network => {
                             if r#network.is_some() {
                                 return Err(serde::de::Error::duplicate_field("network"));
                             }
                             r#network = Some(map_access.next_value()?);
                         }
-                        "generalCost" => {
+                        Field::GeneralCost => {
                             if r#general_cost.is_some() {
                                 return Err(serde::de::Error::duplicate_field("generalCost"));
                             }
                             r#general_cost = Some(map_access.next_value()?);
                         }
-                        "specificCost" => {
+                        Field::SpecificCost => {
                             if r#specific_cost.is_some() {
                                 return Err(serde::de::Error::duplicate_field("specificCost"));
                             }
                             r#specific_cost = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "type",
-                                    "coverageArea",
-                                    "network",
-                                    "generalCost",
-                                    "specificCost",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1392,6 +1440,64 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "alias")]
+            Alias,
+            #[serde(rename = "_alias")]
+            AliasPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "ownedBy")]
+            OwnedBy,
+            #[serde(rename = "administeredBy")]
+            AdministeredBy,
+            #[serde(rename = "coverageArea")]
+            CoverageArea,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "endpoint")]
+            Endpoint,
+            #[serde(rename = "network")]
+            Network,
+            #[serde(rename = "coverage")]
+            Coverage,
+            #[serde(rename = "plan")]
+            Plan,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InsurancePlan;
@@ -1427,26 +1533,26 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                 let mut r#plan: Option<Vec<InsurancePlanPlan>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1458,14 +1564,14 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1477,44 +1583,44 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1526,20 +1632,20 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1551,7 +1657,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "alias" => {
+                        Field::Alias => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#alias.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1567,7 +1673,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                                 vec[i].value = value;
                             }
                         }
-                        "_alias" => {
+                        Field::AliasPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#alias.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1588,88 +1694,59 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
                         }
-                        "ownedBy" => {
+                        Field::OwnedBy => {
                             if r#owned_by.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ownedBy"));
                             }
                             r#owned_by = Some(map_access.next_value()?);
                         }
-                        "administeredBy" => {
+                        Field::AdministeredBy => {
                             if r#administered_by.is_some() {
                                 return Err(serde::de::Error::duplicate_field("administeredBy"));
                             }
                             r#administered_by = Some(map_access.next_value()?);
                         }
-                        "coverageArea" => {
+                        Field::CoverageArea => {
                             if r#coverage_area.is_some() {
                                 return Err(serde::de::Error::duplicate_field("coverageArea"));
                             }
                             r#coverage_area = Some(map_access.next_value()?);
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "endpoint" => {
+                        Field::Endpoint => {
                             if r#endpoint.is_some() {
                                 return Err(serde::de::Error::duplicate_field("endpoint"));
                             }
                             r#endpoint = Some(map_access.next_value()?);
                         }
-                        "network" => {
+                        Field::Network => {
                             if r#network.is_some() {
                                 return Err(serde::de::Error::duplicate_field("network"));
                             }
                             r#network = Some(map_access.next_value()?);
                         }
-                        "coverage" => {
+                        Field::Coverage => {
                             if r#coverage.is_some() {
                                 return Err(serde::de::Error::duplicate_field("coverage"));
                             }
                             r#coverage = Some(map_access.next_value()?);
                         }
-                        "plan" => {
+                        Field::Plan => {
                             if r#plan.is_some() {
                                 return Err(serde::de::Error::duplicate_field("plan"));
                             }
                             r#plan = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "type",
-                                    "name",
-                                    "alias",
-                                    "period",
-                                    "ownedBy",
-                                    "administeredBy",
-                                    "coverageArea",
-                                    "contact",
-                                    "endpoint",
-                                    "network",
-                                    "coverage",
-                                    "plan",
-                                ],
-                            ))
                         }
                     }
                 }

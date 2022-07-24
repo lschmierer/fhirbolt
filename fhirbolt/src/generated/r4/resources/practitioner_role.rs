@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct PractitionerRoleAvailableTime {
     pub r#id: Option<std::string::String>,
@@ -96,6 +96,32 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "daysOfWeek")]
+            DaysOfWeek,
+            #[serde(rename = "_daysOfWeek")]
+            DaysOfWeekPrimitiveElement,
+            #[serde(rename = "allDay")]
+            AllDay,
+            #[serde(rename = "_allDay")]
+            AllDayPrimitiveElement,
+            #[serde(rename = "availableStartTime")]
+            AvailableStartTime,
+            #[serde(rename = "_availableStartTime")]
+            AvailableStartTimePrimitiveElement,
+            #[serde(rename = "availableEndTime")]
+            AvailableEndTime,
+            #[serde(rename = "_availableEndTime")]
+            AvailableEndTimePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PractitionerRoleAvailableTime;
@@ -119,25 +145,25 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                 let mut r#available_end_time: Option<super::super::types::Time> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "daysOfWeek" => {
+                        Field::DaysOfWeek => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#days_of_week.get_or_insert(Vec::with_capacity(values.len()));
@@ -154,7 +180,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                                 vec[i].value = value;
                             }
                         }
-                        "_daysOfWeek" => {
+                        Field::DaysOfWeekPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -176,14 +202,14 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "allDay" => {
+                        Field::AllDay => {
                             let some = r#all_day.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("allDay"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_allDay" => {
+                        Field::AllDayPrimitiveElement => {
                             let some = r#all_day.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_allDay"));
@@ -195,7 +221,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "availableStartTime" => {
+                        Field::AvailableStartTime => {
                             let some = r#available_start_time.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -204,7 +230,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_availableStartTime" => {
+                        Field::AvailableStartTimePrimitiveElement => {
                             let some = r#available_start_time.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -218,14 +244,14 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "availableEndTime" => {
+                        Field::AvailableEndTime => {
                             let some = r#available_end_time.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("availableEndTime"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_availableEndTime" => {
+                        Field::AvailableEndTimePrimitiveElement => {
                             let some = r#available_end_time.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_availableEndTime"));
@@ -236,20 +262,6 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "daysOfWeek",
-                                    "allDay",
-                                    "availableStartTime",
-                                    "availableEndTime",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -312,6 +324,22 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "during")]
+            During,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PractitionerRoleNotAvailable;
@@ -333,32 +361,32 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
                 let mut r#during: Option<Box<super::super::types::Period>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -370,23 +398,11 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "during" => {
+                        Field::During => {
                             if r#during.is_some() {
                                 return Err(serde::de::Error::duplicate_field("during"));
                             }
                             r#during = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "description",
-                                    "during",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -546,6 +562,62 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "active")]
+            Active,
+            #[serde(rename = "_active")]
+            ActivePrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "practitioner")]
+            Practitioner,
+            #[serde(rename = "organization")]
+            Organization,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "specialty")]
+            Specialty,
+            #[serde(rename = "location")]
+            Location,
+            #[serde(rename = "healthcareService")]
+            HealthcareService,
+            #[serde(rename = "telecom")]
+            Telecom,
+            #[serde(rename = "availableTime")]
+            AvailableTime,
+            #[serde(rename = "notAvailable")]
+            NotAvailable,
+            #[serde(rename = "availabilityExceptions")]
+            AvailabilityExceptions,
+            #[serde(rename = "_availabilityExceptions")]
+            AvailabilityExceptionsPrimitiveElement,
+            #[serde(rename = "endpoint")]
+            Endpoint,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PractitionerRole;
@@ -582,26 +654,26 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -613,14 +685,14 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -632,44 +704,44 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "active" => {
+                        Field::Active => {
                             let some = r#active.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("active"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_active" => {
+                        Field::ActivePrimitiveElement => {
                             let some = r#active.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_active"));
@@ -681,67 +753,67 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
                         }
-                        "practitioner" => {
+                        Field::Practitioner => {
                             if r#practitioner.is_some() {
                                 return Err(serde::de::Error::duplicate_field("practitioner"));
                             }
                             r#practitioner = Some(map_access.next_value()?);
                         }
-                        "organization" => {
+                        Field::Organization => {
                             if r#organization.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organization"));
                             }
                             r#organization = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "specialty" => {
+                        Field::Specialty => {
                             if r#specialty.is_some() {
                                 return Err(serde::de::Error::duplicate_field("specialty"));
                             }
                             r#specialty = Some(map_access.next_value()?);
                         }
-                        "location" => {
+                        Field::Location => {
                             if r#location.is_some() {
                                 return Err(serde::de::Error::duplicate_field("location"));
                             }
                             r#location = Some(map_access.next_value()?);
                         }
-                        "healthcareService" => {
+                        Field::HealthcareService => {
                             if r#healthcare_service.is_some() {
                                 return Err(serde::de::Error::duplicate_field("healthcareService"));
                             }
                             r#healthcare_service = Some(map_access.next_value()?);
                         }
-                        "telecom" => {
+                        Field::Telecom => {
                             if r#telecom.is_some() {
                                 return Err(serde::de::Error::duplicate_field("telecom"));
                             }
                             r#telecom = Some(map_access.next_value()?);
                         }
-                        "availableTime" => {
+                        Field::AvailableTime => {
                             if r#available_time.is_some() {
                                 return Err(serde::de::Error::duplicate_field("availableTime"));
                             }
                             r#available_time = Some(map_access.next_value()?);
                         }
-                        "notAvailable" => {
+                        Field::NotAvailable => {
                             if r#not_available.is_some() {
                                 return Err(serde::de::Error::duplicate_field("notAvailable"));
                             }
                             r#not_available = Some(map_access.next_value()?);
                         }
-                        "availabilityExceptions" => {
+                        Field::AvailabilityExceptions => {
                             let some = r#availability_exceptions.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -750,7 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_availabilityExceptions" => {
+                        Field::AvailabilityExceptionsPrimitiveElement => {
                             let some = r#availability_exceptions.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -764,40 +836,11 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "endpoint" => {
+                        Field::Endpoint => {
                             if r#endpoint.is_some() {
                                 return Err(serde::de::Error::duplicate_field("endpoint"));
                             }
                             r#endpoint = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "active",
-                                    "period",
-                                    "practitioner",
-                                    "organization",
-                                    "code",
-                                    "specialty",
-                                    "location",
-                                    "healthcareService",
-                                    "telecom",
-                                    "availableTime",
-                                    "notAvailable",
-                                    "availabilityExceptions",
-                                    "endpoint",
-                                ],
-                            ))
                         }
                     }
                 }

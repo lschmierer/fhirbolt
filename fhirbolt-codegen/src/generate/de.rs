@@ -1,16 +1,19 @@
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 
-use crate::gather::{RustEnum, RustEnumVariant, RustStruct, RustStructField};
+use crate::{
+    casing::RustCasing,
+    gather::{RustEnum, RustEnumVariant, RustStruct, RustStructField},
+};
 
 pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
     let struct_name = &r#struct.name;
     let stuct_name_ident = format_ident!("{}", struct_name);
 
-    let all_possible_fields_names = r#struct
+    let field_enum_variants_tokens = r#struct
         .fields
         .iter()
-        .map(|f| possible_fhir_names(f, enums))
+        .map(|f| field_enum_variant(f, enums))
         .flatten();
 
     let field_mut_vars_tokens = r#struct.fields.iter().map(|f| field_mut_var(f));
@@ -25,6 +28,14 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
             where
                 D: serde::de::Deserializer<'de>,
             {
+                #[derive(serde::Deserialize)]
+                #[serde(field_identifier)]
+                enum Field {
+                    #(
+                        #field_enum_variants_tokens
+                    )*
+                }
+
                 struct Visitor;
 
                 impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -47,14 +58,6 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
                                 #(
                                     #deserialize_fields_tokens
                                 )*
-                                _ => return Err(serde::de::Error::unknown_field(
-                                    map_access_key,
-                                    &[
-                                        #(
-                                            #all_possible_fields_names,
-                                        )*
-                                    ]
-                                ))
                             }
                         }
 
@@ -68,6 +71,59 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
 
                 deserializer.deserialize_map(Visitor)
             }
+        }
+    }
+}
+
+fn field_enum_variant(field: &RustStructField, enums: &[RustEnum]) -> Vec<TokenStream> {
+    let fhir_name = &field.fhir_name;
+    let fhir_primitive_element_name = format!("_{}", fhir_name);
+    let field_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
+    let field_type_primitive_element_name = format_ident!("{}PrimitiveElement", field_type_name);
+
+    if field.polymorph {
+        let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
+
+        r#enum
+            .variants
+            .iter()
+            .map(|v| {
+                let fhir_name = format!("{}{}", field.fhir_name, v.name);
+                let fhir_primitive_element_name = format!("_{}", fhir_name);
+
+                let field_type_name =
+                    format_ident!("{}{}", field.fhir_name.to_rust_type_casing(), v.name);
+                let field_type_primitive_element_name =
+                    format_ident!("{}PrimitiveElement", field_type_name);
+
+                if v.r#type.maybe_fhir_primitive {
+                    quote! {
+                        #[serde(rename=#fhir_name)]
+                        #field_type_name,
+                        #[serde(rename=#fhir_primitive_element_name)]
+                        #field_type_primitive_element_name,
+                    }
+                } else {
+                    quote! {
+                        #[serde(rename=#fhir_name)]
+                        #field_type_name,
+                    }
+                }
+            })
+            .collect()
+    } else {
+        if field.r#type.maybe_fhir_primitive {
+            vec![quote! {
+                #[serde(rename=#fhir_name)]
+                #field_type_name,
+                #[serde(rename=#fhir_primitive_element_name)]
+                #field_type_primitive_element_name,
+            }]
+        } else {
+            vec![quote! {
+                #[serde(rename=#fhir_name)]
+                #field_type_name,
+            }]
         }
     }
 }
@@ -113,20 +169,6 @@ fn field_struct_assign_var(field: &RustStructField) -> TokenStream {
     }
 }
 
-fn possible_fhir_names(field: &RustStructField, enums: &[RustEnum]) -> Vec<String> {
-    if field.polymorph {
-        let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
-
-        r#enum
-            .variants
-            .iter()
-            .map(|v| format!("{}{}", field.fhir_name, v.name))
-            .collect()
-    } else {
-        vec![field.fhir_name.clone()]
-    }
-}
-
 fn deserialize_field(field: &RustStructField, enums: &[RustEnum]) -> TokenStream {
     if field.polymorph {
         deserialize_enum(field, enums)
@@ -168,9 +210,14 @@ fn deserialize_enum_variant(
     let fhir_primitive_element_name = format!("_{}", fhir_name);
     let fhir_primitive_element_name_poly = format!("_{}", fhir_name_poly);
 
+    let field_enum_type_name =
+        format_ident!("{}{}", field.fhir_name.to_rust_type_casing(), variant.name);
+    let field_enum_type_primitive_element_name =
+        format_ident!("{}PrimitiveElement", field_enum_type_name);
+
     if variant.r#type.maybe_fhir_primitive {
         quote! {
-            #fhir_name => {
+            Field::#field_enum_type_name => {
                 let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
 
                 if let #enum_ident::#variant_ident(variant) = r#enum {
@@ -183,7 +230,7 @@ fn deserialize_enum_variant(
                     return Err(serde::de::Error::duplicate_field(#fhir_name_poly));
                 }
             },
-            #fhir_primitive_element_name => {
+            Field::#field_enum_type_primitive_element_name => {
                 let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
 
                 if let #enum_ident::#variant_ident(variant) = r#enum {
@@ -201,7 +248,7 @@ fn deserialize_enum_variant(
         }
     } else {
         quote! {
-            #fhir_name => {
+            Field::#field_enum_type_name => {
                 if #field_name_ident.is_some() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
@@ -217,9 +264,13 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
 
     let primitive_element_name = format!("_{}", fhir_name);
 
+    let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
+    let field_enum_type_primitive_element_name =
+        format_ident!("{}PrimitiveElement", field_enum_type_name);
+
     if field.multiple {
         quote! {
-            #fhir_name => {
+            Field::#field_enum_type_name => {
                 let values: Vec<_> = map_access.next_value()?;
 
                 let vec = #field_name_ident.get_or_insert(Vec::with_capacity(values.len()));
@@ -234,7 +285,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
                     vec[i].value = value;
                 }
             },
-            #primitive_element_name => {
+            Field::#field_enum_type_primitive_element_name => {
                 let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> = map_access.next_value()?;
 
                 let vec = #field_name_ident.get_or_insert(Vec::with_capacity(elements.len()));
@@ -269,12 +320,12 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
         };
 
         quote! {
-            #fhir_name => {
+            Field::#field_enum_type_name => {
                 let some = #field_name_ident.get_or_insert(Default::default());
 
                 #deserialize_value_tokens
             },
-            #primitive_element_name => {
+            Field::#field_enum_type_primitive_element_name => {
                 let some = #field_name_ident.get_or_insert(Default::default());
 
                 if some.id.is_some() || !some.extension.is_empty() {
@@ -293,8 +344,10 @@ fn deserialize_element(field: &RustStructField) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
+    let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
+
     quote! {
-        #fhir_name => {
+        Field::#field_enum_type_name => {
             if #field_name_ident.is_some() {
                 return Err(serde::de::Error::duplicate_field(#fhir_name));
             }

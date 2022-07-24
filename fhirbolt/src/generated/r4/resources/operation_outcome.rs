@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct OperationOutcomeIssue {
     pub r#id: Option<std::string::String>,
@@ -124,6 +124,38 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "severity")]
+            Severity,
+            #[serde(rename = "_severity")]
+            SeverityPrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "_code")]
+            CodePrimitiveElement,
+            #[serde(rename = "details")]
+            Details,
+            #[serde(rename = "diagnostics")]
+            Diagnostics,
+            #[serde(rename = "_diagnostics")]
+            DiagnosticsPrimitiveElement,
+            #[serde(rename = "location")]
+            Location,
+            #[serde(rename = "_location")]
+            LocationPrimitiveElement,
+            #[serde(rename = "expression")]
+            Expression,
+            #[serde(rename = "_expression")]
+            ExpressionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationOutcomeIssue;
@@ -146,32 +178,32 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                 let mut r#expression: Option<Vec<super::super::types::String>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "severity" => {
+                        Field::Severity => {
                             let some = r#severity.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("severity"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_severity" => {
+                        Field::SeverityPrimitiveElement => {
                             let some = r#severity.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_severity"));
@@ -183,14 +215,14 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_code" => {
+                        Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_code"));
@@ -202,20 +234,20 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "details" => {
+                        Field::Details => {
                             if r#details.is_some() {
                                 return Err(serde::de::Error::duplicate_field("details"));
                             }
                             r#details = Some(map_access.next_value()?);
                         }
-                        "diagnostics" => {
+                        Field::Diagnostics => {
                             let some = r#diagnostics.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("diagnostics"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_diagnostics" => {
+                        Field::DiagnosticsPrimitiveElement => {
                             let some = r#diagnostics.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_diagnostics"));
@@ -227,7 +259,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "location" => {
+                        Field::Location => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#location.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -243,7 +275,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                 vec[i].value = value;
                             }
                         }
-                        "_location" => {
+                        Field::LocationPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#location.get_or_insert(Vec::with_capacity(elements.len()));
@@ -264,7 +296,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "expression" => {
+                        Field::Expression => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#expression.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -280,7 +312,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                 vec[i].value = value;
                             }
                         }
-                        "_expression" => {
+                        Field::ExpressionPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -301,22 +333,6 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                 vec[i].id = element.id;
                                 vec[i].extension = element.extension;
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "severity",
-                                    "code",
-                                    "details",
-                                    "diagnostics",
-                                    "location",
-                                    "expression",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -409,6 +425,32 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "issue")]
+            Issue,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationOutcome;
@@ -431,26 +473,26 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
                 let mut r#issue: Option<Vec<OperationOutcomeIssue>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -462,14 +504,14 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -481,51 +523,35 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "issue" => {
+                        Field::Issue => {
                             if r#issue.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issue"));
                             }
                             r#issue = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "issue",
-                                ],
-                            ))
                         }
                     }
                 }

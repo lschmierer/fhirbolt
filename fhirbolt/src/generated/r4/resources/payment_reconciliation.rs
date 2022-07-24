@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct PaymentReconciliationDetail {
     pub r#id: Option<std::string::String>,
@@ -76,6 +76,38 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "predecessor")]
+            Predecessor,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "request")]
+            Request,
+            #[serde(rename = "submitter")]
+            Submitter,
+            #[serde(rename = "response")]
+            Response,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "responsible")]
+            Responsible,
+            #[serde(rename = "payee")]
+            Payee,
+            #[serde(rename = "amount")]
+            Amount,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentReconciliationDetail;
@@ -105,68 +137,68 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "predecessor" => {
+                        Field::Predecessor => {
                             if r#predecessor.is_some() {
                                 return Err(serde::de::Error::duplicate_field("predecessor"));
                             }
                             r#predecessor = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "request" => {
+                        Field::Request => {
                             if r#request.is_some() {
                                 return Err(serde::de::Error::duplicate_field("request"));
                             }
                             r#request = Some(map_access.next_value()?);
                         }
-                        "submitter" => {
+                        Field::Submitter => {
                             if r#submitter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("submitter"));
                             }
                             r#submitter = Some(map_access.next_value()?);
                         }
-                        "response" => {
+                        Field::Response => {
                             if r#response.is_some() {
                                 return Err(serde::de::Error::duplicate_field("response"));
                             }
                             r#response = Some(map_access.next_value()?);
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -178,43 +210,23 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "responsible" => {
+                        Field::Responsible => {
                             if r#responsible.is_some() {
                                 return Err(serde::de::Error::duplicate_field("responsible"));
                             }
                             r#responsible = Some(map_access.next_value()?);
                         }
-                        "payee" => {
+                        Field::Payee => {
                             if r#payee.is_some() {
                                 return Err(serde::de::Error::duplicate_field("payee"));
                             }
                             r#payee = Some(map_access.next_value()?);
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "predecessor",
-                                    "type",
-                                    "request",
-                                    "submitter",
-                                    "response",
-                                    "date",
-                                    "responsible",
-                                    "payee",
-                                    "amount",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -294,6 +306,24 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "_text")]
+            TextPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentReconciliationProcessNote;
@@ -315,32 +345,32 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                 let mut r#text: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -352,14 +382,14 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_text" => {
+                        Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_text"));
@@ -370,12 +400,6 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "type", "text"],
-                            ))
                         }
                     }
                 }
@@ -557,6 +581,70 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "created")]
+            Created,
+            #[serde(rename = "_created")]
+            CreatedPrimitiveElement,
+            #[serde(rename = "paymentIssuer")]
+            PaymentIssuer,
+            #[serde(rename = "request")]
+            Request,
+            #[serde(rename = "requestor")]
+            Requestor,
+            #[serde(rename = "outcome")]
+            Outcome,
+            #[serde(rename = "_outcome")]
+            OutcomePrimitiveElement,
+            #[serde(rename = "disposition")]
+            Disposition,
+            #[serde(rename = "_disposition")]
+            DispositionPrimitiveElement,
+            #[serde(rename = "paymentDate")]
+            PaymentDate,
+            #[serde(rename = "_paymentDate")]
+            PaymentDatePrimitiveElement,
+            #[serde(rename = "paymentAmount")]
+            PaymentAmount,
+            #[serde(rename = "paymentIdentifier")]
+            PaymentIdentifier,
+            #[serde(rename = "detail")]
+            Detail,
+            #[serde(rename = "formCode")]
+            FormCode,
+            #[serde(rename = "processNote")]
+            ProcessNote,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentReconciliation;
@@ -593,26 +681,26 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                 let mut r#process_note: Option<Vec<PaymentReconciliationProcessNote>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -624,14 +712,14 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -643,44 +731,44 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -692,20 +780,20 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
                         }
-                        "created" => {
+                        Field::Created => {
                             let some = r#created.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("created"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_created" => {
+                        Field::CreatedPrimitiveElement => {
                             let some = r#created.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_created"));
@@ -717,32 +805,32 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "paymentIssuer" => {
+                        Field::PaymentIssuer => {
                             if r#payment_issuer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentIssuer"));
                             }
                             r#payment_issuer = Some(map_access.next_value()?);
                         }
-                        "request" => {
+                        Field::Request => {
                             if r#request.is_some() {
                                 return Err(serde::de::Error::duplicate_field("request"));
                             }
                             r#request = Some(map_access.next_value()?);
                         }
-                        "requestor" => {
+                        Field::Requestor => {
                             if r#requestor.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requestor"));
                             }
                             r#requestor = Some(map_access.next_value()?);
                         }
-                        "outcome" => {
+                        Field::Outcome => {
                             let some = r#outcome.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_outcome" => {
+                        Field::OutcomePrimitiveElement => {
                             let some = r#outcome.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_outcome"));
@@ -754,14 +842,14 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "disposition" => {
+                        Field::Disposition => {
                             let some = r#disposition.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("disposition"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_disposition" => {
+                        Field::DispositionPrimitiveElement => {
                             let some = r#disposition.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_disposition"));
@@ -773,14 +861,14 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "paymentDate" => {
+                        Field::PaymentDate => {
                             let some = r#payment_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_paymentDate" => {
+                        Field::PaymentDatePrimitiveElement => {
                             let some = r#payment_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_paymentDate"));
@@ -792,65 +880,35 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "paymentAmount" => {
+                        Field::PaymentAmount => {
                             if r#payment_amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentAmount"));
                             }
                             r#payment_amount = Some(map_access.next_value()?);
                         }
-                        "paymentIdentifier" => {
+                        Field::PaymentIdentifier => {
                             if r#payment_identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentIdentifier"));
                             }
                             r#payment_identifier = Some(map_access.next_value()?);
                         }
-                        "detail" => {
+                        Field::Detail => {
                             if r#detail.is_some() {
                                 return Err(serde::de::Error::duplicate_field("detail"));
                             }
                             r#detail = Some(map_access.next_value()?);
                         }
-                        "formCode" => {
+                        Field::FormCode => {
                             if r#form_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("formCode"));
                             }
                             r#form_code = Some(map_access.next_value()?);
                         }
-                        "processNote" => {
+                        Field::ProcessNote => {
                             if r#process_note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("processNote"));
                             }
                             r#process_note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "period",
-                                    "created",
-                                    "paymentIssuer",
-                                    "request",
-                                    "requestor",
-                                    "outcome",
-                                    "disposition",
-                                    "paymentDate",
-                                    "paymentAmount",
-                                    "paymentIdentifier",
-                                    "detail",
-                                    "formCode",
-                                    "processNote",
-                                ],
-                            ))
                         }
                     }
                 }

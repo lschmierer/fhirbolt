@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceSourceMaterialFractionDescription {
     pub r#id: Option<std::string::String>,
@@ -46,6 +46,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "fraction")]
+            Fraction,
+            #[serde(rename = "_fraction")]
+            FractionPrimitiveElement,
+            #[serde(rename = "materialType")]
+            MaterialType,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialFractionDescription;
@@ -67,32 +83,32 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                 let mut r#material_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "fraction" => {
+                        Field::Fraction => {
                             let some = r#fraction.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("fraction"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_fraction" => {
+                        Field::FractionPrimitiveElement => {
                             let some = r#fraction.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_fraction"));
@@ -104,23 +120,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                             some.id = id;
                             some.extension = extension;
                         }
-                        "materialType" => {
+                        Field::MaterialType => {
                             if r#material_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("materialType"));
                             }
                             r#material_type = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "fraction",
-                                    "materialType",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -183,6 +187,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "authorType")]
+            AuthorType,
+            #[serde(rename = "authorDescription")]
+            AuthorDescription,
+            #[serde(rename = "_authorDescription")]
+            AuthorDescriptionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganismAuthor;
@@ -204,38 +224,38 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                 let mut r#author_description: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "authorType" => {
+                        Field::AuthorType => {
                             if r#author_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authorType"));
                             }
                             r#author_type = Some(map_access.next_value()?);
                         }
-                        "authorDescription" => {
+                        Field::AuthorDescription => {
                             let some = r#author_description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authorDescription"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_authorDescription" => {
+                        Field::AuthorDescriptionPrimitiveElement => {
                             let some = r#author_description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -248,18 +268,6 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "authorType",
-                                    "authorDescription",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -361,6 +369,34 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "maternalOrganismId")]
+            MaternalOrganismId,
+            #[serde(rename = "_maternalOrganismId")]
+            MaternalOrganismIdPrimitiveElement,
+            #[serde(rename = "maternalOrganismName")]
+            MaternalOrganismName,
+            #[serde(rename = "_maternalOrganismName")]
+            MaternalOrganismNamePrimitiveElement,
+            #[serde(rename = "paternalOrganismId")]
+            PaternalOrganismId,
+            #[serde(rename = "_paternalOrganismId")]
+            PaternalOrganismIdPrimitiveElement,
+            #[serde(rename = "paternalOrganismName")]
+            PaternalOrganismName,
+            #[serde(rename = "_paternalOrganismName")]
+            PaternalOrganismNamePrimitiveElement,
+            #[serde(rename = "hybridType")]
+            HybridType,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganismHybrid;
@@ -385,25 +421,25 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                 let mut r#hybrid_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "maternalOrganismId" => {
+                        Field::MaternalOrganismId => {
                             let some = r#maternal_organism_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -412,7 +448,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_maternalOrganismId" => {
+                        Field::MaternalOrganismIdPrimitiveElement => {
                             let some = r#maternal_organism_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -426,7 +462,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "maternalOrganismName" => {
+                        Field::MaternalOrganismName => {
                             let some = r#maternal_organism_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -435,7 +471,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_maternalOrganismName" => {
+                        Field::MaternalOrganismNamePrimitiveElement => {
                             let some = r#maternal_organism_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -449,7 +485,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "paternalOrganismId" => {
+                        Field::PaternalOrganismId => {
                             let some = r#paternal_organism_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -458,7 +494,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_paternalOrganismId" => {
+                        Field::PaternalOrganismIdPrimitiveElement => {
                             let some = r#paternal_organism_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -472,7 +508,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "paternalOrganismName" => {
+                        Field::PaternalOrganismName => {
                             let some = r#paternal_organism_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -481,7 +517,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_paternalOrganismName" => {
+                        Field::PaternalOrganismNamePrimitiveElement => {
                             let some = r#paternal_organism_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -495,26 +531,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "hybridType" => {
+                        Field::HybridType => {
                             if r#hybrid_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("hybridType"));
                             }
                             r#hybrid_type = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "maternalOrganismId",
-                                    "maternalOrganismName",
-                                    "paternalOrganismId",
-                                    "paternalOrganismName",
-                                    "hybridType",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -579,6 +600,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "kingdom")]
+            Kingdom,
+            #[serde(rename = "phylum")]
+            Phylum,
+            #[serde(rename = "class")]
+            Class,
+            #[serde(rename = "order")]
+            Order,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganismOrganismGeneral;
@@ -602,61 +641,47 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
                 let mut r#order: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "kingdom" => {
+                        Field::Kingdom => {
                             if r#kingdom.is_some() {
                                 return Err(serde::de::Error::duplicate_field("kingdom"));
                             }
                             r#kingdom = Some(map_access.next_value()?);
                         }
-                        "phylum" => {
+                        Field::Phylum => {
                             if r#phylum.is_some() {
                                 return Err(serde::de::Error::duplicate_field("phylum"));
                             }
                             r#phylum = Some(map_access.next_value()?);
                         }
-                        "class" => {
+                        Field::Class => {
                             if r#class.is_some() {
                                 return Err(serde::de::Error::duplicate_field("class"));
                             }
                             r#class = Some(map_access.next_value()?);
                         }
-                        "order" => {
+                        Field::Order => {
                             if r#order.is_some() {
                                 return Err(serde::de::Error::duplicate_field("order"));
                             }
                             r#order = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "kingdom",
-                                    "phylum",
-                                    "class",
-                                    "order",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -745,6 +770,34 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "family")]
+            Family,
+            #[serde(rename = "genus")]
+            Genus,
+            #[serde(rename = "species")]
+            Species,
+            #[serde(rename = "intraspecificType")]
+            IntraspecificType,
+            #[serde(rename = "intraspecificDescription")]
+            IntraspecificDescription,
+            #[serde(rename = "_intraspecificDescription")]
+            IntraspecificDescriptionPrimitiveElement,
+            #[serde(rename = "author")]
+            Author,
+            #[serde(rename = "hybrid")]
+            Hybrid,
+            #[serde(rename = "organismGeneral")]
+            OrganismGeneral,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganism;
@@ -774,49 +827,49 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "family" => {
+                        Field::Family => {
                             if r#family.is_some() {
                                 return Err(serde::de::Error::duplicate_field("family"));
                             }
                             r#family = Some(map_access.next_value()?);
                         }
-                        "genus" => {
+                        Field::Genus => {
                             if r#genus.is_some() {
                                 return Err(serde::de::Error::duplicate_field("genus"));
                             }
                             r#genus = Some(map_access.next_value()?);
                         }
-                        "species" => {
+                        Field::Species => {
                             if r#species.is_some() {
                                 return Err(serde::de::Error::duplicate_field("species"));
                             }
                             r#species = Some(map_access.next_value()?);
                         }
-                        "intraspecificType" => {
+                        Field::IntraspecificType => {
                             if r#intraspecific_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("intraspecificType"));
                             }
                             r#intraspecific_type = Some(map_access.next_value()?);
                         }
-                        "intraspecificDescription" => {
+                        Field::IntraspecificDescription => {
                             let some =
                                 r#intraspecific_description.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -826,7 +879,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_intraspecificDescription" => {
+                        Field::IntraspecificDescriptionPrimitiveElement => {
                             let some =
                                 r#intraspecific_description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -841,41 +894,23 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "author" => {
+                        Field::Author => {
                             if r#author.is_some() {
                                 return Err(serde::de::Error::duplicate_field("author"));
                             }
                             r#author = Some(map_access.next_value()?);
                         }
-                        "hybrid" => {
+                        Field::Hybrid => {
                             if r#hybrid.is_some() {
                                 return Err(serde::de::Error::duplicate_field("hybrid"));
                             }
                             r#hybrid = Some(map_access.next_value()?);
                         }
-                        "organismGeneral" => {
+                        Field::OrganismGeneral => {
                             if r#organism_general.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organismGeneral"));
                             }
                             r#organism_general = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "family",
-                                    "genus",
-                                    "species",
-                                    "intraspecificType",
-                                    "intraspecificDescription",
-                                    "author",
-                                    "hybrid",
-                                    "organismGeneral",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -935,6 +970,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "part")]
+            Part,
+            #[serde(rename = "partLocation")]
+            PartLocation,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialPartDescription;
@@ -956,47 +1005,35 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
                 let mut r#part_location: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "part" => {
+                        Field::Part => {
                             if r#part.is_some() {
                                 return Err(serde::de::Error::duplicate_field("part"));
                             }
                             r#part = Some(map_access.next_value()?);
                         }
-                        "partLocation" => {
+                        Field::PartLocation => {
                             if r#part_location.is_some() {
                                 return Err(serde::de::Error::duplicate_field("partLocation"));
                             }
                             r#part_location = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "part",
-                                    "partLocation",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1198,6 +1235,62 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "sourceMaterialClass")]
+            SourceMaterialClass,
+            #[serde(rename = "sourceMaterialType")]
+            SourceMaterialType,
+            #[serde(rename = "sourceMaterialState")]
+            SourceMaterialState,
+            #[serde(rename = "organismId")]
+            OrganismId,
+            #[serde(rename = "organismName")]
+            OrganismName,
+            #[serde(rename = "_organismName")]
+            OrganismNamePrimitiveElement,
+            #[serde(rename = "parentSubstanceId")]
+            ParentSubstanceId,
+            #[serde(rename = "parentSubstanceName")]
+            ParentSubstanceName,
+            #[serde(rename = "_parentSubstanceName")]
+            ParentSubstanceNamePrimitiveElement,
+            #[serde(rename = "countryOfOrigin")]
+            CountryOfOrigin,
+            #[serde(rename = "geographicalLocation")]
+            GeographicalLocation,
+            #[serde(rename = "_geographicalLocation")]
+            GeographicalLocationPrimitiveElement,
+            #[serde(rename = "developmentStage")]
+            DevelopmentStage,
+            #[serde(rename = "fractionDescription")]
+            FractionDescription,
+            #[serde(rename = "organism")]
+            Organism,
+            #[serde(rename = "partDescription")]
+            PartDescription,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterial;
@@ -1242,26 +1335,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1273,14 +1366,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1292,31 +1385,31 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "sourceMaterialClass" => {
+                        Field::SourceMaterialClass => {
                             if r#source_material_class.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "sourceMaterialClass",
@@ -1324,7 +1417,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             }
                             r#source_material_class = Some(map_access.next_value()?);
                         }
-                        "sourceMaterialType" => {
+                        Field::SourceMaterialType => {
                             if r#source_material_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "sourceMaterialType",
@@ -1332,7 +1425,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             }
                             r#source_material_type = Some(map_access.next_value()?);
                         }
-                        "sourceMaterialState" => {
+                        Field::SourceMaterialState => {
                             if r#source_material_state.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "sourceMaterialState",
@@ -1340,20 +1433,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             }
                             r#source_material_state = Some(map_access.next_value()?);
                         }
-                        "organismId" => {
+                        Field::OrganismId => {
                             if r#organism_id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organismId"));
                             }
                             r#organism_id = Some(map_access.next_value()?);
                         }
-                        "organismName" => {
+                        Field::OrganismName => {
                             let some = r#organism_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organismName"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_organismName" => {
+                        Field::OrganismNamePrimitiveElement => {
                             let some = r#organism_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_organismName"));
@@ -1365,13 +1458,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "parentSubstanceId" => {
+                        Field::ParentSubstanceId => {
                             if r#parent_substance_id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parentSubstanceId"));
                             }
                             r#parent_substance_id = Some(map_access.next_value()?);
                         }
-                        "parentSubstanceName" => {
+                        Field::ParentSubstanceName => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#parent_substance_name
                                 .get_or_insert(Vec::with_capacity(values.len()));
@@ -1390,7 +1483,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 vec[i].value = value;
                             }
                         }
-                        "_parentSubstanceName" => {
+                        Field::ParentSubstanceNamePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#parent_substance_name
@@ -1414,13 +1507,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "countryOfOrigin" => {
+                        Field::CountryOfOrigin => {
                             if r#country_of_origin.is_some() {
                                 return Err(serde::de::Error::duplicate_field("countryOfOrigin"));
                             }
                             r#country_of_origin = Some(map_access.next_value()?);
                         }
-                        "geographicalLocation" => {
+                        Field::GeographicalLocation => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#geographical_location
                                 .get_or_insert(Vec::with_capacity(values.len()));
@@ -1439,7 +1532,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 vec[i].value = value;
                             }
                         }
-                        "_geographicalLocation" => {
+                        Field::GeographicalLocationPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#geographical_location
@@ -1463,13 +1556,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "developmentStage" => {
+                        Field::DevelopmentStage => {
                             if r#development_stage.is_some() {
                                 return Err(serde::de::Error::duplicate_field("developmentStage"));
                             }
                             r#development_stage = Some(map_access.next_value()?);
                         }
-                        "fractionDescription" => {
+                        Field::FractionDescription => {
                             if r#fraction_description.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "fractionDescription",
@@ -1477,45 +1570,17 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             }
                             r#fraction_description = Some(map_access.next_value()?);
                         }
-                        "organism" => {
+                        Field::Organism => {
                             if r#organism.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organism"));
                             }
                             r#organism = Some(map_access.next_value()?);
                         }
-                        "partDescription" => {
+                        Field::PartDescription => {
                             if r#part_description.is_some() {
                                 return Err(serde::de::Error::duplicate_field("partDescription"));
                             }
                             r#part_description = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "sourceMaterialClass",
-                                    "sourceMaterialType",
-                                    "sourceMaterialState",
-                                    "organismId",
-                                    "organismName",
-                                    "parentSubstanceId",
-                                    "parentSubstanceName",
-                                    "countryOfOrigin",
-                                    "geographicalLocation",
-                                    "developmentStage",
-                                    "fractionDescription",
-                                    "organism",
-                                    "partDescription",
-                                ],
-                            ))
                         }
                     }
                 }

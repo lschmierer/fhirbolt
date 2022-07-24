@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct DeviceMetricCalibration {
     pub r#id: Option<std::string::String>,
@@ -68,6 +68,28 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "state")]
+            State,
+            #[serde(rename = "_state")]
+            StatePrimitiveElement,
+            #[serde(rename = "time")]
+            Time,
+            #[serde(rename = "_time")]
+            TimePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceMetricCalibration;
@@ -87,32 +109,32 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                 let mut r#time: Option<super::super::types::Instant> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -124,14 +146,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "state" => {
+                        Field::State => {
                             let some = r#state.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("state"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_state" => {
+                        Field::StatePrimitiveElement => {
                             let some = r#state.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_state"));
@@ -143,14 +165,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "time" => {
+                        Field::Time => {
                             let some = r#time.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("time"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_time" => {
+                        Field::TimePrimitiveElement => {
                             let some = r#time.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_time"));
@@ -161,19 +183,6 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "state",
-                                    "time",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -322,6 +331,56 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "unit")]
+            Unit,
+            #[serde(rename = "source")]
+            Source,
+            #[serde(rename = "parent")]
+            Parent,
+            #[serde(rename = "operationalStatus")]
+            OperationalStatus,
+            #[serde(rename = "_operationalStatus")]
+            OperationalStatusPrimitiveElement,
+            #[serde(rename = "color")]
+            Color,
+            #[serde(rename = "_color")]
+            ColorPrimitiveElement,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "_category")]
+            CategoryPrimitiveElement,
+            #[serde(rename = "measurementPeriod")]
+            MeasurementPeriod,
+            #[serde(rename = "calibration")]
+            Calibration,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceMetric;
@@ -353,26 +412,26 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                 let mut r#calibration: Option<Vec<DeviceMetricCalibration>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -384,14 +443,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -403,68 +462,68 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "unit" => {
+                        Field::Unit => {
                             if r#unit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("unit"));
                             }
                             r#unit = Some(map_access.next_value()?);
                         }
-                        "source" => {
+                        Field::Source => {
                             if r#source.is_some() {
                                 return Err(serde::de::Error::duplicate_field("source"));
                             }
                             r#source = Some(map_access.next_value()?);
                         }
-                        "parent" => {
+                        Field::Parent => {
                             if r#parent.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parent"));
                             }
                             r#parent = Some(map_access.next_value()?);
                         }
-                        "operationalStatus" => {
+                        Field::OperationalStatus => {
                             let some = r#operational_status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("operationalStatus"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_operationalStatus" => {
+                        Field::OperationalStatusPrimitiveElement => {
                             let some = r#operational_status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -478,14 +537,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "color" => {
+                        Field::Color => {
                             let some = r#color.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("color"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_color" => {
+                        Field::ColorPrimitiveElement => {
                             let some = r#color.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_color"));
@@ -497,14 +556,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "category" => {
+                        Field::Category => {
                             let some = r#category.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_category" => {
+                        Field::CategoryPrimitiveElement => {
                             let some = r#category.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_category"));
@@ -516,42 +575,17 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "measurementPeriod" => {
+                        Field::MeasurementPeriod => {
                             if r#measurement_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("measurementPeriod"));
                             }
                             r#measurement_period = Some(map_access.next_value()?);
                         }
-                        "calibration" => {
+                        Field::Calibration => {
                             if r#calibration.is_some() {
                                 return Err(serde::de::Error::duplicate_field("calibration"));
                             }
                             r#calibration = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "type",
-                                    "unit",
-                                    "source",
-                                    "parent",
-                                    "operationalStatus",
-                                    "color",
-                                    "category",
-                                    "measurementPeriod",
-                                    "calibration",
-                                ],
-                            ))
                         }
                     }
                 }

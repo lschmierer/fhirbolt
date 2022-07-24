@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct GraphDefinitionLinkTargetCompartment {
     pub r#id: Option<std::string::String>,
@@ -88,6 +88,36 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "use")]
+            Use,
+            #[serde(rename = "_use")]
+            UsePrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "_code")]
+            CodePrimitiveElement,
+            #[serde(rename = "rule")]
+            Rule,
+            #[serde(rename = "_rule")]
+            RulePrimitiveElement,
+            #[serde(rename = "expression")]
+            Expression,
+            #[serde(rename = "_expression")]
+            ExpressionPrimitiveElement,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinitionLinkTargetCompartment;
@@ -112,32 +142,32 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                 let mut r#description: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "use" => {
+                        Field::Use => {
                             let some = r#use.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_use" => {
+                        Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_use"));
@@ -149,14 +179,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_code" => {
+                        Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_code"));
@@ -168,14 +198,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "rule" => {
+                        Field::Rule => {
                             let some = r#rule.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rule"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_rule" => {
+                        Field::RulePrimitiveElement => {
                             let some = r#rule.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_rule"));
@@ -187,14 +217,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "expression" => {
+                        Field::Expression => {
                             let some = r#expression.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("expression"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_expression" => {
+                        Field::ExpressionPrimitiveElement => {
                             let some = r#expression.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_expression"));
@@ -206,14 +236,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -224,21 +254,6 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "use",
-                                    "code",
-                                    "rule",
-                                    "expression",
-                                    "description",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -332,6 +347,32 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "params")]
+            Params,
+            #[serde(rename = "_params")]
+            ParamsPrimitiveElement,
+            #[serde(rename = "profile")]
+            Profile,
+            #[serde(rename = "_profile")]
+            ProfilePrimitiveElement,
+            #[serde(rename = "compartment")]
+            Compartment,
+            #[serde(rename = "link")]
+            Link,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinitionLinkTarget;
@@ -353,32 +394,32 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                 let mut r#link: Option<Vec<GraphDefinitionLink>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -390,14 +431,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "params" => {
+                        Field::Params => {
                             let some = r#params.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("params"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_params" => {
+                        Field::ParamsPrimitiveElement => {
                             let some = r#params.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_params"));
@@ -409,14 +450,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "profile" => {
+                        Field::Profile => {
                             let some = r#profile.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("profile"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_profile" => {
+                        Field::ProfilePrimitiveElement => {
                             let some = r#profile.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_profile"));
@@ -428,32 +469,17 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "compartment" => {
+                        Field::Compartment => {
                             if r#compartment.is_some() {
                                 return Err(serde::de::Error::duplicate_field("compartment"));
                             }
                             r#compartment = Some(map_access.next_value()?);
                         }
-                        "link" => {
+                        Field::Link => {
                             if r#link.is_some() {
                                 return Err(serde::de::Error::duplicate_field("link"));
                             }
                             r#link = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "params",
-                                    "profile",
-                                    "compartment",
-                                    "link",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -571,6 +597,38 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "path")]
+            Path,
+            #[serde(rename = "_path")]
+            PathPrimitiveElement,
+            #[serde(rename = "sliceName")]
+            SliceName,
+            #[serde(rename = "_sliceName")]
+            SliceNamePrimitiveElement,
+            #[serde(rename = "min")]
+            Min,
+            #[serde(rename = "_min")]
+            MinPrimitiveElement,
+            #[serde(rename = "max")]
+            Max,
+            #[serde(rename = "_max")]
+            MaxPrimitiveElement,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "target")]
+            Target,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinitionLink;
@@ -593,32 +651,32 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                 let mut r#target: Option<Vec<GraphDefinitionLinkTarget>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "path" => {
+                        Field::Path => {
                             let some = r#path.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("path"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_path" => {
+                        Field::PathPrimitiveElement => {
                             let some = r#path.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_path"));
@@ -630,14 +688,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sliceName" => {
+                        Field::SliceName => {
                             let some = r#slice_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sliceName"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sliceName" => {
+                        Field::SliceNamePrimitiveElement => {
                             let some = r#slice_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sliceName"));
@@ -649,14 +707,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "min" => {
+                        Field::Min => {
                             let some = r#min.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("min"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_min" => {
+                        Field::MinPrimitiveElement => {
                             let some = r#min.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_min"));
@@ -668,14 +726,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "max" => {
+                        Field::Max => {
                             let some = r#max.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("max"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_max" => {
+                        Field::MaxPrimitiveElement => {
                             let some = r#max.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_max"));
@@ -687,14 +745,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -706,27 +764,11 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "target" => {
+                        Field::Target => {
                             if r#target.is_some() {
                                 return Err(serde::de::Error::duplicate_field("target"));
                             }
                             r#target = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "path",
-                                    "sliceName",
-                                    "min",
-                                    "max",
-                                    "description",
-                                    "target",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -968,6 +1010,82 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "experimental")]
+            Experimental,
+            #[serde(rename = "_experimental")]
+            ExperimentalPrimitiveElement,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "purpose")]
+            Purpose,
+            #[serde(rename = "_purpose")]
+            PurposePrimitiveElement,
+            #[serde(rename = "start")]
+            Start,
+            #[serde(rename = "_start")]
+            StartPrimitiveElement,
+            #[serde(rename = "profile")]
+            Profile,
+            #[serde(rename = "_profile")]
+            ProfilePrimitiveElement,
+            #[serde(rename = "link")]
+            Link,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinition;
@@ -1005,26 +1123,26 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                 let mut r#link: Option<Vec<GraphDefinitionLink>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1036,14 +1154,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1055,38 +1173,38 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -1098,14 +1216,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -1117,14 +1235,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1136,14 +1254,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1155,14 +1273,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "experimental" => {
+                        Field::Experimental => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_experimental" => {
+                        Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_experimental"));
@@ -1174,14 +1292,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -1193,14 +1311,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -1212,20 +1330,20 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -1237,26 +1355,26 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "purpose" => {
+                        Field::Purpose => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_purpose" => {
+                        Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_purpose"));
@@ -1268,14 +1386,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "start" => {
+                        Field::Start => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_start" => {
+                        Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
@@ -1287,14 +1405,14 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "profile" => {
+                        Field::Profile => {
                             let some = r#profile.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("profile"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_profile" => {
+                        Field::ProfilePrimitiveElement => {
                             let some = r#profile.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_profile"));
@@ -1306,41 +1424,11 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "link" => {
+                        Field::Link => {
                             if r#link.is_some() {
                                 return Err(serde::de::Error::duplicate_field("link"));
                             }
                             r#link = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "version",
-                                    "name",
-                                    "status",
-                                    "experimental",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "purpose",
-                                    "start",
-                                    "profile",
-                                    "link",
-                                ],
-                            ))
                         }
                     }
                 }

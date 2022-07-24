@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionChannel {
     pub r#id: Option<std::string::String>,
@@ -94,6 +94,32 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "endpoint")]
+            Endpoint,
+            #[serde(rename = "_endpoint")]
+            EndpointPrimitiveElement,
+            #[serde(rename = "payload")]
+            Payload,
+            #[serde(rename = "_payload")]
+            PayloadPrimitiveElement,
+            #[serde(rename = "header")]
+            Header,
+            #[serde(rename = "_header")]
+            HeaderPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionChannel;
@@ -114,32 +140,32 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                 let mut r#header: Option<Vec<super::super::types::String>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -151,14 +177,14 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "endpoint" => {
+                        Field::Endpoint => {
                             let some = r#endpoint.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("endpoint"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_endpoint" => {
+                        Field::EndpointPrimitiveElement => {
                             let some = r#endpoint.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_endpoint"));
@@ -170,14 +196,14 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "payload" => {
+                        Field::Payload => {
                             let some = r#payload.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("payload"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_payload" => {
+                        Field::PayloadPrimitiveElement => {
                             let some = r#payload.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_payload"));
@@ -189,7 +215,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "header" => {
+                        Field::Header => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#header.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -205,7 +231,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                 vec[i].value = value;
                             }
                         }
-                        "_header" => {
+                        Field::HeaderPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#header.get_or_insert(Vec::with_capacity(elements.len()));
@@ -225,20 +251,6 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                 vec[i].id = element.id;
                                 vec[i].extension = element.extension;
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "endpoint",
-                                    "payload",
-                                    "header",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -390,6 +402,54 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "end")]
+            End,
+            #[serde(rename = "_end")]
+            EndPrimitiveElement,
+            #[serde(rename = "reason")]
+            Reason,
+            #[serde(rename = "_reason")]
+            ReasonPrimitiveElement,
+            #[serde(rename = "criteria")]
+            Criteria,
+            #[serde(rename = "_criteria")]
+            CriteriaPrimitiveElement,
+            #[serde(rename = "error")]
+            Error,
+            #[serde(rename = "_error")]
+            ErrorPrimitiveElement,
+            #[serde(rename = "channel")]
+            Channel,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Subscription;
@@ -418,26 +478,26 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                 let mut r#channel: Option<SubscriptionChannel> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -449,14 +509,14 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -468,38 +528,38 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -511,20 +571,20 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "end" => {
+                        Field::End => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_end" => {
+                        Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
@@ -536,14 +596,14 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "reason" => {
+                        Field::Reason => {
                             let some = r#reason.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reason"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_reason" => {
+                        Field::ReasonPrimitiveElement => {
                             let some = r#reason.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_reason"));
@@ -555,14 +615,14 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "criteria" => {
+                        Field::Criteria => {
                             let some = r#criteria.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("criteria"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_criteria" => {
+                        Field::CriteriaPrimitiveElement => {
                             let some = r#criteria.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_criteria"));
@@ -574,14 +634,14 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "error" => {
+                        Field::Error => {
                             let some = r#error.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("error"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_error" => {
+                        Field::ErrorPrimitiveElement => {
                             let some = r#error.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_error"));
@@ -593,33 +653,11 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "channel" => {
+                        Field::Channel => {
                             if r#channel.is_some() {
                                 return Err(serde::de::Error::duplicate_field("channel"));
                             }
                             r#channel = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "status",
-                                    "contact",
-                                    "end",
-                                    "reason",
-                                    "criteria",
-                                    "error",
-                                    "channel",
-                                ],
-                            ))
                         }
                     }
                 }

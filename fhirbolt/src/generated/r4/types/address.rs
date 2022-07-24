@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Address {
     pub r#id: Option<std::string::String>,
@@ -161,6 +161,52 @@ impl<'de> serde::de::Deserialize<'de> for Address {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "use")]
+            Use,
+            #[serde(rename = "_use")]
+            UsePrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "_text")]
+            TextPrimitiveElement,
+            #[serde(rename = "line")]
+            Line,
+            #[serde(rename = "_line")]
+            LinePrimitiveElement,
+            #[serde(rename = "city")]
+            City,
+            #[serde(rename = "_city")]
+            CityPrimitiveElement,
+            #[serde(rename = "district")]
+            District,
+            #[serde(rename = "_district")]
+            DistrictPrimitiveElement,
+            #[serde(rename = "state")]
+            State,
+            #[serde(rename = "_state")]
+            StatePrimitiveElement,
+            #[serde(rename = "postalCode")]
+            PostalCode,
+            #[serde(rename = "_postalCode")]
+            PostalCodePrimitiveElement,
+            #[serde(rename = "country")]
+            Country,
+            #[serde(rename = "_country")]
+            CountryPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Address;
@@ -185,26 +231,26 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "use" => {
+                        Field::Use => {
                             let some = r#use.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_use" => {
+                        Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_use"));
@@ -216,14 +262,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -235,14 +281,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_text" => {
+                        Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_text"));
@@ -254,7 +300,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "line" => {
+                        Field::Line => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#line.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -270,7 +316,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                 vec[i].value = value;
                             }
                         }
-                        "_line" => {
+                        Field::LinePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#line.get_or_insert(Vec::with_capacity(elements.len()));
@@ -291,14 +337,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "city" => {
+                        Field::City => {
                             let some = r#city.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("city"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_city" => {
+                        Field::CityPrimitiveElement => {
                             let some = r#city.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_city"));
@@ -310,14 +356,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "district" => {
+                        Field::District => {
                             let some = r#district.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("district"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_district" => {
+                        Field::DistrictPrimitiveElement => {
                             let some = r#district.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_district"));
@@ -329,14 +375,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "state" => {
+                        Field::State => {
                             let some = r#state.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("state"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_state" => {
+                        Field::StatePrimitiveElement => {
                             let some = r#state.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_state"));
@@ -348,14 +394,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "postalCode" => {
+                        Field::PostalCode => {
                             let some = r#postal_code.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("postalCode"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_postalCode" => {
+                        Field::PostalCodePrimitiveElement => {
                             let some = r#postal_code.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_postalCode"));
@@ -367,14 +413,14 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "country" => {
+                        Field::Country => {
                             let some = r#country.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("country"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_country" => {
+                        Field::CountryPrimitiveElement => {
                             let some = r#country.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_country"));
@@ -386,30 +432,11 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "use",
-                                    "type",
-                                    "text",
-                                    "line",
-                                    "city",
-                                    "district",
-                                    "state",
-                                    "postalCode",
-                                    "country",
-                                    "period",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum UsageContextValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -58,6 +58,24 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "valueCodeableConcept")]
+            ValueCodeableConcept,
+            #[serde(rename = "valueQuantity")]
+            ValueQuantity,
+            #[serde(rename = "valueRange")]
+            ValueRange,
+            #[serde(rename = "valueReference")]
+            ValueReference,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = UsageContext;
@@ -74,25 +92,25 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                 let mut r#value: Option<UsageContextValue> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "valueCodeableConcept" => {
+                        Field::ValueCodeableConcept => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueCodeableConcept",
@@ -101,37 +119,23 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                             r#value =
                                 Some(UsageContextValue::CodeableConcept(map_access.next_value()?));
                         }
-                        "valueQuantity" => {
+                        Field::ValueQuantity => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueQuantity"));
                             }
                             r#value = Some(UsageContextValue::Quantity(map_access.next_value()?));
                         }
-                        "valueRange" => {
+                        Field::ValueRange => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueRange"));
                             }
                             r#value = Some(UsageContextValue::Range(map_access.next_value()?));
                         }
-                        "valueReference" => {
+                        Field::ValueReference => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueReference"));
                             }
                             r#value = Some(UsageContextValue::Reference(map_access.next_value()?));
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "code",
-                                    "valueCodeableConcept",
-                                    "valueQuantity",
-                                    "valueRange",
-                                    "valueReference",
-                                ],
-                            ))
                         }
                     }
                 }

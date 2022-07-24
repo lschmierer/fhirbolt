@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ObservationDefinitionQuantitativeDetails {
     pub r#id: Option<std::string::String>,
@@ -63,6 +63,28 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "customaryUnit")]
+            CustomaryUnit,
+            #[serde(rename = "unit")]
+            Unit,
+            #[serde(rename = "conversionFactor")]
+            ConversionFactor,
+            #[serde(rename = "_conversionFactor")]
+            ConversionFactorPrimitiveElement,
+            #[serde(rename = "decimalPrecision")]
+            DecimalPrecision,
+            #[serde(rename = "_decimalPrecision")]
+            DecimalPrecisionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationDefinitionQuantitativeDetails;
@@ -86,44 +108,44 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                 let mut r#decimal_precision: Option<super::super::types::Integer> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "customaryUnit" => {
+                        Field::CustomaryUnit => {
                             if r#customary_unit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("customaryUnit"));
                             }
                             r#customary_unit = Some(map_access.next_value()?);
                         }
-                        "unit" => {
+                        Field::Unit => {
                             if r#unit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("unit"));
                             }
                             r#unit = Some(map_access.next_value()?);
                         }
-                        "conversionFactor" => {
+                        Field::ConversionFactor => {
                             let some = r#conversion_factor.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("conversionFactor"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_conversionFactor" => {
+                        Field::ConversionFactorPrimitiveElement => {
                             let some = r#conversion_factor.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_conversionFactor"));
@@ -135,14 +157,14 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                             some.id = id;
                             some.extension = extension;
                         }
-                        "decimalPrecision" => {
+                        Field::DecimalPrecision => {
                             let some = r#decimal_precision.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("decimalPrecision"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_decimalPrecision" => {
+                        Field::DecimalPrecisionPrimitiveElement => {
                             let some = r#decimal_precision.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_decimalPrecision"));
@@ -153,20 +175,6 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "customaryUnit",
-                                    "unit",
-                                    "conversionFactor",
-                                    "decimalPrecision",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -273,6 +281,38 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "_category")]
+            CategoryPrimitiveElement,
+            #[serde(rename = "range")]
+            Range,
+            #[serde(rename = "context")]
+            Context,
+            #[serde(rename = "appliesTo")]
+            AppliesTo,
+            #[serde(rename = "gender")]
+            Gender,
+            #[serde(rename = "_gender")]
+            GenderPrimitiveElement,
+            #[serde(rename = "age")]
+            Age,
+            #[serde(rename = "gestationalAge")]
+            GestationalAge,
+            #[serde(rename = "condition")]
+            Condition,
+            #[serde(rename = "_condition")]
+            ConditionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationDefinitionQualifiedInterval;
@@ -300,32 +340,32 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                 let mut r#condition: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "category" => {
+                        Field::Category => {
                             let some = r#category.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_category" => {
+                        Field::CategoryPrimitiveElement => {
                             let some = r#category.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_category"));
@@ -337,32 +377,32 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                             some.id = id;
                             some.extension = extension;
                         }
-                        "range" => {
+                        Field::Range => {
                             if r#range.is_some() {
                                 return Err(serde::de::Error::duplicate_field("range"));
                             }
                             r#range = Some(map_access.next_value()?);
                         }
-                        "context" => {
+                        Field::Context => {
                             if r#context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("context"));
                             }
                             r#context = Some(map_access.next_value()?);
                         }
-                        "appliesTo" => {
+                        Field::AppliesTo => {
                             if r#applies_to.is_some() {
                                 return Err(serde::de::Error::duplicate_field("appliesTo"));
                             }
                             r#applies_to = Some(map_access.next_value()?);
                         }
-                        "gender" => {
+                        Field::Gender => {
                             let some = r#gender.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gender"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_gender" => {
+                        Field::GenderPrimitiveElement => {
                             let some = r#gender.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_gender"));
@@ -374,26 +414,26 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                             some.id = id;
                             some.extension = extension;
                         }
-                        "age" => {
+                        Field::Age => {
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field("age"));
                             }
                             r#age = Some(map_access.next_value()?);
                         }
-                        "gestationalAge" => {
+                        Field::GestationalAge => {
                             if r#gestational_age.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gestationalAge"));
                             }
                             r#gestational_age = Some(map_access.next_value()?);
                         }
-                        "condition" => {
+                        Field::Condition => {
                             let some = r#condition.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_condition" => {
+                        Field::ConditionPrimitiveElement => {
                             let some = r#condition.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_condition"));
@@ -404,24 +444,6 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "category",
-                                    "range",
-                                    "context",
-                                    "appliesTo",
-                                    "gender",
-                                    "age",
-                                    "gestationalAge",
-                                    "condition",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -608,6 +630,62 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "permittedDataType")]
+            PermittedDataType,
+            #[serde(rename = "_permittedDataType")]
+            PermittedDataTypePrimitiveElement,
+            #[serde(rename = "multipleResultsAllowed")]
+            MultipleResultsAllowed,
+            #[serde(rename = "_multipleResultsAllowed")]
+            MultipleResultsAllowedPrimitiveElement,
+            #[serde(rename = "method")]
+            Method,
+            #[serde(rename = "preferredReportName")]
+            PreferredReportName,
+            #[serde(rename = "_preferredReportName")]
+            PreferredReportNamePrimitiveElement,
+            #[serde(rename = "quantitativeDetails")]
+            QuantitativeDetails,
+            #[serde(rename = "qualifiedInterval")]
+            QualifiedInterval,
+            #[serde(rename = "validCodedValueSet")]
+            ValidCodedValueSet,
+            #[serde(rename = "normalCodedValueSet")]
+            NormalCodedValueSet,
+            #[serde(rename = "abnormalCodedValueSet")]
+            AbnormalCodedValueSet,
+            #[serde(rename = "criticalCodedValueSet")]
+            CriticalCodedValueSet,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationDefinition;
@@ -647,26 +725,26 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -678,14 +756,14 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -697,49 +775,49 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "category" => {
+                        Field::Category => {
                             if r#category.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             r#category = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "permittedDataType" => {
+                        Field::PermittedDataType => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#permitted_data_type
                                 .get_or_insert(Vec::with_capacity(values.len()));
@@ -756,7 +834,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                 vec[i].value = value;
                             }
                         }
-                        "_permittedDataType" => {
+                        Field::PermittedDataTypePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#permitted_data_type
@@ -780,7 +858,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "multipleResultsAllowed" => {
+                        Field::MultipleResultsAllowed => {
                             let some = r#multiple_results_allowed.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -789,7 +867,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_multipleResultsAllowed" => {
+                        Field::MultipleResultsAllowedPrimitiveElement => {
                             let some = r#multiple_results_allowed.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -803,13 +881,13 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "method" => {
+                        Field::Method => {
                             if r#method.is_some() {
                                 return Err(serde::de::Error::duplicate_field("method"));
                             }
                             r#method = Some(map_access.next_value()?);
                         }
-                        "preferredReportName" => {
+                        Field::PreferredReportName => {
                             let some = r#preferred_report_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -818,7 +896,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_preferredReportName" => {
+                        Field::PreferredReportNamePrimitiveElement => {
                             let some = r#preferred_report_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -832,7 +910,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "quantitativeDetails" => {
+                        Field::QuantitativeDetails => {
                             if r#quantitative_details.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "quantitativeDetails",
@@ -840,13 +918,13 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             }
                             r#quantitative_details = Some(map_access.next_value()?);
                         }
-                        "qualifiedInterval" => {
+                        Field::QualifiedInterval => {
                             if r#qualified_interval.is_some() {
                                 return Err(serde::de::Error::duplicate_field("qualifiedInterval"));
                             }
                             r#qualified_interval = Some(map_access.next_value()?);
                         }
-                        "validCodedValueSet" => {
+                        Field::ValidCodedValueSet => {
                             if r#valid_coded_value_set.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "validCodedValueSet",
@@ -854,7 +932,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             }
                             r#valid_coded_value_set = Some(map_access.next_value()?);
                         }
-                        "normalCodedValueSet" => {
+                        Field::NormalCodedValueSet => {
                             if r#normal_coded_value_set.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "normalCodedValueSet",
@@ -862,7 +940,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             }
                             r#normal_coded_value_set = Some(map_access.next_value()?);
                         }
-                        "abnormalCodedValueSet" => {
+                        Field::AbnormalCodedValueSet => {
                             if r#abnormal_coded_value_set.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "abnormalCodedValueSet",
@@ -870,41 +948,13 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             }
                             r#abnormal_coded_value_set = Some(map_access.next_value()?);
                         }
-                        "criticalCodedValueSet" => {
+                        Field::CriticalCodedValueSet => {
                             if r#critical_coded_value_set.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "criticalCodedValueSet",
                                 ));
                             }
                             r#critical_coded_value_set = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "category",
-                                    "code",
-                                    "identifier",
-                                    "permittedDataType",
-                                    "multipleResultsAllowed",
-                                    "method",
-                                    "preferredReportName",
-                                    "quantitativeDetails",
-                                    "qualifiedInterval",
-                                    "validCodedValueSet",
-                                    "normalCodedValueSet",
-                                    "abnormalCodedValueSet",
-                                    "criticalCodedValueSet",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
     pub r#id: Option<std::string::String>,
@@ -54,6 +54,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "material")]
+            Material,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "isDefining")]
+            IsDefining,
+            #[serde(rename = "_isDefining")]
+            IsDefiningPrimitiveElement,
+            #[serde(rename = "amount")]
+            Amount,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerMonomerSetStartingMaterial;
@@ -77,44 +97,44 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                 let mut r#amount: Option<Box<super::super::types::SubstanceAmount>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "material" => {
+                        Field::Material => {
                             if r#material.is_some() {
                                 return Err(serde::de::Error::duplicate_field("material"));
                             }
                             r#material = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "isDefining" => {
+                        Field::IsDefining => {
                             let some = r#is_defining.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("isDefining"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_isDefining" => {
+                        Field::IsDefiningPrimitiveElement => {
                             let some = r#is_defining.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_isDefining"));
@@ -126,25 +146,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                             some.id = id;
                             some.extension = extension;
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "material",
-                                    "type",
-                                    "isDefining",
-                                    "amount",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -200,6 +206,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "ratioType")]
+            RatioType,
+            #[serde(rename = "startingMaterial")]
+            StartingMaterial,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerMonomerSet;
@@ -220,47 +240,35 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "ratioType" => {
+                        Field::RatioType => {
                             if r#ratio_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ratioType"));
                             }
                             r#ratio_type = Some(map_access.next_value()?);
                         }
-                        "startingMaterial" => {
+                        Field::StartingMaterial => {
                             if r#starting_material.is_some() {
                                 return Err(serde::de::Error::duplicate_field("startingMaterial"));
                             }
                             r#starting_material = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "ratioType",
-                                    "startingMaterial",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -314,6 +322,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "degree")]
+            Degree,
+            #[serde(rename = "amount")]
+            Amount,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation;
@@ -335,41 +357,35 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
                 let mut r#amount: Option<Box<super::super::types::SubstanceAmount>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "degree" => {
+                        Field::Degree => {
                             if r#degree.is_some() {
                                 return Err(serde::de::Error::duplicate_field("degree"));
                             }
                             r#degree = Some(map_access.next_value()?);
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "degree", "amount"],
-                            ))
                         }
                     }
                 }
@@ -436,6 +452,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "representation")]
+            Representation,
+            #[serde(rename = "_representation")]
+            RepresentationPrimitiveElement,
+            #[serde(rename = "attachment")]
+            Attachment,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeatRepeatUnitStructuralRepresentation;
@@ -458,38 +492,38 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                 let mut r#attachment: Option<Box<super::super::types::Attachment>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "representation" => {
+                        Field::Representation => {
                             let some = r#representation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("representation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_representation" => {
+                        Field::RepresentationPrimitiveElement => {
                             let some = r#representation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_representation"));
@@ -501,24 +535,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                             some.id = id;
                             some.extension = extension;
                         }
-                        "attachment" => {
+                        Field::Attachment => {
                             if r#attachment.is_some() {
                                 return Err(serde::de::Error::duplicate_field("attachment"));
                             }
                             r#attachment = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "representation",
-                                    "attachment",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -597,6 +618,28 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "orientationOfPolymerisation")]
+            OrientationOfPolymerisation,
+            #[serde(rename = "repeatUnit")]
+            RepeatUnit,
+            #[serde(rename = "_repeatUnit")]
+            RepeatUnitPrimitiveElement,
+            #[serde(rename = "amount")]
+            Amount,
+            #[serde(rename = "degreeOfPolymerisation")]
+            DegreeOfPolymerisation,
+            #[serde(rename = "structuralRepresentation")]
+            StructuralRepresentation,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeatRepeatUnit;
@@ -627,25 +670,25 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "orientationOfPolymerisation" => {
+                        Field::OrientationOfPolymerisation => {
                             if r#orientation_of_polymerisation.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "orientationOfPolymerisation",
@@ -653,14 +696,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                             }
                             r#orientation_of_polymerisation = Some(map_access.next_value()?);
                         }
-                        "repeatUnit" => {
+                        Field::RepeatUnit => {
                             let some = r#repeat_unit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repeatUnit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_repeatUnit" => {
+                        Field::RepeatUnitPrimitiveElement => {
                             let some = r#repeat_unit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_repeatUnit"));
@@ -672,13 +715,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
                         }
-                        "degreeOfPolymerisation" => {
+                        Field::DegreeOfPolymerisation => {
                             if r#degree_of_polymerisation.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "degreeOfPolymerisation",
@@ -686,28 +729,13 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                             }
                             r#degree_of_polymerisation = Some(map_access.next_value()?);
                         }
-                        "structuralRepresentation" => {
+                        Field::StructuralRepresentation => {
                             if r#structural_representation.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "structuralRepresentation",
                                 ));
                             }
                             r#structural_representation = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "orientationOfPolymerisation",
-                                    "repeatUnit",
-                                    "amount",
-                                    "degreeOfPolymerisation",
-                                    "structuralRepresentation",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -790,6 +818,28 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "numberOfUnits")]
+            NumberOfUnits,
+            #[serde(rename = "_numberOfUnits")]
+            NumberOfUnitsPrimitiveElement,
+            #[serde(rename = "averageMolecularFormula")]
+            AverageMolecularFormula,
+            #[serde(rename = "_averageMolecularFormula")]
+            AverageMolecularFormulaPrimitiveElement,
+            #[serde(rename = "repeatUnitAmountType")]
+            RepeatUnitAmountType,
+            #[serde(rename = "repeatUnit")]
+            RepeatUnit,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeat;
@@ -812,32 +862,32 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                 let mut r#repeat_unit: Option<Vec<SubstancePolymerRepeatRepeatUnit>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "numberOfUnits" => {
+                        Field::NumberOfUnits => {
                             let some = r#number_of_units.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfUnits"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_numberOfUnits" => {
+                        Field::NumberOfUnitsPrimitiveElement => {
                             let some = r#number_of_units.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_numberOfUnits"));
@@ -849,7 +899,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "averageMolecularFormula" => {
+                        Field::AverageMolecularFormula => {
                             let some =
                                 r#average_molecular_formula.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -859,7 +909,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_averageMolecularFormula" => {
+                        Field::AverageMolecularFormulaPrimitiveElement => {
                             let some =
                                 r#average_molecular_formula.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -874,7 +924,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "repeatUnitAmountType" => {
+                        Field::RepeatUnitAmountType => {
                             if r#repeat_unit_amount_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "repeatUnitAmountType",
@@ -882,25 +932,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                             }
                             r#repeat_unit_amount_type = Some(map_access.next_value()?);
                         }
-                        "repeatUnit" => {
+                        Field::RepeatUnit => {
                             if r#repeat_unit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repeatUnit"));
                             }
                             r#repeat_unit = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "numberOfUnits",
-                                    "averageMolecularFormula",
-                                    "repeatUnitAmountType",
-                                    "repeatUnit",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1035,6 +1071,44 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "class")]
+            Class,
+            #[serde(rename = "geometry")]
+            Geometry,
+            #[serde(rename = "copolymerConnectivity")]
+            CopolymerConnectivity,
+            #[serde(rename = "modification")]
+            Modification,
+            #[serde(rename = "_modification")]
+            ModificationPrimitiveElement,
+            #[serde(rename = "monomerSet")]
+            MonomerSet,
+            #[serde(rename = "repeat")]
+            Repeat,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymer;
@@ -1064,26 +1138,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                 let mut r#repeat: Option<Vec<SubstancePolymerRepeat>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1095,14 +1169,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1114,43 +1188,43 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "class" => {
+                        Field::Class => {
                             if r#class.is_some() {
                                 return Err(serde::de::Error::duplicate_field("class"));
                             }
                             r#class = Some(map_access.next_value()?);
                         }
-                        "geometry" => {
+                        Field::Geometry => {
                             if r#geometry.is_some() {
                                 return Err(serde::de::Error::duplicate_field("geometry"));
                             }
                             r#geometry = Some(map_access.next_value()?);
                         }
-                        "copolymerConnectivity" => {
+                        Field::CopolymerConnectivity => {
                             if r#copolymer_connectivity.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "copolymerConnectivity",
@@ -1158,7 +1232,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                             }
                             r#copolymer_connectivity = Some(map_access.next_value()?);
                         }
-                        "modification" => {
+                        Field::Modification => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#modification.get_or_insert(Vec::with_capacity(values.len()));
@@ -1175,7 +1249,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                 vec[i].value = value;
                             }
                         }
-                        "_modification" => {
+                        Field::ModificationPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -1197,38 +1271,17 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "monomerSet" => {
+                        Field::MonomerSet => {
                             if r#monomer_set.is_some() {
                                 return Err(serde::de::Error::duplicate_field("monomerSet"));
                             }
                             r#monomer_set = Some(map_access.next_value()?);
                         }
-                        "repeat" => {
+                        Field::Repeat => {
                             if r#repeat.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repeat"));
                             }
                             r#repeat = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "class",
-                                    "geometry",
-                                    "copolymerConnectivity",
-                                    "modification",
-                                    "monomerSet",
-                                    "repeat",
-                                ],
-                            ))
                         }
                     }
                 }

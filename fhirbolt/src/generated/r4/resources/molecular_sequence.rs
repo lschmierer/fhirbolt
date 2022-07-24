@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct MolecularSequenceReferenceSeq {
     pub r#id: Option<std::string::String>,
@@ -119,6 +119,46 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "chromosome")]
+            Chromosome,
+            #[serde(rename = "genomeBuild")]
+            GenomeBuild,
+            #[serde(rename = "_genomeBuild")]
+            GenomeBuildPrimitiveElement,
+            #[serde(rename = "orientation")]
+            Orientation,
+            #[serde(rename = "_orientation")]
+            OrientationPrimitiveElement,
+            #[serde(rename = "referenceSeqId")]
+            ReferenceSeqId,
+            #[serde(rename = "referenceSeqPointer")]
+            ReferenceSeqPointer,
+            #[serde(rename = "referenceSeqString")]
+            ReferenceSeqString,
+            #[serde(rename = "_referenceSeqString")]
+            ReferenceSeqStringPrimitiveElement,
+            #[serde(rename = "strand")]
+            Strand,
+            #[serde(rename = "_strand")]
+            StrandPrimitiveElement,
+            #[serde(rename = "windowStart")]
+            WindowStart,
+            #[serde(rename = "_windowStart")]
+            WindowStartPrimitiveElement,
+            #[serde(rename = "windowEnd")]
+            WindowEnd,
+            #[serde(rename = "_windowEnd")]
+            WindowEndPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceReferenceSeq;
@@ -148,38 +188,38 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                 let mut r#window_end: Option<super::super::types::Integer> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "chromosome" => {
+                        Field::Chromosome => {
                             if r#chromosome.is_some() {
                                 return Err(serde::de::Error::duplicate_field("chromosome"));
                             }
                             r#chromosome = Some(map_access.next_value()?);
                         }
-                        "genomeBuild" => {
+                        Field::GenomeBuild => {
                             let some = r#genome_build.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("genomeBuild"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_genomeBuild" => {
+                        Field::GenomeBuildPrimitiveElement => {
                             let some = r#genome_build.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_genomeBuild"));
@@ -191,14 +231,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "orientation" => {
+                        Field::Orientation => {
                             let some = r#orientation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("orientation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_orientation" => {
+                        Field::OrientationPrimitiveElement => {
                             let some = r#orientation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_orientation"));
@@ -210,13 +250,13 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "referenceSeqId" => {
+                        Field::ReferenceSeqId => {
                             if r#reference_seq_id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("referenceSeqId"));
                             }
                             r#reference_seq_id = Some(map_access.next_value()?);
                         }
-                        "referenceSeqPointer" => {
+                        Field::ReferenceSeqPointer => {
                             if r#reference_seq_pointer.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "referenceSeqPointer",
@@ -224,7 +264,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             }
                             r#reference_seq_pointer = Some(map_access.next_value()?);
                         }
-                        "referenceSeqString" => {
+                        Field::ReferenceSeqString => {
                             let some = r#reference_seq_string.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -233,7 +273,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_referenceSeqString" => {
+                        Field::ReferenceSeqStringPrimitiveElement => {
                             let some = r#reference_seq_string.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -247,14 +287,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "strand" => {
+                        Field::Strand => {
                             let some = r#strand.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("strand"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_strand" => {
+                        Field::StrandPrimitiveElement => {
                             let some = r#strand.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_strand"));
@@ -266,14 +306,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "windowStart" => {
+                        Field::WindowStart => {
                             let some = r#window_start.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("windowStart"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_windowStart" => {
+                        Field::WindowStartPrimitiveElement => {
                             let some = r#window_start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_windowStart"));
@@ -285,14 +325,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "windowEnd" => {
+                        Field::WindowEnd => {
                             let some = r#window_end.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("windowEnd"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_windowEnd" => {
+                        Field::WindowEndPrimitiveElement => {
                             let some = r#window_end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_windowEnd"));
@@ -303,25 +343,6 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "chromosome",
-                                    "genomeBuild",
-                                    "orientation",
-                                    "referenceSeqId",
-                                    "referenceSeqPointer",
-                                    "referenceSeqString",
-                                    "strand",
-                                    "windowStart",
-                                    "windowEnd",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -443,6 +464,38 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "start")]
+            Start,
+            #[serde(rename = "_start")]
+            StartPrimitiveElement,
+            #[serde(rename = "end")]
+            End,
+            #[serde(rename = "_end")]
+            EndPrimitiveElement,
+            #[serde(rename = "observedAllele")]
+            ObservedAllele,
+            #[serde(rename = "_observedAllele")]
+            ObservedAllelePrimitiveElement,
+            #[serde(rename = "referenceAllele")]
+            ReferenceAllele,
+            #[serde(rename = "_referenceAllele")]
+            ReferenceAllelePrimitiveElement,
+            #[serde(rename = "cigar")]
+            Cigar,
+            #[serde(rename = "_cigar")]
+            CigarPrimitiveElement,
+            #[serde(rename = "variantPointer")]
+            VariantPointer,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceVariant;
@@ -465,32 +518,32 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                 let mut r#variant_pointer: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "start" => {
+                        Field::Start => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_start" => {
+                        Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
@@ -502,14 +555,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "end" => {
+                        Field::End => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_end" => {
+                        Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
@@ -521,14 +574,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "observedAllele" => {
+                        Field::ObservedAllele => {
                             let some = r#observed_allele.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("observedAllele"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_observedAllele" => {
+                        Field::ObservedAllelePrimitiveElement => {
                             let some = r#observed_allele.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_observedAllele"));
@@ -540,14 +593,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "referenceAllele" => {
+                        Field::ReferenceAllele => {
                             let some = r#reference_allele.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("referenceAllele"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_referenceAllele" => {
+                        Field::ReferenceAllelePrimitiveElement => {
                             let some = r#reference_allele.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_referenceAllele"));
@@ -559,14 +612,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "cigar" => {
+                        Field::Cigar => {
                             let some = r#cigar.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cigar"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_cigar" => {
+                        Field::CigarPrimitiveElement => {
                             let some = r#cigar.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_cigar"));
@@ -578,27 +631,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "variantPointer" => {
+                        Field::VariantPointer => {
                             if r#variant_pointer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variantPointer"));
                             }
                             r#variant_pointer = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "start",
-                                    "end",
-                                    "observedAllele",
-                                    "referenceAllele",
-                                    "cigar",
-                                    "variantPointer",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -844,6 +881,44 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "score")]
+            Score,
+            #[serde(rename = "_score")]
+            ScorePrimitiveElement,
+            #[serde(rename = "numTP")]
+            NumTp,
+            #[serde(rename = "_numTP")]
+            NumTpPrimitiveElement,
+            #[serde(rename = "numFP")]
+            NumFp,
+            #[serde(rename = "_numFP")]
+            NumFpPrimitiveElement,
+            #[serde(rename = "numFN")]
+            NumFn,
+            #[serde(rename = "_numFN")]
+            NumFnPrimitiveElement,
+            #[serde(rename = "precision")]
+            Precision,
+            #[serde(rename = "_precision")]
+            PrecisionPrimitiveElement,
+            #[serde(rename = "sensitivity")]
+            Sensitivity,
+            #[serde(rename = "_sensitivity")]
+            SensitivityPrimitiveElement,
+            #[serde(rename = "fMeasure")]
+            FMeasure,
+            #[serde(rename = "_fMeasure")]
+            FMeasurePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceQualityRoc;
@@ -870,25 +945,25 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                 let mut r#f_measure: Option<Vec<super::super::types::Decimal>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "score" => {
+                        Field::Score => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#score.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -904,7 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_score" => {
+                        Field::ScorePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#score.get_or_insert(Vec::with_capacity(elements.len()));
@@ -925,7 +1000,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "numTP" => {
+                        Field::NumTp => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#num_tp.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -941,7 +1016,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_numTP" => {
+                        Field::NumTpPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#num_tp.get_or_insert(Vec::with_capacity(elements.len()));
@@ -962,7 +1037,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "numFP" => {
+                        Field::NumFp => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#num_fp.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -978,7 +1053,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_numFP" => {
+                        Field::NumFpPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#num_fp.get_or_insert(Vec::with_capacity(elements.len()));
@@ -999,7 +1074,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "numFN" => {
+                        Field::NumFn => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#num_fn.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1015,7 +1090,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_numFN" => {
+                        Field::NumFnPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#num_fn.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1036,7 +1111,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "precision" => {
+                        Field::Precision => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#precision.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1052,7 +1127,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_precision" => {
+                        Field::PrecisionPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#precision.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1073,7 +1148,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "sensitivity" => {
+                        Field::Sensitivity => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#sensitivity.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1089,7 +1164,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_sensitivity" => {
+                        Field::SensitivityPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -1111,7 +1186,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "fMeasure" => {
+                        Field::FMeasure => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#f_measure.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1127,7 +1202,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].value = value;
                             }
                         }
-                        "_fMeasure" => {
+                        Field::FMeasurePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#f_measure.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1147,23 +1222,6 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 vec[i].id = element.id;
                                 vec[i].extension = element.extension;
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "score",
-                                    "numTP",
-                                    "numFP",
-                                    "numFN",
-                                    "precision",
-                                    "sensitivity",
-                                    "fMeasure",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1371,6 +1429,68 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "standardSequence")]
+            StandardSequence,
+            #[serde(rename = "start")]
+            Start,
+            #[serde(rename = "_start")]
+            StartPrimitiveElement,
+            #[serde(rename = "end")]
+            End,
+            #[serde(rename = "_end")]
+            EndPrimitiveElement,
+            #[serde(rename = "score")]
+            Score,
+            #[serde(rename = "method")]
+            Method,
+            #[serde(rename = "truthTP")]
+            TruthTp,
+            #[serde(rename = "_truthTP")]
+            TruthTpPrimitiveElement,
+            #[serde(rename = "queryTP")]
+            QueryTp,
+            #[serde(rename = "_queryTP")]
+            QueryTpPrimitiveElement,
+            #[serde(rename = "truthFN")]
+            TruthFn,
+            #[serde(rename = "_truthFN")]
+            TruthFnPrimitiveElement,
+            #[serde(rename = "queryFP")]
+            QueryFp,
+            #[serde(rename = "_queryFP")]
+            QueryFpPrimitiveElement,
+            #[serde(rename = "gtFP")]
+            GtFp,
+            #[serde(rename = "_gtFP")]
+            GtFpPrimitiveElement,
+            #[serde(rename = "precision")]
+            Precision,
+            #[serde(rename = "_precision")]
+            PrecisionPrimitiveElement,
+            #[serde(rename = "recall")]
+            Recall,
+            #[serde(rename = "_recall")]
+            RecallPrimitiveElement,
+            #[serde(rename = "fScore")]
+            FScore,
+            #[serde(rename = "_fScore")]
+            FScorePrimitiveElement,
+            #[serde(rename = "roc")]
+            Roc,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceQuality;
@@ -1403,32 +1523,32 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                 let mut r#roc: Option<MolecularSequenceQualityRoc> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -1440,20 +1560,20 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "standardSequence" => {
+                        Field::StandardSequence => {
                             if r#standard_sequence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("standardSequence"));
                             }
                             r#standard_sequence = Some(map_access.next_value()?);
                         }
-                        "start" => {
+                        Field::Start => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_start" => {
+                        Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
@@ -1465,14 +1585,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "end" => {
+                        Field::End => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_end" => {
+                        Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
@@ -1484,26 +1604,26 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "score" => {
+                        Field::Score => {
                             if r#score.is_some() {
                                 return Err(serde::de::Error::duplicate_field("score"));
                             }
                             r#score = Some(map_access.next_value()?);
                         }
-                        "method" => {
+                        Field::Method => {
                             if r#method.is_some() {
                                 return Err(serde::de::Error::duplicate_field("method"));
                             }
                             r#method = Some(map_access.next_value()?);
                         }
-                        "truthTP" => {
+                        Field::TruthTp => {
                             let some = r#truth_tp.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("truthTP"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_truthTP" => {
+                        Field::TruthTpPrimitiveElement => {
                             let some = r#truth_tp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_truthTP"));
@@ -1515,14 +1635,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "queryTP" => {
+                        Field::QueryTp => {
                             let some = r#query_tp.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("queryTP"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_queryTP" => {
+                        Field::QueryTpPrimitiveElement => {
                             let some = r#query_tp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_queryTP"));
@@ -1534,14 +1654,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "truthFN" => {
+                        Field::TruthFn => {
                             let some = r#truth_fn.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("truthFN"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_truthFN" => {
+                        Field::TruthFnPrimitiveElement => {
                             let some = r#truth_fn.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_truthFN"));
@@ -1553,14 +1673,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "queryFP" => {
+                        Field::QueryFp => {
                             let some = r#query_fp.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("queryFP"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_queryFP" => {
+                        Field::QueryFpPrimitiveElement => {
                             let some = r#query_fp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_queryFP"));
@@ -1572,14 +1692,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "gtFP" => {
+                        Field::GtFp => {
                             let some = r#gt_fp.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gtFP"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_gtFP" => {
+                        Field::GtFpPrimitiveElement => {
                             let some = r#gt_fp.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_gtFP"));
@@ -1591,14 +1711,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "precision" => {
+                        Field::Precision => {
                             let some = r#precision.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("precision"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_precision" => {
+                        Field::PrecisionPrimitiveElement => {
                             let some = r#precision.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_precision"));
@@ -1610,14 +1730,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "recall" => {
+                        Field::Recall => {
                             let some = r#recall.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recall"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_recall" => {
+                        Field::RecallPrimitiveElement => {
                             let some = r#recall.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_recall"));
@@ -1629,14 +1749,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "fScore" => {
+                        Field::FScore => {
                             let some = r#f_score.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("fScore"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_fScore" => {
+                        Field::FScorePrimitiveElement => {
                             let some = r#f_score.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_fScore"));
@@ -1648,36 +1768,11 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "roc" => {
+                        Field::Roc => {
                             if r#roc.is_some() {
                                 return Err(serde::de::Error::duplicate_field("roc"));
                             }
                             r#roc = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "standardSequence",
-                                    "start",
-                                    "end",
-                                    "score",
-                                    "method",
-                                    "truthTP",
-                                    "queryTP",
-                                    "truthFN",
-                                    "queryFP",
-                                    "gtFP",
-                                    "precision",
-                                    "recall",
-                                    "fScore",
-                                    "roc",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1812,6 +1907,40 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "datasetId")]
+            DatasetId,
+            #[serde(rename = "_datasetId")]
+            DatasetIdPrimitiveElement,
+            #[serde(rename = "variantsetId")]
+            VariantsetId,
+            #[serde(rename = "_variantsetId")]
+            VariantsetIdPrimitiveElement,
+            #[serde(rename = "readsetId")]
+            ReadsetId,
+            #[serde(rename = "_readsetId")]
+            ReadsetIdPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceRepository;
@@ -1837,32 +1966,32 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                 let mut r#readset_id: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -1874,14 +2003,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -1893,14 +2022,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1912,14 +2041,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "datasetId" => {
+                        Field::DatasetId => {
                             let some = r#dataset_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("datasetId"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_datasetId" => {
+                        Field::DatasetIdPrimitiveElement => {
                             let some = r#dataset_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_datasetId"));
@@ -1931,14 +2060,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "variantsetId" => {
+                        Field::VariantsetId => {
                             let some = r#variantset_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variantsetId"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_variantsetId" => {
+                        Field::VariantsetIdPrimitiveElement => {
                             let some = r#variantset_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_variantsetId"));
@@ -1950,14 +2079,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "readsetId" => {
+                        Field::ReadsetId => {
                             let some = r#readset_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("readsetId"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_readsetId" => {
+                        Field::ReadsetIdPrimitiveElement => {
                             let some = r#readset_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_readsetId"));
@@ -1968,22 +2097,6 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "url",
-                                    "name",
-                                    "datasetId",
-                                    "variantsetId",
-                                    "readsetId",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -2059,6 +2172,24 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "start")]
+            Start,
+            #[serde(rename = "_start")]
+            StartPrimitiveElement,
+            #[serde(rename = "end")]
+            End,
+            #[serde(rename = "_end")]
+            EndPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceStructureVariantOuter;
@@ -2080,32 +2211,32 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                 let mut r#end: Option<super::super::types::Integer> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "start" => {
+                        Field::Start => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_start" => {
+                        Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
@@ -2117,14 +2248,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                             some.id = id;
                             some.extension = extension;
                         }
-                        "end" => {
+                        Field::End => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_end" => {
+                        Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
@@ -2135,12 +2266,6 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "start", "end"],
-                            ))
                         }
                     }
                 }
@@ -2212,6 +2337,24 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "start")]
+            Start,
+            #[serde(rename = "_start")]
+            StartPrimitiveElement,
+            #[serde(rename = "end")]
+            End,
+            #[serde(rename = "_end")]
+            EndPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceStructureVariantInner;
@@ -2233,32 +2376,32 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                 let mut r#end: Option<super::super::types::Integer> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "start" => {
+                        Field::Start => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_start" => {
+                        Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_start"));
@@ -2270,14 +2413,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                             some.id = id;
                             some.extension = extension;
                         }
-                        "end" => {
+                        Field::End => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_end" => {
+                        Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_end"));
@@ -2288,12 +2431,6 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "start", "end"],
-                            ))
                         }
                     }
                 }
@@ -2377,6 +2514,30 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "variantType")]
+            VariantType,
+            #[serde(rename = "exact")]
+            Exact,
+            #[serde(rename = "_exact")]
+            ExactPrimitiveElement,
+            #[serde(rename = "length")]
+            Length,
+            #[serde(rename = "_length")]
+            LengthPrimitiveElement,
+            #[serde(rename = "outer")]
+            Outer,
+            #[serde(rename = "inner")]
+            Inner,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceStructureVariant;
@@ -2401,38 +2562,38 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                 let mut r#inner: Option<MolecularSequenceStructureVariantInner> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "variantType" => {
+                        Field::VariantType => {
                             if r#variant_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variantType"));
                             }
                             r#variant_type = Some(map_access.next_value()?);
                         }
-                        "exact" => {
+                        Field::Exact => {
                             let some = r#exact.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("exact"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_exact" => {
+                        Field::ExactPrimitiveElement => {
                             let some = r#exact.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_exact"));
@@ -2444,14 +2605,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "length" => {
+                        Field::Length => {
                             let some = r#length.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("length"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_length" => {
+                        Field::LengthPrimitiveElement => {
                             let some = r#length.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_length"));
@@ -2463,32 +2624,17 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "outer" => {
+                        Field::Outer => {
                             if r#outer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outer"));
                             }
                             r#outer = Some(map_access.next_value()?);
                         }
-                        "inner" => {
+                        Field::Inner => {
                             if r#inner.is_some() {
                                 return Err(serde::de::Error::duplicate_field("inner"));
                             }
                             r#inner = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "variantType",
-                                    "exact",
-                                    "length",
-                                    "outer",
-                                    "inner",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -2674,6 +2820,70 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "coordinateSystem")]
+            CoordinateSystem,
+            #[serde(rename = "_coordinateSystem")]
+            CoordinateSystemPrimitiveElement,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "specimen")]
+            Specimen,
+            #[serde(rename = "device")]
+            Device,
+            #[serde(rename = "performer")]
+            Performer,
+            #[serde(rename = "quantity")]
+            Quantity,
+            #[serde(rename = "referenceSeq")]
+            ReferenceSeq,
+            #[serde(rename = "variant")]
+            Variant,
+            #[serde(rename = "observedSeq")]
+            ObservedSeq,
+            #[serde(rename = "_observedSeq")]
+            ObservedSeqPrimitiveElement,
+            #[serde(rename = "quality")]
+            Quality,
+            #[serde(rename = "readCoverage")]
+            ReadCoverage,
+            #[serde(rename = "_readCoverage")]
+            ReadCoveragePrimitiveElement,
+            #[serde(rename = "repository")]
+            Repository,
+            #[serde(rename = "pointer")]
+            Pointer,
+            #[serde(rename = "structureVariant")]
+            StructureVariant,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequence;
@@ -2711,26 +2921,26 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                 let mut r#structure_variant: Option<Vec<MolecularSequenceStructureVariant>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -2742,14 +2952,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -2761,44 +2971,44 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -2810,14 +3020,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "coordinateSystem" => {
+                        Field::CoordinateSystem => {
                             let some = r#coordinate_system.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("coordinateSystem"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_coordinateSystem" => {
+                        Field::CoordinateSystemPrimitiveElement => {
                             let some = r#coordinate_system.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_coordinateSystem"));
@@ -2829,56 +3039,56 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "specimen" => {
+                        Field::Specimen => {
                             if r#specimen.is_some() {
                                 return Err(serde::de::Error::duplicate_field("specimen"));
                             }
                             r#specimen = Some(map_access.next_value()?);
                         }
-                        "device" => {
+                        Field::Device => {
                             if r#device.is_some() {
                                 return Err(serde::de::Error::duplicate_field("device"));
                             }
                             r#device = Some(map_access.next_value()?);
                         }
-                        "performer" => {
+                        Field::Performer => {
                             if r#performer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("performer"));
                             }
                             r#performer = Some(map_access.next_value()?);
                         }
-                        "quantity" => {
+                        Field::Quantity => {
                             if r#quantity.is_some() {
                                 return Err(serde::de::Error::duplicate_field("quantity"));
                             }
                             r#quantity = Some(map_access.next_value()?);
                         }
-                        "referenceSeq" => {
+                        Field::ReferenceSeq => {
                             if r#reference_seq.is_some() {
                                 return Err(serde::de::Error::duplicate_field("referenceSeq"));
                             }
                             r#reference_seq = Some(map_access.next_value()?);
                         }
-                        "variant" => {
+                        Field::Variant => {
                             if r#variant.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variant"));
                             }
                             r#variant = Some(map_access.next_value()?);
                         }
-                        "observedSeq" => {
+                        Field::ObservedSeq => {
                             let some = r#observed_seq.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("observedSeq"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_observedSeq" => {
+                        Field::ObservedSeqPrimitiveElement => {
                             let some = r#observed_seq.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_observedSeq"));
@@ -2890,20 +3100,20 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "quality" => {
+                        Field::Quality => {
                             if r#quality.is_some() {
                                 return Err(serde::de::Error::duplicate_field("quality"));
                             }
                             r#quality = Some(map_access.next_value()?);
                         }
-                        "readCoverage" => {
+                        Field::ReadCoverage => {
                             let some = r#read_coverage.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("readCoverage"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_readCoverage" => {
+                        Field::ReadCoveragePrimitiveElement => {
                             let some = r#read_coverage.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_readCoverage"));
@@ -2915,54 +3125,23 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "repository" => {
+                        Field::Repository => {
                             if r#repository.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repository"));
                             }
                             r#repository = Some(map_access.next_value()?);
                         }
-                        "pointer" => {
+                        Field::Pointer => {
                             if r#pointer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("pointer"));
                             }
                             r#pointer = Some(map_access.next_value()?);
                         }
-                        "structureVariant" => {
+                        Field::StructureVariant => {
                             if r#structure_variant.is_some() {
                                 return Err(serde::de::Error::duplicate_field("structureVariant"));
                             }
                             r#structure_variant = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "type",
-                                    "coordinateSystem",
-                                    "patient",
-                                    "specimen",
-                                    "device",
-                                    "performer",
-                                    "quantity",
-                                    "referenceSeq",
-                                    "variant",
-                                    "observedSeq",
-                                    "quality",
-                                    "readCoverage",
-                                    "repository",
-                                    "pointer",
-                                    "structureVariant",
-                                ],
-                            ))
                         }
                     }
                 }

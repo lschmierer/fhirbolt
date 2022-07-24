@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ImmunizationEvaluationDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
@@ -224,6 +224,76 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "authority")]
+            Authority,
+            #[serde(rename = "targetDisease")]
+            TargetDisease,
+            #[serde(rename = "immunizationEvent")]
+            ImmunizationEvent,
+            #[serde(rename = "doseStatus")]
+            DoseStatus,
+            #[serde(rename = "doseStatusReason")]
+            DoseStatusReason,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "series")]
+            Series,
+            #[serde(rename = "_series")]
+            SeriesPrimitiveElement,
+            #[serde(rename = "doseNumberPositiveInt")]
+            DoseNumberPositiveInt,
+            #[serde(rename = "_doseNumberPositiveInt")]
+            DoseNumberPositiveIntPrimitiveElement,
+            #[serde(rename = "doseNumberString")]
+            DoseNumberString,
+            #[serde(rename = "_doseNumberString")]
+            DoseNumberStringPrimitiveElement,
+            #[serde(rename = "seriesDosesPositiveInt")]
+            SeriesDosesPositiveInt,
+            #[serde(rename = "_seriesDosesPositiveInt")]
+            SeriesDosesPositiveIntPrimitiveElement,
+            #[serde(rename = "seriesDosesString")]
+            SeriesDosesString,
+            #[serde(rename = "_seriesDosesString")]
+            SeriesDosesStringPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImmunizationEvaluation;
@@ -260,26 +330,26 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                 let mut r#series_doses: Option<ImmunizationEvaluationSeriesDoses> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -291,14 +361,14 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -310,44 +380,44 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -359,20 +429,20 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -384,44 +454,44 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "authority" => {
+                        Field::Authority => {
                             if r#authority.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authority"));
                             }
                             r#authority = Some(map_access.next_value()?);
                         }
-                        "targetDisease" => {
+                        Field::TargetDisease => {
                             if r#target_disease.is_some() {
                                 return Err(serde::de::Error::duplicate_field("targetDisease"));
                             }
                             r#target_disease = Some(map_access.next_value()?);
                         }
-                        "immunizationEvent" => {
+                        Field::ImmunizationEvent => {
                             if r#immunization_event.is_some() {
                                 return Err(serde::de::Error::duplicate_field("immunizationEvent"));
                             }
                             r#immunization_event = Some(map_access.next_value()?);
                         }
-                        "doseStatus" => {
+                        Field::DoseStatus => {
                             if r#dose_status.is_some() {
                                 return Err(serde::de::Error::duplicate_field("doseStatus"));
                             }
                             r#dose_status = Some(map_access.next_value()?);
                         }
-                        "doseStatusReason" => {
+                        Field::DoseStatusReason => {
                             if r#dose_status_reason.is_some() {
                                 return Err(serde::de::Error::duplicate_field("doseStatusReason"));
                             }
                             r#dose_status_reason = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -433,14 +503,14 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "series" => {
+                        Field::Series => {
                             let some = r#series.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("series"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_series" => {
+                        Field::SeriesPrimitiveElement => {
                             let some = r#series.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_series"));
@@ -452,7 +522,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "doseNumberPositiveInt" => {
+                        Field::DoseNumberPositiveInt => {
                             let r#enum = r#dose_number.get_or_insert(
                                 ImmunizationEvaluationDoseNumber::PositiveInt(Default::default()),
                             );
@@ -467,7 +537,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("doseNumber[x]"));
                             }
                         }
-                        "_doseNumberPositiveInt" => {
+                        Field::DoseNumberPositiveIntPrimitiveElement => {
                             let r#enum = r#dose_number.get_or_insert(
                                 ImmunizationEvaluationDoseNumber::PositiveInt(Default::default()),
                             );
@@ -487,7 +557,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("_doseNumber[x]"));
                             }
                         }
-                        "doseNumberString" => {
+                        Field::DoseNumberString => {
                             let r#enum = r#dose_number.get_or_insert(
                                 ImmunizationEvaluationDoseNumber::String(Default::default()),
                             );
@@ -502,7 +572,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("doseNumber[x]"));
                             }
                         }
-                        "_doseNumberString" => {
+                        Field::DoseNumberStringPrimitiveElement => {
                             let r#enum = r#dose_number.get_or_insert(
                                 ImmunizationEvaluationDoseNumber::String(Default::default()),
                             );
@@ -522,7 +592,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("_doseNumber[x]"));
                             }
                         }
-                        "seriesDosesPositiveInt" => {
+                        Field::SeriesDosesPositiveInt => {
                             let r#enum = r#series_doses.get_or_insert(
                                 ImmunizationEvaluationSeriesDoses::PositiveInt(Default::default()),
                             );
@@ -538,7 +608,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("seriesDoses[x]"));
                             }
                         }
-                        "_seriesDosesPositiveInt" => {
+                        Field::SeriesDosesPositiveIntPrimitiveElement => {
                             let r#enum = r#series_doses.get_or_insert(
                                 ImmunizationEvaluationSeriesDoses::PositiveInt(Default::default()),
                             );
@@ -559,7 +629,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("_seriesDoses[x]"));
                             }
                         }
-                        "seriesDosesString" => {
+                        Field::SeriesDosesString => {
                             let r#enum = r#series_doses.get_or_insert(
                                 ImmunizationEvaluationSeriesDoses::String(Default::default()),
                             );
@@ -574,7 +644,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 return Err(serde::de::Error::duplicate_field("seriesDoses[x]"));
                             }
                         }
-                        "_seriesDosesString" => {
+                        Field::SeriesDosesStringPrimitiveElement => {
                             let r#enum = r#series_doses.get_or_insert(
                                 ImmunizationEvaluationSeriesDoses::String(Default::default()),
                             );
@@ -593,36 +663,6 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                             } else {
                                 return Err(serde::de::Error::duplicate_field("_seriesDoses[x]"));
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "patient",
-                                    "date",
-                                    "authority",
-                                    "targetDisease",
-                                    "immunizationEvent",
-                                    "doseStatus",
-                                    "doseStatusReason",
-                                    "description",
-                                    "series",
-                                    "doseNumberPositiveInt",
-                                    "doseNumberString",
-                                    "seriesDosesPositiveInt",
-                                    "seriesDosesString",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Range {
     pub r#id: Option<std::string::String>,
@@ -33,6 +33,18 @@ impl<'de> serde::de::Deserialize<'de> for Range {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "low")]
+            Low,
+            #[serde(rename = "high")]
+            High,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Range;
@@ -49,35 +61,29 @@ impl<'de> serde::de::Deserialize<'de> for Range {
                 let mut r#high: Option<Box<super::super::types::Quantity>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "low" => {
+                        Field::Low => {
                             if r#low.is_some() {
                                 return Err(serde::de::Error::duplicate_field("low"));
                             }
                             r#low = Some(map_access.next_value()?);
                         }
-                        "high" => {
+                        Field::High => {
                             if r#high.is_some() {
                                 return Err(serde::de::Error::duplicate_field("high"));
                             }
                             r#high = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "low", "high"],
-                            ))
                         }
                     }
                 }

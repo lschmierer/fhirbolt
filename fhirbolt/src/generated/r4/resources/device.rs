@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct DeviceUdiCarrier {
     pub r#id: Option<std::string::String>,
@@ -107,6 +107,40 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "deviceIdentifier")]
+            DeviceIdentifier,
+            #[serde(rename = "_deviceIdentifier")]
+            DeviceIdentifierPrimitiveElement,
+            #[serde(rename = "issuer")]
+            Issuer,
+            #[serde(rename = "_issuer")]
+            IssuerPrimitiveElement,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "_jurisdiction")]
+            JurisdictionPrimitiveElement,
+            #[serde(rename = "carrierAIDC")]
+            CarrierAidc,
+            #[serde(rename = "_carrierAIDC")]
+            CarrierAidcPrimitiveElement,
+            #[serde(rename = "carrierHRF")]
+            CarrierHrf,
+            #[serde(rename = "_carrierHRF")]
+            CarrierHrfPrimitiveElement,
+            #[serde(rename = "entryType")]
+            EntryType,
+            #[serde(rename = "_entryType")]
+            EntryTypePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceUdiCarrier;
@@ -129,32 +163,32 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                 let mut r#entry_type: Option<super::super::types::Code> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "deviceIdentifier" => {
+                        Field::DeviceIdentifier => {
                             let some = r#device_identifier.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deviceIdentifier"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_deviceIdentifier" => {
+                        Field::DeviceIdentifierPrimitiveElement => {
                             let some = r#device_identifier.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_deviceIdentifier"));
@@ -166,14 +200,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "issuer" => {
+                        Field::Issuer => {
                             let some = r#issuer.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issuer"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_issuer" => {
+                        Field::IssuerPrimitiveElement => {
                             let some = r#issuer.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_issuer"));
@@ -185,14 +219,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             let some = r#jurisdiction.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_jurisdiction" => {
+                        Field::JurisdictionPrimitiveElement => {
                             let some = r#jurisdiction.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_jurisdiction"));
@@ -204,14 +238,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "carrierAIDC" => {
+                        Field::CarrierAidc => {
                             let some = r#carrier_aidc.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("carrierAIDC"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_carrierAIDC" => {
+                        Field::CarrierAidcPrimitiveElement => {
                             let some = r#carrier_aidc.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_carrierAIDC"));
@@ -223,14 +257,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "carrierHRF" => {
+                        Field::CarrierHrf => {
                             let some = r#carrier_hrf.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("carrierHRF"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_carrierHRF" => {
+                        Field::CarrierHrfPrimitiveElement => {
                             let some = r#carrier_hrf.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_carrierHRF"));
@@ -242,14 +276,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "entryType" => {
+                        Field::EntryType => {
                             let some = r#entry_type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("entryType"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_entryType" => {
+                        Field::EntryTypePrimitiveElement => {
                             let some = r#entry_type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_entryType"));
@@ -260,22 +294,6 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "deviceIdentifier",
-                                    "issuer",
-                                    "jurisdiction",
-                                    "carrierAIDC",
-                                    "carrierHRF",
-                                    "entryType",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -347,6 +365,24 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDeviceName;
@@ -365,32 +401,32 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                 let mut r#type: Option<super::super::types::Code> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -402,14 +438,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -420,12 +456,6 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "name", "type"],
-                            ))
                         }
                     }
                 }
@@ -486,6 +516,22 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "systemType")]
+            SystemType,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceSpecialization;
@@ -504,38 +550,38 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                 let mut r#version: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "systemType" => {
+                        Field::SystemType => {
                             if r#system_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("systemType"));
                             }
                             r#system_type = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -546,18 +592,6 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "systemType",
-                                    "version",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -623,6 +657,24 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "component")]
+            Component,
+            #[serde(rename = "value")]
+            Value,
+            #[serde(rename = "_value")]
+            ValuePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceVersion;
@@ -642,44 +694,44 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                 let mut r#value: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "component" => {
+                        Field::Component => {
                             if r#component.is_some() {
                                 return Err(serde::de::Error::duplicate_field("component"));
                             }
                             r#component = Some(map_access.next_value()?);
                         }
-                        "value" => {
+                        Field::Value => {
                             let some = r#value.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_value" => {
+                        Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_value"));
@@ -690,19 +742,6 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "component",
-                                    "value",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -759,6 +798,22 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "valueQuantity")]
+            ValueQuantity,
+            #[serde(rename = "valueCode")]
+            ValueCode,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceProperty;
@@ -778,54 +833,41 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
                 let mut r#value_code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "valueQuantity" => {
+                        Field::ValueQuantity => {
                             if r#value_quantity.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueQuantity"));
                             }
                             r#value_quantity = Some(map_access.next_value()?);
                         }
-                        "valueCode" => {
+                        Field::ValueCode => {
                             if r#value_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueCode"));
                             }
                             r#value_code = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "valueQuantity",
-                                    "valueCode",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1105,6 +1147,102 @@ impl<'de> serde::de::Deserialize<'de> for Device {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "definition")]
+            Definition,
+            #[serde(rename = "udiCarrier")]
+            UdiCarrier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "statusReason")]
+            StatusReason,
+            #[serde(rename = "distinctIdentifier")]
+            DistinctIdentifier,
+            #[serde(rename = "_distinctIdentifier")]
+            DistinctIdentifierPrimitiveElement,
+            #[serde(rename = "manufacturer")]
+            Manufacturer,
+            #[serde(rename = "_manufacturer")]
+            ManufacturerPrimitiveElement,
+            #[serde(rename = "manufactureDate")]
+            ManufactureDate,
+            #[serde(rename = "_manufactureDate")]
+            ManufactureDatePrimitiveElement,
+            #[serde(rename = "expirationDate")]
+            ExpirationDate,
+            #[serde(rename = "_expirationDate")]
+            ExpirationDatePrimitiveElement,
+            #[serde(rename = "lotNumber")]
+            LotNumber,
+            #[serde(rename = "_lotNumber")]
+            LotNumberPrimitiveElement,
+            #[serde(rename = "serialNumber")]
+            SerialNumber,
+            #[serde(rename = "_serialNumber")]
+            SerialNumberPrimitiveElement,
+            #[serde(rename = "deviceName")]
+            DeviceName,
+            #[serde(rename = "modelNumber")]
+            ModelNumber,
+            #[serde(rename = "_modelNumber")]
+            ModelNumberPrimitiveElement,
+            #[serde(rename = "partNumber")]
+            PartNumber,
+            #[serde(rename = "_partNumber")]
+            PartNumberPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "specialization")]
+            Specialization,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "property")]
+            Property,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "owner")]
+            Owner,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "location")]
+            Location,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+            #[serde(rename = "safety")]
+            Safety,
+            #[serde(rename = "parent")]
+            Parent,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Device;
@@ -1153,26 +1291,26 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                 let mut r#parent: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1184,14 +1322,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1203,56 +1341,56 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "definition" => {
+                        Field::Definition => {
                             if r#definition.is_some() {
                                 return Err(serde::de::Error::duplicate_field("definition"));
                             }
                             r#definition = Some(map_access.next_value()?);
                         }
-                        "udiCarrier" => {
+                        Field::UdiCarrier => {
                             if r#udi_carrier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("udiCarrier"));
                             }
                             r#udi_carrier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1264,13 +1402,13 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "statusReason" => {
+                        Field::StatusReason => {
                             if r#status_reason.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusReason"));
                             }
                             r#status_reason = Some(map_access.next_value()?);
                         }
-                        "distinctIdentifier" => {
+                        Field::DistinctIdentifier => {
                             let some = r#distinct_identifier.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -1279,7 +1417,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_distinctIdentifier" => {
+                        Field::DistinctIdentifierPrimitiveElement => {
                             let some = r#distinct_identifier.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -1293,14 +1431,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "manufacturer" => {
+                        Field::Manufacturer => {
                             let some = r#manufacturer.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("manufacturer"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_manufacturer" => {
+                        Field::ManufacturerPrimitiveElement => {
                             let some = r#manufacturer.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_manufacturer"));
@@ -1312,14 +1450,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "manufactureDate" => {
+                        Field::ManufactureDate => {
                             let some = r#manufacture_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("manufactureDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_manufactureDate" => {
+                        Field::ManufactureDatePrimitiveElement => {
                             let some = r#manufacture_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_manufactureDate"));
@@ -1331,14 +1469,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "expirationDate" => {
+                        Field::ExpirationDate => {
                             let some = r#expiration_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("expirationDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_expirationDate" => {
+                        Field::ExpirationDatePrimitiveElement => {
                             let some = r#expiration_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_expirationDate"));
@@ -1350,14 +1488,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lotNumber" => {
+                        Field::LotNumber => {
                             let some = r#lot_number.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lotNumber"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lotNumber" => {
+                        Field::LotNumberPrimitiveElement => {
                             let some = r#lot_number.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lotNumber"));
@@ -1369,14 +1507,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "serialNumber" => {
+                        Field::SerialNumber => {
                             let some = r#serial_number.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("serialNumber"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_serialNumber" => {
+                        Field::SerialNumberPrimitiveElement => {
                             let some = r#serial_number.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_serialNumber"));
@@ -1388,20 +1526,20 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "deviceName" => {
+                        Field::DeviceName => {
                             if r#device_name.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deviceName"));
                             }
                             r#device_name = Some(map_access.next_value()?);
                         }
-                        "modelNumber" => {
+                        Field::ModelNumber => {
                             let some = r#model_number.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modelNumber"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_modelNumber" => {
+                        Field::ModelNumberPrimitiveElement => {
                             let some = r#model_number.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_modelNumber"));
@@ -1413,14 +1551,14 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "partNumber" => {
+                        Field::PartNumber => {
                             let some = r#part_number.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("partNumber"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_partNumber" => {
+                        Field::PartNumberPrimitiveElement => {
                             let some = r#part_number.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_partNumber"));
@@ -1432,62 +1570,62 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "specialization" => {
+                        Field::Specialization => {
                             if r#specialization.is_some() {
                                 return Err(serde::de::Error::duplicate_field("specialization"));
                             }
                             r#specialization = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             if r#version.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             r#version = Some(map_access.next_value()?);
                         }
-                        "property" => {
+                        Field::Property => {
                             if r#property.is_some() {
                                 return Err(serde::de::Error::duplicate_field("property"));
                             }
                             r#property = Some(map_access.next_value()?);
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "owner" => {
+                        Field::Owner => {
                             if r#owner.is_some() {
                                 return Err(serde::de::Error::duplicate_field("owner"));
                             }
                             r#owner = Some(map_access.next_value()?);
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "location" => {
+                        Field::Location => {
                             if r#location.is_some() {
                                 return Err(serde::de::Error::duplicate_field("location"));
                             }
                             r#location = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -1499,64 +1637,23 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
                         }
-                        "safety" => {
+                        Field::Safety => {
                             if r#safety.is_some() {
                                 return Err(serde::de::Error::duplicate_field("safety"));
                             }
                             r#safety = Some(map_access.next_value()?);
                         }
-                        "parent" => {
+                        Field::Parent => {
                             if r#parent.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parent"));
                             }
                             r#parent = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "definition",
-                                    "udiCarrier",
-                                    "status",
-                                    "statusReason",
-                                    "distinctIdentifier",
-                                    "manufacturer",
-                                    "manufactureDate",
-                                    "expirationDate",
-                                    "lotNumber",
-                                    "serialNumber",
-                                    "deviceName",
-                                    "modelNumber",
-                                    "partNumber",
-                                    "type",
-                                    "specialization",
-                                    "version",
-                                    "property",
-                                    "patient",
-                                    "owner",
-                                    "contact",
-                                    "location",
-                                    "url",
-                                    "note",
-                                    "safety",
-                                    "parent",
-                                ],
-                            ))
                         }
                     }
                 }

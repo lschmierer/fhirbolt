@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AuditEventEntityDetailValue {
     String(Box<super::super::types::String>),
@@ -66,6 +66,24 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "address")]
+            Address,
+            #[serde(rename = "_address")]
+            AddressPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventAgentNetwork;
@@ -84,32 +102,32 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                 let mut r#type: Option<super::super::types::Code> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "address" => {
+                        Field::Address => {
                             let some = r#address.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("address"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_address" => {
+                        Field::AddressPrimitiveElement => {
                             let some = r#address.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_address"));
@@ -121,14 +139,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -139,12 +157,6 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "address", "type"],
-                            ))
                         }
                     }
                 }
@@ -283,6 +295,46 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "role")]
+            Role,
+            #[serde(rename = "who")]
+            Who,
+            #[serde(rename = "altId")]
+            AltId,
+            #[serde(rename = "_altId")]
+            AltIdPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "requestor")]
+            Requestor,
+            #[serde(rename = "_requestor")]
+            RequestorPrimitiveElement,
+            #[serde(rename = "location")]
+            Location,
+            #[serde(rename = "policy")]
+            Policy,
+            #[serde(rename = "_policy")]
+            PolicyPrimitiveElement,
+            #[serde(rename = "media")]
+            Media,
+            #[serde(rename = "network")]
+            Network,
+            #[serde(rename = "purposeOfUse")]
+            PurposeOfUse,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventAgent;
@@ -311,50 +363,50 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "role" => {
+                        Field::Role => {
                             if r#role.is_some() {
                                 return Err(serde::de::Error::duplicate_field("role"));
                             }
                             r#role = Some(map_access.next_value()?);
                         }
-                        "who" => {
+                        Field::Who => {
                             if r#who.is_some() {
                                 return Err(serde::de::Error::duplicate_field("who"));
                             }
                             r#who = Some(map_access.next_value()?);
                         }
-                        "altId" => {
+                        Field::AltId => {
                             let some = r#alt_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("altId"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_altId" => {
+                        Field::AltIdPrimitiveElement => {
                             let some = r#alt_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_altId"));
@@ -366,14 +418,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -385,14 +437,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "requestor" => {
+                        Field::Requestor => {
                             let some = r#requestor.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requestor"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_requestor" => {
+                        Field::RequestorPrimitiveElement => {
                             let some = r#requestor.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_requestor"));
@@ -404,13 +456,13 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "location" => {
+                        Field::Location => {
                             if r#location.is_some() {
                                 return Err(serde::de::Error::duplicate_field("location"));
                             }
                             r#location = Some(map_access.next_value()?);
                         }
-                        "policy" => {
+                        Field::Policy => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#policy.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -426,7 +478,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                 vec[i].value = value;
                             }
                         }
-                        "_policy" => {
+                        Field::PolicyPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#policy.get_or_insert(Vec::with_capacity(elements.len()));
@@ -447,44 +499,23 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "media" => {
+                        Field::Media => {
                             if r#media.is_some() {
                                 return Err(serde::de::Error::duplicate_field("media"));
                             }
                             r#media = Some(map_access.next_value()?);
                         }
-                        "network" => {
+                        Field::Network => {
                             if r#network.is_some() {
                                 return Err(serde::de::Error::duplicate_field("network"));
                             }
                             r#network = Some(map_access.next_value()?);
                         }
-                        "purposeOfUse" => {
+                        Field::PurposeOfUse => {
                             if r#purpose_of_use.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purposeOfUse"));
                             }
                             r#purpose_of_use = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "role",
-                                    "who",
-                                    "altId",
-                                    "name",
-                                    "requestor",
-                                    "location",
-                                    "policy",
-                                    "media",
-                                    "network",
-                                    "purposeOfUse",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -558,6 +589,24 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "site")]
+            Site,
+            #[serde(rename = "_site")]
+            SitePrimitiveElement,
+            #[serde(rename = "observer")]
+            Observer,
+            #[serde(rename = "type")]
+            Type,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventSource;
@@ -577,32 +626,32 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                 let mut r#type: Option<Vec<Box<super::super::types::Coding>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "site" => {
+                        Field::Site => {
                             let some = r#site.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("site"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_site" => {
+                        Field::SitePrimitiveElement => {
                             let some = r#site.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_site"));
@@ -614,30 +663,17 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "observer" => {
+                        Field::Observer => {
                             if r#observer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("observer"));
                             }
                             r#observer = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "site",
-                                    "observer",
-                                    "type",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -725,6 +761,28 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "valueString")]
+            ValueString,
+            #[serde(rename = "_valueString")]
+            ValueStringPrimitiveElement,
+            #[serde(rename = "valueBase64Binary")]
+            ValueBase64Binary,
+            #[serde(rename = "_valueBase64Binary")]
+            ValueBase64BinaryPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventEntityDetail;
@@ -743,32 +801,32 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                 let mut r#value: Option<AuditEventEntityDetailValue> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -780,7 +838,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "valueString" => {
+                        Field::ValueString => {
                             let r#enum = r#value.get_or_insert(
                                 AuditEventEntityDetailValue::String(Default::default()),
                             );
@@ -793,7 +851,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueString" => {
+                        Field::ValueStringPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 AuditEventEntityDetailValue::String(Default::default()),
                             );
@@ -811,7 +869,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueBase64Binary" => {
+                        Field::ValueBase64Binary => {
                             let r#enum = r#value.get_or_insert(
                                 AuditEventEntityDetailValue::Base64Binary(Default::default()),
                             );
@@ -826,7 +884,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBase64Binary" => {
+                        Field::ValueBase64BinaryPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 AuditEventEntityDetailValue::Base64Binary(Default::default()),
                             );
@@ -845,19 +903,6 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                             } else {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "valueString",
-                                    "valueBase64Binary",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -966,6 +1011,40 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "what")]
+            What,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "role")]
+            Role,
+            #[serde(rename = "lifecycle")]
+            Lifecycle,
+            #[serde(rename = "securityLabel")]
+            SecurityLabel,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "query")]
+            Query,
+            #[serde(rename = "_query")]
+            QueryPrimitiveElement,
+            #[serde(rename = "detail")]
+            Detail,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventEntity;
@@ -991,62 +1070,62 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                 let mut r#detail: Option<Vec<AuditEventEntityDetail>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "what" => {
+                        Field::What => {
                             if r#what.is_some() {
                                 return Err(serde::de::Error::duplicate_field("what"));
                             }
                             r#what = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "role" => {
+                        Field::Role => {
                             if r#role.is_some() {
                                 return Err(serde::de::Error::duplicate_field("role"));
                             }
                             r#role = Some(map_access.next_value()?);
                         }
-                        "lifecycle" => {
+                        Field::Lifecycle => {
                             if r#lifecycle.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lifecycle"));
                             }
                             r#lifecycle = Some(map_access.next_value()?);
                         }
-                        "securityLabel" => {
+                        Field::SecurityLabel => {
                             if r#security_label.is_some() {
                                 return Err(serde::de::Error::duplicate_field("securityLabel"));
                             }
                             r#security_label = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1058,14 +1137,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -1077,14 +1156,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "query" => {
+                        Field::Query => {
                             let some = r#query.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("query"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_query" => {
+                        Field::QueryPrimitiveElement => {
                             let some = r#query.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_query"));
@@ -1096,30 +1175,11 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "detail" => {
+                        Field::Detail => {
                             if r#detail.is_some() {
                                 return Err(serde::de::Error::duplicate_field("detail"));
                             }
                             r#detail = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "what",
-                                    "type",
-                                    "role",
-                                    "lifecycle",
-                                    "securityLabel",
-                                    "name",
-                                    "description",
-                                    "query",
-                                    "detail",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1285,6 +1345,60 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "subtype")]
+            Subtype,
+            #[serde(rename = "action")]
+            Action,
+            #[serde(rename = "_action")]
+            ActionPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "recorded")]
+            Recorded,
+            #[serde(rename = "_recorded")]
+            RecordedPrimitiveElement,
+            #[serde(rename = "outcome")]
+            Outcome,
+            #[serde(rename = "_outcome")]
+            OutcomePrimitiveElement,
+            #[serde(rename = "outcomeDesc")]
+            OutcomeDesc,
+            #[serde(rename = "_outcomeDesc")]
+            OutcomeDescPrimitiveElement,
+            #[serde(rename = "purposeOfEvent")]
+            PurposeOfEvent,
+            #[serde(rename = "agent")]
+            Agent,
+            #[serde(rename = "source")]
+            Source,
+            #[serde(rename = "entity")]
+            Entity,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEvent;
@@ -1318,26 +1432,26 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                 let mut r#entity: Option<Vec<AuditEventEntity>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1349,14 +1463,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1368,50 +1482,50 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "subtype" => {
+                        Field::Subtype => {
                             if r#subtype.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subtype"));
                             }
                             r#subtype = Some(map_access.next_value()?);
                         }
-                        "action" => {
+                        Field::Action => {
                             let some = r#action.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("action"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_action" => {
+                        Field::ActionPrimitiveElement => {
                             let some = r#action.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_action"));
@@ -1423,20 +1537,20 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
                         }
-                        "recorded" => {
+                        Field::Recorded => {
                             let some = r#recorded.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recorded"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_recorded" => {
+                        Field::RecordedPrimitiveElement => {
                             let some = r#recorded.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_recorded"));
@@ -1448,14 +1562,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "outcome" => {
+                        Field::Outcome => {
                             let some = r#outcome.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_outcome" => {
+                        Field::OutcomePrimitiveElement => {
                             let some = r#outcome.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_outcome"));
@@ -1467,14 +1581,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "outcomeDesc" => {
+                        Field::OutcomeDesc => {
                             let some = r#outcome_desc.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcomeDesc"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_outcomeDesc" => {
+                        Field::OutcomeDescPrimitiveElement => {
                             let some = r#outcome_desc.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_outcomeDesc"));
@@ -1486,55 +1600,29 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "purposeOfEvent" => {
+                        Field::PurposeOfEvent => {
                             if r#purpose_of_event.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purposeOfEvent"));
                             }
                             r#purpose_of_event = Some(map_access.next_value()?);
                         }
-                        "agent" => {
+                        Field::Agent => {
                             if r#agent.is_some() {
                                 return Err(serde::de::Error::duplicate_field("agent"));
                             }
                             r#agent = Some(map_access.next_value()?);
                         }
-                        "source" => {
+                        Field::Source => {
                             if r#source.is_some() {
                                 return Err(serde::de::Error::duplicate_field("source"));
                             }
                             r#source = Some(map_access.next_value()?);
                         }
-                        "entity" => {
+                        Field::Entity => {
                             if r#entity.is_some() {
                                 return Err(serde::de::Error::duplicate_field("entity"));
                             }
                             r#entity = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "subtype",
-                                    "action",
-                                    "period",
-                                    "recorded",
-                                    "outcome",
-                                    "outcomeDesc",
-                                    "purposeOfEvent",
-                                    "agent",
-                                    "source",
-                                    "entity",
-                                ],
-                            ))
                         }
                     }
                 }

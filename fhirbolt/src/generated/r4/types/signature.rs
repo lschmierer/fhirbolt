@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Signature {
     pub r#id: Option<std::string::String>,
@@ -85,6 +85,36 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "when")]
+            When,
+            #[serde(rename = "_when")]
+            WhenPrimitiveElement,
+            #[serde(rename = "who")]
+            Who,
+            #[serde(rename = "onBehalfOf")]
+            OnBehalfOf,
+            #[serde(rename = "targetFormat")]
+            TargetFormat,
+            #[serde(rename = "_targetFormat")]
+            TargetFormatPrimitiveElement,
+            #[serde(rename = "sigFormat")]
+            SigFormat,
+            #[serde(rename = "_sigFormat")]
+            SigFormatPrimitiveElement,
+            #[serde(rename = "data")]
+            Data,
+            #[serde(rename = "_data")]
+            DataPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Signature;
@@ -106,32 +136,32 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                 let mut r#data: Option<super::super::types::Base64Binary> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "when" => {
+                        Field::When => {
                             let some = r#when.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("when"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_when" => {
+                        Field::WhenPrimitiveElement => {
                             let some = r#when.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_when"));
@@ -143,26 +173,26 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "who" => {
+                        Field::Who => {
                             if r#who.is_some() {
                                 return Err(serde::de::Error::duplicate_field("who"));
                             }
                             r#who = Some(map_access.next_value()?);
                         }
-                        "onBehalfOf" => {
+                        Field::OnBehalfOf => {
                             if r#on_behalf_of.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onBehalfOf"));
                             }
                             r#on_behalf_of = Some(map_access.next_value()?);
                         }
-                        "targetFormat" => {
+                        Field::TargetFormat => {
                             let some = r#target_format.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("targetFormat"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_targetFormat" => {
+                        Field::TargetFormatPrimitiveElement => {
                             let some = r#target_format.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_targetFormat"));
@@ -174,14 +204,14 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sigFormat" => {
+                        Field::SigFormat => {
                             let some = r#sig_format.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sigFormat"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sigFormat" => {
+                        Field::SigFormatPrimitiveElement => {
                             let some = r#sig_format.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sigFormat"));
@@ -193,14 +223,14 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "data" => {
+                        Field::Data => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_data" => {
+                        Field::DataPrimitiveElement => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_data"));
@@ -211,22 +241,6 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "type",
-                                    "when",
-                                    "who",
-                                    "onBehalfOf",
-                                    "targetFormat",
-                                    "sigFormat",
-                                    "data",
-                                ],
-                            ))
                         }
                     }
                 }

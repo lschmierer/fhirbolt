@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum PopulationAge {
     Range(Box<super::super::types::Range>),
@@ -64,6 +64,26 @@ impl<'de> serde::de::Deserialize<'de> for Population {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "ageRange")]
+            AgeRange,
+            #[serde(rename = "ageCodeableConcept")]
+            AgeCodeableConcept,
+            #[serde(rename = "gender")]
+            Gender,
+            #[serde(rename = "race")]
+            Race,
+            #[serde(rename = "physiologicalCondition")]
+            PhysiologicalCondition,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Population;
@@ -86,31 +106,31 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "ageRange" => {
+                        Field::AgeRange => {
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ageRange"));
                             }
                             r#age = Some(PopulationAge::Range(map_access.next_value()?));
                         }
-                        "ageCodeableConcept" => {
+                        Field::AgeCodeableConcept => {
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "ageCodeableConcept",
@@ -118,40 +138,25 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                             }
                             r#age = Some(PopulationAge::CodeableConcept(map_access.next_value()?));
                         }
-                        "gender" => {
+                        Field::Gender => {
                             if r#gender.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gender"));
                             }
                             r#gender = Some(map_access.next_value()?);
                         }
-                        "race" => {
+                        Field::Race => {
                             if r#race.is_some() {
                                 return Err(serde::de::Error::duplicate_field("race"));
                             }
                             r#race = Some(map_access.next_value()?);
                         }
-                        "physiologicalCondition" => {
+                        Field::PhysiologicalCondition => {
                             if r#physiological_condition.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "physiologicalCondition",
                                 ));
                             }
                             r#physiological_condition = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "ageRange",
-                                    "ageCodeableConcept",
-                                    "gender",
-                                    "race",
-                                    "physiologicalCondition",
-                                ],
-                            ))
                         }
                     }
                 }

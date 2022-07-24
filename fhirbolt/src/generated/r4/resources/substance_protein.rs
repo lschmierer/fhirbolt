@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceProteinSubunit {
     pub r#id: Option<std::string::String>,
@@ -106,6 +106,42 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "subunit")]
+            Subunit,
+            #[serde(rename = "_subunit")]
+            SubunitPrimitiveElement,
+            #[serde(rename = "sequence")]
+            Sequence,
+            #[serde(rename = "_sequence")]
+            SequencePrimitiveElement,
+            #[serde(rename = "length")]
+            Length,
+            #[serde(rename = "_length")]
+            LengthPrimitiveElement,
+            #[serde(rename = "sequenceAttachment")]
+            SequenceAttachment,
+            #[serde(rename = "nTerminalModificationId")]
+            NTerminalModificationId,
+            #[serde(rename = "nTerminalModification")]
+            NTerminalModification,
+            #[serde(rename = "_nTerminalModification")]
+            NTerminalModificationPrimitiveElement,
+            #[serde(rename = "cTerminalModificationId")]
+            CTerminalModificationId,
+            #[serde(rename = "cTerminalModification")]
+            CTerminalModification,
+            #[serde(rename = "_cTerminalModification")]
+            CTerminalModificationPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceProteinSubunit;
@@ -132,32 +168,32 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                 let mut r#c_terminal_modification: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "subunit" => {
+                        Field::Subunit => {
                             let some = r#subunit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subunit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_subunit" => {
+                        Field::SubunitPrimitiveElement => {
                             let some = r#subunit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_subunit"));
@@ -169,14 +205,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sequence" => {
+                        Field::Sequence => {
                             let some = r#sequence.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sequence" => {
+                        Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sequence"));
@@ -188,14 +224,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "length" => {
+                        Field::Length => {
                             let some = r#length.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("length"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_length" => {
+                        Field::LengthPrimitiveElement => {
                             let some = r#length.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_length"));
@@ -207,7 +243,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sequenceAttachment" => {
+                        Field::SequenceAttachment => {
                             if r#sequence_attachment.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "sequenceAttachment",
@@ -215,7 +251,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             }
                             r#sequence_attachment = Some(map_access.next_value()?);
                         }
-                        "nTerminalModificationId" => {
+                        Field::NTerminalModificationId => {
                             if r#n_terminal_modification_id.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "nTerminalModificationId",
@@ -223,7 +259,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             }
                             r#n_terminal_modification_id = Some(map_access.next_value()?);
                         }
-                        "nTerminalModification" => {
+                        Field::NTerminalModification => {
                             let some = r#n_terminal_modification.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -232,7 +268,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_nTerminalModification" => {
+                        Field::NTerminalModificationPrimitiveElement => {
                             let some = r#n_terminal_modification.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -246,7 +282,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "cTerminalModificationId" => {
+                        Field::CTerminalModificationId => {
                             if r#c_terminal_modification_id.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "cTerminalModificationId",
@@ -254,7 +290,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             }
                             r#c_terminal_modification_id = Some(map_access.next_value()?);
                         }
-                        "cTerminalModification" => {
+                        Field::CTerminalModification => {
                             let some = r#c_terminal_modification.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -263,7 +299,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_cTerminalModification" => {
+                        Field::CTerminalModificationPrimitiveElement => {
                             let some = r#c_terminal_modification.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -276,24 +312,6 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "subunit",
-                                    "sequence",
-                                    "length",
-                                    "sequenceAttachment",
-                                    "nTerminalModificationId",
-                                    "nTerminalModification",
-                                    "cTerminalModificationId",
-                                    "cTerminalModification",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -433,6 +451,42 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "sequenceType")]
+            SequenceType,
+            #[serde(rename = "numberOfSubunits")]
+            NumberOfSubunits,
+            #[serde(rename = "_numberOfSubunits")]
+            NumberOfSubunitsPrimitiveElement,
+            #[serde(rename = "disulfideLinkage")]
+            DisulfideLinkage,
+            #[serde(rename = "_disulfideLinkage")]
+            DisulfideLinkagePrimitiveElement,
+            #[serde(rename = "subunit")]
+            Subunit,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceProtein;
@@ -458,26 +512,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                 let mut r#subunit: Option<Vec<SubstanceProteinSubunit>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -489,14 +543,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -508,44 +562,44 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "sequenceType" => {
+                        Field::SequenceType => {
                             if r#sequence_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequenceType"));
                             }
                             r#sequence_type = Some(map_access.next_value()?);
                         }
-                        "numberOfSubunits" => {
+                        Field::NumberOfSubunits => {
                             let some = r#number_of_subunits.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfSubunits"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_numberOfSubunits" => {
+                        Field::NumberOfSubunitsPrimitiveElement => {
                             let some = r#number_of_subunits.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_numberOfSubunits"));
@@ -557,7 +611,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "disulfideLinkage" => {
+                        Field::DisulfideLinkage => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#disulfide_linkage.get_or_insert(Vec::with_capacity(values.len()));
@@ -574,7 +628,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                                 vec[i].value = value;
                             }
                         }
-                        "_disulfideLinkage" => {
+                        Field::DisulfideLinkagePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#disulfide_linkage
@@ -596,30 +650,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "subunit" => {
+                        Field::Subunit => {
                             if r#subunit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subunit"));
                             }
                             r#subunit = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "sequenceType",
-                                    "numberOfSubunits",
-                                    "disulfideLinkage",
-                                    "subunit",
-                                ],
-                            ))
                         }
                     }
                 }

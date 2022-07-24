@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ResearchSubject {
     pub r#id: Option<std::string::String>,
@@ -121,6 +121,52 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "study")]
+            Study,
+            #[serde(rename = "individual")]
+            Individual,
+            #[serde(rename = "assignedArm")]
+            AssignedArm,
+            #[serde(rename = "_assignedArm")]
+            AssignedArmPrimitiveElement,
+            #[serde(rename = "actualArm")]
+            ActualArm,
+            #[serde(rename = "_actualArm")]
+            ActualArmPrimitiveElement,
+            #[serde(rename = "consent")]
+            Consent,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchSubject;
@@ -150,26 +196,26 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                 let mut r#consent: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -181,14 +227,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -200,44 +246,44 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -249,32 +295,32 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
                         }
-                        "study" => {
+                        Field::Study => {
                             if r#study.is_some() {
                                 return Err(serde::de::Error::duplicate_field("study"));
                             }
                             r#study = Some(map_access.next_value()?);
                         }
-                        "individual" => {
+                        Field::Individual => {
                             if r#individual.is_some() {
                                 return Err(serde::de::Error::duplicate_field("individual"));
                             }
                             r#individual = Some(map_access.next_value()?);
                         }
-                        "assignedArm" => {
+                        Field::AssignedArm => {
                             let some = r#assigned_arm.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("assignedArm"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_assignedArm" => {
+                        Field::AssignedArmPrimitiveElement => {
                             let some = r#assigned_arm.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_assignedArm"));
@@ -286,14 +332,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "actualArm" => {
+                        Field::ActualArm => {
                             let some = r#actual_arm.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("actualArm"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_actualArm" => {
+                        Field::ActualArmPrimitiveElement => {
                             let some = r#actual_arm.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_actualArm"));
@@ -305,34 +351,11 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "consent" => {
+                        Field::Consent => {
                             if r#consent.is_some() {
                                 return Err(serde::de::Error::duplicate_field("consent"));
                             }
                             r#consent = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "period",
-                                    "study",
-                                    "individual",
-                                    "assignedArm",
-                                    "actualArm",
-                                    "consent",
-                                ],
-                            ))
                         }
                     }
                 }

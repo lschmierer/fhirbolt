@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -150,6 +150,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "mode")]
+            Mode,
+            #[serde(rename = "_mode")]
+            ModePrimitiveElement,
+            #[serde(rename = "alias")]
+            Alias,
+            #[serde(rename = "_alias")]
+            AliasPrimitiveElement,
+            #[serde(rename = "documentation")]
+            Documentation,
+            #[serde(rename = "_documentation")]
+            DocumentationPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapStructure;
@@ -170,32 +196,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                 let mut r#documentation: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -207,14 +233,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "mode" => {
+                        Field::Mode => {
                             let some = r#mode.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mode"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_mode" => {
+                        Field::ModePrimitiveElement => {
                             let some = r#mode.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_mode"));
@@ -226,14 +252,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "alias" => {
+                        Field::Alias => {
                             let some = r#alias.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("alias"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_alias" => {
+                        Field::AliasPrimitiveElement => {
                             let some = r#alias.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_alias"));
@@ -245,14 +271,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "documentation" => {
+                        Field::Documentation => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_documentation" => {
+                        Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_documentation"));
@@ -263,20 +289,6 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "mode",
-                                    "alias",
-                                    "documentation",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -372,6 +384,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "mode")]
+            Mode,
+            #[serde(rename = "_mode")]
+            ModePrimitiveElement,
+            #[serde(rename = "documentation")]
+            Documentation,
+            #[serde(rename = "_documentation")]
+            DocumentationPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupInput;
@@ -392,32 +430,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                 let mut r#documentation: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -429,14 +467,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -448,14 +486,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "mode" => {
+                        Field::Mode => {
                             let some = r#mode.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mode"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_mode" => {
+                        Field::ModePrimitiveElement => {
                             let some = r#mode.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_mode"));
@@ -467,14 +505,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "documentation" => {
+                        Field::Documentation => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_documentation" => {
+                        Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_documentation"));
@@ -485,20 +523,6 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "name",
-                                    "type",
-                                    "mode",
-                                    "documentation",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1003,6 +1027,194 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "context")]
+            Context,
+            #[serde(rename = "_context")]
+            ContextPrimitiveElement,
+            #[serde(rename = "min")]
+            Min,
+            #[serde(rename = "_min")]
+            MinPrimitiveElement,
+            #[serde(rename = "max")]
+            Max,
+            #[serde(rename = "_max")]
+            MaxPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "defaultValueBase64Binary")]
+            DefaultValueBase64Binary,
+            #[serde(rename = "_defaultValueBase64Binary")]
+            DefaultValueBase64BinaryPrimitiveElement,
+            #[serde(rename = "defaultValueBoolean")]
+            DefaultValueBoolean,
+            #[serde(rename = "_defaultValueBoolean")]
+            DefaultValueBooleanPrimitiveElement,
+            #[serde(rename = "defaultValueCanonical")]
+            DefaultValueCanonical,
+            #[serde(rename = "_defaultValueCanonical")]
+            DefaultValueCanonicalPrimitiveElement,
+            #[serde(rename = "defaultValueCode")]
+            DefaultValueCode,
+            #[serde(rename = "_defaultValueCode")]
+            DefaultValueCodePrimitiveElement,
+            #[serde(rename = "defaultValueDate")]
+            DefaultValueDate,
+            #[serde(rename = "_defaultValueDate")]
+            DefaultValueDatePrimitiveElement,
+            #[serde(rename = "defaultValueDateTime")]
+            DefaultValueDateTime,
+            #[serde(rename = "_defaultValueDateTime")]
+            DefaultValueDateTimePrimitiveElement,
+            #[serde(rename = "defaultValueDecimal")]
+            DefaultValueDecimal,
+            #[serde(rename = "_defaultValueDecimal")]
+            DefaultValueDecimalPrimitiveElement,
+            #[serde(rename = "defaultValueId")]
+            DefaultValueId,
+            #[serde(rename = "_defaultValueId")]
+            DefaultValueIdPrimitiveElement,
+            #[serde(rename = "defaultValueInstant")]
+            DefaultValueInstant,
+            #[serde(rename = "_defaultValueInstant")]
+            DefaultValueInstantPrimitiveElement,
+            #[serde(rename = "defaultValueInteger")]
+            DefaultValueInteger,
+            #[serde(rename = "_defaultValueInteger")]
+            DefaultValueIntegerPrimitiveElement,
+            #[serde(rename = "defaultValueMarkdown")]
+            DefaultValueMarkdown,
+            #[serde(rename = "_defaultValueMarkdown")]
+            DefaultValueMarkdownPrimitiveElement,
+            #[serde(rename = "defaultValueOid")]
+            DefaultValueOid,
+            #[serde(rename = "_defaultValueOid")]
+            DefaultValueOidPrimitiveElement,
+            #[serde(rename = "defaultValuePositiveInt")]
+            DefaultValuePositiveInt,
+            #[serde(rename = "_defaultValuePositiveInt")]
+            DefaultValuePositiveIntPrimitiveElement,
+            #[serde(rename = "defaultValueString")]
+            DefaultValueString,
+            #[serde(rename = "_defaultValueString")]
+            DefaultValueStringPrimitiveElement,
+            #[serde(rename = "defaultValueTime")]
+            DefaultValueTime,
+            #[serde(rename = "_defaultValueTime")]
+            DefaultValueTimePrimitiveElement,
+            #[serde(rename = "defaultValueUnsignedInt")]
+            DefaultValueUnsignedInt,
+            #[serde(rename = "_defaultValueUnsignedInt")]
+            DefaultValueUnsignedIntPrimitiveElement,
+            #[serde(rename = "defaultValueUri")]
+            DefaultValueUri,
+            #[serde(rename = "_defaultValueUri")]
+            DefaultValueUriPrimitiveElement,
+            #[serde(rename = "defaultValueUrl")]
+            DefaultValueUrl,
+            #[serde(rename = "_defaultValueUrl")]
+            DefaultValueUrlPrimitiveElement,
+            #[serde(rename = "defaultValueUuid")]
+            DefaultValueUuid,
+            #[serde(rename = "_defaultValueUuid")]
+            DefaultValueUuidPrimitiveElement,
+            #[serde(rename = "defaultValueAddress")]
+            DefaultValueAddress,
+            #[serde(rename = "defaultValueAge")]
+            DefaultValueAge,
+            #[serde(rename = "defaultValueAnnotation")]
+            DefaultValueAnnotation,
+            #[serde(rename = "defaultValueAttachment")]
+            DefaultValueAttachment,
+            #[serde(rename = "defaultValueCodeableConcept")]
+            DefaultValueCodeableConcept,
+            #[serde(rename = "defaultValueCoding")]
+            DefaultValueCoding,
+            #[serde(rename = "defaultValueContactPoint")]
+            DefaultValueContactPoint,
+            #[serde(rename = "defaultValueCount")]
+            DefaultValueCount,
+            #[serde(rename = "defaultValueDistance")]
+            DefaultValueDistance,
+            #[serde(rename = "defaultValueDuration")]
+            DefaultValueDuration,
+            #[serde(rename = "defaultValueHumanName")]
+            DefaultValueHumanName,
+            #[serde(rename = "defaultValueIdentifier")]
+            DefaultValueIdentifier,
+            #[serde(rename = "defaultValueMoney")]
+            DefaultValueMoney,
+            #[serde(rename = "defaultValuePeriod")]
+            DefaultValuePeriod,
+            #[serde(rename = "defaultValueQuantity")]
+            DefaultValueQuantity,
+            #[serde(rename = "defaultValueRange")]
+            DefaultValueRange,
+            #[serde(rename = "defaultValueRatio")]
+            DefaultValueRatio,
+            #[serde(rename = "defaultValueReference")]
+            DefaultValueReference,
+            #[serde(rename = "defaultValueSampledData")]
+            DefaultValueSampledData,
+            #[serde(rename = "defaultValueSignature")]
+            DefaultValueSignature,
+            #[serde(rename = "defaultValueTiming")]
+            DefaultValueTiming,
+            #[serde(rename = "defaultValueContactDetail")]
+            DefaultValueContactDetail,
+            #[serde(rename = "defaultValueContributor")]
+            DefaultValueContributor,
+            #[serde(rename = "defaultValueDataRequirement")]
+            DefaultValueDataRequirement,
+            #[serde(rename = "defaultValueExpression")]
+            DefaultValueExpression,
+            #[serde(rename = "defaultValueParameterDefinition")]
+            DefaultValueParameterDefinition,
+            #[serde(rename = "defaultValueRelatedArtifact")]
+            DefaultValueRelatedArtifact,
+            #[serde(rename = "defaultValueTriggerDefinition")]
+            DefaultValueTriggerDefinition,
+            #[serde(rename = "defaultValueUsageContext")]
+            DefaultValueUsageContext,
+            #[serde(rename = "defaultValueDosage")]
+            DefaultValueDosage,
+            #[serde(rename = "defaultValueMeta")]
+            DefaultValueMeta,
+            #[serde(rename = "element")]
+            Element,
+            #[serde(rename = "_element")]
+            ElementPrimitiveElement,
+            #[serde(rename = "listMode")]
+            ListMode,
+            #[serde(rename = "_listMode")]
+            ListModePrimitiveElement,
+            #[serde(rename = "variable")]
+            Variable,
+            #[serde(rename = "_variable")]
+            VariablePrimitiveElement,
+            #[serde(rename = "condition")]
+            Condition,
+            #[serde(rename = "_condition")]
+            ConditionPrimitiveElement,
+            #[serde(rename = "check")]
+            Check,
+            #[serde(rename = "_check")]
+            CheckPrimitiveElement,
+            #[serde(rename = "logMessage")]
+            LogMessage,
+            #[serde(rename = "_logMessage")]
+            LogMessagePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleSource;
@@ -1033,32 +1245,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                 let mut r#log_message: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "context" => {
+                        Field::Context => {
                             let some = r#context.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("context"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_context" => {
+                        Field::ContextPrimitiveElement => {
                             let some = r#context.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_context"));
@@ -1070,14 +1282,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "min" => {
+                        Field::Min => {
                             let some = r#min.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("min"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_min" => {
+                        Field::MinPrimitiveElement => {
                             let some = r#min.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_min"));
@@ -1089,14 +1301,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "max" => {
+                        Field::Max => {
                             let some = r#max.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("max"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_max" => {
+                        Field::MaxPrimitiveElement => {
                             let some = r#max.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_max"));
@@ -1108,14 +1320,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -1127,7 +1339,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "defaultValueBase64Binary" => {
+                        Field::DefaultValueBase64Binary => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Base64Binary(
                                     Default::default(),
@@ -1146,7 +1358,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueBase64Binary" => {
+                        Field::DefaultValueBase64BinaryPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Base64Binary(
                                     Default::default(),
@@ -1170,7 +1382,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueBoolean" => {
+                        Field::DefaultValueBoolean => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Boolean(
@@ -1190,7 +1402,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueBoolean" => {
+                        Field::DefaultValueBooleanPrimitiveElement => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Boolean(
@@ -1215,7 +1427,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueCanonical" => {
+                        Field::DefaultValueCanonical => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Canonical(
                                     Default::default(),
@@ -1234,7 +1446,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueCanonical" => {
+                        Field::DefaultValueCanonicalPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Canonical(
                                     Default::default(),
@@ -1258,7 +1470,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueCode" => {
+                        Field::DefaultValueCode => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Code(Default::default()),
                             );
@@ -1273,7 +1485,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueCode" => {
+                        Field::DefaultValueCodePrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Code(Default::default()),
                             );
@@ -1293,7 +1505,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueDate" => {
+                        Field::DefaultValueDate => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Date(Default::default()),
                             );
@@ -1308,7 +1520,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueDate" => {
+                        Field::DefaultValueDatePrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Date(Default::default()),
                             );
@@ -1328,7 +1540,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueDateTime" => {
+                        Field::DefaultValueDateTime => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::DateTime(
                                     Default::default(),
@@ -1347,7 +1559,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueDateTime" => {
+                        Field::DefaultValueDateTimePrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::DateTime(
                                     Default::default(),
@@ -1371,7 +1583,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueDecimal" => {
+                        Field::DefaultValueDecimal => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Decimal(
@@ -1391,7 +1603,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueDecimal" => {
+                        Field::DefaultValueDecimalPrimitiveElement => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Decimal(
@@ -1416,7 +1628,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueId" => {
+                        Field::DefaultValueId => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Id(Default::default()),
                             );
@@ -1431,7 +1643,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueId" => {
+                        Field::DefaultValueIdPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Id(Default::default()),
                             );
@@ -1451,7 +1663,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueInstant" => {
+                        Field::DefaultValueInstant => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Instant(
@@ -1471,7 +1683,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueInstant" => {
+                        Field::DefaultValueInstantPrimitiveElement => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Instant(
@@ -1496,7 +1708,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueInteger" => {
+                        Field::DefaultValueInteger => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Integer(
@@ -1516,7 +1728,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueInteger" => {
+                        Field::DefaultValueIntegerPrimitiveElement => {
                             let r#enum =
                                 r#default_value.get_or_insert(
                                     StructureMapGroupRuleSourceDefaultValue::Integer(
@@ -1541,7 +1753,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueMarkdown" => {
+                        Field::DefaultValueMarkdown => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Markdown(
                                     Default::default(),
@@ -1560,7 +1772,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueMarkdown" => {
+                        Field::DefaultValueMarkdownPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Markdown(
                                     Default::default(),
@@ -1584,7 +1796,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueOid" => {
+                        Field::DefaultValueOid => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Oid(Default::default()),
                             );
@@ -1599,7 +1811,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueOid" => {
+                        Field::DefaultValueOidPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Oid(Default::default()),
                             );
@@ -1619,7 +1831,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValuePositiveInt" => {
+                        Field::DefaultValuePositiveInt => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::PositiveInt(
                                     Default::default(),
@@ -1638,7 +1850,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValuePositiveInt" => {
+                        Field::DefaultValuePositiveIntPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::PositiveInt(
                                     Default::default(),
@@ -1662,7 +1874,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueString" => {
+                        Field::DefaultValueString => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::String(Default::default()),
                             );
@@ -1678,7 +1890,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueString" => {
+                        Field::DefaultValueStringPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::String(Default::default()),
                             );
@@ -1699,7 +1911,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueTime" => {
+                        Field::DefaultValueTime => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Time(Default::default()),
                             );
@@ -1714,7 +1926,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueTime" => {
+                        Field::DefaultValueTimePrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Time(Default::default()),
                             );
@@ -1734,7 +1946,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueUnsignedInt" => {
+                        Field::DefaultValueUnsignedInt => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
                                     Default::default(),
@@ -1753,7 +1965,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueUnsignedInt" => {
+                        Field::DefaultValueUnsignedIntPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
                                     Default::default(),
@@ -1777,7 +1989,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueUri" => {
+                        Field::DefaultValueUri => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Uri(Default::default()),
                             );
@@ -1792,7 +2004,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueUri" => {
+                        Field::DefaultValueUriPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Uri(Default::default()),
                             );
@@ -1812,7 +2024,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueUrl" => {
+                        Field::DefaultValueUrl => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Url(Default::default()),
                             );
@@ -1827,7 +2039,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueUrl" => {
+                        Field::DefaultValueUrlPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Url(Default::default()),
                             );
@@ -1847,7 +2059,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueUuid" => {
+                        Field::DefaultValueUuid => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Uuid(Default::default()),
                             );
@@ -1862,7 +2074,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
                         }
-                        "_defaultValueUuid" => {
+                        Field::DefaultValueUuidPrimitiveElement => {
                             let r#enum = r#default_value.get_or_insert(
                                 StructureMapGroupRuleSourceDefaultValue::Uuid(Default::default()),
                             );
@@ -1882,7 +2094,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 return Err(serde::de::Error::duplicate_field("_defaultValue[x]"));
                             }
                         }
-                        "defaultValueAddress" => {
+                        Field::DefaultValueAddress => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueAddress",
@@ -1893,7 +2105,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueAge" => {
+                        Field::DefaultValueAge => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("defaultValueAge"));
                             }
@@ -1901,7 +2113,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 map_access.next_value()?,
                             ));
                         }
-                        "defaultValueAnnotation" => {
+                        Field::DefaultValueAnnotation => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueAnnotation",
@@ -1912,7 +2124,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueAttachment" => {
+                        Field::DefaultValueAttachment => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueAttachment",
@@ -1923,7 +2135,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueCodeableConcept" => {
+                        Field::DefaultValueCodeableConcept => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueCodeableConcept",
@@ -1934,7 +2146,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueCoding" => {
+                        Field::DefaultValueCoding => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueCoding",
@@ -1945,7 +2157,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueContactPoint" => {
+                        Field::DefaultValueContactPoint => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueContactPoint",
@@ -1956,7 +2168,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueCount" => {
+                        Field::DefaultValueCount => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("defaultValueCount"));
                             }
@@ -1964,7 +2176,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 map_access.next_value()?,
                             ));
                         }
-                        "defaultValueDistance" => {
+                        Field::DefaultValueDistance => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueDistance",
@@ -1975,7 +2187,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueDuration" => {
+                        Field::DefaultValueDuration => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueDuration",
@@ -1986,7 +2198,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueHumanName" => {
+                        Field::DefaultValueHumanName => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueHumanName",
@@ -1997,7 +2209,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueIdentifier" => {
+                        Field::DefaultValueIdentifier => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueIdentifier",
@@ -2008,7 +2220,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueMoney" => {
+                        Field::DefaultValueMoney => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("defaultValueMoney"));
                             }
@@ -2016,7 +2228,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 map_access.next_value()?,
                             ));
                         }
-                        "defaultValuePeriod" => {
+                        Field::DefaultValuePeriod => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValuePeriod",
@@ -2027,7 +2239,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueQuantity" => {
+                        Field::DefaultValueQuantity => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueQuantity",
@@ -2038,7 +2250,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueRange" => {
+                        Field::DefaultValueRange => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("defaultValueRange"));
                             }
@@ -2046,7 +2258,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 map_access.next_value()?,
                             ));
                         }
-                        "defaultValueRatio" => {
+                        Field::DefaultValueRatio => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("defaultValueRatio"));
                             }
@@ -2054,7 +2266,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 map_access.next_value()?,
                             ));
                         }
-                        "defaultValueReference" => {
+                        Field::DefaultValueReference => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueReference",
@@ -2065,7 +2277,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueSampledData" => {
+                        Field::DefaultValueSampledData => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueSampledData",
@@ -2076,7 +2288,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueSignature" => {
+                        Field::DefaultValueSignature => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueSignature",
@@ -2087,7 +2299,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueTiming" => {
+                        Field::DefaultValueTiming => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueTiming",
@@ -2098,7 +2310,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueContactDetail" => {
+                        Field::DefaultValueContactDetail => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueContactDetail",
@@ -2109,7 +2321,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueContributor" => {
+                        Field::DefaultValueContributor => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueContributor",
@@ -2120,7 +2332,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueDataRequirement" => {
+                        Field::DefaultValueDataRequirement => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueDataRequirement",
@@ -2131,7 +2343,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueExpression" => {
+                        Field::DefaultValueExpression => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueExpression",
@@ -2142,7 +2354,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueParameterDefinition" => {
+                        Field::DefaultValueParameterDefinition => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueParameterDefinition",
@@ -2154,7 +2366,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 ),
                             );
                         }
-                        "defaultValueRelatedArtifact" => {
+                        Field::DefaultValueRelatedArtifact => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueRelatedArtifact",
@@ -2165,7 +2377,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueTriggerDefinition" => {
+                        Field::DefaultValueTriggerDefinition => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueTriggerDefinition",
@@ -2176,7 +2388,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueUsageContext" => {
+                        Field::DefaultValueUsageContext => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueUsageContext",
@@ -2187,7 +2399,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueDosage" => {
+                        Field::DefaultValueDosage => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "defaultValueDosage",
@@ -2198,7 +2410,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     map_access.next_value()?,
                                 ));
                         }
-                        "defaultValueMeta" => {
+                        Field::DefaultValueMeta => {
                             if r#default_value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("defaultValueMeta"));
                             }
@@ -2206,14 +2418,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 map_access.next_value()?,
                             ));
                         }
-                        "element" => {
+                        Field::Element => {
                             let some = r#element.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("element"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_element" => {
+                        Field::ElementPrimitiveElement => {
                             let some = r#element.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_element"));
@@ -2225,14 +2437,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "listMode" => {
+                        Field::ListMode => {
                             let some = r#list_mode.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("listMode"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_listMode" => {
+                        Field::ListModePrimitiveElement => {
                             let some = r#list_mode.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_listMode"));
@@ -2244,14 +2456,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "variable" => {
+                        Field::Variable => {
                             let some = r#variable.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variable"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_variable" => {
+                        Field::VariablePrimitiveElement => {
                             let some = r#variable.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_variable"));
@@ -2263,14 +2475,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "condition" => {
+                        Field::Condition => {
                             let some = r#condition.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_condition" => {
+                        Field::ConditionPrimitiveElement => {
                             let some = r#condition.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_condition"));
@@ -2282,14 +2494,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "check" => {
+                        Field::Check => {
                             let some = r#check.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("check"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_check" => {
+                        Field::CheckPrimitiveElement => {
                             let some = r#check.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_check"));
@@ -2301,14 +2513,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "logMessage" => {
+                        Field::LogMessage => {
                             let some = r#log_message.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("logMessage"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_logMessage" => {
+                        Field::LogMessagePrimitiveElement => {
                             let some = r#log_message.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_logMessage"));
@@ -2319,76 +2531,6 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "context",
-                                    "min",
-                                    "max",
-                                    "type",
-                                    "defaultValueBase64Binary",
-                                    "defaultValueBoolean",
-                                    "defaultValueCanonical",
-                                    "defaultValueCode",
-                                    "defaultValueDate",
-                                    "defaultValueDateTime",
-                                    "defaultValueDecimal",
-                                    "defaultValueId",
-                                    "defaultValueInstant",
-                                    "defaultValueInteger",
-                                    "defaultValueMarkdown",
-                                    "defaultValueOid",
-                                    "defaultValuePositiveInt",
-                                    "defaultValueString",
-                                    "defaultValueTime",
-                                    "defaultValueUnsignedInt",
-                                    "defaultValueUri",
-                                    "defaultValueUrl",
-                                    "defaultValueUuid",
-                                    "defaultValueAddress",
-                                    "defaultValueAge",
-                                    "defaultValueAnnotation",
-                                    "defaultValueAttachment",
-                                    "defaultValueCodeableConcept",
-                                    "defaultValueCoding",
-                                    "defaultValueContactPoint",
-                                    "defaultValueCount",
-                                    "defaultValueDistance",
-                                    "defaultValueDuration",
-                                    "defaultValueHumanName",
-                                    "defaultValueIdentifier",
-                                    "defaultValueMoney",
-                                    "defaultValuePeriod",
-                                    "defaultValueQuantity",
-                                    "defaultValueRange",
-                                    "defaultValueRatio",
-                                    "defaultValueReference",
-                                    "defaultValueSampledData",
-                                    "defaultValueSignature",
-                                    "defaultValueTiming",
-                                    "defaultValueContactDetail",
-                                    "defaultValueContributor",
-                                    "defaultValueDataRequirement",
-                                    "defaultValueExpression",
-                                    "defaultValueParameterDefinition",
-                                    "defaultValueRelatedArtifact",
-                                    "defaultValueTriggerDefinition",
-                                    "defaultValueUsageContext",
-                                    "defaultValueDosage",
-                                    "defaultValueMeta",
-                                    "element",
-                                    "listMode",
-                                    "variable",
-                                    "condition",
-                                    "check",
-                                    "logMessage",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -2509,6 +2651,36 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "valueId")]
+            ValueId,
+            #[serde(rename = "_valueId")]
+            ValueIdPrimitiveElement,
+            #[serde(rename = "valueString")]
+            ValueString,
+            #[serde(rename = "_valueString")]
+            ValueStringPrimitiveElement,
+            #[serde(rename = "valueBoolean")]
+            ValueBoolean,
+            #[serde(rename = "_valueBoolean")]
+            ValueBooleanPrimitiveElement,
+            #[serde(rename = "valueInteger")]
+            ValueInteger,
+            #[serde(rename = "_valueInteger")]
+            ValueIntegerPrimitiveElement,
+            #[serde(rename = "valueDecimal")]
+            ValueDecimal,
+            #[serde(rename = "_valueDecimal")]
+            ValueDecimalPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleTargetParameter;
@@ -2529,25 +2701,25 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                 let mut r#value: Option<StructureMapGroupRuleTargetParameterValue> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "valueId" => {
+                        Field::ValueId => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Id(Default::default()),
                             );
@@ -2560,7 +2732,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueId" => {
+                        Field::ValueIdPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Id(Default::default()),
                             );
@@ -2578,7 +2750,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueString" => {
+                        Field::ValueString => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::String(
                                     Default::default(),
@@ -2595,7 +2767,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueString" => {
+                        Field::ValueStringPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::String(
                                     Default::default(),
@@ -2617,7 +2789,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueBoolean" => {
+                        Field::ValueBoolean => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Boolean(
                                     Default::default(),
@@ -2634,7 +2806,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBoolean" => {
+                        Field::ValueBooleanPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Boolean(
                                     Default::default(),
@@ -2656,7 +2828,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueInteger" => {
+                        Field::ValueInteger => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Integer(
                                     Default::default(),
@@ -2673,7 +2845,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueInteger" => {
+                        Field::ValueIntegerPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Integer(
                                     Default::default(),
@@ -2695,7 +2867,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDecimal" => {
+                        Field::ValueDecimal => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Decimal(
                                     Default::default(),
@@ -2712,7 +2884,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDecimal" => {
+                        Field::ValueDecimalPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 StructureMapGroupRuleTargetParameterValue::Decimal(
                                     Default::default(),
@@ -2733,21 +2905,6 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                             } else {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "valueId",
-                                    "valueString",
-                                    "valueBoolean",
-                                    "valueInteger",
-                                    "valueDecimal",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -2902,6 +3059,46 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "context")]
+            Context,
+            #[serde(rename = "_context")]
+            ContextPrimitiveElement,
+            #[serde(rename = "contextType")]
+            ContextType,
+            #[serde(rename = "_contextType")]
+            ContextTypePrimitiveElement,
+            #[serde(rename = "element")]
+            Element,
+            #[serde(rename = "_element")]
+            ElementPrimitiveElement,
+            #[serde(rename = "variable")]
+            Variable,
+            #[serde(rename = "_variable")]
+            VariablePrimitiveElement,
+            #[serde(rename = "listMode")]
+            ListMode,
+            #[serde(rename = "_listMode")]
+            ListModePrimitiveElement,
+            #[serde(rename = "listRuleId")]
+            ListRuleId,
+            #[serde(rename = "_listRuleId")]
+            ListRuleIdPrimitiveElement,
+            #[serde(rename = "transform")]
+            Transform,
+            #[serde(rename = "_transform")]
+            TransformPrimitiveElement,
+            #[serde(rename = "parameter")]
+            Parameter,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleTarget;
@@ -2929,32 +3126,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                 let mut r#parameter: Option<Vec<StructureMapGroupRuleTargetParameter>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "context" => {
+                        Field::Context => {
                             let some = r#context.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("context"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_context" => {
+                        Field::ContextPrimitiveElement => {
                             let some = r#context.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_context"));
@@ -2966,14 +3163,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contextType" => {
+                        Field::ContextType => {
                             let some = r#context_type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contextType"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_contextType" => {
+                        Field::ContextTypePrimitiveElement => {
                             let some = r#context_type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_contextType"));
@@ -2985,14 +3182,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "element" => {
+                        Field::Element => {
                             let some = r#element.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("element"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_element" => {
+                        Field::ElementPrimitiveElement => {
                             let some = r#element.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_element"));
@@ -3004,14 +3201,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "variable" => {
+                        Field::Variable => {
                             let some = r#variable.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variable"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_variable" => {
+                        Field::VariablePrimitiveElement => {
                             let some = r#variable.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_variable"));
@@ -3023,7 +3220,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "listMode" => {
+                        Field::ListMode => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#list_mode.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -3039,7 +3236,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                 vec[i].value = value;
                             }
                         }
-                        "_listMode" => {
+                        Field::ListModePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#list_mode.get_or_insert(Vec::with_capacity(elements.len()));
@@ -3060,14 +3257,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "listRuleId" => {
+                        Field::ListRuleId => {
                             let some = r#list_rule_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("listRuleId"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_listRuleId" => {
+                        Field::ListRuleIdPrimitiveElement => {
                             let some = r#list_rule_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_listRuleId"));
@@ -3079,14 +3276,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "transform" => {
+                        Field::Transform => {
                             let some = r#transform.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("transform"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_transform" => {
+                        Field::TransformPrimitiveElement => {
                             let some = r#transform.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_transform"));
@@ -3098,29 +3295,11 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "parameter" => {
+                        Field::Parameter => {
                             if r#parameter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parameter"));
                             }
                             r#parameter = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "context",
-                                    "contextType",
-                                    "element",
-                                    "variable",
-                                    "listMode",
-                                    "listRuleId",
-                                    "transform",
-                                    "parameter",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -3211,6 +3390,24 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "variable")]
+            Variable,
+            #[serde(rename = "_variable")]
+            VariablePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleDependent;
@@ -3232,32 +3429,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                 let mut r#variable: Option<Vec<super::super::types::String>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -3269,7 +3466,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "variable" => {
+                        Field::Variable => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#variable.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -3285,7 +3482,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                 vec[i].value = value;
                             }
                         }
-                        "_variable" => {
+                        Field::VariablePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#variable.get_or_insert(Vec::with_capacity(elements.len()));
@@ -3305,12 +3502,6 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                 vec[i].id = element.id;
                                 vec[i].extension = element.extension;
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "name", "variable"],
-                            ))
                         }
                     }
                 }
@@ -3396,6 +3587,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "source")]
+            Source,
+            #[serde(rename = "target")]
+            Target,
+            #[serde(rename = "rule")]
+            Rule,
+            #[serde(rename = "dependent")]
+            Dependent,
+            #[serde(rename = "documentation")]
+            Documentation,
+            #[serde(rename = "_documentation")]
+            DocumentationPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRule;
@@ -3418,32 +3635,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                 let mut r#documentation: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -3455,38 +3672,38 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "source" => {
+                        Field::Source => {
                             if r#source.is_some() {
                                 return Err(serde::de::Error::duplicate_field("source"));
                             }
                             r#source = Some(map_access.next_value()?);
                         }
-                        "target" => {
+                        Field::Target => {
                             if r#target.is_some() {
                                 return Err(serde::de::Error::duplicate_field("target"));
                             }
                             r#target = Some(map_access.next_value()?);
                         }
-                        "rule" => {
+                        Field::Rule => {
                             if r#rule.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rule"));
                             }
                             r#rule = Some(map_access.next_value()?);
                         }
-                        "dependent" => {
+                        Field::Dependent => {
                             if r#dependent.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dependent"));
                             }
                             r#dependent = Some(map_access.next_value()?);
                         }
-                        "documentation" => {
+                        Field::Documentation => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_documentation" => {
+                        Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_documentation"));
@@ -3497,22 +3714,6 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "name",
-                                    "source",
-                                    "target",
-                                    "rule",
-                                    "dependent",
-                                    "documentation",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -3618,6 +3819,36 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "extends")]
+            Extends,
+            #[serde(rename = "_extends")]
+            ExtendsPrimitiveElement,
+            #[serde(rename = "typeMode")]
+            TypeMode,
+            #[serde(rename = "_typeMode")]
+            TypeModePrimitiveElement,
+            #[serde(rename = "documentation")]
+            Documentation,
+            #[serde(rename = "_documentation")]
+            DocumentationPrimitiveElement,
+            #[serde(rename = "input")]
+            Input,
+            #[serde(rename = "rule")]
+            Rule,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroup;
@@ -3640,32 +3871,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                 let mut r#rule: Option<Vec<StructureMapGroupRule>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -3677,14 +3908,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "extends" => {
+                        Field::Extends => {
                             let some = r#extends.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extends"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_extends" => {
+                        Field::ExtendsPrimitiveElement => {
                             let some = r#extends.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_extends"));
@@ -3696,14 +3927,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "typeMode" => {
+                        Field::TypeMode => {
                             let some = r#type_mode.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("typeMode"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_typeMode" => {
+                        Field::TypeModePrimitiveElement => {
                             let some = r#type_mode.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_typeMode"));
@@ -3715,14 +3946,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "documentation" => {
+                        Field::Documentation => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_documentation" => {
+                        Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_documentation"));
@@ -3734,33 +3965,17 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "input" => {
+                        Field::Input => {
                             if r#input.is_some() {
                                 return Err(serde::de::Error::duplicate_field("input"));
                             }
                             r#input = Some(map_access.next_value()?);
                         }
-                        "rule" => {
+                        Field::Rule => {
                             if r#rule.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rule"));
                             }
                             r#rule = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "name",
-                                    "extends",
-                                    "typeMode",
-                                    "documentation",
-                                    "input",
-                                    "rule",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -4038,6 +4253,90 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "experimental")]
+            Experimental,
+            #[serde(rename = "_experimental")]
+            ExperimentalPrimitiveElement,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "purpose")]
+            Purpose,
+            #[serde(rename = "_purpose")]
+            PurposePrimitiveElement,
+            #[serde(rename = "copyright")]
+            Copyright,
+            #[serde(rename = "_copyright")]
+            CopyrightPrimitiveElement,
+            #[serde(rename = "structure")]
+            Structure,
+            #[serde(rename = "import")]
+            Import,
+            #[serde(rename = "_import")]
+            ImportPrimitiveElement,
+            #[serde(rename = "group")]
+            Group,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMap;
@@ -4078,26 +4377,26 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                 let mut r#group: Option<Vec<StructureMapGroup>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -4109,14 +4408,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -4128,38 +4427,38 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -4171,20 +4470,20 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -4196,14 +4495,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -4215,14 +4514,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -4234,14 +4533,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -4253,14 +4552,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "experimental" => {
+                        Field::Experimental => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_experimental" => {
+                        Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_experimental"));
@@ -4272,14 +4571,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -4291,14 +4590,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -4310,20 +4609,20 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -4335,26 +4634,26 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "purpose" => {
+                        Field::Purpose => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_purpose" => {
+                        Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_purpose"));
@@ -4366,14 +4665,14 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "copyright" => {
+                        Field::Copyright => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_copyright" => {
+                        Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_copyright"));
@@ -4385,13 +4684,13 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "structure" => {
+                        Field::Structure => {
                             if r#structure.is_some() {
                                 return Err(serde::de::Error::duplicate_field("structure"));
                             }
                             r#structure = Some(map_access.next_value()?);
                         }
-                        "import" => {
+                        Field::Import => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#import.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -4407,7 +4706,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 vec[i].value = value;
                             }
                         }
-                        "_import" => {
+                        Field::ImportPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#import.get_or_insert(Vec::with_capacity(elements.len()));
@@ -4428,44 +4727,11 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "group" => {
+                        Field::Group => {
                             if r#group.is_some() {
                                 return Err(serde::de::Error::duplicate_field("group"));
                             }
                             r#group = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "identifier",
-                                    "version",
-                                    "name",
-                                    "title",
-                                    "status",
-                                    "experimental",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "purpose",
-                                    "copyright",
-                                    "structure",
-                                    "import",
-                                    "group",
-                                ],
-                            ))
                         }
                     }
                 }

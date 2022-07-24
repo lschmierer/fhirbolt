@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ChargeItemDefinitionApplicability {
     pub r#id: Option<std::string::String>,
@@ -68,6 +68,28 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "expression")]
+            Expression,
+            #[serde(rename = "_expression")]
+            ExpressionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ChargeItemDefinitionApplicability;
@@ -90,32 +112,32 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                 let mut r#expression: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -127,14 +149,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -146,14 +168,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "expression" => {
+                        Field::Expression => {
                             let some = r#expression.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("expression"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_expression" => {
+                        Field::ExpressionPrimitiveElement => {
                             let some = r#expression.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_expression"));
@@ -164,19 +186,6 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "description",
-                                    "language",
-                                    "expression",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -255,6 +264,28 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "factor")]
+            Factor,
+            #[serde(rename = "_factor")]
+            FactorPrimitiveElement,
+            #[serde(rename = "amount")]
+            Amount,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ChargeItemDefinitionPropertyGroupPriceComponent;
@@ -278,32 +309,32 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -315,20 +346,20 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "factor" => {
+                        Field::Factor => {
                             let some = r#factor.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_factor" => {
+                        Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_factor"));
@@ -340,25 +371,11 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                             some.id = id;
                             some.extension = extension;
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "code",
-                                    "factor",
-                                    "amount",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -414,6 +431,20 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "applicability")]
+            Applicability,
+            #[serde(rename = "priceComponent")]
+            PriceComponent,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ChargeItemDefinitionPropertyGroup;
@@ -437,47 +468,35 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "applicability" => {
+                        Field::Applicability => {
                             if r#applicability.is_some() {
                                 return Err(serde::de::Error::duplicate_field("applicability"));
                             }
                             r#applicability = Some(map_access.next_value()?);
                         }
-                        "priceComponent" => {
+                        Field::PriceComponent => {
                             if r#price_component.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priceComponent"));
                             }
                             r#price_component = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "applicability",
-                                    "priceComponent",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -821,6 +840,104 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "derivedFromUri")]
+            DerivedFromUri,
+            #[serde(rename = "_derivedFromUri")]
+            DerivedFromUriPrimitiveElement,
+            #[serde(rename = "partOf")]
+            PartOf,
+            #[serde(rename = "_partOf")]
+            PartOfPrimitiveElement,
+            #[serde(rename = "replaces")]
+            Replaces,
+            #[serde(rename = "_replaces")]
+            ReplacesPrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "experimental")]
+            Experimental,
+            #[serde(rename = "_experimental")]
+            ExperimentalPrimitiveElement,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "copyright")]
+            Copyright,
+            #[serde(rename = "_copyright")]
+            CopyrightPrimitiveElement,
+            #[serde(rename = "approvalDate")]
+            ApprovalDate,
+            #[serde(rename = "_approvalDate")]
+            ApprovalDatePrimitiveElement,
+            #[serde(rename = "lastReviewDate")]
+            LastReviewDate,
+            #[serde(rename = "_lastReviewDate")]
+            LastReviewDatePrimitiveElement,
+            #[serde(rename = "effectivePeriod")]
+            EffectivePeriod,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "instance")]
+            Instance,
+            #[serde(rename = "applicability")]
+            Applicability,
+            #[serde(rename = "propertyGroup")]
+            PropertyGroup,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ChargeItemDefinition;
@@ -866,26 +983,26 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                 let mut r#property_group: Option<Vec<ChargeItemDefinitionPropertyGroup>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -897,14 +1014,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -916,38 +1033,38 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -959,20 +1076,20 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -984,14 +1101,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -1003,7 +1120,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "derivedFromUri" => {
+                        Field::DerivedFromUri => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#derived_from_uri.get_or_insert(Vec::with_capacity(values.len()));
@@ -1020,7 +1137,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 vec[i].value = value;
                             }
                         }
-                        "_derivedFromUri" => {
+                        Field::DerivedFromUriPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#derived_from_uri
@@ -1042,7 +1159,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "partOf" => {
+                        Field::PartOf => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#part_of.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1058,7 +1175,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 vec[i].value = value;
                             }
                         }
-                        "_partOf" => {
+                        Field::PartOfPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#part_of.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1079,7 +1196,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "replaces" => {
+                        Field::Replaces => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#replaces.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1095,7 +1212,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 vec[i].value = value;
                             }
                         }
-                        "_replaces" => {
+                        Field::ReplacesPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#replaces.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1116,14 +1233,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1135,14 +1252,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "experimental" => {
+                        Field::Experimental => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_experimental" => {
+                        Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_experimental"));
@@ -1154,14 +1271,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -1173,14 +1290,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -1192,20 +1309,20 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -1217,26 +1334,26 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "copyright" => {
+                        Field::Copyright => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_copyright" => {
+                        Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_copyright"));
@@ -1248,14 +1365,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "approvalDate" => {
+                        Field::ApprovalDate => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("approvalDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_approvalDate" => {
+                        Field::ApprovalDatePrimitiveElement => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_approvalDate"));
@@ -1267,14 +1384,14 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lastReviewDate" => {
+                        Field::LastReviewDate => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastReviewDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lastReviewDate" => {
+                        Field::LastReviewDatePrimitiveElement => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lastReviewDate"));
@@ -1286,73 +1403,35 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "effectivePeriod" => {
+                        Field::EffectivePeriod => {
                             if r#effective_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectivePeriod"));
                             }
                             r#effective_period = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "instance" => {
+                        Field::Instance => {
                             if r#instance.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instance"));
                             }
                             r#instance = Some(map_access.next_value()?);
                         }
-                        "applicability" => {
+                        Field::Applicability => {
                             if r#applicability.is_some() {
                                 return Err(serde::de::Error::duplicate_field("applicability"));
                             }
                             r#applicability = Some(map_access.next_value()?);
                         }
-                        "propertyGroup" => {
+                        Field::PropertyGroup => {
                             if r#property_group.is_some() {
                                 return Err(serde::de::Error::duplicate_field("propertyGroup"));
                             }
                             r#property_group = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "identifier",
-                                    "version",
-                                    "title",
-                                    "derivedFromUri",
-                                    "partOf",
-                                    "replaces",
-                                    "status",
-                                    "experimental",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "copyright",
-                                    "approvalDate",
-                                    "lastReviewDate",
-                                    "effectivePeriod",
-                                    "code",
-                                    "instance",
-                                    "applicability",
-                                    "propertyGroup",
-                                ],
-                            ))
                         }
                     }
                 }

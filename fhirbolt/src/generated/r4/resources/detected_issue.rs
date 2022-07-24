@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DetectedIssueIdentified {
     DateTime(Box<super::super::types::DateTime>),
@@ -48,6 +48,20 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "detail")]
+            Detail,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DetectedIssueEvidence;
@@ -66,41 +80,35 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
                 let mut r#detail: Option<Vec<Box<super::super::types::Reference>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "detail" => {
+                        Field::Detail => {
                             if r#detail.is_some() {
                                 return Err(serde::de::Error::duplicate_field("detail"));
                             }
                             r#detail = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "code", "detail"],
-                            ))
                         }
                     }
                 }
@@ -165,6 +173,24 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "action")]
+            Action,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "author")]
+            Author,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DetectedIssueMitigation;
@@ -184,38 +210,38 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
                 let mut r#author: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "action" => {
+                        Field::Action => {
                             if r#action.is_some() {
                                 return Err(serde::de::Error::duplicate_field("action"));
                             }
                             r#action = Some(map_access.next_value()?);
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -227,24 +253,11 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "author" => {
+                        Field::Author => {
                             if r#author.is_some() {
                                 return Err(serde::de::Error::duplicate_field("author"));
                             }
                             r#author = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "action",
-                                    "date",
-                                    "author",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -431,6 +444,66 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "severity")]
+            Severity,
+            #[serde(rename = "_severity")]
+            SeverityPrimitiveElement,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "identifiedDateTime")]
+            IdentifiedDateTime,
+            #[serde(rename = "_identifiedDateTime")]
+            IdentifiedDateTimePrimitiveElement,
+            #[serde(rename = "identifiedPeriod")]
+            IdentifiedPeriod,
+            #[serde(rename = "author")]
+            Author,
+            #[serde(rename = "implicated")]
+            Implicated,
+            #[serde(rename = "evidence")]
+            Evidence,
+            #[serde(rename = "detail")]
+            Detail,
+            #[serde(rename = "_detail")]
+            DetailPrimitiveElement,
+            #[serde(rename = "reference")]
+            Reference,
+            #[serde(rename = "_reference")]
+            ReferencePrimitiveElement,
+            #[serde(rename = "mitigation")]
+            Mitigation,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DetectedIssue;
@@ -464,26 +537,26 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                 let mut r#mitigation: Option<Vec<DetectedIssueMitigation>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -495,14 +568,14 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -514,44 +587,44 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -563,20 +636,20 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "severity" => {
+                        Field::Severity => {
                             let some = r#severity.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("severity"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_severity" => {
+                        Field::SeverityPrimitiveElement => {
                             let some = r#severity.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_severity"));
@@ -588,13 +661,13 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "identifiedDateTime" => {
+                        Field::IdentifiedDateTime => {
                             let r#enum = r#identified.get_or_insert(
                                 DetectedIssueIdentified::DateTime(Default::default()),
                             );
@@ -609,7 +682,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                 return Err(serde::de::Error::duplicate_field("identified[x]"));
                             }
                         }
-                        "_identifiedDateTime" => {
+                        Field::IdentifiedDateTimePrimitiveElement => {
                             let r#enum = r#identified.get_or_insert(
                                 DetectedIssueIdentified::DateTime(Default::default()),
                             );
@@ -629,39 +702,39 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                 return Err(serde::de::Error::duplicate_field("_identified[x]"));
                             }
                         }
-                        "identifiedPeriod" => {
+                        Field::IdentifiedPeriod => {
                             if r#identified.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifiedPeriod"));
                             }
                             r#identified =
                                 Some(DetectedIssueIdentified::Period(map_access.next_value()?));
                         }
-                        "author" => {
+                        Field::Author => {
                             if r#author.is_some() {
                                 return Err(serde::de::Error::duplicate_field("author"));
                             }
                             r#author = Some(map_access.next_value()?);
                         }
-                        "implicated" => {
+                        Field::Implicated => {
                             if r#implicated.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicated"));
                             }
                             r#implicated = Some(map_access.next_value()?);
                         }
-                        "evidence" => {
+                        Field::Evidence => {
                             if r#evidence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("evidence"));
                             }
                             r#evidence = Some(map_access.next_value()?);
                         }
-                        "detail" => {
+                        Field::Detail => {
                             let some = r#detail.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("detail"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_detail" => {
+                        Field::DetailPrimitiveElement => {
                             let some = r#detail.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_detail"));
@@ -673,14 +746,14 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "reference" => {
+                        Field::Reference => {
                             let some = r#reference.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reference"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_reference" => {
+                        Field::ReferencePrimitiveElement => {
                             let some = r#reference.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_reference"));
@@ -692,39 +765,11 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "mitigation" => {
+                        Field::Mitigation => {
                             if r#mitigation.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mitigation"));
                             }
                             r#mitigation = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "code",
-                                    "severity",
-                                    "patient",
-                                    "identifiedDateTime",
-                                    "identifiedPeriod",
-                                    "author",
-                                    "implicated",
-                                    "evidence",
-                                    "detail",
-                                    "reference",
-                                    "mitigation",
-                                ],
-                            ))
                         }
                     }
                 }

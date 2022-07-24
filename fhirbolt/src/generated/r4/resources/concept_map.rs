@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ConceptMapSource {
     Uri(Box<super::super::types::Uri>),
@@ -99,6 +99,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "property")]
+            Property,
+            #[serde(rename = "_property")]
+            PropertyPrimitiveElement,
+            #[serde(rename = "system")]
+            System,
+            #[serde(rename = "_system")]
+            SystemPrimitiveElement,
+            #[serde(rename = "value")]
+            Value,
+            #[serde(rename = "_value")]
+            ValuePrimitiveElement,
+            #[serde(rename = "display")]
+            Display,
+            #[serde(rename = "_display")]
+            DisplayPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupElementTargetDependsOn;
@@ -122,32 +148,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                 let mut r#display: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "property" => {
+                        Field::Property => {
                             let some = r#property.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("property"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_property" => {
+                        Field::PropertyPrimitiveElement => {
                             let some = r#property.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_property"));
@@ -159,14 +185,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "system" => {
+                        Field::System => {
                             let some = r#system.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("system"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_system" => {
+                        Field::SystemPrimitiveElement => {
                             let some = r#system.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_system"));
@@ -178,14 +204,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "value" => {
+                        Field::Value => {
                             let some = r#value.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_value" => {
+                        Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_value"));
@@ -197,14 +223,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                             some.id = id;
                             some.extension = extension;
                         }
-                        "display" => {
+                        Field::Display => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("display"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_display" => {
+                        Field::DisplayPrimitiveElement => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_display"));
@@ -215,20 +241,6 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "property",
-                                    "system",
-                                    "value",
-                                    "display",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -334,6 +346,36 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "_code")]
+            CodePrimitiveElement,
+            #[serde(rename = "display")]
+            Display,
+            #[serde(rename = "_display")]
+            DisplayPrimitiveElement,
+            #[serde(rename = "equivalence")]
+            Equivalence,
+            #[serde(rename = "_equivalence")]
+            EquivalencePrimitiveElement,
+            #[serde(rename = "comment")]
+            Comment,
+            #[serde(rename = "_comment")]
+            CommentPrimitiveElement,
+            #[serde(rename = "dependsOn")]
+            DependsOn,
+            #[serde(rename = "product")]
+            Product,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupElementTarget;
@@ -359,32 +401,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                 let mut r#product: Option<Vec<ConceptMapGroupElementTargetDependsOn>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_code" => {
+                        Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_code"));
@@ -396,14 +438,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "display" => {
+                        Field::Display => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("display"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_display" => {
+                        Field::DisplayPrimitiveElement => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_display"));
@@ -415,14 +457,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "equivalence" => {
+                        Field::Equivalence => {
                             let some = r#equivalence.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("equivalence"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_equivalence" => {
+                        Field::EquivalencePrimitiveElement => {
                             let some = r#equivalence.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_equivalence"));
@@ -434,14 +476,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "comment" => {
+                        Field::Comment => {
                             let some = r#comment.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_comment" => {
+                        Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_comment"));
@@ -453,33 +495,17 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "dependsOn" => {
+                        Field::DependsOn => {
                             if r#depends_on.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dependsOn"));
                             }
                             r#depends_on = Some(map_access.next_value()?);
                         }
-                        "product" => {
+                        Field::Product => {
                             if r#product.is_some() {
                                 return Err(serde::de::Error::duplicate_field("product"));
                             }
                             r#product = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "display",
-                                    "equivalence",
-                                    "comment",
-                                    "dependsOn",
-                                    "product",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -560,6 +586,26 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "_code")]
+            CodePrimitiveElement,
+            #[serde(rename = "display")]
+            Display,
+            #[serde(rename = "_display")]
+            DisplayPrimitiveElement,
+            #[serde(rename = "target")]
+            Target,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupElement;
@@ -579,32 +625,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
                 let mut r#target: Option<Vec<ConceptMapGroupElementTarget>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_code" => {
+                        Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_code"));
@@ -616,14 +662,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "display" => {
+                        Field::Display => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("display"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_display" => {
+                        Field::DisplayPrimitiveElement => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_display"));
@@ -635,24 +681,11 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "target" => {
+                        Field::Target => {
                             if r#target.is_some() {
                                 return Err(serde::de::Error::duplicate_field("target"));
                             }
                             r#target = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "display",
-                                    "target",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -749,6 +782,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "mode")]
+            Mode,
+            #[serde(rename = "_mode")]
+            ModePrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "_code")]
+            CodePrimitiveElement,
+            #[serde(rename = "display")]
+            Display,
+            #[serde(rename = "_display")]
+            DisplayPrimitiveElement,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupUnmapped;
@@ -769,32 +828,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                 let mut r#url: Option<super::super::types::Canonical> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "mode" => {
+                        Field::Mode => {
                             let some = r#mode.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mode"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_mode" => {
+                        Field::ModePrimitiveElement => {
                             let some = r#mode.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_mode"));
@@ -806,14 +865,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_code" => {
+                        Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_code"));
@@ -825,14 +884,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "display" => {
+                        Field::Display => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("display"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_display" => {
+                        Field::DisplayPrimitiveElement => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_display"));
@@ -844,14 +903,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -862,20 +921,6 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "mode",
-                                    "code",
-                                    "display",
-                                    "url",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -983,6 +1028,36 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "source")]
+            Source,
+            #[serde(rename = "_source")]
+            SourcePrimitiveElement,
+            #[serde(rename = "sourceVersion")]
+            SourceVersion,
+            #[serde(rename = "_sourceVersion")]
+            SourceVersionPrimitiveElement,
+            #[serde(rename = "target")]
+            Target,
+            #[serde(rename = "_target")]
+            TargetPrimitiveElement,
+            #[serde(rename = "targetVersion")]
+            TargetVersion,
+            #[serde(rename = "_targetVersion")]
+            TargetVersionPrimitiveElement,
+            #[serde(rename = "element")]
+            Element,
+            #[serde(rename = "unmapped")]
+            Unmapped,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroup;
@@ -1005,32 +1080,32 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                 let mut r#unmapped: Option<ConceptMapGroupUnmapped> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "source" => {
+                        Field::Source => {
                             let some = r#source.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("source"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_source" => {
+                        Field::SourcePrimitiveElement => {
                             let some = r#source.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_source"));
@@ -1042,14 +1117,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sourceVersion" => {
+                        Field::SourceVersion => {
                             let some = r#source_version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sourceVersion"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sourceVersion" => {
+                        Field::SourceVersionPrimitiveElement => {
                             let some = r#source_version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sourceVersion"));
@@ -1061,14 +1136,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "target" => {
+                        Field::Target => {
                             let some = r#target.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("target"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_target" => {
+                        Field::TargetPrimitiveElement => {
                             let some = r#target.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_target"));
@@ -1080,14 +1155,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "targetVersion" => {
+                        Field::TargetVersion => {
                             let some = r#target_version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("targetVersion"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_targetVersion" => {
+                        Field::TargetVersionPrimitiveElement => {
                             let some = r#target_version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_targetVersion"));
@@ -1099,33 +1174,17 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "element" => {
+                        Field::Element => {
                             if r#element.is_some() {
                                 return Err(serde::de::Error::duplicate_field("element"));
                             }
                             r#element = Some(map_access.next_value()?);
                         }
-                        "unmapped" => {
+                        Field::Unmapped => {
                             if r#unmapped.is_some() {
                                 return Err(serde::de::Error::duplicate_field("unmapped"));
                             }
                             r#unmapped = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "source",
-                                    "sourceVersion",
-                                    "target",
-                                    "targetVersion",
-                                    "element",
-                                    "unmapped",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1439,6 +1498,100 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "experimental")]
+            Experimental,
+            #[serde(rename = "_experimental")]
+            ExperimentalPrimitiveElement,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "purpose")]
+            Purpose,
+            #[serde(rename = "_purpose")]
+            PurposePrimitiveElement,
+            #[serde(rename = "copyright")]
+            Copyright,
+            #[serde(rename = "_copyright")]
+            CopyrightPrimitiveElement,
+            #[serde(rename = "sourceUri")]
+            SourceUri,
+            #[serde(rename = "_sourceUri")]
+            SourceUriPrimitiveElement,
+            #[serde(rename = "sourceCanonical")]
+            SourceCanonical,
+            #[serde(rename = "_sourceCanonical")]
+            SourceCanonicalPrimitiveElement,
+            #[serde(rename = "targetUri")]
+            TargetUri,
+            #[serde(rename = "_targetUri")]
+            TargetUriPrimitiveElement,
+            #[serde(rename = "targetCanonical")]
+            TargetCanonical,
+            #[serde(rename = "_targetCanonical")]
+            TargetCanonicalPrimitiveElement,
+            #[serde(rename = "group")]
+            Group,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMap;
@@ -1479,26 +1632,26 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                 let mut r#group: Option<Vec<ConceptMapGroup>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1510,14 +1663,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1529,38 +1682,38 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -1572,20 +1725,20 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -1597,14 +1750,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1616,14 +1769,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -1635,14 +1788,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1654,14 +1807,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "experimental" => {
+                        Field::Experimental => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_experimental" => {
+                        Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_experimental"));
@@ -1673,14 +1826,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -1692,14 +1845,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -1711,20 +1864,20 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -1736,26 +1889,26 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "purpose" => {
+                        Field::Purpose => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_purpose" => {
+                        Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_purpose"));
@@ -1767,14 +1920,14 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "copyright" => {
+                        Field::Copyright => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_copyright" => {
+                        Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_copyright"));
@@ -1786,7 +1939,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sourceUri" => {
+                        Field::SourceUri => {
                             let r#enum =
                                 r#source.get_or_insert(ConceptMapSource::Uri(Default::default()));
                             if let ConceptMapSource::Uri(variant) = r#enum {
@@ -1798,7 +1951,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("source[x]"));
                             }
                         }
-                        "_sourceUri" => {
+                        Field::SourceUriPrimitiveElement => {
                             let r#enum =
                                 r#source.get_or_insert(ConceptMapSource::Uri(Default::default()));
                             if let ConceptMapSource::Uri(variant) = r#enum {
@@ -1815,7 +1968,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("_source[x]"));
                             }
                         }
-                        "sourceCanonical" => {
+                        Field::SourceCanonical => {
                             let r#enum = r#source
                                 .get_or_insert(ConceptMapSource::Canonical(Default::default()));
                             if let ConceptMapSource::Canonical(variant) = r#enum {
@@ -1829,7 +1982,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("source[x]"));
                             }
                         }
-                        "_sourceCanonical" => {
+                        Field::SourceCanonicalPrimitiveElement => {
                             let r#enum = r#source
                                 .get_or_insert(ConceptMapSource::Canonical(Default::default()));
                             if let ConceptMapSource::Canonical(variant) = r#enum {
@@ -1848,7 +2001,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("_source[x]"));
                             }
                         }
-                        "targetUri" => {
+                        Field::TargetUri => {
                             let r#enum =
                                 r#target.get_or_insert(ConceptMapTarget::Uri(Default::default()));
                             if let ConceptMapTarget::Uri(variant) = r#enum {
@@ -1860,7 +2013,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("target[x]"));
                             }
                         }
-                        "_targetUri" => {
+                        Field::TargetUriPrimitiveElement => {
                             let r#enum =
                                 r#target.get_or_insert(ConceptMapTarget::Uri(Default::default()));
                             if let ConceptMapTarget::Uri(variant) = r#enum {
@@ -1877,7 +2030,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("_target[x]"));
                             }
                         }
-                        "targetCanonical" => {
+                        Field::TargetCanonical => {
                             let r#enum = r#target
                                 .get_or_insert(ConceptMapTarget::Canonical(Default::default()));
                             if let ConceptMapTarget::Canonical(variant) = r#enum {
@@ -1891,7 +2044,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("target[x]"));
                             }
                         }
-                        "_targetCanonical" => {
+                        Field::TargetCanonicalPrimitiveElement => {
                             let r#enum = r#target
                                 .get_or_insert(ConceptMapTarget::Canonical(Default::default()));
                             if let ConceptMapTarget::Canonical(variant) = r#enum {
@@ -1910,46 +2063,11 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                 return Err(serde::de::Error::duplicate_field("_target[x]"));
                             }
                         }
-                        "group" => {
+                        Field::Group => {
                             if r#group.is_some() {
                                 return Err(serde::de::Error::duplicate_field("group"));
                             }
                             r#group = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "identifier",
-                                    "version",
-                                    "name",
-                                    "title",
-                                    "status",
-                                    "experimental",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "purpose",
-                                    "copyright",
-                                    "sourceUri",
-                                    "sourceCanonical",
-                                    "targetUri",
-                                    "targetCanonical",
-                                    "group",
-                                ],
-                            ))
                         }
                     }
                 }

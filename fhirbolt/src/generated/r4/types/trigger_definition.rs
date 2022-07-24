@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TriggerDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
@@ -108,6 +108,38 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "timingTiming")]
+            TimingTiming,
+            #[serde(rename = "timingReference")]
+            TimingReference,
+            #[serde(rename = "timingDate")]
+            TimingDate,
+            #[serde(rename = "_timingDate")]
+            TimingDatePrimitiveElement,
+            #[serde(rename = "timingDateTime")]
+            TimingDateTime,
+            #[serde(rename = "_timingDateTime")]
+            TimingDateTimePrimitiveElement,
+            #[serde(rename = "data")]
+            Data,
+            #[serde(rename = "condition")]
+            Condition,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TriggerDefinition;
@@ -127,26 +159,26 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                 let mut r#condition: Option<Box<super::super::types::Expression>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -158,14 +190,14 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -177,21 +209,21 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "timingTiming" => {
+                        Field::TimingTiming => {
                             if r#timing.is_some() {
                                 return Err(serde::de::Error::duplicate_field("timingTiming"));
                             }
                             r#timing =
                                 Some(TriggerDefinitionTiming::Timing(map_access.next_value()?));
                         }
-                        "timingReference" => {
+                        Field::TimingReference => {
                             if r#timing.is_some() {
                                 return Err(serde::de::Error::duplicate_field("timingReference"));
                             }
                             r#timing =
                                 Some(TriggerDefinitionTiming::Reference(map_access.next_value()?));
                         }
-                        "timingDate" => {
+                        Field::TimingDate => {
                             let r#enum = r#timing
                                 .get_or_insert(TriggerDefinitionTiming::Date(Default::default()));
                             if let TriggerDefinitionTiming::Date(variant) = r#enum {
@@ -203,7 +235,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 return Err(serde::de::Error::duplicate_field("timing[x]"));
                             }
                         }
-                        "_timingDate" => {
+                        Field::TimingDatePrimitiveElement => {
                             let r#enum = r#timing
                                 .get_or_insert(TriggerDefinitionTiming::Date(Default::default()));
                             if let TriggerDefinitionTiming::Date(variant) = r#enum {
@@ -220,7 +252,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 return Err(serde::de::Error::duplicate_field("_timing[x]"));
                             }
                         }
-                        "timingDateTime" => {
+                        Field::TimingDateTime => {
                             let r#enum = r#timing.get_or_insert(TriggerDefinitionTiming::DateTime(
                                 Default::default(),
                             ));
@@ -235,7 +267,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 return Err(serde::de::Error::duplicate_field("timing[x]"));
                             }
                         }
-                        "_timingDateTime" => {
+                        Field::TimingDateTimePrimitiveElement => {
                             let r#enum = r#timing.get_or_insert(TriggerDefinitionTiming::DateTime(
                                 Default::default(),
                             ));
@@ -255,34 +287,17 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 return Err(serde::de::Error::duplicate_field("_timing[x]"));
                             }
                         }
-                        "data" => {
+                        Field::Data => {
                             if r#data.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
                             r#data = Some(map_access.next_value()?);
                         }
-                        "condition" => {
+                        Field::Condition => {
                             if r#condition.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
                             r#condition = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "type",
-                                    "name",
-                                    "timingTiming",
-                                    "timingReference",
-                                    "timingDate",
-                                    "timingDateTime",
-                                    "data",
-                                    "condition",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(serde :: Serialize)]
 pub struct PrimitiveElement<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]

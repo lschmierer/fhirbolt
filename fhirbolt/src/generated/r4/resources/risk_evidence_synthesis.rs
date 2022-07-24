@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct RiskEvidenceSynthesisSampleSize {
     pub r#id: Option<std::string::String>,
@@ -68,6 +68,28 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "numberOfStudies")]
+            NumberOfStudies,
+            #[serde(rename = "_numberOfStudies")]
+            NumberOfStudiesPrimitiveElement,
+            #[serde(rename = "numberOfParticipants")]
+            NumberOfParticipants,
+            #[serde(rename = "_numberOfParticipants")]
+            NumberOfParticipantsPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskEvidenceSynthesisSampleSize;
@@ -90,32 +112,32 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                 let mut r#number_of_participants: Option<super::super::types::Integer> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -127,14 +149,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "numberOfStudies" => {
+                        Field::NumberOfStudies => {
                             let some = r#number_of_studies.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfStudies"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_numberOfStudies" => {
+                        Field::NumberOfStudiesPrimitiveElement => {
                             let some = r#number_of_studies.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_numberOfStudies"));
@@ -146,7 +168,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "numberOfParticipants" => {
+                        Field::NumberOfParticipants => {
                             let some = r#number_of_participants.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -155,7 +177,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_numberOfParticipants" => {
+                        Field::NumberOfParticipantsPrimitiveElement => {
                             let some = r#number_of_participants.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -168,19 +190,6 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "description",
-                                    "numberOfStudies",
-                                    "numberOfParticipants",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -270,6 +279,30 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "level")]
+            Level,
+            #[serde(rename = "_level")]
+            LevelPrimitiveElement,
+            #[serde(rename = "from")]
+            From,
+            #[serde(rename = "_from")]
+            FromPrimitiveElement,
+            #[serde(rename = "to")]
+            To,
+            #[serde(rename = "_to")]
+            ToPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskEvidenceSynthesisRiskEstimatePrecisionEstimate;
@@ -293,38 +326,38 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
                 let mut r#to: Option<super::super::types::Decimal> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "level" => {
+                        Field::Level => {
                             let some = r#level.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("level"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_level" => {
+                        Field::LevelPrimitiveElement => {
                             let some = r#level.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_level"));
@@ -336,14 +369,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
                             some.id = id;
                             some.extension = extension;
                         }
-                        "from" => {
+                        Field::From => {
                             let some = r#from.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("from"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_from" => {
+                        Field::FromPrimitiveElement => {
                             let some = r#from.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_from"));
@@ -355,14 +388,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
                             some.id = id;
                             some.extension = extension;
                         }
-                        "to" => {
+                        Field::To => {
                             let some = r#to.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("to"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_to" => {
+                        Field::ToPrimitiveElement => {
                             let some = r#to.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_to"));
@@ -373,20 +406,6 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "level",
-                                    "from",
-                                    "to",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -498,6 +517,38 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "value")]
+            Value,
+            #[serde(rename = "_value")]
+            ValuePrimitiveElement,
+            #[serde(rename = "unitOfMeasure")]
+            UnitOfMeasure,
+            #[serde(rename = "denominatorCount")]
+            DenominatorCount,
+            #[serde(rename = "_denominatorCount")]
+            DenominatorCountPrimitiveElement,
+            #[serde(rename = "numeratorCount")]
+            NumeratorCount,
+            #[serde(rename = "_numeratorCount")]
+            NumeratorCountPrimitiveElement,
+            #[serde(rename = "precisionEstimate")]
+            PrecisionEstimate,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskEvidenceSynthesisRiskEstimate;
@@ -526,32 +577,32 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -563,20 +614,20 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "value" => {
+                        Field::Value => {
                             let some = r#value.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_value" => {
+                        Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_value"));
@@ -588,20 +639,20 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "unitOfMeasure" => {
+                        Field::UnitOfMeasure => {
                             if r#unit_of_measure.is_some() {
                                 return Err(serde::de::Error::duplicate_field("unitOfMeasure"));
                             }
                             r#unit_of_measure = Some(map_access.next_value()?);
                         }
-                        "denominatorCount" => {
+                        Field::DenominatorCount => {
                             let some = r#denominator_count.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("denominatorCount"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_denominatorCount" => {
+                        Field::DenominatorCountPrimitiveElement => {
                             let some = r#denominator_count.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_denominatorCount"));
@@ -613,14 +664,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "numeratorCount" => {
+                        Field::NumeratorCount => {
                             let some = r#numerator_count.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numeratorCount"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_numeratorCount" => {
+                        Field::NumeratorCountPrimitiveElement => {
                             let some = r#numerator_count.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_numeratorCount"));
@@ -632,28 +683,11 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "precisionEstimate" => {
+                        Field::PrecisionEstimate => {
                             if r#precision_estimate.is_some() {
                                 return Err(serde::de::Error::duplicate_field("precisionEstimate"));
                             }
                             r#precision_estimate = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "description",
-                                    "type",
-                                    "value",
-                                    "unitOfMeasure",
-                                    "denominatorCount",
-                                    "numeratorCount",
-                                    "precisionEstimate",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -716,6 +750,22 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertaintyCertaint
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "rating")]
+            Rating,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskEvidenceSynthesisCertaintyCertaintySubcomponent;
@@ -738,54 +788,41 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertaintyCertaint
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "rating" => {
+                        Field::Rating => {
                             if r#rating.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rating"));
                             }
                             r#rating = Some(map_access.next_value()?);
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "rating",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -844,6 +881,22 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertainty {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "rating")]
+            Rating,
+            #[serde(rename = "note")]
+            Note,
+            #[serde(rename = "certaintySubcomponent")]
+            CertaintySubcomponent,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskEvidenceSynthesisCertainty;
@@ -868,56 +921,43 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertainty {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "rating" => {
+                        Field::Rating => {
                             if r#rating.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rating"));
                             }
                             r#rating = Some(map_access.next_value()?);
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
                         }
-                        "certaintySubcomponent" => {
+                        Field::CertaintySubcomponent => {
                             if r#certainty_subcomponent.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "certaintySubcomponent",
                                 ));
                             }
                             r#certainty_subcomponent = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "rating",
-                                    "note",
-                                    "certaintySubcomponent",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1220,6 +1260,114 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "copyright")]
+            Copyright,
+            #[serde(rename = "_copyright")]
+            CopyrightPrimitiveElement,
+            #[serde(rename = "approvalDate")]
+            ApprovalDate,
+            #[serde(rename = "_approvalDate")]
+            ApprovalDatePrimitiveElement,
+            #[serde(rename = "lastReviewDate")]
+            LastReviewDate,
+            #[serde(rename = "_lastReviewDate")]
+            LastReviewDatePrimitiveElement,
+            #[serde(rename = "effectivePeriod")]
+            EffectivePeriod,
+            #[serde(rename = "topic")]
+            Topic,
+            #[serde(rename = "author")]
+            Author,
+            #[serde(rename = "editor")]
+            Editor,
+            #[serde(rename = "reviewer")]
+            Reviewer,
+            #[serde(rename = "endorser")]
+            Endorser,
+            #[serde(rename = "relatedArtifact")]
+            RelatedArtifact,
+            #[serde(rename = "synthesisType")]
+            SynthesisType,
+            #[serde(rename = "studyType")]
+            StudyType,
+            #[serde(rename = "population")]
+            Population,
+            #[serde(rename = "exposure")]
+            Exposure,
+            #[serde(rename = "outcome")]
+            Outcome,
+            #[serde(rename = "sampleSize")]
+            SampleSize,
+            #[serde(rename = "riskEstimate")]
+            RiskEstimate,
+            #[serde(rename = "certainty")]
+            Certainty,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskEvidenceSynthesis;
@@ -1274,26 +1422,26 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                 let mut r#certainty: Option<Vec<RiskEvidenceSynthesisCertainty>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1305,14 +1453,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1324,38 +1472,38 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -1367,20 +1515,20 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -1392,14 +1540,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1411,14 +1559,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -1430,14 +1578,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1449,14 +1597,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -1468,14 +1616,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -1487,20 +1635,20 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -1512,32 +1660,32 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "copyright" => {
+                        Field::Copyright => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_copyright" => {
+                        Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_copyright"));
@@ -1549,14 +1697,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "approvalDate" => {
+                        Field::ApprovalDate => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("approvalDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_approvalDate" => {
+                        Field::ApprovalDatePrimitiveElement => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_approvalDate"));
@@ -1568,14 +1716,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lastReviewDate" => {
+                        Field::LastReviewDate => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastReviewDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lastReviewDate" => {
+                        Field::LastReviewDatePrimitiveElement => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lastReviewDate"));
@@ -1587,141 +1735,95 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "effectivePeriod" => {
+                        Field::EffectivePeriod => {
                             if r#effective_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectivePeriod"));
                             }
                             r#effective_period = Some(map_access.next_value()?);
                         }
-                        "topic" => {
+                        Field::Topic => {
                             if r#topic.is_some() {
                                 return Err(serde::de::Error::duplicate_field("topic"));
                             }
                             r#topic = Some(map_access.next_value()?);
                         }
-                        "author" => {
+                        Field::Author => {
                             if r#author.is_some() {
                                 return Err(serde::de::Error::duplicate_field("author"));
                             }
                             r#author = Some(map_access.next_value()?);
                         }
-                        "editor" => {
+                        Field::Editor => {
                             if r#editor.is_some() {
                                 return Err(serde::de::Error::duplicate_field("editor"));
                             }
                             r#editor = Some(map_access.next_value()?);
                         }
-                        "reviewer" => {
+                        Field::Reviewer => {
                             if r#reviewer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reviewer"));
                             }
                             r#reviewer = Some(map_access.next_value()?);
                         }
-                        "endorser" => {
+                        Field::Endorser => {
                             if r#endorser.is_some() {
                                 return Err(serde::de::Error::duplicate_field("endorser"));
                             }
                             r#endorser = Some(map_access.next_value()?);
                         }
-                        "relatedArtifact" => {
+                        Field::RelatedArtifact => {
                             if r#related_artifact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relatedArtifact"));
                             }
                             r#related_artifact = Some(map_access.next_value()?);
                         }
-                        "synthesisType" => {
+                        Field::SynthesisType => {
                             if r#synthesis_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("synthesisType"));
                             }
                             r#synthesis_type = Some(map_access.next_value()?);
                         }
-                        "studyType" => {
+                        Field::StudyType => {
                             if r#study_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("studyType"));
                             }
                             r#study_type = Some(map_access.next_value()?);
                         }
-                        "population" => {
+                        Field::Population => {
                             if r#population.is_some() {
                                 return Err(serde::de::Error::duplicate_field("population"));
                             }
                             r#population = Some(map_access.next_value()?);
                         }
-                        "exposure" => {
+                        Field::Exposure => {
                             if r#exposure.is_some() {
                                 return Err(serde::de::Error::duplicate_field("exposure"));
                             }
                             r#exposure = Some(map_access.next_value()?);
                         }
-                        "outcome" => {
+                        Field::Outcome => {
                             if r#outcome.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
                             r#outcome = Some(map_access.next_value()?);
                         }
-                        "sampleSize" => {
+                        Field::SampleSize => {
                             if r#sample_size.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sampleSize"));
                             }
                             r#sample_size = Some(map_access.next_value()?);
                         }
-                        "riskEstimate" => {
+                        Field::RiskEstimate => {
                             if r#risk_estimate.is_some() {
                                 return Err(serde::de::Error::duplicate_field("riskEstimate"));
                             }
                             r#risk_estimate = Some(map_access.next_value()?);
                         }
-                        "certainty" => {
+                        Field::Certainty => {
                             if r#certainty.is_some() {
                                 return Err(serde::de::Error::duplicate_field("certainty"));
                             }
                             r#certainty = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "identifier",
-                                    "version",
-                                    "name",
-                                    "title",
-                                    "status",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "note",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "copyright",
-                                    "approvalDate",
-                                    "lastReviewDate",
-                                    "effectivePeriod",
-                                    "topic",
-                                    "author",
-                                    "editor",
-                                    "reviewer",
-                                    "endorser",
-                                    "relatedArtifact",
-                                    "synthesisType",
-                                    "studyType",
-                                    "population",
-                                    "exposure",
-                                    "outcome",
-                                    "sampleSize",
-                                    "riskEstimate",
-                                    "certainty",
-                                ],
-                            ))
                         }
                     }
                 }

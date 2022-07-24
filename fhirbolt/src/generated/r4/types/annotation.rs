@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AnnotationAuthor {
     Reference(Box<super::super::types::Reference>),
@@ -83,6 +83,28 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "authorReference")]
+            AuthorReference,
+            #[serde(rename = "authorString")]
+            AuthorString,
+            #[serde(rename = "_authorString")]
+            AuthorStringPrimitiveElement,
+            #[serde(rename = "time")]
+            Time,
+            #[serde(rename = "_time")]
+            TimePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "_text")]
+            TextPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Annotation;
@@ -100,25 +122,25 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                 let mut r#text: Option<super::super::types::Markdown> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "authorReference" => {
+                        Field::AuthorReference => {
                             if r#author.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authorReference"));
                             }
                             r#author = Some(AnnotationAuthor::Reference(map_access.next_value()?));
                         }
-                        "authorString" => {
+                        Field::AuthorString => {
                             let r#enum = r#author
                                 .get_or_insert(AnnotationAuthor::String(Default::default()));
                             if let AnnotationAuthor::String(variant) = r#enum {
@@ -130,7 +152,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                 return Err(serde::de::Error::duplicate_field("author[x]"));
                             }
                         }
-                        "_authorString" => {
+                        Field::AuthorStringPrimitiveElement => {
                             let r#enum = r#author
                                 .get_or_insert(AnnotationAuthor::String(Default::default()));
                             if let AnnotationAuthor::String(variant) = r#enum {
@@ -147,14 +169,14 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                 return Err(serde::de::Error::duplicate_field("_author[x]"));
                             }
                         }
-                        "time" => {
+                        Field::Time => {
                             let some = r#time.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("time"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_time" => {
+                        Field::TimePrimitiveElement => {
                             let some = r#time.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_time"));
@@ -166,14 +188,14 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_text" => {
+                        Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_text"));
@@ -184,19 +206,6 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "authorReference",
-                                    "authorString",
-                                    "time",
-                                    "text",
-                                ],
-                            ))
                         }
                     }
                 }

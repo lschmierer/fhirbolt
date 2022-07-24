@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Binary {
     pub r#id: Option<std::string::String>,
@@ -80,6 +80,32 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "contentType")]
+            ContentType,
+            #[serde(rename = "_contentType")]
+            ContentTypePrimitiveElement,
+            #[serde(rename = "securityContext")]
+            SecurityContext,
+            #[serde(rename = "data")]
+            Data,
+            #[serde(rename = "_data")]
+            DataPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Binary;
@@ -99,26 +125,26 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                 let mut r#data: Option<super::super::types::Base64Binary> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -130,14 +156,14 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -149,14 +175,14 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contentType" => {
+                        Field::ContentType => {
                             let some = r#content_type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contentType"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_contentType" => {
+                        Field::ContentTypePrimitiveElement => {
                             let some = r#content_type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_contentType"));
@@ -168,20 +194,20 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "securityContext" => {
+                        Field::SecurityContext => {
                             if r#security_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("securityContext"));
                             }
                             r#security_context = Some(map_access.next_value()?);
                         }
-                        "data" => {
+                        Field::Data => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_data" => {
+                        Field::DataPrimitiveElement => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_data"));
@@ -192,20 +218,6 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "contentType",
-                                    "securityContext",
-                                    "data",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DeviceRequestCode {
     Reference(Box<super::super::types::Reference>),
@@ -98,6 +98,28 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "valueCodeableConcept")]
+            ValueCodeableConcept,
+            #[serde(rename = "valueQuantity")]
+            ValueQuantity,
+            #[serde(rename = "valueRange")]
+            ValueRange,
+            #[serde(rename = "valueBoolean")]
+            ValueBoolean,
+            #[serde(rename = "_valueBoolean")]
+            ValueBooleanPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceRequestParameter;
@@ -116,31 +138,31 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
                 let mut r#value: Option<DeviceRequestParameterValue> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "valueCodeableConcept" => {
+                        Field::ValueCodeableConcept => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueCodeableConcept",
@@ -150,7 +172,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueQuantity" => {
+                        Field::ValueQuantity => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueQuantity"));
                             }
@@ -158,14 +180,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueRange" => {
+                        Field::ValueRange => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueRange"));
                             }
                             r#value =
                                 Some(DeviceRequestParameterValue::Range(map_access.next_value()?));
                         }
-                        "valueBoolean" => {
+                        Field::ValueBoolean => {
                             let r#enum = r#value.get_or_insert(
                                 DeviceRequestParameterValue::Boolean(Default::default()),
                             );
@@ -178,7 +200,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBoolean" => {
+                        Field::ValueBooleanPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 DeviceRequestParameterValue::Boolean(Default::default()),
                             );
@@ -195,21 +217,6 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
                             } else {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "valueCodeableConcept",
-                                    "valueQuantity",
-                                    "valueRange",
-                                    "valueBoolean",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -504,6 +511,98 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "instantiatesCanonical")]
+            InstantiatesCanonical,
+            #[serde(rename = "_instantiatesCanonical")]
+            InstantiatesCanonicalPrimitiveElement,
+            #[serde(rename = "instantiatesUri")]
+            InstantiatesUri,
+            #[serde(rename = "_instantiatesUri")]
+            InstantiatesUriPrimitiveElement,
+            #[serde(rename = "basedOn")]
+            BasedOn,
+            #[serde(rename = "priorRequest")]
+            PriorRequest,
+            #[serde(rename = "groupIdentifier")]
+            GroupIdentifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "intent")]
+            Intent,
+            #[serde(rename = "_intent")]
+            IntentPrimitiveElement,
+            #[serde(rename = "priority")]
+            Priority,
+            #[serde(rename = "_priority")]
+            PriorityPrimitiveElement,
+            #[serde(rename = "codeReference")]
+            CodeReference,
+            #[serde(rename = "codeCodeableConcept")]
+            CodeCodeableConcept,
+            #[serde(rename = "parameter")]
+            Parameter,
+            #[serde(rename = "subject")]
+            Subject,
+            #[serde(rename = "encounter")]
+            Encounter,
+            #[serde(rename = "occurrenceDateTime")]
+            OccurrenceDateTime,
+            #[serde(rename = "_occurrenceDateTime")]
+            OccurrenceDateTimePrimitiveElement,
+            #[serde(rename = "occurrencePeriod")]
+            OccurrencePeriod,
+            #[serde(rename = "occurrenceTiming")]
+            OccurrenceTiming,
+            #[serde(rename = "authoredOn")]
+            AuthoredOn,
+            #[serde(rename = "_authoredOn")]
+            AuthoredOnPrimitiveElement,
+            #[serde(rename = "requester")]
+            Requester,
+            #[serde(rename = "performerType")]
+            PerformerType,
+            #[serde(rename = "performer")]
+            Performer,
+            #[serde(rename = "reasonCode")]
+            ReasonCode,
+            #[serde(rename = "reasonReference")]
+            ReasonReference,
+            #[serde(rename = "insurance")]
+            Insurance,
+            #[serde(rename = "supportingInfo")]
+            SupportingInfo,
+            #[serde(rename = "note")]
+            Note,
+            #[serde(rename = "relevantHistory")]
+            RelevantHistory,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceRequest;
@@ -551,26 +650,26 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                 let mut r#relevant_history: Option<Vec<Box<super::super::types::Reference>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -582,14 +681,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -601,37 +700,37 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "instantiatesCanonical" => {
+                        Field::InstantiatesCanonical => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#instantiates_canonical
                                 .get_or_insert(Vec::with_capacity(values.len()));
@@ -650,7 +749,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiatesCanonical" => {
+                        Field::InstantiatesCanonicalPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#instantiates_canonical
@@ -674,7 +773,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "instantiatesUri" => {
+                        Field::InstantiatesUri => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#instantiates_uri.get_or_insert(Vec::with_capacity(values.len()));
@@ -691,7 +790,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiatesUri" => {
+                        Field::InstantiatesUriPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#instantiates_uri
@@ -713,32 +812,32 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "basedOn" => {
+                        Field::BasedOn => {
                             if r#based_on.is_some() {
                                 return Err(serde::de::Error::duplicate_field("basedOn"));
                             }
                             r#based_on = Some(map_access.next_value()?);
                         }
-                        "priorRequest" => {
+                        Field::PriorRequest => {
                             if r#prior_request.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priorRequest"));
                             }
                             r#prior_request = Some(map_access.next_value()?);
                         }
-                        "groupIdentifier" => {
+                        Field::GroupIdentifier => {
                             if r#group_identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("groupIdentifier"));
                             }
                             r#group_identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -750,14 +849,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "intent" => {
+                        Field::Intent => {
                             let some = r#intent.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("intent"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_intent" => {
+                        Field::IntentPrimitiveElement => {
                             let some = r#intent.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_intent"));
@@ -769,14 +868,14 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "priority" => {
+                        Field::Priority => {
                             let some = r#priority.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priority"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_priority" => {
+                        Field::PriorityPrimitiveElement => {
                             let some = r#priority.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_priority"));
@@ -788,13 +887,13 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "codeReference" => {
+                        Field::CodeReference => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("codeReference"));
                             }
                             r#code = Some(DeviceRequestCode::Reference(map_access.next_value()?));
                         }
-                        "codeCodeableConcept" => {
+                        Field::CodeCodeableConcept => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "codeCodeableConcept",
@@ -803,25 +902,25 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             r#code =
                                 Some(DeviceRequestCode::CodeableConcept(map_access.next_value()?));
                         }
-                        "parameter" => {
+                        Field::Parameter => {
                             if r#parameter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parameter"));
                             }
                             r#parameter = Some(map_access.next_value()?);
                         }
-                        "subject" => {
+                        Field::Subject => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subject"));
                             }
                             r#subject = Some(map_access.next_value()?);
                         }
-                        "encounter" => {
+                        Field::Encounter => {
                             if r#encounter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("encounter"));
                             }
                             r#encounter = Some(map_access.next_value()?);
                         }
-                        "occurrenceDateTime" => {
+                        Field::OccurrenceDateTime => {
                             let r#enum = r#occurrence.get_or_insert(
                                 DeviceRequestOccurrence::DateTime(Default::default()),
                             );
@@ -836,7 +935,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                 return Err(serde::de::Error::duplicate_field("occurrence[x]"));
                             }
                         }
-                        "_occurrenceDateTime" => {
+                        Field::OccurrenceDateTimePrimitiveElement => {
                             let r#enum = r#occurrence.get_or_insert(
                                 DeviceRequestOccurrence::DateTime(Default::default()),
                             );
@@ -856,28 +955,28 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                 return Err(serde::de::Error::duplicate_field("_occurrence[x]"));
                             }
                         }
-                        "occurrencePeriod" => {
+                        Field::OccurrencePeriod => {
                             if r#occurrence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("occurrencePeriod"));
                             }
                             r#occurrence =
                                 Some(DeviceRequestOccurrence::Period(map_access.next_value()?));
                         }
-                        "occurrenceTiming" => {
+                        Field::OccurrenceTiming => {
                             if r#occurrence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("occurrenceTiming"));
                             }
                             r#occurrence =
                                 Some(DeviceRequestOccurrence::Timing(map_access.next_value()?));
                         }
-                        "authoredOn" => {
+                        Field::AuthoredOn => {
                             let some = r#authored_on.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authoredOn"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_authoredOn" => {
+                        Field::AuthoredOnPrimitiveElement => {
                             let some = r#authored_on.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_authoredOn"));
@@ -889,101 +988,59 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "requester" => {
+                        Field::Requester => {
                             if r#requester.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requester"));
                             }
                             r#requester = Some(map_access.next_value()?);
                         }
-                        "performerType" => {
+                        Field::PerformerType => {
                             if r#performer_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("performerType"));
                             }
                             r#performer_type = Some(map_access.next_value()?);
                         }
-                        "performer" => {
+                        Field::Performer => {
                             if r#performer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("performer"));
                             }
                             r#performer = Some(map_access.next_value()?);
                         }
-                        "reasonCode" => {
+                        Field::ReasonCode => {
                             if r#reason_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonCode"));
                             }
                             r#reason_code = Some(map_access.next_value()?);
                         }
-                        "reasonReference" => {
+                        Field::ReasonReference => {
                             if r#reason_reference.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonReference"));
                             }
                             r#reason_reference = Some(map_access.next_value()?);
                         }
-                        "insurance" => {
+                        Field::Insurance => {
                             if r#insurance.is_some() {
                                 return Err(serde::de::Error::duplicate_field("insurance"));
                             }
                             r#insurance = Some(map_access.next_value()?);
                         }
-                        "supportingInfo" => {
+                        Field::SupportingInfo => {
                             if r#supporting_info.is_some() {
                                 return Err(serde::de::Error::duplicate_field("supportingInfo"));
                             }
                             r#supporting_info = Some(map_access.next_value()?);
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
                         }
-                        "relevantHistory" => {
+                        Field::RelevantHistory => {
                             if r#relevant_history.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relevantHistory"));
                             }
                             r#relevant_history = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "instantiatesCanonical",
-                                    "instantiatesUri",
-                                    "basedOn",
-                                    "priorRequest",
-                                    "groupIdentifier",
-                                    "status",
-                                    "intent",
-                                    "priority",
-                                    "codeReference",
-                                    "codeCodeableConcept",
-                                    "parameter",
-                                    "subject",
-                                    "encounter",
-                                    "occurrenceDateTime",
-                                    "occurrencePeriod",
-                                    "occurrenceTiming",
-                                    "authoredOn",
-                                    "requester",
-                                    "performerType",
-                                    "performer",
-                                    "reasonCode",
-                                    "reasonReference",
-                                    "insurance",
-                                    "supportingInfo",
-                                    "note",
-                                    "relevantHistory",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct HumanName {
     pub r#id: Option<std::string::String>,
@@ -152,6 +152,40 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "use")]
+            Use,
+            #[serde(rename = "_use")]
+            UsePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "_text")]
+            TextPrimitiveElement,
+            #[serde(rename = "family")]
+            Family,
+            #[serde(rename = "_family")]
+            FamilyPrimitiveElement,
+            #[serde(rename = "given")]
+            Given,
+            #[serde(rename = "_given")]
+            GivenPrimitiveElement,
+            #[serde(rename = "prefix")]
+            Prefix,
+            #[serde(rename = "_prefix")]
+            PrefixPrimitiveElement,
+            #[serde(rename = "suffix")]
+            Suffix,
+            #[serde(rename = "_suffix")]
+            SuffixPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = HumanName;
@@ -173,26 +207,26 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "use" => {
+                        Field::Use => {
                             let some = r#use.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_use" => {
+                        Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_use"));
@@ -204,14 +238,14 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_text" => {
+                        Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_text"));
@@ -223,14 +257,14 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "family" => {
+                        Field::Family => {
                             let some = r#family.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("family"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_family" => {
+                        Field::FamilyPrimitiveElement => {
                             let some = r#family.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_family"));
@@ -242,7 +276,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "given" => {
+                        Field::Given => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#given.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -258,7 +292,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 vec[i].value = value;
                             }
                         }
-                        "_given" => {
+                        Field::GivenPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#given.get_or_insert(Vec::with_capacity(elements.len()));
@@ -279,7 +313,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "prefix" => {
+                        Field::Prefix => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#prefix.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -295,7 +329,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 vec[i].value = value;
                             }
                         }
-                        "_prefix" => {
+                        Field::PrefixPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#prefix.get_or_insert(Vec::with_capacity(elements.len()));
@@ -316,7 +350,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "suffix" => {
+                        Field::Suffix => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#suffix.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -332,7 +366,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 vec[i].value = value;
                             }
                         }
-                        "_suffix" => {
+                        Field::SuffixPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#suffix.get_or_insert(Vec::with_capacity(elements.len()));
@@ -353,27 +387,11 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "use",
-                                    "text",
-                                    "family",
-                                    "given",
-                                    "prefix",
-                                    "suffix",
-                                    "period",
-                                ],
-                            ))
                         }
                     }
                 }

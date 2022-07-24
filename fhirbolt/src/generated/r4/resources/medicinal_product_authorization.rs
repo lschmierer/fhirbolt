@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
     Period(Box<super::super::types::Period>),
@@ -60,6 +60,26 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "country")]
+            Country,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "legalStatusOfSupply")]
+            LegalStatusOfSupply,
+            #[serde(rename = "validityPeriod")]
+            ValidityPeriod,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductAuthorizationJurisdictionalAuthorization;
@@ -87,43 +107,43 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
                 let mut r#validity_period: Option<Box<super::super::types::Period>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "country" => {
+                        Field::Country => {
                             if r#country.is_some() {
                                 return Err(serde::de::Error::duplicate_field("country"));
                             }
                             r#country = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "legalStatusOfSupply" => {
+                        Field::LegalStatusOfSupply => {
                             if r#legal_status_of_supply.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "legalStatusOfSupply",
@@ -131,26 +151,11 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
                             }
                             r#legal_status_of_supply = Some(map_access.next_value()?);
                         }
-                        "validityPeriod" => {
+                        Field::ValidityPeriod => {
                             if r#validity_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("validityPeriod"));
                             }
                             r#validity_period = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "country",
-                                    "jurisdiction",
-                                    "legalStatusOfSupply",
-                                    "validityPeriod",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -232,6 +237,28 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "datePeriod")]
+            DatePeriod,
+            #[serde(rename = "dateDateTime")]
+            DateDateTime,
+            #[serde(rename = "_dateDateTime")]
+            DateDateTimePrimitiveElement,
+            #[serde(rename = "application")]
+            Application,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductAuthorizationProcedure;
@@ -255,37 +282,37 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                 let mut r#application: Option<Vec<MedicinalProductAuthorizationProcedure>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "datePeriod" => {
+                        Field::DatePeriod => {
                             if r#date.is_some() {
                                 return Err(serde::de::Error::duplicate_field("datePeriod"));
                             }
@@ -293,7 +320,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                 map_access.next_value()?,
                             ));
                         }
-                        "dateDateTime" => {
+                        Field::DateDateTime => {
                             let r#enum = r#date.get_or_insert(
                                 MedicinalProductAuthorizationProcedureDate::DateTime(
                                     Default::default(),
@@ -310,7 +337,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                 return Err(serde::de::Error::duplicate_field("date[x]"));
                             }
                         }
-                        "_dateDateTime" => {
+                        Field::DateDateTimePrimitiveElement => {
                             let r#enum = r#date.get_or_insert(
                                 MedicinalProductAuthorizationProcedureDate::DateTime(
                                     Default::default(),
@@ -332,26 +359,11 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                 return Err(serde::de::Error::duplicate_field("_date[x]"));
                             }
                         }
-                        "application" => {
+                        Field::Application => {
                             if r#application.is_some() {
                                 return Err(serde::de::Error::duplicate_field("application"));
                             }
                             r#application = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "type",
-                                    "datePeriod",
-                                    "dateDateTime",
-                                    "application",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -542,6 +554,70 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "subject")]
+            Subject,
+            #[serde(rename = "country")]
+            Country,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "statusDate")]
+            StatusDate,
+            #[serde(rename = "_statusDate")]
+            StatusDatePrimitiveElement,
+            #[serde(rename = "restoreDate")]
+            RestoreDate,
+            #[serde(rename = "_restoreDate")]
+            RestoreDatePrimitiveElement,
+            #[serde(rename = "validityPeriod")]
+            ValidityPeriod,
+            #[serde(rename = "dataExclusivityPeriod")]
+            DataExclusivityPeriod,
+            #[serde(rename = "dateOfFirstAuthorization")]
+            DateOfFirstAuthorization,
+            #[serde(rename = "_dateOfFirstAuthorization")]
+            DateOfFirstAuthorizationPrimitiveElement,
+            #[serde(rename = "internationalBirthDate")]
+            InternationalBirthDate,
+            #[serde(rename = "_internationalBirthDate")]
+            InternationalBirthDatePrimitiveElement,
+            #[serde(rename = "legalBasis")]
+            LegalBasis,
+            #[serde(rename = "jurisdictionalAuthorization")]
+            JurisdictionalAuthorization,
+            #[serde(rename = "holder")]
+            Holder,
+            #[serde(rename = "regulator")]
+            Regulator,
+            #[serde(rename = "procedure")]
+            Procedure,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductAuthorization;
@@ -585,26 +661,26 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                 let mut r#procedure: Option<MedicinalProductAuthorizationProcedure> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -616,14 +692,14 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -635,68 +711,68 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "subject" => {
+                        Field::Subject => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subject"));
                             }
                             r#subject = Some(map_access.next_value()?);
                         }
-                        "country" => {
+                        Field::Country => {
                             if r#country.is_some() {
                                 return Err(serde::de::Error::duplicate_field("country"));
                             }
                             r#country = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             if r#status.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             r#status = Some(map_access.next_value()?);
                         }
-                        "statusDate" => {
+                        Field::StatusDate => {
                             let some = r#status_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_statusDate" => {
+                        Field::StatusDatePrimitiveElement => {
                             let some = r#status_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_statusDate"));
@@ -708,14 +784,14 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "restoreDate" => {
+                        Field::RestoreDate => {
                             let some = r#restore_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("restoreDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_restoreDate" => {
+                        Field::RestoreDatePrimitiveElement => {
                             let some = r#restore_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_restoreDate"));
@@ -727,13 +803,13 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "validityPeriod" => {
+                        Field::ValidityPeriod => {
                             if r#validity_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("validityPeriod"));
                             }
                             r#validity_period = Some(map_access.next_value()?);
                         }
-                        "dataExclusivityPeriod" => {
+                        Field::DataExclusivityPeriod => {
                             if r#data_exclusivity_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "dataExclusivityPeriod",
@@ -741,7 +817,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             }
                             r#data_exclusivity_period = Some(map_access.next_value()?);
                         }
-                        "dateOfFirstAuthorization" => {
+                        Field::DateOfFirstAuthorization => {
                             let some =
                                 r#date_of_first_authorization.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -751,7 +827,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_dateOfFirstAuthorization" => {
+                        Field::DateOfFirstAuthorizationPrimitiveElement => {
                             let some =
                                 r#date_of_first_authorization.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -766,7 +842,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "internationalBirthDate" => {
+                        Field::InternationalBirthDate => {
                             let some = r#international_birth_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -775,7 +851,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_internationalBirthDate" => {
+                        Field::InternationalBirthDatePrimitiveElement => {
                             let some = r#international_birth_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -789,13 +865,13 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "legalBasis" => {
+                        Field::LegalBasis => {
                             if r#legal_basis.is_some() {
                                 return Err(serde::de::Error::duplicate_field("legalBasis"));
                             }
                             r#legal_basis = Some(map_access.next_value()?);
                         }
-                        "jurisdictionalAuthorization" => {
+                        Field::JurisdictionalAuthorization => {
                             if r#jurisdictional_authorization.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "jurisdictionalAuthorization",
@@ -803,54 +879,23 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             }
                             r#jurisdictional_authorization = Some(map_access.next_value()?);
                         }
-                        "holder" => {
+                        Field::Holder => {
                             if r#holder.is_some() {
                                 return Err(serde::de::Error::duplicate_field("holder"));
                             }
                             r#holder = Some(map_access.next_value()?);
                         }
-                        "regulator" => {
+                        Field::Regulator => {
                             if r#regulator.is_some() {
                                 return Err(serde::de::Error::duplicate_field("regulator"));
                             }
                             r#regulator = Some(map_access.next_value()?);
                         }
-                        "procedure" => {
+                        Field::Procedure => {
                             if r#procedure.is_some() {
                                 return Err(serde::de::Error::duplicate_field("procedure"));
                             }
                             r#procedure = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "subject",
-                                    "country",
-                                    "jurisdiction",
-                                    "status",
-                                    "statusDate",
-                                    "restoreDate",
-                                    "validityPeriod",
-                                    "dataExclusivityPeriod",
-                                    "dateOfFirstAuthorization",
-                                    "internationalBirthDate",
-                                    "legalBasis",
-                                    "jurisdictionalAuthorization",
-                                    "holder",
-                                    "regulator",
-                                    "procedure",
-                                ],
-                            ))
                         }
                     }
                 }

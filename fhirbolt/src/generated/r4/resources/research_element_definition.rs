@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ResearchElementDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -253,6 +253,74 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "definitionCodeableConcept")]
+            DefinitionCodeableConcept,
+            #[serde(rename = "definitionCanonical")]
+            DefinitionCanonical,
+            #[serde(rename = "_definitionCanonical")]
+            DefinitionCanonicalPrimitiveElement,
+            #[serde(rename = "definitionExpression")]
+            DefinitionExpression,
+            #[serde(rename = "definitionDataRequirement")]
+            DefinitionDataRequirement,
+            #[serde(rename = "usageContext")]
+            UsageContext,
+            #[serde(rename = "exclude")]
+            Exclude,
+            #[serde(rename = "_exclude")]
+            ExcludePrimitiveElement,
+            #[serde(rename = "unitOfMeasure")]
+            UnitOfMeasure,
+            #[serde(rename = "studyEffectiveDescription")]
+            StudyEffectiveDescription,
+            #[serde(rename = "_studyEffectiveDescription")]
+            StudyEffectiveDescriptionPrimitiveElement,
+            #[serde(rename = "studyEffectiveDateTime")]
+            StudyEffectiveDateTime,
+            #[serde(rename = "_studyEffectiveDateTime")]
+            StudyEffectiveDateTimePrimitiveElement,
+            #[serde(rename = "studyEffectivePeriod")]
+            StudyEffectivePeriod,
+            #[serde(rename = "studyEffectiveDuration")]
+            StudyEffectiveDuration,
+            #[serde(rename = "studyEffectiveTiming")]
+            StudyEffectiveTiming,
+            #[serde(rename = "studyEffectiveTimeFromStart")]
+            StudyEffectiveTimeFromStart,
+            #[serde(rename = "studyEffectiveGroupMeasure")]
+            StudyEffectiveGroupMeasure,
+            #[serde(rename = "_studyEffectiveGroupMeasure")]
+            StudyEffectiveGroupMeasurePrimitiveElement,
+            #[serde(rename = "participantEffectiveDescription")]
+            ParticipantEffectiveDescription,
+            #[serde(rename = "_participantEffectiveDescription")]
+            ParticipantEffectiveDescriptionPrimitiveElement,
+            #[serde(rename = "participantEffectiveDateTime")]
+            ParticipantEffectiveDateTime,
+            #[serde(rename = "_participantEffectiveDateTime")]
+            ParticipantEffectiveDateTimePrimitiveElement,
+            #[serde(rename = "participantEffectivePeriod")]
+            ParticipantEffectivePeriod,
+            #[serde(rename = "participantEffectiveDuration")]
+            ParticipantEffectiveDuration,
+            #[serde(rename = "participantEffectiveTiming")]
+            ParticipantEffectiveTiming,
+            #[serde(rename = "participantEffectiveTimeFromStart")]
+            ParticipantEffectiveTimeFromStart,
+            #[serde(rename = "participantEffectiveGroupMeasure")]
+            ParticipantEffectiveGroupMeasure,
+            #[serde(rename = "_participantEffectiveGroupMeasure")]
+            ParticipantEffectiveGroupMeasurePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchElementDefinitionCharacteristic;
@@ -295,25 +363,25 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "definitionCodeableConcept" => {
+                        Field::DefinitionCodeableConcept => {
                             if r#definition.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "definitionCodeableConcept",
@@ -325,7 +393,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "definitionCanonical" => {
+                        Field::DefinitionCanonical => {
                             let r#enum = r#definition.get_or_insert(
                                 ResearchElementDefinitionCharacteristicDefinition::Canonical(
                                     Default::default(),
@@ -345,7 +413,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 return Err(serde::de::Error::duplicate_field("definition[x]"));
                             }
                         }
-                        "_definitionCanonical" => {
+                        Field::DefinitionCanonicalPrimitiveElement => {
                             let r#enum = r#definition.get_or_insert(
                                 ResearchElementDefinitionCharacteristicDefinition::Canonical(
                                     Default::default(),
@@ -370,7 +438,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 return Err(serde::de::Error::duplicate_field("_definition[x]"));
                             }
                         }
-                        "definitionExpression" => {
+                        Field::DefinitionExpression => {
                             if r#definition.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "definitionExpression",
@@ -382,7 +450,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "definitionDataRequirement" => {
+                        Field::DefinitionDataRequirement => {
                             if r#definition.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "definitionDataRequirement",
@@ -394,20 +462,20 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "usageContext" => {
+                        Field::UsageContext => {
                             if r#usage_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("usageContext"));
                             }
                             r#usage_context = Some(map_access.next_value()?);
                         }
-                        "exclude" => {
+                        Field::Exclude => {
                             let some = r#exclude.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("exclude"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_exclude" => {
+                        Field::ExcludePrimitiveElement => {
                             let some = r#exclude.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_exclude"));
@@ -419,13 +487,13 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             some.id = id;
                             some.extension = extension;
                         }
-                        "unitOfMeasure" => {
+                        Field::UnitOfMeasure => {
                             if r#unit_of_measure.is_some() {
                                 return Err(serde::de::Error::duplicate_field("unitOfMeasure"));
                             }
                             r#unit_of_measure = Some(map_access.next_value()?);
                         }
-                        "studyEffectiveDescription" => {
+                        Field::StudyEffectiveDescription => {
                             let some =
                                 r#study_effective_description.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -435,7 +503,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_studyEffectiveDescription" => {
+                        Field::StudyEffectiveDescriptionPrimitiveElement => {
                             let some =
                                 r#study_effective_description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -450,7 +518,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             some.id = id;
                             some.extension = extension;
                         }
-                        "studyEffectiveDateTime" => {
+                        Field::StudyEffectiveDateTime => {
                             let r#enum = r#study_effective.get_or_insert(
                                 ResearchElementDefinitionCharacteristicStudyEffective::DateTime(
                                     Default::default(),
@@ -470,7 +538,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 return Err(serde::de::Error::duplicate_field("studyEffective[x]"));
                             }
                         }
-                        "_studyEffectiveDateTime" => {
+                        Field::StudyEffectiveDateTimePrimitiveElement => {
                             let r#enum = r#study_effective.get_or_insert(
                                 ResearchElementDefinitionCharacteristicStudyEffective::DateTime(
                                     Default::default(),
@@ -497,7 +565,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ));
                             }
                         }
-                        "studyEffectivePeriod" => {
+                        Field::StudyEffectivePeriod => {
                             if r#study_effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "studyEffectivePeriod",
@@ -509,7 +577,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "studyEffectiveDuration" => {
+                        Field::StudyEffectiveDuration => {
                             if r#study_effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "studyEffectiveDuration",
@@ -521,7 +589,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "studyEffectiveTiming" => {
+                        Field::StudyEffectiveTiming => {
                             if r#study_effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "studyEffectiveTiming",
@@ -533,7 +601,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "studyEffectiveTimeFromStart" => {
+                        Field::StudyEffectiveTimeFromStart => {
                             if r#study_effective_time_from_start.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "studyEffectiveTimeFromStart",
@@ -541,7 +609,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             }
                             r#study_effective_time_from_start = Some(map_access.next_value()?);
                         }
-                        "studyEffectiveGroupMeasure" => {
+                        Field::StudyEffectiveGroupMeasure => {
                             let some =
                                 r#study_effective_group_measure.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -551,7 +619,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_studyEffectiveGroupMeasure" => {
+                        Field::StudyEffectiveGroupMeasurePrimitiveElement => {
                             let some =
                                 r#study_effective_group_measure.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -566,7 +634,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             some.id = id;
                             some.extension = extension;
                         }
-                        "participantEffectiveDescription" => {
+                        Field::ParticipantEffectiveDescription => {
                             let some = r#participant_effective_description
                                 .get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -576,7 +644,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_participantEffectiveDescription" => {
+                        Field::ParticipantEffectiveDescriptionPrimitiveElement => {
                             let some = r#participant_effective_description
                                 .get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -591,15 +659,15 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             some.id = id;
                             some.extension = extension;
                         }
-                        "participantEffectiveDateTime" => {
+                        Field::ParticipantEffectiveDateTime => {
                             let r#enum = r#participant_effective . get_or_insert (ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (Default :: default ())) ;
                             if let ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } variant . value = Some (map_access . next_value () ?) ; } else { return Err (serde :: de :: Error :: duplicate_field ("participantEffective[x]")) ; }
                         }
-                        "_participantEffectiveDateTime" => {
+                        Field::ParticipantEffectiveDateTimePrimitiveElement => {
                             let r#enum = r#participant_effective . get_or_insert (ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (Default :: default ())) ;
                             if let ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_participantEffective[x]")) ; }
                         }
-                        "participantEffectivePeriod" => {
+                        Field::ParticipantEffectivePeriod => {
                             if r#participant_effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "participantEffectivePeriod",
@@ -611,7 +679,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "participantEffectiveDuration" => {
+                        Field::ParticipantEffectiveDuration => {
                             if r#participant_effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "participantEffectiveDuration",
@@ -619,7 +687,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             }
                             r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Duration (map_access . next_value () ?)) ;
                         }
-                        "participantEffectiveTiming" => {
+                        Field::ParticipantEffectiveTiming => {
                             if r#participant_effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "participantEffectiveTiming",
@@ -631,7 +699,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                                 ),
                             );
                         }
-                        "participantEffectiveTimeFromStart" => {
+                        Field::ParticipantEffectiveTimeFromStart => {
                             if r#participant_effective_time_from_start.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "participantEffectiveTimeFromStart",
@@ -640,7 +708,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             r#participant_effective_time_from_start =
                                 Some(map_access.next_value()?);
                         }
-                        "participantEffectiveGroupMeasure" => {
+                        Field::ParticipantEffectiveGroupMeasure => {
                             let some = r#participant_effective_group_measure
                                 .get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -650,7 +718,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_participantEffectiveGroupMeasure" => {
+                        Field::ParticipantEffectiveGroupMeasurePrimitiveElement => {
                             let some = r#participant_effective_group_measure
                                 .get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -664,37 +732,6 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "definitionCodeableConcept",
-                                    "definitionCanonical",
-                                    "definitionExpression",
-                                    "definitionDataRequirement",
-                                    "usageContext",
-                                    "exclude",
-                                    "unitOfMeasure",
-                                    "studyEffectiveDescription",
-                                    "studyEffectiveDateTime",
-                                    "studyEffectivePeriod",
-                                    "studyEffectiveDuration",
-                                    "studyEffectiveTiming",
-                                    "studyEffectiveTimeFromStart",
-                                    "studyEffectiveGroupMeasure",
-                                    "participantEffectiveDescription",
-                                    "participantEffectiveDateTime",
-                                    "participantEffectivePeriod",
-                                    "participantEffectiveDuration",
-                                    "participantEffectiveTiming",
-                                    "participantEffectiveTimeFromStart",
-                                    "participantEffectiveGroupMeasure",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1138,6 +1175,138 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "shortTitle")]
+            ShortTitle,
+            #[serde(rename = "_shortTitle")]
+            ShortTitlePrimitiveElement,
+            #[serde(rename = "subtitle")]
+            Subtitle,
+            #[serde(rename = "_subtitle")]
+            SubtitlePrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "experimental")]
+            Experimental,
+            #[serde(rename = "_experimental")]
+            ExperimentalPrimitiveElement,
+            #[serde(rename = "subjectCodeableConcept")]
+            SubjectCodeableConcept,
+            #[serde(rename = "subjectReference")]
+            SubjectReference,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "comment")]
+            Comment,
+            #[serde(rename = "_comment")]
+            CommentPrimitiveElement,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "purpose")]
+            Purpose,
+            #[serde(rename = "_purpose")]
+            PurposePrimitiveElement,
+            #[serde(rename = "usage")]
+            Usage,
+            #[serde(rename = "_usage")]
+            UsagePrimitiveElement,
+            #[serde(rename = "copyright")]
+            Copyright,
+            #[serde(rename = "_copyright")]
+            CopyrightPrimitiveElement,
+            #[serde(rename = "approvalDate")]
+            ApprovalDate,
+            #[serde(rename = "_approvalDate")]
+            ApprovalDatePrimitiveElement,
+            #[serde(rename = "lastReviewDate")]
+            LastReviewDate,
+            #[serde(rename = "_lastReviewDate")]
+            LastReviewDatePrimitiveElement,
+            #[serde(rename = "effectivePeriod")]
+            EffectivePeriod,
+            #[serde(rename = "topic")]
+            Topic,
+            #[serde(rename = "author")]
+            Author,
+            #[serde(rename = "editor")]
+            Editor,
+            #[serde(rename = "reviewer")]
+            Reviewer,
+            #[serde(rename = "endorser")]
+            Endorser,
+            #[serde(rename = "relatedArtifact")]
+            RelatedArtifact,
+            #[serde(rename = "library")]
+            Library,
+            #[serde(rename = "_library")]
+            LibraryPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "variableType")]
+            VariableType,
+            #[serde(rename = "_variableType")]
+            VariableTypePrimitiveElement,
+            #[serde(rename = "characteristic")]
+            Characteristic,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchElementDefinition;
@@ -1195,26 +1364,26 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1226,14 +1395,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1245,38 +1414,38 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -1288,20 +1457,20 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -1313,14 +1482,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -1332,14 +1501,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -1351,14 +1520,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "shortTitle" => {
+                        Field::ShortTitle => {
                             let some = r#short_title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("shortTitle"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_shortTitle" => {
+                        Field::ShortTitlePrimitiveElement => {
                             let some = r#short_title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_shortTitle"));
@@ -1370,14 +1539,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "subtitle" => {
+                        Field::Subtitle => {
                             let some = r#subtitle.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subtitle"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_subtitle" => {
+                        Field::SubtitlePrimitiveElement => {
                             let some = r#subtitle.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_subtitle"));
@@ -1389,14 +1558,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1408,14 +1577,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "experimental" => {
+                        Field::Experimental => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_experimental" => {
+                        Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_experimental"));
@@ -1427,7 +1596,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "subjectCodeableConcept" => {
+                        Field::SubjectCodeableConcept => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "subjectCodeableConcept",
@@ -1437,7 +1606,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 map_access.next_value()?,
                             ));
                         }
-                        "subjectReference" => {
+                        Field::SubjectReference => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subjectReference"));
                             }
@@ -1445,14 +1614,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 map_access.next_value()?,
                             ));
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -1464,14 +1633,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -1483,20 +1652,20 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -1508,7 +1677,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "comment" => {
+                        Field::Comment => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#comment.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1524,7 +1693,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 vec[i].value = value;
                             }
                         }
-                        "_comment" => {
+                        Field::CommentPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#comment.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1545,26 +1714,26 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "purpose" => {
+                        Field::Purpose => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_purpose" => {
+                        Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_purpose"));
@@ -1576,14 +1745,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "usage" => {
+                        Field::Usage => {
                             let some = r#usage.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("usage"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_usage" => {
+                        Field::UsagePrimitiveElement => {
                             let some = r#usage.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_usage"));
@@ -1595,14 +1764,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "copyright" => {
+                        Field::Copyright => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_copyright" => {
+                        Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_copyright"));
@@ -1614,14 +1783,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "approvalDate" => {
+                        Field::ApprovalDate => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("approvalDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_approvalDate" => {
+                        Field::ApprovalDatePrimitiveElement => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_approvalDate"));
@@ -1633,14 +1802,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lastReviewDate" => {
+                        Field::LastReviewDate => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastReviewDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lastReviewDate" => {
+                        Field::LastReviewDatePrimitiveElement => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lastReviewDate"));
@@ -1652,49 +1821,49 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "effectivePeriod" => {
+                        Field::EffectivePeriod => {
                             if r#effective_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectivePeriod"));
                             }
                             r#effective_period = Some(map_access.next_value()?);
                         }
-                        "topic" => {
+                        Field::Topic => {
                             if r#topic.is_some() {
                                 return Err(serde::de::Error::duplicate_field("topic"));
                             }
                             r#topic = Some(map_access.next_value()?);
                         }
-                        "author" => {
+                        Field::Author => {
                             if r#author.is_some() {
                                 return Err(serde::de::Error::duplicate_field("author"));
                             }
                             r#author = Some(map_access.next_value()?);
                         }
-                        "editor" => {
+                        Field::Editor => {
                             if r#editor.is_some() {
                                 return Err(serde::de::Error::duplicate_field("editor"));
                             }
                             r#editor = Some(map_access.next_value()?);
                         }
-                        "reviewer" => {
+                        Field::Reviewer => {
                             if r#reviewer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reviewer"));
                             }
                             r#reviewer = Some(map_access.next_value()?);
                         }
-                        "endorser" => {
+                        Field::Endorser => {
                             if r#endorser.is_some() {
                                 return Err(serde::de::Error::duplicate_field("endorser"));
                             }
                             r#endorser = Some(map_access.next_value()?);
                         }
-                        "relatedArtifact" => {
+                        Field::RelatedArtifact => {
                             if r#related_artifact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relatedArtifact"));
                             }
                             r#related_artifact = Some(map_access.next_value()?);
                         }
-                        "library" => {
+                        Field::Library => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#library.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -1710,7 +1879,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 vec[i].value = value;
                             }
                         }
-                        "_library" => {
+                        Field::LibraryPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#library.get_or_insert(Vec::with_capacity(elements.len()));
@@ -1731,14 +1900,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -1750,14 +1919,14 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "variableType" => {
+                        Field::VariableType => {
                             let some = r#variable_type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variableType"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_variableType" => {
+                        Field::VariableTypePrimitiveElement => {
                             let some = r#variable_type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_variableType"));
@@ -1769,60 +1938,11 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "characteristic" => {
+                        Field::Characteristic => {
                             if r#characteristic.is_some() {
                                 return Err(serde::de::Error::duplicate_field("characteristic"));
                             }
                             r#characteristic = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "identifier",
-                                    "version",
-                                    "name",
-                                    "title",
-                                    "shortTitle",
-                                    "subtitle",
-                                    "status",
-                                    "experimental",
-                                    "subjectCodeableConcept",
-                                    "subjectReference",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "comment",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "purpose",
-                                    "usage",
-                                    "copyright",
-                                    "approvalDate",
-                                    "lastReviewDate",
-                                    "effectivePeriod",
-                                    "topic",
-                                    "author",
-                                    "editor",
-                                    "reviewer",
-                                    "endorser",
-                                    "relatedArtifact",
-                                    "library",
-                                    "type",
-                                    "variableType",
-                                    "characteristic",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SupplyRequestItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -98,6 +98,28 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "valueCodeableConcept")]
+            ValueCodeableConcept,
+            #[serde(rename = "valueQuantity")]
+            ValueQuantity,
+            #[serde(rename = "valueRange")]
+            ValueRange,
+            #[serde(rename = "valueBoolean")]
+            ValueBoolean,
+            #[serde(rename = "_valueBoolean")]
+            ValueBooleanPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SupplyRequestParameter;
@@ -116,31 +138,31 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                 let mut r#value: Option<SupplyRequestParameterValue> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "valueCodeableConcept" => {
+                        Field::ValueCodeableConcept => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueCodeableConcept",
@@ -150,7 +172,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueQuantity" => {
+                        Field::ValueQuantity => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueQuantity"));
                             }
@@ -158,14 +180,14 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueRange" => {
+                        Field::ValueRange => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueRange"));
                             }
                             r#value =
                                 Some(SupplyRequestParameterValue::Range(map_access.next_value()?));
                         }
-                        "valueBoolean" => {
+                        Field::ValueBoolean => {
                             let r#enum = r#value.get_or_insert(
                                 SupplyRequestParameterValue::Boolean(Default::default()),
                             );
@@ -178,7 +200,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBoolean" => {
+                        Field::ValueBooleanPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 SupplyRequestParameterValue::Boolean(Default::default()),
                             );
@@ -195,21 +217,6 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                             } else {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "valueCodeableConcept",
-                                    "valueQuantity",
-                                    "valueRange",
-                                    "valueBoolean",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -409,6 +416,74 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "priority")]
+            Priority,
+            #[serde(rename = "_priority")]
+            PriorityPrimitiveElement,
+            #[serde(rename = "itemCodeableConcept")]
+            ItemCodeableConcept,
+            #[serde(rename = "itemReference")]
+            ItemReference,
+            #[serde(rename = "quantity")]
+            Quantity,
+            #[serde(rename = "parameter")]
+            Parameter,
+            #[serde(rename = "occurrenceDateTime")]
+            OccurrenceDateTime,
+            #[serde(rename = "_occurrenceDateTime")]
+            OccurrenceDateTimePrimitiveElement,
+            #[serde(rename = "occurrencePeriod")]
+            OccurrencePeriod,
+            #[serde(rename = "occurrenceTiming")]
+            OccurrenceTiming,
+            #[serde(rename = "authoredOn")]
+            AuthoredOn,
+            #[serde(rename = "_authoredOn")]
+            AuthoredOnPrimitiveElement,
+            #[serde(rename = "requester")]
+            Requester,
+            #[serde(rename = "supplier")]
+            Supplier,
+            #[serde(rename = "reasonCode")]
+            ReasonCode,
+            #[serde(rename = "reasonReference")]
+            ReasonReference,
+            #[serde(rename = "deliverFrom")]
+            DeliverFrom,
+            #[serde(rename = "deliverTo")]
+            DeliverTo,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SupplyRequest;
@@ -446,26 +521,26 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                 let mut r#deliver_to: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -477,14 +552,14 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -496,44 +571,44 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -545,20 +620,20 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "category" => {
+                        Field::Category => {
                             if r#category.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             r#category = Some(map_access.next_value()?);
                         }
-                        "priority" => {
+                        Field::Priority => {
                             let some = r#priority.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priority"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_priority" => {
+                        Field::PriorityPrimitiveElement => {
                             let some = r#priority.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_priority"));
@@ -570,7 +645,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "itemCodeableConcept" => {
+                        Field::ItemCodeableConcept => {
                             if r#item.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "itemCodeableConcept",
@@ -579,25 +654,25 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             r#item =
                                 Some(SupplyRequestItem::CodeableConcept(map_access.next_value()?));
                         }
-                        "itemReference" => {
+                        Field::ItemReference => {
                             if r#item.is_some() {
                                 return Err(serde::de::Error::duplicate_field("itemReference"));
                             }
                             r#item = Some(SupplyRequestItem::Reference(map_access.next_value()?));
                         }
-                        "quantity" => {
+                        Field::Quantity => {
                             if r#quantity.is_some() {
                                 return Err(serde::de::Error::duplicate_field("quantity"));
                             }
                             r#quantity = Some(map_access.next_value()?);
                         }
-                        "parameter" => {
+                        Field::Parameter => {
                             if r#parameter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parameter"));
                             }
                             r#parameter = Some(map_access.next_value()?);
                         }
-                        "occurrenceDateTime" => {
+                        Field::OccurrenceDateTime => {
                             let r#enum = r#occurrence.get_or_insert(
                                 SupplyRequestOccurrence::DateTime(Default::default()),
                             );
@@ -612,7 +687,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                 return Err(serde::de::Error::duplicate_field("occurrence[x]"));
                             }
                         }
-                        "_occurrenceDateTime" => {
+                        Field::OccurrenceDateTimePrimitiveElement => {
                             let r#enum = r#occurrence.get_or_insert(
                                 SupplyRequestOccurrence::DateTime(Default::default()),
                             );
@@ -632,28 +707,28 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                 return Err(serde::de::Error::duplicate_field("_occurrence[x]"));
                             }
                         }
-                        "occurrencePeriod" => {
+                        Field::OccurrencePeriod => {
                             if r#occurrence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("occurrencePeriod"));
                             }
                             r#occurrence =
                                 Some(SupplyRequestOccurrence::Period(map_access.next_value()?));
                         }
-                        "occurrenceTiming" => {
+                        Field::OccurrenceTiming => {
                             if r#occurrence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("occurrenceTiming"));
                             }
                             r#occurrence =
                                 Some(SupplyRequestOccurrence::Timing(map_access.next_value()?));
                         }
-                        "authoredOn" => {
+                        Field::AuthoredOn => {
                             let some = r#authored_on.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authoredOn"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_authoredOn" => {
+                        Field::AuthoredOnPrimitiveElement => {
                             let some = r#authored_on.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_authoredOn"));
@@ -665,74 +740,41 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "requester" => {
+                        Field::Requester => {
                             if r#requester.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requester"));
                             }
                             r#requester = Some(map_access.next_value()?);
                         }
-                        "supplier" => {
+                        Field::Supplier => {
                             if r#supplier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("supplier"));
                             }
                             r#supplier = Some(map_access.next_value()?);
                         }
-                        "reasonCode" => {
+                        Field::ReasonCode => {
                             if r#reason_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonCode"));
                             }
                             r#reason_code = Some(map_access.next_value()?);
                         }
-                        "reasonReference" => {
+                        Field::ReasonReference => {
                             if r#reason_reference.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonReference"));
                             }
                             r#reason_reference = Some(map_access.next_value()?);
                         }
-                        "deliverFrom" => {
+                        Field::DeliverFrom => {
                             if r#deliver_from.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deliverFrom"));
                             }
                             r#deliver_from = Some(map_access.next_value()?);
                         }
-                        "deliverTo" => {
+                        Field::DeliverTo => {
                             if r#deliver_to.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deliverTo"));
                             }
                             r#deliver_to = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "category",
-                                    "priority",
-                                    "itemCodeableConcept",
-                                    "itemReference",
-                                    "quantity",
-                                    "parameter",
-                                    "occurrenceDateTime",
-                                    "occurrencePeriod",
-                                    "occurrenceTiming",
-                                    "authoredOn",
-                                    "requester",
-                                    "supplier",
-                                    "reasonCode",
-                                    "reasonReference",
-                                    "deliverFrom",
-                                    "deliverTo",
-                                ],
-                            ))
                         }
                     }
                 }

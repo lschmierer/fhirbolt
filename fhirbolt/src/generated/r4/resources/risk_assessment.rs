@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentOccurrence {
     DateTime(Box<super::super::types::DateTime>),
@@ -133,6 +133,38 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "outcome")]
+            Outcome,
+            #[serde(rename = "probabilityDecimal")]
+            ProbabilityDecimal,
+            #[serde(rename = "_probabilityDecimal")]
+            ProbabilityDecimalPrimitiveElement,
+            #[serde(rename = "probabilityRange")]
+            ProbabilityRange,
+            #[serde(rename = "qualitativeRisk")]
+            QualitativeRisk,
+            #[serde(rename = "relativeRisk")]
+            RelativeRisk,
+            #[serde(rename = "_relativeRisk")]
+            RelativeRiskPrimitiveElement,
+            #[serde(rename = "whenPeriod")]
+            WhenPeriod,
+            #[serde(rename = "whenRange")]
+            WhenRange,
+            #[serde(rename = "rationale")]
+            Rationale,
+            #[serde(rename = "_rationale")]
+            RationalePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskAssessmentPrediction;
@@ -156,31 +188,31 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                 let mut r#rationale: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "outcome" => {
+                        Field::Outcome => {
                             if r#outcome.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
                             r#outcome = Some(map_access.next_value()?);
                         }
-                        "probabilityDecimal" => {
+                        Field::ProbabilityDecimal => {
                             let r#enum = r#probability.get_or_insert(
                                 RiskAssessmentPredictionProbability::Decimal(Default::default()),
                             );
@@ -195,7 +227,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 return Err(serde::de::Error::duplicate_field("probability[x]"));
                             }
                         }
-                        "_probabilityDecimal" => {
+                        Field::ProbabilityDecimalPrimitiveElement => {
                             let r#enum = r#probability.get_or_insert(
                                 RiskAssessmentPredictionProbability::Decimal(Default::default()),
                             );
@@ -215,7 +247,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 return Err(serde::de::Error::duplicate_field("_probability[x]"));
                             }
                         }
-                        "probabilityRange" => {
+                        Field::ProbabilityRange => {
                             if r#probability.is_some() {
                                 return Err(serde::de::Error::duplicate_field("probabilityRange"));
                             }
@@ -223,20 +255,20 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 map_access.next_value()?,
                             ));
                         }
-                        "qualitativeRisk" => {
+                        Field::QualitativeRisk => {
                             if r#qualitative_risk.is_some() {
                                 return Err(serde::de::Error::duplicate_field("qualitativeRisk"));
                             }
                             r#qualitative_risk = Some(map_access.next_value()?);
                         }
-                        "relativeRisk" => {
+                        Field::RelativeRisk => {
                             let some = r#relative_risk.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relativeRisk"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_relativeRisk" => {
+                        Field::RelativeRiskPrimitiveElement => {
                             let some = r#relative_risk.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_relativeRisk"));
@@ -248,7 +280,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "whenPeriod" => {
+                        Field::WhenPeriod => {
                             if r#when.is_some() {
                                 return Err(serde::de::Error::duplicate_field("whenPeriod"));
                             }
@@ -256,7 +288,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 map_access.next_value()?,
                             ));
                         }
-                        "whenRange" => {
+                        Field::WhenRange => {
                             if r#when.is_some() {
                                 return Err(serde::de::Error::duplicate_field("whenRange"));
                             }
@@ -264,14 +296,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 map_access.next_value()?,
                             ));
                         }
-                        "rationale" => {
+                        Field::Rationale => {
                             let some = r#rationale.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rationale"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_rationale" => {
+                        Field::RationalePrimitiveElement => {
                             let some = r#rationale.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_rationale"));
@@ -282,24 +314,6 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "outcome",
-                                    "probabilityDecimal",
-                                    "probabilityRange",
-                                    "qualitativeRisk",
-                                    "relativeRisk",
-                                    "whenPeriod",
-                                    "whenRange",
-                                    "rationale",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -489,6 +503,72 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "basedOn")]
+            BasedOn,
+            #[serde(rename = "parent")]
+            Parent,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "method")]
+            Method,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "subject")]
+            Subject,
+            #[serde(rename = "encounter")]
+            Encounter,
+            #[serde(rename = "occurrenceDateTime")]
+            OccurrenceDateTime,
+            #[serde(rename = "_occurrenceDateTime")]
+            OccurrenceDateTimePrimitiveElement,
+            #[serde(rename = "occurrencePeriod")]
+            OccurrencePeriod,
+            #[serde(rename = "condition")]
+            Condition,
+            #[serde(rename = "performer")]
+            Performer,
+            #[serde(rename = "reasonCode")]
+            ReasonCode,
+            #[serde(rename = "reasonReference")]
+            ReasonReference,
+            #[serde(rename = "basis")]
+            Basis,
+            #[serde(rename = "prediction")]
+            Prediction,
+            #[serde(rename = "mitigation")]
+            Mitigation,
+            #[serde(rename = "_mitigation")]
+            MitigationPrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskAssessment;
@@ -528,26 +608,26 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -559,14 +639,14 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -578,56 +658,56 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "basedOn" => {
+                        Field::BasedOn => {
                             if r#based_on.is_some() {
                                 return Err(serde::de::Error::duplicate_field("basedOn"));
                             }
                             r#based_on = Some(map_access.next_value()?);
                         }
-                        "parent" => {
+                        Field::Parent => {
                             if r#parent.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parent"));
                             }
                             r#parent = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -639,31 +719,31 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "method" => {
+                        Field::Method => {
                             if r#method.is_some() {
                                 return Err(serde::de::Error::duplicate_field("method"));
                             }
                             r#method = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "subject" => {
+                        Field::Subject => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subject"));
                             }
                             r#subject = Some(map_access.next_value()?);
                         }
-                        "encounter" => {
+                        Field::Encounter => {
                             if r#encounter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("encounter"));
                             }
                             r#encounter = Some(map_access.next_value()?);
                         }
-                        "occurrenceDateTime" => {
+                        Field::OccurrenceDateTime => {
                             let r#enum = r#occurrence.get_or_insert(
                                 RiskAssessmentOccurrence::DateTime(Default::default()),
                             );
@@ -678,7 +758,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                 return Err(serde::de::Error::duplicate_field("occurrence[x]"));
                             }
                         }
-                        "_occurrenceDateTime" => {
+                        Field::OccurrenceDateTimePrimitiveElement => {
                             let r#enum = r#occurrence.get_or_insert(
                                 RiskAssessmentOccurrence::DateTime(Default::default()),
                             );
@@ -698,57 +778,57 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                 return Err(serde::de::Error::duplicate_field("_occurrence[x]"));
                             }
                         }
-                        "occurrencePeriod" => {
+                        Field::OccurrencePeriod => {
                             if r#occurrence.is_some() {
                                 return Err(serde::de::Error::duplicate_field("occurrencePeriod"));
                             }
                             r#occurrence =
                                 Some(RiskAssessmentOccurrence::Period(map_access.next_value()?));
                         }
-                        "condition" => {
+                        Field::Condition => {
                             if r#condition.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
                             r#condition = Some(map_access.next_value()?);
                         }
-                        "performer" => {
+                        Field::Performer => {
                             if r#performer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("performer"));
                             }
                             r#performer = Some(map_access.next_value()?);
                         }
-                        "reasonCode" => {
+                        Field::ReasonCode => {
                             if r#reason_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonCode"));
                             }
                             r#reason_code = Some(map_access.next_value()?);
                         }
-                        "reasonReference" => {
+                        Field::ReasonReference => {
                             if r#reason_reference.is_some() {
                                 return Err(serde::de::Error::duplicate_field("reasonReference"));
                             }
                             r#reason_reference = Some(map_access.next_value()?);
                         }
-                        "basis" => {
+                        Field::Basis => {
                             if r#basis.is_some() {
                                 return Err(serde::de::Error::duplicate_field("basis"));
                             }
                             r#basis = Some(map_access.next_value()?);
                         }
-                        "prediction" => {
+                        Field::Prediction => {
                             if r#prediction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("prediction"));
                             }
                             r#prediction = Some(map_access.next_value()?);
                         }
-                        "mitigation" => {
+                        Field::Mitigation => {
                             let some = r#mitigation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mitigation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_mitigation" => {
+                        Field::MitigationPrimitiveElement => {
                             let some = r#mitigation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_mitigation"));
@@ -760,44 +840,11 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "basedOn",
-                                    "parent",
-                                    "status",
-                                    "method",
-                                    "code",
-                                    "subject",
-                                    "encounter",
-                                    "occurrenceDateTime",
-                                    "occurrencePeriod",
-                                    "condition",
-                                    "performer",
-                                    "reasonCode",
-                                    "reasonReference",
-                                    "basis",
-                                    "prediction",
-                                    "mitigation",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum PatientDeceased {
     Boolean(Box<super::super::types::Boolean>),
@@ -88,6 +88,32 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "relationship")]
+            Relationship,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "telecom")]
+            Telecom,
+            #[serde(rename = "address")]
+            Address,
+            #[serde(rename = "gender")]
+            Gender,
+            #[serde(rename = "_gender")]
+            GenderPrimitiveElement,
+            #[serde(rename = "organization")]
+            Organization,
+            #[serde(rename = "period")]
+            Period,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PatientContact;
@@ -112,56 +138,56 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "relationship" => {
+                        Field::Relationship => {
                             if r#relationship.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relationship"));
                             }
                             r#relationship = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             if r#name.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             r#name = Some(map_access.next_value()?);
                         }
-                        "telecom" => {
+                        Field::Telecom => {
                             if r#telecom.is_some() {
                                 return Err(serde::de::Error::duplicate_field("telecom"));
                             }
                             r#telecom = Some(map_access.next_value()?);
                         }
-                        "address" => {
+                        Field::Address => {
                             if r#address.is_some() {
                                 return Err(serde::de::Error::duplicate_field("address"));
                             }
                             r#address = Some(map_access.next_value()?);
                         }
-                        "gender" => {
+                        Field::Gender => {
                             let some = r#gender.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gender"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_gender" => {
+                        Field::GenderPrimitiveElement => {
                             let some = r#gender.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_gender"));
@@ -173,34 +199,17 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "organization" => {
+                        Field::Organization => {
                             if r#organization.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organization"));
                             }
                             r#organization = Some(map_access.next_value()?);
                         }
-                        "period" => {
+                        Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             r#period = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "relationship",
-                                    "name",
-                                    "telecom",
-                                    "address",
-                                    "gender",
-                                    "organization",
-                                    "period",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -266,6 +275,22 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "preferred")]
+            Preferred,
+            #[serde(rename = "_preferred")]
+            PreferredPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PatientCommunication;
@@ -284,38 +309,38 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                 let mut r#preferred: Option<super::super::types::Boolean> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "language" => {
+                        Field::Language => {
                             if r#language.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             r#language = Some(map_access.next_value()?);
                         }
-                        "preferred" => {
+                        Field::Preferred => {
                             let some = r#preferred.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("preferred"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_preferred" => {
+                        Field::PreferredPrimitiveElement => {
                             let some = r#preferred.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_preferred"));
@@ -326,18 +351,6 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "language",
-                                    "preferred",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -396,6 +409,22 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "other")]
+            Other,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PatientLink;
@@ -414,38 +443,38 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                 let mut r#type: Option<super::super::types::Code> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "other" => {
+                        Field::Other => {
                             if r#other.is_some() {
                                 return Err(serde::de::Error::duplicate_field("other"));
                             }
                             r#other = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -456,12 +485,6 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "other", "type"],
-                            ))
                         }
                     }
                 }
@@ -693,6 +716,80 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "active")]
+            Active,
+            #[serde(rename = "_active")]
+            ActivePrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "telecom")]
+            Telecom,
+            #[serde(rename = "gender")]
+            Gender,
+            #[serde(rename = "_gender")]
+            GenderPrimitiveElement,
+            #[serde(rename = "birthDate")]
+            BirthDate,
+            #[serde(rename = "_birthDate")]
+            BirthDatePrimitiveElement,
+            #[serde(rename = "deceasedBoolean")]
+            DeceasedBoolean,
+            #[serde(rename = "_deceasedBoolean")]
+            DeceasedBooleanPrimitiveElement,
+            #[serde(rename = "deceasedDateTime")]
+            DeceasedDateTime,
+            #[serde(rename = "_deceasedDateTime")]
+            DeceasedDateTimePrimitiveElement,
+            #[serde(rename = "address")]
+            Address,
+            #[serde(rename = "maritalStatus")]
+            MaritalStatus,
+            #[serde(rename = "multipleBirthBoolean")]
+            MultipleBirthBoolean,
+            #[serde(rename = "_multipleBirthBoolean")]
+            MultipleBirthBooleanPrimitiveElement,
+            #[serde(rename = "multipleBirthInteger")]
+            MultipleBirthInteger,
+            #[serde(rename = "_multipleBirthInteger")]
+            MultipleBirthIntegerPrimitiveElement,
+            #[serde(rename = "photo")]
+            Photo,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "communication")]
+            Communication,
+            #[serde(rename = "generalPractitioner")]
+            GeneralPractitioner,
+            #[serde(rename = "managingOrganization")]
+            ManagingOrganization,
+            #[serde(rename = "link")]
+            Link,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Patient;
@@ -731,26 +828,26 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                 let mut r#link: Option<Vec<PatientLink>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -762,14 +859,14 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -781,44 +878,44 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "active" => {
+                        Field::Active => {
                             let some = r#active.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("active"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_active" => {
+                        Field::ActivePrimitiveElement => {
                             let some = r#active.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_active"));
@@ -830,26 +927,26 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             if r#name.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             r#name = Some(map_access.next_value()?);
                         }
-                        "telecom" => {
+                        Field::Telecom => {
                             if r#telecom.is_some() {
                                 return Err(serde::de::Error::duplicate_field("telecom"));
                             }
                             r#telecom = Some(map_access.next_value()?);
                         }
-                        "gender" => {
+                        Field::Gender => {
                             let some = r#gender.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gender"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_gender" => {
+                        Field::GenderPrimitiveElement => {
                             let some = r#gender.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_gender"));
@@ -861,14 +958,14 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "birthDate" => {
+                        Field::BirthDate => {
                             let some = r#birth_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("birthDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_birthDate" => {
+                        Field::BirthDatePrimitiveElement => {
                             let some = r#birth_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_birthDate"));
@@ -880,7 +977,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "deceasedBoolean" => {
+                        Field::DeceasedBoolean => {
                             let r#enum = r#deceased
                                 .get_or_insert(PatientDeceased::Boolean(Default::default()));
                             if let PatientDeceased::Boolean(variant) = r#enum {
@@ -894,7 +991,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("deceased[x]"));
                             }
                         }
-                        "_deceasedBoolean" => {
+                        Field::DeceasedBooleanPrimitiveElement => {
                             let r#enum = r#deceased
                                 .get_or_insert(PatientDeceased::Boolean(Default::default()));
                             if let PatientDeceased::Boolean(variant) = r#enum {
@@ -913,7 +1010,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("_deceased[x]"));
                             }
                         }
-                        "deceasedDateTime" => {
+                        Field::DeceasedDateTime => {
                             let r#enum = r#deceased
                                 .get_or_insert(PatientDeceased::DateTime(Default::default()));
                             if let PatientDeceased::DateTime(variant) = r#enum {
@@ -927,7 +1024,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("deceased[x]"));
                             }
                         }
-                        "_deceasedDateTime" => {
+                        Field::DeceasedDateTimePrimitiveElement => {
                             let r#enum = r#deceased
                                 .get_or_insert(PatientDeceased::DateTime(Default::default()));
                             if let PatientDeceased::DateTime(variant) = r#enum {
@@ -946,19 +1043,19 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("_deceased[x]"));
                             }
                         }
-                        "address" => {
+                        Field::Address => {
                             if r#address.is_some() {
                                 return Err(serde::de::Error::duplicate_field("address"));
                             }
                             r#address = Some(map_access.next_value()?);
                         }
-                        "maritalStatus" => {
+                        Field::MaritalStatus => {
                             if r#marital_status.is_some() {
                                 return Err(serde::de::Error::duplicate_field("maritalStatus"));
                             }
                             r#marital_status = Some(map_access.next_value()?);
                         }
-                        "multipleBirthBoolean" => {
+                        Field::MultipleBirthBoolean => {
                             let r#enum = r#multiple_birth
                                 .get_or_insert(PatientMultipleBirth::Boolean(Default::default()));
                             if let PatientMultipleBirth::Boolean(variant) = r#enum {
@@ -972,7 +1069,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("multipleBirth[x]"));
                             }
                         }
-                        "_multipleBirthBoolean" => {
+                        Field::MultipleBirthBooleanPrimitiveElement => {
                             let r#enum = r#multiple_birth
                                 .get_or_insert(PatientMultipleBirth::Boolean(Default::default()));
                             if let PatientMultipleBirth::Boolean(variant) = r#enum {
@@ -991,7 +1088,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("_multipleBirth[x]"));
                             }
                         }
-                        "multipleBirthInteger" => {
+                        Field::MultipleBirthInteger => {
                             let r#enum = r#multiple_birth
                                 .get_or_insert(PatientMultipleBirth::Integer(Default::default()));
                             if let PatientMultipleBirth::Integer(variant) = r#enum {
@@ -1005,7 +1102,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("multipleBirth[x]"));
                             }
                         }
-                        "_multipleBirthInteger" => {
+                        Field::MultipleBirthIntegerPrimitiveElement => {
                             let r#enum = r#multiple_birth
                                 .get_or_insert(PatientMultipleBirth::Integer(Default::default()));
                             if let PatientMultipleBirth::Integer(variant) = r#enum {
@@ -1024,25 +1121,25 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 return Err(serde::de::Error::duplicate_field("_multipleBirth[x]"));
                             }
                         }
-                        "photo" => {
+                        Field::Photo => {
                             if r#photo.is_some() {
                                 return Err(serde::de::Error::duplicate_field("photo"));
                             }
                             r#photo = Some(map_access.next_value()?);
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "communication" => {
+                        Field::Communication => {
                             if r#communication.is_some() {
                                 return Err(serde::de::Error::duplicate_field("communication"));
                             }
                             r#communication = Some(map_access.next_value()?);
                         }
-                        "generalPractitioner" => {
+                        Field::GeneralPractitioner => {
                             if r#general_practitioner.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "generalPractitioner",
@@ -1050,7 +1147,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             }
                             r#general_practitioner = Some(map_access.next_value()?);
                         }
-                        "managingOrganization" => {
+                        Field::ManagingOrganization => {
                             if r#managing_organization.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "managingOrganization",
@@ -1058,44 +1155,11 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                             }
                             r#managing_organization = Some(map_access.next_value()?);
                         }
-                        "link" => {
+                        Field::Link => {
                             if r#link.is_some() {
                                 return Err(serde::de::Error::duplicate_field("link"));
                             }
                             r#link = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "active",
-                                    "name",
-                                    "telecom",
-                                    "gender",
-                                    "birthDate",
-                                    "deceasedBoolean",
-                                    "deceasedDateTime",
-                                    "address",
-                                    "maritalStatus",
-                                    "multipleBirthBoolean",
-                                    "multipleBirthInteger",
-                                    "photo",
-                                    "contact",
-                                    "communication",
-                                    "generalPractitioner",
-                                    "managingOrganization",
-                                    "link",
-                                ],
-                            ))
                         }
                     }
                 }

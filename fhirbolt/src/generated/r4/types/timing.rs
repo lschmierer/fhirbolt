@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
     Duration(Box<super::super::types::Duration>),
@@ -281,6 +281,76 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "boundsDuration")]
+            BoundsDuration,
+            #[serde(rename = "boundsRange")]
+            BoundsRange,
+            #[serde(rename = "boundsPeriod")]
+            BoundsPeriod,
+            #[serde(rename = "count")]
+            Count,
+            #[serde(rename = "_count")]
+            CountPrimitiveElement,
+            #[serde(rename = "countMax")]
+            CountMax,
+            #[serde(rename = "_countMax")]
+            CountMaxPrimitiveElement,
+            #[serde(rename = "duration")]
+            Duration,
+            #[serde(rename = "_duration")]
+            DurationPrimitiveElement,
+            #[serde(rename = "durationMax")]
+            DurationMax,
+            #[serde(rename = "_durationMax")]
+            DurationMaxPrimitiveElement,
+            #[serde(rename = "durationUnit")]
+            DurationUnit,
+            #[serde(rename = "_durationUnit")]
+            DurationUnitPrimitiveElement,
+            #[serde(rename = "frequency")]
+            Frequency,
+            #[serde(rename = "_frequency")]
+            FrequencyPrimitiveElement,
+            #[serde(rename = "frequencyMax")]
+            FrequencyMax,
+            #[serde(rename = "_frequencyMax")]
+            FrequencyMaxPrimitiveElement,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "_period")]
+            PeriodPrimitiveElement,
+            #[serde(rename = "periodMax")]
+            PeriodMax,
+            #[serde(rename = "_periodMax")]
+            PeriodMaxPrimitiveElement,
+            #[serde(rename = "periodUnit")]
+            PeriodUnit,
+            #[serde(rename = "_periodUnit")]
+            PeriodUnitPrimitiveElement,
+            #[serde(rename = "dayOfWeek")]
+            DayOfWeek,
+            #[serde(rename = "_dayOfWeek")]
+            DayOfWeekPrimitiveElement,
+            #[serde(rename = "timeOfDay")]
+            TimeOfDay,
+            #[serde(rename = "_timeOfDay")]
+            TimeOfDayPrimitiveElement,
+            #[serde(rename = "when")]
+            When,
+            #[serde(rename = "_when")]
+            WhenPrimitiveElement,
+            #[serde(rename = "offset")]
+            Offset,
+            #[serde(rename = "_offset")]
+            OffsetPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TimingRepeat;
@@ -310,44 +380,44 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                 let mut r#offset: Option<super::super::types::UnsignedInt> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "boundsDuration" => {
+                        Field::BoundsDuration => {
                             if r#bounds.is_some() {
                                 return Err(serde::de::Error::duplicate_field("boundsDuration"));
                             }
                             r#bounds = Some(TimingRepeatBounds::Duration(map_access.next_value()?));
                         }
-                        "boundsRange" => {
+                        Field::BoundsRange => {
                             if r#bounds.is_some() {
                                 return Err(serde::de::Error::duplicate_field("boundsRange"));
                             }
                             r#bounds = Some(TimingRepeatBounds::Range(map_access.next_value()?));
                         }
-                        "boundsPeriod" => {
+                        Field::BoundsPeriod => {
                             if r#bounds.is_some() {
                                 return Err(serde::de::Error::duplicate_field("boundsPeriod"));
                             }
                             r#bounds = Some(TimingRepeatBounds::Period(map_access.next_value()?));
                         }
-                        "count" => {
+                        Field::Count => {
                             let some = r#count.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("count"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_count" => {
+                        Field::CountPrimitiveElement => {
                             let some = r#count.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_count"));
@@ -359,14 +429,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "countMax" => {
+                        Field::CountMax => {
                             let some = r#count_max.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("countMax"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_countMax" => {
+                        Field::CountMaxPrimitiveElement => {
                             let some = r#count_max.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_countMax"));
@@ -378,14 +448,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "duration" => {
+                        Field::Duration => {
                             let some = r#duration.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("duration"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_duration" => {
+                        Field::DurationPrimitiveElement => {
                             let some = r#duration.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_duration"));
@@ -397,14 +467,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "durationMax" => {
+                        Field::DurationMax => {
                             let some = r#duration_max.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("durationMax"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_durationMax" => {
+                        Field::DurationMaxPrimitiveElement => {
                             let some = r#duration_max.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_durationMax"));
@@ -416,14 +486,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "durationUnit" => {
+                        Field::DurationUnit => {
                             let some = r#duration_unit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("durationUnit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_durationUnit" => {
+                        Field::DurationUnitPrimitiveElement => {
                             let some = r#duration_unit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_durationUnit"));
@@ -435,14 +505,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "frequency" => {
+                        Field::Frequency => {
                             let some = r#frequency.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("frequency"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_frequency" => {
+                        Field::FrequencyPrimitiveElement => {
                             let some = r#frequency.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_frequency"));
@@ -454,14 +524,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "frequencyMax" => {
+                        Field::FrequencyMax => {
                             let some = r#frequency_max.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("frequencyMax"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_frequencyMax" => {
+                        Field::FrequencyMaxPrimitiveElement => {
                             let some = r#frequency_max.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_frequencyMax"));
@@ -473,14 +543,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "period" => {
+                        Field::Period => {
                             let some = r#period.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_period" => {
+                        Field::PeriodPrimitiveElement => {
                             let some = r#period.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_period"));
@@ -492,14 +562,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "periodMax" => {
+                        Field::PeriodMax => {
                             let some = r#period_max.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("periodMax"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_periodMax" => {
+                        Field::PeriodMaxPrimitiveElement => {
                             let some = r#period_max.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_periodMax"));
@@ -511,14 +581,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "periodUnit" => {
+                        Field::PeriodUnit => {
                             let some = r#period_unit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("periodUnit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_periodUnit" => {
+                        Field::PeriodUnitPrimitiveElement => {
                             let some = r#period_unit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_periodUnit"));
@@ -530,7 +600,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "dayOfWeek" => {
+                        Field::DayOfWeek => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#day_of_week.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -546,7 +616,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 vec[i].value = value;
                             }
                         }
-                        "_dayOfWeek" => {
+                        Field::DayOfWeekPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -568,7 +638,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "timeOfDay" => {
+                        Field::TimeOfDay => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#time_of_day.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -584,7 +654,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 vec[i].value = value;
                             }
                         }
-                        "_timeOfDay" => {
+                        Field::TimeOfDayPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -606,7 +676,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "when" => {
+                        Field::When => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#when.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -622,7 +692,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 vec[i].value = value;
                             }
                         }
-                        "_when" => {
+                        Field::WhenPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#when.get_or_insert(Vec::with_capacity(elements.len()));
@@ -643,14 +713,14 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "offset" => {
+                        Field::Offset => {
                             let some = r#offset.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("offset"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_offset" => {
+                        Field::OffsetPrimitiveElement => {
                             let some = r#offset.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_offset"));
@@ -661,32 +731,6 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "boundsDuration",
-                                    "boundsRange",
-                                    "boundsPeriod",
-                                    "count",
-                                    "countMax",
-                                    "duration",
-                                    "durationMax",
-                                    "durationUnit",
-                                    "frequency",
-                                    "frequencyMax",
-                                    "period",
-                                    "periodMax",
-                                    "periodUnit",
-                                    "dayOfWeek",
-                                    "timeOfDay",
-                                    "when",
-                                    "offset",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -780,6 +824,24 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "event")]
+            Event,
+            #[serde(rename = "_event")]
+            EventPrimitiveElement,
+            #[serde(rename = "repeat")]
+            Repeat,
+            #[serde(rename = "code")]
+            Code,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Timing;
@@ -799,25 +861,25 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "event" => {
+                        Field::Event => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#event.get_or_insert(Vec::with_capacity(values.len()));
                             if vec.len() != values.len() {
@@ -833,7 +895,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 vec[i].value = value;
                             }
                         }
-                        "_event" => {
+                        Field::EventPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#event.get_or_insert(Vec::with_capacity(elements.len()));
@@ -854,30 +916,17 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "repeat" => {
+                        Field::Repeat => {
                             if r#repeat.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repeat"));
                             }
                             r#repeat = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "event",
-                                    "repeat",
-                                    "code",
-                                ],
-                            ))
                         }
                     }
                 }

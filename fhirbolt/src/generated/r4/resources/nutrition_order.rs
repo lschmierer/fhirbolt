@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
     Quantity(Box<super::super::types::Quantity>),
@@ -48,6 +48,20 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "modifier")]
+            Modifier,
+            #[serde(rename = "amount")]
+            Amount,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderOralDietNutrient;
@@ -69,41 +83,35 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
                 let mut r#amount: Option<Box<super::super::types::Quantity>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "modifier" => {
+                        Field::Modifier => {
                             if r#modifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifier"));
                             }
                             r#modifier = Some(map_access.next_value()?);
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "modifier", "amount"],
-                            ))
                         }
                     }
                 }
@@ -157,6 +165,20 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "modifier")]
+            Modifier,
+            #[serde(rename = "foodType")]
+            FoodType,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderOralDietTexture;
@@ -178,47 +200,35 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
                 let mut r#food_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "modifier" => {
+                        Field::Modifier => {
                             if r#modifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifier"));
                             }
                             r#modifier = Some(map_access.next_value()?);
                         }
-                        "foodType" => {
+                        Field::FoodType => {
                             if r#food_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("foodType"));
                             }
                             r#food_type = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "modifier",
-                                    "foodType",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -297,6 +307,30 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "schedule")]
+            Schedule,
+            #[serde(rename = "nutrient")]
+            Nutrient,
+            #[serde(rename = "texture")]
+            Texture,
+            #[serde(rename = "fluidConsistencyType")]
+            FluidConsistencyType,
+            #[serde(rename = "instruction")]
+            Instruction,
+            #[serde(rename = "_instruction")]
+            InstructionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderOralDiet;
@@ -321,49 +355,49 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                 let mut r#instruction: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "schedule" => {
+                        Field::Schedule => {
                             if r#schedule.is_some() {
                                 return Err(serde::de::Error::duplicate_field("schedule"));
                             }
                             r#schedule = Some(map_access.next_value()?);
                         }
-                        "nutrient" => {
+                        Field::Nutrient => {
                             if r#nutrient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("nutrient"));
                             }
                             r#nutrient = Some(map_access.next_value()?);
                         }
-                        "texture" => {
+                        Field::Texture => {
                             if r#texture.is_some() {
                                 return Err(serde::de::Error::duplicate_field("texture"));
                             }
                             r#texture = Some(map_access.next_value()?);
                         }
-                        "fluidConsistencyType" => {
+                        Field::FluidConsistencyType => {
                             if r#fluid_consistency_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "fluidConsistencyType",
@@ -371,14 +405,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                             }
                             r#fluid_consistency_type = Some(map_access.next_value()?);
                         }
-                        "instruction" => {
+                        Field::Instruction => {
                             let some = r#instruction.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instruction"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_instruction" => {
+                        Field::InstructionPrimitiveElement => {
                             let some = r#instruction.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_instruction"));
@@ -389,22 +423,6 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "schedule",
-                                    "nutrient",
-                                    "texture",
-                                    "fluidConsistencyType",
-                                    "instruction",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -492,6 +510,30 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "productName")]
+            ProductName,
+            #[serde(rename = "_productName")]
+            ProductNamePrimitiveElement,
+            #[serde(rename = "schedule")]
+            Schedule,
+            #[serde(rename = "quantity")]
+            Quantity,
+            #[serde(rename = "instruction")]
+            Instruction,
+            #[serde(rename = "_instruction")]
+            InstructionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderSupplement;
@@ -513,38 +555,38 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                 let mut r#instruction: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "productName" => {
+                        Field::ProductName => {
                             let some = r#product_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("productName"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_productName" => {
+                        Field::ProductNamePrimitiveElement => {
                             let some = r#product_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_productName"));
@@ -556,26 +598,26 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "schedule" => {
+                        Field::Schedule => {
                             if r#schedule.is_some() {
                                 return Err(serde::de::Error::duplicate_field("schedule"));
                             }
                             r#schedule = Some(map_access.next_value()?);
                         }
-                        "quantity" => {
+                        Field::Quantity => {
                             if r#quantity.is_some() {
                                 return Err(serde::de::Error::duplicate_field("quantity"));
                             }
                             r#quantity = Some(map_access.next_value()?);
                         }
-                        "instruction" => {
+                        Field::Instruction => {
                             let some = r#instruction.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instruction"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_instruction" => {
+                        Field::InstructionPrimitiveElement => {
                             let some = r#instruction.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_instruction"));
@@ -586,21 +628,6 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "productName",
-                                    "schedule",
-                                    "quantity",
-                                    "instruction",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -671,6 +698,24 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "schedule")]
+            Schedule,
+            #[serde(rename = "quantity")]
+            Quantity,
+            #[serde(rename = "rateQuantity")]
+            RateQuantity,
+            #[serde(rename = "rateRatio")]
+            RateRatio,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderEnteralFormulaAdministration;
@@ -693,37 +738,37 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
                 let mut r#rate: Option<NutritionOrderEnteralFormulaAdministrationRate> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "schedule" => {
+                        Field::Schedule => {
                             if r#schedule.is_some() {
                                 return Err(serde::de::Error::duplicate_field("schedule"));
                             }
                             r#schedule = Some(map_access.next_value()?);
                         }
-                        "quantity" => {
+                        Field::Quantity => {
                             if r#quantity.is_some() {
                                 return Err(serde::de::Error::duplicate_field("quantity"));
                             }
                             r#quantity = Some(map_access.next_value()?);
                         }
-                        "rateQuantity" => {
+                        Field::RateQuantity => {
                             if r#rate.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rateQuantity"));
                             }
@@ -732,27 +777,13 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
                                     map_access.next_value()?,
                                 ));
                         }
-                        "rateRatio" => {
+                        Field::RateRatio => {
                             if r#rate.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rateRatio"));
                             }
                             r#rate = Some(NutritionOrderEnteralFormulaAdministrationRate::Ratio(
                                 map_access.next_value()?,
                             ));
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "schedule",
-                                    "quantity",
-                                    "rateQuantity",
-                                    "rateRatio",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -862,6 +893,40 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "baseFormulaType")]
+            BaseFormulaType,
+            #[serde(rename = "baseFormulaProductName")]
+            BaseFormulaProductName,
+            #[serde(rename = "_baseFormulaProductName")]
+            BaseFormulaProductNamePrimitiveElement,
+            #[serde(rename = "additiveType")]
+            AdditiveType,
+            #[serde(rename = "additiveProductName")]
+            AdditiveProductName,
+            #[serde(rename = "_additiveProductName")]
+            AdditiveProductNamePrimitiveElement,
+            #[serde(rename = "caloricDensity")]
+            CaloricDensity,
+            #[serde(rename = "routeofAdministration")]
+            RouteofAdministration,
+            #[serde(rename = "administration")]
+            Administration,
+            #[serde(rename = "maxVolumeToDeliver")]
+            MaxVolumeToDeliver,
+            #[serde(rename = "administrationInstruction")]
+            AdministrationInstruction,
+            #[serde(rename = "_administrationInstruction")]
+            AdministrationInstructionPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderEnteralFormula;
@@ -894,31 +959,31 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                 let mut r#administration_instruction: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "baseFormulaType" => {
+                        Field::BaseFormulaType => {
                             if r#base_formula_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("baseFormulaType"));
                             }
                             r#base_formula_type = Some(map_access.next_value()?);
                         }
-                        "baseFormulaProductName" => {
+                        Field::BaseFormulaProductName => {
                             let some =
                                 r#base_formula_product_name.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -928,7 +993,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_baseFormulaProductName" => {
+                        Field::BaseFormulaProductNamePrimitiveElement => {
                             let some =
                                 r#base_formula_product_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -943,13 +1008,13 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "additiveType" => {
+                        Field::AdditiveType => {
                             if r#additive_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("additiveType"));
                             }
                             r#additive_type = Some(map_access.next_value()?);
                         }
-                        "additiveProductName" => {
+                        Field::AdditiveProductName => {
                             let some = r#additive_product_name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -958,7 +1023,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_additiveProductName" => {
+                        Field::AdditiveProductNamePrimitiveElement => {
                             let some = r#additive_product_name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -972,13 +1037,13 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "caloricDensity" => {
+                        Field::CaloricDensity => {
                             if r#caloric_density.is_some() {
                                 return Err(serde::de::Error::duplicate_field("caloricDensity"));
                             }
                             r#caloric_density = Some(map_access.next_value()?);
                         }
-                        "routeofAdministration" => {
+                        Field::RouteofAdministration => {
                             if r#routeof_administration.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "routeofAdministration",
@@ -986,13 +1051,13 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             }
                             r#routeof_administration = Some(map_access.next_value()?);
                         }
-                        "administration" => {
+                        Field::Administration => {
                             if r#administration.is_some() {
                                 return Err(serde::de::Error::duplicate_field("administration"));
                             }
                             r#administration = Some(map_access.next_value()?);
                         }
-                        "maxVolumeToDeliver" => {
+                        Field::MaxVolumeToDeliver => {
                             if r#max_volume_to_deliver.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "maxVolumeToDeliver",
@@ -1000,7 +1065,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             }
                             r#max_volume_to_deliver = Some(map_access.next_value()?);
                         }
-                        "administrationInstruction" => {
+                        Field::AdministrationInstruction => {
                             let some =
                                 r#administration_instruction.get_or_insert(Default::default());
                             if some.value.is_some() {
@@ -1010,7 +1075,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_administrationInstruction" => {
+                        Field::AdministrationInstructionPrimitiveElement => {
                             let some =
                                 r#administration_instruction.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
@@ -1024,25 +1089,6 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "baseFormulaType",
-                                    "baseFormulaProductName",
-                                    "additiveType",
-                                    "additiveProductName",
-                                    "caloricDensity",
-                                    "routeofAdministration",
-                                    "administration",
-                                    "maxVolumeToDeliver",
-                                    "administrationInstruction",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1297,6 +1343,76 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "instantiatesCanonical")]
+            InstantiatesCanonical,
+            #[serde(rename = "_instantiatesCanonical")]
+            InstantiatesCanonicalPrimitiveElement,
+            #[serde(rename = "instantiatesUri")]
+            InstantiatesUri,
+            #[serde(rename = "_instantiatesUri")]
+            InstantiatesUriPrimitiveElement,
+            #[serde(rename = "instantiates")]
+            Instantiates,
+            #[serde(rename = "_instantiates")]
+            InstantiatesPrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "intent")]
+            Intent,
+            #[serde(rename = "_intent")]
+            IntentPrimitiveElement,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "encounter")]
+            Encounter,
+            #[serde(rename = "dateTime")]
+            DateTime,
+            #[serde(rename = "_dateTime")]
+            DateTimePrimitiveElement,
+            #[serde(rename = "orderer")]
+            Orderer,
+            #[serde(rename = "allergyIntolerance")]
+            AllergyIntolerance,
+            #[serde(rename = "foodPreferenceModifier")]
+            FoodPreferenceModifier,
+            #[serde(rename = "excludeFoodModifier")]
+            ExcludeFoodModifier,
+            #[serde(rename = "oralDiet")]
+            OralDiet,
+            #[serde(rename = "supplement")]
+            Supplement,
+            #[serde(rename = "enteralFormula")]
+            EnteralFormula,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrder;
@@ -1341,26 +1457,26 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1372,14 +1488,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1391,37 +1507,37 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "instantiatesCanonical" => {
+                        Field::InstantiatesCanonical => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec = r#instantiates_canonical
                                 .get_or_insert(Vec::with_capacity(values.len()));
@@ -1440,7 +1556,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiatesCanonical" => {
+                        Field::InstantiatesCanonicalPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#instantiates_canonical
@@ -1464,7 +1580,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "instantiatesUri" => {
+                        Field::InstantiatesUri => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#instantiates_uri.get_or_insert(Vec::with_capacity(values.len()));
@@ -1481,7 +1597,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiatesUri" => {
+                        Field::InstantiatesUriPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec = r#instantiates_uri
@@ -1503,7 +1619,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "instantiates" => {
+                        Field::Instantiates => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#instantiates.get_or_insert(Vec::with_capacity(values.len()));
@@ -1520,7 +1636,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 vec[i].value = value;
                             }
                         }
-                        "_instantiates" => {
+                        Field::InstantiatesPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -1542,14 +1658,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -1561,14 +1677,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "intent" => {
+                        Field::Intent => {
                             let some = r#intent.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("intent"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_intent" => {
+                        Field::IntentPrimitiveElement => {
                             let some = r#intent.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_intent"));
@@ -1580,26 +1696,26 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "encounter" => {
+                        Field::Encounter => {
                             if r#encounter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("encounter"));
                             }
                             r#encounter = Some(map_access.next_value()?);
                         }
-                        "dateTime" => {
+                        Field::DateTime => {
                             let some = r#date_time.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dateTime"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_dateTime" => {
+                        Field::DateTimePrimitiveElement => {
                             let some = r#date_time.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_dateTime"));
@@ -1611,13 +1727,13 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "orderer" => {
+                        Field::Orderer => {
                             if r#orderer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("orderer"));
                             }
                             r#orderer = Some(map_access.next_value()?);
                         }
-                        "allergyIntolerance" => {
+                        Field::AllergyIntolerance => {
                             if r#allergy_intolerance.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "allergyIntolerance",
@@ -1625,7 +1741,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             }
                             r#allergy_intolerance = Some(map_access.next_value()?);
                         }
-                        "foodPreferenceModifier" => {
+                        Field::FoodPreferenceModifier => {
                             if r#food_preference_modifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "foodPreferenceModifier",
@@ -1633,7 +1749,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             }
                             r#food_preference_modifier = Some(map_access.next_value()?);
                         }
-                        "excludeFoodModifier" => {
+                        Field::ExcludeFoodModifier => {
                             if r#exclude_food_modifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "excludeFoodModifier",
@@ -1641,61 +1757,29 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             }
                             r#exclude_food_modifier = Some(map_access.next_value()?);
                         }
-                        "oralDiet" => {
+                        Field::OralDiet => {
                             if r#oral_diet.is_some() {
                                 return Err(serde::de::Error::duplicate_field("oralDiet"));
                             }
                             r#oral_diet = Some(map_access.next_value()?);
                         }
-                        "supplement" => {
+                        Field::Supplement => {
                             if r#supplement.is_some() {
                                 return Err(serde::de::Error::duplicate_field("supplement"));
                             }
                             r#supplement = Some(map_access.next_value()?);
                         }
-                        "enteralFormula" => {
+                        Field::EnteralFormula => {
                             if r#enteral_formula.is_some() {
                                 return Err(serde::de::Error::duplicate_field("enteralFormula"));
                             }
                             r#enteral_formula = Some(map_access.next_value()?);
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "instantiatesCanonical",
-                                    "instantiatesUri",
-                                    "instantiates",
-                                    "status",
-                                    "intent",
-                                    "patient",
-                                    "encounter",
-                                    "dateTime",
-                                    "orderer",
-                                    "allergyIntolerance",
-                                    "foodPreferenceModifier",
-                                    "excludeFoodModifier",
-                                    "oralDiet",
-                                    "supplement",
-                                    "enteralFormula",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }

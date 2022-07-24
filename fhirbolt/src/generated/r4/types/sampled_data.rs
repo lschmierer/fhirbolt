@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SampledData {
     pub r#id: Option<std::string::String>,
@@ -101,6 +101,40 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "origin")]
+            Origin,
+            #[serde(rename = "period")]
+            Period,
+            #[serde(rename = "_period")]
+            PeriodPrimitiveElement,
+            #[serde(rename = "factor")]
+            Factor,
+            #[serde(rename = "_factor")]
+            FactorPrimitiveElement,
+            #[serde(rename = "lowerLimit")]
+            LowerLimit,
+            #[serde(rename = "_lowerLimit")]
+            LowerLimitPrimitiveElement,
+            #[serde(rename = "upperLimit")]
+            UpperLimit,
+            #[serde(rename = "_upperLimit")]
+            UpperLimitPrimitiveElement,
+            #[serde(rename = "dimensions")]
+            Dimensions,
+            #[serde(rename = "_dimensions")]
+            DimensionsPrimitiveElement,
+            #[serde(rename = "data")]
+            Data,
+            #[serde(rename = "_data")]
+            DataPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SampledData;
@@ -122,32 +156,32 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                 let mut r#data: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "origin" => {
+                        Field::Origin => {
                             if r#origin.is_some() {
                                 return Err(serde::de::Error::duplicate_field("origin"));
                             }
                             r#origin = Some(map_access.next_value()?);
                         }
-                        "period" => {
+                        Field::Period => {
                             let some = r#period.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_period" => {
+                        Field::PeriodPrimitiveElement => {
                             let some = r#period.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_period"));
@@ -159,14 +193,14 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "factor" => {
+                        Field::Factor => {
                             let some = r#factor.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_factor" => {
+                        Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_factor"));
@@ -178,14 +212,14 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lowerLimit" => {
+                        Field::LowerLimit => {
                             let some = r#lower_limit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lowerLimit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lowerLimit" => {
+                        Field::LowerLimitPrimitiveElement => {
                             let some = r#lower_limit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lowerLimit"));
@@ -197,14 +231,14 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "upperLimit" => {
+                        Field::UpperLimit => {
                             let some = r#upper_limit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("upperLimit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_upperLimit" => {
+                        Field::UpperLimitPrimitiveElement => {
                             let some = r#upper_limit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_upperLimit"));
@@ -216,14 +250,14 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "dimensions" => {
+                        Field::Dimensions => {
                             let some = r#dimensions.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dimensions"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_dimensions" => {
+                        Field::DimensionsPrimitiveElement => {
                             let some = r#dimensions.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_dimensions"));
@@ -235,14 +269,14 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "data" => {
+                        Field::Data => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_data" => {
+                        Field::DataPrimitiveElement => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_data"));
@@ -253,22 +287,6 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "origin",
-                                    "period",
-                                    "factor",
-                                    "lowerLimit",
-                                    "upperLimit",
-                                    "dimensions",
-                                    "data",
-                                ],
-                            ))
                         }
                     }
                 }

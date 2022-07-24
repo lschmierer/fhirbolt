@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
     pub r#id: Option<std::string::String>,
@@ -72,6 +72,30 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "connectivity")]
+            Connectivity,
+            #[serde(rename = "_connectivity")]
+            ConnectivityPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "residueSite")]
+            ResidueSite,
+            #[serde(rename = "_residueSite")]
+            ResidueSitePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcidSubunitLinkage;
@@ -95,32 +119,32 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                 let mut r#residue_site: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "connectivity" => {
+                        Field::Connectivity => {
                             let some = r#connectivity.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("connectivity"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_connectivity" => {
+                        Field::ConnectivityPrimitiveElement => {
                             let some = r#connectivity.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_connectivity"));
@@ -132,20 +156,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -157,14 +181,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "residueSite" => {
+                        Field::ResidueSite => {
                             let some = r#residue_site.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("residueSite"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_residueSite" => {
+                        Field::ResidueSitePrimitiveElement => {
                             let some = r#residue_site.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_residueSite"));
@@ -175,20 +199,6 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "connectivity",
-                                    "identifier",
-                                    "name",
-                                    "residueSite",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -266,6 +276,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "residueSite")]
+            ResidueSite,
+            #[serde(rename = "_residueSite")]
+            ResidueSitePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcidSubunitSugar;
@@ -288,38 +318,38 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                 let mut r#residue_site: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -331,14 +361,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "residueSite" => {
+                        Field::ResidueSite => {
                             let some = r#residue_site.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("residueSite"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_residueSite" => {
+                        Field::ResidueSitePrimitiveElement => {
                             let some = r#residue_site.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_residueSite"));
@@ -349,19 +379,6 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "name",
-                                    "residueSite",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -467,6 +484,38 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "subunit")]
+            Subunit,
+            #[serde(rename = "_subunit")]
+            SubunitPrimitiveElement,
+            #[serde(rename = "sequence")]
+            Sequence,
+            #[serde(rename = "_sequence")]
+            SequencePrimitiveElement,
+            #[serde(rename = "length")]
+            Length,
+            #[serde(rename = "_length")]
+            LengthPrimitiveElement,
+            #[serde(rename = "sequenceAttachment")]
+            SequenceAttachment,
+            #[serde(rename = "fivePrime")]
+            FivePrime,
+            #[serde(rename = "threePrime")]
+            ThreePrime,
+            #[serde(rename = "linkage")]
+            Linkage,
+            #[serde(rename = "sugar")]
+            Sugar,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcidSubunit;
@@ -494,32 +543,32 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                 let mut r#sugar: Option<Vec<SubstanceNucleicAcidSubunitSugar>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "subunit" => {
+                        Field::Subunit => {
                             let some = r#subunit.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subunit"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_subunit" => {
+                        Field::SubunitPrimitiveElement => {
                             let some = r#subunit.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_subunit"));
@@ -531,14 +580,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sequence" => {
+                        Field::Sequence => {
                             let some = r#sequence.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sequence" => {
+                        Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sequence"));
@@ -550,14 +599,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "length" => {
+                        Field::Length => {
                             let some = r#length.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("length"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_length" => {
+                        Field::LengthPrimitiveElement => {
                             let some = r#length.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_length"));
@@ -569,7 +618,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sequenceAttachment" => {
+                        Field::SequenceAttachment => {
                             if r#sequence_attachment.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "sequenceAttachment",
@@ -577,47 +626,29 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             }
                             r#sequence_attachment = Some(map_access.next_value()?);
                         }
-                        "fivePrime" => {
+                        Field::FivePrime => {
                             if r#five_prime.is_some() {
                                 return Err(serde::de::Error::duplicate_field("fivePrime"));
                             }
                             r#five_prime = Some(map_access.next_value()?);
                         }
-                        "threePrime" => {
+                        Field::ThreePrime => {
                             if r#three_prime.is_some() {
                                 return Err(serde::de::Error::duplicate_field("threePrime"));
                             }
                             r#three_prime = Some(map_access.next_value()?);
                         }
-                        "linkage" => {
+                        Field::Linkage => {
                             if r#linkage.is_some() {
                                 return Err(serde::de::Error::duplicate_field("linkage"));
                             }
                             r#linkage = Some(map_access.next_value()?);
                         }
-                        "sugar" => {
+                        Field::Sugar => {
                             if r#sugar.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sugar"));
                             }
                             r#sugar = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "subunit",
-                                    "sequence",
-                                    "length",
-                                    "sequenceAttachment",
-                                    "fivePrime",
-                                    "threePrime",
-                                    "linkage",
-                                    "sugar",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -746,6 +777,44 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "sequenceType")]
+            SequenceType,
+            #[serde(rename = "numberOfSubunits")]
+            NumberOfSubunits,
+            #[serde(rename = "_numberOfSubunits")]
+            NumberOfSubunitsPrimitiveElement,
+            #[serde(rename = "areaOfHybridisation")]
+            AreaOfHybridisation,
+            #[serde(rename = "_areaOfHybridisation")]
+            AreaOfHybridisationPrimitiveElement,
+            #[serde(rename = "oligoNucleotideType")]
+            OligoNucleotideType,
+            #[serde(rename = "subunit")]
+            Subunit,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcid;
@@ -773,26 +842,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                 let mut r#subunit: Option<Vec<SubstanceNucleicAcidSubunit>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -804,14 +873,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -823,44 +892,44 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "sequenceType" => {
+                        Field::SequenceType => {
                             if r#sequence_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequenceType"));
                             }
                             r#sequence_type = Some(map_access.next_value()?);
                         }
-                        "numberOfSubunits" => {
+                        Field::NumberOfSubunits => {
                             let some = r#number_of_subunits.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfSubunits"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_numberOfSubunits" => {
+                        Field::NumberOfSubunitsPrimitiveElement => {
                             let some = r#number_of_subunits.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_numberOfSubunits"));
@@ -872,7 +941,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "areaOfHybridisation" => {
+                        Field::AreaOfHybridisation => {
                             let some = r#area_of_hybridisation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -881,7 +950,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_areaOfHybridisation" => {
+                        Field::AreaOfHybridisationPrimitiveElement => {
                             let some = r#area_of_hybridisation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -895,7 +964,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "oligoNucleotideType" => {
+                        Field::OligoNucleotideType => {
                             if r#oligo_nucleotide_type.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "oligoNucleotideType",
@@ -903,31 +972,11 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             }
                             r#oligo_nucleotide_type = Some(map_access.next_value()?);
                         }
-                        "subunit" => {
+                        Field::Subunit => {
                             if r#subunit.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subunit"));
                             }
                             r#subunit = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "sequenceType",
-                                    "numberOfSubunits",
-                                    "areaOfHybridisation",
-                                    "oligoNucleotideType",
-                                    "subunit",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct CatalogEntryRelatedEntry {
     pub r#id: Option<std::string::String>,
@@ -42,6 +42,22 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "relationtype")]
+            Relationtype,
+            #[serde(rename = "_relationtype")]
+            RelationtypePrimitiveElement,
+            #[serde(rename = "item")]
+            Item,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CatalogEntryRelatedEntry;
@@ -60,32 +76,32 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                 let mut r#item: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "relationtype" => {
+                        Field::Relationtype => {
                             let some = r#relationtype.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relationtype"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_relationtype" => {
+                        Field::RelationtypePrimitiveElement => {
                             let some = r#relationtype.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_relationtype"));
@@ -97,23 +113,11 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "item" => {
+                        Field::Item => {
                             if r#item.is_some() {
                                 return Err(serde::de::Error::duplicate_field("item"));
                             }
                             r#item = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "relationtype",
-                                    "item",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -289,6 +293,64 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "orderable")]
+            Orderable,
+            #[serde(rename = "_orderable")]
+            OrderablePrimitiveElement,
+            #[serde(rename = "referencedItem")]
+            ReferencedItem,
+            #[serde(rename = "additionalIdentifier")]
+            AdditionalIdentifier,
+            #[serde(rename = "classification")]
+            Classification,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "validityPeriod")]
+            ValidityPeriod,
+            #[serde(rename = "validTo")]
+            ValidTo,
+            #[serde(rename = "_validTo")]
+            ValidToPrimitiveElement,
+            #[serde(rename = "lastUpdated")]
+            LastUpdated,
+            #[serde(rename = "_lastUpdated")]
+            LastUpdatedPrimitiveElement,
+            #[serde(rename = "additionalCharacteristic")]
+            AdditionalCharacteristic,
+            #[serde(rename = "additionalClassification")]
+            AdditionalClassification,
+            #[serde(rename = "relatedEntry")]
+            RelatedEntry,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CatalogEntry;
@@ -329,26 +391,26 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                 let mut r#related_entry: Option<Vec<CatalogEntryRelatedEntry>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -360,14 +422,14 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -379,50 +441,50 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "orderable" => {
+                        Field::Orderable => {
                             let some = r#orderable.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("orderable"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_orderable" => {
+                        Field::OrderablePrimitiveElement => {
                             let some = r#orderable.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_orderable"));
@@ -434,13 +496,13 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "referencedItem" => {
+                        Field::ReferencedItem => {
                             if r#referenced_item.is_some() {
                                 return Err(serde::de::Error::duplicate_field("referencedItem"));
                             }
                             r#referenced_item = Some(map_access.next_value()?);
                         }
-                        "additionalIdentifier" => {
+                        Field::AdditionalIdentifier => {
                             if r#additional_identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "additionalIdentifier",
@@ -448,20 +510,20 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             }
                             r#additional_identifier = Some(map_access.next_value()?);
                         }
-                        "classification" => {
+                        Field::Classification => {
                             if r#classification.is_some() {
                                 return Err(serde::de::Error::duplicate_field("classification"));
                             }
                             r#classification = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -473,20 +535,20 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "validityPeriod" => {
+                        Field::ValidityPeriod => {
                             if r#validity_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("validityPeriod"));
                             }
                             r#validity_period = Some(map_access.next_value()?);
                         }
-                        "validTo" => {
+                        Field::ValidTo => {
                             let some = r#valid_to.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("validTo"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_validTo" => {
+                        Field::ValidToPrimitiveElement => {
                             let some = r#valid_to.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_validTo"));
@@ -498,14 +560,14 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lastUpdated" => {
+                        Field::LastUpdated => {
                             let some = r#last_updated.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastUpdated"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lastUpdated" => {
+                        Field::LastUpdatedPrimitiveElement => {
                             let some = r#last_updated.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lastUpdated"));
@@ -517,7 +579,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "additionalCharacteristic" => {
+                        Field::AdditionalCharacteristic => {
                             if r#additional_characteristic.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "additionalCharacteristic",
@@ -525,7 +587,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             }
                             r#additional_characteristic = Some(map_access.next_value()?);
                         }
-                        "additionalClassification" => {
+                        Field::AdditionalClassification => {
                             if r#additional_classification.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "additionalClassification",
@@ -533,39 +595,11 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             }
                             r#additional_classification = Some(map_access.next_value()?);
                         }
-                        "relatedEntry" => {
+                        Field::RelatedEntry => {
                             if r#related_entry.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relatedEntry"));
                             }
                             r#related_entry = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "type",
-                                    "orderable",
-                                    "referencedItem",
-                                    "additionalIdentifier",
-                                    "classification",
-                                    "status",
-                                    "validityPeriod",
-                                    "validTo",
-                                    "lastUpdated",
-                                    "additionalCharacteristic",
-                                    "additionalClassification",
-                                    "relatedEntry",
-                                ],
-                            ))
                         }
                     }
                 }

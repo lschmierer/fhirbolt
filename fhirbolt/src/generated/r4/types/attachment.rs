@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Attachment {
     pub r#id: Option<std::string::String>,
@@ -129,6 +129,46 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "contentType")]
+            ContentType,
+            #[serde(rename = "_contentType")]
+            ContentTypePrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "data")]
+            Data,
+            #[serde(rename = "_data")]
+            DataPrimitiveElement,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "size")]
+            Size,
+            #[serde(rename = "_size")]
+            SizePrimitiveElement,
+            #[serde(rename = "hash")]
+            Hash,
+            #[serde(rename = "_hash")]
+            HashPrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "creation")]
+            Creation,
+            #[serde(rename = "_creation")]
+            CreationPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Attachment;
@@ -151,26 +191,26 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                 let mut r#creation: Option<super::super::types::DateTime> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "contentType" => {
+                        Field::ContentType => {
                             let some = r#content_type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contentType"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_contentType" => {
+                        Field::ContentTypePrimitiveElement => {
                             let some = r#content_type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_contentType"));
@@ -182,14 +222,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -201,14 +241,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "data" => {
+                        Field::Data => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_data" => {
+                        Field::DataPrimitiveElement => {
                             let some = r#data.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_data"));
@@ -220,14 +260,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -239,14 +279,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "size" => {
+                        Field::Size => {
                             let some = r#size.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("size"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_size" => {
+                        Field::SizePrimitiveElement => {
                             let some = r#size.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_size"));
@@ -258,14 +298,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "hash" => {
+                        Field::Hash => {
                             let some = r#hash.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("hash"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_hash" => {
+                        Field::HashPrimitiveElement => {
                             let some = r#hash.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_hash"));
@@ -277,14 +317,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -296,14 +336,14 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "creation" => {
+                        Field::Creation => {
                             let some = r#creation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("creation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_creation" => {
+                        Field::CreationPrimitiveElement => {
                             let some = r#creation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_creation"));
@@ -314,23 +354,6 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "contentType",
-                                    "language",
-                                    "data",
-                                    "url",
-                                    "size",
-                                    "hash",
-                                    "title",
-                                    "creation",
-                                ],
-                            ))
                         }
                     }
                 }

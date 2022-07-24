@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductPharmaceuticalCharacteristics {
     pub r#id: Option<std::string::String>,
@@ -35,6 +35,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalCharacte
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "status")]
+            Status,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductPharmaceuticalCharacteristics;
@@ -56,41 +70,35 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalCharacte
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             if r#status.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             r#status = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "code", "status"],
-                            ))
                         }
                     }
                 }
@@ -157,6 +165,24 @@ impl<'de> serde::de::Deserialize<'de>
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "tissue")]
+            Tissue,
+            #[serde(rename = "value")]
+            Value,
+            #[serde(rename = "supportingInformation")]
+            SupportingInformation,
+            #[serde(rename = "_supportingInformation")]
+            SupportingInformationPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value =
@@ -183,37 +209,37 @@ impl<'de> serde::de::Deserialize<'de>
                 let mut r#supporting_information: Option<super::super::types::String> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "tissue" => {
+                        Field::Tissue => {
                             if r#tissue.is_some() {
                                 return Err(serde::de::Error::duplicate_field("tissue"));
                             }
                             r#tissue = Some(map_access.next_value()?);
                         }
-                        "value" => {
+                        Field::Value => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             r#value = Some(map_access.next_value()?);
                         }
-                        "supportingInformation" => {
+                        Field::SupportingInformation => {
                             let some = r#supporting_information.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -222,7 +248,7 @@ impl<'de> serde::de::Deserialize<'de>
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_supportingInformation" => {
+                        Field::SupportingInformationPrimitiveElement => {
                             let some = r#supporting_information.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field(
@@ -235,19 +261,6 @@ impl<'de> serde::de::Deserialize<'de>
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "tissue",
-                                    "value",
-                                    "supportingInformation",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -296,6 +309,20 @@ impl<'de> serde::de::Deserialize<'de>
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "withdrawalPeriod")]
+            WithdrawalPeriod,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies;
@@ -318,47 +345,35 @@ impl<'de> serde::de::Deserialize<'de>
                 let mut r#withdrawal_period : Option < Vec < MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > > = None ;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "withdrawalPeriod" => {
+                        Field::WithdrawalPeriod => {
                             if r#withdrawal_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("withdrawalPeriod"));
                             }
                             r#withdrawal_period = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "withdrawalPeriod",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -432,6 +447,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "firstDose")]
+            FirstDose,
+            #[serde(rename = "maxSingleDose")]
+            MaxSingleDose,
+            #[serde(rename = "maxDosePerDay")]
+            MaxDosePerDay,
+            #[serde(rename = "maxDosePerTreatmentPeriod")]
+            MaxDosePerTreatmentPeriod,
+            #[serde(rename = "maxTreatmentPeriod")]
+            MaxTreatmentPeriod,
+            #[serde(rename = "targetSpecies")]
+            TargetSpecies,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductPharmaceuticalRouteOfAdministration;
@@ -461,49 +500,49 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "firstDose" => {
+                        Field::FirstDose => {
                             if r#first_dose.is_some() {
                                 return Err(serde::de::Error::duplicate_field("firstDose"));
                             }
                             r#first_dose = Some(map_access.next_value()?);
                         }
-                        "maxSingleDose" => {
+                        Field::MaxSingleDose => {
                             if r#max_single_dose.is_some() {
                                 return Err(serde::de::Error::duplicate_field("maxSingleDose"));
                             }
                             r#max_single_dose = Some(map_access.next_value()?);
                         }
-                        "maxDosePerDay" => {
+                        Field::MaxDosePerDay => {
                             if r#max_dose_per_day.is_some() {
                                 return Err(serde::de::Error::duplicate_field("maxDosePerDay"));
                             }
                             r#max_dose_per_day = Some(map_access.next_value()?);
                         }
-                        "maxDosePerTreatmentPeriod" => {
+                        Field::MaxDosePerTreatmentPeriod => {
                             if r#max_dose_per_treatment_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "maxDosePerTreatmentPeriod",
@@ -511,7 +550,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
                             }
                             r#max_dose_per_treatment_period = Some(map_access.next_value()?);
                         }
-                        "maxTreatmentPeriod" => {
+                        Field::MaxTreatmentPeriod => {
                             if r#max_treatment_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "maxTreatmentPeriod",
@@ -519,28 +558,11 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
                             }
                             r#max_treatment_period = Some(map_access.next_value()?);
                         }
-                        "targetSpecies" => {
+                        Field::TargetSpecies => {
                             if r#target_species.is_some() {
                                 return Err(serde::de::Error::duplicate_field("targetSpecies"));
                             }
                             r#target_species = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "code",
-                                    "firstDose",
-                                    "maxSingleDose",
-                                    "maxDosePerDay",
-                                    "maxDosePerTreatmentPeriod",
-                                    "maxTreatmentPeriod",
-                                    "targetSpecies",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -656,6 +678,44 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "administrableDoseForm")]
+            AdministrableDoseForm,
+            #[serde(rename = "unitOfPresentation")]
+            UnitOfPresentation,
+            #[serde(rename = "ingredient")]
+            Ingredient,
+            #[serde(rename = "device")]
+            Device,
+            #[serde(rename = "characteristics")]
+            Characteristics,
+            #[serde(rename = "routeOfAdministration")]
+            RouteOfAdministration,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductPharmaceutical;
@@ -694,26 +754,26 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                 > = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -725,14 +785,14 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -744,37 +804,37 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "administrableDoseForm" => {
+                        Field::AdministrableDoseForm => {
                             if r#administrable_dose_form.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "administrableDoseForm",
@@ -782,7 +842,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                             }
                             r#administrable_dose_form = Some(map_access.next_value()?);
                         }
-                        "unitOfPresentation" => {
+                        Field::UnitOfPresentation => {
                             if r#unit_of_presentation.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "unitOfPresentation",
@@ -790,53 +850,31 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                             }
                             r#unit_of_presentation = Some(map_access.next_value()?);
                         }
-                        "ingredient" => {
+                        Field::Ingredient => {
                             if r#ingredient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ingredient"));
                             }
                             r#ingredient = Some(map_access.next_value()?);
                         }
-                        "device" => {
+                        Field::Device => {
                             if r#device.is_some() {
                                 return Err(serde::de::Error::duplicate_field("device"));
                             }
                             r#device = Some(map_access.next_value()?);
                         }
-                        "characteristics" => {
+                        Field::Characteristics => {
                             if r#characteristics.is_some() {
                                 return Err(serde::de::Error::duplicate_field("characteristics"));
                             }
                             r#characteristics = Some(map_access.next_value()?);
                         }
-                        "routeOfAdministration" => {
+                        Field::RouteOfAdministration => {
                             if r#route_of_administration.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "routeOfAdministration",
                                 ));
                             }
                             r#route_of_administration = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "administrableDoseForm",
-                                    "unitOfPresentation",
-                                    "ingredient",
-                                    "device",
-                                    "characteristics",
-                                    "routeOfAdministration",
-                                ],
-                            ))
                         }
                     }
                 }

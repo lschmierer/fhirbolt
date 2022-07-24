@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DiagnosticReportEffective {
     DateTime(Box<super::super::types::DateTime>),
@@ -55,6 +55,22 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "comment")]
+            Comment,
+            #[serde(rename = "_comment")]
+            CommentPrimitiveElement,
+            #[serde(rename = "link")]
+            Link,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DiagnosticReportMedia;
@@ -73,32 +89,32 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
                 let mut r#link: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "comment" => {
+                        Field::Comment => {
                             let some = r#comment.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_comment" => {
+                        Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_comment"));
@@ -110,17 +126,11 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "link" => {
+                        Field::Link => {
                             if r#link.is_some() {
                                 return Err(serde::de::Error::duplicate_field("link"));
                             }
                             r#link = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "comment", "link"],
-                            ))
                         }
                     }
                 }
@@ -319,6 +329,76 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "basedOn")]
+            BasedOn,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "category")]
+            Category,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "subject")]
+            Subject,
+            #[serde(rename = "encounter")]
+            Encounter,
+            #[serde(rename = "effectiveDateTime")]
+            EffectiveDateTime,
+            #[serde(rename = "_effectiveDateTime")]
+            EffectiveDateTimePrimitiveElement,
+            #[serde(rename = "effectivePeriod")]
+            EffectivePeriod,
+            #[serde(rename = "issued")]
+            Issued,
+            #[serde(rename = "_issued")]
+            IssuedPrimitiveElement,
+            #[serde(rename = "performer")]
+            Performer,
+            #[serde(rename = "resultsInterpreter")]
+            ResultsInterpreter,
+            #[serde(rename = "specimen")]
+            Specimen,
+            #[serde(rename = "result")]
+            Result,
+            #[serde(rename = "imagingStudy")]
+            ImagingStudy,
+            #[serde(rename = "media")]
+            Media,
+            #[serde(rename = "conclusion")]
+            Conclusion,
+            #[serde(rename = "_conclusion")]
+            ConclusionPrimitiveElement,
+            #[serde(rename = "conclusionCode")]
+            ConclusionCode,
+            #[serde(rename = "presentedForm")]
+            PresentedForm,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DiagnosticReport;
@@ -360,26 +440,26 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                 let mut r#presented_form: Option<Vec<Box<super::super::types::Attachment>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -391,14 +471,14 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -410,50 +490,50 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "basedOn" => {
+                        Field::BasedOn => {
                             if r#based_on.is_some() {
                                 return Err(serde::de::Error::duplicate_field("basedOn"));
                             }
                             r#based_on = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -465,31 +545,31 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "category" => {
+                        Field::Category => {
                             if r#category.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             r#category = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "subject" => {
+                        Field::Subject => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subject"));
                             }
                             r#subject = Some(map_access.next_value()?);
                         }
-                        "encounter" => {
+                        Field::Encounter => {
                             if r#encounter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("encounter"));
                             }
                             r#encounter = Some(map_access.next_value()?);
                         }
-                        "effectiveDateTime" => {
+                        Field::EffectiveDateTime => {
                             let r#enum = r#effective.get_or_insert(
                                 DiagnosticReportEffective::DateTime(Default::default()),
                             );
@@ -504,7 +584,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                 return Err(serde::de::Error::duplicate_field("effective[x]"));
                             }
                         }
-                        "_effectiveDateTime" => {
+                        Field::EffectiveDateTimePrimitiveElement => {
                             let r#enum = r#effective.get_or_insert(
                                 DiagnosticReportEffective::DateTime(Default::default()),
                             );
@@ -524,21 +604,21 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                 return Err(serde::de::Error::duplicate_field("_effective[x]"));
                             }
                         }
-                        "effectivePeriod" => {
+                        Field::EffectivePeriod => {
                             if r#effective.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectivePeriod"));
                             }
                             r#effective =
                                 Some(DiagnosticReportEffective::Period(map_access.next_value()?));
                         }
-                        "issued" => {
+                        Field::Issued => {
                             let some = r#issued.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issued"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_issued" => {
+                        Field::IssuedPrimitiveElement => {
                             let some = r#issued.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_issued"));
@@ -550,13 +630,13 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "performer" => {
+                        Field::Performer => {
                             if r#performer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("performer"));
                             }
                             r#performer = Some(map_access.next_value()?);
                         }
-                        "resultsInterpreter" => {
+                        Field::ResultsInterpreter => {
                             if r#results_interpreter.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "resultsInterpreter",
@@ -564,38 +644,38 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             }
                             r#results_interpreter = Some(map_access.next_value()?);
                         }
-                        "specimen" => {
+                        Field::Specimen => {
                             if r#specimen.is_some() {
                                 return Err(serde::de::Error::duplicate_field("specimen"));
                             }
                             r#specimen = Some(map_access.next_value()?);
                         }
-                        "result" => {
+                        Field::Result => {
                             if r#result.is_some() {
                                 return Err(serde::de::Error::duplicate_field("result"));
                             }
                             r#result = Some(map_access.next_value()?);
                         }
-                        "imagingStudy" => {
+                        Field::ImagingStudy => {
                             if r#imaging_study.is_some() {
                                 return Err(serde::de::Error::duplicate_field("imagingStudy"));
                             }
                             r#imaging_study = Some(map_access.next_value()?);
                         }
-                        "media" => {
+                        Field::Media => {
                             if r#media.is_some() {
                                 return Err(serde::de::Error::duplicate_field("media"));
                             }
                             r#media = Some(map_access.next_value()?);
                         }
-                        "conclusion" => {
+                        Field::Conclusion => {
                             let some = r#conclusion.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("conclusion"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_conclusion" => {
+                        Field::ConclusionPrimitiveElement => {
                             let some = r#conclusion.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_conclusion"));
@@ -607,51 +687,17 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "conclusionCode" => {
+                        Field::ConclusionCode => {
                             if r#conclusion_code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("conclusionCode"));
                             }
                             r#conclusion_code = Some(map_access.next_value()?);
                         }
-                        "presentedForm" => {
+                        Field::PresentedForm => {
                             if r#presented_form.is_some() {
                                 return Err(serde::de::Error::duplicate_field("presentedForm"));
                             }
                             r#presented_form = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "basedOn",
-                                    "status",
-                                    "category",
-                                    "code",
-                                    "subject",
-                                    "encounter",
-                                    "effectiveDateTime",
-                                    "effectivePeriod",
-                                    "issued",
-                                    "performer",
-                                    "resultsInterpreter",
-                                    "specimen",
-                                    "result",
-                                    "imagingStudy",
-                                    "media",
-                                    "conclusion",
-                                    "conclusionCode",
-                                    "presentedForm",
-                                ],
-                            ))
                         }
                     }
                 }

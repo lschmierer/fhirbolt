@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum QuestionnaireItemEnableWhenAnswer {
     Boolean(Box<super::super::types::Boolean>),
@@ -205,6 +205,58 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "question")]
+            Question,
+            #[serde(rename = "_question")]
+            QuestionPrimitiveElement,
+            #[serde(rename = "operator")]
+            Operator,
+            #[serde(rename = "_operator")]
+            OperatorPrimitiveElement,
+            #[serde(rename = "answerBoolean")]
+            AnswerBoolean,
+            #[serde(rename = "_answerBoolean")]
+            AnswerBooleanPrimitiveElement,
+            #[serde(rename = "answerDecimal")]
+            AnswerDecimal,
+            #[serde(rename = "_answerDecimal")]
+            AnswerDecimalPrimitiveElement,
+            #[serde(rename = "answerInteger")]
+            AnswerInteger,
+            #[serde(rename = "_answerInteger")]
+            AnswerIntegerPrimitiveElement,
+            #[serde(rename = "answerDate")]
+            AnswerDate,
+            #[serde(rename = "_answerDate")]
+            AnswerDatePrimitiveElement,
+            #[serde(rename = "answerDateTime")]
+            AnswerDateTime,
+            #[serde(rename = "_answerDateTime")]
+            AnswerDateTimePrimitiveElement,
+            #[serde(rename = "answerTime")]
+            AnswerTime,
+            #[serde(rename = "_answerTime")]
+            AnswerTimePrimitiveElement,
+            #[serde(rename = "answerString")]
+            AnswerString,
+            #[serde(rename = "_answerString")]
+            AnswerStringPrimitiveElement,
+            #[serde(rename = "answerCoding")]
+            AnswerCoding,
+            #[serde(rename = "answerQuantity")]
+            AnswerQuantity,
+            #[serde(rename = "answerReference")]
+            AnswerReference,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItemEnableWhen;
@@ -227,32 +279,32 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                 let mut r#answer: Option<QuestionnaireItemEnableWhenAnswer> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "question" => {
+                        Field::Question => {
                             let some = r#question.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("question"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_question" => {
+                        Field::QuestionPrimitiveElement => {
                             let some = r#question.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_question"));
@@ -264,14 +316,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "operator" => {
+                        Field::Operator => {
                             let some = r#operator.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("operator"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_operator" => {
+                        Field::OperatorPrimitiveElement => {
                             let some = r#operator.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_operator"));
@@ -283,7 +335,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "answerBoolean" => {
+                        Field::AnswerBoolean => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Boolean(Default::default()),
                             );
@@ -296,7 +348,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerBoolean" => {
+                        Field::AnswerBooleanPrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Boolean(Default::default()),
                             );
@@ -316,7 +368,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerDecimal" => {
+                        Field::AnswerDecimal => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Decimal(Default::default()),
                             );
@@ -329,7 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerDecimal" => {
+                        Field::AnswerDecimalPrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Decimal(Default::default()),
                             );
@@ -349,7 +401,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerInteger" => {
+                        Field::AnswerInteger => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Integer(Default::default()),
                             );
@@ -362,7 +414,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerInteger" => {
+                        Field::AnswerIntegerPrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Integer(Default::default()),
                             );
@@ -382,7 +434,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerDate" => {
+                        Field::AnswerDate => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Date(Default::default()),
                             );
@@ -395,7 +447,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerDate" => {
+                        Field::AnswerDatePrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Date(Default::default()),
                             );
@@ -413,7 +465,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerDateTime" => {
+                        Field::AnswerDateTime => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::DateTime(Default::default()),
                             );
@@ -428,7 +480,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerDateTime" => {
+                        Field::AnswerDateTimePrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::DateTime(Default::default()),
                             );
@@ -448,7 +500,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerTime" => {
+                        Field::AnswerTime => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Time(Default::default()),
                             );
@@ -461,7 +513,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerTime" => {
+                        Field::AnswerTimePrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::Time(Default::default()),
                             );
@@ -479,7 +531,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerString" => {
+                        Field::AnswerString => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::String(Default::default()),
                             );
@@ -492,7 +544,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("answer[x]"));
                             }
                         }
-                        "_answerString" => {
+                        Field::AnswerStringPrimitiveElement => {
                             let r#enum = r#answer.get_or_insert(
                                 QuestionnaireItemEnableWhenAnswer::String(Default::default()),
                             );
@@ -510,7 +562,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 return Err(serde::de::Error::duplicate_field("_answer[x]"));
                             }
                         }
-                        "answerCoding" => {
+                        Field::AnswerCoding => {
                             if r#answer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("answerCoding"));
                             }
@@ -518,7 +570,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 map_access.next_value()?,
                             ));
                         }
-                        "answerQuantity" => {
+                        Field::AnswerQuantity => {
                             if r#answer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("answerQuantity"));
                             }
@@ -526,35 +578,13 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                 map_access.next_value()?,
                             ));
                         }
-                        "answerReference" => {
+                        Field::AnswerReference => {
                             if r#answer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("answerReference"));
                             }
                             r#answer = Some(QuestionnaireItemEnableWhenAnswer::Reference(
                                 map_access.next_value()?,
                             ));
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "question",
-                                    "operator",
-                                    "answerBoolean",
-                                    "answerDecimal",
-                                    "answerInteger",
-                                    "answerDate",
-                                    "answerDateTime",
-                                    "answerTime",
-                                    "answerString",
-                                    "answerCoding",
-                                    "answerQuantity",
-                                    "answerReference",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -674,6 +704,40 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "valueInteger")]
+            ValueInteger,
+            #[serde(rename = "_valueInteger")]
+            ValueIntegerPrimitiveElement,
+            #[serde(rename = "valueDate")]
+            ValueDate,
+            #[serde(rename = "_valueDate")]
+            ValueDatePrimitiveElement,
+            #[serde(rename = "valueTime")]
+            ValueTime,
+            #[serde(rename = "_valueTime")]
+            ValueTimePrimitiveElement,
+            #[serde(rename = "valueString")]
+            ValueString,
+            #[serde(rename = "_valueString")]
+            ValueStringPrimitiveElement,
+            #[serde(rename = "valueCoding")]
+            ValueCoding,
+            #[serde(rename = "valueReference")]
+            ValueReference,
+            #[serde(rename = "initialSelected")]
+            InitialSelected,
+            #[serde(rename = "_initialSelected")]
+            InitialSelectedPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItemAnswerOption;
@@ -695,25 +759,25 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                 let mut r#initial_selected: Option<super::super::types::Boolean> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "valueInteger" => {
+                        Field::ValueInteger => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::Integer(Default::default()),
                             );
@@ -726,7 +790,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueInteger" => {
+                        Field::ValueIntegerPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::Integer(Default::default()),
                             );
@@ -744,7 +808,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDate" => {
+                        Field::ValueDate => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::Date(Default::default()),
                             );
@@ -757,7 +821,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDate" => {
+                        Field::ValueDatePrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::Date(Default::default()),
                             );
@@ -775,7 +839,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueTime" => {
+                        Field::ValueTime => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::Time(Default::default()),
                             );
@@ -788,7 +852,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueTime" => {
+                        Field::ValueTimePrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::Time(Default::default()),
                             );
@@ -806,7 +870,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueString" => {
+                        Field::ValueString => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::String(Default::default()),
                             );
@@ -819,7 +883,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueString" => {
+                        Field::ValueStringPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemAnswerOptionValue::String(Default::default()),
                             );
@@ -837,7 +901,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueCoding" => {
+                        Field::ValueCoding => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueCoding"));
                             }
@@ -845,7 +909,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueReference" => {
+                        Field::ValueReference => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueReference"));
                             }
@@ -853,14 +917,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 map_access.next_value()?,
                             ));
                         }
-                        "initialSelected" => {
+                        Field::InitialSelected => {
                             let some = r#initial_selected.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("initialSelected"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_initialSelected" => {
+                        Field::InitialSelectedPrimitiveElement => {
                             let some = r#initial_selected.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_initialSelected"));
@@ -871,23 +935,6 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "valueInteger",
-                                    "valueDate",
-                                    "valueTime",
-                                    "valueString",
-                                    "valueCoding",
-                                    "valueReference",
-                                    "initialSelected",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1047,6 +1094,56 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "valueBoolean")]
+            ValueBoolean,
+            #[serde(rename = "_valueBoolean")]
+            ValueBooleanPrimitiveElement,
+            #[serde(rename = "valueDecimal")]
+            ValueDecimal,
+            #[serde(rename = "_valueDecimal")]
+            ValueDecimalPrimitiveElement,
+            #[serde(rename = "valueInteger")]
+            ValueInteger,
+            #[serde(rename = "_valueInteger")]
+            ValueIntegerPrimitiveElement,
+            #[serde(rename = "valueDate")]
+            ValueDate,
+            #[serde(rename = "_valueDate")]
+            ValueDatePrimitiveElement,
+            #[serde(rename = "valueDateTime")]
+            ValueDateTime,
+            #[serde(rename = "_valueDateTime")]
+            ValueDateTimePrimitiveElement,
+            #[serde(rename = "valueTime")]
+            ValueTime,
+            #[serde(rename = "_valueTime")]
+            ValueTimePrimitiveElement,
+            #[serde(rename = "valueString")]
+            ValueString,
+            #[serde(rename = "_valueString")]
+            ValueStringPrimitiveElement,
+            #[serde(rename = "valueUri")]
+            ValueUri,
+            #[serde(rename = "_valueUri")]
+            ValueUriPrimitiveElement,
+            #[serde(rename = "valueAttachment")]
+            ValueAttachment,
+            #[serde(rename = "valueCoding")]
+            ValueCoding,
+            #[serde(rename = "valueQuantity")]
+            ValueQuantity,
+            #[serde(rename = "valueReference")]
+            ValueReference,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItemInitial;
@@ -1064,25 +1161,25 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                 let mut r#value: Option<QuestionnaireItemInitialValue> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "valueBoolean" => {
+                        Field::ValueBoolean => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Boolean(Default::default()),
                             );
@@ -1095,7 +1192,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBoolean" => {
+                        Field::ValueBooleanPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Boolean(Default::default()),
                             );
@@ -1113,7 +1210,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDecimal" => {
+                        Field::ValueDecimal => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Decimal(Default::default()),
                             );
@@ -1126,7 +1223,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDecimal" => {
+                        Field::ValueDecimalPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Decimal(Default::default()),
                             );
@@ -1144,7 +1241,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueInteger" => {
+                        Field::ValueInteger => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Integer(Default::default()),
                             );
@@ -1157,7 +1254,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueInteger" => {
+                        Field::ValueIntegerPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Integer(Default::default()),
                             );
@@ -1175,7 +1272,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDate" => {
+                        Field::ValueDate => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Date(Default::default()),
                             );
@@ -1188,7 +1285,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDate" => {
+                        Field::ValueDatePrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Date(Default::default()),
                             );
@@ -1206,7 +1303,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDateTime" => {
+                        Field::ValueDateTime => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::DateTime(Default::default()),
                             );
@@ -1219,7 +1316,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDateTime" => {
+                        Field::ValueDateTimePrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::DateTime(Default::default()),
                             );
@@ -1239,7 +1336,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueTime" => {
+                        Field::ValueTime => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Time(Default::default()),
                             );
@@ -1252,7 +1349,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueTime" => {
+                        Field::ValueTimePrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::Time(Default::default()),
                             );
@@ -1270,7 +1367,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueString" => {
+                        Field::ValueString => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::String(Default::default()),
                             );
@@ -1283,7 +1380,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueString" => {
+                        Field::ValueStringPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 QuestionnaireItemInitialValue::String(Default::default()),
                             );
@@ -1301,7 +1398,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueUri" => {
+                        Field::ValueUri => {
                             let r#enum = r#value.get_or_insert(QuestionnaireItemInitialValue::Uri(
                                 Default::default(),
                             ));
@@ -1314,7 +1411,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueUri" => {
+                        Field::ValueUriPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(QuestionnaireItemInitialValue::Uri(
                                 Default::default(),
                             ));
@@ -1332,7 +1429,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueAttachment" => {
+                        Field::ValueAttachment => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueAttachment"));
                             }
@@ -1340,7 +1437,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueCoding" => {
+                        Field::ValueCoding => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueCoding"));
                             }
@@ -1348,7 +1445,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueQuantity" => {
+                        Field::ValueQuantity => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueQuantity"));
                             }
@@ -1356,35 +1453,13 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueReference" => {
+                        Field::ValueReference => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueReference"));
                             }
                             r#value = Some(QuestionnaireItemInitialValue::Reference(
                                 map_access.next_value()?,
                             ));
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "valueBoolean",
-                                    "valueDecimal",
-                                    "valueInteger",
-                                    "valueDate",
-                                    "valueDateTime",
-                                    "valueTime",
-                                    "valueString",
-                                    "valueUri",
-                                    "valueAttachment",
-                                    "valueCoding",
-                                    "valueQuantity",
-                                    "valueReference",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1588,6 +1663,70 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "linkId")]
+            LinkId,
+            #[serde(rename = "_linkId")]
+            LinkIdPrimitiveElement,
+            #[serde(rename = "definition")]
+            Definition,
+            #[serde(rename = "_definition")]
+            DefinitionPrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "prefix")]
+            Prefix,
+            #[serde(rename = "_prefix")]
+            PrefixPrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "_text")]
+            TextPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "enableWhen")]
+            EnableWhen,
+            #[serde(rename = "enableBehavior")]
+            EnableBehavior,
+            #[serde(rename = "_enableBehavior")]
+            EnableBehaviorPrimitiveElement,
+            #[serde(rename = "required")]
+            Required,
+            #[serde(rename = "_required")]
+            RequiredPrimitiveElement,
+            #[serde(rename = "repeats")]
+            Repeats,
+            #[serde(rename = "_repeats")]
+            RepeatsPrimitiveElement,
+            #[serde(rename = "readOnly")]
+            ReadOnly,
+            #[serde(rename = "_readOnly")]
+            ReadOnlyPrimitiveElement,
+            #[serde(rename = "maxLength")]
+            MaxLength,
+            #[serde(rename = "_maxLength")]
+            MaxLengthPrimitiveElement,
+            #[serde(rename = "answerValueSet")]
+            AnswerValueSet,
+            #[serde(rename = "_answerValueSet")]
+            AnswerValueSetPrimitiveElement,
+            #[serde(rename = "answerOption")]
+            AnswerOption,
+            #[serde(rename = "initial")]
+            Initial,
+            #[serde(rename = "item")]
+            Item,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItem;
@@ -1620,32 +1759,32 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                 let mut r#item: Option<Vec<QuestionnaireItem>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "linkId" => {
+                        Field::LinkId => {
                             let some = r#link_id.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("linkId"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_linkId" => {
+                        Field::LinkIdPrimitiveElement => {
                             let some = r#link_id.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_linkId"));
@@ -1657,14 +1796,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "definition" => {
+                        Field::Definition => {
                             let some = r#definition.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("definition"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_definition" => {
+                        Field::DefinitionPrimitiveElement => {
                             let some = r#definition.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_definition"));
@@ -1676,20 +1815,20 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "prefix" => {
+                        Field::Prefix => {
                             let some = r#prefix.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("prefix"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_prefix" => {
+                        Field::PrefixPrimitiveElement => {
                             let some = r#prefix.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_prefix"));
@@ -1701,14 +1840,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_text" => {
+                        Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_text"));
@@ -1720,14 +1859,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -1739,20 +1878,20 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "enableWhen" => {
+                        Field::EnableWhen => {
                             if r#enable_when.is_some() {
                                 return Err(serde::de::Error::duplicate_field("enableWhen"));
                             }
                             r#enable_when = Some(map_access.next_value()?);
                         }
-                        "enableBehavior" => {
+                        Field::EnableBehavior => {
                             let some = r#enable_behavior.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("enableBehavior"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_enableBehavior" => {
+                        Field::EnableBehaviorPrimitiveElement => {
                             let some = r#enable_behavior.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_enableBehavior"));
@@ -1764,14 +1903,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "required" => {
+                        Field::Required => {
                             let some = r#required.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("required"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_required" => {
+                        Field::RequiredPrimitiveElement => {
                             let some = r#required.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_required"));
@@ -1783,14 +1922,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "repeats" => {
+                        Field::Repeats => {
                             let some = r#repeats.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repeats"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_repeats" => {
+                        Field::RepeatsPrimitiveElement => {
                             let some = r#repeats.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_repeats"));
@@ -1802,14 +1941,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "readOnly" => {
+                        Field::ReadOnly => {
                             let some = r#read_only.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("readOnly"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_readOnly" => {
+                        Field::ReadOnlyPrimitiveElement => {
                             let some = r#read_only.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_readOnly"));
@@ -1821,14 +1960,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "maxLength" => {
+                        Field::MaxLength => {
                             let some = r#max_length.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("maxLength"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_maxLength" => {
+                        Field::MaxLengthPrimitiveElement => {
                             let some = r#max_length.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_maxLength"));
@@ -1840,14 +1979,14 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "answerValueSet" => {
+                        Field::AnswerValueSet => {
                             let some = r#answer_value_set.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("answerValueSet"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_answerValueSet" => {
+                        Field::AnswerValueSetPrimitiveElement => {
                             let some = r#answer_value_set.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_answerValueSet"));
@@ -1859,49 +1998,23 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "answerOption" => {
+                        Field::AnswerOption => {
                             if r#answer_option.is_some() {
                                 return Err(serde::de::Error::duplicate_field("answerOption"));
                             }
                             r#answer_option = Some(map_access.next_value()?);
                         }
-                        "initial" => {
+                        Field::Initial => {
                             if r#initial.is_some() {
                                 return Err(serde::de::Error::duplicate_field("initial"));
                             }
                             r#initial = Some(map_access.next_value()?);
                         }
-                        "item" => {
+                        Field::Item => {
                             if r#item.is_some() {
                                 return Err(serde::de::Error::duplicate_field("item"));
                             }
                             r#item = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "linkId",
-                                    "definition",
-                                    "code",
-                                    "prefix",
-                                    "text",
-                                    "type",
-                                    "enableWhen",
-                                    "enableBehavior",
-                                    "required",
-                                    "repeats",
-                                    "readOnly",
-                                    "maxLength",
-                                    "answerValueSet",
-                                    "answerOption",
-                                    "initial",
-                                    "item",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -2251,6 +2364,104 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "version")]
+            Version,
+            #[serde(rename = "_version")]
+            VersionPrimitiveElement,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "title")]
+            Title,
+            #[serde(rename = "_title")]
+            TitlePrimitiveElement,
+            #[serde(rename = "derivedFrom")]
+            DerivedFrom,
+            #[serde(rename = "_derivedFrom")]
+            DerivedFromPrimitiveElement,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "experimental")]
+            Experimental,
+            #[serde(rename = "_experimental")]
+            ExperimentalPrimitiveElement,
+            #[serde(rename = "subjectType")]
+            SubjectType,
+            #[serde(rename = "_subjectType")]
+            SubjectTypePrimitiveElement,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "publisher")]
+            Publisher,
+            #[serde(rename = "_publisher")]
+            PublisherPrimitiveElement,
+            #[serde(rename = "contact")]
+            Contact,
+            #[serde(rename = "description")]
+            Description,
+            #[serde(rename = "_description")]
+            DescriptionPrimitiveElement,
+            #[serde(rename = "useContext")]
+            UseContext,
+            #[serde(rename = "jurisdiction")]
+            Jurisdiction,
+            #[serde(rename = "purpose")]
+            Purpose,
+            #[serde(rename = "_purpose")]
+            PurposePrimitiveElement,
+            #[serde(rename = "copyright")]
+            Copyright,
+            #[serde(rename = "_copyright")]
+            CopyrightPrimitiveElement,
+            #[serde(rename = "approvalDate")]
+            ApprovalDate,
+            #[serde(rename = "_approvalDate")]
+            ApprovalDatePrimitiveElement,
+            #[serde(rename = "lastReviewDate")]
+            LastReviewDate,
+            #[serde(rename = "_lastReviewDate")]
+            LastReviewDatePrimitiveElement,
+            #[serde(rename = "effectivePeriod")]
+            EffectivePeriod,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "item")]
+            Item,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Questionnaire;
@@ -2295,26 +2506,26 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                 let mut r#item: Option<Vec<QuestionnaireItem>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -2326,14 +2537,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -2345,38 +2556,38 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -2388,20 +2599,20 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "version" => {
+                        Field::Version => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_version" => {
+                        Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_version"));
@@ -2413,14 +2624,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -2432,14 +2643,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "title" => {
+                        Field::Title => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_title" => {
+                        Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_title"));
@@ -2451,7 +2662,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "derivedFrom" => {
+                        Field::DerivedFrom => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#derived_from.get_or_insert(Vec::with_capacity(values.len()));
@@ -2468,7 +2679,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 vec[i].value = value;
                             }
                         }
-                        "_derivedFrom" => {
+                        Field::DerivedFromPrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -2490,14 +2701,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -2509,14 +2720,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "experimental" => {
+                        Field::Experimental => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_experimental" => {
+                        Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_experimental"));
@@ -2528,7 +2739,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "subjectType" => {
+                        Field::SubjectType => {
                             let values: Vec<_> = map_access.next_value()?;
                             let vec =
                                 r#subject_type.get_or_insert(Vec::with_capacity(values.len()));
@@ -2545,7 +2756,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 vec[i].value = value;
                             }
                         }
-                        "_subjectType" => {
+                        Field::SubjectTypePrimitiveElement => {
                             let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
                                 map_access.next_value()?;
                             let vec =
@@ -2567,14 +2778,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 vec[i].extension = element.extension;
                             }
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -2586,14 +2797,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "publisher" => {
+                        Field::Publisher => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_publisher" => {
+                        Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_publisher"));
@@ -2605,20 +2816,20 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "contact" => {
+                        Field::Contact => {
                             if r#contact.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contact"));
                             }
                             r#contact = Some(map_access.next_value()?);
                         }
-                        "description" => {
+                        Field::Description => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_description" => {
+                        Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_description"));
@@ -2630,26 +2841,26 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "useContext" => {
+                        Field::UseContext => {
                             if r#use_context.is_some() {
                                 return Err(serde::de::Error::duplicate_field("useContext"));
                             }
                             r#use_context = Some(map_access.next_value()?);
                         }
-                        "jurisdiction" => {
+                        Field::Jurisdiction => {
                             if r#jurisdiction.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
                             r#jurisdiction = Some(map_access.next_value()?);
                         }
-                        "purpose" => {
+                        Field::Purpose => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_purpose" => {
+                        Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_purpose"));
@@ -2661,14 +2872,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "copyright" => {
+                        Field::Copyright => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_copyright" => {
+                        Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_copyright"));
@@ -2680,14 +2891,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "approvalDate" => {
+                        Field::ApprovalDate => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("approvalDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_approvalDate" => {
+                        Field::ApprovalDatePrimitiveElement => {
                             let some = r#approval_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_approvalDate"));
@@ -2699,14 +2910,14 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "lastReviewDate" => {
+                        Field::LastReviewDate => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastReviewDate"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_lastReviewDate" => {
+                        Field::LastReviewDatePrimitiveElement => {
                             let some = r#last_review_date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_lastReviewDate"));
@@ -2718,60 +2929,23 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "effectivePeriod" => {
+                        Field::EffectivePeriod => {
                             if r#effective_period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectivePeriod"));
                             }
                             r#effective_period = Some(map_access.next_value()?);
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "item" => {
+                        Field::Item => {
                             if r#item.is_some() {
                                 return Err(serde::de::Error::duplicate_field("item"));
                             }
                             r#item = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "url",
-                                    "identifier",
-                                    "version",
-                                    "name",
-                                    "title",
-                                    "derivedFrom",
-                                    "status",
-                                    "experimental",
-                                    "subjectType",
-                                    "date",
-                                    "publisher",
-                                    "contact",
-                                    "description",
-                                    "useContext",
-                                    "jurisdiction",
-                                    "purpose",
-                                    "copyright",
-                                    "approvalDate",
-                                    "lastReviewDate",
-                                    "effectivePeriod",
-                                    "code",
-                                    "item",
-                                ],
-                            ))
                         }
                     }
                 }

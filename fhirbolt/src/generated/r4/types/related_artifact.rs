@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct RelatedArtifact {
     pub r#id: Option<std::string::String>,
@@ -105,6 +105,40 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "label")]
+            Label,
+            #[serde(rename = "_label")]
+            LabelPrimitiveElement,
+            #[serde(rename = "display")]
+            Display,
+            #[serde(rename = "_display")]
+            DisplayPrimitiveElement,
+            #[serde(rename = "citation")]
+            Citation,
+            #[serde(rename = "_citation")]
+            CitationPrimitiveElement,
+            #[serde(rename = "url")]
+            Url,
+            #[serde(rename = "_url")]
+            UrlPrimitiveElement,
+            #[serde(rename = "document")]
+            Document,
+            #[serde(rename = "resource")]
+            Resource,
+            #[serde(rename = "_resource")]
+            ResourcePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RelatedArtifact;
@@ -126,26 +160,26 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                 let mut r#resource: Option<super::super::types::Canonical> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -157,14 +191,14 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "label" => {
+                        Field::Label => {
                             let some = r#label.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("label"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_label" => {
+                        Field::LabelPrimitiveElement => {
                             let some = r#label.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_label"));
@@ -176,14 +210,14 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "display" => {
+                        Field::Display => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("display"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_display" => {
+                        Field::DisplayPrimitiveElement => {
                             let some = r#display.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_display"));
@@ -195,14 +229,14 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "citation" => {
+                        Field::Citation => {
                             let some = r#citation.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("citation"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_citation" => {
+                        Field::CitationPrimitiveElement => {
                             let some = r#citation.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_citation"));
@@ -214,14 +248,14 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "url" => {
+                        Field::Url => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_url" => {
+                        Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_url"));
@@ -233,20 +267,20 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "document" => {
+                        Field::Document => {
                             if r#document.is_some() {
                                 return Err(serde::de::Error::duplicate_field("document"));
                             }
                             r#document = Some(map_access.next_value()?);
                         }
-                        "resource" => {
+                        Field::Resource => {
                             let some = r#resource.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("resource"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_resource" => {
+                        Field::ResourcePrimitiveElement => {
                             let some = r#resource.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_resource"));
@@ -257,22 +291,6 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "type",
-                                    "label",
-                                    "display",
-                                    "citation",
-                                    "url",
-                                    "document",
-                                    "resource",
-                                ],
-                            ))
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct VisionPrescriptionLensSpecificationPrism {
     pub r#id: Option<std::string::String>,
@@ -51,6 +51,24 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "amount")]
+            Amount,
+            #[serde(rename = "_amount")]
+            AmountPrimitiveElement,
+            #[serde(rename = "base")]
+            Base,
+            #[serde(rename = "_base")]
+            BasePrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VisionPrescriptionLensSpecificationPrism;
@@ -72,32 +90,32 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                 let mut r#base: Option<super::super::types::Code> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "amount" => {
+                        Field::Amount => {
                             let some = r#amount.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_amount" => {
+                        Field::AmountPrimitiveElement => {
                             let some = r#amount.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_amount"));
@@ -109,14 +127,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                             some.id = id;
                             some.extension = extension;
                         }
-                        "base" => {
+                        Field::Base => {
                             let some = r#base.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("base"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_base" => {
+                        Field::BasePrimitiveElement => {
                             let some = r#base.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_base"));
@@ -127,12 +145,6 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "amount", "base"],
-                            ))
                         }
                     }
                 }
@@ -320,6 +332,64 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "product")]
+            Product,
+            #[serde(rename = "eye")]
+            Eye,
+            #[serde(rename = "_eye")]
+            EyePrimitiveElement,
+            #[serde(rename = "sphere")]
+            Sphere,
+            #[serde(rename = "_sphere")]
+            SpherePrimitiveElement,
+            #[serde(rename = "cylinder")]
+            Cylinder,
+            #[serde(rename = "_cylinder")]
+            CylinderPrimitiveElement,
+            #[serde(rename = "axis")]
+            Axis,
+            #[serde(rename = "_axis")]
+            AxisPrimitiveElement,
+            #[serde(rename = "prism")]
+            Prism,
+            #[serde(rename = "add")]
+            Add,
+            #[serde(rename = "_add")]
+            AddPrimitiveElement,
+            #[serde(rename = "power")]
+            Power,
+            #[serde(rename = "_power")]
+            PowerPrimitiveElement,
+            #[serde(rename = "backCurve")]
+            BackCurve,
+            #[serde(rename = "_backCurve")]
+            BackCurvePrimitiveElement,
+            #[serde(rename = "diameter")]
+            Diameter,
+            #[serde(rename = "_diameter")]
+            DiameterPrimitiveElement,
+            #[serde(rename = "duration")]
+            Duration,
+            #[serde(rename = "color")]
+            Color,
+            #[serde(rename = "_color")]
+            ColorPrimitiveElement,
+            #[serde(rename = "brand")]
+            Brand,
+            #[serde(rename = "_brand")]
+            BrandPrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VisionPrescriptionLensSpecification;
@@ -353,38 +423,38 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "product" => {
+                        Field::Product => {
                             if r#product.is_some() {
                                 return Err(serde::de::Error::duplicate_field("product"));
                             }
                             r#product = Some(map_access.next_value()?);
                         }
-                        "eye" => {
+                        Field::Eye => {
                             let some = r#eye.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("eye"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_eye" => {
+                        Field::EyePrimitiveElement => {
                             let some = r#eye.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_eye"));
@@ -396,14 +466,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "sphere" => {
+                        Field::Sphere => {
                             let some = r#sphere.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sphere"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sphere" => {
+                        Field::SpherePrimitiveElement => {
                             let some = r#sphere.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sphere"));
@@ -415,14 +485,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "cylinder" => {
+                        Field::Cylinder => {
                             let some = r#cylinder.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cylinder"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_cylinder" => {
+                        Field::CylinderPrimitiveElement => {
                             let some = r#cylinder.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_cylinder"));
@@ -434,14 +504,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "axis" => {
+                        Field::Axis => {
                             let some = r#axis.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("axis"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_axis" => {
+                        Field::AxisPrimitiveElement => {
                             let some = r#axis.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_axis"));
@@ -453,20 +523,20 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "prism" => {
+                        Field::Prism => {
                             if r#prism.is_some() {
                                 return Err(serde::de::Error::duplicate_field("prism"));
                             }
                             r#prism = Some(map_access.next_value()?);
                         }
-                        "add" => {
+                        Field::Add => {
                             let some = r#add.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("add"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_add" => {
+                        Field::AddPrimitiveElement => {
                             let some = r#add.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_add"));
@@ -478,14 +548,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "power" => {
+                        Field::Power => {
                             let some = r#power.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("power"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_power" => {
+                        Field::PowerPrimitiveElement => {
                             let some = r#power.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_power"));
@@ -497,14 +567,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "backCurve" => {
+                        Field::BackCurve => {
                             let some = r#back_curve.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("backCurve"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_backCurve" => {
+                        Field::BackCurvePrimitiveElement => {
                             let some = r#back_curve.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_backCurve"));
@@ -516,14 +586,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "diameter" => {
+                        Field::Diameter => {
                             let some = r#diameter.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("diameter"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_diameter" => {
+                        Field::DiameterPrimitiveElement => {
                             let some = r#diameter.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_diameter"));
@@ -535,20 +605,20 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "duration" => {
+                        Field::Duration => {
                             if r#duration.is_some() {
                                 return Err(serde::de::Error::duplicate_field("duration"));
                             }
                             r#duration = Some(map_access.next_value()?);
                         }
-                        "color" => {
+                        Field::Color => {
                             let some = r#color.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("color"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_color" => {
+                        Field::ColorPrimitiveElement => {
                             let some = r#color.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_color"));
@@ -560,14 +630,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "brand" => {
+                        Field::Brand => {
                             let some = r#brand.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("brand"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_brand" => {
+                        Field::BrandPrimitiveElement => {
                             let some = r#brand.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_brand"));
@@ -579,35 +649,11 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "product",
-                                    "eye",
-                                    "sphere",
-                                    "cylinder",
-                                    "axis",
-                                    "prism",
-                                    "add",
-                                    "power",
-                                    "backCurve",
-                                    "diameter",
-                                    "duration",
-                                    "color",
-                                    "brand",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -753,6 +799,52 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "created")]
+            Created,
+            #[serde(rename = "_created")]
+            CreatedPrimitiveElement,
+            #[serde(rename = "patient")]
+            Patient,
+            #[serde(rename = "encounter")]
+            Encounter,
+            #[serde(rename = "dateWritten")]
+            DateWritten,
+            #[serde(rename = "_dateWritten")]
+            DateWrittenPrimitiveElement,
+            #[serde(rename = "prescriber")]
+            Prescriber,
+            #[serde(rename = "lensSpecification")]
+            LensSpecification,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VisionPrescription;
@@ -783,26 +875,26 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -814,14 +906,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -833,44 +925,44 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -882,14 +974,14 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "created" => {
+                        Field::Created => {
                             let some = r#created.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("created"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_created" => {
+                        Field::CreatedPrimitiveElement => {
                             let some = r#created.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_created"));
@@ -901,26 +993,26 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "patient" => {
+                        Field::Patient => {
                             if r#patient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("patient"));
                             }
                             r#patient = Some(map_access.next_value()?);
                         }
-                        "encounter" => {
+                        Field::Encounter => {
                             if r#encounter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("encounter"));
                             }
                             r#encounter = Some(map_access.next_value()?);
                         }
-                        "dateWritten" => {
+                        Field::DateWritten => {
                             let some = r#date_written.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dateWritten"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_dateWritten" => {
+                        Field::DateWrittenPrimitiveElement => {
                             let some = r#date_written.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_dateWritten"));
@@ -932,40 +1024,17 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "prescriber" => {
+                        Field::Prescriber => {
                             if r#prescriber.is_some() {
                                 return Err(serde::de::Error::duplicate_field("prescriber"));
                             }
                             r#prescriber = Some(map_access.next_value()?);
                         }
-                        "lensSpecification" => {
+                        Field::LensSpecification => {
                             if r#lens_specification.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lensSpecification"));
                             }
                             r#lens_specification = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "created",
-                                    "patient",
-                                    "encounter",
-                                    "dateWritten",
-                                    "prescriber",
-                                    "lensSpecification",
-                                ],
-                            ))
                         }
                     }
                 }

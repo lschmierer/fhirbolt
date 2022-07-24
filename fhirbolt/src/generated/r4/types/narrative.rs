@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Narrative {
     pub r#id: Option<std::string::String>,
@@ -45,6 +45,22 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "div")]
+            Div,
+            #[serde(rename = "_div")]
+            DivPrimitiveElement,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Narrative;
@@ -61,26 +77,26 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                 let mut r#div: Option<super::super::types::Xhtml> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -92,14 +108,14 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "div" => {
+                        Field::Div => {
                             let some = r#div.get_or_insert(Default::default());
                             if !some.value.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("div"));
                             }
                             some.value = map_access.next_value()?;
                         }
-                        "_div" => {
+                        Field::DivPrimitiveElement => {
                             let some = r#div.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_div"));
@@ -110,12 +126,6 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                             } = map_access.next_value()?;
                             some.id = id;
                             some.extension = extension;
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "status", "div"],
-                            ))
                         }
                     }
                 }

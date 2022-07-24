@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -436,6 +436,162 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "name")]
+            Name,
+            #[serde(rename = "_name")]
+            NamePrimitiveElement,
+            #[serde(rename = "valueBase64Binary")]
+            ValueBase64Binary,
+            #[serde(rename = "_valueBase64Binary")]
+            ValueBase64BinaryPrimitiveElement,
+            #[serde(rename = "valueBoolean")]
+            ValueBoolean,
+            #[serde(rename = "_valueBoolean")]
+            ValueBooleanPrimitiveElement,
+            #[serde(rename = "valueCanonical")]
+            ValueCanonical,
+            #[serde(rename = "_valueCanonical")]
+            ValueCanonicalPrimitiveElement,
+            #[serde(rename = "valueCode")]
+            ValueCode,
+            #[serde(rename = "_valueCode")]
+            ValueCodePrimitiveElement,
+            #[serde(rename = "valueDate")]
+            ValueDate,
+            #[serde(rename = "_valueDate")]
+            ValueDatePrimitiveElement,
+            #[serde(rename = "valueDateTime")]
+            ValueDateTime,
+            #[serde(rename = "_valueDateTime")]
+            ValueDateTimePrimitiveElement,
+            #[serde(rename = "valueDecimal")]
+            ValueDecimal,
+            #[serde(rename = "_valueDecimal")]
+            ValueDecimalPrimitiveElement,
+            #[serde(rename = "valueId")]
+            ValueId,
+            #[serde(rename = "_valueId")]
+            ValueIdPrimitiveElement,
+            #[serde(rename = "valueInstant")]
+            ValueInstant,
+            #[serde(rename = "_valueInstant")]
+            ValueInstantPrimitiveElement,
+            #[serde(rename = "valueInteger")]
+            ValueInteger,
+            #[serde(rename = "_valueInteger")]
+            ValueIntegerPrimitiveElement,
+            #[serde(rename = "valueMarkdown")]
+            ValueMarkdown,
+            #[serde(rename = "_valueMarkdown")]
+            ValueMarkdownPrimitiveElement,
+            #[serde(rename = "valueOid")]
+            ValueOid,
+            #[serde(rename = "_valueOid")]
+            ValueOidPrimitiveElement,
+            #[serde(rename = "valuePositiveInt")]
+            ValuePositiveInt,
+            #[serde(rename = "_valuePositiveInt")]
+            ValuePositiveIntPrimitiveElement,
+            #[serde(rename = "valueString")]
+            ValueString,
+            #[serde(rename = "_valueString")]
+            ValueStringPrimitiveElement,
+            #[serde(rename = "valueTime")]
+            ValueTime,
+            #[serde(rename = "_valueTime")]
+            ValueTimePrimitiveElement,
+            #[serde(rename = "valueUnsignedInt")]
+            ValueUnsignedInt,
+            #[serde(rename = "_valueUnsignedInt")]
+            ValueUnsignedIntPrimitiveElement,
+            #[serde(rename = "valueUri")]
+            ValueUri,
+            #[serde(rename = "_valueUri")]
+            ValueUriPrimitiveElement,
+            #[serde(rename = "valueUrl")]
+            ValueUrl,
+            #[serde(rename = "_valueUrl")]
+            ValueUrlPrimitiveElement,
+            #[serde(rename = "valueUuid")]
+            ValueUuid,
+            #[serde(rename = "_valueUuid")]
+            ValueUuidPrimitiveElement,
+            #[serde(rename = "valueAddress")]
+            ValueAddress,
+            #[serde(rename = "valueAge")]
+            ValueAge,
+            #[serde(rename = "valueAnnotation")]
+            ValueAnnotation,
+            #[serde(rename = "valueAttachment")]
+            ValueAttachment,
+            #[serde(rename = "valueCodeableConcept")]
+            ValueCodeableConcept,
+            #[serde(rename = "valueCoding")]
+            ValueCoding,
+            #[serde(rename = "valueContactPoint")]
+            ValueContactPoint,
+            #[serde(rename = "valueCount")]
+            ValueCount,
+            #[serde(rename = "valueDistance")]
+            ValueDistance,
+            #[serde(rename = "valueDuration")]
+            ValueDuration,
+            #[serde(rename = "valueHumanName")]
+            ValueHumanName,
+            #[serde(rename = "valueIdentifier")]
+            ValueIdentifier,
+            #[serde(rename = "valueMoney")]
+            ValueMoney,
+            #[serde(rename = "valuePeriod")]
+            ValuePeriod,
+            #[serde(rename = "valueQuantity")]
+            ValueQuantity,
+            #[serde(rename = "valueRange")]
+            ValueRange,
+            #[serde(rename = "valueRatio")]
+            ValueRatio,
+            #[serde(rename = "valueReference")]
+            ValueReference,
+            #[serde(rename = "valueSampledData")]
+            ValueSampledData,
+            #[serde(rename = "valueSignature")]
+            ValueSignature,
+            #[serde(rename = "valueTiming")]
+            ValueTiming,
+            #[serde(rename = "valueContactDetail")]
+            ValueContactDetail,
+            #[serde(rename = "valueContributor")]
+            ValueContributor,
+            #[serde(rename = "valueDataRequirement")]
+            ValueDataRequirement,
+            #[serde(rename = "valueExpression")]
+            ValueExpression,
+            #[serde(rename = "valueParameterDefinition")]
+            ValueParameterDefinition,
+            #[serde(rename = "valueRelatedArtifact")]
+            ValueRelatedArtifact,
+            #[serde(rename = "valueTriggerDefinition")]
+            ValueTriggerDefinition,
+            #[serde(rename = "valueUsageContext")]
+            ValueUsageContext,
+            #[serde(rename = "valueDosage")]
+            ValueDosage,
+            #[serde(rename = "valueMeta")]
+            ValueMeta,
+            #[serde(rename = "resource")]
+            Resource,
+            #[serde(rename = "part")]
+            Part,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ParametersParameter;
@@ -456,32 +612,32 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                 let mut r#part: Option<Vec<ParametersParameter>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "name" => {
+                        Field::Name => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_name" => {
+                        Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_name"));
@@ -493,7 +649,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "valueBase64Binary" => {
+                        Field::ValueBase64Binary => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::Base64Binary(Default::default()),
                             );
@@ -508,7 +664,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBase64Binary" => {
+                        Field::ValueBase64BinaryPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::Base64Binary(Default::default()),
                             );
@@ -528,7 +684,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueBoolean" => {
+                        Field::ValueBoolean => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Boolean(
                                 Default::default(),
                             ));
@@ -541,7 +697,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueBoolean" => {
+                        Field::ValueBooleanPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Boolean(
                                 Default::default(),
                             ));
@@ -559,7 +715,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueCanonical" => {
+                        Field::ValueCanonical => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::Canonical(Default::default()),
                             );
@@ -574,7 +730,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueCanonical" => {
+                        Field::ValueCanonicalPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::Canonical(Default::default()),
                             );
@@ -594,7 +750,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueCode" => {
+                        Field::ValueCode => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Code(Default::default()));
                             if let ParametersParameterValue::Code(variant) = r#enum {
@@ -606,7 +762,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueCode" => {
+                        Field::ValueCodePrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Code(Default::default()));
                             if let ParametersParameterValue::Code(variant) = r#enum {
@@ -623,7 +779,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDate" => {
+                        Field::ValueDate => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Date(Default::default()));
                             if let ParametersParameterValue::Date(variant) = r#enum {
@@ -635,7 +791,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDate" => {
+                        Field::ValueDatePrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Date(Default::default()));
                             if let ParametersParameterValue::Date(variant) = r#enum {
@@ -652,7 +808,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDateTime" => {
+                        Field::ValueDateTime => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::DateTime(
                                 Default::default(),
                             ));
@@ -665,7 +821,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDateTime" => {
+                        Field::ValueDateTimePrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::DateTime(
                                 Default::default(),
                             ));
@@ -685,7 +841,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueDecimal" => {
+                        Field::ValueDecimal => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Decimal(
                                 Default::default(),
                             ));
@@ -698,7 +854,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueDecimal" => {
+                        Field::ValueDecimalPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Decimal(
                                 Default::default(),
                             ));
@@ -716,7 +872,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueId" => {
+                        Field::ValueId => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Id(Default::default()));
                             if let ParametersParameterValue::Id(variant) = r#enum {
@@ -728,7 +884,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueId" => {
+                        Field::ValueIdPrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Id(Default::default()));
                             if let ParametersParameterValue::Id(variant) = r#enum {
@@ -745,7 +901,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueInstant" => {
+                        Field::ValueInstant => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Instant(
                                 Default::default(),
                             ));
@@ -758,7 +914,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueInstant" => {
+                        Field::ValueInstantPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Instant(
                                 Default::default(),
                             ));
@@ -776,7 +932,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueInteger" => {
+                        Field::ValueInteger => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Integer(
                                 Default::default(),
                             ));
@@ -789,7 +945,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueInteger" => {
+                        Field::ValueIntegerPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Integer(
                                 Default::default(),
                             ));
@@ -807,7 +963,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueMarkdown" => {
+                        Field::ValueMarkdown => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Markdown(
                                 Default::default(),
                             ));
@@ -820,7 +976,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueMarkdown" => {
+                        Field::ValueMarkdownPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::Markdown(
                                 Default::default(),
                             ));
@@ -840,7 +996,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueOid" => {
+                        Field::ValueOid => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Oid(Default::default()));
                             if let ParametersParameterValue::Oid(variant) = r#enum {
@@ -852,7 +1008,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueOid" => {
+                        Field::ValueOidPrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Oid(Default::default()));
                             if let ParametersParameterValue::Oid(variant) = r#enum {
@@ -869,7 +1025,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valuePositiveInt" => {
+                        Field::ValuePositiveInt => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::PositiveInt(Default::default()),
                             );
@@ -884,7 +1040,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valuePositiveInt" => {
+                        Field::ValuePositiveIntPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::PositiveInt(Default::default()),
                             );
@@ -904,7 +1060,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueString" => {
+                        Field::ValueString => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::String(
                                 Default::default(),
                             ));
@@ -917,7 +1073,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueString" => {
+                        Field::ValueStringPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(ParametersParameterValue::String(
                                 Default::default(),
                             ));
@@ -935,7 +1091,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueTime" => {
+                        Field::ValueTime => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Time(Default::default()));
                             if let ParametersParameterValue::Time(variant) = r#enum {
@@ -947,7 +1103,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueTime" => {
+                        Field::ValueTimePrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Time(Default::default()));
                             if let ParametersParameterValue::Time(variant) = r#enum {
@@ -964,7 +1120,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueUnsignedInt" => {
+                        Field::ValueUnsignedInt => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::UnsignedInt(Default::default()),
                             );
@@ -979,7 +1135,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueUnsignedInt" => {
+                        Field::ValueUnsignedIntPrimitiveElement => {
                             let r#enum = r#value.get_or_insert(
                                 ParametersParameterValue::UnsignedInt(Default::default()),
                             );
@@ -999,7 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueUri" => {
+                        Field::ValueUri => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Uri(Default::default()));
                             if let ParametersParameterValue::Uri(variant) = r#enum {
@@ -1011,7 +1167,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueUri" => {
+                        Field::ValueUriPrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Uri(Default::default()));
                             if let ParametersParameterValue::Uri(variant) = r#enum {
@@ -1028,7 +1184,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueUrl" => {
+                        Field::ValueUrl => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Url(Default::default()));
                             if let ParametersParameterValue::Url(variant) = r#enum {
@@ -1040,7 +1196,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueUrl" => {
+                        Field::ValueUrlPrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Url(Default::default()));
                             if let ParametersParameterValue::Url(variant) = r#enum {
@@ -1057,7 +1213,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueUuid" => {
+                        Field::ValueUuid => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Uuid(Default::default()));
                             if let ParametersParameterValue::Uuid(variant) = r#enum {
@@ -1069,7 +1225,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
                         }
-                        "_valueUuid" => {
+                        Field::ValueUuidPrimitiveElement => {
                             let r#enum = r#value
                                 .get_or_insert(ParametersParameterValue::Uuid(Default::default()));
                             if let ParametersParameterValue::Uuid(variant) = r#enum {
@@ -1086,20 +1242,20 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
                         }
-                        "valueAddress" => {
+                        Field::ValueAddress => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueAddress"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Address(map_access.next_value()?));
                         }
-                        "valueAge" => {
+                        Field::ValueAge => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueAge"));
                             }
                             r#value = Some(ParametersParameterValue::Age(map_access.next_value()?));
                         }
-                        "valueAnnotation" => {
+                        Field::ValueAnnotation => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueAnnotation"));
                             }
@@ -1107,7 +1263,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueAttachment" => {
+                        Field::ValueAttachment => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueAttachment"));
                             }
@@ -1115,7 +1271,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueCodeableConcept" => {
+                        Field::ValueCodeableConcept => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueCodeableConcept",
@@ -1125,14 +1281,14 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueCoding" => {
+                        Field::ValueCoding => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueCoding"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Coding(map_access.next_value()?));
                         }
-                        "valueContactPoint" => {
+                        Field::ValueContactPoint => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueContactPoint"));
                             }
@@ -1140,28 +1296,28 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueCount" => {
+                        Field::ValueCount => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueCount"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Count(map_access.next_value()?));
                         }
-                        "valueDistance" => {
+                        Field::ValueDistance => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueDistance"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Distance(map_access.next_value()?));
                         }
-                        "valueDuration" => {
+                        Field::ValueDuration => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueDuration"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Duration(map_access.next_value()?));
                         }
-                        "valueHumanName" => {
+                        Field::ValueHumanName => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueHumanName"));
                             }
@@ -1169,7 +1325,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueIdentifier" => {
+                        Field::ValueIdentifier => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueIdentifier"));
                             }
@@ -1177,42 +1333,42 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueMoney" => {
+                        Field::ValueMoney => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueMoney"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Money(map_access.next_value()?));
                         }
-                        "valuePeriod" => {
+                        Field::ValuePeriod => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valuePeriod"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Period(map_access.next_value()?));
                         }
-                        "valueQuantity" => {
+                        Field::ValueQuantity => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueQuantity"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Quantity(map_access.next_value()?));
                         }
-                        "valueRange" => {
+                        Field::ValueRange => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueRange"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Range(map_access.next_value()?));
                         }
-                        "valueRatio" => {
+                        Field::ValueRatio => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueRatio"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Ratio(map_access.next_value()?));
                         }
-                        "valueReference" => {
+                        Field::ValueReference => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueReference"));
                             }
@@ -1220,7 +1376,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueSampledData" => {
+                        Field::ValueSampledData => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueSampledData"));
                             }
@@ -1228,7 +1384,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueSignature" => {
+                        Field::ValueSignature => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueSignature"));
                             }
@@ -1236,14 +1392,14 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueTiming" => {
+                        Field::ValueTiming => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueTiming"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Timing(map_access.next_value()?));
                         }
-                        "valueContactDetail" => {
+                        Field::ValueContactDetail => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueContactDetail",
@@ -1253,7 +1409,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueContributor" => {
+                        Field::ValueContributor => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueContributor"));
                             }
@@ -1261,7 +1417,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueDataRequirement" => {
+                        Field::ValueDataRequirement => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueDataRequirement",
@@ -1271,7 +1427,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueExpression" => {
+                        Field::ValueExpression => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueExpression"));
                             }
@@ -1279,7 +1435,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueParameterDefinition" => {
+                        Field::ValueParameterDefinition => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueParameterDefinition",
@@ -1289,7 +1445,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueRelatedArtifact" => {
+                        Field::ValueRelatedArtifact => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueRelatedArtifact",
@@ -1299,7 +1455,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueTriggerDefinition" => {
+                        Field::ValueTriggerDefinition => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "valueTriggerDefinition",
@@ -1309,7 +1465,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueUsageContext" => {
+                        Field::ValueUsageContext => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueUsageContext"));
                             }
@@ -1317,94 +1473,31 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 map_access.next_value()?,
                             ));
                         }
-                        "valueDosage" => {
+                        Field::ValueDosage => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueDosage"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Dosage(map_access.next_value()?));
                         }
-                        "valueMeta" => {
+                        Field::ValueMeta => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueMeta"));
                             }
                             r#value =
                                 Some(ParametersParameterValue::Meta(map_access.next_value()?));
                         }
-                        "resource" => {
+                        Field::Resource => {
                             if r#resource.is_some() {
                                 return Err(serde::de::Error::duplicate_field("resource"));
                             }
                             r#resource = Some(map_access.next_value()?);
                         }
-                        "part" => {
+                        Field::Part => {
                             if r#part.is_some() {
                                 return Err(serde::de::Error::duplicate_field("part"));
                             }
                             r#part = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "name",
-                                    "valueBase64Binary",
-                                    "valueBoolean",
-                                    "valueCanonical",
-                                    "valueCode",
-                                    "valueDate",
-                                    "valueDateTime",
-                                    "valueDecimal",
-                                    "valueId",
-                                    "valueInstant",
-                                    "valueInteger",
-                                    "valueMarkdown",
-                                    "valueOid",
-                                    "valuePositiveInt",
-                                    "valueString",
-                                    "valueTime",
-                                    "valueUnsignedInt",
-                                    "valueUri",
-                                    "valueUrl",
-                                    "valueUuid",
-                                    "valueAddress",
-                                    "valueAge",
-                                    "valueAnnotation",
-                                    "valueAttachment",
-                                    "valueCodeableConcept",
-                                    "valueCoding",
-                                    "valueContactPoint",
-                                    "valueCount",
-                                    "valueDistance",
-                                    "valueDuration",
-                                    "valueHumanName",
-                                    "valueIdentifier",
-                                    "valueMoney",
-                                    "valuePeriod",
-                                    "valueQuantity",
-                                    "valueRange",
-                                    "valueRatio",
-                                    "valueReference",
-                                    "valueSampledData",
-                                    "valueSignature",
-                                    "valueTiming",
-                                    "valueContactDetail",
-                                    "valueContributor",
-                                    "valueDataRequirement",
-                                    "valueExpression",
-                                    "valueParameterDefinition",
-                                    "valueRelatedArtifact",
-                                    "valueTriggerDefinition",
-                                    "valueUsageContext",
-                                    "valueDosage",
-                                    "valueMeta",
-                                    "resource",
-                                    "part",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -1479,6 +1572,24 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "parameter")]
+            Parameter,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Parameters;
@@ -1496,26 +1607,26 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
                 let mut r#parameter: Option<Vec<ParametersParameter>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -1527,14 +1638,14 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -1546,17 +1657,11 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "parameter" => {
+                        Field::Parameter => {
                             if r#parameter.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parameter"));
                             }
                             r#parameter = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "meta", "implicitRules", "language", "parameter"],
-                            ))
                         }
                     }
                 }

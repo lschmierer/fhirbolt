@@ -1,4 +1,4 @@
-// Generated on 2022-07-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum InvoiceLineItemChargeItem {
     Reference(Box<super::super::types::Reference>),
@@ -46,6 +46,20 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "role")]
+            Role,
+            #[serde(rename = "actor")]
+            Actor,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InvoiceParticipant;
@@ -64,41 +78,35 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "role" => {
+                        Field::Role => {
                             if r#role.is_some() {
                                 return Err(serde::de::Error::duplicate_field("role"));
                             }
                             r#role = Some(map_access.next_value()?);
                         }
-                        "actor" => {
+                        Field::Actor => {
                             if r#actor.is_some() {
                                 return Err(serde::de::Error::duplicate_field("actor"));
                             }
                             r#actor = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &["id", "extension", "modifierExtension", "role", "actor"],
-                            ))
                         }
                     }
                 }
@@ -176,6 +184,28 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "_type")]
+            TypePrimitiveElement,
+            #[serde(rename = "code")]
+            Code,
+            #[serde(rename = "factor")]
+            Factor,
+            #[serde(rename = "_factor")]
+            FactorPrimitiveElement,
+            #[serde(rename = "amount")]
+            Amount,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InvoiceLineItemPriceComponent;
@@ -199,32 +229,32 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "type" => {
+                        Field::Type => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_type" => {
+                        Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_type"));
@@ -236,20 +266,20 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "code" => {
+                        Field::Code => {
                             if r#code.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
                             r#code = Some(map_access.next_value()?);
                         }
-                        "factor" => {
+                        Field::Factor => {
                             let some = r#factor.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_factor" => {
+                        Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_factor"));
@@ -261,25 +291,11 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "amount" => {
+                        Field::Amount => {
                             if r#amount.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
                             r#amount = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "type",
-                                    "code",
-                                    "factor",
-                                    "amount",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -356,6 +372,26 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "sequence")]
+            Sequence,
+            #[serde(rename = "_sequence")]
+            SequencePrimitiveElement,
+            #[serde(rename = "chargeItemReference")]
+            ChargeItemReference,
+            #[serde(rename = "chargeItemCodeableConcept")]
+            ChargeItemCodeableConcept,
+            #[serde(rename = "priceComponent")]
+            PriceComponent,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InvoiceLineItem;
@@ -375,32 +411,32 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                 let mut r#price_component: Option<Vec<InvoiceLineItemPriceComponent>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "sequence" => {
+                        Field::Sequence => {
                             let some = r#sequence.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_sequence" => {
+                        Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_sequence"));
@@ -412,7 +448,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "chargeItemReference" => {
+                        Field::ChargeItemReference => {
                             if r#charge_item.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "chargeItemReference",
@@ -422,7 +458,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                 map_access.next_value()?,
                             ));
                         }
-                        "chargeItemCodeableConcept" => {
+                        Field::ChargeItemCodeableConcept => {
                             if r#charge_item.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "chargeItemCodeableConcept",
@@ -432,25 +468,11 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                 map_access.next_value()?,
                             ));
                         }
-                        "priceComponent" => {
+                        Field::PriceComponent => {
                             if r#price_component.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priceComponent"));
                             }
                             r#price_component = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "extension",
-                                    "modifierExtension",
-                                    "sequence",
-                                    "chargeItemReference",
-                                    "chargeItemCodeableConcept",
-                                    "priceComponent",
-                                ],
-                            ))
                         }
                     }
                 }
@@ -635,6 +657,70 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
     where
         D: serde::de::Deserializer<'de>,
     {
+        #[derive(serde :: Deserialize)]
+        #[serde(field_identifier)]
+        enum Field {
+            #[serde(rename = "id")]
+            Id,
+            #[serde(rename = "meta")]
+            Meta,
+            #[serde(rename = "implicitRules")]
+            ImplicitRules,
+            #[serde(rename = "_implicitRules")]
+            ImplicitRulesPrimitiveElement,
+            #[serde(rename = "language")]
+            Language,
+            #[serde(rename = "_language")]
+            LanguagePrimitiveElement,
+            #[serde(rename = "text")]
+            Text,
+            #[serde(rename = "contained")]
+            Contained,
+            #[serde(rename = "extension")]
+            Extension,
+            #[serde(rename = "modifierExtension")]
+            ModifierExtension,
+            #[serde(rename = "identifier")]
+            Identifier,
+            #[serde(rename = "status")]
+            Status,
+            #[serde(rename = "_status")]
+            StatusPrimitiveElement,
+            #[serde(rename = "cancelledReason")]
+            CancelledReason,
+            #[serde(rename = "_cancelledReason")]
+            CancelledReasonPrimitiveElement,
+            #[serde(rename = "type")]
+            Type,
+            #[serde(rename = "subject")]
+            Subject,
+            #[serde(rename = "recipient")]
+            Recipient,
+            #[serde(rename = "date")]
+            Date,
+            #[serde(rename = "_date")]
+            DatePrimitiveElement,
+            #[serde(rename = "participant")]
+            Participant,
+            #[serde(rename = "issuer")]
+            Issuer,
+            #[serde(rename = "account")]
+            Account,
+            #[serde(rename = "lineItem")]
+            LineItem,
+            #[serde(rename = "totalPriceComponent")]
+            TotalPriceComponent,
+            #[serde(rename = "totalNet")]
+            TotalNet,
+            #[serde(rename = "totalGross")]
+            TotalGross,
+            #[serde(rename = "paymentTerms")]
+            PaymentTerms,
+            #[serde(rename = "_paymentTerms")]
+            PaymentTermsPrimitiveElement,
+            #[serde(rename = "note")]
+            Note,
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Invoice;
@@ -672,26 +758,26 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
-                        "id" => {
+                        Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
                             r#id = Some(map_access.next_value()?);
                         }
-                        "meta" => {
+                        Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
                             r#meta = Some(map_access.next_value()?);
                         }
-                        "implicitRules" => {
+                        Field::ImplicitRules => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_implicitRules" => {
+                        Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_implicitRules"));
@@ -703,14 +789,14 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "language" => {
+                        Field::Language => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_language" => {
+                        Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_language"));
@@ -722,44 +808,44 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "text" => {
+                        Field::Text => {
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
                             r#text = Some(map_access.next_value()?);
                         }
-                        "contained" => {
+                        Field::Contained => {
                             if r#contained.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contained"));
                             }
                             r#contained = Some(map_access.next_value()?);
                         }
-                        "extension" => {
+                        Field::Extension => {
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
                             r#extension = Some(map_access.next_value()?);
                         }
-                        "modifierExtension" => {
+                        Field::ModifierExtension => {
                             if r#modifier_extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modifierExtension"));
                             }
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
-                        "identifier" => {
+                        Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
                             r#identifier = Some(map_access.next_value()?);
                         }
-                        "status" => {
+                        Field::Status => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_status" => {
+                        Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_status"));
@@ -771,14 +857,14 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "cancelledReason" => {
+                        Field::CancelledReason => {
                             let some = r#cancelled_reason.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cancelledReason"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_cancelledReason" => {
+                        Field::CancelledReasonPrimitiveElement => {
                             let some = r#cancelled_reason.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_cancelledReason"));
@@ -790,32 +876,32 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "type" => {
+                        Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
                             r#type = Some(map_access.next_value()?);
                         }
-                        "subject" => {
+                        Field::Subject => {
                             if r#subject.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subject"));
                             }
                             r#subject = Some(map_access.next_value()?);
                         }
-                        "recipient" => {
+                        Field::Recipient => {
                             if r#recipient.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recipient"));
                             }
                             r#recipient = Some(map_access.next_value()?);
                         }
-                        "date" => {
+                        Field::Date => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_date" => {
+                        Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_date"));
@@ -827,31 +913,31 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "participant" => {
+                        Field::Participant => {
                             if r#participant.is_some() {
                                 return Err(serde::de::Error::duplicate_field("participant"));
                             }
                             r#participant = Some(map_access.next_value()?);
                         }
-                        "issuer" => {
+                        Field::Issuer => {
                             if r#issuer.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issuer"));
                             }
                             r#issuer = Some(map_access.next_value()?);
                         }
-                        "account" => {
+                        Field::Account => {
                             if r#account.is_some() {
                                 return Err(serde::de::Error::duplicate_field("account"));
                             }
                             r#account = Some(map_access.next_value()?);
                         }
-                        "lineItem" => {
+                        Field::LineItem => {
                             if r#line_item.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lineItem"));
                             }
                             r#line_item = Some(map_access.next_value()?);
                         }
-                        "totalPriceComponent" => {
+                        Field::TotalPriceComponent => {
                             if r#total_price_component.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "totalPriceComponent",
@@ -859,26 +945,26 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             }
                             r#total_price_component = Some(map_access.next_value()?);
                         }
-                        "totalNet" => {
+                        Field::TotalNet => {
                             if r#total_net.is_some() {
                                 return Err(serde::de::Error::duplicate_field("totalNet"));
                             }
                             r#total_net = Some(map_access.next_value()?);
                         }
-                        "totalGross" => {
+                        Field::TotalGross => {
                             if r#total_gross.is_some() {
                                 return Err(serde::de::Error::duplicate_field("totalGross"));
                             }
                             r#total_gross = Some(map_access.next_value()?);
                         }
-                        "paymentTerms" => {
+                        Field::PaymentTerms => {
                             let some = r#payment_terms.get_or_insert(Default::default());
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentTerms"));
                             }
                             some.value = Some(map_access.next_value()?);
                         }
-                        "_paymentTerms" => {
+                        Field::PaymentTermsPrimitiveElement => {
                             let some = r#payment_terms.get_or_insert(Default::default());
                             if some.id.is_some() || !some.extension.is_empty() {
                                 return Err(serde::de::Error::duplicate_field("_paymentTerms"));
@@ -890,42 +976,11 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             some.id = id;
                             some.extension = extension;
                         }
-                        "note" => {
+                        Field::Note => {
                             if r#note.is_some() {
                                 return Err(serde::de::Error::duplicate_field("note"));
                             }
                             r#note = Some(map_access.next_value()?);
-                        }
-                        _ => {
-                            return Err(serde::de::Error::unknown_field(
-                                map_access_key,
-                                &[
-                                    "id",
-                                    "meta",
-                                    "implicitRules",
-                                    "language",
-                                    "text",
-                                    "contained",
-                                    "extension",
-                                    "modifierExtension",
-                                    "identifier",
-                                    "status",
-                                    "cancelledReason",
-                                    "type",
-                                    "subject",
-                                    "recipient",
-                                    "date",
-                                    "participant",
-                                    "issuer",
-                                    "account",
-                                    "lineItem",
-                                    "totalPriceComponent",
-                                    "totalNet",
-                                    "totalGross",
-                                    "paymentTerms",
-                                    "note",
-                                ],
-                            ))
                         }
                     }
                 }
