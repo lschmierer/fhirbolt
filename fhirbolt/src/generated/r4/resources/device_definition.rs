@@ -1178,6 +1178,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
         #[derive(serde :: Deserialize)]
         #[serde(field_identifier)]
         enum Field {
+            #[serde(rename = "resourceType")]
+            ResourceType,
             #[serde(rename = "id")]
             Id,
             #[serde(rename = "meta")]
@@ -1304,6 +1306,15 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                 let mut r#material: Option<Vec<DeviceDefinitionMaterial>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
+                        Field::ResourceType => {
+                            let value: std::borrow::Cow<str> = map_access.next_value()?;
+                            if value != "DeviceDefinition" {
+                                return Err(serde::de::Error::invalid_value(
+                                    serde::de::Unexpected::Str(&value),
+                                    &"DeviceDefinition",
+                                ));
+                            }
+                        }
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));

@@ -7,8 +7,28 @@ use crate::{
 };
 
 pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
+    let fhir_name = &r#struct.fhir_name;
     let struct_name = &r#struct.name;
     let stuct_name_ident = format_ident!("{}", struct_name);
+
+    let (resource_type_field_enum_variant_tokens, deserialize_resource_type_field_tokens) =
+        if r#struct.is_resource {
+            (
+                quote! {
+                    #[serde(rename="resourceType")]
+                            ResourceType,
+                },
+                quote! {
+                Field::ResourceType => {
+                    let value: std::borrow::Cow<str>  = map_access.next_value()?;
+                    if value != #fhir_name {
+                        return Err(serde::de::Error::invalid_value(serde::de::Unexpected::Str(&value), &#fhir_name))
+                    }
+                }},
+            )
+        } else {
+            (quote! {}, quote! {})
+        };
 
     let field_enum_variants_tokens = r#struct
         .fields
@@ -31,6 +51,7 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
                 #[derive(serde::Deserialize)]
                 #[serde(field_identifier)]
                 enum Field {
+                    #resource_type_field_enum_variant_tokens
                     #(
                         #field_enum_variants_tokens
                     )*
@@ -55,6 +76,7 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
 
                         while let Some(map_access_key) = map_access.next_key()? {
                             match map_access_key {
+                                #deserialize_resource_type_field_tokens
                                 #(
                                     #deserialize_fields_tokens
                                 )*

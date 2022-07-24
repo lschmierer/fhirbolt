@@ -1467,6 +1467,8 @@ impl<'de> serde::de::Deserialize<'de> for TestReport {
         #[derive(serde :: Deserialize)]
         #[serde(field_identifier)]
         enum Field {
+            #[serde(rename = "resourceType")]
+            ResourceType,
             #[serde(rename = "id")]
             Id,
             #[serde(rename = "meta")]
@@ -1557,6 +1559,15 @@ impl<'de> serde::de::Deserialize<'de> for TestReport {
                 let mut r#teardown: Option<TestReportTeardown> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
+                        Field::ResourceType => {
+                            let value: std::borrow::Cow<str> = map_access.next_value()?;
+                            if value != "TestReport" {
+                                return Err(serde::de::Error::invalid_value(
+                                    serde::de::Unexpected::Str(&value),
+                                    &"TestReport",
+                                ));
+                            }
+                        }
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
