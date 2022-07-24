@@ -196,7 +196,7 @@ fn gather_field(
             .map(|t| t.code.as_ref())
             .collect();
 
-        let maybe_fhir_primitive = create_value_enum(module, &name, variants);
+        let maybe_fhir_primitive = create_value_enum(module, &element_definition.path, &name, variants);
 
         RustFieldType {
             name,
@@ -213,7 +213,7 @@ fn gather_field(
                     maybe_fhir_primitive: false,
                 }
             } else {
-                match_field_type(code, false)
+                match_field_type(&element_definition.path, code, false)
             }
         } else {
             RustFieldType {
@@ -234,13 +234,13 @@ fn gather_field(
     }
 }
 
-fn create_value_enum<'a>(module: &mut RustModule, enum_name: &str, types: Vec<&str>) -> bool {
+fn create_value_enum<'a>(module: &mut RustModule, path: &str, enum_name: &str, types: Vec<&str>) -> bool {
     let mut may_contain_primitive = false;
 
     let variants = types
         .iter()
         .map(|t| {
-            let field_type = match_field_type(t, true);
+            let field_type = match_field_type(path,t, true);
 
             if field_type.maybe_fhir_primitive {
                 may_contain_primitive = true;
@@ -262,7 +262,7 @@ fn create_value_enum<'a>(module: &mut RustModule, enum_name: &str, types: Vec<&s
     may_contain_primitive
 }
 
-fn match_field_type(code: &str, force_box: bool) -> RustFieldType {
+fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFieldType {
     // type like http://hl7.org/fhirpath/System.String
     match code.rsplit("/").next().unwrap() {
         "System.Boolean" => RustFieldType {
@@ -271,15 +271,21 @@ fn match_field_type(code: &str, force_box: bool) -> RustFieldType {
             maybe_fhir_primitive: false,
         },
         "System.Integer" => RustFieldType {
-            name: "u32".into(),
+            name: "i32".into(),
             r#box: false,
             maybe_fhir_primitive: false,
         },
-        "System.String" => RustFieldType {
+        "System.String" => match path {
+            "unsignedInt.value"| "positiveInt.value" => RustFieldType {
+                name: "u32".into(),
+                r#box: false,
+                maybe_fhir_primitive: false,
+            },
+            _ => RustFieldType {
             name: "std::string::String".into(),
             r#box: false,
             maybe_fhir_primitive: false,
-        },
+        }},
         "System.Decimal" => RustFieldType {
             name: "rust_decimal::Decimal".into(),
             r#box: false,
