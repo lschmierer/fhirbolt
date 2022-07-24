@@ -121,7 +121,7 @@ pub struct SubstanceAmount {
     pub r#amount: Option<SubstanceAmountAmount>,
     pub r#amount_type: Option<Box<super::super::types::CodeableConcept>>,
     pub r#amount_text: Option<super::super::types::String>,
-    pub r#reference_range: Option<Box<super::super::types::Element>>,
+    pub r#reference_range: Option<SubstanceAmountReferenceRange>,
 }
 impl serde::ser::Serialize for SubstanceAmount {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -233,7 +233,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                 let mut r#amount: Option<SubstanceAmountAmount> = None;
                 let mut r#amount_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#amount_text: Option<super::super::types::String> = None;
-                let mut r#reference_range: Option<Box<super::super::types::Element>> = None;
+                let mut r#reference_range: Option<SubstanceAmountReferenceRange> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
                         Field::Id => {

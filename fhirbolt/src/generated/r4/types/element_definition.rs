@@ -421,7 +421,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicingDiscriminator 
 pub struct ElementDefinitionSlicing {
     pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#discriminator: Vec<Box<super::super::types::Element>>,
+    pub r#discriminator: Vec<ElementDefinitionSlicingDiscriminator>,
     pub r#description: Option<super::super::types::String>,
     pub r#ordered: Option<super::super::types::Boolean>,
     pub r#rules: super::super::types::Code,
@@ -518,7 +518,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicing {
             {
                 let mut r#id: Option<std::string::String> = None;
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
-                let mut r#discriminator: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#discriminator: Option<Vec<ElementDefinitionSlicingDiscriminator>> = None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#ordered: Option<super::super::types::Boolean> = None;
                 let mut r#rules: Option<super::super::types::Code> = None;
@@ -3364,7 +3364,7 @@ pub struct ElementDefinition {
     pub r#slice_is_constraining: Option<super::super::types::Boolean>,
     pub r#label: Option<super::super::types::String>,
     pub r#code: Vec<Box<super::super::types::Coding>>,
-    pub r#slicing: Option<Box<super::super::types::Element>>,
+    pub r#slicing: Option<ElementDefinitionSlicing>,
     pub r#short: Option<super::super::types::String>,
     pub r#definition: Option<super::super::types::Markdown>,
     pub r#comment: Option<super::super::types::Markdown>,
@@ -3372,26 +3372,26 @@ pub struct ElementDefinition {
     pub r#alias: Vec<super::super::types::String>,
     pub r#min: Option<super::super::types::UnsignedInt>,
     pub r#max: Option<super::super::types::String>,
-    pub r#base: Option<Box<super::super::types::Element>>,
+    pub r#base: Option<ElementDefinitionBase>,
     pub r#content_reference: Option<super::super::types::Uri>,
-    pub r#type: Vec<Box<super::super::types::Element>>,
+    pub r#type: Vec<ElementDefinitionType>,
     pub r#default_value: Option<ElementDefinitionDefaultValue>,
     pub r#meaning_when_missing: Option<super::super::types::Markdown>,
     pub r#order_meaning: Option<super::super::types::String>,
     pub r#fixed: Option<ElementDefinitionFixed>,
     pub r#pattern: Option<ElementDefinitionPattern>,
-    pub r#example: Vec<Box<super::super::types::Element>>,
+    pub r#example: Vec<ElementDefinitionExample>,
     pub r#min_value: Option<ElementDefinitionMinValue>,
     pub r#max_value: Option<ElementDefinitionMaxValue>,
     pub r#max_length: Option<super::super::types::Integer>,
     pub r#condition: Vec<super::super::types::Id>,
-    pub r#constraint: Vec<Box<super::super::types::Element>>,
+    pub r#constraint: Vec<ElementDefinitionConstraint>,
     pub r#must_support: Option<super::super::types::Boolean>,
     pub r#is_modifier: Option<super::super::types::Boolean>,
     pub r#is_modifier_reason: Option<super::super::types::String>,
     pub r#is_summary: Option<super::super::types::Boolean>,
-    pub r#binding: Option<Box<super::super::types::Element>>,
-    pub r#mapping: Vec<Box<super::super::types::Element>>,
+    pub r#binding: Option<ElementDefinitionBinding>,
+    pub r#mapping: Vec<ElementDefinitionMapping>,
 }
 impl serde::ser::Serialize for ElementDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -5544,7 +5544,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinition {
                 let mut r#slice_is_constraining: Option<super::super::types::Boolean> = None;
                 let mut r#label: Option<super::super::types::String> = None;
                 let mut r#code: Option<Vec<Box<super::super::types::Coding>>> = None;
-                let mut r#slicing: Option<Box<super::super::types::Element>> = None;
+                let mut r#slicing: Option<ElementDefinitionSlicing> = None;
                 let mut r#short: Option<super::super::types::String> = None;
                 let mut r#definition: Option<super::super::types::Markdown> = None;
                 let mut r#comment: Option<super::super::types::Markdown> = None;
@@ -5552,26 +5552,26 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinition {
                 let mut r#alias: Option<Vec<super::super::types::String>> = None;
                 let mut r#min: Option<super::super::types::UnsignedInt> = None;
                 let mut r#max: Option<super::super::types::String> = None;
-                let mut r#base: Option<Box<super::super::types::Element>> = None;
+                let mut r#base: Option<ElementDefinitionBase> = None;
                 let mut r#content_reference: Option<super::super::types::Uri> = None;
-                let mut r#type: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#type: Option<Vec<ElementDefinitionType>> = None;
                 let mut r#default_value: Option<ElementDefinitionDefaultValue> = None;
                 let mut r#meaning_when_missing: Option<super::super::types::Markdown> = None;
                 let mut r#order_meaning: Option<super::super::types::String> = None;
                 let mut r#fixed: Option<ElementDefinitionFixed> = None;
                 let mut r#pattern: Option<ElementDefinitionPattern> = None;
-                let mut r#example: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#example: Option<Vec<ElementDefinitionExample>> = None;
                 let mut r#min_value: Option<ElementDefinitionMinValue> = None;
                 let mut r#max_value: Option<ElementDefinitionMaxValue> = None;
                 let mut r#max_length: Option<super::super::types::Integer> = None;
                 let mut r#condition: Option<Vec<super::super::types::Id>> = None;
-                let mut r#constraint: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#constraint: Option<Vec<ElementDefinitionConstraint>> = None;
                 let mut r#must_support: Option<super::super::types::Boolean> = None;
                 let mut r#is_modifier: Option<super::super::types::Boolean> = None;
                 let mut r#is_modifier_reason: Option<super::super::types::String> = None;
                 let mut r#is_summary: Option<super::super::types::Boolean> = None;
-                let mut r#binding: Option<Box<super::super::types::Element>> = None;
-                let mut r#mapping: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#binding: Option<ElementDefinitionBinding> = None;
+                let mut r#mapping: Option<Vec<ElementDefinitionMapping>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
                         Field::Id => {

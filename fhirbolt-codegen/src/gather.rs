@@ -78,6 +78,7 @@ pub fn gather_all_modules<'a>(bundle: &Bundle) -> Vec<RustModule> {
     flatten_bundle(bundle)
         .filter(|s| s.kind != "logical")
         .filter(|s| !ABSTRACT_RESOURCES.contains(&s.name.as_str()))
+        .filter(|s| s.name != "Element")
         .map(|s| {
             let is_resource = s.kind == "resource";
             let mut module = RustModule {
@@ -212,7 +213,7 @@ fn gather_field(
     } else {
         if let Some(types) = element_definition.r#type.as_ref() {
             let code = &types.first().unwrap().code;
-            if code == "BackboneElement" {
+            if code == "BackboneElement" || code == "Element" {
                 RustFieldType {
                     name: format!("{}{}", struct_name, field_name.to_rust_type_casing()),
                     r#box: false,

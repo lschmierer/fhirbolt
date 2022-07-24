@@ -209,7 +209,7 @@ pub struct Dosage {
     pub r#site: Option<Box<super::super::types::CodeableConcept>>,
     pub r#route: Option<Box<super::super::types::CodeableConcept>>,
     pub r#method: Option<Box<super::super::types::CodeableConcept>>,
-    pub r#dose_and_rate: Vec<Box<super::super::types::Element>>,
+    pub r#dose_and_rate: Vec<DosageDoseAndRate>,
     pub r#max_dose_per_period: Option<Box<super::super::types::Ratio>>,
     pub r#max_dose_per_administration: Option<Box<super::super::types::Quantity>>,
     pub r#max_dose_per_lifetime: Option<Box<super::super::types::Quantity>>,
@@ -394,7 +394,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                 let mut r#site: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#route: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#method: Option<Box<super::super::types::CodeableConcept>> = None;
-                let mut r#dose_and_rate: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#dose_and_rate: Option<Vec<DosageDoseAndRate>> = None;
                 let mut r#max_dose_per_period: Option<Box<super::super::types::Ratio>> = None;
                 let mut r#max_dose_per_administration: Option<Box<super::super::types::Quantity>> =
                     None;

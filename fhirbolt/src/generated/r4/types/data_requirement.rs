@@ -604,10 +604,10 @@ pub struct DataRequirement {
     pub r#profile: Vec<super::super::types::Canonical>,
     pub r#subject: Option<DataRequirementSubject>,
     pub r#must_support: Vec<super::super::types::String>,
-    pub r#code_filter: Vec<Box<super::super::types::Element>>,
-    pub r#date_filter: Vec<Box<super::super::types::Element>>,
+    pub r#code_filter: Vec<DataRequirementCodeFilter>,
+    pub r#date_filter: Vec<DataRequirementDateFilter>,
     pub r#limit: Option<super::super::types::PositiveInt>,
-    pub r#sort: Vec<Box<super::super::types::Element>>,
+    pub r#sort: Vec<DataRequirementSort>,
 }
 impl serde::ser::Serialize for DataRequirement {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -778,10 +778,10 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                 let mut r#profile: Option<Vec<super::super::types::Canonical>> = None;
                 let mut r#subject: Option<DataRequirementSubject> = None;
                 let mut r#must_support: Option<Vec<super::super::types::String>> = None;
-                let mut r#code_filter: Option<Vec<Box<super::super::types::Element>>> = None;
-                let mut r#date_filter: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#code_filter: Option<Vec<DataRequirementCodeFilter>> = None;
+                let mut r#date_filter: Option<Vec<DataRequirementDateFilter>> = None;
                 let mut r#limit: Option<super::super::types::PositiveInt> = None;
-                let mut r#sort: Option<Vec<Box<super::super::types::Element>>> = None;
+                let mut r#sort: Option<Vec<DataRequirementSort>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
                         Field::Id => {

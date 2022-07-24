@@ -786,7 +786,7 @@ pub struct Timing {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#event: Vec<super::super::types::DateTime>,
-    pub r#repeat: Option<Box<super::super::types::Element>>,
+    pub r#repeat: Option<TimingRepeat>,
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
 impl serde::ser::Serialize for Timing {
@@ -879,7 +879,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#event: Option<Vec<super::super::types::DateTime>> = None;
-                let mut r#repeat: Option<Box<super::super::types::Element>> = None;
+                let mut r#repeat: Option<TimingRepeat> = None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
