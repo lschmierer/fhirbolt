@@ -166,7 +166,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                     r#jurisdiction,
                     r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
                     r#date_range: r#date_range
-                        .ok_or(serde::de::Error::missing_field("date_range"))?,
+                        .ok_or(serde::de::Error::missing_field("dateRange"))?,
                     r#restore_date,
                 })
             }

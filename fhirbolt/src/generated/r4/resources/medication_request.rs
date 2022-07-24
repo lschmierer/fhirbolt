@@ -540,7 +540,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#allowed: r#allowed.ok_or(serde::de::Error::missing_field("allowed"))?,
+                    r#allowed: r#allowed.ok_or(serde::de::Error::missing_field("allowed[x]"))?,
                     r#reason,
                 })
             }
@@ -1516,7 +1516,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                     r#do_not_perform,
                     r#reported,
                     r#medication: r#medication
-                        .ok_or(serde::de::Error::missing_field("medication"))?,
+                        .ok_or(serde::de::Error::missing_field("medication[x]"))?,
                     r#subject: r#subject.ok_or(serde::de::Error::missing_field("subject"))?,
                     r#encounter,
                     r#supporting_information: r#supporting_information.unwrap_or(vec![]),

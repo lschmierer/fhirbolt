@@ -3168,7 +3168,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                     r#identifier: r#identifier.unwrap_or(vec![]),
                     r#type,
                     r#coordinate_system: r#coordinate_system
-                        .ok_or(serde::de::Error::missing_field("coordinate_system"))?,
+                        .ok_or(serde::de::Error::missing_field("coordinateSystem"))?,
                     r#patient,
                     r#specimen,
                     r#device,

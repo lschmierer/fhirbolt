@@ -911,7 +911,7 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
                     r#endorser: r#endorser.unwrap_or(vec![]),
                     r#related_artifact: r#related_artifact.unwrap_or(vec![]),
                     r#exposure_background: r#exposure_background
-                        .ok_or(serde::de::Error::missing_field("exposure_background"))?,
+                        .ok_or(serde::de::Error::missing_field("exposureBackground"))?,
                     r#exposure_variant: r#exposure_variant.unwrap_or(vec![]),
                     r#outcome: r#outcome.unwrap_or(vec![]),
                 })

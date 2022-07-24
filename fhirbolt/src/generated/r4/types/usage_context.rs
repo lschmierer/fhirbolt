@@ -143,7 +143,7 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#code: r#code.ok_or(serde::de::Error::missing_field("code"))?,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }

@@ -997,11 +997,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                     r#status_reason: r#status_reason.unwrap_or(vec![]),
                     r#category,
                     r#medication: r#medication
-                        .ok_or(serde::de::Error::missing_field("medication"))?,
+                        .ok_or(serde::de::Error::missing_field("medication[x]"))?,
                     r#subject: r#subject.ok_or(serde::de::Error::missing_field("subject"))?,
                     r#context,
                     r#supporting_information: r#supporting_information.unwrap_or(vec![]),
-                    r#effective: r#effective.ok_or(serde::de::Error::missing_field("effective"))?,
+                    r#effective: r#effective
+                        .ok_or(serde::de::Error::missing_field("effective[x]"))?,
                     r#performer: r#performer.unwrap_or(vec![]),
                     r#reason_code: r#reason_code.unwrap_or(vec![]),
                     r#reason_reference: r#reason_reference.unwrap_or(vec![]),

@@ -1113,7 +1113,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptProperty {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#code: r#code.ok_or(serde::de::Error::missing_field("code"))?,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }

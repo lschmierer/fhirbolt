@@ -417,7 +417,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                     r#participant_type: r#participant_type.unwrap_or(vec![]),
                     r#actor,
                     r#participant_status: r#participant_status
-                        .ok_or(serde::de::Error::missing_field("participant_status"))?,
+                        .ok_or(serde::de::Error::missing_field("participantStatus"))?,
                     r#comment,
                 })
             }

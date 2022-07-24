@@ -576,7 +576,7 @@ impl<'de> serde::de::Deserialize<'de> for GuidanceResponse {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#request_identifier,
                     r#identifier: r#identifier.unwrap_or(vec![]),
-                    r#module: r#module.ok_or(serde::de::Error::missing_field("module"))?,
+                    r#module: r#module.ok_or(serde::de::Error::missing_field("module[x]"))?,
                     r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
                     r#subject,
                     r#encounter,

@@ -315,7 +315,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#manufactured_dose_form: r#manufactured_dose_form
-                        .ok_or(serde::de::Error::missing_field("manufactured_dose_form"))?,
+                        .ok_or(serde::de::Error::missing_field("manufacturedDoseForm"))?,
                     r#unit_of_presentation,
                     r#quantity: r#quantity.ok_or(serde::de::Error::missing_field("quantity"))?,
                     r#manufacturer: r#manufacturer.unwrap_or(vec![]),

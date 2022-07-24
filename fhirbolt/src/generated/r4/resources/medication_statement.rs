@@ -589,7 +589,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                     r#status_reason: r#status_reason.unwrap_or(vec![]),
                     r#category,
                     r#medication: r#medication
-                        .ok_or(serde::de::Error::missing_field("medication"))?,
+                        .ok_or(serde::de::Error::missing_field("medication[x]"))?,
                     r#subject: r#subject.ok_or(serde::de::Error::missing_field("subject"))?,
                     r#context,
                     r#effective,

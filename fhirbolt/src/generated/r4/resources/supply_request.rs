@@ -802,7 +802,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                     r#status,
                     r#category,
                     r#priority,
-                    r#item: r#item.ok_or(serde::de::Error::missing_field("item"))?,
+                    r#item: r#item.ok_or(serde::de::Error::missing_field("item[x]"))?,
                     r#quantity: r#quantity.ok_or(serde::de::Error::missing_field("quantity"))?,
                     r#parameter: r#parameter.unwrap_or(vec![]),
                     r#occurrence,

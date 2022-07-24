@@ -4297,7 +4297,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                     r#software,
                     r#implementation,
                     r#fhir_version: r#fhir_version
-                        .ok_or(serde::de::Error::missing_field("fhir_version"))?,
+                        .ok_or(serde::de::Error::missing_field("fhirVersion"))?,
                     r#format: r#format.unwrap_or(vec![]),
                     r#patch_format: r#patch_format.unwrap_or(vec![]),
                     r#implementation_guide: r#implementation_guide.unwrap_or(vec![]),

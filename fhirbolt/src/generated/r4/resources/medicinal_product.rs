@@ -416,7 +416,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductName {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#product_name: r#product_name
-                        .ok_or(serde::de::Error::missing_field("product_name"))?,
+                        .ok_or(serde::de::Error::missing_field("productName"))?,
                     r#name_part: r#name_part.unwrap_or(vec![]),
                     r#country_language: r#country_language.unwrap_or(vec![]),
                 })

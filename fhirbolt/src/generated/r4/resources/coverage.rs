@@ -437,7 +437,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiary {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#type,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                     r#exception: r#exception.unwrap_or(vec![]),
                 })
             }

@@ -600,7 +600,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#system_type: r#system_type
-                        .ok_or(serde::de::Error::missing_field("system_type"))?,
+                        .ok_or(serde::de::Error::missing_field("systemType"))?,
                     r#version,
                 })
             }

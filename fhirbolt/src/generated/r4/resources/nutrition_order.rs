@@ -1811,7 +1811,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                     r#intent: r#intent.ok_or(serde::de::Error::missing_field("intent"))?,
                     r#patient: r#patient.ok_or(serde::de::Error::missing_field("patient"))?,
                     r#encounter,
-                    r#date_time: r#date_time.ok_or(serde::de::Error::missing_field("date_time"))?,
+                    r#date_time: r#date_time.ok_or(serde::de::Error::missing_field("dateTime"))?,
                     r#orderer,
                     r#allergy_intolerance: r#allergy_intolerance.unwrap_or(vec![]),
                     r#food_preference_modifier: r#food_preference_modifier.unwrap_or(vec![]),

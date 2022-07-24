@@ -680,7 +680,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                     r#contraindicated_vaccine_code: r#contraindicated_vaccine_code
                         .unwrap_or(vec![]),
                     r#forecast_status: r#forecast_status
-                        .ok_or(serde::de::Error::missing_field("forecast_status"))?,
+                        .ok_or(serde::de::Error::missing_field("forecastStatus"))?,
                     r#forecast_reason: r#forecast_reason.unwrap_or(vec![]),
                     r#date_criterion: r#date_criterion.unwrap_or(vec![]),
                     r#description,

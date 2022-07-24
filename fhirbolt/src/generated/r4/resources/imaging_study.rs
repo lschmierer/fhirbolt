@@ -315,7 +315,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#uid: r#uid.ok_or(serde::de::Error::missing_field("uid"))?,
-                    r#sop_class: r#sop_class.ok_or(serde::de::Error::missing_field("sop_class"))?,
+                    r#sop_class: r#sop_class.ok_or(serde::de::Error::missing_field("sopClass"))?,
                     r#number,
                     r#title,
                 })

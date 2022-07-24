@@ -482,7 +482,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#sequence,
                     r#charge_item: r#charge_item
-                        .ok_or(serde::de::Error::missing_field("charge_item"))?,
+                        .ok_or(serde::de::Error::missing_field("chargeItem[x]"))?,
                     r#price_component: r#price_component.unwrap_or(vec![]),
                 })
             }

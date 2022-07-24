@@ -175,7 +175,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationIngredient {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#item: r#item.ok_or(serde::de::Error::missing_field("item"))?,
+                    r#item: r#item.ok_or(serde::de::Error::missing_field("item[x]"))?,
                     r#is_active,
                     r#strength,
                 })

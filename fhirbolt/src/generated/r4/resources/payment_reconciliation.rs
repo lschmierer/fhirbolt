@@ -942,9 +942,9 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                     r#outcome,
                     r#disposition,
                     r#payment_date: r#payment_date
-                        .ok_or(serde::de::Error::missing_field("payment_date"))?,
+                        .ok_or(serde::de::Error::missing_field("paymentDate"))?,
                     r#payment_amount: r#payment_amount
-                        .ok_or(serde::de::Error::missing_field("payment_amount"))?,
+                        .ok_or(serde::de::Error::missing_field("paymentAmount"))?,
                     r#payment_identifier,
                     r#detail: r#detail.unwrap_or(vec![]),
                     r#form_code,

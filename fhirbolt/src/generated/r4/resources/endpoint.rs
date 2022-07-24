@@ -540,7 +540,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                     r#identifier: r#identifier.unwrap_or(vec![]),
                     r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
                     r#connection_type: r#connection_type
-                        .ok_or(serde::de::Error::missing_field("connection_type"))?,
+                        .ok_or(serde::de::Error::missing_field("connectionType"))?,
                     r#name,
                     r#managing_organization,
                     r#contact: r#contact.unwrap_or(vec![]),

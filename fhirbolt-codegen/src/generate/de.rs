@@ -176,6 +176,9 @@ fn field_struct_assign_var(field: &RustStructField) -> TokenStream {
     let field_name = &field.name;
     let field_name_ident = format_ident!("r#{}", field_name);
 
+    let fhir_name = &field.fhir_name;
+    let fhir_name_poly = format!("{}[x]", field.fhir_name);
+
     if field.multiple {
         quote! {
             #field_name_ident: #field_name_ident.unwrap_or(vec![]),
@@ -185,8 +188,13 @@ fn field_struct_assign_var(field: &RustStructField) -> TokenStream {
             #field_name_ident,
         }
     } else {
+        if field.polymorph {
         quote! {
-            #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#field_name))?,
+            #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?,
+        } }else{
+            quote! {
+                #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?,
+            } 
         }
     }
 }

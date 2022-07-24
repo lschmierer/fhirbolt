@@ -333,7 +333,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionRelatesTo {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#code: r#code.ok_or(serde::de::Error::missing_field("code"))?,
-                    r#target: r#target.ok_or(serde::de::Error::missing_field("target"))?,
+                    r#target: r#target.ok_or(serde::de::Error::missing_field("target[x]"))?,
                 })
             }
         }

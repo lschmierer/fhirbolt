@@ -692,11 +692,11 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                     r#date,
                     r#authority,
                     r#target_disease: r#target_disease
-                        .ok_or(serde::de::Error::missing_field("target_disease"))?,
+                        .ok_or(serde::de::Error::missing_field("targetDisease"))?,
                     r#immunization_event: r#immunization_event
-                        .ok_or(serde::de::Error::missing_field("immunization_event"))?,
+                        .ok_or(serde::de::Error::missing_field("immunizationEvent"))?,
                     r#dose_status: r#dose_status
-                        .ok_or(serde::de::Error::missing_field("dose_status"))?,
+                        .ok_or(serde::de::Error::missing_field("doseStatus"))?,
                     r#dose_status_reason: r#dose_status_reason.unwrap_or(vec![]),
                     r#description,
                     r#series,

@@ -1064,7 +1064,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                     r#patient: r#patient.ok_or(serde::de::Error::missing_field("patient"))?,
                     r#encounter,
                     r#date_written: r#date_written
-                        .ok_or(serde::de::Error::missing_field("date_written"))?,
+                        .ok_or(serde::de::Error::missing_field("dateWritten"))?,
                     r#prescriber: r#prescriber
                         .ok_or(serde::de::Error::missing_field("prescriber"))?,
                     r#lens_specification: r#lens_specification.unwrap_or(vec![]),

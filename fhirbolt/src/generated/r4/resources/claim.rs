@@ -1082,7 +1082,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimDiagnosis {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#sequence: r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?,
-                    r#diagnosis: r#diagnosis.ok_or(serde::de::Error::missing_field("diagnosis"))?,
+                    r#diagnosis: r#diagnosis
+                        .ok_or(serde::de::Error::missing_field("diagnosis[x]"))?,
                     r#type: r#type.unwrap_or(vec![]),
                     r#on_admission,
                     r#package_code,
@@ -1309,7 +1310,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimProcedure {
                     r#sequence: r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?,
                     r#type: r#type.unwrap_or(vec![]),
                     r#date,
-                    r#procedure: r#procedure.ok_or(serde::de::Error::missing_field("procedure"))?,
+                    r#procedure: r#procedure
+                        .ok_or(serde::de::Error::missing_field("procedure[x]"))?,
                     r#udi: r#udi.unwrap_or(vec![]),
                 })
             }
@@ -2073,7 +2075,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetailSubDetail {
                     r#revenue,
                     r#category,
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#quantity,
@@ -2373,7 +2375,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetail {
                     r#revenue,
                     r#category,
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#quantity,
@@ -3129,7 +3131,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                     r#revenue,
                     r#category,
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#serviced,

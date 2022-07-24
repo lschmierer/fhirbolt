@@ -1162,7 +1162,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitDiagnosis {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#sequence: r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?,
-                    r#diagnosis: r#diagnosis.ok_or(serde::de::Error::missing_field("diagnosis"))?,
+                    r#diagnosis: r#diagnosis
+                        .ok_or(serde::de::Error::missing_field("diagnosis[x]"))?,
                     r#type: r#type.unwrap_or(vec![]),
                     r#on_admission,
                     r#package_code,
@@ -1394,7 +1395,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcedure {
                     r#sequence: r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?,
                     r#type: r#type.unwrap_or(vec![]),
                     r#date,
-                    r#procedure: r#procedure.ok_or(serde::de::Error::missing_field("procedure"))?,
+                    r#procedure: r#procedure
+                        .ok_or(serde::de::Error::missing_field("procedure[x]"))?,
                     r#udi: r#udi.unwrap_or(vec![]),
                 })
             }
@@ -2316,7 +2318,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                     r#revenue,
                     r#category,
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#quantity,
@@ -2705,7 +2707,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                     r#revenue,
                     r#category,
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#quantity,
@@ -3555,7 +3557,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                     r#revenue,
                     r#category,
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#serviced,
@@ -3846,7 +3848,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#quantity,
                     r#unit_price,
@@ -4143,7 +4145,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#quantity,
                     r#unit_price,
@@ -4839,7 +4841,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                     r#sub_detail_sequence: r#sub_detail_sequence.unwrap_or(vec![]),
                     r#provider: r#provider.unwrap_or(vec![]),
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#serviced,

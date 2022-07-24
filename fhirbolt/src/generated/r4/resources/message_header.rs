@@ -1046,7 +1046,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                     r#contained: r#contained.unwrap_or(vec![]),
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#event: r#event.ok_or(serde::de::Error::missing_field("event"))?,
+                    r#event: r#event.ok_or(serde::de::Error::missing_field("event[x]"))?,
                     r#destination: r#destination.unwrap_or(vec![]),
                     r#sender,
                     r#enterer,

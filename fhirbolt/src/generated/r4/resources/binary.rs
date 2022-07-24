@@ -238,7 +238,7 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                     r#implicit_rules,
                     r#language,
                     r#content_type: r#content_type
-                        .ok_or(serde::de::Error::missing_field("content_type"))?,
+                        .ok_or(serde::de::Error::missing_field("contentType"))?,
                     r#security_context,
                     r#data,
                 })

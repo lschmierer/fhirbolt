@@ -746,7 +746,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#action_id: r#action_id.ok_or(serde::de::Error::missing_field("action_id"))?,
+                    r#action_id: r#action_id.ok_or(serde::de::Error::missing_field("actionId"))?,
                     r#relationship: r#relationship
                         .ok_or(serde::de::Error::missing_field("relationship"))?,
                     r#offset,

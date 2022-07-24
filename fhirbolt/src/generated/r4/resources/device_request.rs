@@ -1073,7 +1073,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                     r#status,
                     r#intent: r#intent.ok_or(serde::de::Error::missing_field("intent"))?,
                     r#priority,
-                    r#code: r#code.ok_or(serde::de::Error::missing_field("code"))?,
+                    r#code: r#code.ok_or(serde::de::Error::missing_field("code[x]"))?,
                     r#parameter: r#parameter.unwrap_or(vec![]),
                     r#subject: r#subject.ok_or(serde::de::Error::missing_field("subject"))?,
                     r#encounter,

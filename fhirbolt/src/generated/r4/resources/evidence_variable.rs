@@ -523,7 +523,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#description,
                     r#definition: r#definition
-                        .ok_or(serde::de::Error::missing_field("definition"))?,
+                        .ok_or(serde::de::Error::missing_field("definition[x]"))?,
                     r#usage_context: r#usage_context.unwrap_or(vec![]),
                     r#exclude,
                     r#participant_effective,

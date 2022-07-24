@@ -1205,7 +1205,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionPage {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#name: r#name.ok_or(serde::de::Error::missing_field("name"))?,
+                    r#name: r#name.ok_or(serde::de::Error::missing_field("name[x]"))?,
                     r#title: r#title.ok_or(serde::de::Error::missing_field("title"))?,
                     r#generation: r#generation
                         .ok_or(serde::de::Error::missing_field("generation"))?,
@@ -3357,7 +3357,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuide {
                     r#jurisdiction: r#jurisdiction.unwrap_or(vec![]),
                     r#copyright,
                     r#package_id: r#package_id
-                        .ok_or(serde::de::Error::missing_field("package_id"))?,
+                        .ok_or(serde::de::Error::missing_field("packageId"))?,
                     r#license,
                     r#fhir_version: r#fhir_version.unwrap_or(vec![]),
                     r#depends_on: r#depends_on.unwrap_or(vec![]),

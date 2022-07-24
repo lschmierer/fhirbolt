@@ -295,7 +295,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispenseSubstitution {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#was_substituted: r#was_substituted
-                        .ok_or(serde::de::Error::missing_field("was_substituted"))?,
+                        .ok_or(serde::de::Error::missing_field("wasSubstituted"))?,
                     r#type,
                     r#reason: r#reason.unwrap_or(vec![]),
                     r#responsible_party: r#responsible_party.unwrap_or(vec![]),
@@ -961,7 +961,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
                     r#status_reason,
                     r#category,
                     r#medication: r#medication
-                        .ok_or(serde::de::Error::missing_field("medication"))?,
+                        .ok_or(serde::de::Error::missing_field("medication[x]"))?,
                     r#subject,
                     r#context,
                     r#supporting_information: r#supporting_information.unwrap_or(vec![]),

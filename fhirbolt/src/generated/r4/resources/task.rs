@@ -1602,7 +1602,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskInput {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#type: r#type.ok_or(serde::de::Error::missing_field("type"))?,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }
@@ -2943,7 +2943,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskOutput {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#type: r#type.ok_or(serde::de::Error::missing_field("type"))?,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }

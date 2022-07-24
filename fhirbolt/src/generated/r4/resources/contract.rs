@@ -343,7 +343,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                     r#publisher,
                     r#publication_date,
                     r#publication_status: r#publication_status
-                        .ok_or(serde::de::Error::missing_field("publication_status"))?,
+                        .ok_or(serde::de::Error::missing_field("publicationStatus"))?,
                     r#copyright,
                 })
             }
@@ -1178,7 +1178,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }
@@ -4299,7 +4299,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractFriendly {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#content: r#content.ok_or(serde::de::Error::missing_field("content"))?,
+                    r#content: r#content.ok_or(serde::de::Error::missing_field("content[x]"))?,
                 })
             }
         }
@@ -4417,7 +4417,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractLegal {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#content: r#content.ok_or(serde::de::Error::missing_field("content"))?,
+                    r#content: r#content.ok_or(serde::de::Error::missing_field("content[x]"))?,
                 })
             }
         }
@@ -4535,7 +4535,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractRule {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#content: r#content.ok_or(serde::de::Error::missing_field("content"))?,
+                    r#content: r#content.ok_or(serde::de::Error::missing_field("content[x]"))?,
                 })
             }
         }

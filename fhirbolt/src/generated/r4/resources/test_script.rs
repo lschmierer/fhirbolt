@@ -2352,7 +2352,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                     r#content_type,
                     r#destination,
                     r#encode_request_url: r#encode_request_url
-                        .ok_or(serde::de::Error::missing_field("encode_request_url"))?,
+                        .ok_or(serde::de::Error::missing_field("encodeRequestUrl"))?,
                     r#method,
                     r#origin,
                     r#params,
@@ -3299,7 +3299,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                     r#validate_profile_id,
                     r#value,
                     r#warning_only: r#warning_only
-                        .ok_or(serde::de::Error::missing_field("warning_only"))?,
+                        .ok_or(serde::de::Error::missing_field("warningOnly"))?,
                 })
             }
         }

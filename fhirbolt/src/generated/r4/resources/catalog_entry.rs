@@ -627,7 +627,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                     r#type,
                     r#orderable: r#orderable.ok_or(serde::de::Error::missing_field("orderable"))?,
                     r#referenced_item: r#referenced_item
-                        .ok_or(serde::de::Error::missing_field("referenced_item"))?,
+                        .ok_or(serde::de::Error::missing_field("referencedItem"))?,
                     r#additional_identifier: r#additional_identifier.unwrap_or(vec![]),
                     r#classification: r#classification.unwrap_or(vec![]),
                     r#status,

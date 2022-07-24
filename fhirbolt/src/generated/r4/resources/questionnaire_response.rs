@@ -780,7 +780,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItem {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#link_id: r#link_id.ok_or(serde::de::Error::missing_field("link_id"))?,
+                    r#link_id: r#link_id.ok_or(serde::de::Error::missing_field("linkId"))?,
                     r#definition,
                     r#text,
                     r#answer: r#answer.unwrap_or(vec![]),

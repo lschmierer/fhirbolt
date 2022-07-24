@@ -2589,7 +2589,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionExample {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#label: r#label.ok_or(serde::de::Error::missing_field("label"))?,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }

@@ -396,7 +396,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#sub_detail_sequence: r#sub_detail_sequence
-                        .ok_or(serde::de::Error::missing_field("sub_detail_sequence"))?,
+                        .ok_or(serde::de::Error::missing_field("subDetailSequence"))?,
                     r#note_number: r#note_number.unwrap_or(vec![]),
                     r#adjudication: r#adjudication.unwrap_or(vec![]),
                 })
@@ -618,7 +618,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#detail_sequence: r#detail_sequence
-                        .ok_or(serde::de::Error::missing_field("detail_sequence"))?,
+                        .ok_or(serde::de::Error::missing_field("detailSequence"))?,
                     r#note_number: r#note_number.unwrap_or(vec![]),
                     r#adjudication: r#adjudication.unwrap_or(vec![]),
                     r#sub_detail: r#sub_detail.unwrap_or(vec![]),
@@ -841,7 +841,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#item_sequence: r#item_sequence
-                        .ok_or(serde::de::Error::missing_field("item_sequence"))?,
+                        .ok_or(serde::de::Error::missing_field("itemSequence"))?,
                     r#note_number: r#note_number.unwrap_or(vec![]),
                     r#adjudication: r#adjudication.unwrap_or(vec![]),
                     r#detail: r#detail.unwrap_or(vec![]),
@@ -1120,7 +1120,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#quantity,
                     r#unit_price,
@@ -1413,7 +1413,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#quantity,
                     r#unit_price,
@@ -2101,7 +2101,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                     r#subdetail_sequence: r#subdetail_sequence.unwrap_or(vec![]),
                     r#provider: r#provider.unwrap_or(vec![]),
                     r#product_or_service: r#product_or_service
-                        .ok_or(serde::de::Error::missing_field("product_or_service"))?,
+                        .ok_or(serde::de::Error::missing_field("productOrService"))?,
                     r#modifier: r#modifier.unwrap_or(vec![]),
                     r#program_code: r#program_code.unwrap_or(vec![]),
                     r#serviced,

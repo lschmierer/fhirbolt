@@ -947,7 +947,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                     r#authority,
                     r#target_disease: r#target_disease.unwrap_or(vec![]),
                     r#dose_number: r#dose_number
-                        .ok_or(serde::de::Error::missing_field("dose_number"))?,
+                        .ok_or(serde::de::Error::missing_field("doseNumber[x]"))?,
                     r#series_doses,
                 })
             }
@@ -1771,11 +1771,11 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                     r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
                     r#status_reason,
                     r#vaccine_code: r#vaccine_code
-                        .ok_or(serde::de::Error::missing_field("vaccine_code"))?,
+                        .ok_or(serde::de::Error::missing_field("vaccineCode"))?,
                     r#patient: r#patient.ok_or(serde::de::Error::missing_field("patient"))?,
                     r#encounter,
                     r#occurrence: r#occurrence
-                        .ok_or(serde::de::Error::missing_field("occurrence"))?,
+                        .ok_or(serde::de::Error::missing_field("occurrence[x]"))?,
                     r#recorded,
                     r#primary_source,
                     r#report_origin,

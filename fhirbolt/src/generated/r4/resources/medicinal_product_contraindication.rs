@@ -148,9 +148,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductContraindicationOtherT
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#therapy_relationship_type: r#therapy_relationship_type
-                        .ok_or(serde::de::Error::missing_field("therapy_relationship_type"))?,
+                        .ok_or(serde::de::Error::missing_field("therapyRelationshipType"))?,
                     r#medication: r#medication
-                        .ok_or(serde::de::Error::missing_field("medication"))?,
+                        .ok_or(serde::de::Error::missing_field("medication[x]"))?,
                 })
             }
         }

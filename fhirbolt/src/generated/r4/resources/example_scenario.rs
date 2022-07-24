@@ -223,7 +223,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioActor {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#actor_id: r#actor_id.ok_or(serde::de::Error::missing_field("actor_id"))?,
+                    r#actor_id: r#actor_id.ok_or(serde::de::Error::missing_field("actorId"))?,
                     r#type: r#type.ok_or(serde::de::Error::missing_field("type"))?,
                     r#name,
                     r#description,
@@ -387,7 +387,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceVersion {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#version_id: r#version_id
-                        .ok_or(serde::de::Error::missing_field("version_id"))?,
+                        .ok_or(serde::de::Error::missing_field("versionId"))?,
                     r#description: r#description
                         .ok_or(serde::de::Error::missing_field("description"))?,
                 })
@@ -552,7 +552,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceContainedInstan
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#resource_id: r#resource_id
-                        .ok_or(serde::de::Error::missing_field("resource_id"))?,
+                        .ok_or(serde::de::Error::missing_field("resourceId"))?,
                     r#version_id,
                 })
             }
@@ -813,9 +813,9 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstance {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#resource_id: r#resource_id
-                        .ok_or(serde::de::Error::missing_field("resource_id"))?,
+                        .ok_or(serde::de::Error::missing_field("resourceId"))?,
                     r#resource_type: r#resource_type
-                        .ok_or(serde::de::Error::missing_field("resource_type"))?,
+                        .ok_or(serde::de::Error::missing_field("resourceType"))?,
                     r#name,
                     r#description,
                     r#version: r#version.unwrap_or(vec![]),

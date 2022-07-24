@@ -446,7 +446,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#item: r#item.ok_or(serde::de::Error::missing_field("item"))?,
+                    r#item: r#item.ok_or(serde::de::Error::missing_field("item[x]"))?,
                     r#is_active,
                     r#strength,
                 })
@@ -1043,7 +1043,7 @@ impl<'de> serde::de::Deserialize<'de>
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#characteristic: r#characteristic
-                            .ok_or(serde::de::Error::missing_field("characteristic"))?,
+                            .ok_or(serde::de::Error::missing_field("characteristic[x]"))?,
                         r#value: r#value.unwrap_or(vec![]),
                     },
                 )
@@ -2200,7 +2200,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatory {
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#regulatory_authority: r#regulatory_authority
-                        .ok_or(serde::de::Error::missing_field("regulatory_authority"))?,
+                        .ok_or(serde::de::Error::missing_field("regulatoryAuthority"))?,
                     r#substitution: r#substitution.unwrap_or(vec![]),
                     r#schedule: r#schedule.unwrap_or(vec![]),
                     r#max_dispense,

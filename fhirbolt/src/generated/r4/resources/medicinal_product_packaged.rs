@@ -109,7 +109,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackagedBatchIdentifie
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#outer_packaging: r#outer_packaging
-                        .ok_or(serde::de::Error::missing_field("outer_packaging"))?,
+                        .ok_or(serde::de::Error::missing_field("outerPackaging"))?,
                     r#immediate_packaging,
                 })
             }

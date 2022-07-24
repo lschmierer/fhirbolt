@@ -900,7 +900,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#identifier: r#identifier.unwrap_or(vec![]),
                     r#administrable_dose_form: r#administrable_dose_form
-                        .ok_or(serde::de::Error::missing_field("administrable_dose_form"))?,
+                        .ok_or(serde::de::Error::missing_field("administrableDoseForm"))?,
                     r#unit_of_presentation,
                     r#ingredient: r#ingredient.unwrap_or(vec![]),
                     r#device: r#device.unwrap_or(vec![]),

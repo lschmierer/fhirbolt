@@ -394,7 +394,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisResultsByExposu
                     r#exposure_state,
                     r#variant_state,
                     r#risk_evidence_synthesis: r#risk_evidence_synthesis
-                        .ok_or(serde::de::Error::missing_field("risk_evidence_synthesis"))?,
+                        .ok_or(serde::de::Error::missing_field("riskEvidenceSynthesis"))?,
                 })
             }
         }
@@ -2036,7 +2036,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesis {
                         .ok_or(serde::de::Error::missing_field("population"))?,
                     r#exposure: r#exposure.ok_or(serde::de::Error::missing_field("exposure"))?,
                     r#exposure_alternative: r#exposure_alternative
-                        .ok_or(serde::de::Error::missing_field("exposure_alternative"))?,
+                        .ok_or(serde::de::Error::missing_field("exposureAlternative"))?,
                     r#outcome: r#outcome.ok_or(serde::de::Error::missing_field("outcome"))?,
                     r#sample_size,
                     r#results_by_exposure: r#results_by_exposure.unwrap_or(vec![]),

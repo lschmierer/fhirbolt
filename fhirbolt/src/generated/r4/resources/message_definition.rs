@@ -1502,7 +1502,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                     r#copyright,
                     r#base,
                     r#parent: r#parent.unwrap_or(vec![]),
-                    r#event: r#event.ok_or(serde::de::Error::missing_field("event"))?,
+                    r#event: r#event.ok_or(serde::de::Error::missing_field("event[x]"))?,
                     r#category,
                     r#focus: r#focus.unwrap_or(vec![]),
                     r#response_required,

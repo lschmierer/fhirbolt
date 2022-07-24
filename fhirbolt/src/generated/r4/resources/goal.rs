@@ -936,7 +936,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#identifier: r#identifier.unwrap_or(vec![]),
                     r#lifecycle_status: r#lifecycle_status
-                        .ok_or(serde::de::Error::missing_field("lifecycle_status"))?,
+                        .ok_or(serde::de::Error::missing_field("lifecycleStatus"))?,
                     r#achievement_status,
                     r#category: r#category.unwrap_or(vec![]),
                     r#priority,

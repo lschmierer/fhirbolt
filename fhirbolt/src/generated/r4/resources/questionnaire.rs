@@ -594,7 +594,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#question: r#question.ok_or(serde::de::Error::missing_field("question"))?,
                     r#operator: r#operator.ok_or(serde::de::Error::missing_field("operator"))?,
-                    r#answer: r#answer.ok_or(serde::de::Error::missing_field("answer"))?,
+                    r#answer: r#answer.ok_or(serde::de::Error::missing_field("answer[x]"))?,
                 })
             }
         }
@@ -942,7 +942,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                     r#initial_selected,
                 })
             }
@@ -1467,7 +1467,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }
@@ -2022,7 +2022,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#link_id: r#link_id.ok_or(serde::de::Error::missing_field("link_id"))?,
+                    r#link_id: r#link_id.ok_or(serde::de::Error::missing_field("linkId"))?,
                     r#definition,
                     r#code: r#code.unwrap_or(vec![]),
                     r#prefix,

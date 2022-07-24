@@ -173,7 +173,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#content: r#content.ok_or(serde::de::Error::missing_field("content"))?,
+                    r#content: r#content.ok_or(serde::de::Error::missing_field("content[x]"))?,
                 })
             }
         }

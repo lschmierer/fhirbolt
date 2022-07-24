@@ -2912,7 +2912,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value"))?,
+                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
                 })
             }
         }
@@ -3985,7 +3985,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                     r#name: r#name.ok_or(serde::de::Error::missing_field("name"))?,
                     r#extends,
-                    r#type_mode: r#type_mode.ok_or(serde::de::Error::missing_field("type_mode"))?,
+                    r#type_mode: r#type_mode.ok_or(serde::de::Error::missing_field("typeMode"))?,
                     r#documentation,
                     r#input: r#input.unwrap_or(vec![]),
                     r#rule: r#rule.unwrap_or(vec![]),

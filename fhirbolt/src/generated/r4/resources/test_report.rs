@@ -1807,7 +1807,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReport {
                     r#name,
                     r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
                     r#test_script: r#test_script
-                        .ok_or(serde::de::Error::missing_field("test_script"))?,
+                        .ok_or(serde::de::Error::missing_field("testScript"))?,
                     r#result: r#result.ok_or(serde::de::Error::missing_field("result"))?,
                     r#score,
                     r#tester,
