@@ -291,18 +291,8 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFieldType {
             r#box: false,
             maybe_fhir_primitive: false,
         },
-        "System.Date" => RustFieldType {
-            name: "chrono::naive::NaiveDate".into(),
-            r#box: false,
-            maybe_fhir_primitive: false,
-        },
-        "System.DateTime" => RustFieldType {
-            name: "chrono::DateTime<chrono::Utc>".into(),
-            r#box: false,
-            maybe_fhir_primitive: false,
-        },
-        "System.Time" => RustFieldType {
-            name: "chrono::naive::NaiveTime".into(),
+        "System.Date" | "System.DateTime" | "System.Time" => RustFieldType {
+            name: "std::string::String".into(),
             r#box: false,
             maybe_fhir_primitive: false,
         },

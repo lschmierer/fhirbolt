@@ -3,5 +3,5 @@
 pub struct Time {
     pub r#id: Option<std::string::String>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
-    pub r#value: Option<chrono::naive::NaiveTime>,
+    pub r#value: Option<std::string::String>,
 }
