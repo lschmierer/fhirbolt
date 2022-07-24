@@ -708,8 +708,9 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                             }
                         }
                         Field::TargetProfilePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#target_profile.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -728,8 +729,10 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                 return Err(serde::de::Error::duplicate_field("_targetProfile"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SearchType => {
@@ -941,8 +944,9 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                             }
                         }
                         Field::ParameterNamePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#parameter_name.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -961,8 +965,10 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                                 return Err(serde::de::Error::duplicate_field("_parameterName"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Comment => {
@@ -1936,8 +1942,9 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                             }
                         }
                         Field::ResourcePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#resource.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1956,8 +1963,10 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                 return Err(serde::de::Error::duplicate_field("_resource"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::System => {

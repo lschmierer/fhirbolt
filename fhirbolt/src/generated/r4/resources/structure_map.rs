@@ -3241,8 +3241,9 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             }
                         }
                         Field::ListModePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#list_mode.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3261,8 +3262,10 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                 return Err(serde::de::Error::duplicate_field("_listMode"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::ListRuleId => {
@@ -3495,8 +3498,9 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                             }
                         }
                         Field::VariablePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#variable.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3515,8 +3519,10 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                 return Err(serde::de::Error::duplicate_field("_variable"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }
@@ -4738,8 +4744,9 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             }
                         }
                         Field::ImportPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#import.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4758,8 +4765,10 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 return Err(serde::de::Error::duplicate_field("_import"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Group => {

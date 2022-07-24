@@ -621,8 +621,9 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             }
                         }
                         Field::DayOfWeekPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#day_of_week.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -641,8 +642,10 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 return Err(serde::de::Error::duplicate_field("_dayOfWeek"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::TimeOfDay => {
@@ -666,8 +669,9 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             }
                         }
                         Field::TimeOfDayPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#time_of_day.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -686,8 +690,10 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 return Err(serde::de::Error::duplicate_field("_timeOfDay"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::When => {
@@ -711,8 +717,9 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             }
                         }
                         Field::WhenPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#when.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -731,8 +738,10 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 return Err(serde::de::Error::duplicate_field("_when"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Offset => {
@@ -922,8 +931,9 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                             }
                         }
                         Field::EventPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#event.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -942,8 +952,10 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 return Err(serde::de::Error::duplicate_field("_event"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Repeat => {

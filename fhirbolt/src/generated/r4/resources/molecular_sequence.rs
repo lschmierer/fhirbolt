@@ -984,8 +984,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::ScorePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#score.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1004,8 +1005,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_score"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::NumTp => {
@@ -1029,8 +1032,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::NumTpPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#num_tp.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1049,8 +1053,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_numTP"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::NumFp => {
@@ -1074,8 +1080,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::NumFpPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#num_fp.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1094,8 +1101,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_numFP"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::NumFn => {
@@ -1119,8 +1128,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::NumFnPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#num_fn.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1139,8 +1149,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_numFN"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Precision => {
@@ -1164,8 +1176,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::PrecisionPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#precision.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1184,8 +1197,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_precision"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Sensitivity => {
@@ -1209,8 +1224,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::SensitivityPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#sensitivity.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1229,8 +1245,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_sensitivity"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::FMeasure => {
@@ -1254,8 +1272,9 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                             }
                         }
                         Field::FMeasurePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#f_measure.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1274,8 +1293,10 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                 return Err(serde::de::Error::duplicate_field("_fMeasure"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }

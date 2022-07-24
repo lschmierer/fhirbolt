@@ -366,8 +366,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -386,8 +387,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -589,8 +592,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -609,8 +613,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -819,8 +825,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -839,8 +846,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -1111,8 +1120,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1131,8 +1141,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -1405,8 +1417,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1425,8 +1438,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -1839,8 +1854,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             }
                         }
                         Field::ItemSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#item_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1859,8 +1875,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("_itemSequence"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::DetailSequence => {
@@ -1884,8 +1902,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             }
                         }
                         Field::DetailSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#detail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1904,8 +1923,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("_detailSequence"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SubdetailSequence => {
@@ -1929,8 +1950,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             }
                         }
                         Field::SubdetailSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#subdetail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1951,8 +1973,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Provider => {
@@ -2114,8 +2138,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2134,8 +2159,10 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {

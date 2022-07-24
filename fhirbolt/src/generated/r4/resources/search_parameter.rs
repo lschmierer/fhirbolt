@@ -1094,8 +1094,9 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                             }
                         }
                         Field::BasePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#base.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1114,8 +1115,10 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                 return Err(serde::de::Error::duplicate_field("_base"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Type => {
@@ -1215,8 +1218,9 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                             }
                         }
                         Field::TargetPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#target.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1235,8 +1239,10 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                 return Err(serde::de::Error::duplicate_field("_target"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::MultipleOr => {
@@ -1298,8 +1304,9 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                             }
                         }
                         Field::ComparatorPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#comparator.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1318,8 +1325,10 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                 return Err(serde::de::Error::duplicate_field("_comparator"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Modifier => {
@@ -1343,8 +1352,9 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                             }
                         }
                         Field::ModifierPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#modifier.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1363,8 +1373,10 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                 return Err(serde::de::Error::duplicate_field("_modifier"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Chain => {
@@ -1388,8 +1400,9 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                             }
                         }
                         Field::ChainPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#chain.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1408,8 +1421,10 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                 return Err(serde::de::Error::duplicate_field("_chain"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Component => {

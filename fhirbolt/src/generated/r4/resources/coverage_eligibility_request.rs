@@ -713,8 +713,9 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                             }
                         }
                         Field::SupportingInfoSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#supporting_info_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -735,8 +736,10 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Category => {
@@ -1228,8 +1231,9 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                             }
                         }
                         Field::PurposePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#purpose.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1248,8 +1252,10 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                                 return Err(serde::de::Error::duplicate_field("_purpose"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Patient => {

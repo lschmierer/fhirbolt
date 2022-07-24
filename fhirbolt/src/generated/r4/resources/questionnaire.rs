@@ -2694,8 +2694,9 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             }
                         }
                         Field::DerivedFromPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#derived_from.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2714,8 +2715,10 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 return Err(serde::de::Error::duplicate_field("_derivedFrom"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Status => {
@@ -2777,8 +2780,9 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                             }
                         }
                         Field::SubjectTypePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#subject_type.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2797,8 +2801,10 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 return Err(serde::de::Error::duplicate_field("_subjectType"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Date => {

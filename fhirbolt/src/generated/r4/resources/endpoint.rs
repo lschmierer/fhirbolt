@@ -452,8 +452,9 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                             }
                         }
                         Field::PayloadMimeTypePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#payload_mime_type.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -472,8 +473,10 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                 return Err(serde::de::Error::duplicate_field("_payloadMimeType"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Address => {
@@ -516,8 +519,9 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                             }
                         }
                         Field::HeaderPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#header.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -536,8 +540,10 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                 return Err(serde::de::Error::duplicate_field("_header"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }

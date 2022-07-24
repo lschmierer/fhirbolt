@@ -732,8 +732,9 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                             }
                         }
                         Field::OriginPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#origin.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -752,8 +753,10 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                 return Err(serde::de::Error::duplicate_field("_origin"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Destination => {
@@ -796,8 +799,9 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                             }
                         }
                         Field::LinkPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#link.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -816,8 +820,10 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                 return Err(serde::de::Error::duplicate_field("_link"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Capabilities => {

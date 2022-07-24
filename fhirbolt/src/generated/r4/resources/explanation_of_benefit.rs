@@ -1581,8 +1581,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                             }
                         }
                         Field::PreAuthRefPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#pre_auth_ref.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1601,8 +1602,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                                 return Err(serde::de::Error::duplicate_field("_preAuthRef"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }
@@ -2291,8 +2294,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2311,8 +2315,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -2681,8 +2687,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2701,8 +2708,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -3214,8 +3223,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::CareTeamSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#care_team_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3234,8 +3244,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 return Err(serde::de::Error::duplicate_field("_careTeamSequence"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::DiagnosisSequence => {
@@ -3259,8 +3271,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::DiagnosisSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#diagnosis_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3281,8 +3294,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::ProcedureSequence => {
@@ -3306,8 +3321,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::ProcedureSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#procedure_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3328,8 +3344,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::InformationSequence => {
@@ -3355,8 +3373,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::InformationSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#information_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3377,8 +3396,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Revenue => {
@@ -3558,8 +3579,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3578,8 +3600,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -3869,8 +3893,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3889,8 +3914,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -4167,8 +4194,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4187,8 +4215,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -4608,8 +4638,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             }
                         }
                         Field::ItemSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#item_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4628,8 +4659,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("_itemSequence"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::DetailSequence => {
@@ -4653,8 +4686,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             }
                         }
                         Field::DetailSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#detail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4673,8 +4707,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("_detailSequence"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SubDetailSequence => {
@@ -4698,8 +4734,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             }
                         }
                         Field::SubDetailSequencePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#sub_detail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4720,8 +4757,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Provider => {
@@ -4884,8 +4923,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4904,8 +4944,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("_noteNumber"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Adjudication => {
@@ -6890,8 +6932,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             }
                         }
                         Field::PreAuthRefPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#pre_auth_ref.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -6910,8 +6953,10 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                                 return Err(serde::de::Error::duplicate_field("_preAuthRef"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::PreAuthRefPeriod => {

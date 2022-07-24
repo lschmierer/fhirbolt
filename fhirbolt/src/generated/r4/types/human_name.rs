@@ -297,8 +297,9 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             }
                         }
                         Field::GivenPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#given.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -317,8 +318,10 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 return Err(serde::de::Error::duplicate_field("_given"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Prefix => {
@@ -342,8 +345,9 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             }
                         }
                         Field::PrefixPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#prefix.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -362,8 +366,10 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 return Err(serde::de::Error::duplicate_field("_prefix"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Suffix => {
@@ -387,8 +393,9 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             }
                         }
                         Field::SuffixPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#suffix.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -407,8 +414,10 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 return Err(serde::de::Error::duplicate_field("_suffix"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Period => {

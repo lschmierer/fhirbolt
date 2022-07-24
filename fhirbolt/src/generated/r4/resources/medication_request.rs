@@ -1369,8 +1369,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             }
                         }
                         Field::InstantiatesCanonicalPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#instantiates_canonical.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1391,8 +1392,10 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::InstantiatesUri => {
@@ -1416,8 +1419,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             }
                         }
                         Field::InstantiatesUriPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#instantiates_uri.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1436,8 +1440,10 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                 return Err(serde::de::Error::duplicate_field("_instantiatesUri"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::BasedOn => {

@@ -498,8 +498,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                             }
                         }
                         Field::NumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -518,8 +519,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                                 return Err(serde::de::Error::duplicate_field("_number"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Classification => {
@@ -1488,8 +1491,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1508,8 +1512,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                 return Err(serde::de::Error::duplicate_field("_linkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SecurityLabelNumber => {
@@ -1535,8 +1541,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1557,8 +1564,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }
@@ -2204,8 +2213,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2224,8 +2234,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                 return Err(serde::de::Error::duplicate_field("_linkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SecurityLabelNumber => {
@@ -2251,8 +2263,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2273,8 +2286,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }
@@ -2675,8 +2690,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2695,8 +2711,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                 return Err(serde::de::Error::duplicate_field("_linkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Answer => {
@@ -2728,8 +2746,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2750,8 +2769,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::ValuedItem => {
@@ -3402,8 +3423,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3422,8 +3444,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("_linkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Status => {
@@ -3459,8 +3483,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::ContextLinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#context_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3479,8 +3504,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("_contextLinkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::OccurrenceDateTime => {
@@ -3561,8 +3588,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::RequesterLinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#requester_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3581,8 +3609,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("_requesterLinkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::PerformerType => {
@@ -3624,8 +3654,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::PerformerLinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#performer_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3644,8 +3675,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("_performerLinkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::ReasonCode => {
@@ -3681,8 +3714,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::ReasonPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#reason.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3701,8 +3735,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("_reason"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::ReasonLinkId => {
@@ -3726,8 +3762,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::ReasonLinkIdPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#reason_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3746,8 +3783,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("_reasonLinkId"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Note => {
@@ -3779,8 +3818,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -3801,8 +3841,10 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }
@@ -5443,8 +5485,9 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             }
                         }
                         Field::AliasPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#alias.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -5463,8 +5506,10 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                 return Err(serde::de::Error::duplicate_field("_alias"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Author => {

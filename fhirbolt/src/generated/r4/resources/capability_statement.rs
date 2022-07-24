@@ -1626,8 +1626,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                             }
                         }
                         Field::SupportedProfilePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#supported_profile.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1646,8 +1647,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                                 return Err(serde::de::Error::duplicate_field("_supportedProfile"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Documentation => {
@@ -1835,8 +1838,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                             }
                         }
                         Field::ReferencePolicyPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#reference_policy.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1855,8 +1859,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                                 return Err(serde::de::Error::duplicate_field("_referencePolicy"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SearchInclude => {
@@ -1880,8 +1886,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                             }
                         }
                         Field::SearchIncludePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#search_include.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1900,8 +1907,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                                 return Err(serde::de::Error::duplicate_field("_searchInclude"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SearchRevInclude => {
@@ -1925,8 +1934,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                             }
                         }
                         Field::SearchRevIncludePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#search_rev_include.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -1945,8 +1955,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
                                 return Err(serde::de::Error::duplicate_field("_searchRevInclude"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::SearchParam => {
@@ -2419,8 +2431,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRest {
                             }
                         }
                         Field::CompartmentPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#compartment.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -2439,8 +2452,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRest {
                                 return Err(serde::de::Error::duplicate_field("_compartment"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                     }
@@ -4074,8 +4089,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                             }
                         }
                         Field::InstantiatesPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#instantiates.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4094,8 +4110,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                                 return Err(serde::de::Error::duplicate_field("_instantiates"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Imports => {
@@ -4119,8 +4137,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                             }
                         }
                         Field::ImportsPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#imports.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4139,8 +4158,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                                 return Err(serde::de::Error::duplicate_field("_imports"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Software => {
@@ -4195,8 +4216,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                             }
                         }
                         Field::FormatPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#format.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4215,8 +4237,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                                 return Err(serde::de::Error::duplicate_field("_format"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::PatchFormat => {
@@ -4240,8 +4264,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                             }
                         }
                         Field::PatchFormatPrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#patch_format.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4260,8 +4285,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                                 return Err(serde::de::Error::duplicate_field("_patchFormat"));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::ImplementationGuide => {
@@ -4287,8 +4314,9 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                             }
                         }
                         Field::ImplementationGuidePrimitiveElement => {
-                            let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> =
-                                map_access.next_value()?;
+                            let elements: Vec<
+                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                            > = map_access.next_value()?;
                             let vec = r#implementation_guide.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(elements.len())
@@ -4309,8 +4337,10 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
                                 ));
                             }
                             for (i, element) in elements.into_iter().enumerate() {
-                                vec[i].id = element.id;
-                                vec[i].extension = element.extension;
+                                if let Some(element) = element {
+                                    vec[i].id = element.id;
+                                    vec[i].extension = element.extension;
+                                }
                             }
                         }
                         Field::Rest => {

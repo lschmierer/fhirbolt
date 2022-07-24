@@ -302,7 +302,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                let values: Vec<_> = map_access.next_value()?;
+                let values: Vec<Option<_>> = map_access.next_value()?;
 
                 let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
                 if vec.len() != values.len() {
@@ -313,11 +313,13 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
                 }
 
                 for (i, value) in values.into_iter().enumerate() {
+                    if let Some(value) = value {
                     vec[i].value = value;
+                    }
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                let elements: Vec<super::super::serde_helpers::PrimitiveElementOwned> = map_access.next_value()?;
+                let elements: Vec<Option<super::super::serde_helpers::PrimitiveElementOwned>> = map_access.next_value()?;
 
                 let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(elements.len()).collect::<Vec<_>>());
                 if vec.len() != elements.len() {
@@ -328,8 +330,10 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
                 }
 
                 for (i, element) in elements.into_iter().enumerate() {
+                    if let Some(element) = element {
                     vec[i].id = element.id;
                     vec[i].extension = element.extension;
+                    }
                 }
             },
         }
