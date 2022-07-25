@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationIngredientItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -48,7 +48,8 @@ impl serde::ser::Serialize for MedicationIngredient {
         }
         if let Some(some) = self.r#is_active.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("isActive", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("isActive", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -149,7 +150,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationIngredient {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("isActive"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IsActivePrimitiveElement => {
                             let some = r#is_active.get_or_insert(Default::default());
@@ -210,7 +212,8 @@ impl serde::ser::Serialize for MedicationBatch {
         }
         if let Some(some) = self.r#lot_number.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lotNumber", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("lotNumber", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -222,7 +225,8 @@ impl serde::ser::Serialize for MedicationBatch {
         }
         if let Some(some) = self.r#expiration_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("expirationDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("expirationDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -299,7 +303,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationBatch {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lotNumber"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LotNumberPrimitiveElement => {
                             let some = r#lot_number.get_or_insert(Default::default());
@@ -318,7 +323,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationBatch {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("expirationDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExpirationDatePrimitiveElement => {
                             let some = r#expiration_date.get_or_insert(Default::default());
@@ -381,7 +387,8 @@ impl serde::ser::Serialize for Medication {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -393,7 +400,8 @@ impl serde::ser::Serialize for Medication {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -423,7 +431,8 @@ impl serde::ser::Serialize for Medication {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -555,7 +564,8 @@ impl<'de> serde::de::Deserialize<'de> for Medication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -574,7 +584,8 @@ impl<'de> serde::de::Deserialize<'de> for Medication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -629,7 +640,8 @@ impl<'de> serde::de::Deserialize<'de> for Medication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct InsurancePlanContact {
     pub r#id: Option<std::string::String>,
@@ -286,7 +286,8 @@ impl serde::ser::Serialize for InsurancePlanCoverageBenefit {
         state.serialize_entry("type", &self.r#type)?;
         if let Some(some) = self.r#requirement.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("requirement", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("requirement", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -376,7 +377,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requirement"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RequirementPrimitiveElement => {
                             let some = r#requirement.get_or_insert(Default::default());
@@ -568,7 +570,8 @@ impl serde::ser::Serialize for InsurancePlanPlanGeneralCost {
         }
         if let Some(some) = self.r#group_size.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("groupSize", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("groupSize", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -583,7 +586,8 @@ impl serde::ser::Serialize for InsurancePlanPlanGeneralCost {
         }
         if let Some(some) = self.r#comment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("comment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("comment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -675,7 +679,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("groupSize"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::GroupSizePrimitiveElement => {
                             let some = r#group_size.get_or_insert(Default::default());
@@ -700,7 +705,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());
@@ -1314,7 +1320,8 @@ impl serde::ser::Serialize for InsurancePlan {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1326,7 +1333,8 @@ impl serde::ser::Serialize for InsurancePlan {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1353,7 +1361,8 @@ impl serde::ser::Serialize for InsurancePlan {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1368,7 +1377,8 @@ impl serde::ser::Serialize for InsurancePlan {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1379,7 +1389,12 @@ impl serde::ser::Serialize for InsurancePlan {
             }
         }
         if !self.r#alias.is_empty() {
-            let values: Vec<_> = self.r#alias.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#alias
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("alias", &values)?;
             }
@@ -1561,7 +1576,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1580,7 +1596,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1629,7 +1646,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1654,7 +1672,8 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -1669,7 +1688,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                             some.extension = extension;
                         }
                         Field::Alias => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#alias.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1685,7 +1704,9 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
                                 return Err(serde::de::Error::duplicate_field("alias"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::AliasPrimitiveElement => {

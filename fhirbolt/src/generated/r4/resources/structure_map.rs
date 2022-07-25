@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -99,7 +99,8 @@ impl serde::ser::Serialize for StructureMapStructure {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#url.value.as_ref() {
-            state.serialize_entry("url", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("url", &some)?;
         }
         if self.r#url.id.is_some() || !self.r#url.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -109,7 +110,8 @@ impl serde::ser::Serialize for StructureMapStructure {
             state.serialize_entry("_url", &primitive_element)?;
         }
         if let Some(some) = self.r#mode.value.as_ref() {
-            state.serialize_entry("mode", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("mode", &some)?;
         }
         if self.r#mode.id.is_some() || !self.r#mode.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -120,7 +122,8 @@ impl serde::ser::Serialize for StructureMapStructure {
         }
         if let Some(some) = self.r#alias.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("alias", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("alias", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -132,7 +135,8 @@ impl serde::ser::Serialize for StructureMapStructure {
         }
         if let Some(some) = self.r#documentation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("documentation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("documentation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -219,7 +223,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -238,7 +243,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mode"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ModePrimitiveElement => {
                             let some = r#mode.get_or_insert(Default::default());
@@ -257,7 +263,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("alias"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AliasPrimitiveElement => {
                             let some = r#alias.get_or_insert(Default::default());
@@ -276,7 +283,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
@@ -333,7 +341,8 @@ impl serde::ser::Serialize for StructureMapGroupInput {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -344,7 +353,8 @@ impl serde::ser::Serialize for StructureMapGroupInput {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -355,7 +365,8 @@ impl serde::ser::Serialize for StructureMapGroupInput {
             }
         }
         if let Some(some) = self.r#mode.value.as_ref() {
-            state.serialize_entry("mode", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("mode", &some)?;
         }
         if self.r#mode.id.is_some() || !self.r#mode.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -366,7 +377,8 @@ impl serde::ser::Serialize for StructureMapGroupInput {
         }
         if let Some(some) = self.r#documentation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("documentation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("documentation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -453,7 +465,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -472,7 +485,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -491,7 +505,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mode"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ModePrimitiveElement => {
                             let some = r#mode.get_or_insert(Default::default());
@@ -510,7 +525,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
@@ -574,7 +590,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#context.value.as_ref() {
-            state.serialize_entry("context", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("context", &some)?;
         }
         if self.r#context.id.is_some() || !self.r#context.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -585,7 +602,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#min.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("min", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("min", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -597,7 +615,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("max", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("max", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -609,7 +628,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -623,7 +643,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
             match some {
                 StructureMapGroupRuleSourceDefaultValue::Base64Binary(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueBase64Binary", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueBase64Binary", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -635,7 +656,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -647,7 +669,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Canonical(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueCanonical", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueCanonical", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -659,7 +682,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Code(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueCode", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueCode", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -671,7 +695,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -683,7 +708,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -695,7 +721,10 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Decimal(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueDecimal", some)?;
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("defaultValueDecimal", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -707,7 +736,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Id(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueId", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueId", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -719,7 +749,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Instant(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueInstant", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueInstant", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -731,7 +762,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Integer(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueInteger", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueInteger", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -743,7 +775,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Markdown(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueMarkdown", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueMarkdown", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -755,7 +788,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Oid(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueOid", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueOid", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -767,7 +801,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::PositiveInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValuePositiveInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValuePositiveInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -779,7 +814,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -791,7 +827,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Time(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -803,7 +840,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::UnsignedInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueUnsignedInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueUnsignedInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -815,7 +853,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Uri(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueUri", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueUri", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -827,7 +866,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Url(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueUrl", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueUrl", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -839,7 +879,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
                 }
                 StructureMapGroupRuleSourceDefaultValue::Uuid(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("defaultValueUuid", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("defaultValueUuid", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -949,7 +990,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#element.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("element", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("element", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -961,7 +1003,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#list_mode.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("listMode", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("listMode", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -973,7 +1016,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#variable.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("variable", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("variable", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -985,7 +1029,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#condition.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("condition", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("condition", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -997,7 +1042,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#check.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("check", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("check", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1009,7 +1055,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleSource {
         }
         if let Some(some) = self.r#log_message.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("logMessage", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("logMessage", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1268,7 +1315,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("context"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ContextPrimitiveElement => {
                             let some = r#context.get_or_insert(Default::default());
@@ -1287,7 +1335,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("min"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MinPrimitiveElement => {
                             let some = r#min.get_or_insert(Default::default());
@@ -1306,7 +1355,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("max"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MaxPrimitiveElement => {
                             let some = r#max.get_or_insert(Default::default());
@@ -1325,7 +1375,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -1353,7 +1404,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueBase64Binary",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1397,7 +1449,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueBoolean",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1441,7 +1494,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueCanonical",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1480,7 +1534,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueCode",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1515,7 +1570,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueDate",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1554,7 +1610,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1598,7 +1655,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueDecimal",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: serde_json::Number = map_access.next_value()?;
+                                variant.value = Some(format!("{}", value));
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1638,7 +1696,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueId",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1678,7 +1737,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueInstant",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1723,7 +1783,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueInteger",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1767,7 +1828,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueMarkdown",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1806,7 +1868,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueOid",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1845,7 +1908,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValuePositiveInt",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1885,7 +1949,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueString",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1921,7 +1986,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1960,7 +2026,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueUnsignedInt",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -1999,7 +2066,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueUri",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -2034,7 +2102,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueUrl",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -2069,7 +2138,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         "defaultValueUuid",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("defaultValue[x]"));
                             }
@@ -2423,7 +2493,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("element"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ElementPrimitiveElement => {
                             let some = r#element.get_or_insert(Default::default());
@@ -2442,7 +2513,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("listMode"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ListModePrimitiveElement => {
                             let some = r#list_mode.get_or_insert(Default::default());
@@ -2461,7 +2533,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variable"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VariablePrimitiveElement => {
                             let some = r#variable.get_or_insert(Default::default());
@@ -2480,7 +2553,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ConditionPrimitiveElement => {
                             let some = r#condition.get_or_insert(Default::default());
@@ -2499,7 +2573,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("check"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CheckPrimitiveElement => {
                             let some = r#check.get_or_insert(Default::default());
@@ -2518,7 +2593,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("logMessage"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LogMessagePrimitiveElement => {
                             let some = r#log_message.get_or_insert(Default::default());
@@ -2581,7 +2657,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTargetParameter {
         match self.r#value {
             StructureMapGroupRuleTargetParameterValue::Id(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueId", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueId", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2593,7 +2670,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTargetParameter {
             }
             StructureMapGroupRuleTargetParameterValue::String(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueString", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueString", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2605,7 +2683,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTargetParameter {
             }
             StructureMapGroupRuleTargetParameterValue::Boolean(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueBoolean", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueBoolean", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2617,7 +2696,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTargetParameter {
             }
             StructureMapGroupRuleTargetParameterValue::Integer(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueInteger", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueInteger", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2629,7 +2709,10 @@ impl serde::ser::Serialize for StructureMapGroupRuleTargetParameter {
             }
             StructureMapGroupRuleTargetParameterValue::Decimal(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueDecimal", some)?;
+                    let some = some
+                        .parse::<serde_json::Number>()
+                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                    state.serialize_entry("valueDecimal", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2727,7 +2810,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueId"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -2762,7 +2846,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -2801,7 +2886,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -2840,7 +2926,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueInteger"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -2879,7 +2966,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDecimal"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: serde_json::Number = map_access.next_value()?;
+                                variant.value = Some(format!("{}", value));
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -2951,7 +3039,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
         }
         if let Some(some) = self.r#context.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("context", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("context", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2963,7 +3052,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
         }
         if let Some(some) = self.r#context_type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("contextType", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("contextType", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2975,7 +3065,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
         }
         if let Some(some) = self.r#element.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("element", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("element", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2987,7 +3078,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
         }
         if let Some(some) = self.r#variable.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("variable", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("variable", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2998,7 +3090,12 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
             }
         }
         if !self.r#list_mode.is_empty() {
-            let values: Vec<_> = self.r#list_mode.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#list_mode
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("listMode", &values)?;
             }
@@ -3026,7 +3123,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
         }
         if let Some(some) = self.r#list_rule_id.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("listRuleId", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("listRuleId", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3038,7 +3136,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleTarget {
         }
         if let Some(some) = self.r#transform.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("transform", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("transform", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3149,7 +3248,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("context"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ContextPrimitiveElement => {
                             let some = r#context.get_or_insert(Default::default());
@@ -3168,7 +3268,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contextType"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ContextTypePrimitiveElement => {
                             let some = r#context_type.get_or_insert(Default::default());
@@ -3187,7 +3288,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("element"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ElementPrimitiveElement => {
                             let some = r#element.get_or_insert(Default::default());
@@ -3206,7 +3308,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("variable"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VariablePrimitiveElement => {
                             let some = r#variable.get_or_insert(Default::default());
@@ -3221,7 +3324,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             some.extension = extension;
                         }
                         Field::ListMode => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#list_mode.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3237,7 +3340,9 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                 return Err(serde::de::Error::duplicate_field("listMode"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ListModePrimitiveElement => {
@@ -3273,7 +3378,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("listRuleId"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ListRuleIdPrimitiveElement => {
                             let some = r#list_rule_id.get_or_insert(Default::default());
@@ -3292,7 +3398,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("transform"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TransformPrimitiveElement => {
                             let some = r#transform.get_or_insert(Default::default());
@@ -3357,7 +3464,8 @@ impl serde::ser::Serialize for StructureMapGroupRuleDependent {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3367,7 +3475,12 @@ impl serde::ser::Serialize for StructureMapGroupRuleDependent {
             state.serialize_entry("_name", &primitive_element)?;
         }
         if !self.r#variable.is_empty() {
-            let values: Vec<_> = self.r#variable.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#variable
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("variable", &values)?;
             }
@@ -3463,7 +3576,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -3478,7 +3592,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                             some.extension = extension;
                         }
                         Field::Variable => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#variable.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3494,7 +3608,9 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                 return Err(serde::de::Error::duplicate_field("variable"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::VariablePrimitiveElement => {
@@ -3568,7 +3684,8 @@ impl serde::ser::Serialize for StructureMapGroupRule {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3591,7 +3708,8 @@ impl serde::ser::Serialize for StructureMapGroupRule {
         }
         if let Some(some) = self.r#documentation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("documentation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("documentation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3680,7 +3798,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -3723,7 +3842,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
@@ -3784,7 +3904,8 @@ impl serde::ser::Serialize for StructureMapGroup {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3795,7 +3916,8 @@ impl serde::ser::Serialize for StructureMapGroup {
         }
         if let Some(some) = self.r#extends.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("extends", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("extends", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3806,7 +3928,8 @@ impl serde::ser::Serialize for StructureMapGroup {
             }
         }
         if let Some(some) = self.r#type_mode.value.as_ref() {
-            state.serialize_entry("typeMode", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("typeMode", &some)?;
         }
         if self.r#type_mode.id.is_some() || !self.r#type_mode.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3817,7 +3940,8 @@ impl serde::ser::Serialize for StructureMapGroup {
         }
         if let Some(some) = self.r#documentation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("documentation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("documentation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3916,7 +4040,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -3935,7 +4060,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extends"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExtendsPrimitiveElement => {
                             let some = r#extends.get_or_insert(Default::default());
@@ -3954,7 +4080,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("typeMode"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypeModePrimitiveElement => {
                             let some = r#type_mode.get_or_insert(Default::default());
@@ -3973,7 +4100,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("documentation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DocumentationPrimitiveElement => {
                             let some = r#documentation.get_or_insert(Default::default());
@@ -4062,7 +4190,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4074,7 +4203,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4097,7 +4227,8 @@ impl serde::ser::Serialize for StructureMap {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#url.value.as_ref() {
-            state.serialize_entry("url", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("url", &some)?;
         }
         if self.r#url.id.is_some() || !self.r#url.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4111,7 +4242,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#version.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("version", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("version", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4122,7 +4254,8 @@ impl serde::ser::Serialize for StructureMap {
             }
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4133,7 +4266,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#title.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("title", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("title", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4144,7 +4278,8 @@ impl serde::ser::Serialize for StructureMap {
             }
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4155,7 +4290,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#experimental.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("experimental", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("experimental", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4167,7 +4303,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4179,7 +4316,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#publisher.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("publisher", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("publisher", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4194,7 +4332,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4212,7 +4351,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#purpose.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("purpose", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("purpose", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4224,7 +4364,8 @@ impl serde::ser::Serialize for StructureMap {
         }
         if let Some(some) = self.r#copyright.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("copyright", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("copyright", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4238,7 +4379,12 @@ impl serde::ser::Serialize for StructureMap {
             state.serialize_entry("structure", &self.r#structure)?;
         }
         if !self.r#import.is_empty() {
-            let values: Vec<_> = self.r#import.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#import
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("import", &values)?;
             }
@@ -4427,7 +4573,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -4446,7 +4593,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -4489,7 +4637,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -4514,7 +4663,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
@@ -4533,7 +4683,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -4552,7 +4703,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
@@ -4571,7 +4723,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -4590,7 +4743,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
@@ -4609,7 +4763,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -4628,7 +4783,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
@@ -4653,7 +4809,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -4684,7 +4841,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
@@ -4703,7 +4861,8 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
@@ -4724,7 +4883,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                             r#structure = Some(map_access.next_value()?);
                         }
                         Field::Import => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#import.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -4740,7 +4899,9 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 return Err(serde::de::Error::duplicate_field("import"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ImportPrimitiveElement => {

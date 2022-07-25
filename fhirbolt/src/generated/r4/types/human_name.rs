@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct HumanName {
     pub r#id: Option<std::string::String>,
@@ -26,7 +26,8 @@ impl serde::ser::Serialize for HumanName {
         }
         if let Some(some) = self.r#use.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("use", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("use", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -38,7 +39,8 @@ impl serde::ser::Serialize for HumanName {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -50,7 +52,8 @@ impl serde::ser::Serialize for HumanName {
         }
         if let Some(some) = self.r#family.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("family", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("family", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -61,7 +64,12 @@ impl serde::ser::Serialize for HumanName {
             }
         }
         if !self.r#given.is_empty() {
-            let values: Vec<_> = self.r#given.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#given
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("given", &values)?;
             }
@@ -88,7 +96,12 @@ impl serde::ser::Serialize for HumanName {
             }
         }
         if !self.r#prefix.is_empty() {
-            let values: Vec<_> = self.r#prefix.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#prefix
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("prefix", &values)?;
             }
@@ -115,7 +128,12 @@ impl serde::ser::Serialize for HumanName {
             }
         }
         if !self.r#suffix.is_empty() {
-            let values: Vec<_> = self.r#suffix.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#suffix
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("suffix", &values)?;
             }
@@ -224,7 +242,8 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
@@ -243,7 +262,8 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -262,7 +282,8 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("family"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::FamilyPrimitiveElement => {
                             let some = r#family.get_or_insert(Default::default());
@@ -277,7 +298,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             some.extension = extension;
                         }
                         Field::Given => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#given.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -293,7 +314,9 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 return Err(serde::de::Error::duplicate_field("given"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::GivenPrimitiveElement => {
@@ -325,7 +348,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             }
                         }
                         Field::Prefix => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#prefix.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -341,7 +364,9 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 return Err(serde::de::Error::duplicate_field("prefix"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PrefixPrimitiveElement => {
@@ -373,7 +398,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                             }
                         }
                         Field::Suffix => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#suffix.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -389,7 +414,9 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 return Err(serde::de::Error::duplicate_field("suffix"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SuffixPrimitiveElement => {

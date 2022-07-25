@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Contributor {
     pub r#id: Option<std::string::String>,
@@ -21,7 +21,8 @@ impl serde::ser::Serialize for Contributor {
             state.serialize_entry("extension", &self.r#extension)?;
         }
         if let Some(some) = self.r#type.value.as_ref() {
-            state.serialize_entry("type", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("type", &some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -31,7 +32,8 @@ impl serde::ser::Serialize for Contributor {
             state.serialize_entry("_type", &primitive_element)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -103,7 +105,8 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -122,7 +125,8 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());

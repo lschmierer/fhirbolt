@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum BiologicallyDerivedProductCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
@@ -67,7 +67,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductCollection {
             match some {
                 BiologicallyDerivedProductCollectionCollected::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("collectedDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("collectedDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -180,7 +181,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductCollection {
                                         "collectedDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("collected[x]"));
                             }
@@ -262,7 +264,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductProcessing {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -282,7 +285,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductProcessing {
             match some {
                 BiologicallyDerivedProductProcessingTime::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("timeDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("timeDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -378,7 +382,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -416,7 +421,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("timeDateTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("time[x]"));
                             }
@@ -493,7 +499,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductManipulation {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -507,7 +514,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductManipulation {
             match some {
                 BiologicallyDerivedProductManipulationTime::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("timeDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("timeDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -597,7 +605,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -623,7 +632,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("timeDateTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("time[x]"));
                             }
@@ -700,7 +710,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductStorage {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -712,7 +723,10 @@ impl serde::ser::Serialize for BiologicallyDerivedProductStorage {
         }
         if let Some(some) = self.r#temperature.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("temperature", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("temperature", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -724,7 +738,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProductStorage {
         }
         if let Some(some) = self.r#scale.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("scale", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("scale", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -815,7 +830,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -834,7 +850,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("temperature"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::TemperaturePrimitiveElement => {
                             let some = r#temperature.get_or_insert(Default::default());
@@ -853,7 +870,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("scale"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ScalePrimitiveElement => {
                             let some = r#scale.get_or_insert(Default::default());
@@ -927,7 +945,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProduct {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -939,7 +958,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProduct {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -966,7 +986,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProduct {
         }
         if let Some(some) = self.r#product_category.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("productCategory", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("productCategory", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -981,7 +1002,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProduct {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -996,7 +1018,8 @@ impl serde::ser::Serialize for BiologicallyDerivedProduct {
         }
         if let Some(some) = self.r#quantity.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("quantity", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("quantity", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1141,7 +1164,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1160,7 +1184,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1209,7 +1234,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("productCategory"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProductCategoryPrimitiveElement => {
                             let some = r#product_category.get_or_insert(Default::default());
@@ -1234,7 +1260,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1259,7 +1286,8 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("quantity"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::QuantityPrimitiveElement => {
                             let some = r#quantity.get_or_insert(Default::default());

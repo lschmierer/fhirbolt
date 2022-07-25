@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum GoalStart {
     Date(Box<super::super::types::Date>),
@@ -78,7 +78,8 @@ impl serde::ser::Serialize for GoalTarget {
                 }
                 GoalTargetDetail::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("detailString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("detailString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -90,7 +91,8 @@ impl serde::ser::Serialize for GoalTarget {
                 }
                 GoalTargetDetail::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("detailBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("detailBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -102,7 +104,8 @@ impl serde::ser::Serialize for GoalTarget {
                 }
                 GoalTargetDetail::Integer(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("detailInteger", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("detailInteger", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -124,7 +127,8 @@ impl serde::ser::Serialize for GoalTarget {
             match some {
                 GoalTargetDue::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("dueDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("dueDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -257,7 +261,8 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("detailString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("detail[x]"));
                             }
@@ -286,7 +291,8 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("detailBoolean"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("detail[x]"));
                             }
@@ -317,7 +323,8 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("detailInteger"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("detail[x]"));
                             }
@@ -354,7 +361,8 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("dueDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("due[x]"));
                             }
@@ -440,7 +448,8 @@ impl serde::ser::Serialize for Goal {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -452,7 +461,8 @@ impl serde::ser::Serialize for Goal {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -478,7 +488,8 @@ impl serde::ser::Serialize for Goal {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#lifecycle_status.value.as_ref() {
-            state.serialize_entry("lifecycleStatus", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("lifecycleStatus", &some)?;
         }
         if self.r#lifecycle_status.id.is_some() || !self.r#lifecycle_status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -502,7 +513,8 @@ impl serde::ser::Serialize for Goal {
             match some {
                 GoalStart::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("startDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("startDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -523,7 +535,8 @@ impl serde::ser::Serialize for Goal {
         }
         if let Some(some) = self.r#status_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("statusDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("statusDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -535,7 +548,8 @@ impl serde::ser::Serialize for Goal {
         }
         if let Some(some) = self.r#status_reason.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("statusReason", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("statusReason", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -702,7 +716,8 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -721,7 +736,8 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -770,7 +786,8 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lifecycleStatus"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LifecycleStatusPrimitiveElement => {
                             let some = r#lifecycle_status.get_or_insert(Default::default());
@@ -820,7 +837,8 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("startDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("start[x]"));
                             }
@@ -860,7 +878,8 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusDatePrimitiveElement => {
                             let some = r#status_date.get_or_insert(Default::default());
@@ -879,7 +898,8 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusReason"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusReasonPrimitiveElement => {
                             let some = r#status_reason.get_or_insert(Default::default());

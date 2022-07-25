@@ -6,6 +6,9 @@ use crate::{
     gather::{RustEnum, RustEnumVariant, RustStruct, RustStructField},
 };
 
+const XHTML_TYPE: &str = "super::super::types::Xhtml";
+const DECIMAL_TYPE: &str = "super::super::types::Decimal";
+
 pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
     let fhir_name = &r#struct.fhir_name;
     let struct_name = &r#struct.name;
@@ -246,6 +249,16 @@ fn deserialize_enum_variant(
     let field_enum_type_primitive_element_name =
         format_ident!("{}PrimitiveElement", field_enum_type_name);
 
+    let (intermediate_type_tokens, convert_intermediate_type_tokens): (TokenStream, TokenStream) =
+        if variant.r#type.name == DECIMAL_TYPE {
+            (
+                quote! { serde_json::Number },
+                quote! { format!("{}", value) },
+            )
+        } else {
+            (quote! { _ }, quote! { value })
+        };
+
     if variant.r#type.maybe_fhir_primitive {
         quote! {
             Field::#field_enum_type_name => {
@@ -256,7 +269,9 @@ fn deserialize_enum_variant(
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
 
-                    variant.value = Some(map_access.next_value()?);
+                    let value: #intermediate_type_tokens = map_access.next_value()?;
+
+                    variant.value = Some(#convert_intermediate_type_tokens);
                 } else {
                     return Err(serde::de::Error::duplicate_field(#fhir_name_poly));
                 }
@@ -299,10 +314,20 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
     let field_enum_type_primitive_element_name =
         format_ident!("{}PrimitiveElement", field_enum_type_name);
 
+    let (intermediate_type_tokens, convert_intermediate_type_tokens): (TokenStream, TokenStream) =
+        if field.r#type.name == DECIMAL_TYPE {
+            (
+                quote! { serde_json::Number },
+                quote! { format!("{}", value) },
+            )
+        } else {
+            (quote! { _ }, quote! { value })
+        };
+
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                let values: Vec<Option<_>> = map_access.next_value()?;
+                let values: Vec<Option<#intermediate_type_tokens>> = map_access.next_value()?;
 
                 let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
                 if vec.len() != values.len() {
@@ -314,7 +339,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
 
                 for (i, value) in values.into_iter().enumerate() {
                     if let Some(value) = value {
-                    vec[i].value = value;
+                        vec[i].value = Some(#convert_intermediate_type_tokens);
                     }
                 }
             },
@@ -340,7 +365,7 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
     } else {
         let deserialize_value_tokens = match field.r#type.name.as_str() {
             // xhtml is the only FHIR primtive where value is not optional
-            "super::super::types::Xhtml" => quote! {
+            XHTML_TYPE => quote! {
                 if !some.value.is_empty() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
@@ -350,7 +375,8 @@ fn deserialize_primitive(field: &RustStructField) -> TokenStream {
                 if some.value.is_some() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
-                some.value = Some(map_access.next_value()?);
+                let value: #intermediate_type_tokens = map_access.next_value()?;
+                some.value = Some(#convert_intermediate_type_tokens);
             },
         };
 

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ProdCharacteristic {
     pub r#id: Option<std::string::String>,
@@ -52,7 +52,8 @@ impl serde::ser::Serialize for ProdCharacteristic {
         }
         if let Some(some) = self.r#shape.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("shape", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("shape", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -63,7 +64,12 @@ impl serde::ser::Serialize for ProdCharacteristic {
             }
         }
         if !self.r#color.is_empty() {
-            let values: Vec<_> = self.r#color.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#color
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("color", &values)?;
             }
@@ -90,7 +96,12 @@ impl serde::ser::Serialize for ProdCharacteristic {
             }
         }
         if !self.r#imprint.is_empty() {
-            let values: Vec<_> = self.r#imprint.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#imprint
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("imprint", &values)?;
             }
@@ -254,7 +265,8 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("shape"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ShapePrimitiveElement => {
                             let some = r#shape.get_or_insert(Default::default());
@@ -269,7 +281,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                             some.extension = extension;
                         }
                         Field::Color => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#color.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -285,7 +297,9 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 return Err(serde::de::Error::duplicate_field("color"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ColorPrimitiveElement => {
@@ -317,7 +331,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                             }
                         }
                         Field::Imprint => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#imprint.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -333,7 +347,9 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 return Err(serde::de::Error::duplicate_field("imprint"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ImprintPrimitiveElement => {

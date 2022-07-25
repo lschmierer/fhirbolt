@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Slot {
     pub r#id: Option<std::string::String>,
@@ -37,7 +37,8 @@ impl serde::ser::Serialize for Slot {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -49,7 +50,8 @@ impl serde::ser::Serialize for Slot {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -88,7 +90,8 @@ impl serde::ser::Serialize for Slot {
         }
         state.serialize_entry("schedule", &self.r#schedule)?;
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -98,7 +101,8 @@ impl serde::ser::Serialize for Slot {
             state.serialize_entry("_status", &primitive_element)?;
         }
         if let Some(some) = self.r#start.value.as_ref() {
-            state.serialize_entry("start", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("start", &some)?;
         }
         if self.r#start.id.is_some() || !self.r#start.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -108,7 +112,8 @@ impl serde::ser::Serialize for Slot {
             state.serialize_entry("_start", &primitive_element)?;
         }
         if let Some(some) = self.r#end.value.as_ref() {
-            state.serialize_entry("end", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("end", &some)?;
         }
         if self.r#end.id.is_some() || !self.r#end.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -119,7 +124,8 @@ impl serde::ser::Serialize for Slot {
         }
         if let Some(some) = self.r#overbooked.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("overbooked", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("overbooked", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -131,7 +137,8 @@ impl serde::ser::Serialize for Slot {
         }
         if let Some(some) = self.r#comment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("comment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("comment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -268,7 +275,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -287,7 +295,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -366,7 +375,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -385,7 +395,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
@@ -404,7 +415,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
@@ -423,7 +435,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("overbooked"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OverbookedPrimitiveElement => {
                             let some = r#overbooked.get_or_insert(Default::default());
@@ -442,7 +455,8 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ChargeItemDefinitionApplicability {
     pub r#id: Option<std::string::String>,
@@ -26,7 +26,8 @@ impl serde::ser::Serialize for ChargeItemDefinitionApplicability {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -38,7 +39,8 @@ impl serde::ser::Serialize for ChargeItemDefinitionApplicability {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -50,7 +52,8 @@ impl serde::ser::Serialize for ChargeItemDefinitionApplicability {
         }
         if let Some(some) = self.r#expression.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("expression", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("expression", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -135,7 +138,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -154,7 +158,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -173,7 +178,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("expression"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExpressionPrimitiveElement => {
                             let some = r#expression.get_or_insert(Default::default());
@@ -229,7 +235,8 @@ impl serde::ser::Serialize for ChargeItemDefinitionPropertyGroupPriceComponent {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#type.value.as_ref() {
-            state.serialize_entry("type", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("type", &some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -243,7 +250,10 @@ impl serde::ser::Serialize for ChargeItemDefinitionPropertyGroupPriceComponent {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -332,7 +342,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -357,7 +368,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -562,7 +574,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -574,7 +587,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -597,7 +611,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#url.value.as_ref() {
-            state.serialize_entry("url", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("url", &some)?;
         }
         if self.r#url.id.is_some() || !self.r#url.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -611,7 +626,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#version.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("version", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("version", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -623,7 +639,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#title.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("title", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("title", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -634,7 +651,12 @@ impl serde::ser::Serialize for ChargeItemDefinition {
             }
         }
         if !self.r#derived_from_uri.is_empty() {
-            let values: Vec<_> = self.r#derived_from_uri.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#derived_from_uri
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("derivedFromUri", &values)?;
             }
@@ -661,7 +683,12 @@ impl serde::ser::Serialize for ChargeItemDefinition {
             }
         }
         if !self.r#part_of.is_empty() {
-            let values: Vec<_> = self.r#part_of.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#part_of
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("partOf", &values)?;
             }
@@ -688,7 +715,12 @@ impl serde::ser::Serialize for ChargeItemDefinition {
             }
         }
         if !self.r#replaces.is_empty() {
-            let values: Vec<_> = self.r#replaces.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#replaces
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("replaces", &values)?;
             }
@@ -715,7 +747,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
             }
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -726,7 +759,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#experimental.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("experimental", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("experimental", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -738,7 +772,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -750,7 +785,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#publisher.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("publisher", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("publisher", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -765,7 +801,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -783,7 +820,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#copyright.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("copyright", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("copyright", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -795,7 +833,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#approval_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("approvalDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("approvalDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -807,7 +846,8 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         }
         if let Some(some) = self.r#last_review_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lastReviewDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("lastReviewDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1011,7 +1051,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1030,7 +1071,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1073,7 +1115,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -1098,7 +1141,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
@@ -1117,7 +1161,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
@@ -1132,7 +1177,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             some.extension = extension;
                         }
                         Field::DerivedFromUri => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#derived_from_uri.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1148,7 +1193,9 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 return Err(serde::de::Error::duplicate_field("derivedFromUri"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DerivedFromUriPrimitiveElement => {
@@ -1180,7 +1227,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             }
                         }
                         Field::PartOf => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#part_of.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1196,7 +1243,9 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 return Err(serde::de::Error::duplicate_field("partOf"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PartOfPrimitiveElement => {
@@ -1228,7 +1277,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             }
                         }
                         Field::Replaces => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#replaces.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1244,7 +1293,9 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 return Err(serde::de::Error::duplicate_field("replaces"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ReplacesPrimitiveElement => {
@@ -1280,7 +1331,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1299,7 +1351,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
@@ -1318,7 +1371,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -1337,7 +1391,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
@@ -1362,7 +1417,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -1393,7 +1449,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
@@ -1412,7 +1469,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("approvalDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ApprovalDatePrimitiveElement => {
                             let some = r#approval_date.get_or_insert(Default::default());
@@ -1431,7 +1489,8 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastReviewDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LastReviewDatePrimitiveElement => {
                             let some = r#last_review_date.get_or_insert(Default::default());

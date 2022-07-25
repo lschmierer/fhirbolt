@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicinalProductSpecialDesignationIndication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -35,7 +35,8 @@ impl serde::ser::Serialize for MedicinalProductNameNamePart {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#part.value.as_ref() {
-            state.serialize_entry("part", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("part", &some)?;
         }
         if self.r#part.id.is_some() || !self.r#part.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -113,7 +114,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameNamePart {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("part"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PartPrimitiveElement => {
                             let some = r#part.get_or_insert(Default::default());
@@ -300,7 +302,8 @@ impl serde::ser::Serialize for MedicinalProductName {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#product_name.value.as_ref() {
-            state.serialize_entry("productName", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("productName", &some)?;
         }
         if self.r#product_name.id.is_some() || !self.r#product_name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -383,7 +386,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("productName"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProductNamePrimitiveElement => {
                             let some = r#product_name.get_or_insert(Default::default());
@@ -461,7 +465,8 @@ impl serde::ser::Serialize for MedicinalProductManufacturingBusinessOperation {
         }
         if let Some(some) = self.r#effective_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("effectiveDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("effectiveDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -578,7 +583,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufacturingBusinessO
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectiveDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::EffectiveDatePrimitiveElement => {
                             let some = r#effective_date.get_or_insert(Default::default());
@@ -686,7 +692,8 @@ impl serde::ser::Serialize for MedicinalProductSpecialDesignation {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -831,7 +838,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductSpecialDesignation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -917,7 +925,8 @@ impl serde::ser::Serialize for MedicinalProduct {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -929,7 +938,8 @@ impl serde::ser::Serialize for MedicinalProduct {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -970,7 +980,12 @@ impl serde::ser::Serialize for MedicinalProduct {
             state.serialize_entry("additionalMonitoringIndicator", some)?;
         }
         if !self.r#special_measures.is_empty() {
-            let values: Vec<_> = self.r#special_measures.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#special_measures
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("specialMeasures", &values)?;
             }
@@ -1202,7 +1217,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1221,7 +1237,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProduct {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1302,7 +1319,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProduct {
                             r#additional_monitoring_indicator = Some(map_access.next_value()?);
                         }
                         Field::SpecialMeasures => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#special_measures.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1318,7 +1335,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProduct {
                                 return Err(serde::de::Error::duplicate_field("specialMeasures"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SpecialMeasuresPrimitiveElement => {

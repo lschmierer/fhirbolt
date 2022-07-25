@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AnnotationAuthor {
     Reference(Box<super::super::types::Reference>),
@@ -38,7 +38,8 @@ impl serde::ser::Serialize for Annotation {
                 }
                 AnnotationAuthor::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("authorString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("authorString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -55,7 +56,8 @@ impl serde::ser::Serialize for Annotation {
         }
         if let Some(some) = self.r#time.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("time", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("time", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -66,7 +68,8 @@ impl serde::ser::Serialize for Annotation {
             }
         }
         if let Some(some) = self.r#text.value.as_ref() {
-            state.serialize_entry("text", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("text", &some)?;
         }
         if self.r#text.id.is_some() || !self.r#text.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -147,7 +150,8 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("authorString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("author[x]"));
                             }
@@ -174,7 +178,8 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("time"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TimePrimitiveElement => {
                             let some = r#time.get_or_insert(Default::default());
@@ -193,7 +198,8 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());

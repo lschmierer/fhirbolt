@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Address {
     pub r#id: Option<std::string::String>,
@@ -29,7 +29,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#use.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("use", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("use", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -41,7 +42,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -53,7 +55,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -64,7 +67,12 @@ impl serde::ser::Serialize for Address {
             }
         }
         if !self.r#line.is_empty() {
-            let values: Vec<_> = self.r#line.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#line
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("line", &values)?;
             }
@@ -92,7 +100,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#city.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("city", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("city", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -104,7 +113,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#district.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("district", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("district", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -116,7 +126,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#state.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("state", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("state", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -128,7 +139,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#postal_code.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("postalCode", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("postalCode", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -140,7 +152,8 @@ impl serde::ser::Serialize for Address {
         }
         if let Some(some) = self.r#country.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("country", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("country", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -248,7 +261,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
@@ -267,7 +281,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -286,7 +301,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -301,7 +317,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             some.extension = extension;
                         }
                         Field::Line => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#line.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -317,7 +333,9 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                 return Err(serde::de::Error::duplicate_field("line"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::LinePrimitiveElement => {
@@ -353,7 +371,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("city"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CityPrimitiveElement => {
                             let some = r#city.get_or_insert(Default::default());
@@ -372,7 +391,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("district"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DistrictPrimitiveElement => {
                             let some = r#district.get_or_insert(Default::default());
@@ -391,7 +411,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("state"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatePrimitiveElement => {
                             let some = r#state.get_or_insert(Default::default());
@@ -410,7 +431,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("postalCode"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PostalCodePrimitiveElement => {
                             let some = r#postal_code.get_or_insert(Default::default());
@@ -429,7 +451,8 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("country"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CountryPrimitiveElement => {
                             let some = r#country.get_or_insert(Default::default());

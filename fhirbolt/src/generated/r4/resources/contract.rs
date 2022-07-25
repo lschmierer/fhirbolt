@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ContractTopic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -146,7 +146,8 @@ impl serde::ser::Serialize for ContractContentDefinition {
         }
         if let Some(some) = self.r#publication_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("publicationDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("publicationDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -157,7 +158,8 @@ impl serde::ser::Serialize for ContractContentDefinition {
             }
         }
         if let Some(some) = self.r#publication_status.value.as_ref() {
-            state.serialize_entry("publicationStatus", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("publicationStatus", &some)?;
         }
         if self.r#publication_status.id.is_some() || !self.r#publication_status.extension.is_empty()
         {
@@ -169,7 +171,8 @@ impl serde::ser::Serialize for ContractContentDefinition {
         }
         if let Some(some) = self.r#copyright.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("copyright", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("copyright", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -278,7 +281,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publicationDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PublicationDatePrimitiveElement => {
                             let some = r#publication_date.get_or_insert(Default::default());
@@ -297,7 +301,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publicationStatus"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PublicationStatusPrimitiveElement => {
                             let some = r#publication_status.get_or_insert(Default::default());
@@ -318,7 +323,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
@@ -378,7 +384,12 @@ impl serde::ser::Serialize for ContractTermSecurityLabel {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if !self.r#number.is_empty() {
-            let values: Vec<_> = self.r#number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("number", &values)?;
             }
@@ -478,7 +489,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
                         Field::Number => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -494,7 +505,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                                 return Err(serde::de::Error::duplicate_field("number"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NumberPrimitiveElement => {
@@ -698,7 +711,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
         match self.r#value {
             ContractTermOfferAnswerValue::Boolean(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueBoolean", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueBoolean", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -710,7 +724,10 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::Decimal(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueDecimal", some)?;
+                    let some = some
+                        .parse::<serde_json::Number>()
+                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                    state.serialize_entry("valueDecimal", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -722,7 +739,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::Integer(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueInteger", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueInteger", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -734,7 +752,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::Date(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueDate", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueDate", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -746,7 +765,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::DateTime(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueDateTime", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueDateTime", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -758,7 +778,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::Time(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueTime", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueTime", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -770,7 +791,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::String(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueString", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueString", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -782,7 +804,8 @@ impl serde::ser::Serialize for ContractTermOfferAnswer {
             }
             ContractTermOfferAnswerValue::Uri(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("valueUri", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("valueUri", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -909,7 +932,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -940,7 +964,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDecimal"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: serde_json::Number = map_access.next_value()?;
+                                variant.value = Some(format!("{}", value));
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -971,7 +996,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueInteger"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1002,7 +1028,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1033,7 +1060,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDateTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1066,7 +1094,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1097,7 +1126,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1128,7 +1158,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueUri"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1251,7 +1282,8 @@ impl serde::ser::Serialize for ContractTermOffer {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1262,7 +1294,12 @@ impl serde::ser::Serialize for ContractTermOffer {
             }
         }
         if !self.r#link_id.is_empty() {
-            let values: Vec<_> = self.r#link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("linkId", &values)?;
             }
@@ -1289,11 +1326,12 @@ impl serde::ser::Serialize for ContractTermOffer {
             }
         }
         if !self.r#security_label_number.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#security_label_number
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("securityLabelNumber", &values)?;
             }
@@ -1456,7 +1494,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -1471,7 +1510,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                             some.extension = extension;
                         }
                         Field::LinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1487,7 +1526,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                 return Err(serde::de::Error::duplicate_field("linkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
@@ -1519,7 +1560,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                             }
                         }
                         Field::SecurityLabelNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1537,7 +1578,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
@@ -1625,7 +1668,8 @@ impl serde::ser::Serialize for ContractTermAssetContext {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1715,7 +1759,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetContext {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -1798,7 +1843,8 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
         }
         if let Some(some) = self.r#effective_time.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("effectiveTime", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("effectiveTime", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1816,7 +1862,10 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1828,7 +1877,10 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
         }
         if let Some(some) = self.r#points.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("points", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("points", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1843,7 +1895,8 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
         }
         if let Some(some) = self.r#payment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("payment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("payment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1855,7 +1908,8 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
         }
         if let Some(some) = self.r#payment_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("paymentDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("paymentDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1872,7 +1926,12 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
             state.serialize_entry("recipient", some)?;
         }
         if !self.r#link_id.is_empty() {
-            let values: Vec<_> = self.r#link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("linkId", &values)?;
             }
@@ -1899,11 +1958,12 @@ impl serde::ser::Serialize for ContractTermAssetValuedItem {
             }
         }
         if !self.r#security_label_number.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#security_label_number
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("securityLabelNumber", &values)?;
             }
@@ -2072,7 +2132,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("effectiveTime"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::EffectiveTimePrimitiveElement => {
                             let some = r#effective_time.get_or_insert(Default::default());
@@ -2103,7 +2164,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -2122,7 +2184,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("points"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::PointsPrimitiveElement => {
                             let some = r#points.get_or_insert(Default::default());
@@ -2147,7 +2210,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("payment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PaymentPrimitiveElement => {
                             let some = r#payment.get_or_insert(Default::default());
@@ -2166,7 +2230,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PaymentDatePrimitiveElement => {
                             let some = r#payment_date.get_or_insert(Default::default());
@@ -2193,7 +2258,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             r#recipient = Some(map_access.next_value()?);
                         }
                         Field::LinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2209,7 +2274,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                 return Err(serde::de::Error::duplicate_field("linkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
@@ -2241,7 +2308,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                             }
                         }
                         Field::SecurityLabelNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2259,7 +2326,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
@@ -2375,7 +2444,8 @@ impl serde::ser::Serialize for ContractTermAsset {
         }
         if let Some(some) = self.r#condition.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("condition", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("condition", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2396,7 +2466,8 @@ impl serde::ser::Serialize for ContractTermAsset {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2407,7 +2478,12 @@ impl serde::ser::Serialize for ContractTermAsset {
             }
         }
         if !self.r#link_id.is_empty() {
-            let values: Vec<_> = self.r#link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("linkId", &values)?;
             }
@@ -2437,11 +2513,12 @@ impl serde::ser::Serialize for ContractTermAsset {
             state.serialize_entry("answer", &self.r#answer)?;
         }
         if !self.r#security_label_number.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#security_label_number
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("securityLabelNumber", &values)?;
             }
@@ -2618,7 +2695,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ConditionPrimitiveElement => {
                             let some = r#condition.get_or_insert(Default::default());
@@ -2655,7 +2733,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -2670,7 +2749,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                             some.extension = extension;
                         }
                         Field::LinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2686,7 +2765,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                 return Err(serde::de::Error::duplicate_field("linkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
@@ -2724,7 +2805,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                             r#answer = Some(map_access.next_value()?);
                         }
                         Field::SecurityLabelNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2742,7 +2823,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
@@ -2967,7 +3050,8 @@ impl serde::ser::Serialize for ContractTermAction {
         }
         if let Some(some) = self.r#do_not_perform.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("doNotPerform", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("doNotPerform", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2983,7 +3067,12 @@ impl serde::ser::Serialize for ContractTermAction {
         }
         state.serialize_entry("intent", &self.r#intent)?;
         if !self.r#link_id.is_empty() {
-            let values: Vec<_> = self.r#link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("linkId", &values)?;
             }
@@ -3014,7 +3103,12 @@ impl serde::ser::Serialize for ContractTermAction {
             state.serialize_entry("context", some)?;
         }
         if !self.r#context_link_id.is_empty() {
-            let values: Vec<_> = self.r#context_link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#context_link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("contextLinkId", &values)?;
             }
@@ -3044,7 +3138,8 @@ impl serde::ser::Serialize for ContractTermAction {
             match some {
                 ContractTermActionOccurrence::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("occurrenceDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("occurrenceDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3069,7 +3164,12 @@ impl serde::ser::Serialize for ContractTermAction {
             state.serialize_entry("requester", &self.r#requester)?;
         }
         if !self.r#requester_link_id.is_empty() {
-            let values: Vec<_> = self.r#requester_link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#requester_link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("requesterLinkId", &values)?;
             }
@@ -3105,7 +3205,12 @@ impl serde::ser::Serialize for ContractTermAction {
             state.serialize_entry("performer", some)?;
         }
         if !self.r#performer_link_id.is_empty() {
-            let values: Vec<_> = self.r#performer_link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#performer_link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("performerLinkId", &values)?;
             }
@@ -3138,7 +3243,12 @@ impl serde::ser::Serialize for ContractTermAction {
             state.serialize_entry("reasonReference", &self.r#reason_reference)?;
         }
         if !self.r#reason.is_empty() {
-            let values: Vec<_> = self.r#reason.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#reason
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("reason", &values)?;
             }
@@ -3165,7 +3275,12 @@ impl serde::ser::Serialize for ContractTermAction {
             }
         }
         if !self.r#reason_link_id.is_empty() {
-            let values: Vec<_> = self.r#reason_link_id.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#reason_link_id
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("reasonLinkId", &values)?;
             }
@@ -3195,11 +3310,12 @@ impl serde::ser::Serialize for ContractTermAction {
             state.serialize_entry("note", &self.r#note)?;
         }
         if !self.r#security_label_number.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#security_label_number
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("securityLabelNumber", &values)?;
             }
@@ -3370,7 +3486,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("doNotPerform"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DoNotPerformPrimitiveElement => {
                             let some = r#do_not_perform.get_or_insert(Default::default());
@@ -3403,7 +3520,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             r#intent = Some(map_access.next_value()?);
                         }
                         Field::LinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3419,7 +3536,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("linkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::LinkIdPrimitiveElement => {
@@ -3463,7 +3582,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             r#context = Some(map_access.next_value()?);
                         }
                         Field::ContextLinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#context_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3479,7 +3598,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("contextLinkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ContextLinkIdPrimitiveElement => {
@@ -3520,7 +3641,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         "occurrenceDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("occurrence[x]"));
                             }
@@ -3568,7 +3690,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             r#requester = Some(map_access.next_value()?);
                         }
                         Field::RequesterLinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#requester_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3584,7 +3706,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("requesterLinkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::RequesterLinkIdPrimitiveElement => {
@@ -3634,7 +3758,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             r#performer = Some(map_access.next_value()?);
                         }
                         Field::PerformerLinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#performer_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3650,7 +3774,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("performerLinkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PerformerLinkIdPrimitiveElement => {
@@ -3694,7 +3820,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             r#reason_reference = Some(map_access.next_value()?);
                         }
                         Field::Reason => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#reason.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3710,7 +3836,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("reason"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ReasonPrimitiveElement => {
@@ -3742,7 +3870,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             }
                         }
                         Field::ReasonLinkId => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#reason_link_id.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3758,7 +3886,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 return Err(serde::de::Error::duplicate_field("reasonLinkId"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ReasonLinkIdPrimitiveElement => {
@@ -3796,7 +3926,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                             r#note = Some(map_access.next_value()?);
                         }
                         Field::SecurityLabelNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#security_label_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3814,7 +3944,9 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SecurityLabelNumberPrimitiveElement => {
@@ -3919,7 +4051,8 @@ impl serde::ser::Serialize for ContractTerm {
         }
         if let Some(some) = self.r#issued.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("issued", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("issued", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3953,7 +4086,8 @@ impl serde::ser::Serialize for ContractTerm {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4081,7 +4215,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issued"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IssuedPrimitiveElement => {
                             let some = r#issued.get_or_insert(Default::default());
@@ -4133,7 +4268,8 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -4740,7 +4876,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4752,7 +4889,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4779,7 +4917,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#url.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("url", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("url", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4791,7 +4930,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#version.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("version", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("version", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4803,7 +4943,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4821,7 +4962,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#instantiates_uri.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("instantiatesUri", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("instantiatesUri", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4836,7 +4978,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#issued.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("issued", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("issued", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4866,7 +5009,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4878,7 +5022,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#title.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("title", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("title", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4890,7 +5035,8 @@ impl serde::ser::Serialize for Contract {
         }
         if let Some(some) = self.r#subtitle.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("subtitle", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("subtitle", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4901,7 +5047,12 @@ impl serde::ser::Serialize for Contract {
             }
         }
         if !self.r#alias.is_empty() {
-            let values: Vec<_> = self.r#alias.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#alias
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("alias", &values)?;
             }
@@ -5193,7 +5344,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -5212,7 +5364,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -5261,7 +5414,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -5280,7 +5434,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
@@ -5299,7 +5454,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -5332,7 +5488,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instantiatesUri"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::InstantiatesUriPrimitiveElement => {
                             let some = r#instantiates_uri.get_or_insert(Default::default());
@@ -5357,7 +5514,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issued"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IssuedPrimitiveElement => {
                             let some = r#issued.get_or_insert(Default::default());
@@ -5412,7 +5570,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -5431,7 +5590,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
@@ -5450,7 +5610,8 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subtitle"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SubtitlePrimitiveElement => {
                             let some = r#subtitle.get_or_insert(Default::default());
@@ -5465,7 +5626,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                             some.extension = extension;
                         }
                         Field::Alias => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#alias.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -5481,7 +5642,9 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                 return Err(serde::de::Error::duplicate_field("alias"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::AliasPrimitiveElement => {

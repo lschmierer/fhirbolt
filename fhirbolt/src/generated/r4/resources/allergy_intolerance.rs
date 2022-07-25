@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum AllergyIntoleranceOnset {
     DateTime(Box<super::super::types::DateTime>),
@@ -50,7 +50,8 @@ impl serde::ser::Serialize for AllergyIntoleranceReaction {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -62,7 +63,8 @@ impl serde::ser::Serialize for AllergyIntoleranceReaction {
         }
         if let Some(some) = self.r#onset.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("onset", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("onset", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -74,7 +76,8 @@ impl serde::ser::Serialize for AllergyIntoleranceReaction {
         }
         if let Some(some) = self.r#severity.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("severity", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("severity", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -187,7 +190,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -206,7 +210,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onset"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OnsetPrimitiveElement => {
                             let some = r#onset.get_or_insert(Default::default());
@@ -225,7 +230,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("severity"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SeverityPrimitiveElement => {
                             let some = r#severity.get_or_insert(Default::default());
@@ -313,7 +319,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -325,7 +332,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -358,7 +366,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -369,7 +378,12 @@ impl serde::ser::Serialize for AllergyIntolerance {
             }
         }
         if !self.r#category.is_empty() {
-            let values: Vec<_> = self.r#category.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#category
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("category", &values)?;
             }
@@ -397,7 +411,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
         }
         if let Some(some) = self.r#criticality.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("criticality", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("criticality", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -418,7 +433,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
             match some {
                 AllergyIntoleranceOnset::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("onsetDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("onsetDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -439,7 +455,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
                 }
                 AllergyIntoleranceOnset::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("onsetString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("onsetString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -456,7 +473,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
         }
         if let Some(some) = self.r#recorded_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("recordedDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("recordedDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -474,7 +492,8 @@ impl serde::ser::Serialize for AllergyIntolerance {
         }
         if let Some(some) = self.r#last_occurrence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lastOccurrence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("lastOccurrence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -642,7 +661,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -661,7 +681,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -724,7 +745,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -739,7 +761,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             some.extension = extension;
                         }
                         Field::Category => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#category.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -755,7 +777,9 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::CategoryPrimitiveElement => {
@@ -791,7 +815,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("criticality"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CriticalityPrimitiveElement => {
                             let some = r#criticality.get_or_insert(Default::default());
@@ -831,7 +856,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("onsetDateTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("onset[x]"));
                             }
@@ -883,7 +909,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("onsetString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("onset[x]"));
                             }
@@ -910,7 +937,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recordedDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RecordedDatePrimitiveElement => {
                             let some = r#recorded_date.get_or_insert(Default::default());
@@ -941,7 +969,8 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastOccurrence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LastOccurrencePrimitiveElement => {
                             let some = r#last_occurrence.get_or_insert(Default::default());

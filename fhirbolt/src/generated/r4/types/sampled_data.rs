@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SampledData {
     pub r#id: Option<std::string::String>,
@@ -26,7 +26,10 @@ impl serde::ser::Serialize for SampledData {
         }
         state.serialize_entry("origin", &self.r#origin)?;
         if let Some(some) = self.r#period.value.as_ref() {
-            state.serialize_entry("period", some)?;
+            let some = some
+                .parse::<serde_json::Number>()
+                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+            state.serialize_entry("period", &some)?;
         }
         if self.r#period.id.is_some() || !self.r#period.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -37,7 +40,10 @@ impl serde::ser::Serialize for SampledData {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -49,7 +55,10 @@ impl serde::ser::Serialize for SampledData {
         }
         if let Some(some) = self.r#lower_limit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lowerLimit", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("lowerLimit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -61,7 +70,10 @@ impl serde::ser::Serialize for SampledData {
         }
         if let Some(some) = self.r#upper_limit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("upperLimit", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("upperLimit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -72,7 +84,8 @@ impl serde::ser::Serialize for SampledData {
             }
         }
         if let Some(some) = self.r#dimensions.value.as_ref() {
-            state.serialize_entry("dimensions", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("dimensions", &some)?;
         }
         if self.r#dimensions.id.is_some() || !self.r#dimensions.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -83,7 +96,8 @@ impl serde::ser::Serialize for SampledData {
         }
         if let Some(some) = self.r#data.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("data", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("data", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -179,7 +193,8 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::PeriodPrimitiveElement => {
                             let some = r#period.get_or_insert(Default::default());
@@ -198,7 +213,8 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -217,7 +233,8 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lowerLimit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::LowerLimitPrimitiveElement => {
                             let some = r#lower_limit.get_or_insert(Default::default());
@@ -236,7 +253,8 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("upperLimit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::UpperLimitPrimitiveElement => {
                             let some = r#upper_limit.get_or_insert(Default::default());
@@ -255,7 +273,8 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dimensions"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DimensionsPrimitiveElement => {
                             let some = r#dimensions.get_or_insert(Default::default());
@@ -274,7 +293,8 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DataPrimitiveElement => {
                             let some = r#data.get_or_insert(Default::default());

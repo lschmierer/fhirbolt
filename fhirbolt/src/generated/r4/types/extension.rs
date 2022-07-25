@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -83,7 +83,8 @@ impl serde::ser::Serialize for Extension {
             match some {
                 ExtensionValue::Base64Binary(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueBase64Binary", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueBase64Binary", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -95,7 +96,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -107,7 +109,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Canonical(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueCanonical", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueCanonical", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -119,7 +122,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Code(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueCode", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueCode", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -131,7 +135,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -143,7 +148,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -155,7 +161,10 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Decimal(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueDecimal", some)?;
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("valueDecimal", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -167,7 +176,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Id(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueId", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueId", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -179,7 +189,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Instant(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueInstant", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueInstant", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -191,7 +202,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Integer(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueInteger", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueInteger", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -203,7 +215,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Markdown(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueMarkdown", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueMarkdown", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -215,7 +228,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Oid(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueOid", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueOid", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -227,7 +241,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::PositiveInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valuePositiveInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valuePositiveInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -239,7 +254,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -251,7 +267,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Time(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -263,7 +280,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::UnsignedInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueUnsignedInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueUnsignedInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -275,7 +293,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Uri(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueUri", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueUri", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -287,7 +306,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Url(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueUrl", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueUrl", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -299,7 +319,8 @@ impl serde::ser::Serialize for Extension {
                 }
                 ExtensionValue::Uuid(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueUuid", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueUuid", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -606,7 +627,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                         "valueBase64Binary",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -637,7 +659,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -668,7 +691,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                         "valueCanonical",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -699,7 +723,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueCode"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -728,7 +753,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -757,7 +783,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDateTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -788,7 +815,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDecimal"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: serde_json::Number = map_access.next_value()?;
+                                variant.value = Some(format!("{}", value));
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -817,7 +845,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueId"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -846,7 +875,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueInstant"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -875,7 +905,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueInteger"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -904,7 +935,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueMarkdown"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -935,7 +967,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueOid"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -966,7 +999,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                         "valuePositiveInt",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -997,7 +1031,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1026,7 +1061,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1057,7 +1093,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                         "valueUnsignedInt",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1088,7 +1125,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueUri"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1117,7 +1155,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueUrl"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1146,7 +1185,8 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueUuid"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }

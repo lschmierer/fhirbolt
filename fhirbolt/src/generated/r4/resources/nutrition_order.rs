@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
     Quantity(Box<super::super::types::Quantity>),
@@ -289,7 +289,8 @@ impl serde::ser::Serialize for NutritionOrderOralDiet {
         }
         if let Some(some) = self.r#instruction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("instruction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("instruction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -410,7 +411,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instruction"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::InstructionPrimitiveElement => {
                             let some = r#instruction.get_or_insert(Default::default());
@@ -474,7 +476,8 @@ impl serde::ser::Serialize for NutritionOrderSupplement {
         }
         if let Some(some) = self.r#product_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("productName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("productName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -492,7 +495,8 @@ impl serde::ser::Serialize for NutritionOrderSupplement {
         }
         if let Some(some) = self.r#instruction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("instruction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("instruction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -584,7 +588,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("productName"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProductNamePrimitiveElement => {
                             let some = r#product_name.get_or_insert(Default::default());
@@ -615,7 +620,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instruction"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::InstructionPrimitiveElement => {
                             let some = r#instruction.get_or_insert(Default::default());
@@ -836,7 +842,8 @@ impl serde::ser::Serialize for NutritionOrderEnteralFormula {
         }
         if let Some(some) = self.r#base_formula_product_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("baseFormulaProductName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("baseFormulaProductName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -851,7 +858,8 @@ impl serde::ser::Serialize for NutritionOrderEnteralFormula {
         }
         if let Some(some) = self.r#additive_product_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("additiveProductName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("additiveProductName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -875,7 +883,8 @@ impl serde::ser::Serialize for NutritionOrderEnteralFormula {
         }
         if let Some(some) = self.r#administration_instruction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("administrationInstruction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("administrationInstruction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -991,7 +1000,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                     "baseFormulaProductName",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::BaseFormulaProductNamePrimitiveElement => {
                             let some =
@@ -1021,7 +1031,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                     "additiveProductName",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AdditiveProductNamePrimitiveElement => {
                             let some = r#additive_product_name.get_or_insert(Default::default());
@@ -1073,7 +1084,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                     "administrationInstruction",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AdministrationInstructionPrimitiveElement => {
                             let some =
@@ -1155,7 +1167,8 @@ impl serde::ser::Serialize for NutritionOrder {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1167,7 +1180,8 @@ impl serde::ser::Serialize for NutritionOrder {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1193,11 +1207,12 @@ impl serde::ser::Serialize for NutritionOrder {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if !self.r#instantiates_canonical.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#instantiates_canonical
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesCanonical", &values)?;
             }
@@ -1224,7 +1239,12 @@ impl serde::ser::Serialize for NutritionOrder {
             }
         }
         if !self.r#instantiates_uri.is_empty() {
-            let values: Vec<_> = self.r#instantiates_uri.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#instantiates_uri
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesUri", &values)?;
             }
@@ -1251,7 +1271,12 @@ impl serde::ser::Serialize for NutritionOrder {
             }
         }
         if !self.r#instantiates.is_empty() {
-            let values: Vec<_> = self.r#instantiates.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#instantiates
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiates", &values)?;
             }
@@ -1278,7 +1303,8 @@ impl serde::ser::Serialize for NutritionOrder {
             }
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1288,7 +1314,8 @@ impl serde::ser::Serialize for NutritionOrder {
             state.serialize_entry("_status", &primitive_element)?;
         }
         if let Some(some) = self.r#intent.value.as_ref() {
-            state.serialize_entry("intent", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("intent", &some)?;
         }
         if self.r#intent.id.is_some() || !self.r#intent.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1302,7 +1329,8 @@ impl serde::ser::Serialize for NutritionOrder {
             state.serialize_entry("encounter", some)?;
         }
         if let Some(some) = self.r#date_time.value.as_ref() {
-            state.serialize_entry("dateTime", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("dateTime", &some)?;
         }
         if self.r#date_time.id.is_some() || !self.r#date_time.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1485,7 +1513,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1504,7 +1533,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1549,7 +1579,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             r#identifier = Some(map_access.next_value()?);
                         }
                         Field::InstantiatesCanonical => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_canonical.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1567,7 +1597,9 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesCanonicalPrimitiveElement => {
@@ -1601,7 +1633,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             }
                         }
                         Field::InstantiatesUri => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_uri.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1617,7 +1649,9 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 return Err(serde::de::Error::duplicate_field("instantiatesUri"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesUriPrimitiveElement => {
@@ -1649,7 +1683,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             }
                         }
                         Field::Instantiates => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1665,7 +1699,9 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 return Err(serde::de::Error::duplicate_field("instantiates"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesPrimitiveElement => {
@@ -1701,7 +1737,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1720,7 +1757,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("intent"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IntentPrimitiveElement => {
                             let some = r#intent.get_or_insert(Default::default());
@@ -1751,7 +1789,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dateTime"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DateTimePrimitiveElement => {
                             let some = r#date_time.get_or_insert(Default::default());

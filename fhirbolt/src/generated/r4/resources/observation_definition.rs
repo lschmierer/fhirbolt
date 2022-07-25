@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ObservationDefinitionQuantitativeDetails {
     pub r#id: Option<std::string::String>,
@@ -33,7 +33,10 @@ impl serde::ser::Serialize for ObservationDefinitionQuantitativeDetails {
         }
         if let Some(some) = self.r#conversion_factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("conversionFactor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("conversionFactor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -45,7 +48,8 @@ impl serde::ser::Serialize for ObservationDefinitionQuantitativeDetails {
         }
         if let Some(some) = self.r#decimal_precision.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("decimalPrecision", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("decimalPrecision", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -143,7 +147,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("conversionFactor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::ConversionFactorPrimitiveElement => {
                             let some = r#conversion_factor.get_or_insert(Default::default());
@@ -162,7 +167,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("decimalPrecision"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DecimalPrecisionPrimitiveElement => {
                             let some = r#decimal_precision.get_or_insert(Default::default());
@@ -224,7 +230,8 @@ impl serde::ser::Serialize for ObservationDefinitionQualifiedInterval {
         }
         if let Some(some) = self.r#category.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("category", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("category", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -245,7 +252,8 @@ impl serde::ser::Serialize for ObservationDefinitionQualifiedInterval {
         }
         if let Some(some) = self.r#gender.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("gender", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("gender", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -263,7 +271,8 @@ impl serde::ser::Serialize for ObservationDefinitionQualifiedInterval {
         }
         if let Some(some) = self.r#condition.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("condition", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("condition", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -363,7 +372,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CategoryPrimitiveElement => {
                             let some = r#category.get_or_insert(Default::default());
@@ -400,7 +410,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gender"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::GenderPrimitiveElement => {
                             let some = r#gender.get_or_insert(Default::default());
@@ -431,7 +442,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("condition"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ConditionPrimitiveElement => {
                             let some = r#condition.get_or_insert(Default::default());
@@ -505,7 +517,8 @@ impl serde::ser::Serialize for ObservationDefinition {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -517,7 +530,8 @@ impl serde::ser::Serialize for ObservationDefinition {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -547,11 +561,12 @@ impl serde::ser::Serialize for ObservationDefinition {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if !self.r#permitted_data_type.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#permitted_data_type
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("permittedDataType", &values)?;
             }
@@ -579,7 +594,8 @@ impl serde::ser::Serialize for ObservationDefinition {
         }
         if let Some(some) = self.r#multiple_results_allowed.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("multipleResultsAllowed", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("multipleResultsAllowed", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -594,7 +610,8 @@ impl serde::ser::Serialize for ObservationDefinition {
         }
         if let Some(some) = self.r#preferred_report_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("preferredReportName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("preferredReportName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -753,7 +770,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -772,7 +790,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -829,7 +848,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                             r#identifier = Some(map_access.next_value()?);
                         }
                         Field::PermittedDataType => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#permitted_data_type.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -845,7 +864,9 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                 return Err(serde::de::Error::duplicate_field("permittedDataType"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PermittedDataTypePrimitiveElement => {
@@ -885,7 +906,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                     "multipleResultsAllowed",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MultipleResultsAllowedPrimitiveElement => {
                             let some = r#multiple_results_allowed.get_or_insert(Default::default());
@@ -914,7 +936,8 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                     "preferredReportName",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreferredReportNamePrimitiveElement => {
                             let some = r#preferred_report_name.get_or_insert(Default::default());

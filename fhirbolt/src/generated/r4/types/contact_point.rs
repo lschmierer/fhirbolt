@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ContactPoint {
     pub r#id: Option<std::string::String>,
@@ -24,7 +24,8 @@ impl serde::ser::Serialize for ContactPoint {
         }
         if let Some(some) = self.r#system.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("system", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("system", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -36,7 +37,8 @@ impl serde::ser::Serialize for ContactPoint {
         }
         if let Some(some) = self.r#value.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("value", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("value", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -48,7 +50,8 @@ impl serde::ser::Serialize for ContactPoint {
         }
         if let Some(some) = self.r#use.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("use", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("use", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -60,7 +63,8 @@ impl serde::ser::Serialize for ContactPoint {
         }
         if let Some(some) = self.r#rank.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("rank", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("rank", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -143,7 +147,8 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("system"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SystemPrimitiveElement => {
                             let some = r#system.get_or_insert(Default::default());
@@ -162,7 +167,8 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
@@ -181,7 +187,8 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
@@ -200,7 +207,8 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rank"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RankPrimitiveElement => {
                             let some = r#rank.get_or_insert(Default::default());

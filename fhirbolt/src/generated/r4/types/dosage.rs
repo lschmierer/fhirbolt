@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DosageAsNeeded {
     Boolean(Box<super::super::types::Boolean>),
@@ -232,7 +232,8 @@ impl serde::ser::Serialize for Dosage {
         }
         if let Some(some) = self.r#sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -244,7 +245,8 @@ impl serde::ser::Serialize for Dosage {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -259,7 +261,8 @@ impl serde::ser::Serialize for Dosage {
         }
         if let Some(some) = self.r#patient_instruction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("patientInstruction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("patientInstruction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -276,7 +279,8 @@ impl serde::ser::Serialize for Dosage {
             match some {
                 DosageAsNeeded::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("asNeededBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("asNeededBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -424,7 +428,8 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -443,7 +448,8 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -472,7 +478,8 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                     "patientInstruction",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PatientInstructionPrimitiveElement => {
                             let some = r#patient_instruction.get_or_insert(Default::default());
@@ -503,7 +510,8 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                         "asNeededBoolean",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("asNeeded[x]"));
                             }

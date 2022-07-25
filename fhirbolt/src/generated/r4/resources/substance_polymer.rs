@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
     pub r#id: Option<std::string::String>,
@@ -33,7 +33,8 @@ impl serde::ser::Serialize for SubstancePolymerMonomerSetStartingMaterial {
         }
         if let Some(some) = self.r#is_defining.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("isDefining", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("isDefining", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -132,7 +133,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("isDefining"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IsDefiningPrimitiveElement => {
                             let some = r#is_defining.get_or_insert(Default::default());
@@ -431,7 +433,8 @@ impl serde::ser::Serialize for SubstancePolymerRepeatRepeatUnitStructuralReprese
         }
         if let Some(some) = self.r#representation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("representation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("representation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -521,7 +524,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("representation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RepresentationPrimitiveElement => {
                             let some = r#representation.get_or_insert(Default::default());
@@ -588,7 +592,8 @@ impl serde::ser::Serialize for SubstancePolymerRepeatRepeatUnit {
         }
         if let Some(some) = self.r#repeat_unit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("repeatUnit", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("repeatUnit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -701,7 +706,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("repeatUnit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RepeatUnitPrimitiveElement => {
                             let some = r#repeat_unit.get_or_insert(Default::default());
@@ -782,7 +788,8 @@ impl serde::ser::Serialize for SubstancePolymerRepeat {
         }
         if let Some(some) = self.r#number_of_units.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfUnits", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfUnits", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -794,7 +801,8 @@ impl serde::ser::Serialize for SubstancePolymerRepeat {
         }
         if let Some(some) = self.r#average_molecular_formula.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("averageMolecularFormula", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("averageMolecularFormula", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -885,7 +893,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfUnits"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfUnitsPrimitiveElement => {
                             let some = r#number_of_units.get_or_insert(Default::default());
@@ -907,7 +916,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                                     "averageMolecularFormula",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AverageMolecularFormulaPrimitiveElement => {
                             let some =
@@ -987,7 +997,8 @@ impl serde::ser::Serialize for SubstancePolymer {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -999,7 +1010,8 @@ impl serde::ser::Serialize for SubstancePolymer {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1031,7 +1043,12 @@ impl serde::ser::Serialize for SubstancePolymer {
             state.serialize_entry("copolymerConnectivity", &self.r#copolymer_connectivity)?;
         }
         if !self.r#modification.is_empty() {
-            let values: Vec<_> = self.r#modification.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#modification
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("modification", &values)?;
             }
@@ -1166,7 +1183,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1185,7 +1203,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1244,7 +1263,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                             r#copolymer_connectivity = Some(map_access.next_value()?);
                         }
                         Field::Modification => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#modification.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1260,7 +1279,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                 return Err(serde::de::Error::duplicate_field("modification"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ModificationPrimitiveElement => {

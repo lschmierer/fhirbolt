@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum InvoiceLineItemChargeItem {
     Reference(Box<super::super::types::Reference>),
@@ -149,7 +149,8 @@ impl serde::ser::Serialize for InvoiceLineItemPriceComponent {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#type.value.as_ref() {
-            state.serialize_entry("type", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("type", &some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -163,7 +164,10 @@ impl serde::ser::Serialize for InvoiceLineItemPriceComponent {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -252,7 +256,8 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -277,7 +282,8 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -340,7 +346,8 @@ impl serde::ser::Serialize for InvoiceLineItem {
         }
         if let Some(some) = self.r#sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -434,7 +441,8 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -533,7 +541,8 @@ impl serde::ser::Serialize for Invoice {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -545,7 +554,8 @@ impl serde::ser::Serialize for Invoice {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -571,7 +581,8 @@ impl serde::ser::Serialize for Invoice {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -582,7 +593,8 @@ impl serde::ser::Serialize for Invoice {
         }
         if let Some(some) = self.r#cancelled_reason.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("cancelledReason", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("cancelledReason", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -603,7 +615,8 @@ impl serde::ser::Serialize for Invoice {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -636,7 +649,8 @@ impl serde::ser::Serialize for Invoice {
         }
         if let Some(some) = self.r#payment_terms.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("paymentTerms", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("paymentTerms", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -786,7 +800,8 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -805,7 +820,8 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -854,7 +870,8 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -873,7 +890,8 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cancelledReason"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CancelledReasonPrimitiveElement => {
                             let some = r#cancelled_reason.get_or_insert(Default::default());
@@ -910,7 +928,8 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -973,7 +992,8 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("paymentTerms"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PaymentTermsPrimitiveElement => {
                             let some = r#payment_terms.get_or_insert(Default::default());

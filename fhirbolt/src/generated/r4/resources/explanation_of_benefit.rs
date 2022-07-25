@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitSupportingInfoTiming {
     Date(Box<super::super::types::Date>),
@@ -399,7 +399,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitCareTeam {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -411,7 +412,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitCareTeam {
         state.serialize_entry("provider", &self.r#provider)?;
         if let Some(some) = self.r#responsible.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("responsible", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("responsible", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -506,7 +508,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitCareTeam {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -531,7 +534,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitCareTeam {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("responsible"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ResponsiblePrimitiveElement => {
                             let some = r#responsible.get_or_insert(Default::default());
@@ -603,7 +607,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitSupportingInfo {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -620,7 +625,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitSupportingInfo {
             match some {
                 ExplanationOfBenefitSupportingInfoTiming::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("timingDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("timingDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -642,7 +648,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitSupportingInfo {
             match some {
                 ExplanationOfBenefitSupportingInfoValue::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -654,7 +661,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitSupportingInfo {
                 }
                 ExplanationOfBenefitSupportingInfoValue::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -777,7 +785,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitSupportingInfo {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -812,7 +821,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitSupportingInfo {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("timingDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("timing[x]"));
                             }
@@ -857,7 +867,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitSupportingInfo {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -894,7 +905,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitSupportingInfo {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -994,7 +1006,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitDiagnosis {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1102,7 +1115,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitDiagnosis {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -1201,7 +1215,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitProcedure {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1215,7 +1230,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitProcedure {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1320,7 +1336,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcedure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -1345,7 +1362,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcedure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -1430,7 +1448,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitInsurance {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#focal.value.as_ref() {
-            state.serialize_entry("focal", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("focal", &some)?;
         }
         if self.r#focal.id.is_some() || !self.r#focal.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1441,7 +1460,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitInsurance {
         }
         state.serialize_entry("coverage", &self.r#coverage)?;
         if !self.r#pre_auth_ref.is_empty() {
-            let values: Vec<_> = self.r#pre_auth_ref.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#pre_auth_ref
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("preAuthRef", &values)?;
             }
@@ -1540,7 +1564,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("focal"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::FocalPrimitiveElement => {
                             let some = r#focal.get_or_insert(Default::default());
@@ -1561,7 +1586,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                             r#coverage = Some(map_access.next_value()?);
                         }
                         Field::PreAuthRef => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#pre_auth_ref.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1577,7 +1602,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
                                 return Err(serde::de::Error::duplicate_field("preAuthRef"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PreAuthRefPrimitiveElement => {
@@ -1650,7 +1677,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitAccident {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1749,7 +1777,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAccident {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -1835,7 +1864,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemAdjudication {
         }
         if let Some(some) = self.r#value.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("value", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("value", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1937,7 +1969,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemAdjudication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
@@ -2003,7 +2036,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemDetailSubDetail {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2033,7 +2067,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemDetailSubDetail {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2050,7 +2087,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemDetailSubDetail {
             state.serialize_entry("udi", &self.r#udi)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -2186,7 +2228,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -2247,7 +2290,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -2274,7 +2318,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                             r#udi = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2290,7 +2334,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -2390,7 +2436,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemDetail {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2420,7 +2467,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemDetail {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2437,7 +2487,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItemDetail {
             state.serialize_entry("udi", &self.r#udi)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -2579,7 +2634,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -2640,7 +2696,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -2667,7 +2724,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                             r#udi = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2683,7 +2740,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -2799,7 +2858,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2809,7 +2869,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             state.serialize_entry("_sequence", &primitive_element)?;
         }
         if !self.r#care_team_sequence.is_empty() {
-            let values: Vec<_> = self.r#care_team_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#care_team_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("careTeamSequence", &values)?;
             }
@@ -2836,7 +2901,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             }
         }
         if !self.r#diagnosis_sequence.is_empty() {
-            let values: Vec<_> = self.r#diagnosis_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#diagnosis_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("diagnosisSequence", &values)?;
             }
@@ -2863,7 +2933,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             }
         }
         if !self.r#procedure_sequence.is_empty() {
-            let values: Vec<_> = self.r#procedure_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#procedure_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("procedureSequence", &values)?;
             }
@@ -2890,11 +2965,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             }
         }
         if !self.r#information_sequence.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#information_sequence
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("informationSequence", &values)?;
             }
@@ -2937,7 +3013,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             match some {
                 ExplanationOfBenefitItemServiced::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("servicedDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("servicedDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2979,7 +3056,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3005,7 +3085,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitItem {
             state.serialize_entry("encounter", &self.r#encounter)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -3188,7 +3273,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -3203,7 +3289,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             some.extension = extension;
                         }
                         Field::CareTeamSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#care_team_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3219,7 +3305,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 return Err(serde::de::Error::duplicate_field("careTeamSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::CareTeamSequencePrimitiveElement => {
@@ -3251,7 +3339,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::DiagnosisSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#diagnosis_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3267,7 +3355,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 return Err(serde::de::Error::duplicate_field("diagnosisSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DiagnosisSequencePrimitiveElement => {
@@ -3301,7 +3391,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::ProcedureSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#procedure_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3317,7 +3407,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 return Err(serde::de::Error::duplicate_field("procedureSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ProcedureSequencePrimitiveElement => {
@@ -3351,7 +3443,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             }
                         }
                         Field::InformationSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#information_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3369,7 +3461,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InformationSequencePrimitiveElement => {
@@ -3440,7 +3534,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("servicedDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("serviced[x]"));
                             }
@@ -3514,7 +3609,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -3559,7 +3655,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                             r#encounter = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3575,7 +3671,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -3696,7 +3794,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItemDetailSubDetail {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3710,7 +3811,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItemDetailSubDetail {
             state.serialize_entry("net", some)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -3852,7 +3958,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -3873,7 +3980,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                             r#net = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -3889,7 +3996,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -3990,7 +4099,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItemDetail {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4004,7 +4116,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItemDetail {
             state.serialize_entry("net", some)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -4153,7 +4270,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -4174,7 +4292,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                             r#net = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -4190,7 +4308,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -4296,7 +4416,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if !self.r#item_sequence.is_empty() {
-            let values: Vec<_> = self.r#item_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#item_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("itemSequence", &values)?;
             }
@@ -4323,7 +4448,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
             }
         }
         if !self.r#detail_sequence.is_empty() {
-            let values: Vec<_> = self.r#detail_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#detail_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("detailSequence", &values)?;
             }
@@ -4350,11 +4480,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
             }
         }
         if !self.r#sub_detail_sequence.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#sub_detail_sequence
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("subDetailSequence", &values)?;
             }
@@ -4394,7 +4525,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
             match some {
                 ExplanationOfBenefitAddItemServiced::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("servicedDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("servicedDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4436,7 +4568,10 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -4456,7 +4591,12 @@ impl serde::ser::Serialize for ExplanationOfBenefitAddItem {
             state.serialize_entry("subSite", &self.r#sub_site)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -4618,7 +4758,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
                         Field::ItemSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#item_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -4634,7 +4774,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("itemSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ItemSequencePrimitiveElement => {
@@ -4666,7 +4808,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             }
                         }
                         Field::DetailSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#detail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -4682,7 +4824,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("detailSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DetailSequencePrimitiveElement => {
@@ -4714,7 +4858,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             }
                         }
                         Field::SubDetailSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#sub_detail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -4730,7 +4874,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("subDetailSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SubDetailSequencePrimitiveElement => {
@@ -4795,7 +4941,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("servicedDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("serviced[x]"));
                             }
@@ -4870,7 +5017,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -4903,7 +5051,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                             r#sub_site = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -4919,7 +5067,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -5142,7 +5292,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitPayment {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5257,7 +5408,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitPayment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -5329,7 +5481,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitProcessNote {
         }
         if let Some(some) = self.r#number.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("number", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("number", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5341,7 +5494,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitProcessNote {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5353,7 +5507,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitProcessNote {
         }
         if let Some(some) = self.r#text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("text", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5444,7 +5599,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcessNote {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("number"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberPrimitiveElement => {
                             let some = r#number.get_or_insert(Default::default());
@@ -5463,7 +5619,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcessNote {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -5482,7 +5639,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcessNote {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -5548,7 +5706,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalanceFinancial {
             match some {
                 ExplanationOfBenefitBenefitBalanceFinancialAllowed::UnsignedInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("allowedUnsignedInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("allowedUnsignedInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5560,7 +5719,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalanceFinancial {
                 }
                 ExplanationOfBenefitBenefitBalanceFinancialAllowed::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("allowedString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("allowedString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5582,7 +5742,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalanceFinancial {
             match some {
                 ExplanationOfBenefitBenefitBalanceFinancialUsed::UnsignedInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("usedUnsignedInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("usedUnsignedInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5698,7 +5859,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalanceFina
                                         "allowedUnsignedInt",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("allowed[x]"));
                             }
@@ -5741,7 +5903,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalanceFina
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("allowedString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("allowed[x]"));
                             }
@@ -5795,7 +5958,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalanceFina
                                         "usedUnsignedInt",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("used[x]"));
                             }
@@ -5881,7 +6045,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalance {
         state.serialize_entry("category", &self.r#category)?;
         if let Some(some) = self.r#excluded.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("excluded", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("excluded", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5893,7 +6058,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalance {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -5905,7 +6071,8 @@ impl serde::ser::Serialize for ExplanationOfBenefitBenefitBalance {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6024,7 +6191,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("excluded"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExcludedPrimitiveElement => {
                             let some = r#excluded.get_or_insert(Default::default());
@@ -6043,7 +6211,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -6062,7 +6231,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -6190,7 +6360,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6202,7 +6373,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6228,7 +6400,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6242,7 +6415,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
             state.serialize_entry("subType", some)?;
         }
         if let Some(some) = self.r#use.value.as_ref() {
-            state.serialize_entry("use", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("use", &some)?;
         }
         if self.r#use.id.is_some() || !self.r#use.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6256,7 +6430,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
             state.serialize_entry("billablePeriod", some)?;
         }
         if let Some(some) = self.r#created.value.as_ref() {
-            state.serialize_entry("created", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("created", &some)?;
         }
         if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6304,7 +6479,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
             state.serialize_entry("claimResponse", some)?;
         }
         if let Some(some) = self.r#outcome.value.as_ref() {
-            state.serialize_entry("outcome", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("outcome", &some)?;
         }
         if self.r#outcome.id.is_some() || !self.r#outcome.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6315,7 +6491,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
         }
         if let Some(some) = self.r#disposition.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("disposition", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("disposition", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6326,7 +6503,12 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
             }
         }
         if !self.r#pre_auth_ref.is_empty() {
-            let values: Vec<_> = self.r#pre_auth_ref.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#pre_auth_ref
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("preAuthRef", &values)?;
             }
@@ -6369,7 +6551,8 @@ impl serde::ser::Serialize for ExplanationOfBenefit {
         }
         if let Some(some) = self.r#precedence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("precedence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("precedence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -6641,7 +6824,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -6660,7 +6844,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -6709,7 +6894,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -6740,7 +6926,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
@@ -6771,7 +6958,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("created"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CreatedPrimitiveElement => {
                             let some = r#created.get_or_insert(Default::default());
@@ -6878,7 +7066,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OutcomePrimitiveElement => {
                             let some = r#outcome.get_or_insert(Default::default());
@@ -6897,7 +7086,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("disposition"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DispositionPrimitiveElement => {
                             let some = r#disposition.get_or_insert(Default::default());
@@ -6912,7 +7102,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             some.extension = extension;
                         }
                         Field::PreAuthRef => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#pre_auth_ref.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -6928,7 +7118,9 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                                 return Err(serde::de::Error::duplicate_field("preAuthRef"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PreAuthRefPrimitiveElement => {
@@ -6994,7 +7186,8 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("precedence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PrecedencePrimitiveElement => {
                             let some = r#precedence.get_or_insert(Default::default());

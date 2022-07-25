@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CommunicationPayloadContent {
     String(Box<super::super::types::String>),
@@ -37,7 +37,8 @@ impl serde::ser::Serialize for CommunicationPayload {
         match self.r#content {
             CommunicationPayloadContent::String(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("contentString", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("contentString", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -126,7 +127,8 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contentString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("content[x]"));
                             }
@@ -230,7 +232,8 @@ impl serde::ser::Serialize for Communication {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -242,7 +245,8 @@ impl serde::ser::Serialize for Communication {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -268,11 +272,12 @@ impl serde::ser::Serialize for Communication {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if !self.r#instantiates_canonical.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#instantiates_canonical
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesCanonical", &values)?;
             }
@@ -299,7 +304,12 @@ impl serde::ser::Serialize for Communication {
             }
         }
         if !self.r#instantiates_uri.is_empty() {
-            let values: Vec<_> = self.r#instantiates_uri.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#instantiates_uri
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesUri", &values)?;
             }
@@ -335,7 +345,8 @@ impl serde::ser::Serialize for Communication {
             state.serialize_entry("inResponseTo", &self.r#in_response_to)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -352,7 +363,8 @@ impl serde::ser::Serialize for Communication {
         }
         if let Some(some) = self.r#priority.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("priority", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("priority", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -379,7 +391,8 @@ impl serde::ser::Serialize for Communication {
         }
         if let Some(some) = self.r#sent.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sent", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sent", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -391,7 +404,8 @@ impl serde::ser::Serialize for Communication {
         }
         if let Some(some) = self.r#received.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("received", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("received", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -583,7 +597,8 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -602,7 +617,8 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -647,7 +663,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             r#identifier = Some(map_access.next_value()?);
                         }
                         Field::InstantiatesCanonical => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_canonical.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -665,7 +681,9 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesCanonicalPrimitiveElement => {
@@ -699,7 +717,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             }
                         }
                         Field::InstantiatesUri => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_uri.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -715,7 +733,9 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                 return Err(serde::de::Error::duplicate_field("instantiatesUri"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesUriPrimitiveElement => {
@@ -769,7 +789,8 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -800,7 +821,8 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priority"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PriorityPrimitiveElement => {
                             let some = r#priority.get_or_insert(Default::default());
@@ -849,7 +871,8 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sent"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SentPrimitiveElement => {
                             let some = r#sent.get_or_insert(Default::default());
@@ -868,7 +891,8 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("received"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ReceivedPrimitiveElement => {
                             let some = r#received.get_or_insert(Default::default());

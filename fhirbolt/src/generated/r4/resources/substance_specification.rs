@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationMoietyAmount {
     Quantity(Box<super::super::types::Quantity>),
@@ -93,7 +93,8 @@ impl serde::ser::Serialize for SubstanceSpecificationMoiety {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -111,7 +112,8 @@ impl serde::ser::Serialize for SubstanceSpecificationMoiety {
         }
         if let Some(some) = self.r#molecular_formula.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("molecularFormula", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("molecularFormula", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -128,7 +130,8 @@ impl serde::ser::Serialize for SubstanceSpecificationMoiety {
                 }
                 SubstanceSpecificationMoietyAmount::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("amountString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("amountString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -245,7 +248,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -276,7 +280,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("molecularFormula"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MolecularFormulaPrimitiveElement => {
                             let some = r#molecular_formula.get_or_insert(Default::default());
@@ -306,7 +311,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("amountString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("amount[x]"));
                             }
@@ -383,7 +389,8 @@ impl serde::ser::Serialize for SubstanceSpecificationProperty {
         }
         if let Some(some) = self.r#parameters.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("parameters", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("parameters", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -413,7 +420,8 @@ impl serde::ser::Serialize for SubstanceSpecificationProperty {
                 }
                 SubstanceSpecificationPropertyAmount::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("amountString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("amountString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -525,7 +533,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("parameters"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ParametersPrimitiveElement => {
                             let some = r#parameters.get_or_insert(Default::default());
@@ -578,7 +587,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("amountString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("amount[x]"));
                             }
@@ -940,7 +950,8 @@ impl serde::ser::Serialize for SubstanceSpecificationStructureRepresentation {
         }
         if let Some(some) = self.r#representation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("representation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("representation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1030,7 +1041,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("representation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RepresentationPrimitiveElement => {
                             let some = r#representation.get_or_insert(Default::default());
@@ -1103,7 +1115,8 @@ impl serde::ser::Serialize for SubstanceSpecificationStructure {
         }
         if let Some(some) = self.r#molecular_formula.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("molecularFormula", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("molecularFormula", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1115,7 +1128,8 @@ impl serde::ser::Serialize for SubstanceSpecificationStructure {
         }
         if let Some(some) = self.r#molecular_formula_by_moiety.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("molecularFormulaByMoiety", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("molecularFormulaByMoiety", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1242,7 +1256,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("molecularFormula"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MolecularFormulaPrimitiveElement => {
                             let some = r#molecular_formula.get_or_insert(Default::default());
@@ -1264,7 +1279,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
                                     "molecularFormulaByMoiety",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MolecularFormulaByMoietyPrimitiveElement => {
                             let some =
@@ -1360,7 +1376,8 @@ impl serde::ser::Serialize for SubstanceSpecificationCode {
         }
         if let Some(some) = self.r#status_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("statusDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("statusDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1372,7 +1389,8 @@ impl serde::ser::Serialize for SubstanceSpecificationCode {
         }
         if let Some(some) = self.r#comment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("comment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("comment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1473,7 +1491,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusDatePrimitiveElement => {
                             let some = r#status_date.get_or_insert(Default::default());
@@ -1492,7 +1511,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());
@@ -1562,7 +1582,8 @@ impl serde::ser::Serialize for SubstanceSpecificationNameOfficial {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1655,7 +1676,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -1718,7 +1740,8 @@ impl serde::ser::Serialize for SubstanceSpecificationName {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1735,7 +1758,8 @@ impl serde::ser::Serialize for SubstanceSpecificationName {
         }
         if let Some(some) = self.r#preferred.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("preferred", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("preferred", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1861,7 +1885,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -1892,7 +1917,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("preferred"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreferredPrimitiveElement => {
                             let some = r#preferred.get_or_insert(Default::default());
@@ -2018,7 +2044,8 @@ impl serde::ser::Serialize for SubstanceSpecificationRelationship {
         }
         if let Some(some) = self.r#is_defining.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("isDefining", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("isDefining", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2041,7 +2068,8 @@ impl serde::ser::Serialize for SubstanceSpecificationRelationship {
                 }
                 SubstanceSpecificationRelationshipAmount::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("amountString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("amountString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2187,7 +2215,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("isDefining"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IsDefiningPrimitiveElement => {
                             let some = r#is_defining.get_or_insert(Default::default());
@@ -2238,7 +2267,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("amountString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("amount[x]"));
                             }
@@ -2351,7 +2381,8 @@ impl serde::ser::Serialize for SubstanceSpecification {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2363,7 +2394,8 @@ impl serde::ser::Serialize for SubstanceSpecification {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2399,7 +2431,8 @@ impl serde::ser::Serialize for SubstanceSpecification {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2414,7 +2447,8 @@ impl serde::ser::Serialize for SubstanceSpecification {
         }
         if let Some(some) = self.r#comment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("comment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("comment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2604,7 +2638,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -2623,7 +2658,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -2690,7 +2726,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -2715,7 +2752,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());

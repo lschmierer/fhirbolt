@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ProcedurePerformed {
     DateTime(Box<super::super::types::DateTime>),
@@ -307,7 +307,8 @@ impl serde::ser::Serialize for Procedure {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -319,7 +320,8 @@ impl serde::ser::Serialize for Procedure {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -345,11 +347,12 @@ impl serde::ser::Serialize for Procedure {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if !self.r#instantiates_canonical.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#instantiates_canonical
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesCanonical", &values)?;
             }
@@ -376,7 +379,12 @@ impl serde::ser::Serialize for Procedure {
             }
         }
         if !self.r#instantiates_uri.is_empty() {
-            let values: Vec<_> = self.r#instantiates_uri.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#instantiates_uri
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesUri", &values)?;
             }
@@ -409,7 +417,8 @@ impl serde::ser::Serialize for Procedure {
             state.serialize_entry("partOf", &self.r#part_of)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -435,7 +444,8 @@ impl serde::ser::Serialize for Procedure {
             match some {
                 ProcedurePerformed::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("performedDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("performedDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -450,7 +460,8 @@ impl serde::ser::Serialize for Procedure {
                 }
                 ProcedurePerformed::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("performedString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("performedString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -706,7 +717,8 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -725,7 +737,8 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -770,7 +783,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                             r#identifier = Some(map_access.next_value()?);
                         }
                         Field::InstantiatesCanonical => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_canonical.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -788,7 +801,9 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesCanonicalPrimitiveElement => {
@@ -822,7 +837,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                             }
                         }
                         Field::InstantiatesUri => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_uri.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -838,7 +853,9 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                 return Err(serde::de::Error::duplicate_field("instantiatesUri"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesUriPrimitiveElement => {
@@ -886,7 +903,8 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -939,7 +957,8 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                         "performedDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("performed[x]"));
                             }
@@ -979,7 +998,8 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                         "performedString",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("performed[x]"));
                             }

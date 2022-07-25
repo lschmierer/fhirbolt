@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SubstanceAmountAmount {
     Quantity(Box<super::super::types::Quantity>),
@@ -149,7 +149,8 @@ impl serde::ser::Serialize for SubstanceAmount {
                 }
                 SubstanceAmountAmount::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("amountString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("amountString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -169,7 +170,8 @@ impl serde::ser::Serialize for SubstanceAmount {
         }
         if let Some(some) = self.r#amount_text.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("amountText", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("amountText", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -274,7 +276,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("amountString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("amount[x]"));
                             }
@@ -307,7 +310,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amountText"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AmountTextPrimitiveElement => {
                             let some = r#amount_text.get_or_insert(Default::default());

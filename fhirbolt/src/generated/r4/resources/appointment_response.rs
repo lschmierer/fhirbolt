@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct AppointmentResponse {
     pub r#id: Option<std::string::String>,
@@ -34,7 +34,8 @@ impl serde::ser::Serialize for AppointmentResponse {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -46,7 +47,8 @@ impl serde::ser::Serialize for AppointmentResponse {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -74,7 +76,8 @@ impl serde::ser::Serialize for AppointmentResponse {
         state.serialize_entry("appointment", &self.r#appointment)?;
         if let Some(some) = self.r#start.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("start", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("start", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -86,7 +89,8 @@ impl serde::ser::Serialize for AppointmentResponse {
         }
         if let Some(some) = self.r#end.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("end", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("end", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -103,7 +107,8 @@ impl serde::ser::Serialize for AppointmentResponse {
             state.serialize_entry("actor", some)?;
         }
         if let Some(some) = self.r#participant_status.value.as_ref() {
-            state.serialize_entry("participantStatus", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("participantStatus", &some)?;
         }
         if self.r#participant_status.id.is_some() || !self.r#participant_status.extension.is_empty()
         {
@@ -115,7 +120,8 @@ impl serde::ser::Serialize for AppointmentResponse {
         }
         if let Some(some) = self.r#comment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("comment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("comment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -239,7 +245,8 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -258,7 +265,8 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -313,7 +321,8 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
@@ -332,7 +341,8 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());
@@ -363,7 +373,8 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("participantStatus"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ParticipantStatusPrimitiveElement => {
                             let some = r#participant_status.get_or_insert(Default::default());
@@ -384,7 +395,8 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TriggerDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
@@ -36,7 +36,8 @@ impl serde::ser::Serialize for TriggerDefinition {
             state.serialize_entry("extension", &self.r#extension)?;
         }
         if let Some(some) = self.r#type.value.as_ref() {
-            state.serialize_entry("type", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("type", &some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -47,7 +48,8 @@ impl serde::ser::Serialize for TriggerDefinition {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -67,7 +69,8 @@ impl serde::ser::Serialize for TriggerDefinition {
                 }
                 TriggerDefinitionTiming::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("timingDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("timingDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -79,7 +82,8 @@ impl serde::ser::Serialize for TriggerDefinition {
                 }
                 TriggerDefinitionTiming::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("timingDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("timingDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -176,7 +180,8 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -195,7 +200,8 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -230,7 +236,8 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("timingDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("timing[x]"));
                             }
@@ -262,7 +269,8 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                         "timingDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("timing[x]"));
                             }

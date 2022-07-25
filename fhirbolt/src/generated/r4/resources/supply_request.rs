@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SupplyRequestItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -75,7 +75,8 @@ impl serde::ser::Serialize for SupplyRequestParameter {
                 }
                 SupplyRequestParameterValue::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -195,7 +196,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -274,7 +276,8 @@ impl serde::ser::Serialize for SupplyRequest {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -286,7 +289,8 @@ impl serde::ser::Serialize for SupplyRequest {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -313,7 +317,8 @@ impl serde::ser::Serialize for SupplyRequest {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -328,7 +333,8 @@ impl serde::ser::Serialize for SupplyRequest {
         }
         if let Some(some) = self.r#priority.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("priority", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("priority", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -357,7 +363,8 @@ impl serde::ser::Serialize for SupplyRequest {
             match some {
                 SupplyRequestOccurrence::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("occurrenceDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("occurrenceDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -380,7 +387,8 @@ impl serde::ser::Serialize for SupplyRequest {
         }
         if let Some(some) = self.r#authored_on.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("authoredOn", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("authoredOn", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -549,7 +557,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -568,7 +577,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -617,7 +627,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -642,7 +653,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priority"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PriorityPrimitiveElement => {
                             let some = r#priority.get_or_insert(Default::default());
@@ -693,7 +705,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                         "occurrenceDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("occurrence[x]"));
                             }
@@ -737,7 +750,8 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authoredOn"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AuthoredOnPrimitiveElement => {
                             let some = r#authored_on.get_or_insert(Default::default());

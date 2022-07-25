@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MessageDefinitionEvent {
     Coding(Box<super::super::types::Coding>),
@@ -37,7 +37,8 @@ impl serde::ser::Serialize for MessageDefinitionFocus {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#code.value.as_ref() {
-            state.serialize_entry("code", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("code", &some)?;
         }
         if self.r#code.id.is_some() || !self.r#code.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -48,7 +49,8 @@ impl serde::ser::Serialize for MessageDefinitionFocus {
         }
         if let Some(some) = self.r#profile.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("profile", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("profile", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -59,7 +61,8 @@ impl serde::ser::Serialize for MessageDefinitionFocus {
             }
         }
         if let Some(some) = self.r#min.value.as_ref() {
-            state.serialize_entry("min", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("min", &some)?;
         }
         if self.r#min.id.is_some() || !self.r#min.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -70,7 +73,8 @@ impl serde::ser::Serialize for MessageDefinitionFocus {
         }
         if let Some(some) = self.r#max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("max", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("max", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -157,7 +161,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
@@ -176,7 +181,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("profile"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProfilePrimitiveElement => {
                             let some = r#profile.get_or_insert(Default::default());
@@ -195,7 +201,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("min"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MinPrimitiveElement => {
                             let some = r#min.get_or_insert(Default::default());
@@ -214,7 +221,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("max"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MaxPrimitiveElement => {
                             let some = r#max.get_or_insert(Default::default());
@@ -269,7 +277,8 @@ impl serde::ser::Serialize for MessageDefinitionAllowedResponse {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#message.value.as_ref() {
-            state.serialize_entry("message", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("message", &some)?;
         }
         if self.r#message.id.is_some() || !self.r#message.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -280,7 +289,8 @@ impl serde::ser::Serialize for MessageDefinitionAllowedResponse {
         }
         if let Some(some) = self.r#situation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("situation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("situation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -360,7 +370,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("message"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MessagePrimitiveElement => {
                             let some = r#message.get_or_insert(Default::default());
@@ -379,7 +390,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("situation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SituationPrimitiveElement => {
                             let some = r#situation.get_or_insert(Default::default());
@@ -458,7 +470,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -470,7 +483,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -494,7 +508,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#url.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("url", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("url", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -509,7 +524,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#version.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("version", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("version", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -521,7 +537,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -533,7 +550,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#title.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("title", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("title", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -544,7 +562,12 @@ impl serde::ser::Serialize for MessageDefinition {
             }
         }
         if !self.r#replaces.is_empty() {
-            let values: Vec<_> = self.r#replaces.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#replaces
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("replaces", &values)?;
             }
@@ -571,7 +594,8 @@ impl serde::ser::Serialize for MessageDefinition {
             }
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -582,7 +606,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#experimental.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("experimental", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("experimental", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -593,7 +618,8 @@ impl serde::ser::Serialize for MessageDefinition {
             }
         }
         if let Some(some) = self.r#date.value.as_ref() {
-            state.serialize_entry("date", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("date", &some)?;
         }
         if self.r#date.id.is_some() || !self.r#date.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -604,7 +630,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#publisher.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("publisher", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("publisher", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -619,7 +646,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -637,7 +665,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#purpose.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("purpose", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("purpose", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -649,7 +678,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#copyright.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("copyright", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("copyright", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -661,7 +691,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#base.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("base", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("base", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -672,7 +703,12 @@ impl serde::ser::Serialize for MessageDefinition {
             }
         }
         if !self.r#parent.is_empty() {
-            let values: Vec<_> = self.r#parent.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#parent
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("parent", &values)?;
             }
@@ -704,7 +740,8 @@ impl serde::ser::Serialize for MessageDefinition {
             }
             MessageDefinitionEvent::Uri(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("eventUri", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("eventUri", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -720,7 +757,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#category.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("category", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("category", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -735,7 +773,8 @@ impl serde::ser::Serialize for MessageDefinition {
         }
         if let Some(some) = self.r#response_required.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("responseRequired", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("responseRequired", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -749,7 +788,12 @@ impl serde::ser::Serialize for MessageDefinition {
             state.serialize_entry("allowedResponse", &self.r#allowed_response)?;
         }
         if !self.r#graph.is_empty() {
-            let values: Vec<_> = self.r#graph.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#graph
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("graph", &values)?;
             }
@@ -967,7 +1011,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -986,7 +1031,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1029,7 +1075,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -1054,7 +1101,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
@@ -1073,7 +1121,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -1092,7 +1141,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
@@ -1107,7 +1157,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             some.extension = extension;
                         }
                         Field::Replaces => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#replaces.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1123,7 +1173,9 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                 return Err(serde::de::Error::duplicate_field("replaces"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ReplacesPrimitiveElement => {
@@ -1159,7 +1211,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1178,7 +1231,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
@@ -1197,7 +1251,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -1216,7 +1271,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
@@ -1241,7 +1297,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -1272,7 +1329,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
@@ -1291,7 +1349,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("copyright"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CopyrightPrimitiveElement => {
                             let some = r#copyright.get_or_insert(Default::default());
@@ -1310,7 +1369,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("base"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::BasePrimitiveElement => {
                             let some = r#base.get_or_insert(Default::default());
@@ -1325,7 +1385,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             some.extension = extension;
                         }
                         Field::Parent => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#parent.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1341,7 +1401,9 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                 return Err(serde::de::Error::duplicate_field("parent"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ParentPrimitiveElement => {
@@ -1386,7 +1448,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("eventUri"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("event[x]"));
                             }
@@ -1413,7 +1476,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CategoryPrimitiveElement => {
                             let some = r#category.get_or_insert(Default::default());
@@ -1438,7 +1502,8 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("responseRequired"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ResponseRequiredPrimitiveElement => {
                             let some = r#response_required.get_or_insert(Default::default());
@@ -1459,7 +1524,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                             r#allowed_response = Some(map_access.next_value()?);
                         }
                         Field::Graph => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#graph.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1475,7 +1540,9 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                 return Err(serde::de::Error::duplicate_field("graph"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::GraphPrimitiveElement => {

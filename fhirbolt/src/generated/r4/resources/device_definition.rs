@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DeviceDefinitionManufacturer {
     String(Box<super::super::types::String>),
@@ -36,7 +36,8 @@ impl serde::ser::Serialize for DeviceDefinitionUdiDeviceIdentifier {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#device_identifier.value.as_ref() {
-            state.serialize_entry("deviceIdentifier", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("deviceIdentifier", &some)?;
         }
         if self.r#device_identifier.id.is_some() || !self.r#device_identifier.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -46,7 +47,8 @@ impl serde::ser::Serialize for DeviceDefinitionUdiDeviceIdentifier {
             state.serialize_entry("_deviceIdentifier", &primitive_element)?;
         }
         if let Some(some) = self.r#issuer.value.as_ref() {
-            state.serialize_entry("issuer", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("issuer", &some)?;
         }
         if self.r#issuer.id.is_some() || !self.r#issuer.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -56,7 +58,8 @@ impl serde::ser::Serialize for DeviceDefinitionUdiDeviceIdentifier {
             state.serialize_entry("_issuer", &primitive_element)?;
         }
         if let Some(some) = self.r#jurisdiction.value.as_ref() {
-            state.serialize_entry("jurisdiction", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("jurisdiction", &some)?;
         }
         if self.r#jurisdiction.id.is_some() || !self.r#jurisdiction.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -140,7 +143,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("deviceIdentifier"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DeviceIdentifierPrimitiveElement => {
                             let some = r#device_identifier.get_or_insert(Default::default());
@@ -159,7 +163,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issuer"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IssuerPrimitiveElement => {
                             let some = r#issuer.get_or_insert(Default::default());
@@ -178,7 +183,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("jurisdiction"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::JurisdictionPrimitiveElement => {
                             let some = r#jurisdiction.get_or_insert(Default::default());
@@ -234,7 +240,8 @@ impl serde::ser::Serialize for DeviceDefinitionDeviceName {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -244,7 +251,8 @@ impl serde::ser::Serialize for DeviceDefinitionDeviceName {
             state.serialize_entry("_name", &primitive_element)?;
         }
         if let Some(some) = self.r#type.value.as_ref() {
-            state.serialize_entry("type", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("type", &some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -320,7 +328,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -339,7 +348,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -392,7 +402,8 @@ impl serde::ser::Serialize for DeviceDefinitionSpecialization {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#system_type.value.as_ref() {
-            state.serialize_entry("systemType", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("systemType", &some)?;
         }
         if self.r#system_type.id.is_some() || !self.r#system_type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -403,7 +414,8 @@ impl serde::ser::Serialize for DeviceDefinitionSpecialization {
         }
         if let Some(some) = self.r#version.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("version", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("version", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -483,7 +495,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("systemType"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SystemTypePrimitiveElement => {
                             let some = r#system_type.get_or_insert(Default::default());
@@ -502,7 +515,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
@@ -798,7 +812,8 @@ impl serde::ser::Serialize for DeviceDefinitionMaterial {
         state.serialize_entry("substance", &self.r#substance)?;
         if let Some(some) = self.r#alternate.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("alternate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("alternate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -810,7 +825,8 @@ impl serde::ser::Serialize for DeviceDefinitionMaterial {
         }
         if let Some(some) = self.r#allergenic_indicator.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("allergenicIndicator", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("allergenicIndicator", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -896,7 +912,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("alternate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AlternatePrimitiveElement => {
                             let some = r#alternate.get_or_insert(Default::default());
@@ -917,7 +934,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
                                     "allergenicIndicator",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AllergenicIndicatorPrimitiveElement => {
                             let some = r#allergenic_indicator.get_or_insert(Default::default());
@@ -997,7 +1015,8 @@ impl serde::ser::Serialize for DeviceDefinition {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1009,7 +1028,8 @@ impl serde::ser::Serialize for DeviceDefinition {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1041,7 +1061,8 @@ impl serde::ser::Serialize for DeviceDefinition {
             match some {
                 DeviceDefinitionManufacturer::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("manufacturerString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("manufacturerString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1064,7 +1085,8 @@ impl serde::ser::Serialize for DeviceDefinition {
         }
         if let Some(some) = self.r#model_number.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("modelNumber", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("modelNumber", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1081,7 +1103,12 @@ impl serde::ser::Serialize for DeviceDefinition {
             state.serialize_entry("specialization", &self.r#specialization)?;
         }
         if !self.r#version.is_empty() {
-            let values: Vec<_> = self.r#version.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#version
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("version", &values)?;
             }
@@ -1133,7 +1160,8 @@ impl serde::ser::Serialize for DeviceDefinition {
         }
         if let Some(some) = self.r#url.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("url", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("url", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1145,7 +1173,8 @@ impl serde::ser::Serialize for DeviceDefinition {
         }
         if let Some(some) = self.r#online_information.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("onlineInformation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("onlineInformation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1332,7 +1361,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1351,7 +1381,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1413,7 +1444,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                         "manufacturerString",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("manufacturer[x]"));
                             }
@@ -1459,7 +1491,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("modelNumber"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ModelNumberPrimitiveElement => {
                             let some = r#model_number.get_or_insert(Default::default());
@@ -1486,7 +1519,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                             r#specialization = Some(map_access.next_value()?);
                         }
                         Field::Version => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#version.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1502,7 +1535,9 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::VersionPrimitiveElement => {
@@ -1588,7 +1623,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -1607,7 +1643,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("onlineInformation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OnlineInformationPrimitiveElement => {
                             let some = r#online_information.get_or_insert(Default::default());

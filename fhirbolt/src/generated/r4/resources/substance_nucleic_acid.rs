@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
     pub r#id: Option<std::string::String>,
@@ -27,7 +27,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunitLinkage {
         }
         if let Some(some) = self.r#connectivity.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("connectivity", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("connectivity", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -42,7 +43,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunitLinkage {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -54,7 +56,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunitLinkage {
         }
         if let Some(some) = self.r#residue_site.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("residueSite", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("residueSite", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -142,7 +145,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("connectivity"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ConnectivityPrimitiveElement => {
                             let some = r#connectivity.get_or_insert(Default::default());
@@ -167,7 +171,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -186,7 +191,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("residueSite"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ResidueSitePrimitiveElement => {
                             let some = r#residue_site.get_or_insert(Default::default());
@@ -246,7 +252,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunitSugar {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -258,7 +265,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunitSugar {
         }
         if let Some(some) = self.r#residue_site.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("residueSite", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("residueSite", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -347,7 +355,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -366,7 +375,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("residueSite"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ResidueSitePrimitiveElement => {
                             let some = r#residue_site.get_or_insert(Default::default());
@@ -427,7 +437,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunit {
         }
         if let Some(some) = self.r#subunit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("subunit", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("subunit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -439,7 +450,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunit {
         }
         if let Some(some) = self.r#sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -451,7 +463,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcidSubunit {
         }
         if let Some(some) = self.r#length.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("length", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("length", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -566,7 +579,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subunit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SubunitPrimitiveElement => {
                             let some = r#subunit.get_or_insert(Default::default());
@@ -585,7 +599,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -604,7 +619,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("length"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LengthPrimitiveElement => {
                             let some = r#length.get_or_insert(Default::default());
@@ -702,7 +718,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcid {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -714,7 +731,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcid {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -741,7 +759,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcid {
         }
         if let Some(some) = self.r#number_of_subunits.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfSubunits", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfSubunits", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -753,7 +772,8 @@ impl serde::ser::Serialize for SubstanceNucleicAcid {
         }
         if let Some(some) = self.r#area_of_hybridisation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("areaOfHybridisation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("areaOfHybridisation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -870,7 +890,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -889,7 +910,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -938,7 +960,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfSubunits"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfSubunitsPrimitiveElement => {
                             let some = r#number_of_subunits.get_or_insert(Default::default());
@@ -959,7 +982,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                     "areaOfHybridisation",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AreaOfHybridisationPrimitiveElement => {
                             let some = r#area_of_hybridisation.get_or_insert(Default::default());

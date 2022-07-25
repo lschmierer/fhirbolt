@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Binary {
     pub r#id: Option<std::string::String>,
@@ -25,7 +25,8 @@ impl serde::ser::Serialize for Binary {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -37,7 +38,8 @@ impl serde::ser::Serialize for Binary {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -48,7 +50,8 @@ impl serde::ser::Serialize for Binary {
             }
         }
         if let Some(some) = self.r#content_type.value.as_ref() {
-            state.serialize_entry("contentType", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("contentType", &some)?;
         }
         if self.r#content_type.id.is_some() || !self.r#content_type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -62,7 +65,8 @@ impl serde::ser::Serialize for Binary {
         }
         if let Some(some) = self.r#data.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("data", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("data", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -153,7 +157,8 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -172,7 +177,8 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -191,7 +197,8 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("contentType"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ContentTypePrimitiveElement => {
                             let some = r#content_type.get_or_insert(Default::default());
@@ -216,7 +223,8 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("data"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DataPrimitiveElement => {
                             let some = r#data.get_or_insert(Default::default());

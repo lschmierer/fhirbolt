@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentOccurrence {
     DateTime(Box<super::super::types::DateTime>),
@@ -67,7 +67,10 @@ impl serde::ser::Serialize for RiskAssessmentPrediction {
             match some {
                 RiskAssessmentPredictionProbability::Decimal(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("probabilityDecimal", some)?;
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("probabilityDecimal", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -90,7 +93,10 @@ impl serde::ser::Serialize for RiskAssessmentPrediction {
         }
         if let Some(some) = self.r#relative_risk.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("relativeRisk", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("relativeRisk", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -115,7 +121,8 @@ impl serde::ser::Serialize for RiskAssessmentPrediction {
         }
         if let Some(some) = self.r#rationale.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("rationale", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("rationale", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -222,7 +229,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                         "probabilityDecimal",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: serde_json::Number = map_access.next_value()?;
+                                variant.value = Some(format!("{}", value));
                             } else {
                                 return Err(serde::de::Error::duplicate_field("probability[x]"));
                             }
@@ -266,7 +274,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relativeRisk"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::RelativeRiskPrimitiveElement => {
                             let some = r#relative_risk.get_or_insert(Default::default());
@@ -301,7 +310,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rationale"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RationalePrimitiveElement => {
                             let some = r#rationale.get_or_insert(Default::default());
@@ -377,7 +387,8 @@ impl serde::ser::Serialize for RiskAssessment {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -389,7 +400,8 @@ impl serde::ser::Serialize for RiskAssessment {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -421,7 +433,8 @@ impl serde::ser::Serialize for RiskAssessment {
             state.serialize_entry("parent", some)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -444,7 +457,8 @@ impl serde::ser::Serialize for RiskAssessment {
             match some {
                 RiskAssessmentOccurrence::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("occurrenceDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("occurrenceDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -482,7 +496,8 @@ impl serde::ser::Serialize for RiskAssessment {
         }
         if let Some(some) = self.r#mitigation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("mitigation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("mitigation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -636,7 +651,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -655,7 +671,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -716,7 +733,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -764,7 +782,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                         "occurrenceDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("occurrence[x]"));
                             }
@@ -837,7 +856,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mitigation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MitigationPrimitiveElement => {
                             let some = r#mitigation.get_or_insert(Default::default());

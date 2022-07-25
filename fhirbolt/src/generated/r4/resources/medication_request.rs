@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationRequestReported {
     Boolean(Box<super::super::types::Boolean>),
@@ -189,7 +189,8 @@ impl serde::ser::Serialize for MedicationRequestDispenseRequest {
         }
         if let Some(some) = self.r#number_of_repeats_allowed.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfRepeatsAllowed", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfRepeatsAllowed", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -314,7 +315,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequest {
                                     "numberOfRepeatsAllowed",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfRepeatsAllowedPrimitiveElement => {
                             let some =
@@ -397,7 +399,8 @@ impl serde::ser::Serialize for MedicationRequestSubstitution {
         match self.r#allowed {
             MedicationRequestSubstitutionAllowed::Boolean(ref value) => {
                 if let Some(some) = value.value.as_ref() {
-                    state.serialize_entry("allowedBoolean", some)?;
+                    let some = Ok(some)?;
+                    state.serialize_entry("allowedBoolean", &some)?;
                 }
                 if value.id.is_some() || !value.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -492,7 +495,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
                                         "allowedBoolean",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("allowed[x]"));
                             }
@@ -607,7 +611,8 @@ impl serde::ser::Serialize for MedicationRequest {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -619,7 +624,8 @@ impl serde::ser::Serialize for MedicationRequest {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -645,7 +651,8 @@ impl serde::ser::Serialize for MedicationRequest {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -658,7 +665,8 @@ impl serde::ser::Serialize for MedicationRequest {
             state.serialize_entry("statusReason", some)?;
         }
         if let Some(some) = self.r#intent.value.as_ref() {
-            state.serialize_entry("intent", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("intent", &some)?;
         }
         if self.r#intent.id.is_some() || !self.r#intent.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -672,7 +680,8 @@ impl serde::ser::Serialize for MedicationRequest {
         }
         if let Some(some) = self.r#priority.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("priority", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("priority", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -684,7 +693,8 @@ impl serde::ser::Serialize for MedicationRequest {
         }
         if let Some(some) = self.r#do_not_perform.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("doNotPerform", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("doNotPerform", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -698,7 +708,8 @@ impl serde::ser::Serialize for MedicationRequest {
             match some {
                 MedicationRequestReported::Boolean(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("reportedBoolean", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("reportedBoolean", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -736,7 +747,8 @@ impl serde::ser::Serialize for MedicationRequest {
         }
         if let Some(some) = self.r#authored_on.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("authoredOn", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("authoredOn", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -765,11 +777,12 @@ impl serde::ser::Serialize for MedicationRequest {
             state.serialize_entry("reasonReference", &self.r#reason_reference)?;
         }
         if !self.r#instantiates_canonical.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#instantiates_canonical
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesCanonical", &values)?;
             }
@@ -796,7 +809,12 @@ impl serde::ser::Serialize for MedicationRequest {
             }
         }
         if !self.r#instantiates_uri.is_empty() {
-            let values: Vec<_> = self.r#instantiates_uri.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#instantiates_uri
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("instantiatesUri", &values)?;
             }
@@ -1057,7 +1075,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1076,7 +1095,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1125,7 +1145,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1150,7 +1171,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("intent"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IntentPrimitiveElement => {
                             let some = r#intent.get_or_insert(Default::default());
@@ -1175,7 +1197,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("priority"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PriorityPrimitiveElement => {
                             let some = r#priority.get_or_insert(Default::default());
@@ -1194,7 +1217,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("doNotPerform"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DoNotPerformPrimitiveElement => {
                             let some = r#do_not_perform.get_or_insert(Default::default());
@@ -1218,7 +1242,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                         "reportedBoolean",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("reported[x]"));
                             }
@@ -1296,7 +1321,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authoredOn"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AuthoredOnPrimitiveElement => {
                             let some = r#authored_on.get_or_insert(Default::default());
@@ -1347,7 +1373,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             r#reason_reference = Some(map_access.next_value()?);
                         }
                         Field::InstantiatesCanonical => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_canonical.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1365,7 +1391,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesCanonicalPrimitiveElement => {
@@ -1399,7 +1427,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                             }
                         }
                         Field::InstantiatesUri => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#instantiates_uri.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1415,7 +1443,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                 return Err(serde::de::Error::duplicate_field("instantiatesUri"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::InstantiatesUriPrimitiveElement => {

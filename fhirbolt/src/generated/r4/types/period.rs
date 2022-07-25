@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Period {
     pub r#id: Option<std::string::String>,
@@ -21,7 +21,8 @@ impl serde::ser::Serialize for Period {
         }
         if let Some(some) = self.r#start.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("start", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("start", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -33,7 +34,8 @@ impl serde::ser::Serialize for Period {
         }
         if let Some(some) = self.r#end.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("end", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("end", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -100,7 +102,8 @@ impl<'de> serde::de::Deserialize<'de> for Period {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
@@ -119,7 +122,8 @@ impl<'de> serde::de::Deserialize<'de> for Period {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("end"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::EndPrimitiveElement => {
                             let some = r#end.get_or_insert(Default::default());

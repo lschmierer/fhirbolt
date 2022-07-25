@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceSourceMaterialFractionDescription {
     pub r#id: Option<std::string::String>,
@@ -25,7 +25,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialFractionDescription {
         }
         if let Some(some) = self.r#fraction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("fraction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("fraction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -106,7 +107,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("fraction"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::FractionPrimitiveElement => {
                             let some = r#fraction.get_or_insert(Default::default());
@@ -169,7 +171,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialOrganismAuthor {
         }
         if let Some(some) = self.r#author_description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("authorDescription", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("authorDescription", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -253,7 +256,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authorDescription"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AuthorDescriptionPrimitiveElement => {
                             let some = r#author_description.get_or_insert(Default::default());
@@ -312,7 +316,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialOrganismHybrid {
         }
         if let Some(some) = self.r#maternal_organism_id.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("maternalOrganismId", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("maternalOrganismId", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -324,7 +329,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialOrganismHybrid {
         }
         if let Some(some) = self.r#maternal_organism_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("maternalOrganismName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("maternalOrganismName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -336,7 +342,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialOrganismHybrid {
         }
         if let Some(some) = self.r#paternal_organism_id.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("paternalOrganismId", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("paternalOrganismId", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -348,7 +355,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialOrganismHybrid {
         }
         if let Some(some) = self.r#paternal_organism_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("paternalOrganismName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("paternalOrganismName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -446,7 +454,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     "maternalOrganismId",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MaternalOrganismIdPrimitiveElement => {
                             let some = r#maternal_organism_id.get_or_insert(Default::default());
@@ -469,7 +478,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     "maternalOrganismName",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MaternalOrganismNamePrimitiveElement => {
                             let some = r#maternal_organism_name.get_or_insert(Default::default());
@@ -492,7 +502,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     "paternalOrganismId",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PaternalOrganismIdPrimitiveElement => {
                             let some = r#paternal_organism_id.get_or_insert(Default::default());
@@ -515,7 +526,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     "paternalOrganismName",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PaternalOrganismNamePrimitiveElement => {
                             let some = r#paternal_organism_name.get_or_insert(Default::default());
@@ -743,7 +755,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterialOrganism {
         }
         if let Some(some) = self.r#intraspecific_description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("intraspecificDescription", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("intraspecificDescription", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -877,7 +890,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                                     "intraspecificDescription",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IntraspecificDescriptionPrimitiveElement => {
                             let some =
@@ -1089,7 +1103,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterial {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1101,7 +1116,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterial {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1137,7 +1153,8 @@ impl serde::ser::Serialize for SubstanceSourceMaterial {
         }
         if let Some(some) = self.r#organism_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("organismName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("organismName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1151,11 +1168,12 @@ impl serde::ser::Serialize for SubstanceSourceMaterial {
             state.serialize_entry("parentSubstanceId", &self.r#parent_substance_id)?;
         }
         if !self.r#parent_substance_name.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#parent_substance_name
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("parentSubstanceName", &values)?;
             }
@@ -1185,11 +1203,12 @@ impl serde::ser::Serialize for SubstanceSourceMaterial {
             state.serialize_entry("countryOfOrigin", &self.r#country_of_origin)?;
         }
         if !self.r#geographical_location.is_empty() {
-            let values: Vec<_> = self
+            let values = self
                 .r#geographical_location
                 .iter()
                 .map(|v| &v.value)
-                .collect();
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("geographicalLocation", &values)?;
             }
@@ -1363,7 +1382,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1382,7 +1402,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1455,7 +1476,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organismName"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OrganismNamePrimitiveElement => {
                             let some = r#organism_name.get_or_insert(Default::default());
@@ -1476,7 +1498,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             r#parent_substance_id = Some(map_access.next_value()?);
                         }
                         Field::ParentSubstanceName => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#parent_substance_name.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1494,7 +1516,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ParentSubstanceNamePrimitiveElement => {
@@ -1534,7 +1558,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                             r#country_of_origin = Some(map_access.next_value()?);
                         }
                         Field::GeographicalLocation => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#geographical_location.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1552,7 +1576,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 ));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::GeographicalLocationPrimitiveElement => {

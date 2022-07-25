@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct VisionPrescriptionLensSpecificationPrism {
     pub r#id: Option<std::string::String>,
@@ -24,7 +24,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecificationPrism {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#amount.value.as_ref() {
-            state.serialize_entry("amount", some)?;
+            let some = some
+                .parse::<serde_json::Number>()
+                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+            state.serialize_entry("amount", &some)?;
         }
         if self.r#amount.id.is_some() || !self.r#amount.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -34,7 +37,8 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecificationPrism {
             state.serialize_entry("_amount", &primitive_element)?;
         }
         if let Some(some) = self.r#base.value.as_ref() {
-            state.serialize_entry("base", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("base", &some)?;
         }
         if self.r#base.id.is_some() || !self.r#base.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -113,7 +117,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("amount"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::AmountPrimitiveElement => {
                             let some = r#amount.get_or_insert(Default::default());
@@ -132,7 +137,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("base"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::BasePrimitiveElement => {
                             let some = r#base.get_or_insert(Default::default());
@@ -198,7 +204,8 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         state.serialize_entry("product", &self.r#product)?;
         if let Some(some) = self.r#eye.value.as_ref() {
-            state.serialize_entry("eye", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("eye", &some)?;
         }
         if self.r#eye.id.is_some() || !self.r#eye.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -209,7 +216,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#sphere.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sphere", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("sphere", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -221,7 +231,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#cylinder.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("cylinder", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("cylinder", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -233,7 +246,8 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#axis.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("axis", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("axis", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -248,7 +262,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#add.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("add", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("add", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -260,7 +277,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#power.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("power", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("power", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -272,7 +292,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#back_curve.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("backCurve", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("backCurve", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -284,7 +307,10 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#diameter.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("diameter", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("diameter", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -299,7 +325,8 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#color.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("color", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("color", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -311,7 +338,8 @@ impl serde::ser::Serialize for VisionPrescriptionLensSpecification {
         }
         if let Some(some) = self.r#brand.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("brand", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("brand", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -452,7 +480,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("eye"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::EyePrimitiveElement => {
                             let some = r#eye.get_or_insert(Default::default());
@@ -471,7 +500,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sphere"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::SpherePrimitiveElement => {
                             let some = r#sphere.get_or_insert(Default::default());
@@ -490,7 +520,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("cylinder"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::CylinderPrimitiveElement => {
                             let some = r#cylinder.get_or_insert(Default::default());
@@ -509,7 +540,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("axis"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AxisPrimitiveElement => {
                             let some = r#axis.get_or_insert(Default::default());
@@ -534,7 +566,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("add"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::AddPrimitiveElement => {
                             let some = r#add.get_or_insert(Default::default());
@@ -553,7 +586,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("power"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::PowerPrimitiveElement => {
                             let some = r#power.get_or_insert(Default::default());
@@ -572,7 +606,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("backCurve"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::BackCurvePrimitiveElement => {
                             let some = r#back_curve.get_or_insert(Default::default());
@@ -591,7 +626,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("diameter"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::DiameterPrimitiveElement => {
                             let some = r#diameter.get_or_insert(Default::default());
@@ -616,7 +652,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("color"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ColorPrimitiveElement => {
                             let some = r#color.get_or_insert(Default::default());
@@ -635,7 +672,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("brand"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::BrandPrimitiveElement => {
                             let some = r#brand.get_or_insert(Default::default());
@@ -716,7 +754,8 @@ impl serde::ser::Serialize for VisionPrescription {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -728,7 +767,8 @@ impl serde::ser::Serialize for VisionPrescription {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -754,7 +794,8 @@ impl serde::ser::Serialize for VisionPrescription {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -764,7 +805,8 @@ impl serde::ser::Serialize for VisionPrescription {
             state.serialize_entry("_status", &primitive_element)?;
         }
         if let Some(some) = self.r#created.value.as_ref() {
-            state.serialize_entry("created", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("created", &some)?;
         }
         if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -778,7 +820,8 @@ impl serde::ser::Serialize for VisionPrescription {
             state.serialize_entry("encounter", some)?;
         }
         if let Some(some) = self.r#date_written.value.as_ref() {
-            state.serialize_entry("dateWritten", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("dateWritten", &some)?;
         }
         if self.r#date_written.id.is_some() || !self.r#date_written.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -903,7 +946,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -922,7 +966,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -971,7 +1016,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -990,7 +1036,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("created"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CreatedPrimitiveElement => {
                             let some = r#created.get_or_insert(Default::default());
@@ -1021,7 +1068,8 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dateWritten"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DateWrittenPrimitiveElement => {
                             let some = r#date_written.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
     Period(Box<super::super::types::Period>),
@@ -211,7 +211,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorizationProcedure {
                 }
                 MedicinalProductAuthorizationProcedureDate::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("dateDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("dateDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -332,7 +333,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("dateDateTime"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("date[x]"));
                             }
@@ -425,7 +427,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -437,7 +440,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -476,7 +480,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
         }
         if let Some(some) = self.r#status_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("statusDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("statusDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -488,7 +493,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
         }
         if let Some(some) = self.r#restore_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("restoreDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("restoreDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -506,7 +512,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
         }
         if let Some(some) = self.r#date_of_first_authorization.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("dateOfFirstAuthorization", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("dateOfFirstAuthorization", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -518,7 +525,8 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
         }
         if let Some(some) = self.r#international_birth_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("internationalBirthDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("internationalBirthDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -689,7 +697,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -708,7 +717,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -781,7 +791,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusDatePrimitiveElement => {
                             let some = r#status_date.get_or_insert(Default::default());
@@ -800,7 +811,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("restoreDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RestoreDatePrimitiveElement => {
                             let some = r#restore_date.get_or_insert(Default::default());
@@ -836,7 +848,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     "dateOfFirstAuthorization",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DateOfFirstAuthorizationPrimitiveElement => {
                             let some =
@@ -860,7 +873,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     "internationalBirthDate",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::InternationalBirthDatePrimitiveElement => {
                             let some = r#international_birth_date.get_or_insert(Default::default());

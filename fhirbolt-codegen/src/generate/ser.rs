@@ -3,6 +3,9 @@ use quote::{format_ident, quote};
 
 use crate::gather::{RustEnum, RustEnumVariant, RustStruct, RustStructField};
 
+const XHTML_TYPE: &str = "super::super::types::Xhtml";
+const DECIMAL_TYPE: &str = "super::super::types::Decimal";
+
 pub fn implement_serialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
     let fhir_name = &r#struct.fhir_name;
     let stuct_name_ident = format_ident!("{}", r#struct.name);
@@ -100,10 +103,17 @@ fn serialize_enum_variant(
     let fhir_name = format!("{}{}", field.fhir_name, variant.name);
     let fhir_primitive_element_name = format!("_{}", fhir_name);
 
+    let map_intermediate_type_tokens: TokenStream = if variant.r#type.name == DECIMAL_TYPE {
+        quote! { some.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
+    } else {
+        quote! { Ok(some) }
+    };
+
     let serialize_tokens = if variant.r#type.maybe_fhir_primitive {
         quote! {
             if let Some(some) = value.value.as_ref() {
-                state.serialize_entry(#fhir_name, some)?;
+                let some = #map_intermediate_type_tokens?;
+                state.serialize_entry(#fhir_name, &some)?;
             }
 
             if value.id.is_some() || !value.extension.is_empty() {
@@ -134,10 +144,20 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
 
     let primitive_element_name = format!("_{}", fhir_name);
 
+    let map_intermediate_type_tokens: TokenStream = if field.r#type.name == DECIMAL_TYPE {
+        quote! { some.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
+    } else {
+        quote! { Ok(some) }
+    };
+
     if field.multiple {
         quote! {
             if !self.#field_name_ident.is_empty() {
-                let values: Vec<_> = self.#field_name_ident.iter().map(|v| &v.value).collect();
+                let values = self.#field_name_ident
+                    .iter()
+                    .map(|v| &v.value)
+                    .map(|v| v.as_ref().map(|some| #map_intermediate_type_tokens).transpose())
+                    .collect::<Result<Vec<_>, _>>()?;
 
                 if values.iter().any(|v| v.is_some()) {
                     state.serialize_entry(#fhir_name, &values)?;
@@ -168,7 +188,8 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
         quote! {
             if let Some(some) = self.#field_name_ident.as_ref() {
                 if let Some(some) = some.value.as_ref() {
-                    state.serialize_entry(#fhir_name, some)?;
+                    let some = #map_intermediate_type_tokens?;
+                    state.serialize_entry(#fhir_name, &some)?;
                 }
 
                 if some.id.is_some() || !some.extension.is_empty() {
@@ -185,12 +206,13 @@ fn serialize_primitive(field: &RustStructField) -> TokenStream {
     } else {
         let serialize_value_tokens = match field.r#type.name.as_str() {
             // xhtml is the only FHIR primtive where value is not optional
-            "super::super::types::Xhtml" => quote! {
+            XHTML_TYPE => quote! {
                 state.serialize_entry(#fhir_name, &self.#field_name_ident.value)?;
             },
             _ => quote! {
                 if let Some(some) = self.#field_name_ident.value.as_ref() {
-                    state.serialize_entry(#fhir_name, some)?;
+                    let some = #map_intermediate_type_tokens?;
+                    state.serialize_entry(#fhir_name, &some)?;
                 }
             },
         };

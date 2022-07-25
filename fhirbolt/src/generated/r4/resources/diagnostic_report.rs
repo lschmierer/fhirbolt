@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum DiagnosticReportEffective {
     DateTime(Box<super::super::types::DateTime>),
@@ -36,7 +36,8 @@ impl serde::ser::Serialize for DiagnosticReportMedia {
         }
         if let Some(some) = self.r#comment.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("comment", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("comment", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -112,7 +113,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("comment"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CommentPrimitiveElement => {
                             let some = r#comment.get_or_insert(Default::default());
@@ -191,7 +193,8 @@ impl serde::ser::Serialize for DiagnosticReport {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -203,7 +206,8 @@ impl serde::ser::Serialize for DiagnosticReport {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -232,7 +236,8 @@ impl serde::ser::Serialize for DiagnosticReport {
             state.serialize_entry("basedOn", &self.r#based_on)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -255,7 +260,8 @@ impl serde::ser::Serialize for DiagnosticReport {
             match some {
                 DiagnosticReportEffective::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("effectiveDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("effectiveDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -275,7 +281,8 @@ impl serde::ser::Serialize for DiagnosticReport {
         }
         if let Some(some) = self.r#issued.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("issued", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("issued", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -305,7 +312,8 @@ impl serde::ser::Serialize for DiagnosticReport {
         }
         if let Some(some) = self.r#conclusion.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("conclusion", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("conclusion", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -468,7 +476,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -487,7 +496,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -542,7 +552,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -590,7 +601,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                         "effectiveDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("effective[x]"));
                             }
@@ -627,7 +639,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("issued"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IssuedPrimitiveElement => {
                             let some = r#issued.get_or_insert(Default::default());
@@ -684,7 +697,8 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("conclusion"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ConclusionPrimitiveElement => {
                             let some = r#conclusion.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ProvenanceOccurred {
     Period(Box<super::super::types::Period>),
@@ -176,7 +176,8 @@ impl serde::ser::Serialize for ProvenanceEntity {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#role.value.as_ref() {
-            state.serialize_entry("role", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("role", &some)?;
         }
         if self.r#role.id.is_some() || !self.r#role.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -257,7 +258,8 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("role"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RolePrimitiveElement => {
                             let some = r#role.get_or_insert(Default::default());
@@ -335,7 +337,8 @@ impl serde::ser::Serialize for Provenance {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -347,7 +350,8 @@ impl serde::ser::Serialize for Provenance {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -379,7 +383,8 @@ impl serde::ser::Serialize for Provenance {
                 }
                 ProvenanceOccurred::DateTime(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("occurredDateTime", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("occurredDateTime", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -395,7 +400,8 @@ impl serde::ser::Serialize for Provenance {
             }
         }
         if let Some(some) = self.r#recorded.value.as_ref() {
-            state.serialize_entry("recorded", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("recorded", &some)?;
         }
         if self.r#recorded.id.is_some() || !self.r#recorded.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -405,7 +411,12 @@ impl serde::ser::Serialize for Provenance {
             state.serialize_entry("_recorded", &primitive_element)?;
         }
         if !self.r#policy.is_empty() {
-            let values: Vec<_> = self.r#policy.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#policy
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("policy", &values)?;
             }
@@ -568,7 +579,8 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -587,7 +599,8 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -646,7 +659,8 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                         "occurredDateTime",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("occurred[x]"));
                             }
@@ -675,7 +689,8 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("recorded"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RecordedPrimitiveElement => {
                             let some = r#recorded.get_or_insert(Default::default());
@@ -690,7 +705,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                             some.extension = extension;
                         }
                         Field::Policy => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#policy.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -706,7 +721,9 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                 return Err(serde::de::Error::duplicate_field("policy"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PolicyPrimitiveElement => {

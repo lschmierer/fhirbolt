@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct LocationPosition {
     pub r#id: Option<std::string::String>,
@@ -25,7 +25,10 @@ impl serde::ser::Serialize for LocationPosition {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#longitude.value.as_ref() {
-            state.serialize_entry("longitude", some)?;
+            let some = some
+                .parse::<serde_json::Number>()
+                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+            state.serialize_entry("longitude", &some)?;
         }
         if self.r#longitude.id.is_some() || !self.r#longitude.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -35,7 +38,10 @@ impl serde::ser::Serialize for LocationPosition {
             state.serialize_entry("_longitude", &primitive_element)?;
         }
         if let Some(some) = self.r#latitude.value.as_ref() {
-            state.serialize_entry("latitude", some)?;
+            let some = some
+                .parse::<serde_json::Number>()
+                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+            state.serialize_entry("latitude", &some)?;
         }
         if self.r#latitude.id.is_some() || !self.r#latitude.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -46,7 +52,10 @@ impl serde::ser::Serialize for LocationPosition {
         }
         if let Some(some) = self.r#altitude.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("altitude", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("altitude", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -128,7 +137,8 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("longitude"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::LongitudePrimitiveElement => {
                             let some = r#longitude.get_or_insert(Default::default());
@@ -147,7 +157,8 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("latitude"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::LatitudePrimitiveElement => {
                             let some = r#latitude.get_or_insert(Default::default());
@@ -166,7 +177,8 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("altitude"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::AltitudePrimitiveElement => {
                             let some = r#altitude.get_or_insert(Default::default());
@@ -222,7 +234,12 @@ impl serde::ser::Serialize for LocationHoursOfOperation {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if !self.r#days_of_week.is_empty() {
-            let values: Vec<_> = self.r#days_of_week.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#days_of_week
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("daysOfWeek", &values)?;
             }
@@ -250,7 +267,8 @@ impl serde::ser::Serialize for LocationHoursOfOperation {
         }
         if let Some(some) = self.r#all_day.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("allDay", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("allDay", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -262,7 +280,8 @@ impl serde::ser::Serialize for LocationHoursOfOperation {
         }
         if let Some(some) = self.r#opening_time.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("openingTime", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("openingTime", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -274,7 +293,8 @@ impl serde::ser::Serialize for LocationHoursOfOperation {
         }
         if let Some(some) = self.r#closing_time.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("closingTime", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("closingTime", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -357,7 +377,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
                         Field::DaysOfWeek => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#days_of_week.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -373,7 +393,9 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                                 return Err(serde::de::Error::duplicate_field("daysOfWeek"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DaysOfWeekPrimitiveElement => {
@@ -409,7 +431,8 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("allDay"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AllDayPrimitiveElement => {
                             let some = r#all_day.get_or_insert(Default::default());
@@ -428,7 +451,8 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("openingTime"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OpeningTimePrimitiveElement => {
                             let some = r#opening_time.get_or_insert(Default::default());
@@ -447,7 +471,8 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("closingTime"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ClosingTimePrimitiveElement => {
                             let some = r#closing_time.get_or_insert(Default::default());
@@ -521,7 +546,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -533,7 +559,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -560,7 +587,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -575,7 +603,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -586,7 +615,12 @@ impl serde::ser::Serialize for Location {
             }
         }
         if !self.r#alias.is_empty() {
-            let values: Vec<_> = self.r#alias.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#alias
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("alias", &values)?;
             }
@@ -614,7 +648,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -626,7 +661,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#mode.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("mode", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("mode", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -662,7 +698,8 @@ impl serde::ser::Serialize for Location {
         }
         if let Some(some) = self.r#availability_exceptions.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("availabilityExceptions", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("availabilityExceptions", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -819,7 +856,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -838,7 +876,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -887,7 +926,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -912,7 +952,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -927,7 +968,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             some.extension = extension;
                         }
                         Field::Alias => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#alias.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -943,7 +984,9 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                 return Err(serde::de::Error::duplicate_field("alias"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::AliasPrimitiveElement => {
@@ -979,7 +1022,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -998,7 +1042,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("mode"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ModePrimitiveElement => {
                             let some = r#mode.get_or_insert(Default::default());
@@ -1069,7 +1114,8 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     "availabilityExceptions",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AvailabilityExceptionsPrimitiveElement => {
                             let some = r#availability_exceptions.get_or_insert(Default::default());

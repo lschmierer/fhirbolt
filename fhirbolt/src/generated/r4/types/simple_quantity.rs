@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SimpleQuantity {
     pub r#id: Option<std::string::String>,
@@ -24,7 +24,10 @@ impl serde::ser::Serialize for SimpleQuantity {
         }
         if let Some(some) = self.r#value.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("value", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("value", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -35,7 +38,12 @@ impl serde::ser::Serialize for SimpleQuantity {
             }
         }
         if !self.r#comparator.is_empty() {
-            let values: Vec<_> = self.r#comparator.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#comparator
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("comparator", &values)?;
             }
@@ -63,7 +71,8 @@ impl serde::ser::Serialize for SimpleQuantity {
         }
         if let Some(some) = self.r#unit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("unit", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("unit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -75,7 +84,8 @@ impl serde::ser::Serialize for SimpleQuantity {
         }
         if let Some(some) = self.r#system.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("system", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("system", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -87,7 +97,8 @@ impl serde::ser::Serialize for SimpleQuantity {
         }
         if let Some(some) = self.r#code.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("code", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("code", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -169,7 +180,8 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
@@ -184,7 +196,7 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                             some.extension = extension;
                         }
                         Field::Comparator => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#comparator.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -200,7 +212,9 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                 return Err(serde::de::Error::duplicate_field("comparator"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ComparatorPrimitiveElement => {
@@ -236,7 +250,8 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("unit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UnitPrimitiveElement => {
                             let some = r#unit.get_or_insert(Default::default());
@@ -255,7 +270,8 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("system"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SystemPrimitiveElement => {
                             let some = r#system.get_or_insert(Default::default());
@@ -274,7 +290,8 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());

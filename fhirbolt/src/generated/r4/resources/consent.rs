@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ConsentSource {
     Attachment(Box<super::super::types::Attachment>),
@@ -36,7 +36,8 @@ impl serde::ser::Serialize for ConsentPolicy {
         }
         if let Some(some) = self.r#authority.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("authority", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("authority", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -48,7 +49,8 @@ impl serde::ser::Serialize for ConsentPolicy {
         }
         if let Some(some) = self.r#uri.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("uri", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("uri", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -125,7 +127,8 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authority"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AuthorityPrimitiveElement => {
                             let some = r#authority.get_or_insert(Default::default());
@@ -144,7 +147,8 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("uri"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UriPrimitiveElement => {
                             let some = r#uri.get_or_insert(Default::default());
@@ -198,7 +202,8 @@ impl serde::ser::Serialize for ConsentVerification {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#verified.value.as_ref() {
-            state.serialize_entry("verified", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("verified", &some)?;
         }
         if self.r#verified.id.is_some() || !self.r#verified.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -212,7 +217,8 @@ impl serde::ser::Serialize for ConsentVerification {
         }
         if let Some(some) = self.r#verification_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("verificationDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("verificationDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -292,7 +298,8 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("verified"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VerifiedPrimitiveElement => {
                             let some = r#verified.get_or_insert(Default::default());
@@ -317,7 +324,8 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("verificationDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VerificationDatePrimitiveElement => {
                             let some = r#verification_date.get_or_insert(Default::default());
@@ -481,7 +489,8 @@ impl serde::ser::Serialize for ConsentProvisionData {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#meaning.value.as_ref() {
-            state.serialize_entry("meaning", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("meaning", &some)?;
         }
         if self.r#meaning.id.is_some() || !self.r#meaning.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -556,7 +565,8 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionData {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meaning"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MeaningPrimitiveElement => {
                             let some = r#meaning.get_or_insert(Default::default());
@@ -625,7 +635,8 @@ impl serde::ser::Serialize for ConsentProvision {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -757,7 +768,8 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvision {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -894,7 +906,8 @@ impl serde::ser::Serialize for Consent {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -906,7 +919,8 @@ impl serde::ser::Serialize for Consent {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -932,7 +946,8 @@ impl serde::ser::Serialize for Consent {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -950,7 +965,8 @@ impl serde::ser::Serialize for Consent {
         }
         if let Some(some) = self.r#date_time.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("dateTime", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("dateTime", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1117,7 +1133,8 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1136,7 +1153,8 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1185,7 +1203,8 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1222,7 +1241,8 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("dateTime"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DateTimePrimitiveElement => {
                             let some = r#date_time.get_or_insert(Default::default());

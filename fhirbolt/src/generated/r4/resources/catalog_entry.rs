@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct CatalogEntryRelatedEntry {
     pub r#id: Option<std::string::String>,
@@ -24,7 +24,8 @@ impl serde::ser::Serialize for CatalogEntryRelatedEntry {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#relationtype.value.as_ref() {
-            state.serialize_entry("relationtype", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("relationtype", &some)?;
         }
         if self.r#relationtype.id.is_some() || !self.r#relationtype.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -99,7 +100,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("relationtype"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RelationtypePrimitiveElement => {
                             let some = r#relationtype.get_or_insert(Default::default());
@@ -174,7 +176,8 @@ impl serde::ser::Serialize for CatalogEntry {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -186,7 +189,8 @@ impl serde::ser::Serialize for CatalogEntry {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -215,7 +219,8 @@ impl serde::ser::Serialize for CatalogEntry {
             state.serialize_entry("type", some)?;
         }
         if let Some(some) = self.r#orderable.value.as_ref() {
-            state.serialize_entry("orderable", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("orderable", &some)?;
         }
         if self.r#orderable.id.is_some() || !self.r#orderable.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -233,7 +238,8 @@ impl serde::ser::Serialize for CatalogEntry {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -248,7 +254,8 @@ impl serde::ser::Serialize for CatalogEntry {
         }
         if let Some(some) = self.r#valid_to.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("validTo", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("validTo", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -260,7 +267,8 @@ impl serde::ser::Serialize for CatalogEntry {
         }
         if let Some(some) = self.r#last_updated.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lastUpdated", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("lastUpdated", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -419,7 +427,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -438,7 +447,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -493,7 +503,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("orderable"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OrderablePrimitiveElement => {
                             let some = r#orderable.get_or_insert(Default::default());
@@ -532,7 +543,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -557,7 +569,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("validTo"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ValidToPrimitiveElement => {
                             let some = r#valid_to.get_or_insert(Default::default());
@@ -576,7 +589,8 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastUpdated"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LastUpdatedPrimitiveElement => {
                             let some = r#last_updated.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceProteinSubunit {
     pub r#id: Option<std::string::String>,
@@ -31,7 +31,8 @@ impl serde::ser::Serialize for SubstanceProteinSubunit {
         }
         if let Some(some) = self.r#subunit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("subunit", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("subunit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -43,7 +44,8 @@ impl serde::ser::Serialize for SubstanceProteinSubunit {
         }
         if let Some(some) = self.r#sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -55,7 +57,8 @@ impl serde::ser::Serialize for SubstanceProteinSubunit {
         }
         if let Some(some) = self.r#length.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("length", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("length", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -73,7 +76,8 @@ impl serde::ser::Serialize for SubstanceProteinSubunit {
         }
         if let Some(some) = self.r#n_terminal_modification.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("nTerminalModification", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("nTerminalModification", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -88,7 +92,8 @@ impl serde::ser::Serialize for SubstanceProteinSubunit {
         }
         if let Some(some) = self.r#c_terminal_modification.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("cTerminalModification", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("cTerminalModification", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -191,7 +196,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subunit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SubunitPrimitiveElement => {
                             let some = r#subunit.get_or_insert(Default::default());
@@ -210,7 +216,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -229,7 +236,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("length"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LengthPrimitiveElement => {
                             let some = r#length.get_or_insert(Default::default());
@@ -266,7 +274,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                                     "nTerminalModification",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NTerminalModificationPrimitiveElement => {
                             let some = r#n_terminal_modification.get_or_insert(Default::default());
@@ -297,7 +306,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                                     "cTerminalModification",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CTerminalModificationPrimitiveElement => {
                             let some = r#c_terminal_modification.get_or_insert(Default::default());
@@ -364,7 +374,8 @@ impl serde::ser::Serialize for SubstanceProtein {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -376,7 +387,8 @@ impl serde::ser::Serialize for SubstanceProtein {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -403,7 +415,8 @@ impl serde::ser::Serialize for SubstanceProtein {
         }
         if let Some(some) = self.r#number_of_subunits.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfSubunits", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfSubunits", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -414,7 +427,12 @@ impl serde::ser::Serialize for SubstanceProtein {
             }
         }
         if !self.r#disulfide_linkage.is_empty() {
-            let values: Vec<_> = self.r#disulfide_linkage.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#disulfide_linkage
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("disulfideLinkage", &values)?;
             }
@@ -540,7 +558,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -559,7 +578,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -608,7 +628,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfSubunits"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfSubunitsPrimitiveElement => {
                             let some = r#number_of_subunits.get_or_insert(Default::default());
@@ -623,7 +644,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                             some.extension = extension;
                         }
                         Field::DisulfideLinkage => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#disulfide_linkage.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -639,7 +660,9 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                                 return Err(serde::de::Error::duplicate_field("disulfideLinkage"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DisulfideLinkagePrimitiveElement => {

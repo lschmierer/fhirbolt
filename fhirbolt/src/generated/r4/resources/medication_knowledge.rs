@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum MedicationKnowledgeIngredientItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -316,7 +316,8 @@ impl serde::ser::Serialize for MedicationKnowledgeIngredient {
         }
         if let Some(some) = self.r#is_active.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("isActive", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("isActive", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -420,7 +421,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("isActive"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IsActivePrimitiveElement => {
                             let some = r#is_active.get_or_insert(Default::default());
@@ -483,7 +485,8 @@ impl serde::ser::Serialize for MedicationKnowledgeCost {
         state.serialize_entry("type", &self.r#type)?;
         if let Some(some) = self.r#source.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("source", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("source", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -568,7 +571,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeCost {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("source"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SourcePrimitiveElement => {
                             let some = r#source.get_or_insert(Default::default());
@@ -632,7 +636,8 @@ impl serde::ser::Serialize for MedicationKnowledgeMonitoringProgram {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -716,7 +721,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonitoringProgram {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -886,7 +892,12 @@ impl serde::ser::Serialize for MedicationKnowledgeAdministrationGuidelinesPatien
         }
         match self . r#characteristic { MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (ref value) => { state . serialize_entry ("characteristicCodeableConcept" , value) ? ; } , MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (ref value) => { state . serialize_entry ("characteristicQuantity" , value) ? ; } , MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Invalid => { return Err (serde :: ser :: Error :: custom ("characteristic is a required field")) } }
         if !self.r#value.is_empty() {
-            let values: Vec<_> = self.r#value.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#value
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("value", &values)?;
             }
@@ -999,7 +1010,7 @@ impl<'de> serde::de::Deserialize<'de>
                             r#characteristic = Some (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (map_access . next_value () ?)) ;
                         }
                         Field::Value => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#value.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1015,7 +1026,9 @@ impl<'de> serde::de::Deserialize<'de>
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ValuePrimitiveElement => {
@@ -1497,7 +1510,8 @@ impl serde::ser::Serialize for MedicationKnowledgeDrugCharacteristic {
                 }
                 MedicationKnowledgeDrugCharacteristicValue::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1512,7 +1526,8 @@ impl serde::ser::Serialize for MedicationKnowledgeDrugCharacteristic {
                 }
                 MedicationKnowledgeDrugCharacteristicValue::Base64Binary(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("valueBase64Binary", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("valueBase64Binary", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1627,7 +1642,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1677,7 +1693,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
                                         "valueBase64Binary",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
@@ -1747,7 +1764,8 @@ impl serde::ser::Serialize for MedicationKnowledgeRegulatorySubstitution {
         }
         state.serialize_entry("type", &self.r#type)?;
         if let Some(some) = self.r#allowed.value.as_ref() {
-            state.serialize_entry("allowed", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("allowed", &some)?;
         }
         if self.r#allowed.id.is_some() || !self.r#allowed.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1830,7 +1848,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySubstitut
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("allowed"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AllowedPrimitiveElement => {
                             let some = r#allowed.get_or_insert(Default::default());
@@ -2401,7 +2420,8 @@ impl serde::ser::Serialize for MedicationKnowledge {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2413,7 +2433,8 @@ impl serde::ser::Serialize for MedicationKnowledge {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2440,7 +2461,8 @@ impl serde::ser::Serialize for MedicationKnowledge {
         }
         if let Some(some) = self.r#status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("status", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2460,7 +2482,12 @@ impl serde::ser::Serialize for MedicationKnowledge {
             state.serialize_entry("amount", some)?;
         }
         if !self.r#synonym.is_empty() {
-            let values: Vec<_> = self.r#synonym.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#synonym
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("synonym", &values)?;
             }
@@ -2506,7 +2533,8 @@ impl serde::ser::Serialize for MedicationKnowledge {
         }
         if let Some(some) = self.r#preparation_instruction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("preparationInstruction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("preparationInstruction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2713,7 +2741,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -2732,7 +2761,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -2781,7 +2811,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -2814,7 +2845,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                             r#amount = Some(map_access.next_value()?);
                         }
                         Field::Synonym => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#synonym.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2830,7 +2861,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                 return Err(serde::de::Error::duplicate_field("synonym"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SynonymPrimitiveElement => {
@@ -2902,7 +2935,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                     "preparationInstruction",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreparationInstructionPrimitiveElement => {
                             let some = r#preparation_instruction.get_or_insert(Default::default());

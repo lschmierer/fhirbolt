@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct Meta {
     pub r#id: Option<std::string::String>,
@@ -25,7 +25,8 @@ impl serde::ser::Serialize for Meta {
         }
         if let Some(some) = self.r#version_id.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("versionId", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("versionId", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -37,7 +38,8 @@ impl serde::ser::Serialize for Meta {
         }
         if let Some(some) = self.r#last_updated.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lastUpdated", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("lastUpdated", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -49,7 +51,8 @@ impl serde::ser::Serialize for Meta {
         }
         if let Some(some) = self.r#source.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("source", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("source", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -60,7 +63,12 @@ impl serde::ser::Serialize for Meta {
             }
         }
         if !self.r#profile.is_empty() {
-            let values: Vec<_> = self.r#profile.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#profile
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("profile", &values)?;
             }
@@ -165,7 +173,8 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("versionId"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionIdPrimitiveElement => {
                             let some = r#version_id.get_or_insert(Default::default());
@@ -184,7 +193,8 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastUpdated"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LastUpdatedPrimitiveElement => {
                             let some = r#last_updated.get_or_insert(Default::default());
@@ -203,7 +213,8 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("source"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SourcePrimitiveElement => {
                             let some = r#source.get_or_insert(Default::default());
@@ -218,7 +229,7 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                             some.extension = extension;
                         }
                         Field::Profile => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#profile.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -234,7 +245,9 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                 return Err(serde::de::Error::duplicate_field("profile"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ProfilePrimitiveElement => {

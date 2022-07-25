@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
     Quantity(Box<super::super::types::Quantity>),
@@ -188,7 +188,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainer {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -208,7 +209,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainer {
                 }
                 SpecimenDefinitionTypeTestedContainerMinimumVolume::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("minimumVolumeString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("minimumVolumeString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -228,7 +230,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainer {
         }
         if let Some(some) = self.r#preparation.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("preparation", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("preparation", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -351,7 +354,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -398,7 +402,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                                         "minimumVolumeString",
                                     ));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("minimumVolume[x]"));
                             }
@@ -439,7 +444,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("preparation"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreparationPrimitiveElement => {
                             let some = r#preparation.get_or_insert(Default::default());
@@ -510,7 +516,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTestedHandling {
         }
         if let Some(some) = self.r#instruction.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("instruction", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("instruction", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -615,7 +622,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("instruction"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::InstructionPrimitiveElement => {
                             let some = r#instruction.get_or_insert(Default::default());
@@ -677,7 +685,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTested {
         }
         if let Some(some) = self.r#is_derived.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("isDerived", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("isDerived", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -691,7 +700,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTested {
             state.serialize_entry("type", some)?;
         }
         if let Some(some) = self.r#preference.value.as_ref() {
-            state.serialize_entry("preference", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("preference", &some)?;
         }
         if self.r#preference.id.is_some() || !self.r#preference.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -705,7 +715,8 @@ impl serde::ser::Serialize for SpecimenDefinitionTypeTested {
         }
         if let Some(some) = self.r#requirement.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("requirement", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("requirement", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -816,7 +827,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("isDerived"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IsDerivedPrimitiveElement => {
                             let some = r#is_derived.get_or_insert(Default::default());
@@ -841,7 +853,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("preference"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreferencePrimitiveElement => {
                             let some = r#preference.get_or_insert(Default::default());
@@ -866,7 +879,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("requirement"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RequirementPrimitiveElement => {
                             let some = r#requirement.get_or_insert(Default::default());
@@ -954,7 +968,8 @@ impl serde::ser::Serialize for SpecimenDefinition {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -966,7 +981,8 @@ impl serde::ser::Serialize for SpecimenDefinition {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -999,7 +1015,8 @@ impl serde::ser::Serialize for SpecimenDefinition {
         }
         if let Some(some) = self.r#time_aspect.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("timeAspect", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("timeAspect", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1118,7 +1135,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1137,7 +1155,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1200,7 +1219,8 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("timeAspect"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TimeAspectPrimitiveElement => {
                             let some = r#time_aspect.get_or_insert(Default::default());

@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
     Duration(Box<super::super::types::Duration>),
@@ -62,7 +62,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#count.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("count", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("count", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -74,7 +75,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#count_max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("countMax", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("countMax", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -86,7 +88,10 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#duration.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("duration", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("duration", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -98,7 +103,10 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#duration_max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("durationMax", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("durationMax", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -110,7 +118,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#duration_unit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("durationUnit", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("durationUnit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -122,7 +131,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#frequency.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("frequency", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("frequency", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -134,7 +144,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#frequency_max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("frequencyMax", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("frequencyMax", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -146,7 +157,10 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#period.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("period", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("period", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -158,7 +172,10 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#period_max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("periodMax", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("periodMax", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -170,7 +187,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#period_unit.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("periodUnit", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("periodUnit", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -181,7 +199,12 @@ impl serde::ser::Serialize for TimingRepeat {
             }
         }
         if !self.r#day_of_week.is_empty() {
-            let values: Vec<_> = self.r#day_of_week.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#day_of_week
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("dayOfWeek", &values)?;
             }
@@ -208,7 +231,12 @@ impl serde::ser::Serialize for TimingRepeat {
             }
         }
         if !self.r#time_of_day.is_empty() {
-            let values: Vec<_> = self.r#time_of_day.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#time_of_day
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("timeOfDay", &values)?;
             }
@@ -235,7 +263,12 @@ impl serde::ser::Serialize for TimingRepeat {
             }
         }
         if !self.r#when.is_empty() {
-            let values: Vec<_> = self.r#when.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#when
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("when", &values)?;
             }
@@ -263,7 +296,8 @@ impl serde::ser::Serialize for TimingRepeat {
         }
         if let Some(some) = self.r#offset.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("offset", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("offset", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -415,7 +449,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("count"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CountPrimitiveElement => {
                             let some = r#count.get_or_insert(Default::default());
@@ -434,7 +469,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("countMax"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CountMaxPrimitiveElement => {
                             let some = r#count_max.get_or_insert(Default::default());
@@ -453,7 +489,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("duration"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::DurationPrimitiveElement => {
                             let some = r#duration.get_or_insert(Default::default());
@@ -472,7 +509,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("durationMax"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::DurationMaxPrimitiveElement => {
                             let some = r#duration_max.get_or_insert(Default::default());
@@ -491,7 +529,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("durationUnit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DurationUnitPrimitiveElement => {
                             let some = r#duration_unit.get_or_insert(Default::default());
@@ -510,7 +549,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("frequency"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::FrequencyPrimitiveElement => {
                             let some = r#frequency.get_or_insert(Default::default());
@@ -529,7 +569,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("frequencyMax"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::FrequencyMaxPrimitiveElement => {
                             let some = r#frequency_max.get_or_insert(Default::default());
@@ -548,7 +589,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::PeriodPrimitiveElement => {
                             let some = r#period.get_or_insert(Default::default());
@@ -567,7 +609,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("periodMax"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::PeriodMaxPrimitiveElement => {
                             let some = r#period_max.get_or_insert(Default::default());
@@ -586,7 +629,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("periodUnit"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PeriodUnitPrimitiveElement => {
                             let some = r#period_unit.get_or_insert(Default::default());
@@ -601,7 +645,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             some.extension = extension;
                         }
                         Field::DayOfWeek => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#day_of_week.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -617,7 +661,9 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 return Err(serde::de::Error::duplicate_field("dayOfWeek"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DayOfWeekPrimitiveElement => {
@@ -649,7 +695,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             }
                         }
                         Field::TimeOfDay => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#time_of_day.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -665,7 +711,9 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 return Err(serde::de::Error::duplicate_field("timeOfDay"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::TimeOfDayPrimitiveElement => {
@@ -697,7 +745,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             }
                         }
                         Field::When => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#when.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -713,7 +761,9 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 return Err(serde::de::Error::duplicate_field("when"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::WhenPrimitiveElement => {
@@ -749,7 +799,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("offset"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OffsetPrimitiveElement => {
                             let some = r#offset.get_or_insert(Default::default());
@@ -815,7 +866,12 @@ impl serde::ser::Serialize for Timing {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if !self.r#event.is_empty() {
-            let values: Vec<_> = self.r#event.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#event
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("event", &values)?;
             }
@@ -911,7 +967,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
                         Field::Event => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#event.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -927,7 +983,9 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 return Err(serde::de::Error::duplicate_field("event"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::EventPrimitiveElement => {

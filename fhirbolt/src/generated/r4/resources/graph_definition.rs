@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct GraphDefinitionLinkTargetCompartment {
     pub r#id: Option<std::string::String>,
@@ -27,7 +27,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTargetCompartment {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#use.value.as_ref() {
-            state.serialize_entry("use", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("use", &some)?;
         }
         if self.r#use.id.is_some() || !self.r#use.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -37,7 +38,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTargetCompartment {
             state.serialize_entry("_use", &primitive_element)?;
         }
         if let Some(some) = self.r#code.value.as_ref() {
-            state.serialize_entry("code", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("code", &some)?;
         }
         if self.r#code.id.is_some() || !self.r#code.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -47,7 +49,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTargetCompartment {
             state.serialize_entry("_code", &primitive_element)?;
         }
         if let Some(some) = self.r#rule.value.as_ref() {
-            state.serialize_entry("rule", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("rule", &some)?;
         }
         if self.r#rule.id.is_some() || !self.r#rule.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -58,7 +61,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTargetCompartment {
         }
         if let Some(some) = self.r#expression.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("expression", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("expression", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -70,7 +74,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTargetCompartment {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -165,7 +170,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
@@ -184,7 +190,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("code"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CodePrimitiveElement => {
                             let some = r#code.get_or_insert(Default::default());
@@ -203,7 +210,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("rule"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::RulePrimitiveElement => {
                             let some = r#rule.get_or_insert(Default::default());
@@ -222,7 +230,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("expression"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExpressionPrimitiveElement => {
                             let some = r#expression.get_or_insert(Default::default());
@@ -241,7 +250,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -300,7 +310,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTarget {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#type.value.as_ref() {
-            state.serialize_entry("type", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("type", &some)?;
         }
         if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -311,7 +322,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTarget {
         }
         if let Some(some) = self.r#params.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("params", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("params", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -323,7 +335,8 @@ impl serde::ser::Serialize for GraphDefinitionLinkTarget {
         }
         if let Some(some) = self.r#profile.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("profile", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("profile", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -417,7 +430,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -436,7 +450,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("params"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ParamsPrimitiveElement => {
                             let some = r#params.get_or_insert(Default::default());
@@ -455,7 +470,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("profile"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProfilePrimitiveElement => {
                             let some = r#profile.get_or_insert(Default::default());
@@ -528,7 +544,8 @@ impl serde::ser::Serialize for GraphDefinitionLink {
         }
         if let Some(some) = self.r#path.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("path", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("path", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -540,7 +557,8 @@ impl serde::ser::Serialize for GraphDefinitionLink {
         }
         if let Some(some) = self.r#slice_name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sliceName", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sliceName", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -552,7 +570,8 @@ impl serde::ser::Serialize for GraphDefinitionLink {
         }
         if let Some(some) = self.r#min.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("min", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("min", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -564,7 +583,8 @@ impl serde::ser::Serialize for GraphDefinitionLink {
         }
         if let Some(some) = self.r#max.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("max", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("max", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -576,7 +596,8 @@ impl serde::ser::Serialize for GraphDefinitionLink {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -674,7 +695,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("path"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PathPrimitiveElement => {
                             let some = r#path.get_or_insert(Default::default());
@@ -693,7 +715,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sliceName"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SliceNamePrimitiveElement => {
                             let some = r#slice_name.get_or_insert(Default::default());
@@ -712,7 +735,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("min"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MinPrimitiveElement => {
                             let some = r#min.get_or_insert(Default::default());
@@ -731,7 +755,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("max"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MaxPrimitiveElement => {
                             let some = r#max.get_or_insert(Default::default());
@@ -750,7 +775,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -830,7 +856,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -842,7 +869,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -866,7 +894,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#url.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("url", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("url", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -878,7 +907,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#version.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("version", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("version", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -889,7 +919,8 @@ impl serde::ser::Serialize for GraphDefinition {
             }
         }
         if let Some(some) = self.r#name.value.as_ref() {
-            state.serialize_entry("name", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("name", &some)?;
         }
         if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -899,7 +930,8 @@ impl serde::ser::Serialize for GraphDefinition {
             state.serialize_entry("_name", &primitive_element)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -910,7 +942,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#experimental.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("experimental", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("experimental", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -922,7 +955,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -934,7 +968,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#publisher.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("publisher", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("publisher", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -949,7 +984,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -967,7 +1003,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#purpose.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("purpose", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("purpose", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -978,7 +1015,8 @@ impl serde::ser::Serialize for GraphDefinition {
             }
         }
         if let Some(some) = self.r#start.value.as_ref() {
-            state.serialize_entry("start", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("start", &some)?;
         }
         if self.r#start.id.is_some() || !self.r#start.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -989,7 +1027,8 @@ impl serde::ser::Serialize for GraphDefinition {
         }
         if let Some(some) = self.r#profile.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("profile", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("profile", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1151,7 +1190,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1170,7 +1210,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1213,7 +1254,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("url"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UrlPrimitiveElement => {
                             let some = r#url.get_or_insert(Default::default());
@@ -1232,7 +1274,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("version"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::VersionPrimitiveElement => {
                             let some = r#version.get_or_insert(Default::default());
@@ -1251,7 +1294,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -1270,7 +1314,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1289,7 +1334,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("experimental"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExperimentalPrimitiveElement => {
                             let some = r#experimental.get_or_insert(Default::default());
@@ -1308,7 +1354,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -1327,7 +1374,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("publisher"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PublisherPrimitiveElement => {
                             let some = r#publisher.get_or_insert(Default::default());
@@ -1352,7 +1400,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -1383,7 +1432,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PurposePrimitiveElement => {
                             let some = r#purpose.get_or_insert(Default::default());
@@ -1402,7 +1452,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("start"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StartPrimitiveElement => {
                             let some = r#start.get_or_insert(Default::default());
@@ -1421,7 +1472,8 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("profile"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProfilePrimitiveElement => {
                             let some = r#profile.get_or_insert(Default::default());

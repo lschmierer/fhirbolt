@@ -300,7 +300,7 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFieldType {
             },
         },
         "System.Decimal" => RustFieldType {
-            name: "rust_decimal::Decimal".into(),
+            name: "std::string::String".into(),
             r#box: false,
             maybe_fhir_primitive: false,
         },

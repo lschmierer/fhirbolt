@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityResponseServiced {
     Date(Box<super::super::types::Date>),
@@ -64,7 +64,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
             match some {
                 CoverageEligibilityResponseInsuranceItemBenefitAllowed::UnsignedInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("allowedUnsignedInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("allowedUnsignedInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -76,7 +77,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
                 }
                 CoverageEligibilityResponseInsuranceItemBenefitAllowed::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("allowedString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("allowedString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -98,7 +100,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
             match some {
                 CoverageEligibilityResponseInsuranceItemBenefitUsed::UnsignedInt(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("usedUnsignedInt", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("usedUnsignedInt", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -110,7 +113,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
                 }
                 CoverageEligibilityResponseInsuranceItemBenefitUsed::String(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("usedString", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("usedString", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -221,7 +225,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     Default::default(),
                                 ),
                             );
-                            if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } variant . value = Some (map_access . next_value () ?) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; }
+                            if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; }
                         }
                         Field::AllowedUnsignedIntPrimitiveElement => {
                             let r#enum = r#allowed.get_or_insert(
@@ -244,7 +248,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("allowedString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("allowed[x]"));
                             }
@@ -290,7 +295,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     Default::default(),
                                 ),
                             );
-                            if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } variant . value = Some (map_access . next_value () ?) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; }
+                            if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; }
                         }
                         Field::UsedUnsignedIntPrimitiveElement => {
                             let r#enum = r#used.get_or_insert(
@@ -313,7 +318,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("usedString"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("used[x]"));
                             }
@@ -415,7 +421,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItem {
         }
         if let Some(some) = self.r#excluded.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("excluded", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("excluded", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -427,7 +434,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItem {
         }
         if let Some(some) = self.r#name.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("name", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -439,7 +447,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItem {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -463,7 +472,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItem {
         }
         if let Some(some) = self.r#authorization_required.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("authorizationRequired", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("authorizationRequired", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -478,7 +488,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItem {
         }
         if let Some(some) = self.r#authorization_url.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("authorizationUrl", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("authorizationUrl", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -628,7 +639,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("excluded"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ExcludedPrimitiveElement => {
                             let some = r#excluded.get_or_insert(Default::default());
@@ -647,7 +659,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("name"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NamePrimitiveElement => {
                             let some = r#name.get_or_insert(Default::default());
@@ -666,7 +679,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -711,7 +725,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     "authorizationRequired",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AuthorizationRequiredPrimitiveElement => {
                             let some = r#authorization_required.get_or_insert(Default::default());
@@ -740,7 +755,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("authorizationUrl"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AuthorizationUrlPrimitiveElement => {
                             let some = r#authorization_url.get_or_insert(Default::default());
@@ -809,7 +825,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsurance {
         state.serialize_entry("coverage", &self.r#coverage)?;
         if let Some(some) = self.r#inforce.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("inforce", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("inforce", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -905,7 +922,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("inforce"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::InforcePrimitiveElement => {
                             let some = r#inforce.get_or_insert(Default::default());
@@ -1090,7 +1108,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1102,7 +1121,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1128,7 +1148,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1138,7 +1159,12 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
             state.serialize_entry("_status", &primitive_element)?;
         }
         if !self.r#purpose.is_empty() {
-            let values: Vec<_> = self.r#purpose.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#purpose
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("purpose", &values)?;
             }
@@ -1169,7 +1195,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
             match some {
                 CoverageEligibilityResponseServiced::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("servicedDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("servicedDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1188,7 +1215,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
             }
         }
         if let Some(some) = self.r#created.value.as_ref() {
-            state.serialize_entry("created", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("created", &some)?;
         }
         if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1202,7 +1230,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
         }
         state.serialize_entry("request", &self.r#request)?;
         if let Some(some) = self.r#outcome.value.as_ref() {
-            state.serialize_entry("outcome", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("outcome", &some)?;
         }
         if self.r#outcome.id.is_some() || !self.r#outcome.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1213,7 +1242,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
         }
         if let Some(some) = self.r#disposition.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("disposition", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("disposition", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1229,7 +1259,8 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
         }
         if let Some(some) = self.r#pre_auth_ref.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("preAuthRef", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("preAuthRef", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1390,7 +1421,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1409,7 +1441,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1458,7 +1491,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1473,7 +1507,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             some.extension = extension;
                         }
                         Field::Purpose => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#purpose.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1489,7 +1523,9 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                 return Err(serde::de::Error::duplicate_field("purpose"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::PurposePrimitiveElement => {
@@ -1534,7 +1570,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("servicedDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("serviced[x]"));
                             }
@@ -1570,7 +1607,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("created"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CreatedPrimitiveElement => {
                             let some = r#created.get_or_insert(Default::default());
@@ -1601,7 +1639,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OutcomePrimitiveElement => {
                             let some = r#outcome.get_or_insert(Default::default());
@@ -1620,7 +1659,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("disposition"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DispositionPrimitiveElement => {
                             let some = r#disposition.get_or_insert(Default::default());
@@ -1651,7 +1691,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("preAuthRef"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreAuthRefPrimitiveElement => {
                             let some = r#pre_auth_ref.get_or_insert(Default::default());

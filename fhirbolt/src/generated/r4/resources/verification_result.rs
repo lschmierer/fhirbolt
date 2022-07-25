@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct VerificationResultPrimarySource {
     pub r#id: Option<std::string::String>,
@@ -42,7 +42,8 @@ impl serde::ser::Serialize for VerificationResultPrimarySource {
         }
         if let Some(some) = self.r#validation_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("validationDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("validationDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -173,7 +174,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("validationDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ValidationDatePrimitiveElement => {
                             let some = r#validation_date.get_or_insert(Default::default());
@@ -259,7 +261,8 @@ impl serde::ser::Serialize for VerificationResultAttestation {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -271,7 +274,8 @@ impl serde::ser::Serialize for VerificationResultAttestation {
         }
         if let Some(some) = self.r#source_identity_certificate.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("sourceIdentityCertificate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("sourceIdentityCertificate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -283,7 +287,8 @@ impl serde::ser::Serialize for VerificationResultAttestation {
         }
         if let Some(some) = self.r#proxy_identity_certificate.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("proxyIdentityCertificate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("proxyIdentityCertificate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -410,7 +415,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -432,7 +438,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                                     "sourceIdentityCertificate",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SourceIdentityCertificatePrimitiveElement => {
                             let some =
@@ -457,7 +464,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                                     "proxyIdentityCertificate",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ProxyIdentityCertificatePrimitiveElement => {
                             let some =
@@ -534,7 +542,8 @@ impl serde::ser::Serialize for VerificationResultValidator {
         state.serialize_entry("organization", &self.r#organization)?;
         if let Some(some) = self.r#identity_certificate.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("identityCertificate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("identityCertificate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -626,7 +635,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
                                     "identityCertificate",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::IdentityCertificatePrimitiveElement => {
                             let some = r#identity_certificate.get_or_insert(Default::default());
@@ -707,7 +717,8 @@ impl serde::ser::Serialize for VerificationResult {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -719,7 +730,8 @@ impl serde::ser::Serialize for VerificationResult {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -745,7 +757,12 @@ impl serde::ser::Serialize for VerificationResult {
             state.serialize_entry("target", &self.r#target)?;
         }
         if !self.r#target_location.is_empty() {
-            let values: Vec<_> = self.r#target_location.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#target_location
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("targetLocation", &values)?;
             }
@@ -775,7 +792,8 @@ impl serde::ser::Serialize for VerificationResult {
             state.serialize_entry("need", some)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -786,7 +804,8 @@ impl serde::ser::Serialize for VerificationResult {
         }
         if let Some(some) = self.r#status_date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("statusDate", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("statusDate", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -807,7 +826,8 @@ impl serde::ser::Serialize for VerificationResult {
         }
         if let Some(some) = self.r#last_performed.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("lastPerformed", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("lastPerformed", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -819,7 +839,8 @@ impl serde::ser::Serialize for VerificationResult {
         }
         if let Some(some) = self.r#next_scheduled.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("nextScheduled", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("nextScheduled", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -976,7 +997,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -995,7 +1017,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1040,7 +1063,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             r#target = Some(map_access.next_value()?);
                         }
                         Field::TargetLocation => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#target_location.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1056,7 +1079,9 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                 return Err(serde::de::Error::duplicate_field("targetLocation"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::TargetLocationPrimitiveElement => {
@@ -1098,7 +1123,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1117,7 +1143,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("statusDate"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusDatePrimitiveElement => {
                             let some = r#status_date.get_or_insert(Default::default());
@@ -1154,7 +1181,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("lastPerformed"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LastPerformedPrimitiveElement => {
                             let some = r#last_performed.get_or_insert(Default::default());
@@ -1173,7 +1201,8 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("nextScheduled"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NextScheduledPrimitiveElement => {
                             let some = r#next_scheduled.get_or_insert(Default::default());

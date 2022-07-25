@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct ImagingStudySeriesPerformer {
     pub r#id: Option<std::string::String>,
@@ -141,7 +141,8 @@ impl serde::ser::Serialize for ImagingStudySeriesInstance {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#uid.value.as_ref() {
-            state.serialize_entry("uid", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("uid", &some)?;
         }
         if self.r#uid.id.is_some() || !self.r#uid.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -153,7 +154,8 @@ impl serde::ser::Serialize for ImagingStudySeriesInstance {
         state.serialize_entry("sopClass", &self.r#sop_class)?;
         if let Some(some) = self.r#number.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("number", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("number", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -165,7 +167,8 @@ impl serde::ser::Serialize for ImagingStudySeriesInstance {
         }
         if let Some(some) = self.r#title.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("title", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("title", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -250,7 +253,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("uid"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UidPrimitiveElement => {
                             let some = r#uid.get_or_insert(Default::default());
@@ -275,7 +279,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("number"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberPrimitiveElement => {
                             let some = r#number.get_or_insert(Default::default());
@@ -294,7 +299,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("title"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TitlePrimitiveElement => {
                             let some = r#title.get_or_insert(Default::default());
@@ -359,7 +365,8 @@ impl serde::ser::Serialize for ImagingStudySeries {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#uid.value.as_ref() {
-            state.serialize_entry("uid", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("uid", &some)?;
         }
         if self.r#uid.id.is_some() || !self.r#uid.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -370,7 +377,8 @@ impl serde::ser::Serialize for ImagingStudySeries {
         }
         if let Some(some) = self.r#number.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("number", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("number", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -383,7 +391,8 @@ impl serde::ser::Serialize for ImagingStudySeries {
         state.serialize_entry("modality", &self.r#modality)?;
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -395,7 +404,8 @@ impl serde::ser::Serialize for ImagingStudySeries {
         }
         if let Some(some) = self.r#number_of_instances.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfInstances", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfInstances", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -419,7 +429,8 @@ impl serde::ser::Serialize for ImagingStudySeries {
         }
         if let Some(some) = self.r#started.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("started", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("started", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -538,7 +549,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("uid"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UidPrimitiveElement => {
                             let some = r#uid.get_or_insert(Default::default());
@@ -557,7 +569,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("number"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberPrimitiveElement => {
                             let some = r#number.get_or_insert(Default::default());
@@ -582,7 +595,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());
@@ -601,7 +615,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfInstances"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfInstancesPrimitiveElement => {
                             let some = r#number_of_instances.get_or_insert(Default::default());
@@ -646,7 +661,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("started"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StartedPrimitiveElement => {
                             let some = r#started.get_or_insert(Default::default());
@@ -743,7 +759,8 @@ impl serde::ser::Serialize for ImagingStudy {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -755,7 +772,8 @@ impl serde::ser::Serialize for ImagingStudy {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -781,7 +799,8 @@ impl serde::ser::Serialize for ImagingStudy {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -799,7 +818,8 @@ impl serde::ser::Serialize for ImagingStudy {
         }
         if let Some(some) = self.r#started.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("started", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("started", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -823,7 +843,8 @@ impl serde::ser::Serialize for ImagingStudy {
         }
         if let Some(some) = self.r#number_of_series.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfSeries", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfSeries", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -835,7 +856,8 @@ impl serde::ser::Serialize for ImagingStudy {
         }
         if let Some(some) = self.r#number_of_instances.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("numberOfInstances", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("numberOfInstances", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -865,7 +887,8 @@ impl serde::ser::Serialize for ImagingStudy {
         }
         if let Some(some) = self.r#description.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("description", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("description", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1031,7 +1054,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -1050,7 +1074,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -1099,7 +1124,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -1136,7 +1162,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("started"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StartedPrimitiveElement => {
                             let some = r#started.get_or_insert(Default::default());
@@ -1179,7 +1206,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfSeries"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfSeriesPrimitiveElement => {
                             let some = r#number_of_series.get_or_insert(Default::default());
@@ -1198,7 +1226,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numberOfInstances"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberOfInstancesPrimitiveElement => {
                             let some = r#number_of_instances.get_or_insert(Default::default());
@@ -1257,7 +1286,8 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("description"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DescriptionPrimitiveElement => {
                             let some = r#description.get_or_insert(Default::default());

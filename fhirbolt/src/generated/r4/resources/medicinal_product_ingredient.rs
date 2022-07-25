@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
     pub r#id: Option<std::string::String>,
@@ -37,7 +37,8 @@ impl serde::ser::Serialize
         }
         if let Some(some) = self.r#measurement_point.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("measurementPoint", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("measurementPoint", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -152,7 +153,8 @@ impl<'de> serde::de::Deserialize<'de>
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("measurementPoint"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MeasurementPointPrimitiveElement => {
                             let some = r#measurement_point.get_or_insert(Default::default());
@@ -234,7 +236,8 @@ impl serde::ser::Serialize for MedicinalProductIngredientSpecifiedSubstanceStren
         }
         if let Some(some) = self.r#measurement_point.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("measurementPoint", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("measurementPoint", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -363,7 +366,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("measurementPoint"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::MeasurementPointPrimitiveElement => {
                             let some = r#measurement_point.get_or_insert(Default::default());
@@ -702,7 +706,8 @@ impl serde::ser::Serialize for MedicinalProductIngredient {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -714,7 +719,8 @@ impl serde::ser::Serialize for MedicinalProductIngredient {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -742,7 +748,8 @@ impl serde::ser::Serialize for MedicinalProductIngredient {
         state.serialize_entry("role", &self.r#role)?;
         if let Some(some) = self.r#allergenic_indicator.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("allergenicIndicator", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("allergenicIndicator", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -864,7 +871,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -883,7 +891,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -940,7 +949,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                                     "allergenicIndicator",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::AllergenicIndicatorPrimitiveElement => {
                             let some = r#allergenic_indicator.get_or_insert(Default::default());

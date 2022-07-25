@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Default, Debug, Clone)]
 pub struct DeviceMetricCalibration {
     pub r#id: Option<std::string::String>,
@@ -26,7 +26,8 @@ impl serde::ser::Serialize for DeviceMetricCalibration {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -38,7 +39,8 @@ impl serde::ser::Serialize for DeviceMetricCalibration {
         }
         if let Some(some) = self.r#state.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("state", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("state", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -50,7 +52,8 @@ impl serde::ser::Serialize for DeviceMetricCalibration {
         }
         if let Some(some) = self.r#time.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("time", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("time", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -132,7 +135,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -151,7 +155,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("state"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatePrimitiveElement => {
                             let some = r#state.get_or_insert(Default::default());
@@ -170,7 +175,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("time"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TimePrimitiveElement => {
                             let some = r#time.get_or_insert(Default::default());
@@ -236,7 +242,8 @@ impl serde::ser::Serialize for DeviceMetric {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -248,7 +255,8 @@ impl serde::ser::Serialize for DeviceMetric {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -285,7 +293,8 @@ impl serde::ser::Serialize for DeviceMetric {
         }
         if let Some(some) = self.r#operational_status.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("operationalStatus", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("operationalStatus", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -297,7 +306,8 @@ impl serde::ser::Serialize for DeviceMetric {
         }
         if let Some(some) = self.r#color.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("color", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("color", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -308,7 +318,8 @@ impl serde::ser::Serialize for DeviceMetric {
             }
         }
         if let Some(some) = self.r#category.value.as_ref() {
-            state.serialize_entry("category", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("category", &some)?;
         }
         if self.r#category.id.is_some() || !self.r#category.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -440,7 +451,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -459,7 +471,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -532,7 +545,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("operationalStatus"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OperationalStatusPrimitiveElement => {
                             let some = r#operational_status.get_or_insert(Default::default());
@@ -553,7 +567,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("color"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ColorPrimitiveElement => {
                             let some = r#color.get_or_insert(Default::default());
@@ -572,7 +587,8 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("category"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CategoryPrimitiveElement => {
                             let some = r#category.get_or_insert(Default::default());

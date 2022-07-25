@@ -1,4 +1,4 @@
-// Generated on 2022-07-24 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
 #[derive(Debug, Clone)]
 pub enum ClaimResponseAddItemServiced {
     Date(Box<super::super::types::Date>),
@@ -57,7 +57,10 @@ impl serde::ser::Serialize for ClaimResponseItemAdjudication {
         }
         if let Some(some) = self.r#value.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("value", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("value", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -159,7 +162,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemAdjudication {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::ValuePrimitiveElement => {
                             let some = r#value.get_or_insert(Default::default());
@@ -215,7 +219,8 @@ impl serde::ser::Serialize for ClaimResponseItemDetailSubDetail {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sub_detail_sequence.value.as_ref() {
-            state.serialize_entry("subDetailSequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("subDetailSequence", &some)?;
         }
         if self.r#sub_detail_sequence.id.is_some()
             || !self.r#sub_detail_sequence.extension.is_empty()
@@ -227,7 +232,12 @@ impl serde::ser::Serialize for ClaimResponseItemDetailSubDetail {
             state.serialize_entry("_subDetailSequence", &primitive_element)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -329,7 +339,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subDetailSequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SubDetailSequencePrimitiveElement => {
                             let some = r#sub_detail_sequence.get_or_insert(Default::default());
@@ -346,7 +357,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
                             some.extension = extension;
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -362,7 +373,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -442,7 +455,8 @@ impl serde::ser::Serialize for ClaimResponseItemDetail {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#detail_sequence.value.as_ref() {
-            state.serialize_entry("detailSequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("detailSequence", &some)?;
         }
         if self.r#detail_sequence.id.is_some() || !self.r#detail_sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -452,7 +466,12 @@ impl serde::ser::Serialize for ClaimResponseItemDetail {
             state.serialize_entry("_detailSequence", &primitive_element)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -557,7 +576,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("detailSequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DetailSequencePrimitiveElement => {
                             let some = r#detail_sequence.get_or_insert(Default::default());
@@ -572,7 +592,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
                             some.extension = extension;
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -588,7 +608,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -675,7 +697,8 @@ impl serde::ser::Serialize for ClaimResponseItem {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#item_sequence.value.as_ref() {
-            state.serialize_entry("itemSequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("itemSequence", &some)?;
         }
         if self.r#item_sequence.id.is_some() || !self.r#item_sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -685,7 +708,12 @@ impl serde::ser::Serialize for ClaimResponseItem {
             state.serialize_entry("_itemSequence", &primitive_element)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -790,7 +818,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("itemSequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ItemSequencePrimitiveElement => {
                             let some = r#item_sequence.get_or_insert(Default::default());
@@ -805,7 +834,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
                             some.extension = extension;
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -821,7 +850,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -923,7 +954,10 @@ impl serde::ser::Serialize for ClaimResponseAddItemDetailSubDetail {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -937,7 +971,12 @@ impl serde::ser::Serialize for ClaimResponseAddItemDetailSubDetail {
             state.serialize_entry("net", some)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -1079,7 +1118,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -1100,7 +1140,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
                             r#net = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1116,7 +1156,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -1217,7 +1259,10 @@ impl serde::ser::Serialize for ClaimResponseAddItemDetail {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1231,7 +1276,12 @@ impl serde::ser::Serialize for ClaimResponseAddItemDetail {
             state.serialize_entry("net", some)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -1376,7 +1426,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -1397,7 +1448,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
                             r#net = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1413,7 +1464,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -1519,7 +1572,12 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if !self.r#item_sequence.is_empty() {
-            let values: Vec<_> = self.r#item_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#item_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("itemSequence", &values)?;
             }
@@ -1546,7 +1604,12 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
             }
         }
         if !self.r#detail_sequence.is_empty() {
-            let values: Vec<_> = self.r#detail_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#detail_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("detailSequence", &values)?;
             }
@@ -1573,7 +1636,12 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
             }
         }
         if !self.r#subdetail_sequence.is_empty() {
-            let values: Vec<_> = self.r#subdetail_sequence.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#subdetail_sequence
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("subdetailSequence", &values)?;
             }
@@ -1613,7 +1681,8 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
             match some {
                 ClaimResponseAddItemServiced::Date(ref value) => {
                     if let Some(some) = value.value.as_ref() {
-                        state.serialize_entry("servicedDate", some)?;
+                        let some = Ok(some)?;
+                        state.serialize_entry("servicedDate", &some)?;
                     }
                     if value.id.is_some() || !value.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1655,7 +1724,10 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
         }
         if let Some(some) = self.r#factor.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("factor", some)?;
+                let some = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("factor", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -1675,7 +1747,12 @@ impl serde::ser::Serialize for ClaimResponseAddItem {
             state.serialize_entry("subSite", &self.r#sub_site)?;
         }
         if !self.r#note_number.is_empty() {
-            let values: Vec<_> = self.r#note_number.iter().map(|v| &v.value).collect();
+            let values = self
+                .r#note_number
+                .iter()
+                .map(|v| &v.value)
+                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                .collect::<Result<Vec<_>, _>>()?;
             if values.iter().any(|v| v.is_some()) {
                 state.serialize_entry("noteNumber", &values)?;
             }
@@ -1834,7 +1911,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             r#modifier_extension = Some(map_access.next_value()?);
                         }
                         Field::ItemSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#item_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1850,7 +1927,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("itemSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::ItemSequencePrimitiveElement => {
@@ -1882,7 +1961,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             }
                         }
                         Field::DetailSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#detail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1898,7 +1977,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("detailSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::DetailSequencePrimitiveElement => {
@@ -1930,7 +2011,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             }
                         }
                         Field::SubdetailSequence => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#subdetail_sequence.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -1946,7 +2027,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("subdetailSequence"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::SubdetailSequencePrimitiveElement => {
@@ -2011,7 +2094,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 if variant.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("servicedDate"));
                                 }
-                                variant.value = Some(map_access.next_value()?);
+                                let value: _ = map_access.next_value()?;
+                                variant.value = Some(value);
                             } else {
                                 return Err(serde::de::Error::duplicate_field("serviced[x]"));
                             }
@@ -2085,7 +2169,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("factor"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: serde_json::Number = map_access.next_value()?;
+                            some.value = Some(format!("{}", value));
                         }
                         Field::FactorPrimitiveElement => {
                             let some = r#factor.get_or_insert(Default::default());
@@ -2118,7 +2203,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                             r#sub_site = Some(map_access.next_value()?);
                         }
                         Field::NoteNumber => {
-                            let values: Vec<_> = map_access.next_value()?;
+                            let values: Vec<Option<_>> = map_access.next_value()?;
                             let vec = r#note_number.get_or_insert(
                                 std::iter::repeat(Default::default())
                                     .take(values.len())
@@ -2134,7 +2219,9 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
                                 return Err(serde::de::Error::duplicate_field("noteNumber"));
                             }
                             for (i, value) in values.into_iter().enumerate() {
-                                vec[i].value = value;
+                                if let Some(value) = value {
+                                    vec[i].value = Some(value);
+                                }
                             }
                         }
                         Field::NoteNumberPrimitiveElement => {
@@ -2355,7 +2442,8 @@ impl serde::ser::Serialize for ClaimResponsePayment {
         }
         if let Some(some) = self.r#date.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("date", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("date", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2465,7 +2553,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponsePayment {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("date"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DatePrimitiveElement => {
                             let some = r#date.get_or_insert(Default::default());
@@ -2537,7 +2626,8 @@ impl serde::ser::Serialize for ClaimResponseProcessNote {
         }
         if let Some(some) = self.r#number.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("number", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("number", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2549,7 +2639,8 @@ impl serde::ser::Serialize for ClaimResponseProcessNote {
         }
         if let Some(some) = self.r#type.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("type", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("type", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2560,7 +2651,8 @@ impl serde::ser::Serialize for ClaimResponseProcessNote {
             }
         }
         if let Some(some) = self.r#text.value.as_ref() {
-            state.serialize_entry("text", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("text", &some)?;
         }
         if self.r#text.id.is_some() || !self.r#text.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2647,7 +2739,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseProcessNote {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("number"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::NumberPrimitiveElement => {
                             let some = r#number.get_or_insert(Default::default());
@@ -2666,7 +2759,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseProcessNote {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TypePrimitiveElement => {
                             let some = r#type.get_or_insert(Default::default());
@@ -2685,7 +2779,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseProcessNote {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::TextPrimitiveElement => {
                             let some = r#text.get_or_insert(Default::default());
@@ -2749,7 +2844,8 @@ impl serde::ser::Serialize for ClaimResponseInsurance {
             state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
         }
         if let Some(some) = self.r#sequence.value.as_ref() {
-            state.serialize_entry("sequence", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("sequence", &some)?;
         }
         if self.r#sequence.id.is_some() || !self.r#sequence.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2759,7 +2855,8 @@ impl serde::ser::Serialize for ClaimResponseInsurance {
             state.serialize_entry("_sequence", &primitive_element)?;
         }
         if let Some(some) = self.r#focal.value.as_ref() {
-            state.serialize_entry("focal", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("focal", &some)?;
         }
         if self.r#focal.id.is_some() || !self.r#focal.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2771,7 +2868,8 @@ impl serde::ser::Serialize for ClaimResponseInsurance {
         state.serialize_entry("coverage", &self.r#coverage)?;
         if let Some(some) = self.r#business_arrangement.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("businessArrangement", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("businessArrangement", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2862,7 +2960,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseInsurance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("sequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SequencePrimitiveElement => {
                             let some = r#sequence.get_or_insert(Default::default());
@@ -2881,7 +2980,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseInsurance {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("focal"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::FocalPrimitiveElement => {
                             let some = r#focal.get_or_insert(Default::default());
@@ -2908,7 +3008,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseInsurance {
                                     "businessArrangement",
                                 ));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::BusinessArrangementPrimitiveElement => {
                             let some = r#business_arrangement.get_or_insert(Default::default());
@@ -2975,7 +3076,8 @@ impl serde::ser::Serialize for ClaimResponseError {
         }
         if let Some(some) = self.r#item_sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("itemSequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("itemSequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2987,7 +3089,8 @@ impl serde::ser::Serialize for ClaimResponseError {
         }
         if let Some(some) = self.r#detail_sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("detailSequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("detailSequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -2999,7 +3102,8 @@ impl serde::ser::Serialize for ClaimResponseError {
         }
         if let Some(some) = self.r#sub_detail_sequence.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("subDetailSequence", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("subDetailSequence", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3085,7 +3189,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseError {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("itemSequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ItemSequencePrimitiveElement => {
                             let some = r#item_sequence.get_or_insert(Default::default());
@@ -3104,7 +3209,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseError {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("detailSequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DetailSequencePrimitiveElement => {
                             let some = r#detail_sequence.get_or_insert(Default::default());
@@ -3123,7 +3229,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseError {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("subDetailSequence"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::SubDetailSequencePrimitiveElement => {
                             let some = r#sub_detail_sequence.get_or_insert(Default::default());
@@ -3215,7 +3322,8 @@ impl serde::ser::Serialize for ClaimResponse {
         }
         if let Some(some) = self.r#implicit_rules.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("implicitRules", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("implicitRules", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3227,7 +3335,8 @@ impl serde::ser::Serialize for ClaimResponse {
         }
         if let Some(some) = self.r#language.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("language", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("language", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3253,7 +3362,8 @@ impl serde::ser::Serialize for ClaimResponse {
             state.serialize_entry("identifier", &self.r#identifier)?;
         }
         if let Some(some) = self.r#status.value.as_ref() {
-            state.serialize_entry("status", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("status", &some)?;
         }
         if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3267,7 +3377,8 @@ impl serde::ser::Serialize for ClaimResponse {
             state.serialize_entry("subType", some)?;
         }
         if let Some(some) = self.r#use.value.as_ref() {
-            state.serialize_entry("use", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("use", &some)?;
         }
         if self.r#use.id.is_some() || !self.r#use.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3278,7 +3389,8 @@ impl serde::ser::Serialize for ClaimResponse {
         }
         state.serialize_entry("patient", &self.r#patient)?;
         if let Some(some) = self.r#created.value.as_ref() {
-            state.serialize_entry("created", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("created", &some)?;
         }
         if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3295,7 +3407,8 @@ impl serde::ser::Serialize for ClaimResponse {
             state.serialize_entry("request", some)?;
         }
         if let Some(some) = self.r#outcome.value.as_ref() {
-            state.serialize_entry("outcome", some)?;
+            let some = Ok(some)?;
+            state.serialize_entry("outcome", &some)?;
         }
         if self.r#outcome.id.is_some() || !self.r#outcome.extension.is_empty() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3306,7 +3419,8 @@ impl serde::ser::Serialize for ClaimResponse {
         }
         if let Some(some) = self.r#disposition.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("disposition", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("disposition", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3318,7 +3432,8 @@ impl serde::ser::Serialize for ClaimResponse {
         }
         if let Some(some) = self.r#pre_auth_ref.as_ref() {
             if let Some(some) = some.value.as_ref() {
-                state.serialize_entry("preAuthRef", some)?;
+                let some = Ok(some)?;
+                state.serialize_entry("preAuthRef", &some)?;
             }
             if some.id.is_some() || !some.extension.is_empty() {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
@@ -3545,7 +3660,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("implicitRules"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::ImplicitRulesPrimitiveElement => {
                             let some = r#implicit_rules.get_or_insert(Default::default());
@@ -3564,7 +3680,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("language"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::LanguagePrimitiveElement => {
                             let some = r#language.get_or_insert(Default::default());
@@ -3613,7 +3730,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::StatusPrimitiveElement => {
                             let some = r#status.get_or_insert(Default::default());
@@ -3644,7 +3762,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::UsePrimitiveElement => {
                             let some = r#use.get_or_insert(Default::default());
@@ -3669,7 +3788,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("created"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::CreatedPrimitiveElement => {
                             let some = r#created.get_or_insert(Default::default());
@@ -3706,7 +3826,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::OutcomePrimitiveElement => {
                             let some = r#outcome.get_or_insert(Default::default());
@@ -3725,7 +3846,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("disposition"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::DispositionPrimitiveElement => {
                             let some = r#disposition.get_or_insert(Default::default());
@@ -3744,7 +3866,8 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponse {
                             if some.value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("preAuthRef"));
                             }
-                            some.value = Some(map_access.next_value()?);
+                            let value: _ = map_access.next_value()?;
+                            some.value = Some(value);
                         }
                         Field::PreAuthRefPrimitiveElement => {
                             let some = r#pre_auth_ref.get_or_insert(Default::default());
