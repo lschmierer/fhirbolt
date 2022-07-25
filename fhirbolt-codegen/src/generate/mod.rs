@@ -18,7 +18,7 @@ pub fn generate_modules(modules: &[RustModule]) -> Vec<SourceFile> {
 pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
-        quote! { #ident(Box<super::#ident>), }
+        quote! { #ident(Box<super::resources::#ident>), }
     });
 
     SourceFile {

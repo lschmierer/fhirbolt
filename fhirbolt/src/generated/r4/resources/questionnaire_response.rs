@@ -231,6 +231,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItemAnswer {
             ValueReference,
             #[serde(rename = "item")]
             Item,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -251,332 +252,432 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItemAnswer {
                     None;
                 let mut r#value: Option<QuestionnaireResponseItemAnswerValue> = None;
                 let mut r#item: Option<Vec<QuestionnaireResponseItem>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
-                            }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
-                            }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
-                            }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::ValueBoolean => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Boolean(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Boolean(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueBoolean"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
+                                r#id = Some(map_access.next_value()?);
                             }
-                        }
-                        Field::ValueBooleanPrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Boolean(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Boolean(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueBoolean"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                r#extension = Some(map_access.next_value()?);
                             }
-                        }
-                        Field::ValueDecimal => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Decimal(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Decimal(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueDecimal"));
-                                }
-                                let value: serde_json::Number = map_access.next_value()?;
-                                variant.value = Some(format!("{}", value));
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
-                            }
-                        }
-                        Field::ValueDecimalPrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Decimal(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Decimal(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueDecimal"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
-                            }
-                        }
-                        Field::ValueInteger => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Integer(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Integer(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueInteger"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
-                            }
-                        }
-                        Field::ValueIntegerPrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Integer(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Integer(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueInteger"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
-                            }
-                        }
-                        Field::ValueDate => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Date(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Date(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueDate"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
-                            }
-                        }
-                        Field::ValueDatePrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Date(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Date(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueDate"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
-                            }
-                        }
-                        Field::ValueDateTime => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::DateTime(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::DateTime(variant) = r#enum
-                            {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueDateTime"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
-                            }
-                        }
-                        Field::ValueDateTimePrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::DateTime(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::DateTime(variant) = r#enum
-                            {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
-                                        "_valueDateTime",
+                                        "modifierExtension",
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                        }
-                        Field::ValueTime => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Time(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Time(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueTime"));
+                            Field::ValueBoolean => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Boolean(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Boolean(variant) =
+                                    r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueBoolean",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
-                        }
-                        Field::ValueTimePrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Time(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Time(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueTime"));
+                            Field::ValueBooleanPrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Boolean(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Boolean(variant) =
+                                    r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueBoolean",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        Field::ValueString => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::String(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::String(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueString"));
+                            Field::ValueDecimal => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Decimal(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Decimal(variant) =
+                                    r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueDecimal",
+                                        ));
+                                    }
+                                    let value: serde_json::Number = map_access.next_value()?;
+                                    variant.value = Some(format!("{}", value));
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
-                        }
-                        Field::ValueStringPrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::String(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::String(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueString"));
+                            Field::ValueDecimalPrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Decimal(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Decimal(variant) =
+                                    r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueDecimal",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        Field::ValueUri => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Uri(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Uri(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("valueUri"));
+                            Field::ValueInteger => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Integer(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Integer(variant) =
+                                    r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueInteger",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("value[x]"));
                             }
-                        }
-                        Field::ValueUriPrimitiveElement => {
-                            let r#enum = r#value.get_or_insert(
-                                QuestionnaireResponseItemAnswerValue::Uri(Default::default()),
-                            );
-                            if let QuestionnaireResponseItemAnswerValue::Uri(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_valueUri"));
+                            Field::ValueIntegerPrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Integer(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Integer(variant) =
+                                    r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueInteger",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_value[x]"));
                             }
-                        }
-                        Field::ValueAttachment => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueAttachment"));
+                            Field::ValueDate => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Date(Default::default()),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Date(variant) = r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("valueDate"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             }
-                            r#value = Some(QuestionnaireResponseItemAnswerValue::Attachment(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::ValueCoding => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueCoding"));
+                            Field::ValueDatePrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Date(Default::default()),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Date(variant) = r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             }
-                            r#value = Some(QuestionnaireResponseItemAnswerValue::Coding(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::ValueQuantity => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueQuantity"));
+                            Field::ValueDateTime => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::DateTime(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::DateTime(variant) =
+                                    r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueDateTime",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             }
-                            r#value = Some(QuestionnaireResponseItemAnswerValue::Quantity(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::ValueReference => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueReference"));
+                            Field::ValueDateTimePrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::DateTime(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::DateTime(variant) =
+                                    r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueDateTime",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             }
-                            r#value = Some(QuestionnaireResponseItemAnswerValue::Reference(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::Item => {
-                            if r#item.is_some() {
-                                return Err(serde::de::Error::duplicate_field("item"));
+                            Field::ValueTime => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Time(Default::default()),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Time(variant) = r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("valueTime"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             }
-                            r#item = Some(map_access.next_value()?);
+                            Field::ValueTimePrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Time(Default::default()),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Time(variant) = r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueTime",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
+                            }
+                            Field::ValueString => {
+                                let r#enum =
+                                    r#value.get_or_insert(
+                                        QuestionnaireResponseItemAnswerValue::String(
+                                            Default::default(),
+                                        ),
+                                    );
+                                if let QuestionnaireResponseItemAnswerValue::String(variant) =
+                                    r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueString",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
+                            }
+                            Field::ValueStringPrimitiveElement => {
+                                let r#enum =
+                                    r#value.get_or_insert(
+                                        QuestionnaireResponseItemAnswerValue::String(
+                                            Default::default(),
+                                        ),
+                                    );
+                                if let QuestionnaireResponseItemAnswerValue::String(variant) =
+                                    r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueString",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
+                            }
+                            Field::ValueUri => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Uri(Default::default()),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Uri(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("valueUri"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
+                            }
+                            Field::ValueUriPrimitiveElement => {
+                                let r#enum = r#value.get_or_insert(
+                                    QuestionnaireResponseItemAnswerValue::Uri(Default::default()),
+                                );
+                                if let QuestionnaireResponseItemAnswerValue::Uri(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_valueUri"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
+                            }
+                            Field::ValueAttachment => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueAttachment",
+                                    ));
+                                }
+                                r#value = Some(QuestionnaireResponseItemAnswerValue::Attachment(
+                                    map_access.next_value()?,
+                                ));
+                            }
+                            Field::ValueCoding => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueCoding"));
+                                }
+                                r#value = Some(QuestionnaireResponseItemAnswerValue::Coding(
+                                    map_access.next_value()?,
+                                ));
+                            }
+                            Field::ValueQuantity => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueQuantity"));
+                                }
+                                r#value = Some(QuestionnaireResponseItemAnswerValue::Quantity(
+                                    map_access.next_value()?,
+                                ));
+                            }
+                            Field::ValueReference => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueReference",
+                                    ));
+                                }
+                                r#value = Some(QuestionnaireResponseItemAnswerValue::Reference(
+                                    map_access.next_value()?,
+                                ));
+                            }
+                            Field::Item => {
+                                if r#item.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("item"));
+                                }
+                                r#item = Some(map_access.next_value()?);
+                            }
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "valueBoolean",
+                                            "valueDecimal",
+                                            "valueInteger",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueTime",
+                                            "valueString",
+                                            "valueUri",
+                                            "valueAttachment",
+                                            "valueCoding",
+                                            "valueQuantity",
+                                            "valueReference",
+                                            "item",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(QuestionnaireResponseItemAnswer {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#value,
-                    r#item: r#item.unwrap_or(vec![]),
+                    Ok(QuestionnaireResponseItemAnswer {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#value,
+                        r#item: r#item.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -686,6 +787,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItem {
             Answer,
             #[serde(rename = "item")]
             Item,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -706,109 +808,135 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItem {
                 let mut r#text: Option<super::super::types::String> = None;
                 let mut r#answer: Option<Vec<QuestionnaireResponseItemAnswer>> = None;
                 let mut r#item: Option<Vec<QuestionnaireResponseItem>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::LinkId => {
-                            let some = r#link_id.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("linkId"));
+                            Field::LinkId => {
+                                let some = r#link_id.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("linkId"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::LinkIdPrimitiveElement => {
-                            let some = r#link_id.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_linkId"));
+                            Field::LinkIdPrimitiveElement => {
+                                let some = r#link_id.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_linkId"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Definition => {
-                            let some = r#definition.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("definition"));
+                            Field::Definition => {
+                                let some = r#definition.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("definition"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::DefinitionPrimitiveElement => {
-                            let some = r#definition.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_definition"));
+                            Field::DefinitionPrimitiveElement => {
+                                let some = r#definition.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_definition"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Text => {
-                            let some = r#text.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("text"));
+                            Field::Text => {
+                                let some = r#text.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("text"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::TextPrimitiveElement => {
-                            let some = r#text.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_text"));
+                            Field::TextPrimitiveElement => {
+                                let some = r#text.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_text"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Answer => {
-                            if r#answer.is_some() {
-                                return Err(serde::de::Error::duplicate_field("answer"));
+                            Field::Answer => {
+                                if r#answer.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("answer"));
+                                }
+                                r#answer = Some(map_access.next_value()?);
                             }
-                            r#answer = Some(map_access.next_value()?);
-                        }
-                        Field::Item => {
-                            if r#item.is_some() {
-                                return Err(serde::de::Error::duplicate_field("item"));
+                            Field::Item => {
+                                if r#item.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("item"));
+                                }
+                                r#item = Some(map_access.next_value()?);
                             }
-                            r#item = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "linkId",
+                                            "definition",
+                                            "text",
+                                            "answer",
+                                            "item",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(QuestionnaireResponseItem {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#link_id: r#link_id.ok_or(serde::de::Error::missing_field("linkId"))?,
-                    r#definition,
-                    r#text,
-                    r#answer: r#answer.unwrap_or(vec![]),
-                    r#item: r#item.unwrap_or(vec![]),
+                    Ok(QuestionnaireResponseItem {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#link_id: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#link_id.unwrap_or(Default::default())
+                        } else {
+                            r#link_id.ok_or(serde::de::Error::missing_field("linkId"))?
+                        },
+                        r#definition,
+                        r#text,
+                        r#answer: r#answer.unwrap_or(vec![]),
+                        r#item: r#item.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -822,7 +950,7 @@ pub struct QuestionnaireResponse {
     pub r#implicit_rules: Option<super::super::types::Uri>,
     pub r#language: Option<super::super::types::Code>,
     pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#contained: Vec<Box<super::super::Resource>>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
@@ -1011,6 +1139,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponse {
             Source,
             #[serde(rename = "item")]
             Item,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1027,7 +1156,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponse {
                 let mut r#implicit_rules: Option<super::super::types::Uri> = None;
                 let mut r#language: Option<super::super::types::Code> = None;
                 let mut r#text: Option<Box<super::super::types::Narrative>> = None;
-                let mut r#contained: Option<Vec<Box<super::Resource>>> = None;
+                let mut r#contained: Option<Vec<Box<super::super::Resource>>> = None;
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
@@ -1042,223 +1171,264 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponse {
                 let mut r#author: Option<Box<super::super::types::Reference>> = None;
                 let mut r#source: Option<Box<super::super::types::Reference>> = None;
                 let mut r#item: Option<Vec<QuestionnaireResponseItem>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::ResourceType => {
-                            let value: std::borrow::Cow<str> = map_access.next_value()?;
-                            if value != "QuestionnaireResponse" {
-                                return Err(serde::de::Error::invalid_value(
-                                    serde::de::Unexpected::Str(&value),
-                                    &"QuestionnaireResponse",
-                                ));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::ResourceType => {
+                                let value: std::borrow::Cow<str> = map_access.next_value()?;
+                                if value != "QuestionnaireResponse" {
+                                    return Err(serde::de::Error::invalid_value(
+                                        serde::de::Unexpected::Str(&value),
+                                        &"QuestionnaireResponse",
+                                    ));
+                                }
                             }
-                        }
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Meta => {
-                            if r#meta.is_some() {
-                                return Err(serde::de::Error::duplicate_field("meta"));
+                            Field::Meta => {
+                                if r#meta.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("meta"));
+                                }
+                                r#meta = Some(map_access.next_value()?);
                             }
-                            r#meta = Some(map_access.next_value()?);
-                        }
-                        Field::ImplicitRules => {
-                            let some = r#implicit_rules.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("implicitRules"));
+                            Field::ImplicitRules => {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::ImplicitRulesPrimitiveElement => {
-                            let some = r#implicit_rules.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_implicitRules"));
+                            Field::ImplicitRulesPrimitiveElement => {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_implicitRules",
+                                    ));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Language => {
-                            let some = r#language.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("language"));
+                            Field::Language => {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("language"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::LanguagePrimitiveElement => {
-                            let some = r#language.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_language"));
+                            Field::LanguagePrimitiveElement => {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Text => {
-                            if r#text.is_some() {
-                                return Err(serde::de::Error::duplicate_field("text"));
+                            Field::Text => {
+                                if r#text.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("text"));
+                                }
+                                r#text = Some(map_access.next_value()?);
                             }
-                            r#text = Some(map_access.next_value()?);
-                        }
-                        Field::Contained => {
-                            if r#contained.is_some() {
-                                return Err(serde::de::Error::duplicate_field("contained"));
+                            Field::Contained => {
+                                if r#contained.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                }
+                                r#contained = Some(map_access.next_value()?);
                             }
-                            r#contained = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Identifier => {
-                            if r#identifier.is_some() {
-                                return Err(serde::de::Error::duplicate_field("identifier"));
+                            Field::Identifier => {
+                                if r#identifier.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                }
+                                r#identifier = Some(map_access.next_value()?);
                             }
-                            r#identifier = Some(map_access.next_value()?);
-                        }
-                        Field::BasedOn => {
-                            if r#based_on.is_some() {
-                                return Err(serde::de::Error::duplicate_field("basedOn"));
+                            Field::BasedOn => {
+                                if r#based_on.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("basedOn"));
+                                }
+                                r#based_on = Some(map_access.next_value()?);
                             }
-                            r#based_on = Some(map_access.next_value()?);
-                        }
-                        Field::PartOf => {
-                            if r#part_of.is_some() {
-                                return Err(serde::de::Error::duplicate_field("partOf"));
+                            Field::PartOf => {
+                                if r#part_of.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("partOf"));
+                                }
+                                r#part_of = Some(map_access.next_value()?);
                             }
-                            r#part_of = Some(map_access.next_value()?);
-                        }
-                        Field::Questionnaire => {
-                            let some = r#questionnaire.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("questionnaire"));
+                            Field::Questionnaire => {
+                                let some = r#questionnaire.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("questionnaire"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::QuestionnairePrimitiveElement => {
-                            let some = r#questionnaire.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_questionnaire"));
+                            Field::QuestionnairePrimitiveElement => {
+                                let some = r#questionnaire.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_questionnaire",
+                                    ));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Status => {
-                            let some = r#status.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("status"));
+                            Field::Status => {
+                                let some = r#status.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("status"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::StatusPrimitiveElement => {
-                            let some = r#status.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_status"));
+                            Field::StatusPrimitiveElement => {
+                                let some = r#status.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Subject => {
-                            if r#subject.is_some() {
-                                return Err(serde::de::Error::duplicate_field("subject"));
+                            Field::Subject => {
+                                if r#subject.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("subject"));
+                                }
+                                r#subject = Some(map_access.next_value()?);
                             }
-                            r#subject = Some(map_access.next_value()?);
-                        }
-                        Field::Encounter => {
-                            if r#encounter.is_some() {
-                                return Err(serde::de::Error::duplicate_field("encounter"));
+                            Field::Encounter => {
+                                if r#encounter.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("encounter"));
+                                }
+                                r#encounter = Some(map_access.next_value()?);
                             }
-                            r#encounter = Some(map_access.next_value()?);
-                        }
-                        Field::Authored => {
-                            let some = r#authored.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("authored"));
+                            Field::Authored => {
+                                let some = r#authored.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("authored"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::AuthoredPrimitiveElement => {
-                            let some = r#authored.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_authored"));
+                            Field::AuthoredPrimitiveElement => {
+                                let some = r#authored.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_authored"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Author => {
-                            if r#author.is_some() {
-                                return Err(serde::de::Error::duplicate_field("author"));
+                            Field::Author => {
+                                if r#author.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("author"));
+                                }
+                                r#author = Some(map_access.next_value()?);
                             }
-                            r#author = Some(map_access.next_value()?);
-                        }
-                        Field::Source => {
-                            if r#source.is_some() {
-                                return Err(serde::de::Error::duplicate_field("source"));
+                            Field::Source => {
+                                if r#source.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("source"));
+                                }
+                                r#source = Some(map_access.next_value()?);
                             }
-                            r#source = Some(map_access.next_value()?);
-                        }
-                        Field::Item => {
-                            if r#item.is_some() {
-                                return Err(serde::de::Error::duplicate_field("item"));
+                            Field::Item => {
+                                if r#item.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("item"));
+                                }
+                                r#item = Some(map_access.next_value()?);
                             }
-                            r#item = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "questionnaire",
+                                            "status",
+                                            "subject",
+                                            "encounter",
+                                            "authored",
+                                            "author",
+                                            "source",
+                                            "item",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(QuestionnaireResponse {
-                    r#id,
-                    r#meta,
-                    r#implicit_rules,
-                    r#language,
-                    r#text,
-                    r#contained: r#contained.unwrap_or(vec![]),
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#identifier,
-                    r#based_on: r#based_on.unwrap_or(vec![]),
-                    r#part_of: r#part_of.unwrap_or(vec![]),
-                    r#questionnaire,
-                    r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
-                    r#subject,
-                    r#encounter,
-                    r#authored,
-                    r#author,
-                    r#source,
-                    r#item: r#item.unwrap_or(vec![]),
+                    Ok(QuestionnaireResponse {
+                        r#id,
+                        r#meta,
+                        r#implicit_rules,
+                        r#language,
+                        r#text,
+                        r#contained: r#contained.unwrap_or(vec![]),
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#identifier,
+                        r#based_on: r#based_on.unwrap_or(vec![]),
+                        r#part_of: r#part_of.unwrap_or(vec![]),
+                        r#questionnaire,
+                        r#status: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#status.unwrap_or(Default::default())
+                        } else {
+                            r#status.ok_or(serde::de::Error::missing_field("status"))?
+                        },
+                        r#subject,
+                        r#encounter,
+                        r#authored,
+                        r#author,
+                        r#source,
+                        r#item: r#item.unwrap_or(vec![]),
+                    })
                 })
             }
         }

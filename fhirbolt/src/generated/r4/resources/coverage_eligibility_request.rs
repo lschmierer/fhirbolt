@@ -98,6 +98,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
             AppliesToAll,
             #[serde(rename = "_appliesToAll")]
             AppliesToAllPrimitiveElement,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -119,82 +120,109 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
                 let mut r#sequence: Option<super::super::types::PositiveInt> = None;
                 let mut r#information: Option<Box<super::super::types::Reference>> = None;
                 let mut r#applies_to_all: Option<super::super::types::Boolean> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Sequence => {
-                            let some = r#sequence.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("sequence"));
+                            Field::Sequence => {
+                                let some = r#sequence.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("sequence"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::SequencePrimitiveElement => {
-                            let some = r#sequence.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_sequence"));
+                            Field::SequencePrimitiveElement => {
+                                let some = r#sequence.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_sequence"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Information => {
-                            if r#information.is_some() {
-                                return Err(serde::de::Error::duplicate_field("information"));
+                            Field::Information => {
+                                if r#information.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("information"));
+                                }
+                                r#information = Some(map_access.next_value()?);
                             }
-                            r#information = Some(map_access.next_value()?);
-                        }
-                        Field::AppliesToAll => {
-                            let some = r#applies_to_all.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("appliesToAll"));
+                            Field::AppliesToAll => {
+                                let some = r#applies_to_all.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("appliesToAll"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::AppliesToAllPrimitiveElement => {
-                            let some = r#applies_to_all.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_appliesToAll"));
+                            Field::AppliesToAllPrimitiveElement => {
+                                let some = r#applies_to_all.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_appliesToAll"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "sequence",
+                                            "information",
+                                            "appliesToAll",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(CoverageEligibilityRequestSupportingInfo {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#sequence: r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?,
-                    r#information: r#information
-                        .ok_or(serde::de::Error::missing_field("information"))?,
-                    r#applies_to_all,
+                    Ok(CoverageEligibilityRequestSupportingInfo {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#sequence: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#sequence.unwrap_or(Default::default())
+                        } else {
+                            r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?
+                        },
+                        r#information: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#information.unwrap_or(Default::default())
+                        } else {
+                            r#information.ok_or(serde::de::Error::missing_field("information"))?
+                        },
+                        r#applies_to_all,
+                    })
                 })
             }
         }
@@ -280,6 +308,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
             BusinessArrangement,
             #[serde(rename = "_businessArrangement")]
             BusinessArrangementPrimitiveElement,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -301,85 +330,109 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
                 let mut r#focal: Option<super::super::types::Boolean> = None;
                 let mut r#coverage: Option<Box<super::super::types::Reference>> = None;
                 let mut r#business_arrangement: Option<super::super::types::String> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Focal => {
-                            let some = r#focal.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("focal"));
+                            Field::Focal => {
+                                let some = r#focal.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("focal"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::FocalPrimitiveElement => {
-                            let some = r#focal.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_focal"));
+                            Field::FocalPrimitiveElement => {
+                                let some = r#focal.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_focal"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Coverage => {
-                            if r#coverage.is_some() {
-                                return Err(serde::de::Error::duplicate_field("coverage"));
+                            Field::Coverage => {
+                                if r#coverage.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("coverage"));
+                                }
+                                r#coverage = Some(map_access.next_value()?);
                             }
-                            r#coverage = Some(map_access.next_value()?);
-                        }
-                        Field::BusinessArrangement => {
-                            let some = r#business_arrangement.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "businessArrangement",
-                                ));
+                            Field::BusinessArrangement => {
+                                let some = r#business_arrangement.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "businessArrangement",
+                                    ));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::BusinessArrangementPrimitiveElement => {
-                            let some = r#business_arrangement.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "_businessArrangement",
-                                ));
+                            Field::BusinessArrangementPrimitiveElement => {
+                                let some = r#business_arrangement.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_businessArrangement",
+                                    ));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "focal",
+                                            "coverage",
+                                            "businessArrangement",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(CoverageEligibilityRequestInsurance {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#focal,
-                    r#coverage: r#coverage.ok_or(serde::de::Error::missing_field("coverage"))?,
-                    r#business_arrangement,
+                    Ok(CoverageEligibilityRequestInsurance {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#focal,
+                        r#coverage: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#coverage.unwrap_or(Default::default())
+                        } else {
+                            r#coverage.ok_or(serde::de::Error::missing_field("coverage"))?
+                        },
+                        r#business_arrangement,
+                    })
                 })
             }
         }
@@ -443,6 +496,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
             DiagnosisCodeableConcept,
             #[serde(rename = "diagnosisReference")]
             DiagnosisReference,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -463,57 +517,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
                     None;
                 let mut r#diagnosis: Option<CoverageEligibilityRequestItemDiagnosisDiagnosis> =
                     None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
-                            }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
-                            }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
-                            }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::DiagnosisCodeableConcept => {
-                            if r#diagnosis.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "diagnosisCodeableConcept",
-                                ));
-                            }
-                            r#diagnosis = Some(
-                                CoverageEligibilityRequestItemDiagnosisDiagnosis::CodeableConcept(
-                                    map_access.next_value()?,
-                                ),
-                            );
-                        }
-                        Field::DiagnosisReference => {
-                            if r#diagnosis.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "diagnosisReference",
-                                ));
-                            }
-                            r#diagnosis =
-                                Some(CoverageEligibilityRequestItemDiagnosisDiagnosis::Reference(
-                                    map_access.next_value()?,
-                                ));
-                        }
-                    }
-                }
-                Ok(CoverageEligibilityRequestItemDiagnosis {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#diagnosis,
-                })
+                crate :: json :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DiagnosisCodeableConcept => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisCodeableConcept")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DiagnosisReference => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisReference")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == crate :: json :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "diagnosisCodeableConcept" , "diagnosisReference" ,])) ; } } } Ok (CoverageEligibilityRequestItemDiagnosis { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#diagnosis , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -649,6 +653,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
             Diagnosis,
             #[serde(rename = "detail")]
             Detail,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -679,150 +684,179 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                 let mut r#facility: Option<Box<super::super::types::Reference>> = None;
                 let mut r#diagnosis: Option<Vec<CoverageEligibilityRequestItemDiagnosis>> = None;
                 let mut r#detail: Option<Vec<Box<super::super::types::Reference>>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::SupportingInfoSequence => {
-                            let values: Vec<Option<_>> = map_access.next_value()?;
-                            let vec = r#supporting_info_sequence.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(values.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != values.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    values.len(),
-                                    &"primitive elements length",
-                                ));
-                            }
-                            if vec.iter().any(|v| v.value.is_some()) {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "supportingInfoSequence",
-                                ));
-                            }
-                            for (i, value) in values.into_iter().enumerate() {
-                                if let Some(value) = value {
-                                    vec[i].value = Some(value);
+                            Field::SupportingInfoSequence => {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#supporting_info_sequence.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "supportingInfoSequence",
+                                    ));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
                                 }
                             }
-                        }
-                        Field::SupportingInfoSequencePrimitiveElement => {
-                            let elements: Vec<
-                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                            > = map_access.next_value()?;
-                            let vec = r#supporting_info_sequence.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(elements.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != elements.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    elements.len(),
-                                    &"primitive values length",
-                                ));
-                            }
-                            if vec
-                                .iter()
-                                .any(|e| e.id.is_some() || !e.extension.is_empty())
-                            {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "_supportingInfoSequence",
-                                ));
-                            }
-                            for (i, element) in elements.into_iter().enumerate() {
-                                if let Some(element) = element {
-                                    vec[i].id = element.id;
-                                    vec[i].extension = element.extension;
+                            Field::SupportingInfoSequencePrimitiveElement => {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > = map_access.next_value()?;
+                                let vec = r#supporting_info_sequence.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_supportingInfoSequence",
+                                    ));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
                                 }
                             }
-                        }
-                        Field::Category => {
-                            if r#category.is_some() {
-                                return Err(serde::de::Error::duplicate_field("category"));
+                            Field::Category => {
+                                if r#category.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("category"));
+                                }
+                                r#category = Some(map_access.next_value()?);
                             }
-                            r#category = Some(map_access.next_value()?);
-                        }
-                        Field::ProductOrService => {
-                            if r#product_or_service.is_some() {
-                                return Err(serde::de::Error::duplicate_field("productOrService"));
+                            Field::ProductOrService => {
+                                if r#product_or_service.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "productOrService",
+                                    ));
+                                }
+                                r#product_or_service = Some(map_access.next_value()?);
                             }
-                            r#product_or_service = Some(map_access.next_value()?);
-                        }
-                        Field::Modifier => {
-                            if r#modifier.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifier"));
+                            Field::Modifier => {
+                                if r#modifier.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("modifier"));
+                                }
+                                r#modifier = Some(map_access.next_value()?);
                             }
-                            r#modifier = Some(map_access.next_value()?);
-                        }
-                        Field::Provider => {
-                            if r#provider.is_some() {
-                                return Err(serde::de::Error::duplicate_field("provider"));
+                            Field::Provider => {
+                                if r#provider.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("provider"));
+                                }
+                                r#provider = Some(map_access.next_value()?);
                             }
-                            r#provider = Some(map_access.next_value()?);
-                        }
-                        Field::Quantity => {
-                            if r#quantity.is_some() {
-                                return Err(serde::de::Error::duplicate_field("quantity"));
+                            Field::Quantity => {
+                                if r#quantity.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("quantity"));
+                                }
+                                r#quantity = Some(map_access.next_value()?);
                             }
-                            r#quantity = Some(map_access.next_value()?);
-                        }
-                        Field::UnitPrice => {
-                            if r#unit_price.is_some() {
-                                return Err(serde::de::Error::duplicate_field("unitPrice"));
+                            Field::UnitPrice => {
+                                if r#unit_price.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("unitPrice"));
+                                }
+                                r#unit_price = Some(map_access.next_value()?);
                             }
-                            r#unit_price = Some(map_access.next_value()?);
-                        }
-                        Field::Facility => {
-                            if r#facility.is_some() {
-                                return Err(serde::de::Error::duplicate_field("facility"));
+                            Field::Facility => {
+                                if r#facility.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("facility"));
+                                }
+                                r#facility = Some(map_access.next_value()?);
                             }
-                            r#facility = Some(map_access.next_value()?);
-                        }
-                        Field::Diagnosis => {
-                            if r#diagnosis.is_some() {
-                                return Err(serde::de::Error::duplicate_field("diagnosis"));
+                            Field::Diagnosis => {
+                                if r#diagnosis.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("diagnosis"));
+                                }
+                                r#diagnosis = Some(map_access.next_value()?);
                             }
-                            r#diagnosis = Some(map_access.next_value()?);
-                        }
-                        Field::Detail => {
-                            if r#detail.is_some() {
-                                return Err(serde::de::Error::duplicate_field("detail"));
+                            Field::Detail => {
+                                if r#detail.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("detail"));
+                                }
+                                r#detail = Some(map_access.next_value()?);
                             }
-                            r#detail = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "supportingInfoSequence",
+                                            "category",
+                                            "productOrService",
+                                            "modifier",
+                                            "provider",
+                                            "quantity",
+                                            "unitPrice",
+                                            "facility",
+                                            "diagnosis",
+                                            "detail",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(CoverageEligibilityRequestItem {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#supporting_info_sequence: r#supporting_info_sequence.unwrap_or(vec![]),
-                    r#category,
-                    r#product_or_service,
-                    r#modifier: r#modifier.unwrap_or(vec![]),
-                    r#provider,
-                    r#quantity,
-                    r#unit_price,
-                    r#facility,
-                    r#diagnosis: r#diagnosis.unwrap_or(vec![]),
-                    r#detail: r#detail.unwrap_or(vec![]),
+                    Ok(CoverageEligibilityRequestItem {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#supporting_info_sequence: r#supporting_info_sequence.unwrap_or(vec![]),
+                        r#category,
+                        r#product_or_service,
+                        r#modifier: r#modifier.unwrap_or(vec![]),
+                        r#provider,
+                        r#quantity,
+                        r#unit_price,
+                        r#facility,
+                        r#diagnosis: r#diagnosis.unwrap_or(vec![]),
+                        r#detail: r#detail.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -836,7 +870,7 @@ pub struct CoverageEligibilityRequest {
     pub r#implicit_rules: Option<super::super::types::Uri>,
     pub r#language: Option<super::super::types::Code>,
     pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#contained: Vec<Box<super::super::Resource>>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#identifier: Vec<Box<super::super::types::Identifier>>,
@@ -1080,6 +1114,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
             Insurance,
             #[serde(rename = "item")]
             Item,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1096,7 +1131,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                 let mut r#implicit_rules: Option<super::super::types::Uri> = None;
                 let mut r#language: Option<super::super::types::Code> = None;
                 let mut r#text: Option<Box<super::super::types::Narrative>> = None;
-                let mut r#contained: Option<Vec<Box<super::Resource>>> = None;
+                let mut r#contained: Option<Vec<Box<super::super::Resource>>> = None;
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
@@ -1115,308 +1150,371 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                     None;
                 let mut r#insurance: Option<Vec<CoverageEligibilityRequestInsurance>> = None;
                 let mut r#item: Option<Vec<CoverageEligibilityRequestItem>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::ResourceType => {
-                            let value: std::borrow::Cow<str> = map_access.next_value()?;
-                            if value != "CoverageEligibilityRequest" {
-                                return Err(serde::de::Error::invalid_value(
-                                    serde::de::Unexpected::Str(&value),
-                                    &"CoverageEligibilityRequest",
-                                ));
-                            }
-                        }
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
-                            }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Meta => {
-                            if r#meta.is_some() {
-                                return Err(serde::de::Error::duplicate_field("meta"));
-                            }
-                            r#meta = Some(map_access.next_value()?);
-                        }
-                        Field::ImplicitRules => {
-                            let some = r#implicit_rules.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("implicitRules"));
-                            }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::ImplicitRulesPrimitiveElement => {
-                            let some = r#implicit_rules.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_implicitRules"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Language => {
-                            let some = r#language.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("language"));
-                            }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::LanguagePrimitiveElement => {
-                            let some = r#language.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_language"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Text => {
-                            if r#text.is_some() {
-                                return Err(serde::de::Error::duplicate_field("text"));
-                            }
-                            r#text = Some(map_access.next_value()?);
-                        }
-                        Field::Contained => {
-                            if r#contained.is_some() {
-                                return Err(serde::de::Error::duplicate_field("contained"));
-                            }
-                            r#contained = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
-                            }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
-                            }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Identifier => {
-                            if r#identifier.is_some() {
-                                return Err(serde::de::Error::duplicate_field("identifier"));
-                            }
-                            r#identifier = Some(map_access.next_value()?);
-                        }
-                        Field::Status => {
-                            let some = r#status.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("status"));
-                            }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::StatusPrimitiveElement => {
-                            let some = r#status.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_status"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Priority => {
-                            if r#priority.is_some() {
-                                return Err(serde::de::Error::duplicate_field("priority"));
-                            }
-                            r#priority = Some(map_access.next_value()?);
-                        }
-                        Field::Purpose => {
-                            let values: Vec<Option<_>> = map_access.next_value()?;
-                            let vec = r#purpose.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(values.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != values.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    values.len(),
-                                    &"primitive elements length",
-                                ));
-                            }
-                            if vec.iter().any(|v| v.value.is_some()) {
-                                return Err(serde::de::Error::duplicate_field("purpose"));
-                            }
-                            for (i, value) in values.into_iter().enumerate() {
-                                if let Some(value) = value {
-                                    vec[i].value = Some(value);
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::ResourceType => {
+                                let value: std::borrow::Cow<str> = map_access.next_value()?;
+                                if value != "CoverageEligibilityRequest" {
+                                    return Err(serde::de::Error::invalid_value(
+                                        serde::de::Unexpected::Str(&value),
+                                        &"CoverageEligibilityRequest",
+                                    ));
                                 }
                             }
-                        }
-                        Field::PurposePrimitiveElement => {
-                            let elements: Vec<
-                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                            > = map_access.next_value()?;
-                            let vec = r#purpose.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(elements.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != elements.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    elements.len(),
-                                    &"primitive values length",
-                                ));
-                            }
-                            if vec
-                                .iter()
-                                .any(|e| e.id.is_some() || !e.extension.is_empty())
-                            {
-                                return Err(serde::de::Error::duplicate_field("_purpose"));
-                            }
-                            for (i, element) in elements.into_iter().enumerate() {
-                                if let Some(element) = element {
-                                    vec[i].id = element.id;
-                                    vec[i].extension = element.extension;
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
                                 }
+                                r#id = Some(map_access.next_value()?);
                             }
-                        }
-                        Field::Patient => {
-                            if r#patient.is_some() {
-                                return Err(serde::de::Error::duplicate_field("patient"));
+                            Field::Meta => {
+                                if r#meta.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("meta"));
+                                }
+                                r#meta = Some(map_access.next_value()?);
                             }
-                            r#patient = Some(map_access.next_value()?);
-                        }
-                        Field::ServicedDate => {
-                            let r#enum = r#serviced.get_or_insert(
-                                CoverageEligibilityRequestServiced::Date(Default::default()),
-                            );
-                            if let CoverageEligibilityRequestServiced::Date(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("servicedDate"));
+                            Field::ImplicitRules => {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
                                 }
                                 let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("serviced[x]"));
+                                some.value = Some(value);
                             }
-                        }
-                        Field::ServicedDatePrimitiveElement => {
-                            let r#enum = r#serviced.get_or_insert(
-                                CoverageEligibilityRequestServiced::Date(Default::default()),
-                            );
-                            if let CoverageEligibilityRequestServiced::Date(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_servicedDate"));
+                            Field::ImplicitRulesPrimitiveElement => {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_implicitRules",
+                                    ));
                                 }
                                 let super::super::serde_helpers::PrimitiveElementOwned {
                                     id,
                                     extension,
                                 } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_serviced[x]"));
+                                some.id = id;
+                                some.extension = extension;
                             }
-                        }
-                        Field::ServicedPeriod => {
-                            if r#serviced.is_some() {
-                                return Err(serde::de::Error::duplicate_field("servicedPeriod"));
+                            Field::Language => {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("language"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            r#serviced = Some(CoverageEligibilityRequestServiced::Period(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::Created => {
-                            let some = r#created.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("created"));
+                            Field::LanguagePrimitiveElement => {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::CreatedPrimitiveElement => {
-                            let some = r#created.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_created"));
+                            Field::Text => {
+                                if r#text.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("text"));
+                                }
+                                r#text = Some(map_access.next_value()?);
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Enterer => {
-                            if r#enterer.is_some() {
-                                return Err(serde::de::Error::duplicate_field("enterer"));
+                            Field::Contained => {
+                                if r#contained.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                }
+                                r#contained = Some(map_access.next_value()?);
                             }
-                            r#enterer = Some(map_access.next_value()?);
-                        }
-                        Field::Provider => {
-                            if r#provider.is_some() {
-                                return Err(serde::de::Error::duplicate_field("provider"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#provider = Some(map_access.next_value()?);
-                        }
-                        Field::Insurer => {
-                            if r#insurer.is_some() {
-                                return Err(serde::de::Error::duplicate_field("insurer"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#insurer = Some(map_access.next_value()?);
-                        }
-                        Field::Facility => {
-                            if r#facility.is_some() {
-                                return Err(serde::de::Error::duplicate_field("facility"));
+                            Field::Identifier => {
+                                if r#identifier.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                }
+                                r#identifier = Some(map_access.next_value()?);
                             }
-                            r#facility = Some(map_access.next_value()?);
-                        }
-                        Field::SupportingInfo => {
-                            if r#supporting_info.is_some() {
-                                return Err(serde::de::Error::duplicate_field("supportingInfo"));
+                            Field::Status => {
+                                let some = r#status.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("status"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            r#supporting_info = Some(map_access.next_value()?);
-                        }
-                        Field::Insurance => {
-                            if r#insurance.is_some() {
-                                return Err(serde::de::Error::duplicate_field("insurance"));
+                            Field::StatusPrimitiveElement => {
+                                let some = r#status.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            r#insurance = Some(map_access.next_value()?);
-                        }
-                        Field::Item => {
-                            if r#item.is_some() {
-                                return Err(serde::de::Error::duplicate_field("item"));
+                            Field::Priority => {
+                                if r#priority.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("priority"));
+                                }
+                                r#priority = Some(map_access.next_value()?);
                             }
-                            r#item = Some(map_access.next_value()?);
+                            Field::Purpose => {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#purpose.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field("purpose"));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
+                                }
+                            }
+                            Field::PurposePrimitiveElement => {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > = map_access.next_value()?;
+                                let vec = r#purpose.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field("_purpose"));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
+                                }
+                            }
+                            Field::Patient => {
+                                if r#patient.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("patient"));
+                                }
+                                r#patient = Some(map_access.next_value()?);
+                            }
+                            Field::ServicedDate => {
+                                let r#enum = r#serviced.get_or_insert(
+                                    CoverageEligibilityRequestServiced::Date(Default::default()),
+                                );
+                                if let CoverageEligibilityRequestServiced::Date(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "servicedDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("serviced[x]"));
+                                }
+                            }
+                            Field::ServicedDatePrimitiveElement => {
+                                let r#enum = r#serviced.get_or_insert(
+                                    CoverageEligibilityRequestServiced::Date(Default::default()),
+                                );
+                                if let CoverageEligibilityRequestServiced::Date(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_servicedDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_serviced[x]"));
+                                }
+                            }
+                            Field::ServicedPeriod => {
+                                if r#serviced.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "servicedPeriod",
+                                    ));
+                                }
+                                r#serviced = Some(CoverageEligibilityRequestServiced::Period(
+                                    map_access.next_value()?,
+                                ));
+                            }
+                            Field::Created => {
+                                let some = r#created.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("created"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            }
+                            Field::CreatedPrimitiveElement => {
+                                let some = r#created.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_created"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
+                            }
+                            Field::Enterer => {
+                                if r#enterer.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("enterer"));
+                                }
+                                r#enterer = Some(map_access.next_value()?);
+                            }
+                            Field::Provider => {
+                                if r#provider.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("provider"));
+                                }
+                                r#provider = Some(map_access.next_value()?);
+                            }
+                            Field::Insurer => {
+                                if r#insurer.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("insurer"));
+                                }
+                                r#insurer = Some(map_access.next_value()?);
+                            }
+                            Field::Facility => {
+                                if r#facility.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("facility"));
+                                }
+                                r#facility = Some(map_access.next_value()?);
+                            }
+                            Field::SupportingInfo => {
+                                if r#supporting_info.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "supportingInfo",
+                                    ));
+                                }
+                                r#supporting_info = Some(map_access.next_value()?);
+                            }
+                            Field::Insurance => {
+                                if r#insurance.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("insurance"));
+                                }
+                                r#insurance = Some(map_access.next_value()?);
+                            }
+                            Field::Item => {
+                                if r#item.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("item"));
+                                }
+                                r#item = Some(map_access.next_value()?);
+                            }
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "status",
+                                            "priority",
+                                            "purpose",
+                                            "patient",
+                                            "servicedDate",
+                                            "servicedPeriod",
+                                            "created",
+                                            "enterer",
+                                            "provider",
+                                            "insurer",
+                                            "facility",
+                                            "supportingInfo",
+                                            "insurance",
+                                            "item",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(CoverageEligibilityRequest {
-                    r#id,
-                    r#meta,
-                    r#implicit_rules,
-                    r#language,
-                    r#text,
-                    r#contained: r#contained.unwrap_or(vec![]),
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#identifier: r#identifier.unwrap_or(vec![]),
-                    r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
-                    r#priority,
-                    r#purpose: r#purpose.unwrap_or(vec![]),
-                    r#patient: r#patient.ok_or(serde::de::Error::missing_field("patient"))?,
-                    r#serviced,
-                    r#created: r#created.ok_or(serde::de::Error::missing_field("created"))?,
-                    r#enterer,
-                    r#provider,
-                    r#insurer: r#insurer.ok_or(serde::de::Error::missing_field("insurer"))?,
-                    r#facility,
-                    r#supporting_info: r#supporting_info.unwrap_or(vec![]),
-                    r#insurance: r#insurance.unwrap_or(vec![]),
-                    r#item: r#item.unwrap_or(vec![]),
+                    Ok(CoverageEligibilityRequest {
+                        r#id,
+                        r#meta,
+                        r#implicit_rules,
+                        r#language,
+                        r#text,
+                        r#contained: r#contained.unwrap_or(vec![]),
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#identifier: r#identifier.unwrap_or(vec![]),
+                        r#status: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#status.unwrap_or(Default::default())
+                        } else {
+                            r#status.ok_or(serde::de::Error::missing_field("status"))?
+                        },
+                        r#priority,
+                        r#purpose: r#purpose.unwrap_or(vec![]),
+                        r#patient: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#patient.unwrap_or(Default::default())
+                        } else {
+                            r#patient.ok_or(serde::de::Error::missing_field("patient"))?
+                        },
+                        r#serviced,
+                        r#created: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#created.unwrap_or(Default::default())
+                        } else {
+                            r#created.ok_or(serde::de::Error::missing_field("created"))?
+                        },
+                        r#enterer,
+                        r#provider,
+                        r#insurer: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#insurer.unwrap_or(Default::default())
+                        } else {
+                            r#insurer.ok_or(serde::de::Error::missing_field("insurer"))?
+                        },
+                        r#facility,
+                        r#supporting_info: r#supporting_info.unwrap_or(vec![]),
+                        r#insurance: r#insurance.unwrap_or(vec![]),
+                        r#item: r#item.unwrap_or(vec![]),
+                    })
                 })
             }
         }

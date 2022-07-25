@@ -61,6 +61,7 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
             Period,
             #[serde(rename = "specialPrecautionsForStorage")]
             SpecialPrecautionsForStorage,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -82,63 +83,92 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
                 let mut r#special_precautions_for_storage: Option<
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Identifier => {
-                            if r#identifier.is_some() {
-                                return Err(serde::de::Error::duplicate_field("identifier"));
+                            Field::Identifier => {
+                                if r#identifier.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                }
+                                r#identifier = Some(map_access.next_value()?);
                             }
-                            r#identifier = Some(map_access.next_value()?);
-                        }
-                        Field::Type => {
-                            if r#type.is_some() {
-                                return Err(serde::de::Error::duplicate_field("type"));
+                            Field::Type => {
+                                if r#type.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("type"));
+                                }
+                                r#type = Some(map_access.next_value()?);
                             }
-                            r#type = Some(map_access.next_value()?);
-                        }
-                        Field::Period => {
-                            if r#period.is_some() {
-                                return Err(serde::de::Error::duplicate_field("period"));
+                            Field::Period => {
+                                if r#period.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("period"));
+                                }
+                                r#period = Some(map_access.next_value()?);
                             }
-                            r#period = Some(map_access.next_value()?);
-                        }
-                        Field::SpecialPrecautionsForStorage => {
-                            if r#special_precautions_for_storage.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "specialPrecautionsForStorage",
-                                ));
+                            Field::SpecialPrecautionsForStorage => {
+                                if r#special_precautions_for_storage.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "specialPrecautionsForStorage",
+                                    ));
+                                }
+                                r#special_precautions_for_storage = Some(map_access.next_value()?);
                             }
-                            r#special_precautions_for_storage = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "period",
+                                            "specialPrecautionsForStorage",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(ProductShelfLife {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#identifier,
-                    r#type: r#type.ok_or(serde::de::Error::missing_field("type"))?,
-                    r#period: r#period.ok_or(serde::de::Error::missing_field("period"))?,
-                    r#special_precautions_for_storage: r#special_precautions_for_storage
-                        .unwrap_or(vec![]),
+                    Ok(ProductShelfLife {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#identifier,
+                        r#type: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#type.unwrap_or(Default::default())
+                        } else {
+                            r#type.ok_or(serde::de::Error::missing_field("type"))?
+                        },
+                        r#period: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#period.unwrap_or(Default::default())
+                        } else {
+                            r#period.ok_or(serde::de::Error::missing_field("period"))?
+                        },
+                        r#special_precautions_for_storage: r#special_precautions_for_storage
+                            .unwrap_or(vec![]),
+                    })
                 })
             }
         }

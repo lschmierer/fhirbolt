@@ -83,6 +83,7 @@ impl<'de> serde::de::Deserialize<'de> for Population {
             Race,
             #[serde(rename = "physiologicalCondition")]
             PhysiologicalCondition,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -104,70 +105,93 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                 let mut r#physiological_condition: Option<
                     Box<super::super::types::CodeableConcept>,
                 > = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::AgeRange => {
-                            if r#age.is_some() {
-                                return Err(serde::de::Error::duplicate_field("ageRange"));
+                            Field::AgeRange => {
+                                if r#age.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("ageRange"));
+                                }
+                                r#age = Some(PopulationAge::Range(map_access.next_value()?));
                             }
-                            r#age = Some(PopulationAge::Range(map_access.next_value()?));
-                        }
-                        Field::AgeCodeableConcept => {
-                            if r#age.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "ageCodeableConcept",
-                                ));
+                            Field::AgeCodeableConcept => {
+                                if r#age.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "ageCodeableConcept",
+                                    ));
+                                }
+                                r#age =
+                                    Some(PopulationAge::CodeableConcept(map_access.next_value()?));
                             }
-                            r#age = Some(PopulationAge::CodeableConcept(map_access.next_value()?));
-                        }
-                        Field::Gender => {
-                            if r#gender.is_some() {
-                                return Err(serde::de::Error::duplicate_field("gender"));
+                            Field::Gender => {
+                                if r#gender.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("gender"));
+                                }
+                                r#gender = Some(map_access.next_value()?);
                             }
-                            r#gender = Some(map_access.next_value()?);
-                        }
-                        Field::Race => {
-                            if r#race.is_some() {
-                                return Err(serde::de::Error::duplicate_field("race"));
+                            Field::Race => {
+                                if r#race.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("race"));
+                                }
+                                r#race = Some(map_access.next_value()?);
                             }
-                            r#race = Some(map_access.next_value()?);
-                        }
-                        Field::PhysiologicalCondition => {
-                            if r#physiological_condition.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "physiologicalCondition",
-                                ));
+                            Field::PhysiologicalCondition => {
+                                if r#physiological_condition.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "physiologicalCondition",
+                                    ));
+                                }
+                                r#physiological_condition = Some(map_access.next_value()?);
                             }
-                            r#physiological_condition = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "ageRange",
+                                            "ageCodeableConcept",
+                                            "gender",
+                                            "race",
+                                            "physiologicalCondition",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(Population {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#age,
-                    r#gender,
-                    r#race,
-                    r#physiological_condition,
+                    Ok(Population {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#age,
+                        r#gender,
+                        r#race,
+                        r#physiological_condition,
+                    })
                 })
             }
         }

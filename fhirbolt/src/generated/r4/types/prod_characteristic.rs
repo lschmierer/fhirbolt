@@ -178,6 +178,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
             Image,
             #[serde(rename = "scoring")]
             Scoring,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -204,211 +205,241 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                 let mut r#imprint: Option<Vec<super::super::types::String>> = None;
                 let mut r#image: Option<Vec<Box<super::super::types::Attachment>>> = None;
                 let mut r#scoring: Option<Box<super::super::types::CodeableConcept>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Height => {
-                            if r#height.is_some() {
-                                return Err(serde::de::Error::duplicate_field("height"));
+                            Field::Height => {
+                                if r#height.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("height"));
+                                }
+                                r#height = Some(map_access.next_value()?);
                             }
-                            r#height = Some(map_access.next_value()?);
-                        }
-                        Field::Width => {
-                            if r#width.is_some() {
-                                return Err(serde::de::Error::duplicate_field("width"));
+                            Field::Width => {
+                                if r#width.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("width"));
+                                }
+                                r#width = Some(map_access.next_value()?);
                             }
-                            r#width = Some(map_access.next_value()?);
-                        }
-                        Field::Depth => {
-                            if r#depth.is_some() {
-                                return Err(serde::de::Error::duplicate_field("depth"));
+                            Field::Depth => {
+                                if r#depth.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("depth"));
+                                }
+                                r#depth = Some(map_access.next_value()?);
                             }
-                            r#depth = Some(map_access.next_value()?);
-                        }
-                        Field::Weight => {
-                            if r#weight.is_some() {
-                                return Err(serde::de::Error::duplicate_field("weight"));
+                            Field::Weight => {
+                                if r#weight.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("weight"));
+                                }
+                                r#weight = Some(map_access.next_value()?);
                             }
-                            r#weight = Some(map_access.next_value()?);
-                        }
-                        Field::NominalVolume => {
-                            if r#nominal_volume.is_some() {
-                                return Err(serde::de::Error::duplicate_field("nominalVolume"));
+                            Field::NominalVolume => {
+                                if r#nominal_volume.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("nominalVolume"));
+                                }
+                                r#nominal_volume = Some(map_access.next_value()?);
                             }
-                            r#nominal_volume = Some(map_access.next_value()?);
-                        }
-                        Field::ExternalDiameter => {
-                            if r#external_diameter.is_some() {
-                                return Err(serde::de::Error::duplicate_field("externalDiameter"));
+                            Field::ExternalDiameter => {
+                                if r#external_diameter.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "externalDiameter",
+                                    ));
+                                }
+                                r#external_diameter = Some(map_access.next_value()?);
                             }
-                            r#external_diameter = Some(map_access.next_value()?);
-                        }
-                        Field::Shape => {
-                            let some = r#shape.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("shape"));
+                            Field::Shape => {
+                                let some = r#shape.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("shape"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::ShapePrimitiveElement => {
-                            let some = r#shape.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_shape"));
+                            Field::ShapePrimitiveElement => {
+                                let some = r#shape.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_shape"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Color => {
-                            let values: Vec<Option<_>> = map_access.next_value()?;
-                            let vec = r#color.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(values.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != values.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    values.len(),
-                                    &"primitive elements length",
-                                ));
-                            }
-                            if vec.iter().any(|v| v.value.is_some()) {
-                                return Err(serde::de::Error::duplicate_field("color"));
-                            }
-                            for (i, value) in values.into_iter().enumerate() {
-                                if let Some(value) = value {
-                                    vec[i].value = Some(value);
+                            Field::Color => {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#color.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field("color"));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
                                 }
                             }
-                        }
-                        Field::ColorPrimitiveElement => {
-                            let elements: Vec<
-                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                            > = map_access.next_value()?;
-                            let vec = r#color.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(elements.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != elements.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    elements.len(),
-                                    &"primitive values length",
-                                ));
-                            }
-                            if vec
-                                .iter()
-                                .any(|e| e.id.is_some() || !e.extension.is_empty())
-                            {
-                                return Err(serde::de::Error::duplicate_field("_color"));
-                            }
-                            for (i, element) in elements.into_iter().enumerate() {
-                                if let Some(element) = element {
-                                    vec[i].id = element.id;
-                                    vec[i].extension = element.extension;
+                            Field::ColorPrimitiveElement => {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > = map_access.next_value()?;
+                                let vec = r#color.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field("_color"));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
                                 }
                             }
-                        }
-                        Field::Imprint => {
-                            let values: Vec<Option<_>> = map_access.next_value()?;
-                            let vec = r#imprint.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(values.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != values.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    values.len(),
-                                    &"primitive elements length",
-                                ));
-                            }
-                            if vec.iter().any(|v| v.value.is_some()) {
-                                return Err(serde::de::Error::duplicate_field("imprint"));
-                            }
-                            for (i, value) in values.into_iter().enumerate() {
-                                if let Some(value) = value {
-                                    vec[i].value = Some(value);
+                            Field::Imprint => {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#imprint.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field("imprint"));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
                                 }
                             }
-                        }
-                        Field::ImprintPrimitiveElement => {
-                            let elements: Vec<
-                                Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                            > = map_access.next_value()?;
-                            let vec = r#imprint.get_or_insert(
-                                std::iter::repeat(Default::default())
-                                    .take(elements.len())
-                                    .collect::<Vec<_>>(),
-                            );
-                            if vec.len() != elements.len() {
-                                return Err(serde::de::Error::invalid_length(
-                                    elements.len(),
-                                    &"primitive values length",
-                                ));
-                            }
-                            if vec
-                                .iter()
-                                .any(|e| e.id.is_some() || !e.extension.is_empty())
-                            {
-                                return Err(serde::de::Error::duplicate_field("_imprint"));
-                            }
-                            for (i, element) in elements.into_iter().enumerate() {
-                                if let Some(element) = element {
-                                    vec[i].id = element.id;
-                                    vec[i].extension = element.extension;
+                            Field::ImprintPrimitiveElement => {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > = map_access.next_value()?;
+                                let vec = r#imprint.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field("_imprint"));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
                                 }
                             }
-                        }
-                        Field::Image => {
-                            if r#image.is_some() {
-                                return Err(serde::de::Error::duplicate_field("image"));
+                            Field::Image => {
+                                if r#image.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("image"));
+                                }
+                                r#image = Some(map_access.next_value()?);
                             }
-                            r#image = Some(map_access.next_value()?);
-                        }
-                        Field::Scoring => {
-                            if r#scoring.is_some() {
-                                return Err(serde::de::Error::duplicate_field("scoring"));
+                            Field::Scoring => {
+                                if r#scoring.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("scoring"));
+                                }
+                                r#scoring = Some(map_access.next_value()?);
                             }
-                            r#scoring = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "height",
+                                            "width",
+                                            "depth",
+                                            "weight",
+                                            "nominalVolume",
+                                            "externalDiameter",
+                                            "shape",
+                                            "color",
+                                            "imprint",
+                                            "image",
+                                            "scoring",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(ProdCharacteristic {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#height,
-                    r#width,
-                    r#depth,
-                    r#weight,
-                    r#nominal_volume,
-                    r#external_diameter,
-                    r#shape,
-                    r#color: r#color.unwrap_or(vec![]),
-                    r#imprint: r#imprint.unwrap_or(vec![]),
-                    r#image: r#image.unwrap_or(vec![]),
-                    r#scoring,
+                    Ok(ProdCharacteristic {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#height,
+                        r#width,
+                        r#depth,
+                        r#weight,
+                        r#nominal_volume,
+                        r#external_diameter,
+                        r#shape,
+                        r#color: r#color.unwrap_or(vec![]),
+                        r#imprint: r#imprint.unwrap_or(vec![]),
+                        r#image: r#image.unwrap_or(vec![]),
+                        r#scoring,
+                    })
                 })
             }
         }

@@ -56,6 +56,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
             LowLimit,
             #[serde(rename = "highLimit")]
             HighLimit,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -74,39 +75,50 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#low_limit: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#high_limit: Option<Box<super::super::types::Quantity>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::LowLimit => {
-                            if r#low_limit.is_some() {
-                                return Err(serde::de::Error::duplicate_field("lowLimit"));
+                            Field::LowLimit => {
+                                if r#low_limit.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("lowLimit"));
+                                }
+                                r#low_limit = Some(map_access.next_value()?);
                             }
-                            r#low_limit = Some(map_access.next_value()?);
-                        }
-                        Field::HighLimit => {
-                            if r#high_limit.is_some() {
-                                return Err(serde::de::Error::duplicate_field("highLimit"));
+                            Field::HighLimit => {
+                                if r#high_limit.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("highLimit"));
+                                }
+                                r#high_limit = Some(map_access.next_value()?);
                             }
-                            r#high_limit = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &["id", "extension", "lowLimit", "highLimit"],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(SubstanceAmountReferenceRange {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#low_limit,
-                    r#high_limit,
+                    Ok(SubstanceAmountReferenceRange {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#low_limit,
+                        r#high_limit,
+                    })
                 })
             }
         }
@@ -217,6 +229,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
             AmountTextPrimitiveElement,
             #[serde(rename = "referenceRange")]
             ReferenceRange,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -236,111 +249,145 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                 let mut r#amount_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#amount_text: Option<super::super::types::String> = None;
                 let mut r#reference_range: Option<SubstanceAmountReferenceRange> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::AmountQuantity => {
-                            if r#amount.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountQuantity"));
+                            Field::AmountQuantity => {
+                                if r#amount.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "amountQuantity",
+                                    ));
+                                }
+                                r#amount =
+                                    Some(SubstanceAmountAmount::Quantity(map_access.next_value()?));
                             }
-                            r#amount =
-                                Some(SubstanceAmountAmount::Quantity(map_access.next_value()?));
-                        }
-                        Field::AmountRange => {
-                            if r#amount.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountRange"));
+                            Field::AmountRange => {
+                                if r#amount.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("amountRange"));
+                                }
+                                r#amount =
+                                    Some(SubstanceAmountAmount::Range(map_access.next_value()?));
                             }
-                            r#amount = Some(SubstanceAmountAmount::Range(map_access.next_value()?));
-                        }
-                        Field::AmountString => {
-                            let r#enum = r#amount
-                                .get_or_insert(SubstanceAmountAmount::String(Default::default()));
-                            if let SubstanceAmountAmount::String(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("amountString"));
+                            Field::AmountString => {
+                                let r#enum = r#amount.get_or_insert(SubstanceAmountAmount::String(
+                                    Default::default(),
+                                ));
+                                if let SubstanceAmountAmount::String(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "amountString",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("amount[x]"));
+                                }
+                            }
+                            Field::AmountStringPrimitiveElement => {
+                                let r#enum = r#amount.get_or_insert(SubstanceAmountAmount::String(
+                                    Default::default(),
+                                ));
+                                if let SubstanceAmountAmount::String(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_amountString",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_amount[x]"));
+                                }
+                            }
+                            Field::AmountType => {
+                                if r#amount_type.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("amountType"));
+                                }
+                                r#amount_type = Some(map_access.next_value()?);
+                            }
+                            Field::AmountText => {
+                                let some = r#amount_text.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("amountText"));
                                 }
                                 let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("amount[x]"));
+                                some.value = Some(value);
                             }
-                        }
-                        Field::AmountStringPrimitiveElement => {
-                            let r#enum = r#amount
-                                .get_or_insert(SubstanceAmountAmount::String(Default::default()));
-                            if let SubstanceAmountAmount::String(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_amountString"));
+                            Field::AmountTextPrimitiveElement => {
+                                let some = r#amount_text.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_amountText"));
                                 }
                                 let super::super::serde_helpers::PrimitiveElementOwned {
                                     id,
                                     extension,
                                 } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_amount[x]"));
+                                some.id = id;
+                                some.extension = extension;
                             }
-                        }
-                        Field::AmountType => {
-                            if r#amount_type.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountType"));
+                            Field::ReferenceRange => {
+                                if r#reference_range.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "referenceRange",
+                                    ));
+                                }
+                                r#reference_range = Some(map_access.next_value()?);
                             }
-                            r#amount_type = Some(map_access.next_value()?);
-                        }
-                        Field::AmountText => {
-                            let some = r#amount_text.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountText"));
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "amountQuantity",
+                                            "amountRange",
+                                            "amountString",
+                                            "amountType",
+                                            "amountText",
+                                            "referenceRange",
+                                        ],
+                                    ));
+                                }
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::AmountTextPrimitiveElement => {
-                            let some = r#amount_text.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_amountText"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::ReferenceRange => {
-                            if r#reference_range.is_some() {
-                                return Err(serde::de::Error::duplicate_field("referenceRange"));
-                            }
-                            r#reference_range = Some(map_access.next_value()?);
                         }
                     }
-                }
-                Ok(SubstanceAmount {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#amount,
-                    r#amount_type,
-                    r#amount_text,
-                    r#reference_range,
+                    Ok(SubstanceAmount {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#amount,
+                        r#amount_type,
+                        r#amount_text,
+                        r#reference_range,
+                    })
                 })
             }
         }

@@ -75,6 +75,7 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
             ValueRange,
             #[serde(rename = "valueReference")]
             ValueReference,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -90,60 +91,92 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#code: Option<Box<super::super::types::Coding>> = None;
                 let mut r#value: Option<UsageContextValue> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::Code => {
-                            if r#code.is_some() {
-                                return Err(serde::de::Error::duplicate_field("code"));
+                            Field::Code => {
+                                if r#code.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("code"));
+                                }
+                                r#code = Some(map_access.next_value()?);
                             }
-                            r#code = Some(map_access.next_value()?);
-                        }
-                        Field::ValueCodeableConcept => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "valueCodeableConcept",
+                            Field::ValueCodeableConcept => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueCodeableConcept",
+                                    ));
+                                }
+                                r#value = Some(UsageContextValue::CodeableConcept(
+                                    map_access.next_value()?,
                                 ));
                             }
-                            r#value =
-                                Some(UsageContextValue::CodeableConcept(map_access.next_value()?));
-                        }
-                        Field::ValueQuantity => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueQuantity"));
+                            Field::ValueQuantity => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueQuantity"));
+                                }
+                                r#value =
+                                    Some(UsageContextValue::Quantity(map_access.next_value()?));
                             }
-                            r#value = Some(UsageContextValue::Quantity(map_access.next_value()?));
-                        }
-                        Field::ValueRange => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueRange"));
+                            Field::ValueRange => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("valueRange"));
+                                }
+                                r#value = Some(UsageContextValue::Range(map_access.next_value()?));
                             }
-                            r#value = Some(UsageContextValue::Range(map_access.next_value()?));
-                        }
-                        Field::ValueReference => {
-                            if r#value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("valueReference"));
+                            Field::ValueReference => {
+                                if r#value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "valueReference",
+                                    ));
+                                }
+                                r#value =
+                                    Some(UsageContextValue::Reference(map_access.next_value()?));
                             }
-                            r#value = Some(UsageContextValue::Reference(map_access.next_value()?));
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "code",
+                                            "valueCodeableConcept",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueReference",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(UsageContext {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#code: r#code.ok_or(serde::de::Error::missing_field("code"))?,
-                    r#value: r#value.ok_or(serde::de::Error::missing_field("value[x]"))?,
+                    Ok(UsageContext {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#code: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#code.unwrap_or(Default::default())
+                        } else {
+                            r#code.ok_or(serde::de::Error::missing_field("code"))?
+                        },
+                        r#value: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#value.unwrap_or(Default::default())
+                        } else {
+                            r#value.ok_or(serde::de::Error::missing_field("value[x]"))?
+                        },
+                    })
                 })
             }
         }

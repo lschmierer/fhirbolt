@@ -12,6 +12,7 @@ use model::Bundle;
 pub struct Generated {
     pub types_source_files: Vec<SourceFile>,
     pub resources_source_files: Vec<SourceFile>,
+    pub resource_enum: SourceFile,
     pub serde_helpers: SourceFile,
 }
 pub struct SourceFile {
@@ -24,13 +25,12 @@ pub fn generate_all<'a>(types_bundle: &'a Bundle, resources_bundle: &'a Bundle) 
     let resource_modules = gather_all_modules(resources_bundle);
 
     let types_source_files = generate_modules(&type_modules);
-    let mut resources_source_files = generate_modules(&resource_modules);
-
-    resources_source_files.push(generate_resource_enum(&resource_modules));
+    let resources_source_files = generate_modules(&resource_modules);
 
     Generated {
         types_source_files,
         resources_source_files,
+        resource_enum: generate_resource_enum(&resource_modules),
         serde_helpers: generate_serde_helpers(),
     }
 }

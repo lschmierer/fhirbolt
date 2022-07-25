@@ -143,6 +143,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
             Data,
             #[serde(rename = "condition")]
             Condition,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -161,162 +162,197 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                 let mut r#timing: Option<TriggerDefinitionTiming> = None;
                 let mut r#data: Option<Vec<Box<super::super::types::DataRequirement>>> = None;
                 let mut r#condition: Option<Box<super::super::types::Expression>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::Type => {
-                            let some = r#type.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("type"));
-                            }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::TypePrimitiveElement => {
-                            let some = r#type.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_type"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Name => {
-                            let some = r#name.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("name"));
-                            }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::NamePrimitiveElement => {
-                            let some = r#name.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_name"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::TimingTiming => {
-                            if r#timing.is_some() {
-                                return Err(serde::de::Error::duplicate_field("timingTiming"));
-                            }
-                            r#timing =
-                                Some(TriggerDefinitionTiming::Timing(map_access.next_value()?));
-                        }
-                        Field::TimingReference => {
-                            if r#timing.is_some() {
-                                return Err(serde::de::Error::duplicate_field("timingReference"));
-                            }
-                            r#timing =
-                                Some(TriggerDefinitionTiming::Reference(map_access.next_value()?));
-                        }
-                        Field::TimingDate => {
-                            let r#enum = r#timing
-                                .get_or_insert(TriggerDefinitionTiming::Date(Default::default()));
-                            if let TriggerDefinitionTiming::Date(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("timingDate"));
+                            Field::Type => {
+                                let some = r#type.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("type"));
                                 }
                                 let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("timing[x]"));
+                                some.value = Some(value);
                             }
-                        }
-                        Field::TimingDatePrimitiveElement => {
-                            let r#enum = r#timing
-                                .get_or_insert(TriggerDefinitionTiming::Date(Default::default()));
-                            if let TriggerDefinitionTiming::Date(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_timingDate"));
+                            Field::TypePrimitiveElement => {
+                                let some = r#type.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_type"));
                                 }
                                 let super::super::serde_helpers::PrimitiveElementOwned {
                                     id,
                                     extension,
                                 } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_timing[x]"));
+                                some.id = id;
+                                some.extension = extension;
                             }
-                        }
-                        Field::TimingDateTime => {
-                            let r#enum = r#timing.get_or_insert(TriggerDefinitionTiming::DateTime(
-                                Default::default(),
-                            ));
-                            if let TriggerDefinitionTiming::DateTime(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "timingDateTime",
-                                    ));
+                            Field::Name => {
+                                let some = r#name.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("name"));
                                 }
                                 let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("timing[x]"));
+                                some.value = Some(value);
                             }
-                        }
-                        Field::TimingDateTimePrimitiveElement => {
-                            let r#enum = r#timing.get_or_insert(TriggerDefinitionTiming::DateTime(
-                                Default::default(),
-                            ));
-                            if let TriggerDefinitionTiming::DateTime(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_timingDateTime",
-                                    ));
+                            Field::NamePrimitiveElement => {
+                                let some = r#name.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_name"));
                                 }
                                 let super::super::serde_helpers::PrimitiveElementOwned {
                                     id,
                                     extension,
                                 } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_timing[x]"));
+                                some.id = id;
+                                some.extension = extension;
                             }
-                        }
-                        Field::Data => {
-                            if r#data.is_some() {
-                                return Err(serde::de::Error::duplicate_field("data"));
+                            Field::TimingTiming => {
+                                if r#timing.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("timingTiming"));
+                                }
+                                r#timing =
+                                    Some(TriggerDefinitionTiming::Timing(map_access.next_value()?));
                             }
-                            r#data = Some(map_access.next_value()?);
-                        }
-                        Field::Condition => {
-                            if r#condition.is_some() {
-                                return Err(serde::de::Error::duplicate_field("condition"));
+                            Field::TimingReference => {
+                                if r#timing.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "timingReference",
+                                    ));
+                                }
+                                r#timing = Some(TriggerDefinitionTiming::Reference(
+                                    map_access.next_value()?,
+                                ));
                             }
-                            r#condition = Some(map_access.next_value()?);
+                            Field::TimingDate => {
+                                let r#enum = r#timing.get_or_insert(TriggerDefinitionTiming::Date(
+                                    Default::default(),
+                                ));
+                                if let TriggerDefinitionTiming::Date(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "timingDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("timing[x]"));
+                                }
+                            }
+                            Field::TimingDatePrimitiveElement => {
+                                let r#enum = r#timing.get_or_insert(TriggerDefinitionTiming::Date(
+                                    Default::default(),
+                                ));
+                                if let TriggerDefinitionTiming::Date(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_timingDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_timing[x]"));
+                                }
+                            }
+                            Field::TimingDateTime => {
+                                let r#enum = r#timing.get_or_insert(
+                                    TriggerDefinitionTiming::DateTime(Default::default()),
+                                );
+                                if let TriggerDefinitionTiming::DateTime(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "timingDateTime",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("timing[x]"));
+                                }
+                            }
+                            Field::TimingDateTimePrimitiveElement => {
+                                let r#enum = r#timing.get_or_insert(
+                                    TriggerDefinitionTiming::DateTime(Default::default()),
+                                );
+                                if let TriggerDefinitionTiming::DateTime(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_timingDateTime",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_timing[x]"));
+                                }
+                            }
+                            Field::Data => {
+                                if r#data.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("data"));
+                                }
+                                r#data = Some(map_access.next_value()?);
+                            }
+                            Field::Condition => {
+                                if r#condition.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("condition"));
+                                }
+                                r#condition = Some(map_access.next_value()?);
+                            }
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "type",
+                                            "name",
+                                            "timingTiming",
+                                            "timingReference",
+                                            "timingDate",
+                                            "timingDateTime",
+                                            "data",
+                                            "condition",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(TriggerDefinition {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#type: r#type.ok_or(serde::de::Error::missing_field("type"))?,
-                    r#name,
-                    r#timing,
-                    r#data: r#data.unwrap_or(vec![]),
-                    r#condition,
+                    Ok(TriggerDefinition {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#type: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#type.unwrap_or(Default::default())
+                        } else {
+                            r#type.ok_or(serde::de::Error::missing_field("type"))?
+                        },
+                        r#name,
+                        r#timing,
+                        r#data: r#data.unwrap_or(vec![]),
+                        r#condition,
+                    })
                 })
             }
         }

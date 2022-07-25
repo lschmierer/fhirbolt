@@ -74,6 +74,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
             RestoreDate,
             #[serde(rename = "_restoreDate")]
             RestoreDatePrimitiveElement,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -94,82 +95,115 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date_range: Option<Box<super::super::types::Period>> = None;
                 let mut r#restore_date: Option<super::super::types::DateTime> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Country => {
-                            if r#country.is_some() {
-                                return Err(serde::de::Error::duplicate_field("country"));
+                            Field::Country => {
+                                if r#country.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("country"));
+                                }
+                                r#country = Some(map_access.next_value()?);
                             }
-                            r#country = Some(map_access.next_value()?);
-                        }
-                        Field::Jurisdiction => {
-                            if r#jurisdiction.is_some() {
-                                return Err(serde::de::Error::duplicate_field("jurisdiction"));
+                            Field::Jurisdiction => {
+                                if r#jurisdiction.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("jurisdiction"));
+                                }
+                                r#jurisdiction = Some(map_access.next_value()?);
                             }
-                            r#jurisdiction = Some(map_access.next_value()?);
-                        }
-                        Field::Status => {
-                            if r#status.is_some() {
-                                return Err(serde::de::Error::duplicate_field("status"));
+                            Field::Status => {
+                                if r#status.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("status"));
+                                }
+                                r#status = Some(map_access.next_value()?);
                             }
-                            r#status = Some(map_access.next_value()?);
-                        }
-                        Field::DateRange => {
-                            if r#date_range.is_some() {
-                                return Err(serde::de::Error::duplicate_field("dateRange"));
+                            Field::DateRange => {
+                                if r#date_range.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("dateRange"));
+                                }
+                                r#date_range = Some(map_access.next_value()?);
                             }
-                            r#date_range = Some(map_access.next_value()?);
-                        }
-                        Field::RestoreDate => {
-                            let some = r#restore_date.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("restoreDate"));
+                            Field::RestoreDate => {
+                                let some = r#restore_date.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("restoreDate"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::RestoreDatePrimitiveElement => {
-                            let some = r#restore_date.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_restoreDate"));
+                            Field::RestoreDatePrimitiveElement => {
+                                let some = r#restore_date.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_restoreDate"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "dateRange",
+                                            "restoreDate",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(MarketingStatus {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#country: r#country.ok_or(serde::de::Error::missing_field("country"))?,
-                    r#jurisdiction,
-                    r#status: r#status.ok_or(serde::de::Error::missing_field("status"))?,
-                    r#date_range: r#date_range
-                        .ok_or(serde::de::Error::missing_field("dateRange"))?,
-                    r#restore_date,
+                    Ok(MarketingStatus {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#country: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#country.unwrap_or(Default::default())
+                        } else {
+                            r#country.ok_or(serde::de::Error::missing_field("country"))?
+                        },
+                        r#jurisdiction,
+                        r#status: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#status.unwrap_or(Default::default())
+                        } else {
+                            r#status.ok_or(serde::de::Error::missing_field("status"))?
+                        },
+                        r#date_range: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#date_range.unwrap_or(Default::default())
+                        } else {
+                            r#date_range.ok_or(serde::de::Error::missing_field("dateRange"))?
+                        },
+                        r#restore_date,
+                    })
                 })
             }
         }

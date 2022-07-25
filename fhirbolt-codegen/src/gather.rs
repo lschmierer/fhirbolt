@@ -310,7 +310,7 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFieldType {
             maybe_fhir_primitive: false,
         },
         "Resource" => RustFieldType {
-            name: "super::Resource".into(),
+            name: "super::super::Resource".into(),
             r#box: true,
             maybe_fhir_primitive: false,
         },

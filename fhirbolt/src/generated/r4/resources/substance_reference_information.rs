@@ -68,6 +68,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGene {
             Gene,
             #[serde(rename = "source")]
             Source,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -90,55 +91,75 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGene {
                     None;
                 let mut r#gene: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::GeneSequenceOrigin => {
-                            if r#gene_sequence_origin.is_some() {
-                                return Err(serde::de::Error::duplicate_field(
-                                    "geneSequenceOrigin",
-                                ));
+                            Field::GeneSequenceOrigin => {
+                                if r#gene_sequence_origin.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "geneSequenceOrigin",
+                                    ));
+                                }
+                                r#gene_sequence_origin = Some(map_access.next_value()?);
                             }
-                            r#gene_sequence_origin = Some(map_access.next_value()?);
-                        }
-                        Field::Gene => {
-                            if r#gene.is_some() {
-                                return Err(serde::de::Error::duplicate_field("gene"));
+                            Field::Gene => {
+                                if r#gene.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("gene"));
+                                }
+                                r#gene = Some(map_access.next_value()?);
                             }
-                            r#gene = Some(map_access.next_value()?);
-                        }
-                        Field::Source => {
-                            if r#source.is_some() {
-                                return Err(serde::de::Error::duplicate_field("source"));
+                            Field::Source => {
+                                if r#source.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("source"));
+                                }
+                                r#source = Some(map_access.next_value()?);
                             }
-                            r#source = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "geneSequenceOrigin",
+                                            "gene",
+                                            "source",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(SubstanceReferenceInformationGene {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#gene_sequence_origin,
-                    r#gene,
-                    r#source: r#source.unwrap_or(vec![]),
+                    Ok(SubstanceReferenceInformationGene {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#gene_sequence_origin,
+                        r#gene,
+                        r#source: r#source.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -202,6 +223,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGeneEleme
             Element,
             #[serde(rename = "source")]
             Source,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -223,53 +245,73 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGeneEleme
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#element: Option<Box<super::super::types::Identifier>> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Type => {
-                            if r#type.is_some() {
-                                return Err(serde::de::Error::duplicate_field("type"));
+                            Field::Type => {
+                                if r#type.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("type"));
+                                }
+                                r#type = Some(map_access.next_value()?);
                             }
-                            r#type = Some(map_access.next_value()?);
-                        }
-                        Field::Element => {
-                            if r#element.is_some() {
-                                return Err(serde::de::Error::duplicate_field("element"));
+                            Field::Element => {
+                                if r#element.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("element"));
+                                }
+                                r#element = Some(map_access.next_value()?);
                             }
-                            r#element = Some(map_access.next_value()?);
-                        }
-                        Field::Source => {
-                            if r#source.is_some() {
-                                return Err(serde::de::Error::duplicate_field("source"));
+                            Field::Source => {
+                                if r#source.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("source"));
+                                }
+                                r#source = Some(map_access.next_value()?);
                             }
-                            r#source = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "element",
+                                            "source",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(SubstanceReferenceInformationGeneElement {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#type,
-                    r#element,
-                    r#source: r#source.unwrap_or(vec![]),
+                    Ok(SubstanceReferenceInformationGeneElement {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#type,
+                        r#element,
+                        r#source: r#source.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -339,6 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationClassific
             Subtype,
             #[serde(rename = "source")]
             Source,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -361,60 +404,83 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationClassific
                 let mut r#classification: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#subtype: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Domain => {
-                            if r#domain.is_some() {
-                                return Err(serde::de::Error::duplicate_field("domain"));
+                            Field::Domain => {
+                                if r#domain.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("domain"));
+                                }
+                                r#domain = Some(map_access.next_value()?);
                             }
-                            r#domain = Some(map_access.next_value()?);
-                        }
-                        Field::Classification => {
-                            if r#classification.is_some() {
-                                return Err(serde::de::Error::duplicate_field("classification"));
+                            Field::Classification => {
+                                if r#classification.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "classification",
+                                    ));
+                                }
+                                r#classification = Some(map_access.next_value()?);
                             }
-                            r#classification = Some(map_access.next_value()?);
-                        }
-                        Field::Subtype => {
-                            if r#subtype.is_some() {
-                                return Err(serde::de::Error::duplicate_field("subtype"));
+                            Field::Subtype => {
+                                if r#subtype.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("subtype"));
+                                }
+                                r#subtype = Some(map_access.next_value()?);
                             }
-                            r#subtype = Some(map_access.next_value()?);
-                        }
-                        Field::Source => {
-                            if r#source.is_some() {
-                                return Err(serde::de::Error::duplicate_field("source"));
+                            Field::Source => {
+                                if r#source.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("source"));
+                                }
+                                r#source = Some(map_access.next_value()?);
                             }
-                            r#source = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "domain",
+                                            "classification",
+                                            "subtype",
+                                            "source",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(SubstanceReferenceInformationClassification {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#domain,
-                    r#classification,
-                    r#subtype: r#subtype.unwrap_or(vec![]),
-                    r#source: r#source.unwrap_or(vec![]),
+                    Ok(SubstanceReferenceInformationClassification {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#domain,
+                        r#classification,
+                        r#subtype: r#subtype.unwrap_or(vec![]),
+                        r#source: r#source.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -537,6 +603,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationTarget {
             AmountType,
             #[serde(rename = "source")]
             Source,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -563,138 +630,172 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationTarget {
                 let mut r#amount: Option<SubstanceReferenceInformationTargetAmount> = None;
                 let mut r#amount_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
-                            }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
-                            }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
-                            }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Target => {
-                            if r#target.is_some() {
-                                return Err(serde::de::Error::duplicate_field("target"));
-                            }
-                            r#target = Some(map_access.next_value()?);
-                        }
-                        Field::Type => {
-                            if r#type.is_some() {
-                                return Err(serde::de::Error::duplicate_field("type"));
-                            }
-                            r#type = Some(map_access.next_value()?);
-                        }
-                        Field::Interaction => {
-                            if r#interaction.is_some() {
-                                return Err(serde::de::Error::duplicate_field("interaction"));
-                            }
-                            r#interaction = Some(map_access.next_value()?);
-                        }
-                        Field::Organism => {
-                            if r#organism.is_some() {
-                                return Err(serde::de::Error::duplicate_field("organism"));
-                            }
-                            r#organism = Some(map_access.next_value()?);
-                        }
-                        Field::OrganismType => {
-                            if r#organism_type.is_some() {
-                                return Err(serde::de::Error::duplicate_field("organismType"));
-                            }
-                            r#organism_type = Some(map_access.next_value()?);
-                        }
-                        Field::AmountQuantity => {
-                            if r#amount.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountQuantity"));
-                            }
-                            r#amount = Some(SubstanceReferenceInformationTargetAmount::Quantity(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::AmountRange => {
-                            if r#amount.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountRange"));
-                            }
-                            r#amount = Some(SubstanceReferenceInformationTargetAmount::Range(
-                                map_access.next_value()?,
-                            ));
-                        }
-                        Field::AmountString => {
-                            let r#enum = r#amount.get_or_insert(
-                                SubstanceReferenceInformationTargetAmount::String(
-                                    Default::default(),
-                                ),
-                            );
-                            if let SubstanceReferenceInformationTargetAmount::String(variant) =
-                                r#enum
-                            {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("amountString"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("amount[x]"));
+                                r#id = Some(map_access.next_value()?);
                             }
-                        }
-                        Field::AmountStringPrimitiveElement => {
-                            let r#enum = r#amount.get_or_insert(
-                                SubstanceReferenceInformationTargetAmount::String(
-                                    Default::default(),
-                                ),
-                            );
-                            if let SubstanceReferenceInformationTargetAmount::String(variant) =
-                                r#enum
-                            {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_amountString"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_amount[x]"));
+                                r#extension = Some(map_access.next_value()?);
                             }
-                        }
-                        Field::AmountType => {
-                            if r#amount_type.is_some() {
-                                return Err(serde::de::Error::duplicate_field("amountType"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#amount_type = Some(map_access.next_value()?);
-                        }
-                        Field::Source => {
-                            if r#source.is_some() {
-                                return Err(serde::de::Error::duplicate_field("source"));
+                            Field::Target => {
+                                if r#target.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("target"));
+                                }
+                                r#target = Some(map_access.next_value()?);
                             }
-                            r#source = Some(map_access.next_value()?);
+                            Field::Type => {
+                                if r#type.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("type"));
+                                }
+                                r#type = Some(map_access.next_value()?);
+                            }
+                            Field::Interaction => {
+                                if r#interaction.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("interaction"));
+                                }
+                                r#interaction = Some(map_access.next_value()?);
+                            }
+                            Field::Organism => {
+                                if r#organism.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("organism"));
+                                }
+                                r#organism = Some(map_access.next_value()?);
+                            }
+                            Field::OrganismType => {
+                                if r#organism_type.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("organismType"));
+                                }
+                                r#organism_type = Some(map_access.next_value()?);
+                            }
+                            Field::AmountQuantity => {
+                                if r#amount.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "amountQuantity",
+                                    ));
+                                }
+                                r#amount =
+                                    Some(SubstanceReferenceInformationTargetAmount::Quantity(
+                                        map_access.next_value()?,
+                                    ));
+                            }
+                            Field::AmountRange => {
+                                if r#amount.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("amountRange"));
+                                }
+                                r#amount = Some(SubstanceReferenceInformationTargetAmount::Range(
+                                    map_access.next_value()?,
+                                ));
+                            }
+                            Field::AmountString => {
+                                let r#enum = r#amount.get_or_insert(
+                                    SubstanceReferenceInformationTargetAmount::String(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let SubstanceReferenceInformationTargetAmount::String(variant) =
+                                    r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "amountString",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("amount[x]"));
+                                }
+                            }
+                            Field::AmountStringPrimitiveElement => {
+                                let r#enum = r#amount.get_or_insert(
+                                    SubstanceReferenceInformationTargetAmount::String(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let SubstanceReferenceInformationTargetAmount::String(variant) =
+                                    r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_amountString",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_amount[x]"));
+                                }
+                            }
+                            Field::AmountType => {
+                                if r#amount_type.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("amountType"));
+                                }
+                                r#amount_type = Some(map_access.next_value()?);
+                            }
+                            Field::Source => {
+                                if r#source.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("source"));
+                                }
+                                r#source = Some(map_access.next_value()?);
+                            }
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "target",
+                                            "type",
+                                            "interaction",
+                                            "organism",
+                                            "organismType",
+                                            "amountQuantity",
+                                            "amountRange",
+                                            "amountString",
+                                            "amountType",
+                                            "source",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(SubstanceReferenceInformationTarget {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#target,
-                    r#type,
-                    r#interaction,
-                    r#organism,
-                    r#organism_type,
-                    r#amount,
-                    r#amount_type,
-                    r#source: r#source.unwrap_or(vec![]),
+                    Ok(SubstanceReferenceInformationTarget {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#target,
+                        r#type,
+                        r#interaction,
+                        r#organism,
+                        r#organism_type,
+                        r#amount,
+                        r#amount_type,
+                        r#source: r#source.unwrap_or(vec![]),
+                    })
                 })
             }
         }
@@ -708,7 +809,7 @@ pub struct SubstanceReferenceInformation {
     pub r#implicit_rules: Option<super::super::types::Uri>,
     pub r#language: Option<super::super::types::Code>,
     pub r#text: Option<Box<super::super::types::Narrative>>,
-    pub r#contained: Vec<Box<super::Resource>>,
+    pub r#contained: Vec<Box<super::super::Resource>>,
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     pub r#comment: Option<super::super::types::String>,
@@ -839,6 +940,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
             Classification,
             #[serde(rename = "target")]
             Target,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -858,7 +960,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
                 let mut r#implicit_rules: Option<super::super::types::Uri> = None;
                 let mut r#language: Option<super::super::types::Code> = None;
                 let mut r#text: Option<Box<super::super::types::Narrative>> = None;
-                let mut r#contained: Option<Vec<Box<super::Resource>>> = None;
+                let mut r#contained: Option<Vec<Box<super::super::Resource>>> = None;
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
@@ -869,153 +971,184 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
                 let mut r#classification: Option<Vec<SubstanceReferenceInformationClassification>> =
                     None;
                 let mut r#target: Option<Vec<SubstanceReferenceInformationTarget>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::ResourceType => {
-                            let value: std::borrow::Cow<str> = map_access.next_value()?;
-                            if value != "SubstanceReferenceInformation" {
-                                return Err(serde::de::Error::invalid_value(
-                                    serde::de::Unexpected::Str(&value),
-                                    &"SubstanceReferenceInformation",
-                                ));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::ResourceType => {
+                                let value: std::borrow::Cow<str> = map_access.next_value()?;
+                                if value != "SubstanceReferenceInformation" {
+                                    return Err(serde::de::Error::invalid_value(
+                                        serde::de::Unexpected::Str(&value),
+                                        &"SubstanceReferenceInformation",
+                                    ));
+                                }
                             }
-                        }
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Meta => {
-                            if r#meta.is_some() {
-                                return Err(serde::de::Error::duplicate_field("meta"));
+                            Field::Meta => {
+                                if r#meta.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("meta"));
+                                }
+                                r#meta = Some(map_access.next_value()?);
                             }
-                            r#meta = Some(map_access.next_value()?);
-                        }
-                        Field::ImplicitRules => {
-                            let some = r#implicit_rules.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("implicitRules"));
+                            Field::ImplicitRules => {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::ImplicitRulesPrimitiveElement => {
-                            let some = r#implicit_rules.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_implicitRules"));
+                            Field::ImplicitRulesPrimitiveElement => {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_implicitRules",
+                                    ));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Language => {
-                            let some = r#language.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("language"));
+                            Field::Language => {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("language"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::LanguagePrimitiveElement => {
-                            let some = r#language.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_language"));
+                            Field::LanguagePrimitiveElement => {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Text => {
-                            if r#text.is_some() {
-                                return Err(serde::de::Error::duplicate_field("text"));
+                            Field::Text => {
+                                if r#text.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("text"));
+                                }
+                                r#text = Some(map_access.next_value()?);
                             }
-                            r#text = Some(map_access.next_value()?);
-                        }
-                        Field::Contained => {
-                            if r#contained.is_some() {
-                                return Err(serde::de::Error::duplicate_field("contained"));
+                            Field::Contained => {
+                                if r#contained.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                }
+                                r#contained = Some(map_access.next_value()?);
                             }
-                            r#contained = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::ModifierExtension => {
-                            if r#modifier_extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("modifierExtension"));
+                            Field::ModifierExtension => {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some(map_access.next_value()?);
                             }
-                            r#modifier_extension = Some(map_access.next_value()?);
-                        }
-                        Field::Comment => {
-                            let some = r#comment.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("comment"));
+                            Field::Comment => {
+                                let some = r#comment.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("comment"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::CommentPrimitiveElement => {
-                            let some = r#comment.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_comment"));
+                            Field::CommentPrimitiveElement => {
+                                let some = r#comment.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_comment"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Gene => {
-                            if r#gene.is_some() {
-                                return Err(serde::de::Error::duplicate_field("gene"));
+                            Field::Gene => {
+                                if r#gene.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("gene"));
+                                }
+                                r#gene = Some(map_access.next_value()?);
                             }
-                            r#gene = Some(map_access.next_value()?);
-                        }
-                        Field::GeneElement => {
-                            if r#gene_element.is_some() {
-                                return Err(serde::de::Error::duplicate_field("geneElement"));
+                            Field::GeneElement => {
+                                if r#gene_element.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("geneElement"));
+                                }
+                                r#gene_element = Some(map_access.next_value()?);
                             }
-                            r#gene_element = Some(map_access.next_value()?);
-                        }
-                        Field::Classification => {
-                            if r#classification.is_some() {
-                                return Err(serde::de::Error::duplicate_field("classification"));
+                            Field::Classification => {
+                                if r#classification.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "classification",
+                                    ));
+                                }
+                                r#classification = Some(map_access.next_value()?);
                             }
-                            r#classification = Some(map_access.next_value()?);
-                        }
-                        Field::Target => {
-                            if r#target.is_some() {
-                                return Err(serde::de::Error::duplicate_field("target"));
+                            Field::Target => {
+                                if r#target.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("target"));
+                                }
+                                r#target = Some(map_access.next_value()?);
                             }
-                            r#target = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "comment",
+                                            "gene",
+                                            "geneElement",
+                                            "classification",
+                                            "target",
+                                        ],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(SubstanceReferenceInformation {
-                    r#id,
-                    r#meta,
-                    r#implicit_rules,
-                    r#language,
-                    r#text,
-                    r#contained: r#contained.unwrap_or(vec![]),
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    r#comment,
-                    r#gene: r#gene.unwrap_or(vec![]),
-                    r#gene_element: r#gene_element.unwrap_or(vec![]),
-                    r#classification: r#classification.unwrap_or(vec![]),
-                    r#target: r#target.unwrap_or(vec![]),
+                    Ok(SubstanceReferenceInformation {
+                        r#id,
+                        r#meta,
+                        r#implicit_rules,
+                        r#language,
+                        r#text,
+                        r#contained: r#contained.unwrap_or(vec![]),
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#comment,
+                        r#gene: r#gene.unwrap_or(vec![]),
+                        r#gene_element: r#gene_element.unwrap_or(vec![]),
+                        r#classification: r#classification.unwrap_or(vec![]),
+                        r#target: r#target.unwrap_or(vec![]),
+                    })
                 })
             }
         }

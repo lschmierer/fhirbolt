@@ -19,7 +19,7 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
             (
                 quote! {
                     #[serde(rename="resourceType")]
-                            ResourceType,
+                    ResourceType,
                 },
                 quote! {
                 Field::ResourceType => {
@@ -32,6 +32,12 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
         } else {
             (quote! {}, quote! {})
         };
+
+    let all_possible_fields_names = r#struct
+        .fields
+        .iter()
+        .map(|f| possible_fhir_names(f, enums))
+        .flatten();
 
     let field_enum_variants_tokens = r#struct
         .fields
@@ -58,6 +64,7 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
                     #(
                         #field_enum_variants_tokens
                     )*
+                    Unknown(String),
                 }
 
                 struct Visitor;
@@ -77,19 +84,33 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
                             #field_mut_vars_tokens
                         )*
 
-                        while let Some(map_access_key) = map_access.next_key()? {
-                            match map_access_key {
-                                #deserialize_resource_type_field_tokens
-                                #(
-                                    #deserialize_fields_tokens
-                                )*
-                            }
-                        }
+                        crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                            let config = config.get();
 
-                        Ok(#stuct_name_ident {
-                            #(
-                                #field_struct_assign_vars_tokens
-                            )*
+                            while let Some(map_access_key) = map_access.next_key()? {
+                                match map_access_key {
+                                    #deserialize_resource_type_field_tokens
+                                    #(
+                                        #deserialize_fields_tokens
+                                    )*
+                                    Field::Unknown(key) => if config.mode == crate::json::de::DeserializationMode::Strict {
+                                        return Err(serde::de::Error::unknown_field(
+                                            &key,
+                                            &[
+                                                #(
+                                                    #all_possible_fields_names,
+                                                )*
+                                            ]
+                                        ));
+                                    }
+                                }
+                            }
+
+                            Ok(#stuct_name_ident {
+                                #(
+                                    #field_struct_assign_vars_tokens
+                                )*
+                            })
                         })
                     }
                 }
@@ -97,6 +118,20 @@ pub fn implement_deserialze(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenS
                 deserializer.deserialize_map(Visitor)
             }
         }
+    }
+}
+
+fn possible_fhir_names(field: &RustStructField, enums: &[RustEnum]) -> Vec<String> {
+    if field.polymorph {
+        let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
+
+        r#enum
+            .variants
+            .iter()
+            .map(|v| format!("{}{}", field.fhir_name, v.name))
+            .collect()
+    } else {
+        vec![field.fhir_name.clone()]
     }
 }
 
@@ -193,11 +228,19 @@ fn field_struct_assign_var(field: &RustStructField) -> TokenStream {
     } else {
         if field.polymorph {
             quote! {
-                #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?,
+                #field_name_ident: if config.mode == crate::json::de::DeserializationMode::Lax {
+                    #field_name_ident.unwrap_or(Default::default())
+                } else {
+                    #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?
+                },
             }
         } else {
             quote! {
-                #field_name_ident: #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?,
+                #field_name_ident: if config.mode == crate::json::de::DeserializationMode::Lax {
+                    #field_name_ident.unwrap_or(Default::default())
+                } else {
+                    #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?
+                },
             }
         }
     }

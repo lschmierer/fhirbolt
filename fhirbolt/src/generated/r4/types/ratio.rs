@@ -44,6 +44,7 @@ impl<'de> serde::de::Deserialize<'de> for Ratio {
             Numerator,
             #[serde(rename = "denominator")]
             Denominator,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -59,39 +60,50 @@ impl<'de> serde::de::Deserialize<'de> for Ratio {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#numerator: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#denominator: Option<Box<super::super::types::Quantity>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::Numerator => {
-                            if r#numerator.is_some() {
-                                return Err(serde::de::Error::duplicate_field("numerator"));
+                            Field::Numerator => {
+                                if r#numerator.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("numerator"));
+                                }
+                                r#numerator = Some(map_access.next_value()?);
                             }
-                            r#numerator = Some(map_access.next_value()?);
-                        }
-                        Field::Denominator => {
-                            if r#denominator.is_some() {
-                                return Err(serde::de::Error::duplicate_field("denominator"));
+                            Field::Denominator => {
+                                if r#denominator.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("denominator"));
+                                }
+                                r#denominator = Some(map_access.next_value()?);
                             }
-                            r#denominator = Some(map_access.next_value()?);
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &["id", "extension", "numerator", "denominator"],
+                                    ));
+                                }
+                            }
                         }
                     }
-                }
-                Ok(Ratio {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#numerator,
-                    r#denominator,
+                    Ok(Ratio {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#numerator,
+                        r#denominator,
+                    })
                 })
             }
         }

@@ -107,6 +107,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
+            Unknown(String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -123,104 +124,133 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                 let mut r#author: Option<AnnotationAuthor> = None;
                 let mut r#time: Option<super::super::types::DateTime> = None;
                 let mut r#text: Option<super::super::types::Markdown> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
-                    match map_access_key {
-                        Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                crate::json::de::DESERIALIZATION_CONFIG.with(|config| {
+                    let config = config.get();
+                    while let Some(map_access_key) = map_access.next_key()? {
+                        match map_access_key {
+                            Field::Id => {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                r#id = Some(map_access.next_value()?);
                             }
-                            r#id = Some(map_access.next_value()?);
-                        }
-                        Field::Extension => {
-                            if r#extension.is_some() {
-                                return Err(serde::de::Error::duplicate_field("extension"));
+                            Field::Extension => {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some(map_access.next_value()?);
                             }
-                            r#extension = Some(map_access.next_value()?);
-                        }
-                        Field::AuthorReference => {
-                            if r#author.is_some() {
-                                return Err(serde::de::Error::duplicate_field("authorReference"));
+                            Field::AuthorReference => {
+                                if r#author.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "authorReference",
+                                    ));
+                                }
+                                r#author =
+                                    Some(AnnotationAuthor::Reference(map_access.next_value()?));
                             }
-                            r#author = Some(AnnotationAuthor::Reference(map_access.next_value()?));
-                        }
-                        Field::AuthorString => {
-                            let r#enum = r#author
-                                .get_or_insert(AnnotationAuthor::String(Default::default()));
-                            if let AnnotationAuthor::String(variant) = r#enum {
-                                if variant.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("authorString"));
+                            Field::AuthorString => {
+                                let r#enum = r#author
+                                    .get_or_insert(AnnotationAuthor::String(Default::default()));
+                                if let AnnotationAuthor::String(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "authorString",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("author[x]"));
+                                }
+                            }
+                            Field::AuthorStringPrimitiveElement => {
+                                let r#enum = r#author
+                                    .get_or_insert(AnnotationAuthor::String(Default::default()));
+                                if let AnnotationAuthor::String(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_authorString",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_author[x]"));
+                                }
+                            }
+                            Field::Time => {
+                                let some = r#time.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("time"));
                                 }
                                 let value: _ = map_access.next_value()?;
-                                variant.value = Some(value);
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("author[x]"));
+                                some.value = Some(value);
                             }
-                        }
-                        Field::AuthorStringPrimitiveElement => {
-                            let r#enum = r#author
-                                .get_or_insert(AnnotationAuthor::String(Default::default()));
-                            if let AnnotationAuthor::String(variant) = r#enum {
-                                if variant.id.is_some() || !variant.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_authorString"));
+                            Field::TimePrimitiveElement => {
+                                let some = r#time.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_time"));
                                 }
                                 let super::super::serde_helpers::PrimitiveElementOwned {
                                     id,
                                     extension,
                                 } = map_access.next_value()?;
-                                variant.id = id;
-                                variant.extension = extension;
-                            } else {
-                                return Err(serde::de::Error::duplicate_field("_author[x]"));
+                                some.id = id;
+                                some.extension = extension;
                             }
-                        }
-                        Field::Time => {
-                            let some = r#time.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("time"));
+                            Field::Text => {
+                                let some = r#text.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("text"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::TimePrimitiveElement => {
-                            let some = r#time.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_time"));
+                            Field::TextPrimitiveElement => {
+                                let some = r#text.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_text"));
+                                }
+                                let super::super::serde_helpers::PrimitiveElementOwned {
+                                    id,
+                                    extension,
+                                } = map_access.next_value()?;
+                                some.id = id;
+                                some.extension = extension;
                             }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
-                        }
-                        Field::Text => {
-                            let some = r#text.get_or_insert(Default::default());
-                            if some.value.is_some() {
-                                return Err(serde::de::Error::duplicate_field("text"));
+                            Field::Unknown(key) => {
+                                if config.mode == crate::json::de::DeserializationMode::Strict {
+                                    return Err(serde::de::Error::unknown_field(
+                                        &key,
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "authorReference",
+                                            "authorString",
+                                            "time",
+                                            "text",
+                                        ],
+                                    ));
+                                }
                             }
-                            let value: _ = map_access.next_value()?;
-                            some.value = Some(value);
-                        }
-                        Field::TextPrimitiveElement => {
-                            let some = r#text.get_or_insert(Default::default());
-                            if some.id.is_some() || !some.extension.is_empty() {
-                                return Err(serde::de::Error::duplicate_field("_text"));
-                            }
-                            let super::super::serde_helpers::PrimitiveElementOwned {
-                                id,
-                                extension,
-                            } = map_access.next_value()?;
-                            some.id = id;
-                            some.extension = extension;
                         }
                     }
-                }
-                Ok(Annotation {
-                    r#id,
-                    r#extension: r#extension.unwrap_or(vec![]),
-                    r#author,
-                    r#time,
-                    r#text: r#text.ok_or(serde::de::Error::missing_field("text"))?,
+                    Ok(Annotation {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#author,
+                        r#time,
+                        r#text: if config.mode == crate::json::de::DeserializationMode::Lax {
+                            r#text.unwrap_or(Default::default())
+                        } else {
+                            r#text.ok_or(serde::de::Error::missing_field("text"))?
+                        },
+                    })
                 })
             }
         }
