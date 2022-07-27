@@ -1,11 +1,18 @@
-// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-27 by fhirbolt-codegen v0.1.0
+#[doc = "A participant in the test execution, either the execution engine, a client, or a server."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportParticipant {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "The type of participant."]
     pub r#type: super::super::types::Code,
+    #[doc = "The uri of the participant. An absolute URL is preferred."]
     pub r#uri: super::super::types::Uri,
+    #[doc = "The display name of the participant."]
     pub r#display: Option<super::super::types::String>,
 }
 impl serde::ser::Serialize for TestReportParticipant {
@@ -230,13 +237,20 @@ impl<'de> serde::de::Deserialize<'de> for TestReportParticipant {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "The operation performed."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportSetupActionOperation {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "The result of this operation."]
     pub r#result: super::super::types::Code,
+    #[doc = "An explanatory message associated with the result."]
     pub r#message: Option<super::super::types::Markdown>,
+    #[doc = "A link to further details on the result."]
     pub r#detail: Option<super::super::types::Uri>,
 }
 impl serde::ser::Serialize for TestReportSetupActionOperation {
@@ -462,13 +476,20 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionOperation {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "The results of the assertion performed on the previous operations."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportSetupActionAssert {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "The result of this assertion."]
     pub r#result: super::super::types::Code,
+    #[doc = "An explanatory message associated with the result."]
     pub r#message: Option<super::super::types::Markdown>,
+    #[doc = "A link to further details on the result."]
     pub r#detail: Option<super::super::types::String>,
 }
 impl serde::ser::Serialize for TestReportSetupActionAssert {
@@ -694,12 +715,18 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionAssert {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "Action would contain either an operation or an assertion."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportSetupAction {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "The operation performed."]
     pub r#operation: Option<TestReportSetupActionOperation>,
+    #[doc = "The results of the assertion performed on the previous operations."]
     pub r#assert: Option<TestReportSetupActionAssert>,
 }
 impl serde::ser::Serialize for TestReportSetupAction {
@@ -828,11 +855,16 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupAction {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "The results of the series of required setup operations before the tests were executed."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportSetup {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestReportSetupAction>,
 }
 impl serde::ser::Serialize for TestReportSetup {
@@ -942,12 +974,18 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetup {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "Action would contain either an operation or an assertion."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportTestAction {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "An operation would involve a REST request to a server."]
     pub r#operation: Option<TestReportSetupActionOperation>,
+    #[doc = "The results of the assertion performed on the previous operations."]
     pub r#assert: Option<TestReportSetupActionAssert>,
 }
 impl serde::ser::Serialize for TestReportTestAction {
@@ -1076,13 +1114,20 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTestAction {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "A test executed from the test script."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportTest {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "The name of this test used for tracking/logging purposes by test engines."]
     pub r#name: Option<super::super::types::String>,
+    #[doc = "A short description of the test used by test engines for tracking and reporting purposes."]
     pub r#description: Option<super::super::types::String>,
+    #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestReportTestAction>,
 }
 impl serde::ser::Serialize for TestReportTest {
@@ -1277,11 +1322,16 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTest {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "The teardown action will only contain an operation."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportTeardownAction {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "An operation would involve a REST request to a server."]
     pub r#operation: TestReportSetupActionOperation,
 }
 impl serde::ser::Serialize for TestReportTeardownAction {
@@ -1393,11 +1443,16 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardownAction {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportTeardown {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "The teardown action will only contain an operation."]
     pub r#action: Vec<TestReportTeardownAction>,
 }
 impl serde::ser::Serialize for TestReportTeardown {
@@ -1507,27 +1562,48 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardown {
         deserializer.deserialize_map(Visitor)
     }
 }
+#[doc = "A summary of information based on the results of executing a TestScript."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReport {
+    #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
+    #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
+    #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
     pub r#implicit_rules: Option<super::super::types::Uri>,
+    #[doc = "The base language in which the resource is written."]
     pub r#language: Option<super::super::types::Code>,
+    #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
+    #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<Box<super::super::Resource>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "Identifier for the TestScript assigned for external purposes outside the context of FHIR."]
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
+    #[doc = "A free text natural language name identifying the executed TestScript."]
     pub r#name: Option<super::super::types::String>,
+    #[doc = "The current state of this test report."]
     pub r#status: super::super::types::Code,
+    #[doc = "Ideally this is an absolute URL that is used to identify the version-specific TestScript that was executed, matching the `TestScript.url`."]
     pub r#test_script: Box<super::super::types::Reference>,
+    #[doc = "The overall result from the execution of the TestScript."]
     pub r#result: super::super::types::Code,
+    #[doc = "The final score (percentage of tests passed) resulting from the execution of the TestScript."]
     pub r#score: Option<super::super::types::Decimal>,
+    #[doc = "Name of the tester producing this report (Organization or individual)."]
     pub r#tester: Option<super::super::types::String>,
+    #[doc = "When the TestScript was executed and this TestReport was generated."]
     pub r#issued: Option<super::super::types::DateTime>,
+    #[doc = "A participant in the test execution, either the execution engine, a client, or a server."]
     pub r#participant: Vec<TestReportParticipant>,
+    #[doc = "The results of the series of required setup operations before the tests were executed."]
     pub r#setup: Option<TestReportSetup>,
+    #[doc = "A test executed from the test script."]
     pub r#test: Vec<TestReportTest>,
+    #[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
     pub r#teardown: Option<TestReportTeardown>,
 }
 impl serde::ser::Serialize for TestReport {

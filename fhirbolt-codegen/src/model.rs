@@ -48,7 +48,8 @@ impl From<&RawValue> for Resource {
 #[derive(Deserialize, Debug)]
 pub struct StructureDefinition {
     pub url: String,
-
+    pub description: Option<String>,
+    pub purpose: Option<String>,
     pub kind: String,
     pub r#type: String,
     pub name: String,
@@ -63,6 +64,9 @@ pub struct StructureDefinitionSnapshot {
 #[derive(Deserialize, Debug)]
 pub struct ElementDefinition {
     pub id: String,
+    pub short: Option<String>,
+    pub definition: Option<String>,
+    pub comment: Option<String>,
     pub path: String,
     pub min: Option<u32>,
     pub max: Option<String>,

@@ -39,6 +39,7 @@ pub struct RustModule {
     pub resource_name: Option<String>,
     pub structs: Vec<RustStruct>,
     pub enums: Vec<RustEnum>,
+    pub doc_comment: String,
 }
 
 pub struct RustStruct {
@@ -47,6 +48,7 @@ pub struct RustStruct {
     pub is_resource: bool,
     pub is_fhir_primitive: bool,
     pub fields: Vec<RustStructField>,
+    pub doc_comment: String,
 }
 
 pub struct RustStructField {
@@ -56,11 +58,13 @@ pub struct RustStructField {
     pub polymorph: bool,
     pub multiple: bool,
     pub optional: bool,
+    pub doc_comment: String,
 }
 
 pub struct RustEnum {
     pub name: String,
     pub variants: Vec<RustEnumVariant>,
+    pub doc_comment: String,
 }
 
 pub struct RustEnumVariant {
@@ -81,6 +85,13 @@ pub fn gather_all_modules<'a>(bundle: &Bundle) -> Vec<RustModule> {
         .filter(|s| s.name != "Element")
         .map(|s| {
             let is_resource = s.kind == "resource";
+
+            let doc_comment = if let Some(purpose) = s.purpose.as_ref() {
+                format!("{}\n\n{}", s.description.as_ref().unwrap(), purpose)
+            } else {
+                s.description.clone().unwrap()
+            };
+
             let mut module = RustModule {
                 name: s.name.to_rust_mod_casing(),
                 resource_name: if is_resource {
@@ -88,14 +99,17 @@ pub fn gather_all_modules<'a>(bundle: &Bundle) -> Vec<RustModule> {
                 } else {
                     None
                 },
+                doc_comment: doc_comment.clone(),
                 ..Default::default()
             };
+
             gather_struct(
                 &mut module,
                 &s.name,
                 is_resource,
                 &s.snapshot.element.iter().collect::<Vec<_>>(),
                 &s.r#type,
+                doc_comment,
             );
             module
         })
@@ -115,6 +129,7 @@ fn gather_struct(
     is_resource: bool,
     element_definitions: &[&ElementDefinition],
     element_path_strip_prefix: &str,
+    doc_comment: String,
 ) {
     let fields = gather_fields(module, name, element_definitions, element_path_strip_prefix);
 
@@ -124,6 +139,7 @@ fn gather_struct(
         is_resource,
         is_fhir_primitive: PRIMITIVES.contains(&name),
         fields,
+        doc_comment: doc_comment,
     })
 }
 
@@ -162,6 +178,7 @@ fn gather_fields(
                     false,
                     &element_definitions,
                     &element_definitions[0].path,
+                    element_definitions[0].definition.clone().unwrap(),
                 );
             }
 
@@ -170,6 +187,7 @@ fn gather_fields(
                 struct_name,
                 &element_definitions[0],
                 element_path_strip_prefix,
+                element_definitions[0].definition.clone().unwrap(),
             )
         })
         .collect()
@@ -180,6 +198,7 @@ fn gather_field(
     struct_name: &str,
     element_definition: &ElementDefinition,
     element_path_strip_prefix: &str,
+    doc_comment: String,
 ) -> RustStructField {
     let field_name = &element_definition.path[element_path_strip_prefix.len() + 1..];
 
@@ -202,8 +221,13 @@ fn gather_field(
             .map(|t| t.code.as_ref())
             .collect();
 
-        let maybe_fhir_primitive =
-            create_value_enum(module, &element_definition.path, &name, variants);
+        let maybe_fhir_primitive = create_value_enum(
+            module,
+            &element_definition.path,
+            &name,
+            variants,
+            doc_comment,
+        );
 
         RustFieldType {
             name,
@@ -238,6 +262,7 @@ fn gather_field(
         polymorph,
         multiple: element_definition.max.as_ref().unwrap() != "1",
         optional: element_definition.min.unwrap() == 0,
+        doc_comment: element_definition.definition.clone().unwrap(),
     }
 }
 
@@ -246,6 +271,7 @@ fn create_value_enum<'a>(
     path: &str,
     enum_name: &str,
     types: Vec<&str>,
+    doc_comment: String,
 ) -> bool {
     let mut may_contain_primitive = false;
 
@@ -269,6 +295,7 @@ fn create_value_enum<'a>(
     module.enums.push(RustEnum {
         name: enum_name.into(),
         variants,
+        doc_comment,
     });
 
     may_contain_primitive

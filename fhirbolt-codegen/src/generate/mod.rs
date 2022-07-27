@@ -1,15 +1,54 @@
 mod de;
 mod ser;
 
+use lazy_static::lazy_static;
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
+use regex::{Captures, Regex};
 
 use crate::{
+    casing::RustCasing,
     gather::{RustEnum, RustModule, RustStruct, RustStructField},
     SourceFile,
 };
 
 use self::{de::implement_deserialze, ser::implement_serialze};
+
+lazy_static! {
+    static ref URL_REGEX: Regex = Regex::new(r"http[\w./:]*[\w/:]").unwrap();
+    static ref MARKDOWN_LINK_HTML_REGEX: Regex =
+        Regex::new(r"(\[\[?[\w /$]+?\]\]?)\(([\w\- ]+?\.html\))").unwrap();
+    static ref MARKDOWN_LINK_INLINE_REGEX: Regex = Regex::new(r"\[\[?\[?(\w+)\]\]?\]?.?").unwrap();
+}
+
+fn format_doc_comment(text: &str) -> String {
+    let text = text.replace("[x]", r"\[x\]");
+    let text = URL_REGEX.replace_all(&text, "<$0>");
+    let text = MARKDOWN_LINK_HTML_REGEX.replace_all(&text, "$1(https://hl7.org/FHIR/$2)");
+    let text = MARKDOWN_LINK_INLINE_REGEX.replace_all(&text, |caps: &Captures| {
+        let all = caps.get(0).unwrap().as_str();
+        if all.ends_with("(") {
+            all.into()
+        } else {
+            let last = all.chars().last().unwrap();
+            let last = match last {
+                ' ' | ',' | '.' => last.to_string(),
+                _ => "".into(),
+            };
+
+            if all.ends_with("]]] ") {
+                format!("`{}`{}", caps.get(1).unwrap().as_str(), last)
+            } else {
+                format!(
+                    "`{}`{}",
+                    caps.get(1).unwrap().as_str().to_rust_identifier_casing(),
+                    last
+                )
+            }
+        }
+    });
+    text.to_string()
+}
 
 pub fn generate_modules(modules: &[RustModule]) -> Vec<SourceFile> {
     modules.iter().map(|m| generate_module(m)).collect()
@@ -18,12 +57,18 @@ pub fn generate_modules(modules: &[RustModule]) -> Vec<SourceFile> {
 pub fn generate_resource_enum(resource_modules: &[RustModule]) -> SourceFile {
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
-        quote! { #ident(Box<super::resources::#ident>), }
+        let doc_comment = format_doc_comment(&r.doc_comment);
+
+        quote! {
+            #[doc=#doc_comment]
+            #ident(Box<super::resources::#ident>),
+        }
     });
 
     SourceFile {
         name: "resource".into(),
         source: quote! {
+            #[doc="Enum representing all possible FHIR resources."]
             #[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
             #[serde(tag = "resourceType")]
             pub enum Resource {
@@ -93,7 +138,10 @@ fn generate_struct(r#struct: &RustStruct, enums: &[RustEnum]) -> TokenStream {
         quote! {}
     };
 
+    let doc_comment = format_doc_comment(&r#struct.doc_comment);
+
     quote! {
+        #[doc=#doc_comment]
         #[derive(Default, Debug, Clone)]
         pub struct #name_ident {
             #(
@@ -124,7 +172,10 @@ fn generate_field(field: &RustStructField) -> TokenStream {
         type_tokens
     };
 
+    let doc_comment = format_doc_comment(&field.doc_comment);
+
     quote! {
+        #[doc=#doc_comment]
         pub #name_ident: #type_tokens,
     }
 }
@@ -149,7 +200,10 @@ fn generate_enum(r#enum: &RustEnum) -> TokenStream {
         }
     });
 
+    let doc_comment_tokens = format_doc_comment(&r#enum.doc_comment);
+
     quote! {
+        #[doc=#doc_comment_tokens]
         #[derive(Debug, Clone)]
         pub enum #name_ident {
             #(

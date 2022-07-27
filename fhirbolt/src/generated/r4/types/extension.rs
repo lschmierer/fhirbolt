@@ -1,4 +1,5 @@
-// Generated on 2022-07-25 by fhirbolt-codegen v0.1.0
+// Generated on 2022-07-27 by fhirbolt-codegen v0.1.0
+#[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -58,11 +59,16 @@ impl Default for ExtensionValue {
         ExtensionValue::Invalid
     }
 }
+#[doc = "Base StructureDefinition for Extension Type: Optional Extension Element - found in all resources.\n\nThe ability to add extensions in a structured way is what keeps FHIR resources simple."]
 #[derive(Default, Debug, Clone)]
 pub struct Extension {
+    #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
+    #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
     pub r#extension: Vec<Box<super::super::types::Extension>>,
+    #[doc = "Source of the definition for the extension code - a logical name or a URL."]
     pub r#url: std::string::String,
+    #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
     pub r#value: Option<ExtensionValue>,
 }
 impl serde::ser::Serialize for Extension {
