@@ -1,15 +1,13 @@
 use std::fs;
 use std::path;
 
+use fhirbolt::model::ResourceOrElement;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 use serde_json::Value;
 use zip::ZipArchive;
 
-use fhirbolt::{
-    json::{DeserializationConfig, DeserializationMode},
-    r4,
-};
+use fhirbolt::{model::r4, DeserializationConfig, DeserializationMode};
 
 const FHIR_EXAMPLES_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/examples-json.zip";
 
@@ -42,7 +40,10 @@ fn download_fhir_examples_json(fhir_release: &str) -> path::PathBuf {
     examples_json_zip_path
 }
 
-fn test_serde_json<R: Serialize + DeserializeOwned>(fhir_release: &str, mode: DeserializationMode) {
+fn test_serde_json<R: Serialize + DeserializeOwned + ResourceOrElement>(
+    fhir_release: &str,
+    mode: DeserializationMode,
+) {
     let examples_json_zip_path = download_fhir_examples_json(fhir_release);
 
     let zip_file = fs::File::open(examples_json_zip_path).expect("Error opening zip file");

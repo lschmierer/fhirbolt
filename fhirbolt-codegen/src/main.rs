@@ -25,8 +25,8 @@ impl fmt::Display for FhirRelease {
 }
 
 const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4];
-
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
+const OUTPUT_DIRECTORY: &str = "fhirbolt/src/model/generated";
 
 fn tmp_dir() -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
@@ -106,12 +106,10 @@ fn generate_dir() -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .unwrap()
-        .join("fhirbolt")
-        .join("src")
-        .join("generated");
+        .join(OUTPUT_DIRECTORY);
 
     if !dir.exists() {
-        fs::create_dir(&dir).unwrap();
+        fs::create_dir_all(&dir).unwrap();
     }
     dir
 }
