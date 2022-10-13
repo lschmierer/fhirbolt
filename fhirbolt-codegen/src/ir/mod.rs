@@ -1,6 +1,22 @@
 mod parse;
 
-pub use parse::parse_bundle;
+use linked_hash_map::LinkedHashMap;
+use linked_hash_set::LinkedHashSet;
+
+pub use parse::parse_modules;
+
+#[derive(Default)]
+pub struct TypeHints {
+    pub type_paths: LinkedHashMap<String, String>,
+    pub array_paths: LinkedHashSet<String>,
+    pub boolean_paths: LinkedHashSet<String>,
+    pub integer_paths: LinkedHashSet<String>,
+    pub unsigned_integer_paths: LinkedHashSet<String>,
+    pub positive_integer_paths: LinkedHashSet<String>,
+    pub decimal_integer_paths: LinkedHashSet<String>,
+    pub other_primitives_paths: LinkedHashSet<String>,
+    pub content_reference_paths: LinkedHashMap<String, String>,
+}
 
 #[derive(Default)]
 pub struct RustFhirModule {

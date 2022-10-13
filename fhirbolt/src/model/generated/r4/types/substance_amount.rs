@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Debug, Clone)]
 pub enum SubstanceAmountAmount {

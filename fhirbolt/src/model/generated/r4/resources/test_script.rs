@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "An abstract server used in operations within this test script in the origin element."]
 #[derive(Default, Debug, Clone)]
 pub struct TestScriptOrigin {

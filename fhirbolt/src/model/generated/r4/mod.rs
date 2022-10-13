@@ -2,6 +2,6 @@ pub mod resources;
 pub mod types;
 
 mod resource;
-mod serde_helpers;
+pub(crate) mod serde_helpers;
 
 pub use resource::*;

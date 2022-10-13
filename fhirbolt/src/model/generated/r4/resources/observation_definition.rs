@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics for quantitative results of this observation."]
 #[derive(Default, Debug, Clone)]
 pub struct ObservationDefinitionQuantitativeDetails {

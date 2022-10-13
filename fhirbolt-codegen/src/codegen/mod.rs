@@ -1,5 +1,6 @@
 mod de;
 mod ser;
+mod serde_helpers;
 
 use lazy_static::lazy_static;
 use proc_macro2::TokenStream;
@@ -12,7 +13,8 @@ use crate::{
     SourceFile,
 };
 
-use self::{de::implement_deserialze, ser::implement_serialze};
+pub use self::serde_helpers::generate_serde_helpers;
+use self::{de::implement_deserialze, ser::implement_serialize};
 
 lazy_static! {
     static ref URL_REGEX: Regex = Regex::new(r"http[\w./:]*[\w/:]").unwrap();
@@ -84,27 +86,6 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
     }
 }
 
-pub fn generate_serde_helpers() -> SourceFile {
-    SourceFile {
-        name: "serde_helpers".into(),
-        source: quote! {
-            #[derive(serde::Serialize)]
-            pub struct PrimitiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
-                pub id: &'a Option<std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                pub extension: &'a [Box<super::types::Extension>],
-            }
-
-            #[derive(serde::Deserialize)]
-            pub struct PrimitiveElementOwned {
-                pub id: Option<std::string::String>,
-                pub extension: Vec<Box<super::types::Extension>>,
-            }
-        },
-    }
-}
-
 fn generate_module(module: &RustFhirModule) -> SourceFile {
     let structs_tokens = module
         .structs
@@ -130,7 +111,7 @@ fn generate_struct(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenSt
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
 
     let serde_impl_tokens = if !r#struct.is_primitive {
-        let serialize_impl_tokens = implement_serialze(&r#struct, enums);
+        let serialize_impl_tokens = implement_serialize(&r#struct, enums);
         let deserialize_impl_tokens = implement_deserialze(&r#struct, enums);
         quote! {
             #serialize_impl_tokens

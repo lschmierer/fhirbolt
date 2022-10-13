@@ -1,12 +1,11 @@
 use linked_hash_map::LinkedHashMap;
 
 use crate::casing::RustCasing;
-use crate::model::{Bundle, ElementDefinition, Resource, StructureDefinition};
-
-use super::{
+use crate::ir::{
     RustFhirEnum, RustFhirEnumVariant, RustFhirFieldType, RustFhirModule, RustFhirStruct,
-    RustFhirStructField,
+    RustFhirStructField, TypeHints,
 };
+use crate::model::{Bundle, ElementDefinition, Resource, StructureDefinition};
 
 const PRIMITIVES: &[&str] = &[
     "base64Binary",
@@ -38,7 +37,21 @@ const ABSTRACT_RESOURCES: &[&str] = &[
     "CanonicalResource",
 ];
 
-pub fn parse_bundle<'a>(bundle: &Bundle) -> Vec<RustFhirModule> {
+const RESOURCE_COMMON_FIELDS: &[&str] = &[
+    "id",
+    "url",
+    "meta",
+    "implicitRules",
+    "language",
+    "text",
+    "contained",
+];
+const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
+
+pub fn parse_modules<'a>(
+    bundle: &Bundle,
+    type_hint_collector: &mut TypeHints,
+) -> Vec<RustFhirModule> {
     flatten_bundle(bundle)
         .filter(|s| s.kind != "logical")
         .filter(|s| !ABSTRACT_RESOURCES.contains(&s.name.as_str()))
@@ -53,7 +66,8 @@ pub fn parse_bundle<'a>(bundle: &Bundle) -> Vec<RustFhirModule> {
             };
 
             let resource_name = if is_resource {
-                Some(s.name.to_string())
+                let name = s.name.to_string();
+                Some(name)
             } else {
                 None
             };
@@ -67,6 +81,7 @@ pub fn parse_bundle<'a>(bundle: &Bundle) -> Vec<RustFhirModule> {
 
             parse_struct(
                 &mut module,
+                type_hint_collector,
                 &s.name,
                 resource_name,
                 &s.snapshot.element.iter().collect::<Vec<_>>(),
@@ -87,6 +102,7 @@ fn flatten_bundle(bundle: &Bundle) -> impl Iterator<Item = &StructureDefinition>
 
 fn parse_struct(
     module_collector: &mut RustFhirModule,
+    type_hint_collector: &mut TypeHints,
     name: &str,
     resource_name: Option<String>,
     element_definitions: &[&ElementDefinition],
@@ -95,9 +111,11 @@ fn parse_struct(
 ) {
     let fields = parse_fields(
         module_collector,
+        type_hint_collector,
         name,
         element_definitions,
         element_path_strip_prefix,
+        resource_name.is_some(),
     );
 
     module_collector.structs.push(RustFhirStruct {
@@ -105,15 +123,17 @@ fn parse_struct(
         resource_name,
         is_primitive: PRIMITIVES.contains(&name),
         fields,
-        doc_comment: doc_comment,
+        doc_comment,
     })
 }
 
 fn parse_fields(
     module_collector: &mut RustFhirModule,
+    type_hint_collector: &mut TypeHints,
     struct_name: &str,
     element_definitions: &[&ElementDefinition],
     element_path_strip_prefix: &str,
+    is_resource: bool,
 ) -> Vec<RustFhirStructField> {
     let mut element_definition_grouped = LinkedHashMap::<_, Vec<_>>::new();
 
@@ -134,12 +154,14 @@ fn parse_fields(
 
     element_definition_grouped
         .iter()
+        .filter(|(_, d)| d[0].max.as_ref().unwrap() != "0")
         .map(|(field_name, element_definitions)| {
             let type_name = format!("{}{}", struct_name, field_name.to_rust_type_casing());
 
             if element_definitions.len() > 1 {
                 parse_struct(
                     module_collector,
+                    type_hint_collector,
                     &type_name,
                     None,
                     &element_definitions,
@@ -150,10 +172,12 @@ fn parse_fields(
 
             parse_field(
                 module_collector,
+                type_hint_collector,
                 struct_name,
                 &element_definitions[0],
                 element_path_strip_prefix,
                 element_definitions[0].definition.clone().unwrap(),
+                is_resource,
             )
         })
         .collect()
@@ -161,10 +185,12 @@ fn parse_fields(
 
 fn parse_field(
     module_collector: &mut RustFhirModule,
+    type_hint_collector: &mut TypeHints,
     struct_name: &str,
     element_definition: &ElementDefinition,
     element_path_strip_prefix: &str,
     doc_comment: String,
+    is_resource: bool,
 ) -> RustFhirStructField {
     let field_name = &element_definition.path[element_path_strip_prefix.len() + 1..];
 
@@ -189,6 +215,7 @@ fn parse_field(
 
         let contains_primitive = create_value_enum(
             module_collector,
+            type_hint_collector,
             &element_definition.path,
             &name,
             variants,
@@ -210,23 +237,43 @@ fn parse_field(
                     contains_primitive: false,
                 }
             } else {
+                collect_type_hint(
+                    type_hint_collector,
+                    &element_definition.path,
+                    code,
+                    is_resource,
+                );
+
                 match_field_type(&element_definition.path, code, false)
             }
         } else {
+            let content_reference = element_definition.content_reference.as_ref().unwrap();
+
+            collect_type_hint_content_reference(
+                type_hint_collector,
+                &element_definition.path,
+                content_reference,
+            );
+
             RustFhirFieldType {
-                name: map_content_reference(element_definition.content_reference.as_ref().unwrap()),
+                name: map_content_reference(content_reference),
                 r#box: false,
                 contains_primitive: false,
             }
         }
     };
 
+    let multiple = element_definition.max.as_deref().unwrap() == "*";
+    if multiple {
+        collect_type_hint_multiple(type_hint_collector, &element_definition.path, is_resource);
+    }
+
     RustFhirStructField {
         name: field_name.to_rust_identifier_casing(),
         fhir_name: field_name.into(),
         r#type: field_type,
         polymorph,
-        multiple: element_definition.max.as_ref().unwrap() != "1",
+        multiple,
         optional: element_definition.min.unwrap() == 0,
         doc_comment: element_definition.definition.clone().unwrap(),
     }
@@ -234,6 +281,7 @@ fn parse_field(
 
 fn create_value_enum<'a>(
     module_collector: &mut RustFhirModule,
+    type_hint_collector: &mut TypeHints,
     path: &str,
     enum_name: &str,
     types: Vec<&str>,
@@ -250,9 +298,14 @@ fn create_value_enum<'a>(
                 may_contain_primitive = true;
             }
 
+            let variant_name = t.rsplit(".").next().unwrap().to_rust_type_casing();
+            let variant_path = path.replace("[x]", &variant_name);
+
+            collect_type_hint(type_hint_collector, &variant_path, t, false);
+
             RustFhirEnumVariant {
                 // type like http://hl7.org/fhirpath/System.String
-                name: t.rsplit(".").next().unwrap().to_rust_type_casing(),
+                name: variant_name,
                 r#type: field_type,
             }
         })
@@ -308,11 +361,12 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldTyp
             contains_primitive: false,
         },
         r#type => {
-            let primitive = PRIMITIVES.contains(&r#type);
+            let is_primitive = PRIMITIVES.contains(&r#type);
+
             RustFhirFieldType {
                 name: format!("super::super::types::{}", r#type.to_rust_type_casing()),
-                r#box: !primitive || force_box,
-                contains_primitive: primitive,
+                r#box: !is_primitive || force_box,
+                contains_primitive: is_primitive,
             }
         }
     }
@@ -323,4 +377,95 @@ fn map_content_reference(content_reference: &str) -> String {
         .split(".")
         .map(|s| s.to_rust_type_casing())
         .collect::<String>()
+}
+
+fn collect_type_hint_multiple(type_hint_collector: &mut TypeHints, path: &str, is_resource: bool) {
+    if !should_collect_path_to_type_hints(&path, is_resource) {
+        return;
+    }
+
+    type_hint_collector.array_paths.insert(path.to_string());
+}
+
+fn collect_type_hint(
+    type_hint_collector: &mut TypeHints,
+    path: &str,
+    type_code: &str,
+    is_resource: bool,
+) {
+    if type_code.contains(".") {
+        return;
+    }
+
+    if !should_collect_path_to_type_hints(path, is_resource) {
+        return;
+    }
+
+    match type_code {
+        "boolean" => {
+            type_hint_collector.boolean_paths.insert(path.to_string());
+        }
+        "integer" => {
+            type_hint_collector.integer_paths.insert(path.to_string());
+        }
+        "unsignedInt" => {
+            type_hint_collector
+                .unsigned_integer_paths
+                .insert(path.to_string());
+        }
+        "positiveInt" => {
+            type_hint_collector
+                .positive_integer_paths
+                .insert(path.to_string());
+        }
+        "decimal" => {
+            type_hint_collector
+                .decimal_integer_paths
+                .insert(path.to_string());
+        }
+        code => {
+            if PRIMITIVES.contains(&code) {
+                type_hint_collector
+                    .other_primitives_paths
+                    .insert(path.to_string());
+            } else {
+                type_hint_collector
+                    .type_paths
+                    .insert(path.to_string(), type_code.to_string());
+            }
+        }
+    }
+}
+
+fn should_collect_path_to_type_hints(path: &str, is_resource: bool) -> bool {
+    let path_split: Vec<_> = path.split(".").map(|s| s.to_owned()).collect();
+
+    // common resource fields are handled separately
+    if is_resource
+        && path_split.len() == 2
+        && RESOURCE_COMMON_FIELDS.contains(&path_split[1].as_str())
+    {
+        return false;
+    }
+
+    // some common array fields separately (because they are so many)
+    if path_split
+        .last()
+        .map(|l| COMMON_SEQUENCE_FIELDS.contains(&l.as_str()))
+        .unwrap_or(false)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+fn collect_type_hint_content_reference(
+    type_hint_collector: &mut TypeHints,
+    path: &str,
+    content_reference: &str,
+) {
+    type_hint_collector
+        .content_reference_paths
+        .insert(path.to_string(), content_reference[1..].to_string());
 }

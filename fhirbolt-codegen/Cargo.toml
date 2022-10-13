@@ -4,8 +4,10 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
+linked-hash-map = "0.5"
+linked_hash_set = "0.1"
 reqwest = { version = "0.11", features = ["blocking"] }
-zip = { version = "0.5", features = ["deflate"] }
+zip = { version = "0.6", features = ["deflate"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0", features = ["raw_value"]}
 regex = "1.6"
@@ -14,4 +16,3 @@ quote = "1.0"
 proc-macro2 = "1.0"
 convert_case = "0.4"
 chrono = "0.4"
-linked-hash-map = "0.5"

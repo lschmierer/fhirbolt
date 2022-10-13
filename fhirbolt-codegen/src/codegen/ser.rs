@@ -6,8 +6,8 @@ use crate::ir::{RustFhirEnum, RustFhirEnumVariant, RustFhirStruct, RustFhirStruc
 const XHTML_TYPE: &str = "super::super::types::Xhtml";
 const DECIMAL_TYPE: &str = "super::super::types::Decimal";
 
-pub fn implement_serialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
-    let stuct_name_ident = format_ident!("{}", r#struct.struct_name);
+pub fn implement_serialize(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
+    let struct_name_ident = format_ident!("{}", r#struct.struct_name);
 
     let serialize_resource_type_tokens =
         if let Some(resource_name) = r#struct.resource_name.as_ref() {
@@ -19,7 +19,7 @@ pub fn implement_serialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> 
     let serialized_fields_tokens = r#struct.fields.iter().map(|f| serialize_field(f, enums));
 
     quote! {
-        impl serde::ser::Serialize for #stuct_name_ident {
+        impl serde::ser::Serialize for #struct_name_ident {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -150,6 +150,16 @@ fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
         quote! { Ok(some) }
     };
 
+    let (check_extension_is_empty_tokens, extension_reference_tokens) = if field.fhir_name != "div"
+    {
+        (
+            quote! { || !self.#field_name_ident.extension.is_empty() },
+            quote! { &self.#field_name_ident.extension },
+        )
+    } else {
+        (quote! {}, quote! { &[] })
+    };
+
     if field.multiple {
         quote! {
             if !self.#field_name_ident.is_empty() {
@@ -219,10 +229,10 @@ fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
         quote! {
             #serialize_value_tokens
 
-            if self.#field_name_ident.id.is_some() || !self.#field_name_ident.extension.is_empty() {
+            if self.#field_name_ident.id.is_some() #check_extension_is_empty_tokens {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
                     id: &self.#field_name_ident.id,
-                    extension: &self.#field_name_ident.extension,
+                    extension: #extension_reference_tokens,
                 };
 
                 state.serialize_entry(#primitive_element_name, &primitive_element)?;

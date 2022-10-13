@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Narrative {
@@ -37,10 +37,10 @@ impl serde::ser::Serialize for Narrative {
             state.serialize_entry("_status", &primitive_element)?;
         }
         state.serialize_entry("div", &self.r#div.value)?;
-        if self.r#div.id.is_some() || !self.r#div.extension.is_empty() {
+        if self.r#div.id.is_some() {
             let primitive_element = super::super::serde_helpers::PrimitiveElement {
                 id: &self.r#div.id,
-                extension: &self.r#div.extension,
+                extension: &[],
             };
             state.serialize_entry("_div", &primitive_element)?;
         }
@@ -128,15 +128,13 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                             }
                             Field::DivPrimitiveElement => {
                                 let some = r#div.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
+                                if some.id.is_some() {
                                     return Err(serde::de::Error::duplicate_field("_div"));
                                 }
                                 let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
+                                    id, ..
                                 } = map_access.next_value()?;
                                 some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => {
                                 if config.mode == crate::DeserializationMode::Strict {

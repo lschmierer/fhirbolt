@@ -179,7 +179,7 @@ fn write_release_mod_file(fhir_release: &FhirRelease) {
     write!(file, "pub mod resources;\n").unwrap();
     write!(file, "\n").unwrap();
     write!(file, "mod resource;\n").unwrap();
-    write!(file, "mod serde_helpers;\n").unwrap();
+    write!(file, "pub(crate) mod serde_helpers;\n").unwrap();
     write!(file, "\n").unwrap();
     write!(file, "pub use resource::*;\n").unwrap();
 }

@@ -67,6 +67,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + ResourceOrElement>(
         println!("{}", file.name());
 
         let json_value: Value = serde_json::from_reader(file).unwrap();
+
         let resource: R =
             fhirbolt::json::from_value(json_value.clone(), Some(DeserializationConfig { mode }))
                 .unwrap();

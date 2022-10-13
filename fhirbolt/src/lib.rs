@@ -1,6 +1,7 @@
 #[warn(variant_size_differences)]
 pub mod json;
 pub mod model;
+pub mod xml;
 
 use std::cell::Cell;
 

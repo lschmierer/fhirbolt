@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Money Type: An amount of economic utility in some recognized currency."]
 #[derive(Default, Debug, Clone)]
 pub struct Money {

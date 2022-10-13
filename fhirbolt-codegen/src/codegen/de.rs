@@ -366,6 +366,17 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
             (quote! { _ }, quote! { value })
         };
 
+    let (check_extension_is_empty_tokens, extension_tokens, assign_extension_tokens) =
+        if field.fhir_name != "div" {
+            (
+                quote! { || !some.extension.is_empty() },
+                quote! { extension },
+                quote! { some.extension = extension; },
+            )
+        } else {
+            (quote! {}, quote! { .. }, quote! {})
+        };
+
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
@@ -406,7 +417,7 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
         }
     } else {
         let deserialize_value_tokens = match field.r#type.name.as_str() {
-            // xhtml is the only FHIR primtive where value is not optional
+            // xhtml is the only FHIR primitive where value is not optional
             XHTML_TYPE => quote! {
                 if !some.value.is_empty() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
@@ -431,13 +442,13 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
             Field::#field_enum_type_primitive_element_name => {
                 let some = #field_name_ident.get_or_insert(Default::default());
 
-                if some.id.is_some() || !some.extension.is_empty() {
+                if some.id.is_some() #check_extension_is_empty_tokens {
                     return Err(serde::de::Error::duplicate_field(#primitive_element_name));
                 }
 
-                let super::super::serde_helpers::PrimitiveElementOwned { id, extension } = map_access.next_value()?;
+                let super::super::serde_helpers::PrimitiveElementOwned { id, #extension_tokens } = map_access.next_value()?;
                 some.id = id;
-                some.extension = extension;
+                #assign_extension_tokens
             },
         }
     }

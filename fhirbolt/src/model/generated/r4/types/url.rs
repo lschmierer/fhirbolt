@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for url type: A URI that is a literal reference"]
 #[derive(Default, Debug, Clone)]
 pub struct Url {

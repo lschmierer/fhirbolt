@@ -1,4 +1,4 @@
-// Generated on 2022-09-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-11 by fhirbolt-codegen v0.1.0
 #[doc = "A fixed quantity (no comparator)"]
 #[derive(Default, Debug, Clone)]
 pub struct SimpleQuantity {
@@ -8,8 +8,6 @@ pub struct SimpleQuantity {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "The value of the measured amount. The value includes an implicit precision in the presentation of the value."]
     pub r#value: Option<super::super::types::Decimal>,
-    #[doc = "Not allowed to be used in this context"]
-    pub r#comparator: Vec<super::super::types::Code>,
     #[doc = "A human-readable form of the unit."]
     pub r#unit: Option<super::super::types::String>,
     #[doc = "The identification of the system that provides the coded form of the unit."]
@@ -44,38 +42,6 @@ impl serde::ser::Serialize for SimpleQuantity {
                     extension: &some.extension,
                 };
                 state.serialize_entry("_value", &primitive_element)?;
-            }
-        }
-        if !self.r#comparator.is_empty() {
-            let values = self
-                .r#comparator
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("comparator", &values)?;
-            }
-            let requires_elements = self
-                .r#comparator
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#comparator
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
-                            })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_comparator", &primitive_elements)?;
             }
         }
         if let Some(some) = self.r#unit.as_ref() {
@@ -136,10 +102,6 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            #[serde(rename = "comparator")]
-            Comparator,
-            #[serde(rename = "_comparator")]
-            ComparatorPrimitiveElement,
             #[serde(rename = "unit")]
             Unit,
             #[serde(rename = "_unit")]
@@ -167,7 +129,6 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                 let mut r#id: Option<std::string::String> = None;
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#value: Option<super::super::types::Decimal> = None;
-                let mut r#comparator: Option<Vec<super::super::types::Code>> = None;
                 let mut r#unit: Option<super::super::types::String> = None;
                 let mut r#system: Option<super::super::types::Uri> = None;
                 let mut r#code: Option<super::super::types::Code> = None;
@@ -206,56 +167,6 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                 } = map_access.next_value()?;
                                 some.id = id;
                                 some.extension = extension;
-                            }
-                            Field::Comparator => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#comparator.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("comparator"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
-                                    }
-                                }
-                            }
-                            Field::ComparatorPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#comparator.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_comparator"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
-                                    }
-                                }
                             }
                             Field::Unit => {
                                 let some = r#unit.get_or_insert(Default::default());
@@ -321,15 +232,7 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                 if config.mode == crate::DeserializationMode::Strict {
                                     return Err(serde::de::Error::unknown_field(
                                         &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "value",
-                                            "comparator",
-                                            "unit",
-                                            "system",
-                                            "code",
-                                        ],
+                                        &["id", "extension", "value", "unit", "system", "code"],
                                     ));
                                 }
                             }
@@ -339,7 +242,6 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#value,
-                        r#comparator: r#comparator.unwrap_or(vec![]),
                         r#unit,
                         r#system,
                         r#code,
