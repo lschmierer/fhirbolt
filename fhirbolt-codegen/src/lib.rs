@@ -3,7 +3,9 @@ mod codegen;
 mod ir;
 pub mod model;
 
-use codegen::{generate_modules, generate_resource_enum, generate_serde_helpers};
+use codegen::{
+    generate_modules, generate_resource_enum, generate_serde_helpers, generate_type_hints,
+};
 use proc_macro2::TokenStream;
 
 use ir::parse_modules;
@@ -14,6 +16,7 @@ pub struct Generated {
     pub resources_source_files: Vec<SourceFile>,
     pub resource_enum: SourceFile,
     pub serde_helpers: SourceFile,
+    pub type_hints: TokenStream,
 }
 pub struct SourceFile {
     pub name: String,
@@ -32,6 +35,7 @@ pub fn generate_all<'a>(types_bundle: &'a Bundle, resources_bundle: &'a Bundle) 
         types_source_files,
         resources_source_files,
         resource_enum: generate_resource_enum(&resource_modules),
-        serde_helpers: generate_serde_helpers(&type_hints),
+        serde_helpers: generate_serde_helpers(),
+        type_hints: generate_type_hints(&type_hints),
     }
 }

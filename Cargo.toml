@@ -2,4 +2,7 @@
 members = [
     "fhirbolt",
     "fhirbolt-codegen",
+    "fhirbolt-model",
+    "fhirbolt-serde",
+    "fhirbolt-shared",
 ]

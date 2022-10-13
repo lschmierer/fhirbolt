@@ -83,7 +83,7 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                             #field_mut_vars_tokens
                         )*
 
-                        crate::DESERIALIZATION_CONFIG.with(|config| {
+                        fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
                             let config = config.get();
 
                             while let Some(map_access_key) = map_access.next_key()? {
@@ -92,7 +92,7 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                                     #(
                                         #deserialize_fields_tokens
                                     )*
-                                    Field::Unknown(key) => if config.mode == crate::DeserializationMode::Strict {
+                                    Field::Unknown(key) => if config.mode == fhirbolt_shared::DeserializationMode::Strict {
                                         return Err(serde::de::Error::unknown_field(
                                             &key,
                                             &[
@@ -227,7 +227,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
     } else {
         if field.polymorph {
             quote! {
-                #field_name_ident: if config.mode == crate::DeserializationMode::Lax {
+                #field_name_ident: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
                     #field_name_ident.unwrap_or(Default::default())
                 } else {
                     #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?
@@ -235,7 +235,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
             }
         } else {
             quote! {
-                #field_name_ident: if config.mode == crate::DeserializationMode::Lax {
+                #field_name_ident: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
                     #field_name_ident.unwrap_or(Default::default())
                 } else {
                     #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?

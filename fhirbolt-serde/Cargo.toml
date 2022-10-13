@@ -1,0 +1,15 @@
+[package]
+name = "fhirbolt-serde"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lazy_static = "1.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["arbitrary_precision", "preserve_order"] }
+quick-xml = "0.25"
+
+fhirbolt-model = { path = "../fhirbolt-model" }
+fhirbolt-shared = { path = "../fhirbolt-shared" }

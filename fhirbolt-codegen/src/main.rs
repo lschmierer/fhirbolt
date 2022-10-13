@@ -26,23 +26,27 @@ impl fmt::Display for FhirRelease {
 
 const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4];
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
-const OUTPUT_DIRECTORY: &str = "fhirbolt/src/model/generated";
 
-fn tmp_dir() -> PathBuf {
+const MODEL_OUTPUT_DIRECTORY: &str = "fhirbolt-model/src/generated";
+const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-serde/src/helpers/type_hints/generated";
+
+fn tmp_dir(fhir_release: &FhirRelease) -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .unwrap()
         .join("target")
-        .join("fhirbolt-codegen");
+        .join("tmp")
+        .join("fhirbolt")
+        .join(format!("{}", fhir_release.to_string().to_lowercase()));
 
     if !dir.exists() {
-        fs::create_dir(&dir).unwrap();
+        fs::create_dir_all(&dir).unwrap();
     }
     dir
 }
 
 fn fhir_definitions_json_zip(fhir_release: &FhirRelease) -> PathBuf {
-    tmp_dir().join(format!("{}.zip", fhir_release.to_string().to_lowercase()))
+    tmp_dir(fhir_release).join("definitions.json.zip")
 }
 
 fn fhir_definitions_json_download_url(fhir_release: &FhirRelease) -> String {
@@ -102,11 +106,11 @@ fn parse_bundle(json: &str) -> Bundle {
     Bundle::from_json_str(json).unwrap()
 }
 
-fn generate_dir() -> PathBuf {
+fn generate_dir(dir: &str) -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .unwrap()
-        .join(OUTPUT_DIRECTORY);
+        .join(dir);
 
     if !dir.exists() {
         fs::create_dir_all(&dir).unwrap();
@@ -115,42 +119,48 @@ fn generate_dir() -> PathBuf {
 }
 
 fn clear_generated() {
-    fs::remove_dir_all(generate_dir()).unwrap();
+    fs::remove_dir_all(generate_dir(MODEL_OUTPUT_DIRECTORY)).unwrap();
+    fs::remove_dir_all(generate_dir(TYPE_HINTS_OUTPUT_DIRECTORY)).unwrap();
 }
 
-fn output_release_dir(fhir_release: &FhirRelease) -> PathBuf {
-    let dir = generate_dir().join(fhir_release.to_string().to_lowercase());
+fn model_output_release_dir(fhir_release: &FhirRelease) -> PathBuf {
+    let dir = generate_dir(MODEL_OUTPUT_DIRECTORY).join(fhir_release.to_string().to_lowercase());
     if !dir.exists() {
         fs::create_dir(&dir).unwrap();
     }
     dir
 }
 
-fn output_source_dir(fhir_release: &FhirRelease, kind: &str) -> PathBuf {
-    let dir = output_release_dir(fhir_release).join(kind);
+fn model_output_source_dir(fhir_release: &FhirRelease, kind: &str) -> PathBuf {
+    let dir = model_output_release_dir(fhir_release).join(kind);
     if !dir.exists() {
         fs::create_dir(&dir).unwrap();
     }
     dir
 }
 
-fn output_source_file(fhir_release: &FhirRelease, kind: &str, name: &str) -> PathBuf {
-    output_source_dir(fhir_release, kind).join(format!("{}.rs", name))
+fn model_output_source_file(fhir_release: &FhirRelease, kind: &str, name: &str) -> PathBuf {
+    model_output_source_dir(fhir_release, kind).join(format!("{}.rs", name))
 }
 
-fn write_source_files(fhir_release: &FhirRelease, kind: &str, source_files: &[SourceFile]) {
+fn write_model_source_files(fhir_release: &FhirRelease, kind: &str, source_files: &[SourceFile]) {
     println!("Writing {}...", kind);
 
     let mut mod_names = vec![];
     for SourceFile { name, source } in source_files {
-        write_source_file(fhir_release, kind, &name, source);
+        write_model_source_file(fhir_release, kind, &name, source);
         mod_names.push(name.as_str());
     }
-    write_source_mod_file(&fhir_release, kind, &mod_names);
+    write_model_source_mod_file(&fhir_release, kind, &mod_names);
 }
 
-fn write_source_file(fhir_release: &FhirRelease, kind: &str, name: &str, tokens: &TokenStream) {
-    let file_path = output_source_file(fhir_release, kind, name);
+fn write_model_source_file(
+    fhir_release: &FhirRelease,
+    kind: &str,
+    name: &str,
+    tokens: &TokenStream,
+) {
+    let file_path = model_output_source_file(fhir_release, kind, name);
     let mut file =
         File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
 
@@ -164,16 +174,16 @@ fn write_source_file(fhir_release: &FhirRelease, kind: &str, name: &str, tokens:
     write!(file, "{}", tokens).unwrap();
 }
 
-fn write_root_mod_file() {
-    let mut file = File::create(&generate_dir().join("mod.rs")).unwrap();
+fn write_root_mod_file(path: &str) {
+    let mut file = File::create(&generate_dir(path).join("mod.rs")).unwrap();
 
     for fhir_release in BUILD_FHIR_RELEASES {
         write!(file, "pub mod {};", fhir_release.to_string().to_lowercase()).unwrap();
     }
 }
 
-fn write_release_mod_file(fhir_release: &FhirRelease) {
-    let mut file = File::create(&output_release_dir(fhir_release).join("mod.rs")).unwrap();
+fn write_model_release_mod_file(fhir_release: &FhirRelease) {
+    let mut file = File::create(&model_output_release_dir(fhir_release).join("mod.rs")).unwrap();
 
     write!(file, "pub mod types;\n").unwrap();
     write!(file, "pub mod resources;\n").unwrap();
@@ -184,8 +194,9 @@ fn write_release_mod_file(fhir_release: &FhirRelease) {
     write!(file, "pub use resource::*;\n").unwrap();
 }
 
-fn write_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[&str]) {
-    let mut file = File::create(&output_source_dir(fhir_release, kind).join("mod.rs")).unwrap();
+fn write_model_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[&str]) {
+    let mut file =
+        File::create(&model_output_source_dir(fhir_release, kind).join("mod.rs")).unwrap();
 
     for r#type in types {
         let mod_name = r#type;
@@ -198,6 +209,26 @@ fn write_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[&str])
     }
 }
 
+fn type_hint_output_source_file(fhir_release: &FhirRelease) -> PathBuf {
+    generate_dir(TYPE_HINTS_OUTPUT_DIRECTORY)
+        .join(format!("{}.rs", fhir_release.to_string().to_lowercase()))
+}
+
+fn write_type_hint_source_file(fhir_release: &FhirRelease, tokens: &TokenStream) {
+    let file_path = type_hint_output_source_file(fhir_release);
+    let mut file =
+        File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
+
+    write!(
+        file,
+        "// Generated on {} by fhirbolt-codegen v{}\n",
+        Utc::today().naive_utc(),
+        env!("CARGO_PKG_VERSION")
+    )
+    .unwrap();
+    write!(file, "{}", tokens).unwrap();
+}
+
 fn generate_and_write(
     fhir_release: &FhirRelease,
     types_bundle: &Bundle,
@@ -205,26 +236,28 @@ fn generate_and_write(
 ) {
     let generated = generate_all(types_bundle, resources_bundle);
 
-    write_source_files(&fhir_release, "types", &generated.types_source_files);
-    write_source_files(
+    write_model_source_files(&fhir_release, "types", &generated.types_source_files);
+    write_model_source_files(
         &fhir_release,
         "resources",
         &generated.resources_source_files,
     );
 
-    write_source_file(
+    write_model_source_file(
         fhir_release,
         ".",
         &generated.resource_enum.name,
         &generated.resource_enum.source,
     );
 
-    write_source_file(
+    write_model_source_file(
         fhir_release,
         ".",
         &generated.serde_helpers.name,
         &generated.serde_helpers.source,
     );
+
+    write_type_hint_source_file(fhir_release, &generated.type_hints);
 }
 
 fn rustfmt() {
@@ -238,11 +271,12 @@ fn rustfmt() {
 fn main() {
     clear_generated();
 
-    write_root_mod_file();
+    write_root_mod_file(MODEL_OUTPUT_DIRECTORY);
+    write_root_mod_file(TYPE_HINTS_OUTPUT_DIRECTORY);
 
     for fhir_release in BUILD_FHIR_RELEASES {
         println!("Generating FHIR {}...", fhir_release);
-        write_release_mod_file(&fhir_release);
+        write_model_release_mod_file(&fhir_release);
 
         let zip_file = download_fhir_definitions(fhir_release);
         let mut zip_archive = open_zip_archive(&zip_file);

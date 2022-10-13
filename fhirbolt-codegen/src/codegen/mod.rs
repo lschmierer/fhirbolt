@@ -1,6 +1,7 @@
 mod de;
 mod ser;
 mod serde_helpers;
+mod type_hints;
 
 use lazy_static::lazy_static;
 use proc_macro2::TokenStream;
@@ -13,8 +14,8 @@ use crate::{
     SourceFile,
 };
 
-pub use self::serde_helpers::generate_serde_helpers;
 use self::{de::implement_deserialze, ser::implement_serialize};
+pub use self::{serde_helpers::generate_serde_helpers, type_hints::generate_type_hints};
 
 lazy_static! {
     static ref URL_REGEX: Regex = Regex::new(r"http[\w./:]*[\w/:]").unwrap();
@@ -81,16 +82,17 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
                 Invalid,
             }
 
-            impl crate::model::ResourceOrElement for Resource {}
+            impl crate::AnyResource for Resource {}
         },
     }
 }
 
 fn generate_module(module: &RustFhirModule) -> SourceFile {
+    let mut first = Some(true);
     let structs_tokens = module
         .structs
         .iter()
-        .map(|s| generate_struct(s, &module.enums));
+        .map(|s| generate_struct(s, &module.enums, first.take().unwrap_or(false)));
     let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
@@ -106,9 +108,19 @@ fn generate_module(module: &RustFhirModule) -> SourceFile {
     }
 }
 
-fn generate_struct(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
+fn generate_struct(
+    r#struct: &RustFhirStruct,
+    enums: &[RustFhirEnum],
+    is_resource: bool,
+) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
+
+    let impl_any_resource_tokens = if is_resource {
+        quote! { impl crate::AnyResource for #name_ident {} }
+    } else {
+        quote! {}
+    };
 
     let serde_impl_tokens = if !r#struct.is_primitive {
         let serialize_impl_tokens = implement_serialize(&r#struct, enums);
@@ -132,7 +144,7 @@ fn generate_struct(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenSt
             )*
         }
 
-        impl crate::model::ResourceOrElement for #name_ident {}
+        #impl_any_resource_tokens
 
         #serde_impl_tokens
     }
@@ -196,8 +208,6 @@ fn generate_enum(r#enum: &RustFhirEnum) -> TokenStream {
             )*
             Invalid,
         }
-
-        impl crate::model::ResourceOrElement for #name_ident {}
 
         impl Default for #name_ident {
             fn default() -> #name_ident {
