@@ -1,7 +1,9 @@
 use serde::de::{Deserialize, DeserializeOwned};
 
-use fhirbolt_model::AnyResource;
-use fhirbolt_shared::{with_config, DeserializationConfig};
+use fhirbolt_shared::{
+    serde_config::de::{with_config, DeserializationConfig},
+    AnyResource,
+};
 
 use crate::json::error::Result;
 

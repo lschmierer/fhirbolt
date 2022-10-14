@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
 #[derive(Default, Debug, Clone)]
 pub struct MolecularSequenceReferenceSeq {
@@ -27,7 +27,11 @@ pub struct MolecularSequenceReferenceSeq {
     #[doc = "End position of the window on the reference sequence. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#window_end: Option<super::super::types::Integer>,
 }
-impl crate::AnyResource for MolecularSequenceReferenceSeq {}
+impl crate::AnyResource for MolecularSequenceReferenceSeq {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -207,7 +211,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                 let mut r#strand: Option<super::super::types::Code> = None;
                 let mut r#window_start: Option<super::super::types::Integer> = None;
                 let mut r#window_end: Option<super::super::types::Integer> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -377,27 +381,27 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "chromosome",
+                                        "genomeBuild",
+                                        "orientation",
+                                        "referenceSeqId",
+                                        "referenceSeqPointer",
+                                        "referenceSeqString",
+                                        "strand",
+                                        "windowStart",
+                                        "windowEnd",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceReferenceSeq {
@@ -587,7 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                 let mut r#reference_allele: Option<super::super::types::String> = None;
                 let mut r#cigar: Option<super::super::types::String> = None;
                 let mut r#variant_pointer: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -727,24 +731,24 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                 }
                                 r#variant_pointer = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "start",
-                                            "end",
-                                            "observedAllele",
-                                            "referenceAllele",
-                                            "cigar",
-                                            "variantPointer",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "start",
+                                        "end",
+                                        "observedAllele",
+                                        "referenceAllele",
+                                        "cigar",
+                                        "variantPointer",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceVariant {
@@ -1120,7 +1124,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                 let mut r#precision: Option<Vec<super::super::types::Decimal>> = None;
                 let mut r#sensitivity: Option<Vec<super::super::types::Decimal>> = None;
                 let mut r#f_measure: Option<Vec<super::super::types::Decimal>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1497,25 +1501,25 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                     }
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "score",
+                                        "numTP",
+                                        "numFP",
+                                        "numFN",
+                                        "precision",
+                                        "sensitivity",
+                                        "fMeasure",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceQualityRoc {
@@ -1862,7 +1866,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                 let mut r#recall: Option<super::super::types::Decimal> = None;
                 let mut r#f_score: Option<super::super::types::Decimal> = None;
                 let mut r#roc: Option<MolecularSequenceQualityRoc> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2132,40 +2136,42 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                 }
                                 r#roc = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "standardSequence",
+                                        "start",
+                                        "end",
+                                        "score",
+                                        "method",
+                                        "truthTP",
+                                        "queryTP",
+                                        "truthFN",
+                                        "queryFP",
+                                        "gtFP",
+                                        "precision",
+                                        "recall",
+                                        "fScore",
+                                        "roc",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceQuality {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -2371,7 +2377,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                 let mut r#dataset_id: Option<super::super::types::String> = None;
                 let mut r#variantset_id: Option<super::super::types::String> = None;
                 let mut r#readset_id: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2515,31 +2521,33 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "url",
+                                        "name",
+                                        "datasetId",
+                                        "variantsetId",
+                                        "readsetId",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceRepository {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -2658,7 +2666,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                     None;
                 let mut r#start: Option<super::super::types::Integer> = None;
                 let mut r#end: Option<super::super::types::Integer> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2722,14 +2730,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "start", "end"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "start", "end"],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceStructureVariantOuter {
@@ -2847,7 +2855,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                     None;
                 let mut r#start: Option<super::super::types::Integer> = None;
                 let mut r#end: Option<super::super::types::Integer> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2911,14 +2919,14 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "start", "end"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "start", "end"],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceStructureVariantInner {
@@ -3060,7 +3068,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                 let mut r#length: Option<super::super::types::Integer> = None;
                 let mut r#outer: Option<MolecularSequenceStructureVariantOuter> = None;
                 let mut r#inner: Option<MolecularSequenceStructureVariantInner> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3142,23 +3150,23 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                                 }
                                 r#inner = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "variantType",
-                                            "exact",
-                                            "length",
-                                            "outer",
-                                            "inner",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "variantType",
+                                        "exact",
+                                        "length",
+                                        "outer",
+                                        "inner",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequenceStructureVariant {
@@ -3477,7 +3485,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                 let mut r#repository: Option<Vec<MolecularSequenceRepository>> = None;
                 let mut r#pointer: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#structure_variant: Option<Vec<MolecularSequenceStructureVariant>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3728,39 +3736,39 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                 }
                                 r#structure_variant = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "coordinateSystem",
+                                        "patient",
+                                        "specimen",
+                                        "device",
+                                        "performer",
+                                        "quantity",
+                                        "referenceSeq",
+                                        "variant",
+                                        "observedSeq",
+                                        "quality",
+                                        "readCoverage",
+                                        "repository",
+                                        "pointer",
+                                        "structureVariant",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MolecularSequence {
@@ -3775,7 +3783,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#type,
                         r#coordinate_system: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#coordinate_system.unwrap_or(Default::default())
                         } else {

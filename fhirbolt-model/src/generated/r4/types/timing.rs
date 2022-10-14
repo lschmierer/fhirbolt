@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
@@ -50,7 +50,11 @@ pub struct TimingRepeat {
     #[doc = "The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event."]
     pub r#offset: Option<super::super::types::UnsignedInt>,
 }
-impl crate::AnyResource for TimingRepeat {}
+impl crate::AnyResource for TimingRepeat {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for TimingRepeat {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -433,7 +437,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                 let mut r#time_of_day: Option<Vec<super::super::types::Time>> = None;
                 let mut r#when: Option<Vec<super::super::types::Code>> = None;
                 let mut r#offset: Option<super::super::types::UnsignedInt> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -842,34 +846,34 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "boundsDuration",
+                                        "boundsRange",
+                                        "boundsPeriod",
+                                        "count",
+                                        "countMax",
+                                        "duration",
+                                        "durationMax",
+                                        "durationUnit",
+                                        "frequency",
+                                        "frequencyMax",
+                                        "period",
+                                        "periodMax",
+                                        "periodUnit",
+                                        "dayOfWeek",
+                                        "timeOfDay",
+                                        "when",
+                                        "offset",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(TimingRepeat {
@@ -1011,7 +1015,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                 let mut r#event: Option<Vec<super::super::types::DateTime>> = None;
                 let mut r#repeat: Option<TimingRepeat> = None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1097,21 +1101,21 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 }
                                 r#code = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "event",
-                                            "repeat",
-                                            "code",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "event",
+                                        "repeat",
+                                        "code",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Timing {

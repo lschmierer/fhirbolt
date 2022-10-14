@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case."]
 #[derive(Default, Debug, Clone)]
 pub struct BodyStructure {
@@ -35,7 +35,11 @@ pub struct BodyStructure {
     #[doc = "The person to which the body site belongs."]
     pub r#patient: Box<super::super::types::Reference>,
 }
-impl crate::AnyResource for BodyStructure {}
+impl crate::AnyResource for BodyStructure {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for BodyStructure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -214,7 +218,7 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#image: Option<Vec<Box<super::super::types::Attachment>>> = None;
                 let mut r#patient: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -385,31 +389,31 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                 }
                                 r#patient = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "morphology",
-                                            "location",
-                                            "locationQualifier",
-                                            "description",
-                                            "image",
-                                            "patient",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "morphology",
+                                        "location",
+                                        "locationQualifier",
+                                        "description",
+                                        "image",
+                                        "patient",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(BodyStructure {
@@ -428,7 +432,9 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                         r#location_qualifier: r#location_qualifier.unwrap_or(vec![]),
                         r#description,
                         r#image: r#image.unwrap_or(vec![]),
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?

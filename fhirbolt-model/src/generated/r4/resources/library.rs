@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the contents of the library."]
 #[derive(Debug, Clone)]
 pub enum LibrarySubject {
@@ -93,7 +93,11 @@ pub struct Library {
     #[doc = "The content of the library as an Attachment. The content may be a reference to a url, or may be directly embedded as a base-64 string. Either way, the contentType of the attachment determines how to interpret the content."]
     pub r#content: Vec<Box<super::super::types::Attachment>>,
 }
-impl crate::AnyResource for Library {}
+impl crate::AnyResource for Library {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Library {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -578,7 +582,7 @@ impl<'de> serde::de::Deserialize<'de> for Library {
                 let mut r#data_requirement: Option<Vec<Box<super::super::types::DataRequirement>>> =
                     None;
                 let mut r#content: Option<Vec<Box<super::super::types::Attachment>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1089,55 +1093,55 @@ impl<'de> serde::de::Deserialize<'de> for Library {
                                 }
                                 r#content = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "type",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "parameter",
-                                            "dataRequirement",
-                                            "content",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "identifier",
+                                        "version",
+                                        "name",
+                                        "title",
+                                        "subtitle",
+                                        "status",
+                                        "experimental",
+                                        "type",
+                                        "subjectCodeableConcept",
+                                        "subjectReference",
+                                        "date",
+                                        "publisher",
+                                        "contact",
+                                        "description",
+                                        "useContext",
+                                        "jurisdiction",
+                                        "purpose",
+                                        "usage",
+                                        "copyright",
+                                        "approvalDate",
+                                        "lastReviewDate",
+                                        "effectivePeriod",
+                                        "topic",
+                                        "author",
+                                        "editor",
+                                        "reviewer",
+                                        "endorser",
+                                        "relatedArtifact",
+                                        "parameter",
+                                        "dataRequirement",
+                                        "content",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Library {
@@ -1155,13 +1159,17 @@ impl<'de> serde::de::Deserialize<'de> for Library {
                         r#name,
                         r#title,
                         r#subtitle,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#experimental,
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?

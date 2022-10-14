@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
 #[derive(Default, Debug, Clone)]
 pub struct EffectEvidenceSynthesisSampleSize {
@@ -15,7 +15,11 @@ pub struct EffectEvidenceSynthesisSampleSize {
     #[doc = "Number of participants included in this evidence synthesis."]
     pub r#number_of_participants: Option<super::super::types::Integer>,
 }
-impl crate::AnyResource for EffectEvidenceSynthesisSampleSize {}
+impl crate::AnyResource for EffectEvidenceSynthesisSampleSize {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for EffectEvidenceSynthesisSampleSize {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -122,7 +126,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisSampleSize {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#number_of_studies: Option<super::super::types::Integer> = None;
                 let mut r#number_of_participants: Option<super::super::types::Integer> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -216,21 +220,21 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisSampleSize {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "numberOfStudies",
-                                            "numberOfParticipants",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "description",
+                                        "numberOfStudies",
+                                        "numberOfParticipants",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesisSampleSize {
@@ -364,7 +368,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisResultsByExposu
                 let mut r#variant_state: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#risk_evidence_synthesis: Option<Box<super::super::types::Reference>> =
                     None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -444,22 +448,22 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisResultsByExposu
                                 }
                                 r#risk_evidence_synthesis = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "exposureState",
-                                            "variantState",
-                                            "riskEvidenceSynthesis",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "description",
+                                        "exposureState",
+                                        "variantState",
+                                        "riskEvidenceSynthesis",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesisResultsByExposure {
@@ -470,7 +474,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisResultsByExposu
                         r#exposure_state,
                         r#variant_state,
                         r#risk_evidence_synthesis: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#risk_evidence_synthesis.unwrap_or(Default::default())
                         } else {
@@ -620,7 +624,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimateP
                 let mut r#level: Option<super::super::types::Decimal> = None;
                 let mut r#from: Option<super::super::types::Decimal> = None;
                 let mut r#to: Option<super::super::types::Decimal> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -710,22 +714,22 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimateP
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "level",
-                                            "from",
-                                            "to",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "level",
+                                        "from",
+                                        "to",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
@@ -881,7 +885,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimate 
                 let mut r#precision_estimate: Option<
                     Vec<EffectEvidenceSynthesisEffectEstimatePrecisionEstimate>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -971,24 +975,24 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimate 
                                 }
                                 r#precision_estimate = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "type",
-                                            "variantState",
-                                            "value",
-                                            "unitOfMeasure",
-                                            "precisionEstimate",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "description",
+                                        "type",
+                                        "variantState",
+                                        "value",
+                                        "unitOfMeasure",
+                                        "precisionEstimate",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesisEffectEstimate {
@@ -1094,7 +1098,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertaintyCertai
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#rating: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1136,21 +1140,21 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertaintyCertai
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "rating",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "rating",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
@@ -1255,7 +1259,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertainty {
                 let mut r#certainty_subcomponent: Option<
                     Vec<EffectEvidenceSynthesisCertaintyCertaintySubcomponent>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1299,21 +1303,21 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertainty {
                                 }
                                 r#certainty_subcomponent = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "rating",
-                                            "note",
-                                            "certaintySubcomponent",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "rating",
+                                        "note",
+                                        "certaintySubcomponent",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesisCertainty {
@@ -1847,7 +1851,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesis {
                 let mut r#effect_estimate: Option<Vec<EffectEvidenceSynthesisEffectEstimate>> =
                     None;
                 let mut r#certainty: Option<Vec<EffectEvidenceSynthesisCertainty>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2306,56 +2310,56 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesis {
                                 }
                                 r#certainty = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "synthesisType",
-                                            "studyType",
-                                            "population",
-                                            "exposure",
-                                            "exposureAlternative",
-                                            "outcome",
-                                            "sampleSize",
-                                            "resultsByExposure",
-                                            "effectEstimate",
-                                            "certainty",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "identifier",
+                                        "version",
+                                        "name",
+                                        "title",
+                                        "status",
+                                        "date",
+                                        "publisher",
+                                        "contact",
+                                        "description",
+                                        "note",
+                                        "useContext",
+                                        "jurisdiction",
+                                        "copyright",
+                                        "approvalDate",
+                                        "lastReviewDate",
+                                        "effectivePeriod",
+                                        "topic",
+                                        "author",
+                                        "editor",
+                                        "reviewer",
+                                        "endorser",
+                                        "relatedArtifact",
+                                        "synthesisType",
+                                        "studyType",
+                                        "population",
+                                        "exposure",
+                                        "exposureAlternative",
+                                        "outcome",
+                                        "sampleSize",
+                                        "resultsByExposure",
+                                        "effectEstimate",
+                                        "certainty",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EffectEvidenceSynthesis {
@@ -2372,7 +2376,9 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesis {
                         r#version,
                         r#name,
                         r#title,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
@@ -2396,25 +2402,31 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesis {
                         r#related_artifact: r#related_artifact.unwrap_or(vec![]),
                         r#synthesis_type,
                         r#study_type,
-                        r#population: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#population: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#population.unwrap_or(Default::default())
                         } else {
                             r#population.ok_or(serde::de::Error::missing_field("population"))?
                         },
-                        r#exposure: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#exposure: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#exposure.unwrap_or(Default::default())
                         } else {
                             r#exposure.ok_or(serde::de::Error::missing_field("exposure"))?
                         },
                         r#exposure_alternative: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#exposure_alternative.unwrap_or(Default::default())
                         } else {
                             r#exposure_alternative
                                 .ok_or(serde::de::Error::missing_field("exposureAlternative"))?
                         },
-                        r#outcome: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#outcome: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#outcome.unwrap_or(Default::default())
                         } else {
                             r#outcome.ok_or(serde::de::Error::missing_field("outcome"))?

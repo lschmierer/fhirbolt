@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct MarketingStatus {
@@ -19,7 +19,11 @@ pub struct MarketingStatus {
     #[doc = "The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain."]
     pub r#restore_date: Option<super::super::types::DateTime>,
 }
-impl crate::AnyResource for MarketingStatus {}
+impl crate::AnyResource for MarketingStatus {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MarketingStatus {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -105,7 +109,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date_range: Option<Box<super::super::types::Period>> = None;
                 let mut r#restore_date: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -173,41 +177,47 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "dateRange",
-                                            "restoreDate",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "country",
+                                        "jurisdiction",
+                                        "status",
+                                        "dateRange",
+                                        "restoreDate",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MarketingStatus {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#country: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#country: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#country.unwrap_or(Default::default())
                         } else {
                             r#country.ok_or(serde::de::Error::missing_field("country"))?
                         },
                         r#jurisdiction,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#date_range: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#date_range: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#date_range.unwrap_or(Default::default())
                         } else {
                             r#date_range.ok_or(serde::de::Error::missing_field("dateRange"))?

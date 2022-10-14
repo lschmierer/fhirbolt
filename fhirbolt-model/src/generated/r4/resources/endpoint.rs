@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information."]
 #[derive(Default, Debug, Clone)]
 pub struct Endpoint {
@@ -41,7 +41,11 @@ pub struct Endpoint {
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
 }
-impl crate::AnyResource for Endpoint {}
+impl crate::AnyResource for Endpoint {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Endpoint {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -307,7 +311,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                 let mut r#payload_mime_type: Option<Vec<super::super::types::Code>> = None;
                 let mut r#address: Option<super::super::types::Url> = None;
                 let mut r#header: Option<Vec<super::super::types::String>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -604,34 +608,34 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                     }
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "connectionType",
+                                        "name",
+                                        "managingOrganization",
+                                        "contact",
+                                        "period",
+                                        "payloadType",
+                                        "payloadMimeType",
+                                        "address",
+                                        "header",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Endpoint {
@@ -644,13 +648,15 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#connection_type: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#connection_type.unwrap_or(Default::default())
                         } else {
@@ -663,7 +669,9 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                         r#period,
                         r#payload_type: r#payload_type.unwrap_or(vec![]),
                         r#payload_mime_type: r#payload_mime_type.unwrap_or(vec![]),
-                        r#address: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#address: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#address.unwrap_or(Default::default())
                         } else {
                             r#address.ok_or(serde::de::Error::missing_field("address"))?

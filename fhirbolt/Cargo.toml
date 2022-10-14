@@ -3,6 +3,10 @@ name = "fhirbolt"
 version = "0.1.0"
 edition = "2018"
 
+[features]
+r4 = ["fhirbolt-model/r4"]
+r4b = ["fhirbolt-model/r4b"]
+
 [dependencies]
 fhirbolt-model = { path = "../fhirbolt-model" }
 fhirbolt-serde = { path = "../fhirbolt-serde" }

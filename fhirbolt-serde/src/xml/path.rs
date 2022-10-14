@@ -1,11 +1,19 @@
-use crate::helpers::type_hints::TypeHints;
 use std::mem;
+
+use fhirbolt_shared::FhirRelease;
+
+use crate::helpers::type_hints::TypeHints;
 
 const RESOURCE_COMMON_PRIMITIVE_FIELDS: &[&str] = &["id", "url", "implicitRules", "language"];
 const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 
-fn type_hints() -> &'static TypeHints {
-    &crate::helpers::type_hints::r4::TYPE_HINTS
+fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
+    use crate::helpers::type_hints as th;
+
+    match fhir_release {
+        FhirRelease::R4 => &th::r4::TYPE_HINTS,
+        FhirRelease::R4B => unimplemented!(),
+    }
 }
 
 trait FirstLetterUppercase {
@@ -23,13 +31,15 @@ impl FirstLetterUppercase for &str {
 
 #[derive(Debug)]
 pub struct ElementPath {
+    fhir_release: FhirRelease,
     type_stack: Vec<TypePath>,
 }
 
 impl ElementPath {
-    pub fn new() -> ElementPath {
+    pub fn new(fhir_release: FhirRelease) -> ElementPath {
         ElementPath {
-            type_stack: vec![TypePath::empty()],
+            fhir_release,
+            type_stack: vec![TypePath::empty(fhir_release)],
         }
     }
 
@@ -51,7 +61,7 @@ impl ElementPath {
             }
         }
 
-        type_hints()
+        type_hints(self.fhir_release)
             .type_paths
             .get(&current_type_path.path())
             .map(|t| *t)
@@ -70,7 +80,7 @@ impl ElementPath {
                 .last()
                 .unwrap()
                 == "contained"
-                || type_hints()
+                || type_hints(self.fhir_release)
                     .type_paths
                     .get(&self.type_stack[self.type_stack.len() - 2].path())
                     == Some(&"Resource"))
@@ -87,7 +97,7 @@ impl ElementPath {
             || self.current_element_is_unsigned_integer()
             || self.current_element_is_positive_integer()
             || self.current_element_is_decimal()
-            || type_hints()
+            || type_hints(self.fhir_release)
             .other_primitives_paths
             .contains(&self.current_type_path().path())
 
@@ -105,46 +115,48 @@ impl ElementPath {
             .unwrap_or(false)
             // Resource.contained
             || current_type_path.len() == 2 && current_type_path.split().last().unwrap() == "contained"
-            || type_hints()
+            || type_hints(self.fhir_release)
             .array_paths
             .contains(&current_type_path.path())
     }
 
     pub fn current_element_is_boolean(&self) -> bool {
-        type_hints()
+        type_hints(self.fhir_release)
             .boolean_paths
             .contains(&self.current_type_path().path())
     }
 
     pub fn current_element_is_integer(&self) -> bool {
-        type_hints()
+        type_hints(self.fhir_release)
             .integer_paths
             .contains(&self.current_type_path().path())
     }
 
     pub fn current_element_is_unsigned_integer(&self) -> bool {
-        type_hints()
+        type_hints(self.fhir_release)
             .unsigned_integer_paths
             .contains(&self.current_type_path().path())
     }
 
     pub fn current_element_is_positive_integer(&self) -> bool {
-        type_hints()
+        type_hints(self.fhir_release)
             .positive_integer_paths
             .contains(&self.current_type_path().path())
     }
 
     pub fn current_element_is_decimal(&self) -> bool {
-        type_hints()
+        type_hints(self.fhir_release)
             .decimal_paths
             .contains(&self.current_type_path().path())
     }
 
     pub fn push(&mut self, element: &str) {
         match self.resolve_current_type() {
-            Some("Resource") => self.type_stack.push(TypePath::new(element)),
+            Some("Resource") => self
+                .type_stack
+                .push(TypePath::new(element, self.fhir_release)),
             Some(ty) => {
-                let mut type_path = TypePath::new(ty);
+                let mut type_path = TypePath::new(ty, self.fhir_release);
                 type_path.push(element);
                 self.type_stack.push(type_path);
             }
@@ -170,6 +182,7 @@ impl ElementPath {
 
 #[derive(Debug)]
 struct TypePath {
+    fhir_release: FhirRelease,
     path: String,
     content_reference_replacement_stack: Vec<ContentReferenceReplacement>,
 }
@@ -181,15 +194,17 @@ struct ContentReferenceReplacement {
 }
 
 impl TypePath {
-    fn new(typ_name: &str) -> TypePath {
+    fn new(typ_name: &str, fhir_release: FhirRelease) -> TypePath {
         TypePath {
+            fhir_release,
             path: typ_name.to_string(),
             content_reference_replacement_stack: vec![],
         }
     }
 
-    fn empty() -> TypePath {
+    fn empty(fhir_release: FhirRelease) -> TypePath {
         TypePath {
+            fhir_release,
             path: String::new(),
             content_reference_replacement_stack: vec![],
         }
@@ -212,7 +227,10 @@ impl TypePath {
     }
 
     fn push(&mut self, element: &str) {
-        if let Some(content_reference) = type_hints().content_reference_paths.get(self.path()) {
+        if let Some(content_reference) = type_hints(self.fhir_release)
+            .content_reference_paths
+            .get(self.path())
+        {
             self.content_reference_replacement_stack
                 .push(ContentReferenceReplacement {
                     content_reference,

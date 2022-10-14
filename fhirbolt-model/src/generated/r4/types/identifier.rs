@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Identifier Type: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.\n\nNeed to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation."]
 #[derive(Default, Debug, Clone)]
 pub struct Identifier {
@@ -19,7 +19,11 @@ pub struct Identifier {
     #[doc = "Organization that issued/manages the identifier."]
     pub r#assigner: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for Identifier {}
+impl crate::AnyResource for Identifier {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Identifier {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -134,7 +138,7 @@ impl<'de> serde::de::Deserialize<'de> for Identifier {
                 let mut r#value: Option<super::super::types::String> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 let mut r#assigner: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -228,23 +232,23 @@ impl<'de> serde::de::Deserialize<'de> for Identifier {
                                 }
                                 r#assigner = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "system",
-                                            "value",
-                                            "period",
-                                            "assigner",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "use",
+                                        "type",
+                                        "system",
+                                        "value",
+                                        "period",
+                                        "assigner",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Identifier {

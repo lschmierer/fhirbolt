@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Expressions that describe applicability criteria for the billing code."]
 #[derive(Default, Debug, Clone)]
 pub struct ChargeItemDefinitionApplicability {
@@ -15,7 +15,11 @@ pub struct ChargeItemDefinitionApplicability {
     #[doc = "An expression that returns true or false, indicating whether the condition is satisfied. When using FHIRPath expressions, the %context environment variable must be replaced at runtime with the ChargeItem resource to which this definition is applied."]
     pub r#expression: Option<super::super::types::String>,
 }
-impl crate::AnyResource for ChargeItemDefinitionApplicability {}
+impl crate::AnyResource for ChargeItemDefinitionApplicability {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ChargeItemDefinitionApplicability {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -122,7 +126,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#language: Option<super::super::types::String> = None;
                 let mut r#expression: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -206,21 +210,21 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "language",
-                                            "expression",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "description",
+                                        "language",
+                                        "expression",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ChargeItemDefinitionApplicability {
@@ -355,7 +359,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#factor: Option<super::super::types::Decimal> = None;
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -431,29 +435,31 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "code",
-                                            "factor",
-                                            "amount",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "code",
+                                        "factor",
+                                        "amount",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ChargeItemDefinitionPropertyGroupPriceComponent {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -548,7 +554,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
                 let mut r#price_component: Option<
                     Vec<ChargeItemDefinitionPropertyGroupPriceComponent>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -586,20 +592,20 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
                                 }
                                 r#price_component = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "applicability",
-                                            "priceComponent",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "applicability",
+                                        "priceComponent",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ChargeItemDefinitionPropertyGroup {
@@ -1147,7 +1153,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                 let mut r#instance: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#applicability: Option<Vec<ChargeItemDefinitionApplicability>> = None;
                 let mut r#property_group: Option<Vec<ChargeItemDefinitionPropertyGroup>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1674,46 +1680,46 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 }
                                 r#property_group = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFromUri",
-                                            "partOf",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "instance",
-                                            "applicability",
-                                            "propertyGroup",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "identifier",
+                                        "version",
+                                        "title",
+                                        "derivedFromUri",
+                                        "partOf",
+                                        "replaces",
+                                        "status",
+                                        "experimental",
+                                        "date",
+                                        "publisher",
+                                        "contact",
+                                        "description",
+                                        "useContext",
+                                        "jurisdiction",
+                                        "copyright",
+                                        "approvalDate",
+                                        "lastReviewDate",
+                                        "effectivePeriod",
+                                        "code",
+                                        "instance",
+                                        "applicability",
+                                        "propertyGroup",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ChargeItemDefinition {
@@ -1725,7 +1731,9 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         r#contained: r#contained.unwrap_or(vec![]),
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#url: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#url: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#url.unwrap_or(Default::default())
                         } else {
                             r#url.ok_or(serde::de::Error::missing_field("url"))?
@@ -1736,7 +1744,9 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         r#derived_from_uri: r#derived_from_uri.unwrap_or(vec![]),
                         r#part_of: r#part_of.unwrap_or(vec![]),
                         r#replaces: r#replaces.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for SampledData Type: A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.\n\nThere is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency."]
 #[derive(Default, Debug, Clone)]
 pub struct SampledData {
@@ -21,7 +21,11 @@ pub struct SampledData {
     #[doc = "A series of data points which are decimal values separated by a single space (character u20). The special values \"E\" (error), \"L\" (below detection limit) and \"U\" (above detection limit) can also be used in place of a decimal value."]
     pub r#data: Option<super::super::types::String>,
 }
-impl crate::AnyResource for SampledData {}
+impl crate::AnyResource for SampledData {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SampledData {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -180,7 +184,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                 let mut r#upper_limit: Option<super::super::types::Decimal> = None;
                 let mut r#dimensions: Option<super::super::types::PositiveInt> = None;
                 let mut r#data: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -322,35 +326,39 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "origin",
+                                        "period",
+                                        "factor",
+                                        "lowerLimit",
+                                        "upperLimit",
+                                        "dimensions",
+                                        "data",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SampledData {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#origin: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#origin: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#origin.unwrap_or(Default::default())
                         } else {
                             r#origin.ok_or(serde::de::Error::missing_field("origin"))?
                         },
-                        r#period: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#period: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#period.unwrap_or(Default::default())
                         } else {
                             r#period.ok_or(serde::de::Error::missing_field("period"))?
@@ -358,7 +366,9 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                         r#factor,
                         r#lower_limit,
                         r#upper_limit,
-                        r#dimensions: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#dimensions: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#dimensions.unwrap_or(Default::default())
                         } else {
                             r#dimensions.ok_or(serde::de::Error::missing_field("dimensions"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductInteractionInteractantItem {
@@ -23,7 +23,11 @@ pub struct MedicinalProductInteractionInteractant {
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: MedicinalProductInteractionInteractantItem,
 }
-impl crate::AnyResource for MedicinalProductInteractionInteractant {}
+impl crate::AnyResource for MedicinalProductInteractionInteractant {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicinalProductInteractionInteractant {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -92,7 +96,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteractionInteractant
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#item: Option<MedicinalProductInteractionInteractantItem> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -137,27 +141,29 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteractionInteractant
                                     ),
                                 );
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "itemReference",
-                                            "itemCodeableConcept",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "itemReference",
+                                        "itemCodeableConcept",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductInteractionInteractant {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#item: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#item: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#item.unwrap_or(Default::default())
                         } else {
                             r#item.ok_or(serde::de::Error::missing_field("item[x]"))?
@@ -366,7 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
                 let mut r#effect: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#incidence: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#management: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -515,30 +521,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
                                 }
                                 r#management = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "description",
-                                            "interactant",
-                                            "type",
-                                            "effect",
-                                            "incidence",
-                                            "management",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "subject",
+                                        "description",
+                                        "interactant",
+                                        "type",
+                                        "effect",
+                                        "incidence",
+                                        "management",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductInteraction {

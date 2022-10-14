@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
 #[derive(Default, Debug, Clone)]
 pub struct DeviceUdiCarrier {
@@ -21,7 +21,11 @@ pub struct DeviceUdiCarrier {
     #[doc = "A coded entry to indicate how the data was entered."]
     pub r#entry_type: Option<super::super::types::Code>,
 }
-impl crate::AnyResource for DeviceUdiCarrier {}
+impl crate::AnyResource for DeviceUdiCarrier {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for DeviceUdiCarrier {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -179,7 +183,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                 let mut r#carrier_aidc: Option<super::super::types::Base64Binary> = None;
                 let mut r#carrier_hrf: Option<super::super::types::String> = None;
                 let mut r#entry_type: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -327,24 +331,24 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "deviceIdentifier",
+                                        "issuer",
+                                        "jurisdiction",
+                                        "carrierAIDC",
+                                        "carrierHRF",
+                                        "entryType",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceUdiCarrier {
@@ -459,7 +463,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                     None;
                 let mut r#name: Option<super::super::types::String> = None;
                 let mut r#type: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -523,26 +527,30 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "name", "type"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "name", "type"],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceDeviceName {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
                         },
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -639,7 +647,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                     None;
                 let mut r#system_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#version: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -689,27 +697,29 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "systemType",
-                                            "version",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "systemType",
+                                        "version",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceSpecialization {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#system_type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#system_type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#system_type.unwrap_or(Default::default())
                         } else {
                             r#system_type.ok_or(serde::de::Error::missing_field("systemType"))?
@@ -815,7 +825,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#component: Option<Box<super::super::types::Identifier>> = None;
                 let mut r#value: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -871,21 +881,21 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "component",
-                                            "value",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "component",
+                                        "value",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceVersion {
@@ -894,7 +904,9 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type,
                         r#component,
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value"))?
@@ -987,7 +999,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value_quantity: Option<Vec<Box<super::super::types::Quantity>>> = None;
                 let mut r#value_code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1029,28 +1041,30 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
                                 }
                                 r#value_code = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueQuantity",
-                                            "valueCode",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "valueQuantity",
+                                        "valueCode",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceProperty {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -1519,7 +1533,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#safety: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#parent: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1922,49 +1936,49 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                 }
                                 r#parent = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "definition",
+                                        "udiCarrier",
+                                        "status",
+                                        "statusReason",
+                                        "distinctIdentifier",
+                                        "manufacturer",
+                                        "manufactureDate",
+                                        "expirationDate",
+                                        "lotNumber",
+                                        "serialNumber",
+                                        "deviceName",
+                                        "modelNumber",
+                                        "partNumber",
+                                        "type",
+                                        "specialization",
+                                        "version",
+                                        "property",
+                                        "patient",
+                                        "owner",
+                                        "contact",
+                                        "location",
+                                        "url",
+                                        "note",
+                                        "safety",
+                                        "parent",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Device {

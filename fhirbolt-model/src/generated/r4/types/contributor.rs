@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Contributor Type: A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers.\n\nNeed to track contributor information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone)]
 pub struct Contributor {
@@ -13,7 +13,11 @@ pub struct Contributor {
     #[doc = "Contact details to assist a user in finding and communicating with the contributor."]
     pub r#contact: Vec<Box<super::super::types::ContactDetail>>,
 }
-impl crate::AnyResource for Contributor {}
+impl crate::AnyResource for Contributor {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Contributor {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -94,7 +98,7 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#name: Option<super::super::types::String> = None;
                 let mut r#contact: Option<Vec<Box<super::super::types::ContactDetail>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -156,25 +160,29 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
                                 }
                                 r#contact = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "type", "name", "contact"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "type", "name", "contact"],
+                                ));
+                            },
                         }
                     }
                     Ok(Contributor {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed."]
 #[derive(Debug, Clone)]
 pub enum DataRequirementSubject {
@@ -40,7 +40,11 @@ pub struct DataRequirementCodeFilter {
     #[doc = "The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes."]
     pub r#code: Vec<Box<super::super::types::Coding>>,
 }
-impl crate::AnyResource for DataRequirementCodeFilter {}
+impl crate::AnyResource for DataRequirementCodeFilter {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for DataRequirementCodeFilter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -143,7 +147,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
                 let mut r#search_param: Option<super::super::types::String> = None;
                 let mut r#value_set: Option<super::super::types::Canonical> = None;
                 let mut r#code: Option<Vec<Box<super::super::types::Coding>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -225,21 +229,14 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
                                 }
                                 r#code = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueSet",
-                                            "code",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "path", "searchParam", "valueSet", "code"],
+                                ));
+                            },
                         }
                     }
                     Ok(DataRequirementCodeFilter {
@@ -383,7 +380,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
                 let mut r#path: Option<super::super::types::String> = None;
                 let mut r#search_param: Option<super::super::types::String> = None;
                 let mut r#value: Option<DataRequirementDateFilterValue> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -491,22 +488,22 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "valueDuration",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "path",
+                                        "searchParam",
+                                        "valueDateTime",
+                                        "valuePeriod",
+                                        "valueDuration",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DataRequirementDateFilter {
@@ -608,7 +605,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementSort {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#path: Option<super::super::types::String> = None;
                 let mut r#direction: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -664,25 +661,29 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementSort {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "path", "direction"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "path", "direction"],
+                                ));
+                            },
                         }
                     }
                     Ok(DataRequirementSort {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#path: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#path: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#path.unwrap_or(Default::default())
                         } else {
                             r#path.ok_or(serde::de::Error::missing_field("path"))?
                         },
-                        r#direction: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#direction: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#direction.unwrap_or(Default::default())
                         } else {
                             r#direction.ok_or(serde::de::Error::missing_field("direction"))?
@@ -904,7 +905,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                 let mut r#date_filter: Option<Vec<DataRequirementDateFilter>> = None;
                 let mut r#limit: Option<super::super::types::PositiveInt> = None;
                 let mut r#sort: Option<Vec<DataRequirementSort>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1098,32 +1099,34 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                                 }
                                 r#sort = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "profile",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "mustSupport",
-                                            "codeFilter",
-                                            "dateFilter",
-                                            "limit",
-                                            "sort",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "type",
+                                        "profile",
+                                        "subjectCodeableConcept",
+                                        "subjectReference",
+                                        "mustSupport",
+                                        "codeFilter",
+                                        "dateFilter",
+                                        "limit",
+                                        "sort",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DataRequirement {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?

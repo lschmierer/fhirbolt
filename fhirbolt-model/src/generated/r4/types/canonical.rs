@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for canonical type: A URI that is a reference to a canonical URL on a FHIR resource"]
 #[derive(Default, Debug, Clone)]
 pub struct Canonical {
@@ -9,4 +9,8 @@ pub struct Canonical {
     #[doc = "Primitive value for canonical"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Canonical {}
+impl crate::AnyResource for Canonical {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

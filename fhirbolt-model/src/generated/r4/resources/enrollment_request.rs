@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides the insurance enrollment details to the insurer regarding a specified coverage."]
 #[derive(Default, Debug, Clone)]
 pub struct EnrollmentRequest {
@@ -33,7 +33,11 @@ pub struct EnrollmentRequest {
     #[doc = "Reference to the program or plan identification, underwriter or payor."]
     pub r#coverage: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for EnrollmentRequest {}
+impl crate::AnyResource for EnrollmentRequest {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for EnrollmentRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -206,7 +210,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentRequest {
                 let mut r#provider: Option<Box<super::super::types::Reference>> = None;
                 let mut r#candidate: Option<Box<super::super::types::Reference>> = None;
                 let mut r#coverage: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -369,30 +373,30 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentRequest {
                                 }
                                 r#coverage = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "created",
-                                            "insurer",
-                                            "provider",
-                                            "candidate",
-                                            "coverage",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "created",
+                                        "insurer",
+                                        "provider",
+                                        "candidate",
+                                        "coverage",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EnrollmentRequest {

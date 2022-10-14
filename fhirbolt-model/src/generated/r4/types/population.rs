@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The age of the specific population."]
 #[derive(Debug, Clone)]
 pub enum PopulationAge {
@@ -29,7 +29,11 @@ pub struct Population {
     #[doc = "The existing physiological conditions of the specific population to which this applies."]
     pub r#physiological_condition: Option<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for Population {}
+impl crate::AnyResource for Population {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Population {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -115,7 +119,7 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                 let mut r#physiological_condition: Option<
                     Box<super::super::types::CodeableConcept>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -174,23 +178,23 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                                 }
                                 r#physiological_condition = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "ageRange",
-                                            "ageCodeableConcept",
-                                            "gender",
-                                            "race",
-                                            "physiologicalCondition",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "ageRange",
+                                        "ageCodeableConcept",
+                                        "gender",
+                                        "race",
+                                        "physiologicalCondition",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Population {

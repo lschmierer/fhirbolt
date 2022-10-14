@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Debug, Clone)]
 pub enum PatientDeceased {
@@ -47,7 +47,11 @@ pub struct PatientContact {
     #[doc = "The period during which this contact person or organization is valid to be contacted relating to this patient."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
-impl crate::AnyResource for PatientContact {}
+impl crate::AnyResource for PatientContact {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for PatientContact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -152,7 +156,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                 let mut r#gender: Option<super::super::types::Code> = None;
                 let mut r#organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -232,25 +236,25 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                                 }
                                 r#period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "address",
-                                            "gender",
-                                            "organization",
-                                            "period",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "relationship",
+                                        "name",
+                                        "telecom",
+                                        "address",
+                                        "gender",
+                                        "organization",
+                                        "period",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PatientContact {
@@ -356,7 +360,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                     None;
                 let mut r#language: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#preferred: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -406,27 +410,29 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "language",
-                                            "preferred",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "language",
+                                        "preferred",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PatientCommunication {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#language: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#language: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#language.unwrap_or(Default::default())
                         } else {
                             r#language.ok_or(serde::de::Error::missing_field("language"))?
@@ -522,7 +528,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                     None;
                 let mut r#other: Option<Box<super::super::types::Reference>> = None;
                 let mut r#type: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -572,26 +578,30 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "other", "type"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "other", "type"],
+                                ));
+                            },
                         }
                     }
                     Ok(PatientLink {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#other: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#other: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#other.unwrap_or(Default::default())
                         } else {
                             r#other.ok_or(serde::de::Error::missing_field("other"))?
                         },
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -966,7 +976,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                     None;
                 let mut r#managing_organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#link: Option<Vec<PatientLink>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1337,41 +1347,41 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 }
                                 r#link = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "name",
+                                        "telecom",
+                                        "gender",
+                                        "birthDate",
+                                        "deceasedBoolean",
+                                        "deceasedDateTime",
+                                        "address",
+                                        "maritalStatus",
+                                        "multipleBirthBoolean",
+                                        "multipleBirthInteger",
+                                        "photo",
+                                        "contact",
+                                        "communication",
+                                        "generalPractitioner",
+                                        "managingOrganization",
+                                        "link",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Patient {

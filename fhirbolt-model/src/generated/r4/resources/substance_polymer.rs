@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
@@ -17,7 +17,11 @@ pub struct SubstancePolymerMonomerSetStartingMaterial {
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
 }
-impl crate::AnyResource for SubstancePolymerMonomerSetStartingMaterial {}
+impl crate::AnyResource for SubstancePolymerMonomerSetStartingMaterial {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SubstancePolymerMonomerSetStartingMaterial {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -106,7 +110,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#is_defining: Option<super::super::types::Boolean> = None;
                 let mut r#amount: Option<Box<super::super::types::SubstanceAmount>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -168,22 +172,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "material",
-                                            "type",
-                                            "isDefining",
-                                            "amount",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "material",
+                                        "type",
+                                        "isDefining",
+                                        "amount",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymerMonomerSetStartingMaterial {
@@ -278,7 +282,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
                 let mut r#starting_material: Option<
                     Vec<SubstancePolymerMonomerSetStartingMaterial>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -316,20 +320,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
                                 }
                                 r#starting_material = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "ratioType",
-                                            "startingMaterial",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "ratioType",
+                                        "startingMaterial",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymerMonomerSet {
@@ -423,7 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
                     None;
                 let mut r#degree: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#amount: Option<Box<super::super::types::SubstanceAmount>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -459,20 +463,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "degree",
-                                            "amount",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "degree", "amount"],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
@@ -586,7 +584,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#representation: Option<super::super::types::String> = None;
                 let mut r#attachment: Option<Box<super::super::types::Attachment>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -646,21 +644,21 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                                 }
                                 r#attachment = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "representation",
-                                            "attachment",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "representation",
+                                        "attachment",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
@@ -800,7 +798,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                 let mut r#structural_representation: Option<
                     Vec<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -874,23 +872,23 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                                 }
                                 r#structural_representation = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "orientationOfPolymerisation",
-                                            "repeatUnit",
-                                            "amount",
-                                            "degreeOfPolymerisation",
-                                            "structuralRepresentation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "orientationOfPolymerisation",
+                                        "repeatUnit",
+                                        "amount",
+                                        "degreeOfPolymerisation",
+                                        "structuralRepresentation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymerRepeatRepeatUnit {
@@ -1026,7 +1024,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                     Box<super::super::types::CodeableConcept>,
                 > = None;
                 let mut r#repeat_unit: Option<Vec<SubstancePolymerRepeatRepeatUnit>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1112,22 +1110,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                                 }
                                 r#repeat_unit = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "numberOfUnits",
-                                            "averageMolecularFormula",
-                                            "repeatUnitAmountType",
-                                            "repeatUnit",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "numberOfUnits",
+                                        "averageMolecularFormula",
+                                        "repeatUnitAmountType",
+                                        "repeatUnit",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymerRepeat {
@@ -1352,7 +1350,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                 let mut r#modification: Option<Vec<super::super::types::String>> = None;
                 let mut r#monomer_set: Option<Vec<SubstancePolymerMonomerSet>> = None;
                 let mut r#repeat: Option<Vec<SubstancePolymerRepeat>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1527,29 +1525,29 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                 }
                                 r#repeat = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "class",
-                                            "geometry",
-                                            "copolymerConnectivity",
-                                            "modification",
-                                            "monomerSet",
-                                            "repeat",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "class",
+                                        "geometry",
+                                        "copolymerConnectivity",
+                                        "modification",
+                                        "monomerSet",
+                                        "repeat",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstancePolymer {

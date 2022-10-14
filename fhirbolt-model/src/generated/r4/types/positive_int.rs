@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for positiveInt type: An integer with a value that is positive (e.g. >0)"]
 #[derive(Default, Debug, Clone)]
 pub struct PositiveInt {
@@ -9,4 +9,8 @@ pub struct PositiveInt {
     #[doc = "Primitive value for positiveInt"]
     pub r#value: Option<u32>,
 }
-impl crate::AnyResource for PositiveInt {}
+impl crate::AnyResource for PositiveInt {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

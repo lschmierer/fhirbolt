@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)."]
 #[derive(Default, Debug, Clone)]
 pub struct LocationPosition {
@@ -15,7 +15,11 @@ pub struct LocationPosition {
     #[doc = "Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below)."]
     pub r#altitude: Option<super::super::types::Decimal>,
 }
-impl crate::AnyResource for LocationPosition {}
+impl crate::AnyResource for LocationPosition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for LocationPosition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -121,7 +125,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                 let mut r#longitude: Option<super::super::types::Decimal> = None;
                 let mut r#latitude: Option<super::super::types::Decimal> = None;
                 let mut r#altitude: Option<super::super::types::Decimal> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -205,33 +209,37 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "longitude",
-                                            "latitude",
-                                            "altitude",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "longitude",
+                                        "latitude",
+                                        "altitude",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(LocationPosition {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#longitude: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#longitude: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#longitude.unwrap_or(Default::default())
                         } else {
                             r#longitude.ok_or(serde::de::Error::missing_field("longitude"))?
                         },
-                        r#latitude: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#latitude: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#latitude.unwrap_or(Default::default())
                         } else {
                             r#latitude.ok_or(serde::de::Error::missing_field("latitude"))?
@@ -402,7 +410,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                 let mut r#all_day: Option<super::super::types::Boolean> = None;
                 let mut r#opening_time: Option<super::super::types::Time> = None;
                 let mut r#closing_time: Option<super::super::types::Time> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -536,22 +544,22 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "openingTime",
-                                            "closingTime",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "daysOfWeek",
+                                        "allDay",
+                                        "openingTime",
+                                        "closingTime",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(LocationHoursOfOperation {
@@ -922,7 +930,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                 let mut r#hours_of_operation: Option<Vec<LocationHoursOfOperation>> = None;
                 let mut r#availability_exceptions: Option<super::super::types::String> = None;
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1243,40 +1251,40 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                 }
                                 r#endpoint = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "operationalStatus",
+                                        "name",
+                                        "alias",
+                                        "description",
+                                        "mode",
+                                        "type",
+                                        "telecom",
+                                        "address",
+                                        "physicalType",
+                                        "position",
+                                        "managingOrganization",
+                                        "partOf",
+                                        "hoursOfOperation",
+                                        "availabilityExceptions",
+                                        "endpoint",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Location {

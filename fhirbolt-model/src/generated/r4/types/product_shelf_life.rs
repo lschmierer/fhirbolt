@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProductShelfLife Type: The shelf-life and storage information for a medicinal product item or container can be described using this class."]
 #[derive(Default, Debug, Clone)]
 pub struct ProductShelfLife {
@@ -17,7 +17,11 @@ pub struct ProductShelfLife {
     #[doc = "Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified."]
     pub r#special_precautions_for_storage: Vec<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for ProductShelfLife {}
+impl crate::AnyResource for ProductShelfLife {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ProductShelfLife {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -92,7 +96,7 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
                 let mut r#special_precautions_for_storage: Option<
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -142,22 +146,22 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
                                 }
                                 r#special_precautions_for_storage = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "period",
-                                            "specialPrecautionsForStorage",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "period",
+                                        "specialPrecautionsForStorage",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ProductShelfLife {
@@ -165,12 +169,16 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier,
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#period: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#period: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#period.unwrap_or(Default::default())
                         } else {
                             r#period.ok_or(serde::de::Error::missing_field("period"))?

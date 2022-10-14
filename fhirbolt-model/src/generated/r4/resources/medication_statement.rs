@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Debug, Clone)]
 pub enum MedicationStatementMedication {
@@ -77,7 +77,11 @@ pub struct MedicationStatement {
     #[doc = "Indicates how the medication is/was or should be taken by the patient."]
     pub r#dosage: Vec<Box<super::super::types::Dosage>>,
 }
-impl crate::AnyResource for MedicationStatement {}
+impl crate::AnyResource for MedicationStatement {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicationStatement {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -342,7 +346,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                 let mut r#reason_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#dosage: Option<Vec<Box<super::super::types::Dosage>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -624,42 +628,42 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                                 }
                                 r#dosage = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "dateAsserted",
-                                            "informationSource",
-                                            "derivedFrom",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "dosage",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "basedOn",
+                                        "partOf",
+                                        "status",
+                                        "statusReason",
+                                        "category",
+                                        "medicationCodeableConcept",
+                                        "medicationReference",
+                                        "subject",
+                                        "context",
+                                        "effectiveDateTime",
+                                        "effectivePeriod",
+                                        "dateAsserted",
+                                        "informationSource",
+                                        "derivedFrom",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "note",
+                                        "dosage",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicationStatement {
@@ -674,19 +678,25 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#part_of: r#part_of.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#status_reason: r#status_reason.unwrap_or(vec![]),
                         r#category,
-                        r#medication: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#medication: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#medication.unwrap_or(Default::default())
                         } else {
                             r#medication.ok_or(serde::de::Error::missing_field("medication[x]"))?
                         },
-                        r#subject: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#subject: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#subject.unwrap_or(Default::default())
                         } else {
                             r#subject.ok_or(serde::de::Error::missing_field("subject"))?

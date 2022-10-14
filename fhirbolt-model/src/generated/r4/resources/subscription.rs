@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionChannel {
@@ -17,7 +17,11 @@ pub struct SubscriptionChannel {
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
 }
-impl crate::AnyResource for SubscriptionChannel {}
+impl crate::AnyResource for SubscriptionChannel {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SubscriptionChannel {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -156,7 +160,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                 let mut r#endpoint: Option<super::super::types::Url> = None;
                 let mut r#payload: Option<super::super::types::Code> = None;
                 let mut r#header: Option<Vec<super::super::types::String>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -290,29 +294,31 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                     }
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "endpoint",
-                                            "payload",
-                                            "header",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "endpoint",
+                                        "payload",
+                                        "header",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubscriptionChannel {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -561,7 +567,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                 let mut r#criteria: Option<super::super::types::String> = None;
                 let mut r#error: Option<super::super::types::String> = None;
                 let mut r#channel: Option<SubscriptionChannel> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -766,30 +772,30 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                 }
                                 r#channel = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "status",
+                                        "contact",
+                                        "end",
+                                        "reason",
+                                        "criteria",
+                                        "error",
+                                        "channel",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Subscription {
@@ -801,25 +807,33 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                         r#contained: r#contained.unwrap_or(vec![]),
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#contact: r#contact.unwrap_or(vec![]),
                         r#end,
-                        r#reason: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#reason: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#reason.unwrap_or(Default::default())
                         } else {
                             r#reason.ok_or(serde::de::Error::missing_field("reason"))?
                         },
-                        r#criteria: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#criteria: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#criteria.unwrap_or(Default::default())
                         } else {
                             r#criteria.ok_or(serde::de::Error::missing_field("criteria"))?
                         },
                         r#error,
-                        r#channel: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#channel: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#channel.unwrap_or(Default::default())
                         } else {
                             r#channel.ok_or(serde::de::Error::missing_field("channel"))?

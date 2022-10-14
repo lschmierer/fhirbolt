@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about."]
 #[derive(Default, Debug, Clone)]
 pub struct Evidence {
@@ -75,7 +75,11 @@ pub struct Evidence {
     #[doc = "A reference to a EvidenceVariable resomece that defines the outcome for the research."]
     pub r#outcome: Vec<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for Evidence {}
+impl crate::AnyResource for Evidence {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Evidence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -504,7 +508,7 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
                 let mut r#exposure_background: Option<Box<super::super::types::Reference>> = None;
                 let mut r#exposure_variant: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#outcome: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -959,51 +963,51 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
                                 }
                                 r#outcome = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "exposureBackground",
-                                            "exposureVariant",
-                                            "outcome",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "identifier",
+                                        "version",
+                                        "name",
+                                        "title",
+                                        "shortTitle",
+                                        "subtitle",
+                                        "status",
+                                        "date",
+                                        "publisher",
+                                        "contact",
+                                        "description",
+                                        "note",
+                                        "useContext",
+                                        "jurisdiction",
+                                        "copyright",
+                                        "approvalDate",
+                                        "lastReviewDate",
+                                        "effectivePeriod",
+                                        "topic",
+                                        "author",
+                                        "editor",
+                                        "reviewer",
+                                        "endorser",
+                                        "relatedArtifact",
+                                        "exposureBackground",
+                                        "exposureVariant",
+                                        "outcome",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Evidence {
@@ -1022,7 +1026,9 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
                         r#title,
                         r#short_title,
                         r#subtitle,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
@@ -1045,7 +1051,7 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
                         r#endorser: r#endorser.unwrap_or(vec![]),
                         r#related_artifact: r#related_artifact.unwrap_or(vec![]),
                         r#exposure_background: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#exposure_background.unwrap_or(Default::default())
                         } else {

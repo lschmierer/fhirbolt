@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position in a series."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationEvaluationDoseNumber {
@@ -69,7 +69,11 @@ pub struct ImmunizationEvaluation {
     #[doc = "The recommended number of doses to achieve immunity."]
     pub r#series_doses: Option<ImmunizationEvaluationSeriesDoses>,
 }
-impl crate::AnyResource for ImmunizationEvaluation {}
+impl crate::AnyResource for ImmunizationEvaluation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ImmunizationEvaluation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -366,7 +370,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                 let mut r#series: Option<super::super::types::String> = None;
                 let mut r#dose_number: Option<ImmunizationEvaluationDoseNumber> = None;
                 let mut r#series_doses: Option<ImmunizationEvaluationSeriesDoses> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -757,38 +761,38 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     ));
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "patient",
+                                        "date",
+                                        "authority",
+                                        "targetDisease",
+                                        "immunizationEvent",
+                                        "doseStatus",
+                                        "doseStatusReason",
+                                        "description",
+                                        "series",
+                                        "doseNumberPositiveInt",
+                                        "doseNumberString",
+                                        "seriesDosesPositiveInt",
+                                        "seriesDosesString",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImmunizationEvaluation {
@@ -801,12 +805,16 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
@@ -814,7 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                         r#date,
                         r#authority,
                         r#target_disease: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#target_disease.unwrap_or(Default::default())
                         } else {
@@ -822,14 +830,16 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                 .ok_or(serde::de::Error::missing_field("targetDisease"))?
                         },
                         r#immunization_event: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#immunization_event.unwrap_or(Default::default())
                         } else {
                             r#immunization_event
                                 .ok_or(serde::de::Error::missing_field("immunizationEvent"))?
                         },
-                        r#dose_status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#dose_status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#dose_status.unwrap_or(Default::default())
                         } else {
                             r#dose_status.ok_or(serde::de::Error::missing_field("doseStatus"))?

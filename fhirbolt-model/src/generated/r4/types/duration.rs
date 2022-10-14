@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Duration Type: A length of time."]
 #[derive(Default, Debug, Clone)]
 pub struct Duration {
@@ -17,7 +17,11 @@ pub struct Duration {
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
 }
-impl crate::AnyResource for Duration {}
+impl crate::AnyResource for Duration {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Duration {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -152,7 +156,7 @@ impl<'de> serde::de::Deserialize<'de> for Duration {
                 let mut r#unit: Option<super::super::types::String> = None;
                 let mut r#system: Option<super::super::types::Uri> = None;
                 let mut r#code: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -268,22 +272,22 @@ impl<'de> serde::de::Deserialize<'de> for Duration {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "value",
-                                            "comparator",
-                                            "unit",
-                                            "system",
-                                            "code",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "value",
+                                        "comparator",
+                                        "unit",
+                                        "system",
+                                        "code",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Duration {

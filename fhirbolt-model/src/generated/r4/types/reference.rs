@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Reference Type: A reference from one resource to another."]
 #[derive(Default, Debug, Clone)]
 pub struct Reference {
@@ -15,7 +15,11 @@ pub struct Reference {
     #[doc = "Plain text narrative that identifies the resource in addition to the resource reference."]
     pub r#display: Option<super::super::types::String>,
 }
-impl crate::AnyResource for Reference {}
+impl crate::AnyResource for Reference {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Reference {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -118,7 +122,7 @@ impl<'de> serde::de::Deserialize<'de> for Reference {
                 let mut r#type: Option<super::super::types::Uri> = None;
                 let mut r#identifier: Option<Box<super::super::types::Identifier>> = None;
                 let mut r#display: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -200,21 +204,21 @@ impl<'de> serde::de::Deserialize<'de> for Reference {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "reference",
-                                            "type",
-                                            "identifier",
-                                            "display",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "reference",
+                                        "type",
+                                        "identifier",
+                                        "display",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Reference {

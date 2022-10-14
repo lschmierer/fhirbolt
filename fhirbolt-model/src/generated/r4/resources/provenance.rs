@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The period during which the activity occurred."]
 #[derive(Debug, Clone)]
 pub enum ProvenanceOccurred {
@@ -29,7 +29,11 @@ pub struct ProvenanceAgent {
     #[doc = "The individual, device, or organization for whom the change was made."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for ProvenanceAgent {}
+impl crate::AnyResource for ProvenanceAgent {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ProvenanceAgent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -101,7 +105,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                 let mut r#role: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#who: Option<Box<super::super::types::Reference>> = None;
                 let mut r#on_behalf_of: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -149,22 +153,22 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                                 }
                                 r#on_behalf_of = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "role",
-                                            "who",
-                                            "onBehalfOf",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "role",
+                                        "who",
+                                        "onBehalfOf",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ProvenanceAgent {
@@ -173,7 +177,9 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type,
                         r#role: r#role.unwrap_or(vec![]),
-                        r#who: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#who: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#who.unwrap_or(Default::default())
                         } else {
                             r#who.ok_or(serde::de::Error::missing_field("who"))?
@@ -277,7 +283,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                 let mut r#role: Option<super::super::types::Code> = None;
                 let mut r#what: Option<Box<super::super::types::Reference>> = None;
                 let mut r#agent: Option<Vec<ProvenanceAgent>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -333,33 +339,37 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                                 }
                                 r#agent = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "role",
-                                            "what",
-                                            "agent",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "role",
+                                        "what",
+                                        "agent",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ProvenanceEntity {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#role: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#role: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#role.unwrap_or(Default::default())
                         } else {
                             r#role.ok_or(serde::de::Error::missing_field("role"))?
                         },
-                        r#what: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#what: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#what.unwrap_or(Default::default())
                         } else {
                             r#what.ok_or(serde::de::Error::missing_field("what"))?
@@ -643,7 +653,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                 let mut r#agent: Option<Vec<ProvenanceAgent>> = None;
                 let mut r#entity: Option<Vec<ProvenanceEntity>> = None;
                 let mut r#signature: Option<Vec<Box<super::super::types::Signature>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -893,34 +903,34 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                 }
                                 r#signature = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "occurredPeriod",
-                                            "occurredDateTime",
-                                            "recorded",
-                                            "policy",
-                                            "location",
-                                            "reason",
-                                            "activity",
-                                            "agent",
-                                            "entity",
-                                            "signature",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "target",
+                                        "occurredPeriod",
+                                        "occurredDateTime",
+                                        "recorded",
+                                        "policy",
+                                        "location",
+                                        "reason",
+                                        "activity",
+                                        "agent",
+                                        "entity",
+                                        "signature",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Provenance {
@@ -934,7 +944,9 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#target: r#target.unwrap_or(vec![]),
                         r#occurred,
-                        r#recorded: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#recorded: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#recorded.unwrap_or(Default::default())
                         } else {
                             r#recorded.ok_or(serde::de::Error::missing_field("recorded"))?

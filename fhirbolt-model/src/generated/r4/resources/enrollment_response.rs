@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource."]
 #[derive(Default, Debug, Clone)]
 pub struct EnrollmentResponse {
@@ -35,7 +35,11 @@ pub struct EnrollmentResponse {
     #[doc = "The practitioner who is responsible for the services rendered to the patient."]
     pub r#request_provider: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for EnrollmentResponse {}
+impl crate::AnyResource for EnrollmentResponse {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for EnrollmentResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -238,7 +242,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                 let mut r#created: Option<super::super::types::DateTime> = None;
                 let mut r#organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#request_provider: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -437,31 +441,31 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                 }
                                 r#request_provider = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "request",
+                                        "outcome",
+                                        "disposition",
+                                        "created",
+                                        "organization",
+                                        "requestProvider",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(EnrollmentResponse {

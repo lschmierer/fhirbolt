@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Signature Type: A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.\n\nThere are a number of places where content must be signed in healthcare."]
 #[derive(Default, Debug, Clone)]
 pub struct Signature {
@@ -21,7 +21,11 @@ pub struct Signature {
     #[doc = "The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty."]
     pub r#data: Option<super::super::types::Base64Binary>,
 }
-impl crate::AnyResource for Signature {}
+impl crate::AnyResource for Signature {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Signature {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -150,7 +154,7 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                 let mut r#target_format: Option<super::super::types::Code> = None;
                 let mut r#sig_format: Option<super::super::types::Code> = None;
                 let mut r#data: Option<super::super::types::Base64Binary> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -264,36 +268,40 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "when",
-                                            "who",
-                                            "onBehalfOf",
-                                            "targetFormat",
-                                            "sigFormat",
-                                            "data",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "type",
+                                        "when",
+                                        "who",
+                                        "onBehalfOf",
+                                        "targetFormat",
+                                        "sigFormat",
+                                        "data",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Signature {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#type: r#type.unwrap_or(vec![]),
-                        r#when: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#when: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#when.unwrap_or(Default::default())
                         } else {
                             r#when.ok_or(serde::de::Error::missing_field("when"))?
                         },
-                        r#who: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#who: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#who.unwrap_or(Default::default())
                         } else {
                             r#who.ok_or(serde::de::Error::missing_field("who"))?

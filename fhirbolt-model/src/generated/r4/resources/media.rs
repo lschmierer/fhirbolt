@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The date and time(s) at which the media was collected."]
 #[derive(Debug, Clone)]
 pub enum MediaCreated {
@@ -75,7 +75,11 @@ pub struct Media {
     #[doc = "Comments made about the media by the performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
-impl crate::AnyResource for Media {}
+impl crate::AnyResource for Media {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Media {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -421,7 +425,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                 let mut r#duration: Option<super::super::types::Decimal> = None;
                 let mut r#content: Option<Box<super::super::types::Attachment>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -778,46 +782,46 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "basedOn",
+                                        "partOf",
+                                        "status",
+                                        "type",
+                                        "modality",
+                                        "view",
+                                        "subject",
+                                        "encounter",
+                                        "createdDateTime",
+                                        "createdPeriod",
+                                        "issued",
+                                        "operator",
+                                        "reasonCode",
+                                        "bodySite",
+                                        "deviceName",
+                                        "device",
+                                        "height",
+                                        "width",
+                                        "frames",
+                                        "duration",
+                                        "content",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Media {
@@ -832,7 +836,9 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#part_of: r#part_of.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
@@ -853,7 +859,9 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                         r#width,
                         r#frames,
                         r#duration,
-                        r#content: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#content: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#content.unwrap_or(Default::default())
                         } else {
                             r#content.ok_or(serde::de::Error::missing_field("content"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics for quantitative results of this observation."]
 #[derive(Default, Debug, Clone)]
 pub struct ObservationDefinitionQuantitativeDetails {
@@ -17,7 +17,11 @@ pub struct ObservationDefinitionQuantitativeDetails {
     #[doc = "Number of digits after decimal separator when the results of such observations are of type Quantity."]
     pub r#decimal_precision: Option<super::super::types::Integer>,
 }
-impl crate::AnyResource for ObservationDefinitionQuantitativeDetails {}
+impl crate::AnyResource for ObservationDefinitionQuantitativeDetails {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ObservationDefinitionQuantitativeDetails {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -120,7 +124,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                 let mut r#unit: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#conversion_factor: Option<super::super::types::Decimal> = None;
                 let mut r#decimal_precision: Option<super::super::types::Integer> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -204,22 +208,22 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "customaryUnit",
-                                            "unit",
-                                            "conversionFactor",
-                                            "decimalPrecision",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "customaryUnit",
+                                        "unit",
+                                        "conversionFactor",
+                                        "decimalPrecision",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ObservationDefinitionQuantitativeDetails {
@@ -399,7 +403,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                 let mut r#age: Option<Box<super::super::types::Range>> = None;
                 let mut r#gestational_age: Option<Box<super::super::types::Range>> = None;
                 let mut r#condition: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -515,26 +519,26 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "range",
-                                            "context",
-                                            "appliesTo",
-                                            "gender",
-                                            "age",
-                                            "gestationalAge",
-                                            "condition",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "category",
+                                        "range",
+                                        "context",
+                                        "appliesTo",
+                                        "gender",
+                                        "age",
+                                        "gestationalAge",
+                                        "condition",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ObservationDefinitionQualifiedInterval {
@@ -844,7 +848,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                     None;
                 let mut r#critical_coded_value_set: Option<Box<super::super::types::Reference>> =
                     None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1115,36 +1119,36 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                 }
                                 r#critical_coded_value_set = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "code",
-                                            "identifier",
-                                            "permittedDataType",
-                                            "multipleResultsAllowed",
-                                            "method",
-                                            "preferredReportName",
-                                            "quantitativeDetails",
-                                            "qualifiedInterval",
-                                            "validCodedValueSet",
-                                            "normalCodedValueSet",
-                                            "abnormalCodedValueSet",
-                                            "criticalCodedValueSet",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "category",
+                                        "code",
+                                        "identifier",
+                                        "permittedDataType",
+                                        "multipleResultsAllowed",
+                                        "method",
+                                        "preferredReportName",
+                                        "quantitativeDetails",
+                                        "qualifiedInterval",
+                                        "validCodedValueSet",
+                                        "normalCodedValueSet",
+                                        "abnormalCodedValueSet",
+                                        "criticalCodedValueSet",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ObservationDefinition {
@@ -1157,7 +1161,9 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#category: r#category.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?

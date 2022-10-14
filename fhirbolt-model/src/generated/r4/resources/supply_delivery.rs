@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Debug, Clone)]
 pub enum SupplyDeliverySuppliedItemItem {
@@ -38,7 +38,11 @@ pub struct SupplyDeliverySuppliedItem {
     #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
     pub r#item: Option<SupplyDeliverySuppliedItemItem>,
 }
-impl crate::AnyResource for SupplyDeliverySuppliedItem {}
+impl crate::AnyResource for SupplyDeliverySuppliedItem {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SupplyDeliverySuppliedItem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -112,7 +116,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDeliverySuppliedItem {
                     None;
                 let mut r#quantity: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#item: Option<SupplyDeliverySuppliedItemItem> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -160,21 +164,21 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDeliverySuppliedItem {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "quantity",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "quantity",
+                                        "itemCodeableConcept",
+                                        "itemReference",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SupplyDeliverySuppliedItem {
@@ -445,7 +449,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDelivery {
                 let mut r#supplier: Option<Box<super::super::types::Reference>> = None;
                 let mut r#destination: Option<Box<super::super::types::Reference>> = None;
                 let mut r#receiver: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -670,36 +674,36 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDelivery {
                                 }
                                 r#receiver = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "patient",
-                                            "type",
-                                            "suppliedItem",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "supplier",
-                                            "destination",
-                                            "receiver",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "basedOn",
+                                        "partOf",
+                                        "status",
+                                        "patient",
+                                        "type",
+                                        "suppliedItem",
+                                        "occurrenceDateTime",
+                                        "occurrencePeriod",
+                                        "occurrenceTiming",
+                                        "supplier",
+                                        "destination",
+                                        "receiver",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SupplyDelivery {

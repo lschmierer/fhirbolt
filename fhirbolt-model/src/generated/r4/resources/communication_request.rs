@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Debug, Clone)]
 pub enum CommunicationRequestPayloadContent {
@@ -36,7 +36,11 @@ pub struct CommunicationRequestPayload {
     #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
     pub r#content: CommunicationRequestPayloadContent,
 }
-impl crate::AnyResource for CommunicationRequestPayload {}
+impl crate::AnyResource for CommunicationRequestPayload {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for CommunicationRequestPayload {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -122,7 +126,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequestPayload {
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#content: Option<CommunicationRequestPayloadContent> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -204,28 +208,30 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequestPayload {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "contentString",
-                                            "contentAttachment",
-                                            "contentReference",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "contentString",
+                                        "contentAttachment",
+                                        "contentReference",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CommunicationRequestPayload {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#content: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#content: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#content.unwrap_or(Default::default())
                         } else {
                             r#content.ok_or(serde::de::Error::missing_field("content[x]"))?
@@ -610,7 +616,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequest {
                     None;
                 let mut r#reason_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -937,46 +943,46 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequest {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "medium",
-                                            "subject",
-                                            "about",
-                                            "encounter",
-                                            "payload",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "authoredOn",
-                                            "requester",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "basedOn",
+                                        "replaces",
+                                        "groupIdentifier",
+                                        "status",
+                                        "statusReason",
+                                        "category",
+                                        "priority",
+                                        "doNotPerform",
+                                        "medium",
+                                        "subject",
+                                        "about",
+                                        "encounter",
+                                        "payload",
+                                        "occurrenceDateTime",
+                                        "occurrencePeriod",
+                                        "authoredOn",
+                                        "requester",
+                                        "recipient",
+                                        "sender",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CommunicationRequest {
@@ -992,7 +998,9 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequest {
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#replaces: r#replaces.unwrap_or(vec![]),
                         r#group_identifier,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

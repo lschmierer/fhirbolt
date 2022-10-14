@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
 #[derive(Default, Debug, Clone)]
 pub struct DeviceMetricCalibration {
@@ -15,7 +15,11 @@ pub struct DeviceMetricCalibration {
     #[doc = "Describes the time last calibration has been performed."]
     pub r#time: Option<super::super::types::Instant>,
 }
-impl crate::AnyResource for DeviceMetricCalibration {}
+impl crate::AnyResource for DeviceMetricCalibration {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for DeviceMetricCalibration {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -119,7 +123,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#state: Option<super::super::types::Code> = None;
                 let mut r#time: Option<super::super::types::Instant> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -203,21 +207,21 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "state",
-                                            "time",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "state",
+                                        "time",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceMetricCalibration {
@@ -472,7 +476,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                 let mut r#category: Option<super::super::types::Code> = None;
                 let mut r#measurement_period: Option<Box<super::super::types::Timing>> = None;
                 let mut r#calibration: Option<Vec<DeviceMetricCalibration>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -673,33 +677,33 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                                 }
                                 r#calibration = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "unit",
-                                            "source",
-                                            "parent",
-                                            "operationalStatus",
-                                            "color",
-                                            "category",
-                                            "measurementPeriod",
-                                            "calibration",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "unit",
+                                        "source",
+                                        "parent",
+                                        "operationalStatus",
+                                        "color",
+                                        "category",
+                                        "measurementPeriod",
+                                        "calibration",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DeviceMetric {
@@ -712,7 +716,9 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -722,7 +728,9 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                         r#parent,
                         r#operational_status,
                         r#color,
-                        r#category: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#category: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#category.unwrap_or(Default::default())
                         } else {
                             r#category.ok_or(serde::de::Error::missing_field("category"))?

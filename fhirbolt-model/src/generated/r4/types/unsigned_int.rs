@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for unsignedInt type: An integer with a value that is not negative (e.g. >= 0)"]
 #[derive(Default, Debug, Clone)]
 pub struct UnsignedInt {
@@ -9,4 +9,8 @@ pub struct UnsignedInt {
     #[doc = "Primitive value for unsignedInt"]
     pub r#value: Option<u32>,
 }
-impl crate::AnyResource for UnsignedInt {}
+impl crate::AnyResource for UnsignedInt {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

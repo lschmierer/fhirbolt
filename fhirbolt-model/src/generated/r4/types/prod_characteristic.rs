@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProdCharacteristic Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct ProdCharacteristic {
@@ -31,7 +31,11 @@ pub struct ProdCharacteristic {
     #[doc = "Where applicable, the scoring can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used."]
     pub r#scoring: Option<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for ProdCharacteristic {}
+impl crate::AnyResource for ProdCharacteristic {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ProdCharacteristic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -221,7 +225,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                 let mut r#imprint: Option<Vec<super::super::types::String>> = None;
                 let mut r#image: Option<Vec<Box<super::super::types::Attachment>>> = None;
                 let mut r#scoring: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -415,29 +419,29 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 }
                                 r#scoring = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "height",
-                                            "width",
-                                            "depth",
-                                            "weight",
-                                            "nominalVolume",
-                                            "externalDiameter",
-                                            "shape",
-                                            "color",
-                                            "imprint",
-                                            "image",
-                                            "scoring",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "height",
+                                        "width",
+                                        "depth",
+                                        "weight",
+                                        "nominalVolume",
+                                        "externalDiameter",
+                                        "shape",
+                                        "color",
+                                        "imprint",
+                                        "image",
+                                        "scoring",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ProdCharacteristic {

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Link to a resource that concerns the same actual person."]
 #[derive(Default, Debug, Clone)]
 pub struct PersonLink {
@@ -13,7 +13,11 @@ pub struct PersonLink {
     #[doc = "Level of assurance that this link is associated with the target resource."]
     pub r#assurance: Option<super::super::types::Code>,
 }
-impl crate::AnyResource for PersonLink {}
+impl crate::AnyResource for PersonLink {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for PersonLink {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -85,7 +89,7 @@ impl<'de> serde::de::Deserialize<'de> for PersonLink {
                     None;
                 let mut r#target: Option<Box<super::super::types::Reference>> = None;
                 let mut r#assurance: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -135,27 +139,29 @@ impl<'de> serde::de::Deserialize<'de> for PersonLink {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "assurance",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "target",
+                                        "assurance",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PersonLink {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#target: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#target: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#target.unwrap_or(Default::default())
                         } else {
                             r#target.ok_or(serde::de::Error::missing_field("target"))?
@@ -410,7 +416,7 @@ impl<'de> serde::de::Deserialize<'de> for Person {
                 let mut r#managing_organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#active: Option<super::super::types::Boolean> = None;
                 let mut r#link: Option<Vec<PersonLink>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -607,33 +613,33 @@ impl<'de> serde::de::Deserialize<'de> for Person {
                                 }
                                 r#link = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "managingOrganization",
-                                            "active",
-                                            "link",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "name",
+                                        "telecom",
+                                        "gender",
+                                        "birthDate",
+                                        "address",
+                                        "photo",
+                                        "managingOrganization",
+                                        "active",
+                                        "link",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Person {

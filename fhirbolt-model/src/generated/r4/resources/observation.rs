@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone)]
 pub enum ObservationEffective {
@@ -77,7 +77,11 @@ pub struct ObservationReferenceRange {
     #[doc = "Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of \"Negative\" or a list or table of \"normals\"."]
     pub r#text: Option<super::super::types::String>,
 }
-impl crate::AnyResource for ObservationReferenceRange {}
+impl crate::AnyResource for ObservationReferenceRange {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ObservationReferenceRange {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -175,7 +179,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
                 let mut r#applies_to: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#age: Option<Box<super::super::types::Range>> = None;
                 let mut r#text: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -249,24 +253,24 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "low",
-                                            "high",
-                                            "type",
-                                            "appliesTo",
-                                            "age",
-                                            "text",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "low",
+                                        "high",
+                                        "type",
+                                        "appliesTo",
+                                        "age",
+                                        "text",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ObservationReferenceRange {
@@ -502,7 +506,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                 let mut r#interpretation: Option<Vec<Box<super::super::types::CodeableConcept>>> =
                     None;
                 let mut r#reference_range: Option<Vec<ObservationReferenceRange>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -786,40 +790,42 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                 }
                                 r#reference_range = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "referenceRange",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "code",
+                                        "valueQuantity",
+                                        "valueCodeableConcept",
+                                        "valueString",
+                                        "valueBoolean",
+                                        "valueInteger",
+                                        "valueRange",
+                                        "valueRatio",
+                                        "valueSampledData",
+                                        "valueTime",
+                                        "valueDateTime",
+                                        "valuePeriod",
+                                        "dataAbsentReason",
+                                        "interpretation",
+                                        "referenceRange",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ObservationComponent {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
@@ -1338,7 +1344,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                 let mut r#has_member: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#derived_from: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#component: Option<Vec<ObservationComponent>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1899,60 +1905,60 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                 }
                                 r#component = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "basedOn",
+                                        "partOf",
+                                        "status",
+                                        "category",
+                                        "code",
+                                        "subject",
+                                        "focus",
+                                        "encounter",
+                                        "effectiveDateTime",
+                                        "effectivePeriod",
+                                        "effectiveTiming",
+                                        "effectiveInstant",
+                                        "issued",
+                                        "performer",
+                                        "valueQuantity",
+                                        "valueCodeableConcept",
+                                        "valueString",
+                                        "valueBoolean",
+                                        "valueInteger",
+                                        "valueRange",
+                                        "valueRatio",
+                                        "valueSampledData",
+                                        "valueTime",
+                                        "valueDateTime",
+                                        "valuePeriod",
+                                        "dataAbsentReason",
+                                        "interpretation",
+                                        "note",
+                                        "bodySite",
+                                        "method",
+                                        "specimen",
+                                        "device",
+                                        "referenceRange",
+                                        "hasMember",
+                                        "derivedFrom",
+                                        "component",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Observation {
@@ -1967,13 +1973,17 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#part_of: r#part_of.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#category: r#category.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?

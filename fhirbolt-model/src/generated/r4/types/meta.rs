@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Meta {
@@ -19,7 +19,11 @@ pub struct Meta {
     #[doc = "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource."]
     pub r#tag: Vec<Box<super::super::types::Coding>>,
 }
-impl crate::AnyResource for Meta {}
+impl crate::AnyResource for Meta {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Meta {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -165,7 +169,7 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                 let mut r#profile: Option<Vec<super::super::types::Canonical>> = None;
                 let mut r#security: Option<Vec<Box<super::super::types::Coding>>> = None;
                 let mut r#tag: Option<Vec<Box<super::super::types::Coding>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -303,23 +307,23 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                 }
                                 r#tag = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "versionId",
-                                            "lastUpdated",
-                                            "source",
-                                            "profile",
-                                            "security",
-                                            "tag",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "versionId",
+                                        "lastUpdated",
+                                        "source",
+                                        "profile",
+                                        "security",
+                                        "tag",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Meta {

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice."]
 #[derive(Default, Debug, Clone)]
 pub struct PractitionerRoleAvailableTime {
@@ -17,7 +17,11 @@ pub struct PractitionerRoleAvailableTime {
     #[doc = "The closing time of day. Note: If the AllDay flag is set, then this time is ignored."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
-impl crate::AnyResource for PractitionerRoleAvailableTime {}
+impl crate::AnyResource for PractitionerRoleAvailableTime {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for PractitionerRoleAvailableTime {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -161,7 +165,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                 let mut r#all_day: Option<super::super::types::Boolean> = None;
                 let mut r#available_start_time: Option<super::super::types::Time> = None;
                 let mut r#available_end_time: Option<super::super::types::Time> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -303,22 +307,22 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "availableStartTime",
-                                            "availableEndTime",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "daysOfWeek",
+                                        "allDay",
+                                        "availableStartTime",
+                                        "availableEndTime",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PractitionerRoleAvailableTime {
@@ -424,7 +428,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
                     None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#during: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -474,27 +478,29 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
                                 }
                                 r#during = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "during",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "description",
+                                        "during",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PractitionerRoleNotAvailable {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#description: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#description: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#description.unwrap_or(Default::default())
                         } else {
                             r#description.ok_or(serde::de::Error::missing_field("description"))?
@@ -770,7 +776,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                 let mut r#not_available: Option<Vec<PractitionerRoleNotAvailable>> = None;
                 let mut r#availability_exceptions: Option<super::super::types::String> = None;
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -983,37 +989,37 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                                 }
                                 r#endpoint = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "period",
-                                            "practitioner",
-                                            "organization",
-                                            "code",
-                                            "specialty",
-                                            "location",
-                                            "healthcareService",
-                                            "telecom",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "period",
+                                        "practitioner",
+                                        "organization",
+                                        "code",
+                                        "specialty",
+                                        "location",
+                                        "healthcareService",
+                                        "telecom",
+                                        "availableTime",
+                                        "notAvailable",
+                                        "availabilityExceptions",
+                                        "endpoint",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PractitionerRole {

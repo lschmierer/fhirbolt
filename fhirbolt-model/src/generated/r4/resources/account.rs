@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account."]
 #[derive(Default, Debug, Clone)]
 pub struct AccountCoverage {
@@ -13,7 +13,11 @@ pub struct AccountCoverage {
     #[doc = "The priority of the coverage in the context of this account."]
     pub r#priority: Option<super::super::types::PositiveInt>,
 }
-impl crate::AnyResource for AccountCoverage {}
+impl crate::AnyResource for AccountCoverage {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for AccountCoverage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -85,7 +89,7 @@ impl<'de> serde::de::Deserialize<'de> for AccountCoverage {
                     None;
                 let mut r#coverage: Option<Box<super::super::types::Reference>> = None;
                 let mut r#priority: Option<super::super::types::PositiveInt> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -135,27 +139,29 @@ impl<'de> serde::de::Deserialize<'de> for AccountCoverage {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "coverage",
-                                            "priority",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "coverage",
+                                        "priority",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(AccountCoverage {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#coverage: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#coverage: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#coverage.unwrap_or(Default::default())
                         } else {
                             r#coverage.ok_or(serde::de::Error::missing_field("coverage"))?
@@ -261,7 +267,7 @@ impl<'de> serde::de::Deserialize<'de> for AccountGuarantor {
                 let mut r#party: Option<Box<super::super::types::Reference>> = None;
                 let mut r#on_hold: Option<super::super::types::Boolean> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -317,28 +323,30 @@ impl<'de> serde::de::Deserialize<'de> for AccountGuarantor {
                                 }
                                 r#period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "party",
-                                            "onHold",
-                                            "period",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "party",
+                                        "onHold",
+                                        "period",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(AccountGuarantor {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#party: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#party: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#party.unwrap_or(Default::default())
                         } else {
                             r#party.ok_or(serde::de::Error::missing_field("party"))?
@@ -600,7 +608,7 @@ impl<'de> serde::de::Deserialize<'de> for Account {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#guarantor: Option<Vec<AccountGuarantor>> = None;
                 let mut r#part_of: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -801,34 +809,34 @@ impl<'de> serde::de::Deserialize<'de> for Account {
                                 }
                                 r#part_of = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "name",
-                                            "subject",
-                                            "servicePeriod",
-                                            "coverage",
-                                            "owner",
-                                            "description",
-                                            "guarantor",
-                                            "partOf",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "type",
+                                        "name",
+                                        "subject",
+                                        "servicePeriod",
+                                        "coverage",
+                                        "owner",
+                                        "description",
+                                        "guarantor",
+                                        "partOf",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Account {
@@ -841,7 +849,9 @@ impl<'de> serde::de::Deserialize<'de> for Account {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Count Type: A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.\n\nNeed to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, and currencies such as $100.32USD."]
 #[derive(Default, Debug, Clone)]
 pub struct Count {
@@ -17,7 +17,11 @@ pub struct Count {
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
 }
-impl crate::AnyResource for Count {}
+impl crate::AnyResource for Count {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Count {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -152,7 +156,7 @@ impl<'de> serde::de::Deserialize<'de> for Count {
                 let mut r#unit: Option<super::super::types::String> = None;
                 let mut r#system: Option<super::super::types::Uri> = None;
                 let mut r#code: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -268,22 +272,22 @@ impl<'de> serde::de::Deserialize<'de> for Count {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "value",
-                                            "comparator",
-                                            "unit",
-                                            "system",
-                                            "code",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "value",
+                                        "comparator",
+                                        "unit",
+                                        "system",
+                                        "code",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Count {

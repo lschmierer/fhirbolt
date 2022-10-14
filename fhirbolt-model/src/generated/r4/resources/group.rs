@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
 #[derive(Debug, Clone)]
 pub enum GroupCharacteristicValue {
@@ -32,7 +32,11 @@ pub struct GroupCharacteristic {
     #[doc = "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
-impl crate::AnyResource for GroupCharacteristic {}
+impl crate::AnyResource for GroupCharacteristic {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for GroupCharacteristic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -151,7 +155,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
                 let mut r#value: Option<GroupCharacteristicValue> = None;
                 let mut r#exclude: Option<super::super::types::Boolean> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -278,43 +282,49 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
                                 }
                                 r#period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueCodeableConcept",
-                                            "valueBoolean",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueReference",
-                                            "exclude",
-                                            "period",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "code",
+                                        "valueCodeableConcept",
+                                        "valueBoolean",
+                                        "valueQuantity",
+                                        "valueRange",
+                                        "valueReference",
+                                        "exclude",
+                                        "period",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(GroupCharacteristic {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
                         },
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value[x]"))?
                         },
-                        r#exclude: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#exclude: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#exclude.unwrap_or(Default::default())
                         } else {
                             r#exclude.ok_or(serde::de::Error::missing_field("exclude"))?
@@ -420,7 +430,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupMember {
                 let mut r#entity: Option<Box<super::super::types::Reference>> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 let mut r#inactive: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -476,28 +486,30 @@ impl<'de> serde::de::Deserialize<'de> for GroupMember {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entity",
-                                            "period",
-                                            "inactive",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "entity",
+                                        "period",
+                                        "inactive",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(GroupMember {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#entity: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#entity: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#entity.unwrap_or(Default::default())
                         } else {
                             r#entity.ok_or(serde::de::Error::missing_field("entity"))?
@@ -773,7 +785,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                 let mut r#managing_entity: Option<Box<super::super::types::Reference>> = None;
                 let mut r#characteristic: Option<Vec<GroupCharacteristic>> = None;
                 let mut r#member: Option<Vec<GroupMember>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1000,33 +1012,33 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                 }
                                 r#member = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "type",
+                                        "actual",
+                                        "code",
+                                        "name",
+                                        "quantity",
+                                        "managingEntity",
+                                        "characteristic",
+                                        "member",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Group {
@@ -1040,12 +1052,16 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#active,
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#actual: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#actual: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#actual.unwrap_or(Default::default())
                         } else {
                             r#actual.ok_or(serde::de::Error::missing_field("actual"))?

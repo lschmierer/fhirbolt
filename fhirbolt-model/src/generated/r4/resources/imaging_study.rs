@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates who or what performed the series and how they were involved."]
 #[derive(Default, Debug, Clone)]
 pub struct ImagingStudySeriesPerformer {
@@ -13,7 +13,11 @@ pub struct ImagingStudySeriesPerformer {
     #[doc = "Indicates who or what performed the series."]
     pub r#actor: Box<super::super::types::Reference>,
 }
-impl crate::AnyResource for ImagingStudySeriesPerformer {}
+impl crate::AnyResource for ImagingStudySeriesPerformer {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ImagingStudySeriesPerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -76,7 +80,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
                     None;
                 let mut r#function: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -112,20 +116,14 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
                                 }
                                 r#actor = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "function",
-                                            "actor",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "function", "actor"],
+                                ));
+                            },
                         }
                     }
                     Ok(ImagingStudySeriesPerformer {
@@ -133,7 +131,9 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#function,
-                        r#actor: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#actor: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#actor.unwrap_or(Default::default())
                         } else {
                             r#actor.ok_or(serde::de::Error::missing_field("actor"))?
@@ -268,7 +268,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                 let mut r#sop_class: Option<Box<super::super::types::Coding>> = None;
                 let mut r#number: Option<super::super::types::UnsignedInt> = None;
                 let mut r#title: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -358,34 +358,38 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "sopClass",
-                                            "number",
-                                            "title",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "uid",
+                                        "sopClass",
+                                        "number",
+                                        "title",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImagingStudySeriesInstance {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#uid: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#uid: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#uid.unwrap_or(Default::default())
                         } else {
                             r#uid.ok_or(serde::de::Error::missing_field("uid"))?
                         },
-                        r#sop_class: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#sop_class: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#sop_class.unwrap_or(Default::default())
                         } else {
                             r#sop_class.ok_or(serde::de::Error::missing_field("sopClass"))?
@@ -610,7 +614,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                 let mut r#started: Option<super::super::types::DateTime> = None;
                 let mut r#performer: Option<Vec<ImagingStudySeriesPerformer>> = None;
                 let mut r#instance: Option<Vec<ImagingStudySeriesInstance>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -780,43 +784,47 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                 }
                                 r#instance = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "number",
-                                            "modality",
-                                            "description",
-                                            "numberOfInstances",
-                                            "endpoint",
-                                            "bodySite",
-                                            "laterality",
-                                            "specimen",
-                                            "started",
-                                            "performer",
-                                            "instance",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "uid",
+                                        "number",
+                                        "modality",
+                                        "description",
+                                        "numberOfInstances",
+                                        "endpoint",
+                                        "bodySite",
+                                        "laterality",
+                                        "specimen",
+                                        "started",
+                                        "performer",
+                                        "instance",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImagingStudySeries {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#uid: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#uid: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#uid.unwrap_or(Default::default())
                         } else {
                             r#uid.ok_or(serde::de::Error::missing_field("uid"))?
                         },
                         r#number,
-                        r#modality: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#modality: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#modality.unwrap_or(Default::default())
                         } else {
                             r#modality.ok_or(serde::de::Error::missing_field("modality"))?
@@ -1181,7 +1189,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#series: Option<Vec<ImagingStudySeries>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1476,43 +1484,43 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                 }
                                 r#series = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "modality",
+                                        "subject",
+                                        "encounter",
+                                        "started",
+                                        "basedOn",
+                                        "referrer",
+                                        "interpreter",
+                                        "endpoint",
+                                        "numberOfSeries",
+                                        "numberOfInstances",
+                                        "procedureReference",
+                                        "procedureCode",
+                                        "location",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "note",
+                                        "description",
+                                        "series",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImagingStudy {
@@ -1525,13 +1533,17 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#modality: r#modality.unwrap_or(vec![]),
-                        r#subject: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#subject: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#subject.unwrap_or(Default::default())
                         } else {
                             r#subject.ok_or(serde::de::Error::missing_field("subject"))?

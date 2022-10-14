@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The actual or approximate date of birth of the relative."]
 #[derive(Debug, Clone)]
 pub enum FamilyMemberHistoryBorn {
@@ -74,7 +74,11 @@ pub struct FamilyMemberHistoryCondition {
     #[doc = "An area where general notes can be placed about this specific condition."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
-impl crate::AnyResource for FamilyMemberHistoryCondition {}
+impl crate::AnyResource for FamilyMemberHistoryCondition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for FamilyMemberHistoryCondition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -201,7 +205,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                 let mut r#contributed_to_death: Option<super::super::types::Boolean> = None;
                 let mut r#onset: Option<FamilyMemberHistoryConditionOnset> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -327,33 +331,35 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "outcome",
-                                            "contributedToDeath",
-                                            "onsetAge",
-                                            "onsetRange",
-                                            "onsetPeriod",
-                                            "onsetString",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "code",
+                                        "outcome",
+                                        "contributedToDeath",
+                                        "onsetAge",
+                                        "onsetRange",
+                                        "onsetPeriod",
+                                        "onsetString",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(FamilyMemberHistoryCondition {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
@@ -879,7 +885,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                 let mut r#reason_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#condition: Option<Vec<FamilyMemberHistoryCondition>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1464,49 +1470,49 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 }
                                 r#condition = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "status",
+                                        "dataAbsentReason",
+                                        "patient",
+                                        "date",
+                                        "name",
+                                        "relationship",
+                                        "sex",
+                                        "bornPeriod",
+                                        "bornDate",
+                                        "bornString",
+                                        "ageAge",
+                                        "ageRange",
+                                        "ageString",
+                                        "estimatedAge",
+                                        "deceasedBoolean",
+                                        "deceasedAge",
+                                        "deceasedRange",
+                                        "deceasedDate",
+                                        "deceasedString",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "note",
+                                        "condition",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(FamilyMemberHistory {
@@ -1521,20 +1527,25 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#instantiates_canonical: r#instantiates_canonical.unwrap_or(vec![]),
                         r#instantiates_uri: r#instantiates_uri.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#data_absent_reason,
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
                         },
                         r#date,
                         r#name,
-                        r#relationship: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#relationship: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#relationship.unwrap_or(Default::default())
                         } else {

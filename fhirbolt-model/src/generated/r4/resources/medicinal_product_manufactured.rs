@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The manufactured item as contained in the packaged medicinal product."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductManufactured {
@@ -33,7 +33,11 @@ pub struct MedicinalProductManufactured {
     #[doc = "Other codeable characteristics."]
     pub r#other_characteristics: Vec<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for MedicinalProductManufactured {}
+impl crate::AnyResource for MedicinalProductManufactured {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicinalProductManufactured {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -188,7 +192,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                 let mut r#other_characteristics: Option<
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -331,30 +335,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                                 }
                                 r#other_characteristics = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "manufacturedDoseForm",
-                                            "unitOfPresentation",
-                                            "quantity",
-                                            "manufacturer",
-                                            "ingredient",
-                                            "physicalCharacteristics",
-                                            "otherCharacteristics",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "manufacturedDoseForm",
+                                        "unitOfPresentation",
+                                        "quantity",
+                                        "manufacturer",
+                                        "ingredient",
+                                        "physicalCharacteristics",
+                                        "otherCharacteristics",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductManufactured {
@@ -367,7 +371,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#manufactured_dose_form: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#manufactured_dose_form.unwrap_or(Default::default())
                         } else {
@@ -375,7 +379,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                                 .ok_or(serde::de::Error::missing_field("manufacturedDoseForm"))?
                         },
                         r#unit_of_presentation,
-                        r#quantity: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#quantity: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#quantity.unwrap_or(Default::default())
                         } else {
                             r#quantity.ok_or(serde::de::Error::missing_field("quantity"))?

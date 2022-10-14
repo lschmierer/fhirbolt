@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for HumanName Type: A human's name with the ability to identify parts and usage.\n\nNeed to be able to record names, along with notes about their use."]
 #[derive(Default, Debug, Clone)]
 pub struct HumanName {
@@ -21,7 +21,11 @@ pub struct HumanName {
     #[doc = "Indicates the period of time when this name was valid for the named person."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
-impl crate::AnyResource for HumanName {}
+impl crate::AnyResource for HumanName {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for HumanName {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -235,7 +239,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                 let mut r#prefix: Option<Vec<super::super::types::String>> = None;
                 let mut r#suffix: Option<Vec<super::super::types::String>> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -467,24 +471,24 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 }
                                 r#period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "use",
+                                        "text",
+                                        "family",
+                                        "given",
+                                        "prefix",
+                                        "suffix",
+                                        "period",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(HumanName {

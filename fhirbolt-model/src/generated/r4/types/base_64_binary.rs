@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for base64Binary Type: A stream of bytes"]
 #[derive(Default, Debug, Clone)]
 pub struct Base64Binary {
@@ -9,4 +9,8 @@ pub struct Base64Binary {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Base64Binary {}
+impl crate::AnyResource for Base64Binary {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Coding Type: A reference to a code defined by a terminology system.\n\nReferences to codes are very common in healthcare models."]
 #[derive(Default, Debug, Clone)]
 pub struct Coding {
@@ -17,7 +17,11 @@ pub struct Coding {
     #[doc = "Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)."]
     pub r#user_selected: Option<super::super::types::Boolean>,
 }
-impl crate::AnyResource for Coding {}
+impl crate::AnyResource for Coding {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Coding {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -150,7 +154,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                 let mut r#code: Option<super::super::types::Code> = None;
                 let mut r#display: Option<super::super::types::String> = None;
                 let mut r#user_selected: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -266,22 +270,22 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "version",
-                                            "code",
-                                            "display",
-                                            "userSelected",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "system",
+                                        "version",
+                                        "code",
+                                        "display",
+                                        "userSelected",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Coding {

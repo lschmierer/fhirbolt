@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
 #[derive(Default, Debug, Clone)]
 pub struct LinkageItem {
@@ -13,7 +13,11 @@ pub struct LinkageItem {
     #[doc = "The resource instance being linked as part of the group."]
     pub r#resource: Box<super::super::types::Reference>,
 }
-impl crate::AnyResource for LinkageItem {}
+impl crate::AnyResource for LinkageItem {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for LinkageItem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -83,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for LinkageItem {
                     None;
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#resource: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -133,32 +137,30 @@ impl<'de> serde::de::Deserialize<'de> for LinkageItem {
                                 }
                                 r#resource = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "type", "resource"],
+                                ));
+                            },
                         }
                     }
                     Ok(LinkageItem {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#resource: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#resource: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#resource.unwrap_or(Default::default())
                         } else {
                             r#resource.ok_or(serde::de::Error::missing_field("resource"))?
@@ -332,7 +334,7 @@ impl<'de> serde::de::Deserialize<'de> for Linkage {
                 let mut r#active: Option<super::super::types::Boolean> = None;
                 let mut r#author: Option<Box<super::super::types::Reference>> = None;
                 let mut r#item: Option<Vec<LinkageItem>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -457,26 +459,26 @@ impl<'de> serde::de::Deserialize<'de> for Linkage {
                                 }
                                 r#item = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "active",
-                                            "author",
-                                            "item",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "active",
+                                        "author",
+                                        "item",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Linkage {

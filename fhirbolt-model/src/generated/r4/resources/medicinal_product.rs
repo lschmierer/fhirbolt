@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Condition for which the medicinal use applies."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductSpecialDesignationIndication {
@@ -25,7 +25,11 @@ pub struct MedicinalProductNameNamePart {
     #[doc = "Idenifying type for this part of the name (e.g. strength part)."]
     pub r#type: Box<super::super::types::Coding>,
 }
-impl crate::AnyResource for MedicinalProductNameNamePart {}
+impl crate::AnyResource for MedicinalProductNameNamePart {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicinalProductNameNamePart {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -98,7 +102,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameNamePart {
                     None;
                 let mut r#part: Option<super::super::types::String> = None;
                 let mut r#type: Option<Box<super::super::types::Coding>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -148,26 +152,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameNamePart {
                                 }
                                 r#type = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "part", "type"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "part", "type"],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductNameNamePart {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#part: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#part: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#part.unwrap_or(Default::default())
                         } else {
                             r#part.ok_or(serde::de::Error::missing_field("part"))?
                         },
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -261,7 +269,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameCountryLanguage {
                 let mut r#country: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#jurisdiction: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#language: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -303,34 +311,38 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameCountryLanguage {
                                 }
                                 r#language = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "country",
-                                            "jurisdiction",
-                                            "language",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "country",
+                                        "jurisdiction",
+                                        "language",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductNameCountryLanguage {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#country: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#country: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#country.unwrap_or(Default::default())
                         } else {
                             r#country.ok_or(serde::de::Error::missing_field("country"))?
                         },
                         r#jurisdiction,
-                        r#language: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#language: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#language.unwrap_or(Default::default())
                         } else {
                             r#language.ok_or(serde::de::Error::missing_field("language"))?
@@ -435,7 +447,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductName {
                 let mut r#product_name: Option<super::super::types::String> = None;
                 let mut r#name_part: Option<Vec<MedicinalProductNameNamePart>> = None;
                 let mut r#country_language: Option<Vec<MedicinalProductNameCountryLanguage>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -493,28 +505,29 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductName {
                                 }
                                 r#country_language = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "productName",
-                                            "namePart",
-                                            "countryLanguage",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "productName",
+                                        "namePart",
+                                        "countryLanguage",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductName {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#product_name: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#product_name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#product_name.unwrap_or(Default::default())
                         } else {
@@ -655,7 +668,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufacturingBusinessO
                 > = None;
                 let mut r#manufacturer: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#regulator: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -735,24 +748,24 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufacturingBusinessO
                                 }
                                 r#regulator = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "operationType",
-                                            "authorisationReferenceNumber",
-                                            "effectiveDate",
-                                            "confidentialityIndicator",
-                                            "manufacturer",
-                                            "regulator",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "operationType",
+                                        "authorisationReferenceNumber",
+                                        "effectiveDate",
+                                        "confidentialityIndicator",
+                                        "manufacturer",
+                                        "regulator",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductManufacturingBusinessOperation {
@@ -914,7 +927,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductSpecialDesignation {
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date: Option<super::super::types::DateTime> = None;
                 let mut r#species: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1011,26 +1024,26 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductSpecialDesignation {
                                 }
                                 r#species = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "intendedUse",
-                                            "indicationCodeableConcept",
-                                            "indicationReference",
-                                            "status",
-                                            "date",
-                                            "species",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "intendedUse",
+                                        "indicationCodeableConcept",
+                                        "indicationReference",
+                                        "status",
+                                        "date",
+                                        "species",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductSpecialDesignation {
@@ -1392,7 +1405,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProduct {
                 > = None;
                 let mut r#special_designation: Option<Vec<MedicinalProductSpecialDesignation>> =
                     None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1678,43 +1691,43 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProduct {
                                 }
                                 r#special_designation = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "domain",
-                                            "combinedPharmaceuticalDoseForm",
-                                            "legalStatusOfSupply",
-                                            "additionalMonitoringIndicator",
-                                            "specialMeasures",
-                                            "paediatricUseIndicator",
-                                            "productClassification",
-                                            "marketingStatus",
-                                            "pharmaceuticalProduct",
-                                            "packagedMedicinalProduct",
-                                            "attachedDocument",
-                                            "masterFile",
-                                            "contact",
-                                            "clinicalTrial",
-                                            "name",
-                                            "crossReference",
-                                            "manufacturingBusinessOperation",
-                                            "specialDesignation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "domain",
+                                        "combinedPharmaceuticalDoseForm",
+                                        "legalStatusOfSupply",
+                                        "additionalMonitoringIndicator",
+                                        "specialMeasures",
+                                        "paediatricUseIndicator",
+                                        "productClassification",
+                                        "marketingStatus",
+                                        "pharmaceuticalProduct",
+                                        "packagedMedicinalProduct",
+                                        "attachedDocument",
+                                        "masterFile",
+                                        "contact",
+                                        "clinicalTrial",
+                                        "name",
+                                        "crossReference",
+                                        "manufacturingBusinessOperation",
+                                        "specialDesignation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProduct {

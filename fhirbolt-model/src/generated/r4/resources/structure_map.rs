@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A value to use if there is no existing value in the source object."]
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
@@ -92,7 +92,11 @@ pub struct StructureMapStructure {
     #[doc = "Documentation that describes how the structure is used in the mapping."]
     pub r#documentation: Option<super::super::types::String>,
 }
-impl crate::AnyResource for StructureMapStructure {}
+impl crate::AnyResource for StructureMapStructure {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for StructureMapStructure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -210,7 +214,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                 let mut r#mode: Option<super::super::types::Code> = None;
                 let mut r#alias: Option<super::super::types::String> = None;
                 let mut r#documentation: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -316,34 +320,38 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "mode",
-                                            "alias",
-                                            "documentation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "mode",
+                                        "alias",
+                                        "documentation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapStructure {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#url: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#url: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#url.unwrap_or(Default::default())
                         } else {
                             r#url.ok_or(serde::de::Error::missing_field("url"))?
                         },
-                        r#mode: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#mode: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#mode.unwrap_or(Default::default())
                         } else {
                             r#mode.ok_or(serde::de::Error::missing_field("mode"))?
@@ -492,7 +500,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                 let mut r#type: Option<super::super::types::String> = None;
                 let mut r#mode: Option<super::super::types::Code> = None;
                 let mut r#documentation: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -598,35 +606,39 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "mode",
-                                            "documentation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "name",
+                                        "type",
+                                        "mode",
+                                        "documentation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroupInput {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
                         },
                         r#type,
-                        r#mode: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#mode: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#mode.unwrap_or(Default::default())
                         } else {
                             r#mode.ok_or(serde::de::Error::missing_field("mode"))?
@@ -1389,7 +1401,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                 let mut r#condition: Option<super::super::types::String> = None;
                 let mut r#check: Option<super::super::types::String> = None;
                 let mut r#log_message: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2874,85 +2886,87 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "context",
+                                        "min",
+                                        "max",
+                                        "type",
+                                        "defaultValueBase64Binary",
+                                        "defaultValueBoolean",
+                                        "defaultValueCanonical",
+                                        "defaultValueCode",
+                                        "defaultValueDate",
+                                        "defaultValueDateTime",
+                                        "defaultValueDecimal",
+                                        "defaultValueId",
+                                        "defaultValueInstant",
+                                        "defaultValueInteger",
+                                        "defaultValueMarkdown",
+                                        "defaultValueOid",
+                                        "defaultValuePositiveInt",
+                                        "defaultValueString",
+                                        "defaultValueTime",
+                                        "defaultValueUnsignedInt",
+                                        "defaultValueUri",
+                                        "defaultValueUrl",
+                                        "defaultValueUuid",
+                                        "defaultValueAddress",
+                                        "defaultValueAge",
+                                        "defaultValueAnnotation",
+                                        "defaultValueAttachment",
+                                        "defaultValueCodeableConcept",
+                                        "defaultValueCoding",
+                                        "defaultValueContactPoint",
+                                        "defaultValueCount",
+                                        "defaultValueDistance",
+                                        "defaultValueDuration",
+                                        "defaultValueHumanName",
+                                        "defaultValueIdentifier",
+                                        "defaultValueMoney",
+                                        "defaultValuePeriod",
+                                        "defaultValueQuantity",
+                                        "defaultValueRange",
+                                        "defaultValueRatio",
+                                        "defaultValueReference",
+                                        "defaultValueSampledData",
+                                        "defaultValueSignature",
+                                        "defaultValueTiming",
+                                        "defaultValueContactDetail",
+                                        "defaultValueContributor",
+                                        "defaultValueDataRequirement",
+                                        "defaultValueExpression",
+                                        "defaultValueParameterDefinition",
+                                        "defaultValueRelatedArtifact",
+                                        "defaultValueTriggerDefinition",
+                                        "defaultValueUsageContext",
+                                        "defaultValueDosage",
+                                        "defaultValueMeta",
+                                        "element",
+                                        "listMode",
+                                        "variable",
+                                        "condition",
+                                        "check",
+                                        "logMessage",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroupRuleSource {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#context: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#context: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#context.unwrap_or(Default::default())
                         } else {
                             r#context.ok_or(serde::de::Error::missing_field("context"))?
@@ -3131,7 +3145,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#value: Option<StructureMapGroupRuleTargetParameterValue> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3371,30 +3385,32 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                     return Err(serde::de::Error::duplicate_field("_value[x]"));
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueId",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueDecimal",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "valueId",
+                                        "valueString",
+                                        "valueBoolean",
+                                        "valueInteger",
+                                        "valueDecimal",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroupRuleTargetParameter {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value[x]"))?
@@ -3635,7 +3651,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                 let mut r#list_rule_id: Option<super::super::types::Id> = None;
                 let mut r#transform: Option<super::super::types::Code> = None;
                 let mut r#parameter: Option<Vec<StructureMapGroupRuleTargetParameter>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3835,26 +3851,26 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                 }
                                 r#parameter = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "context",
+                                        "contextType",
+                                        "element",
+                                        "variable",
+                                        "listMode",
+                                        "listRuleId",
+                                        "transform",
+                                        "parameter",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroupRuleTarget {
@@ -3995,7 +4011,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                     None;
                 let mut r#name: Option<super::super::types::Id> = None;
                 let mut r#variable: Option<Vec<super::super::types::String>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4089,27 +4105,23 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                     }
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "variable",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "name", "variable"],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroupRuleDependent {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
@@ -4251,7 +4263,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                 let mut r#rule: Option<Vec<StructureMapGroupRule>> = None;
                 let mut r#dependent: Option<Vec<StructureMapGroupRuleDependent>> = None;
                 let mut r#documentation: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4341,31 +4353,33 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "source",
-                                            "target",
-                                            "rule",
-                                            "dependent",
-                                            "documentation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "name",
+                                        "source",
+                                        "target",
+                                        "rule",
+                                        "dependent",
+                                        "documentation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroupRule {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
@@ -4533,7 +4547,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                 let mut r#documentation: Option<super::super::types::String> = None;
                 let mut r#input: Option<Vec<StructureMapGroupInput>> = None;
                 let mut r#rule: Option<Vec<StructureMapGroupRule>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4651,37 +4665,41 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                                 }
                                 r#rule = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "extends",
-                                            "typeMode",
-                                            "documentation",
-                                            "input",
-                                            "rule",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "name",
+                                        "extends",
+                                        "typeMode",
+                                        "documentation",
+                                        "input",
+                                        "rule",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMapGroup {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
                         },
                         r#extends,
-                        r#type_mode: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type_mode: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type_mode.unwrap_or(Default::default())
                         } else {
                             r#type_mode.ok_or(serde::de::Error::missing_field("typeMode"))?
@@ -5124,7 +5142,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                 let mut r#structure: Option<Vec<StructureMapStructure>> = None;
                 let mut r#import: Option<Vec<super::super::types::Canonical>> = None;
                 let mut r#group: Option<Vec<StructureMapGroup>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -5523,41 +5541,41 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 }
                                 r#group = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "identifier",
+                                        "version",
+                                        "name",
+                                        "title",
+                                        "status",
+                                        "experimental",
+                                        "date",
+                                        "publisher",
+                                        "contact",
+                                        "description",
+                                        "useContext",
+                                        "jurisdiction",
+                                        "purpose",
+                                        "copyright",
+                                        "structure",
+                                        "import",
+                                        "group",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(StructureMap {
@@ -5569,20 +5587,26 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                         r#contained: r#contained.unwrap_or(vec![]),
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#url: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#url: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#url.unwrap_or(Default::default())
                         } else {
                             r#url.ok_or(serde::de::Error::missing_field("url"))?
                         },
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#version,
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
                         },
                         r#title,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

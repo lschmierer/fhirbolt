@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Date of procedure."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
@@ -31,7 +31,11 @@ pub struct MedicinalProductAuthorizationJurisdictionalAuthorization {
     #[doc = "The start and expected end date of the authorization."]
     pub r#validity_period: Option<Box<super::super::types::Period>>,
 }
-impl crate::AnyResource for MedicinalProductAuthorizationJurisdictionalAuthorization {}
+impl crate::AnyResource for MedicinalProductAuthorizationJurisdictionalAuthorization {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicinalProductAuthorizationJurisdictionalAuthorization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -117,7 +121,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
                     Box<super::super::types::CodeableConcept>,
                 > = None;
                 let mut r#validity_period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -175,23 +179,23 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
                                 }
                                 r#validity_period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "country",
-                                            "jurisdiction",
-                                            "legalStatusOfSupply",
-                                            "validityPeriod",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "country",
+                                        "jurisdiction",
+                                        "legalStatusOfSupply",
+                                        "validityPeriod",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductAuthorizationJurisdictionalAuthorization {
@@ -326,7 +330,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date: Option<MedicinalProductAuthorizationProcedureDate> = None;
                 let mut r#application: Option<Vec<MedicinalProductAuthorizationProcedure>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -422,23 +426,23 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                 }
                                 r#application = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "datePeriod",
-                                            "dateDateTime",
-                                            "application",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "datePeriod",
+                                        "dateDateTime",
+                                        "application",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductAuthorizationProcedure {
@@ -446,7 +450,9 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier,
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -772,7 +778,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                 let mut r#holder: Option<Box<super::super::types::Reference>> = None;
                 let mut r#regulator: Option<Box<super::super::types::Reference>> = None;
                 let mut r#procedure: Option<MedicinalProductAuthorizationProcedure> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1035,39 +1041,39 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                 }
                                 r#procedure = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "subject",
+                                        "country",
+                                        "jurisdiction",
+                                        "status",
+                                        "statusDate",
+                                        "restoreDate",
+                                        "validityPeriod",
+                                        "dataExclusivityPeriod",
+                                        "dateOfFirstAuthorization",
+                                        "internationalBirthDate",
+                                        "legalBasis",
+                                        "jurisdictionalAuthorization",
+                                        "holder",
+                                        "regulator",
+                                        "procedure",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductAuthorization {

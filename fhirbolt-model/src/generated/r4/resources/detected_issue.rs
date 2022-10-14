@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The date or period when the detected issue was initially identified."]
 #[derive(Debug, Clone)]
 pub enum DetectedIssueIdentified {
@@ -25,7 +25,11 @@ pub struct DetectedIssueEvidence {
     #[doc = "Links to resources that constitute evidence for the detected issue such as a GuidanceResponse or MeasureReport."]
     pub r#detail: Vec<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for DetectedIssueEvidence {}
+impl crate::AnyResource for DetectedIssueEvidence {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for DetectedIssueEvidence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -87,7 +91,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
                     None;
                 let mut r#code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#detail: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -123,14 +127,14 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
                                 }
                                 r#detail = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "code", "detail"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "code", "detail"],
+                                ));
+                            },
                         }
                     }
                     Ok(DetectedIssueEvidence {
@@ -239,7 +243,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
                 let mut r#action: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date: Option<super::super::types::DateTime> = None;
                 let mut r#author: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -295,28 +299,30 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
                                 }
                                 r#author = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "action",
-                                            "date",
-                                            "author",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "action",
+                                        "date",
+                                        "author",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DetectedIssueMitigation {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#action: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#action: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#action.unwrap_or(Default::default())
                         } else {
                             r#action.ok_or(serde::de::Error::missing_field("action"))?
@@ -622,7 +628,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                 let mut r#detail: Option<super::super::types::String> = None;
                 let mut r#reference: Option<super::super::types::Uri> = None;
                 let mut r#mitigation: Option<Vec<DetectedIssueMitigation>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -884,36 +890,36 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                 }
                                 r#mitigation = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "code",
+                                        "severity",
+                                        "patient",
+                                        "identifiedDateTime",
+                                        "identifiedPeriod",
+                                        "author",
+                                        "implicated",
+                                        "evidence",
+                                        "detail",
+                                        "reference",
+                                        "mitigation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DetectedIssue {
@@ -926,7 +932,9 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

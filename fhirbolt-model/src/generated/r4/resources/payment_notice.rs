@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides the status of the payment for goods and services rendered, and the request and response resource references."]
 #[derive(Default, Debug, Clone)]
 pub struct PaymentNotice {
@@ -43,7 +43,11 @@ pub struct PaymentNotice {
     #[doc = "A code indicating whether payment has been sent or cleared."]
     pub r#payment_status: Option<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for PaymentNotice {}
+impl crate::AnyResource for PaymentNotice {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for PaymentNotice {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -248,7 +252,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                 let mut r#recipient: Option<Box<super::super::types::Reference>> = None;
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
                 let mut r#payment_status: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -455,35 +459,35 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                 }
                                 r#payment_status = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "response",
-                                            "created",
-                                            "provider",
-                                            "payment",
-                                            "paymentDate",
-                                            "payee",
-                                            "recipient",
-                                            "amount",
-                                            "paymentStatus",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "request",
+                                        "response",
+                                        "created",
+                                        "provider",
+                                        "payment",
+                                        "paymentDate",
+                                        "payee",
+                                        "recipient",
+                                        "amount",
+                                        "paymentStatus",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PaymentNotice {
@@ -496,32 +500,42 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#request,
                         r#response,
-                        r#created: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#created: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#created.unwrap_or(Default::default())
                         } else {
                             r#created.ok_or(serde::de::Error::missing_field("created"))?
                         },
                         r#provider,
-                        r#payment: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#payment: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#payment.unwrap_or(Default::default())
                         } else {
                             r#payment.ok_or(serde::de::Error::missing_field("payment"))?
                         },
                         r#payment_date,
                         r#payee,
-                        r#recipient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#recipient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#recipient.unwrap_or(Default::default())
                         } else {
                             r#recipient.ok_or(serde::de::Error::missing_field("recipient"))?
                         },
-                        r#amount: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#amount: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#amount.unwrap_or(Default::default())
                         } else {
                             r#amount.ok_or(serde::de::Error::missing_field("amount"))?

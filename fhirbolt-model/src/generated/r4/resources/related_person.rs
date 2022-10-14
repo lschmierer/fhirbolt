@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
 #[derive(Default, Debug, Clone)]
 pub struct RelatedPersonCommunication {
@@ -13,7 +13,11 @@ pub struct RelatedPersonCommunication {
     #[doc = "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
-impl crate::AnyResource for RelatedPersonCommunication {}
+impl crate::AnyResource for RelatedPersonCommunication {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for RelatedPersonCommunication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -85,7 +89,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPersonCommunication {
                     None;
                 let mut r#language: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#preferred: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -135,27 +139,29 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPersonCommunication {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "language",
-                                            "preferred",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "language",
+                                        "preferred",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(RelatedPersonCommunication {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#language: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#language: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#language.unwrap_or(Default::default())
                         } else {
                             r#language.ok_or(serde::de::Error::missing_field("language"))?
@@ -425,7 +431,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                 let mut r#photo: Option<Vec<Box<super::super::types::Attachment>>> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 let mut r#communication: Option<Vec<RelatedPersonCommunication>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -632,35 +638,35 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                                 }
                                 r#communication = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "patient",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "period",
-                                            "communication",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "patient",
+                                        "relationship",
+                                        "name",
+                                        "telecom",
+                                        "gender",
+                                        "birthDate",
+                                        "address",
+                                        "photo",
+                                        "period",
+                                        "communication",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(RelatedPerson {
@@ -674,7 +680,9 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#active,
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?

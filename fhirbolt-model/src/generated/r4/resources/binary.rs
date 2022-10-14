@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.\n\nThere are situations where it is useful or required to handle pure binary content using the same framework as other resources."]
 #[derive(Default, Debug, Clone)]
 pub struct Binary {
@@ -17,7 +17,11 @@ pub struct Binary {
     #[doc = "The actual content, base64 encoded."]
     pub r#data: Option<super::super::types::Base64Binary>,
 }
-impl crate::AnyResource for Binary {}
+impl crate::AnyResource for Binary {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Binary {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -139,7 +143,7 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                 let mut r#content_type: Option<super::super::types::Code> = None;
                 let mut r#security_context: Option<Box<super::super::types::Reference>> = None;
                 let mut r#data: Option<super::super::types::Base64Binary> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -254,22 +258,22 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "contentType",
-                                            "securityContext",
-                                            "data",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "contentType",
+                                        "securityContext",
+                                        "data",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Binary {
@@ -277,7 +281,8 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                         r#meta,
                         r#implicit_rules,
                         r#language,
-                        r#content_type: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#content_type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#content_type.unwrap_or(Default::default())
                         } else {

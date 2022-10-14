@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Default, Debug, Clone)]
 pub struct CatalogEntryRelatedEntry {
@@ -13,7 +13,11 @@ pub struct CatalogEntryRelatedEntry {
     #[doc = "The reference to the related item."]
     pub r#item: Box<super::super::types::Reference>,
 }
-impl crate::AnyResource for CatalogEntryRelatedEntry {}
+impl crate::AnyResource for CatalogEntryRelatedEntry {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for CatalogEntryRelatedEntry {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -83,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                     None;
                 let mut r#relationtype: Option<super::super::types::Code> = None;
                 let mut r#item: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -133,33 +137,36 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                                 }
                                 r#item = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "relationtype",
-                                            "item",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "relationtype",
+                                        "item",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CatalogEntryRelatedEntry {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#relationtype: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#relationtype: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#relationtype.unwrap_or(Default::default())
                         } else {
                             r#relationtype.ok_or(serde::de::Error::missing_field("relationtype"))?
                         },
-                        r#item: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#item: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#item.unwrap_or(Default::default())
                         } else {
                             r#item.ok_or(serde::de::Error::missing_field("item"))?
@@ -457,7 +464,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#related_entry: Option<Vec<CatalogEntryRelatedEntry>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -696,36 +703,36 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                 }
                                 r#related_entry = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "type",
+                                        "orderable",
+                                        "referencedItem",
+                                        "additionalIdentifier",
+                                        "classification",
+                                        "status",
+                                        "validityPeriod",
+                                        "validTo",
+                                        "lastUpdated",
+                                        "additionalCharacteristic",
+                                        "additionalClassification",
+                                        "relatedEntry",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CatalogEntry {
@@ -739,13 +746,15 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#type,
-                        r#orderable: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#orderable: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#orderable.unwrap_or(Default::default())
                         } else {
                             r#orderable.ok_or(serde::de::Error::missing_field("orderable"))?
                         },
                         r#referenced_item: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#referenced_item.unwrap_or(Default::default())
                         } else {

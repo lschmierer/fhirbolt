@@ -1,5 +1,4 @@
 use std::env;
-use std::fmt;
 use std::fs::{self, File};
 use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
@@ -10,27 +9,18 @@ use chrono::Utc;
 use proc_macro2::TokenStream;
 use zip::read::{ZipArchive, ZipFile};
 
+use fhirbolt_shared::FhirRelease;
+
 use fhirbolt_codegen::{generate_all, model::Bundle, SourceFile};
 
-enum FhirRelease {
-    R4,
-}
+const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4 /*, FhirRelease::R4B*/];
 
-impl fmt::Display for FhirRelease {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self {
-            FhirRelease::R4 => write!(f, "R4"),
-        }
-    }
-}
-
-const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4];
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
 
 const MODEL_OUTPUT_DIRECTORY: &str = "fhirbolt-model/src/generated";
 const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-serde/src/helpers/type_hints/generated";
 
-fn tmp_dir(fhir_release: &FhirRelease) -> PathBuf {
+fn tmp_dir(fhir_release: FhirRelease) -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .unwrap()
@@ -45,11 +35,11 @@ fn tmp_dir(fhir_release: &FhirRelease) -> PathBuf {
     dir
 }
 
-fn fhir_definitions_json_zip(fhir_release: &FhirRelease) -> PathBuf {
+fn fhir_definitions_json_zip(fhir_release: FhirRelease) -> PathBuf {
     tmp_dir(fhir_release).join("definitions.json.zip")
 }
 
-fn fhir_definitions_json_download_url(fhir_release: &FhirRelease) -> String {
+fn fhir_definitions_json_download_url(fhir_release: FhirRelease) -> String {
     str::replace(
         FHIR_DEFINITIONS_JSON_DOWNLOAD_URL,
         "{}",
@@ -57,7 +47,7 @@ fn fhir_definitions_json_download_url(fhir_release: &FhirRelease) -> String {
     )
 }
 
-fn download_fhir_definitions(fhir_release: &FhirRelease) -> PathBuf {
+fn download_fhir_definitions(fhir_release: FhirRelease) -> PathBuf {
     let definitions_json_zip = fhir_definitions_json_zip(fhir_release);
     let definitions_json_download_url = fhir_definitions_json_download_url(fhir_release);
 
@@ -87,8 +77,15 @@ fn open_zip_archive(zip_path: &Path) -> ZipArchive<File> {
 
 fn read_file_from_zip_archive(zip_archive: &mut ZipArchive<File>, name: &str) -> String {
     println!("Reading '{}' from zip archive...", name);
+
+    let name = if zip_archive.file_names().find(|n| *n == name).is_some() {
+        name.to_owned()
+    } else {
+        format!("definitions.json/{}", name)
+    };
+
     let mut file_content = String::new();
-    <ZipFile as Read>::read_to_string(&mut zip_archive.by_name(name).unwrap(), &mut file_content)
+    <ZipFile as Read>::read_to_string(&mut zip_archive.by_name(&name).unwrap(), &mut file_content)
         .unwrap();
     file_content
 }
@@ -123,7 +120,7 @@ fn clear_generated() {
     fs::remove_dir_all(generate_dir(TYPE_HINTS_OUTPUT_DIRECTORY)).unwrap();
 }
 
-fn model_output_release_dir(fhir_release: &FhirRelease) -> PathBuf {
+fn model_output_release_dir(fhir_release: FhirRelease) -> PathBuf {
     let dir = generate_dir(MODEL_OUTPUT_DIRECTORY).join(fhir_release.to_string().to_lowercase());
     if !dir.exists() {
         fs::create_dir(&dir).unwrap();
@@ -131,7 +128,7 @@ fn model_output_release_dir(fhir_release: &FhirRelease) -> PathBuf {
     dir
 }
 
-fn model_output_source_dir(fhir_release: &FhirRelease, kind: &str) -> PathBuf {
+fn model_output_source_dir(fhir_release: FhirRelease, kind: &str) -> PathBuf {
     let dir = model_output_release_dir(fhir_release).join(kind);
     if !dir.exists() {
         fs::create_dir(&dir).unwrap();
@@ -139,11 +136,11 @@ fn model_output_source_dir(fhir_release: &FhirRelease, kind: &str) -> PathBuf {
     dir
 }
 
-fn model_output_source_file(fhir_release: &FhirRelease, kind: &str, name: &str) -> PathBuf {
+fn model_output_source_file(fhir_release: FhirRelease, kind: &str, name: &str) -> PathBuf {
     model_output_source_dir(fhir_release, kind).join(format!("{}.rs", name))
 }
 
-fn write_model_source_files(fhir_release: &FhirRelease, kind: &str, source_files: &[SourceFile]) {
+fn write_model_source_files(fhir_release: FhirRelease, kind: &str, source_files: &[SourceFile]) {
     println!("Writing {}...", kind);
 
     let mut mod_names = vec![];
@@ -151,11 +148,11 @@ fn write_model_source_files(fhir_release: &FhirRelease, kind: &str, source_files
         write_model_source_file(fhir_release, kind, &name, source);
         mod_names.push(name.as_str());
     }
-    write_model_source_mod_file(&fhir_release, kind, &mod_names);
+    write_model_source_mod_file(fhir_release, kind, &mod_names);
 }
 
 fn write_model_source_file(
-    fhir_release: &FhirRelease,
+    fhir_release: FhirRelease,
     kind: &str,
     name: &str,
     tokens: &TokenStream,
@@ -174,27 +171,41 @@ fn write_model_source_file(
     write!(file, "{}", tokens).unwrap();
 }
 
-fn write_root_mod_file(path: &str) {
+fn write_model_root_mod_file(path: &str) {
     let mut file = File::create(&generate_dir(path).join("mod.rs")).unwrap();
 
     for fhir_release in BUILD_FHIR_RELEASES {
-        write!(file, "pub mod {};", fhir_release.to_string().to_lowercase()).unwrap();
+        writeln!(
+            file,
+            "#[cfg(feature = \"{}\")]",
+            fhir_release.to_string().to_lowercase()
+        )
+        .unwrap();
+        writeln!(file, "pub mod {};", fhir_release.to_string().to_lowercase()).unwrap();
     }
 }
 
-fn write_model_release_mod_file(fhir_release: &FhirRelease) {
-    let mut file = File::create(&model_output_release_dir(fhir_release).join("mod.rs")).unwrap();
+fn write_type_hints_root_mod_file(path: &str) {
+    let mut file = File::create(&generate_dir(path).join("mod.rs")).unwrap();
 
-    write!(file, "pub mod types;\n").unwrap();
-    write!(file, "pub mod resources;\n").unwrap();
-    write!(file, "\n").unwrap();
-    write!(file, "mod resource;\n").unwrap();
-    write!(file, "pub(crate) mod serde_helpers;\n").unwrap();
-    write!(file, "\n").unwrap();
-    write!(file, "pub use resource::*;\n").unwrap();
+    for fhir_release in BUILD_FHIR_RELEASES {
+        writeln!(file, "pub mod {};", fhir_release.to_string().to_lowercase()).unwrap();
+    }
 }
 
-fn write_model_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[&str]) {
+fn write_model_release_mod_file(fhir_release: FhirRelease) {
+    let mut file = File::create(&model_output_release_dir(fhir_release).join("mod.rs")).unwrap();
+
+    writeln!(file, "pub mod types;").unwrap();
+    writeln!(file, "pub mod resources;").unwrap();
+    writeln!(file, "").unwrap();
+    writeln!(file, "mod resource;").unwrap();
+    writeln!(file, "pub(crate) mod serde_helpers;").unwrap();
+    writeln!(file, "").unwrap();
+    writeln!(file, "pub use resource::*;").unwrap();
+}
+
+fn write_model_source_mod_file(fhir_release: FhirRelease, kind: &str, types: &[&str]) {
     let mut file =
         File::create(&model_output_source_dir(fhir_release, kind).join("mod.rs")).unwrap();
 
@@ -209,13 +220,13 @@ fn write_model_source_mod_file(fhir_release: &FhirRelease, kind: &str, types: &[
     }
 }
 
-fn type_hint_output_source_file(fhir_release: &FhirRelease) -> PathBuf {
+fn type_hints_output_source_file(fhir_release: FhirRelease) -> PathBuf {
     generate_dir(TYPE_HINTS_OUTPUT_DIRECTORY)
         .join(format!("{}.rs", fhir_release.to_string().to_lowercase()))
 }
 
-fn write_type_hint_source_file(fhir_release: &FhirRelease, tokens: &TokenStream) {
-    let file_path = type_hint_output_source_file(fhir_release);
+fn write_type_hints_source_file(fhir_release: FhirRelease, tokens: &TokenStream) {
+    let file_path = type_hints_output_source_file(fhir_release);
     let mut file =
         File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
 
@@ -229,19 +240,11 @@ fn write_type_hint_source_file(fhir_release: &FhirRelease, tokens: &TokenStream)
     write!(file, "{}", tokens).unwrap();
 }
 
-fn generate_and_write(
-    fhir_release: &FhirRelease,
-    types_bundle: &Bundle,
-    resources_bundle: &Bundle,
-) {
-    let generated = generate_all(types_bundle, resources_bundle);
+fn generate_and_write(fhir_release: FhirRelease, types_bundle: &Bundle, resources_bundle: &Bundle) {
+    let generated = generate_all(types_bundle, resources_bundle, fhir_release);
 
-    write_model_source_files(&fhir_release, "types", &generated.types_source_files);
-    write_model_source_files(
-        &fhir_release,
-        "resources",
-        &generated.resources_source_files,
-    );
+    write_model_source_files(fhir_release, "types", &generated.types_source_files);
+    write_model_source_files(fhir_release, "resources", &generated.resources_source_files);
 
     write_model_source_file(
         fhir_release,
@@ -257,7 +260,7 @@ fn generate_and_write(
         &generated.serde_helpers.source,
     );
 
-    write_type_hint_source_file(fhir_release, &generated.type_hints);
+    write_type_hints_source_file(fhir_release, &generated.type_hints);
 }
 
 fn rustfmt() {
@@ -271,14 +274,14 @@ fn rustfmt() {
 fn main() {
     clear_generated();
 
-    write_root_mod_file(MODEL_OUTPUT_DIRECTORY);
-    write_root_mod_file(TYPE_HINTS_OUTPUT_DIRECTORY);
+    write_model_root_mod_file(MODEL_OUTPUT_DIRECTORY);
+    write_type_hints_root_mod_file(TYPE_HINTS_OUTPUT_DIRECTORY);
 
     for fhir_release in BUILD_FHIR_RELEASES {
         println!("Generating FHIR {}...", fhir_release);
-        write_model_release_mod_file(&fhir_release);
+        write_model_release_mod_file(*fhir_release);
 
-        let zip_file = download_fhir_definitions(fhir_release);
+        let zip_file = download_fhir_definitions(*fhir_release);
         let mut zip_archive = open_zip_archive(&zip_file);
 
         let types_json = read_types_from_zip_archive(&mut zip_archive);
@@ -287,7 +290,7 @@ fn main() {
         let resources_json = read_resources_from_zip_archive(&mut zip_archive);
         let resources_bundle = parse_bundle(&resources_json);
 
-        generate_and_write(fhir_release, &types_bundle, &resources_bundle);
+        generate_and_write(*fhir_release, &types_bundle, &resources_bundle);
 
         println!("FHIR {} generated succesfully!", fhir_release);
     }

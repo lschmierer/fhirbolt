@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationOccurrence {
@@ -49,7 +49,11 @@ pub struct ImmunizationPerformer {
     #[doc = "The practitioner or organization who performed the action."]
     pub r#actor: Box<super::super::types::Reference>,
 }
-impl crate::AnyResource for ImmunizationPerformer {}
+impl crate::AnyResource for ImmunizationPerformer {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ImmunizationPerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -109,7 +113,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                     None;
                 let mut r#function: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -145,20 +149,14 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                                 }
                                 r#actor = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "function",
-                                            "actor",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "function", "actor"],
+                                ));
+                            },
                         }
                     }
                     Ok(ImmunizationPerformer {
@@ -166,7 +164,9 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#function,
-                        r#actor: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#actor: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#actor.unwrap_or(Default::default())
                         } else {
                             r#actor.ok_or(serde::de::Error::missing_field("actor"))?
@@ -317,7 +317,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                 let mut r#reference: Option<super::super::types::Uri> = None;
                 let mut r#publication_date: Option<super::super::types::DateTime> = None;
                 let mut r#presentation_date: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -429,22 +429,22 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "documentType",
-                                            "reference",
-                                            "publicationDate",
-                                            "presentationDate",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "documentType",
+                                        "reference",
+                                        "publicationDate",
+                                        "presentationDate",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImmunizationEducation {
@@ -569,7 +569,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                 let mut r#date: Option<super::super::types::DateTime> = None;
                 let mut r#detail: Option<Box<super::super::types::Reference>> = None;
                 let mut r#reported: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -639,21 +639,21 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "date",
-                                            "detail",
-                                            "reported",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "date",
+                                        "detail",
+                                        "reported",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImmunizationReaction {
@@ -855,7 +855,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                     None;
                 let mut r#dose_number: Option<ImmunizationProtocolAppliedDoseNumber> = None;
                 let mut r#series_doses: Option<ImmunizationProtocolAppliedSeriesDoses> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1101,25 +1101,25 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                     ));
                                 }
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "series",
-                                            "authority",
-                                            "targetDisease",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "series",
+                                        "authority",
+                                        "targetDisease",
+                                        "doseNumberPositiveInt",
+                                        "doseNumberString",
+                                        "seriesDosesPositiveInt",
+                                        "seriesDosesString",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ImmunizationProtocolApplied {
@@ -1129,7 +1129,9 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                         r#series,
                         r#authority,
                         r#target_disease: r#target_disease.unwrap_or(vec![]),
-                        r#dose_number: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#dose_number: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#dose_number.unwrap_or(Default::default())
                         } else {
                             r#dose_number.ok_or(serde::de::Error::missing_field("doseNumber[x]"))?
@@ -1596,7 +1598,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                 let mut r#funding_source: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#reaction: Option<Vec<ImmunizationReaction>> = None;
                 let mut r#protocol_applied: Option<Vec<ImmunizationProtocolApplied>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2025,52 +2027,52 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                 }
                                 r#protocol_applied = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "statusReason",
+                                        "vaccineCode",
+                                        "patient",
+                                        "encounter",
+                                        "occurrenceDateTime",
+                                        "occurrenceString",
+                                        "recorded",
+                                        "primarySource",
+                                        "reportOrigin",
+                                        "location",
+                                        "manufacturer",
+                                        "lotNumber",
+                                        "expirationDate",
+                                        "site",
+                                        "route",
+                                        "doseQuantity",
+                                        "performer",
+                                        "note",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "isSubpotent",
+                                        "subpotentReason",
+                                        "education",
+                                        "programEligibility",
+                                        "fundingSource",
+                                        "reaction",
+                                        "protocolApplied",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Immunization {
@@ -2083,25 +2085,32 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#status_reason,
-                        r#vaccine_code: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#vaccine_code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#vaccine_code.unwrap_or(Default::default())
                         } else {
                             r#vaccine_code.ok_or(serde::de::Error::missing_field("vaccineCode"))?
                         },
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
                         },
                         r#encounter,
-                        r#occurrence: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#occurrence: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#occurrence.unwrap_or(Default::default())
                         } else {
                             r#occurrence.ok_or(serde::de::Error::missing_field("occurrence[x]"))?

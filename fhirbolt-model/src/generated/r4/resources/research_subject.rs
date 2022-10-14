@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A physical entity which is the primary unit of operational and/or administrative interest in a study."]
 #[derive(Default, Debug, Clone)]
 pub struct ResearchSubject {
@@ -35,7 +35,11 @@ pub struct ResearchSubject {
     #[doc = "A record of the patient's informed agreement to participate in the study."]
     pub r#consent: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for ResearchSubject {}
+impl crate::AnyResource for ResearchSubject {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ResearchSubject {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -220,7 +224,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                 let mut r#assigned_arm: Option<super::super::types::String> = None;
                 let mut r#actual_arm: Option<super::super::types::String> = None;
                 let mut r#consent: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -403,31 +407,31 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                                 }
                                 r#consent = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "study",
-                                            "individual",
-                                            "assignedArm",
-                                            "actualArm",
-                                            "consent",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "period",
+                                        "study",
+                                        "individual",
+                                        "assignedArm",
+                                        "actualArm",
+                                        "consent",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ResearchSubject {
@@ -440,18 +444,24 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#period,
-                        r#study: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#study: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#study.unwrap_or(Default::default())
                         } else {
                             r#study.ok_or(serde::de::Error::missing_field("study"))?
                         },
-                        r#individual: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#individual: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#individual.unwrap_or(Default::default())
                         } else {
                             r#individual.ok_or(serde::de::Error::missing_field("individual"))?

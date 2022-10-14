@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentOccurrence {
@@ -57,7 +57,11 @@ pub struct RiskAssessmentPrediction {
     #[doc = "Additional information explaining the basis for the prediction."]
     pub r#rationale: Option<super::super::types::String>,
 }
-impl crate::AnyResource for RiskAssessmentPrediction {}
+impl crate::AnyResource for RiskAssessmentPrediction {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for RiskAssessmentPrediction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -208,7 +212,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                 let mut r#relative_risk: Option<super::super::types::Decimal> = None;
                 let mut r#when: Option<RiskAssessmentPredictionWhen> = None;
                 let mut r#rationale: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -362,26 +366,26 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "outcome",
-                                            "probabilityDecimal",
-                                            "probabilityRange",
-                                            "qualitativeRisk",
-                                            "relativeRisk",
-                                            "whenPeriod",
-                                            "whenRange",
-                                            "rationale",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "outcome",
+                                        "probabilityDecimal",
+                                        "probabilityRange",
+                                        "qualitativeRisk",
+                                        "relativeRisk",
+                                        "whenPeriod",
+                                        "whenRange",
+                                        "rationale",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(RiskAssessmentPrediction {
@@ -708,7 +712,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                 let mut r#prediction: Option<Vec<RiskAssessmentPrediction>> = None;
                 let mut r#mitigation: Option<super::super::types::String> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -975,41 +979,41 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "parent",
-                                            "status",
-                                            "method",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "condition",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "basis",
-                                            "prediction",
-                                            "mitigation",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "basedOn",
+                                        "parent",
+                                        "status",
+                                        "method",
+                                        "code",
+                                        "subject",
+                                        "encounter",
+                                        "occurrenceDateTime",
+                                        "occurrencePeriod",
+                                        "condition",
+                                        "performer",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "basis",
+                                        "prediction",
+                                        "mitigation",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(RiskAssessment {
@@ -1024,14 +1028,18 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#based_on,
                         r#parent,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#method,
                         r#code,
-                        r#subject: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#subject: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#subject.unwrap_or(Default::default())
                         } else {
                             r#subject.ok_or(serde::de::Error::missing_field("subject"))?

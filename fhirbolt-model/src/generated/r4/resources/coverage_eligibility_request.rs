@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityRequestServiced {
@@ -39,7 +39,11 @@ pub struct CoverageEligibilityRequestSupportingInfo {
     #[doc = "The supporting materials are applicable for all detail items, product/servce categories and specific billing codes."]
     pub r#applies_to_all: Option<super::super::types::Boolean>,
 }
-impl crate::AnyResource for CoverageEligibilityRequestSupportingInfo {}
+impl crate::AnyResource for CoverageEligibilityRequestSupportingInfo {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for CoverageEligibilityRequestSupportingInfo {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -130,7 +134,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
                 let mut r#sequence: Option<super::super::types::PositiveInt> = None;
                 let mut r#information: Option<Box<super::super::types::Reference>> = None;
                 let mut r#applies_to_all: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -200,33 +204,37 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "information",
-                                            "appliesToAll",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "sequence",
+                                        "information",
+                                        "appliesToAll",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CoverageEligibilityRequestSupportingInfo {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#sequence: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#sequence: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#sequence.unwrap_or(Default::default())
                         } else {
                             r#sequence.ok_or(serde::de::Error::missing_field("sequence"))?
                         },
-                        r#information: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#information: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#information.unwrap_or(Default::default())
                         } else {
                             r#information.ok_or(serde::de::Error::missing_field("information"))?
@@ -347,7 +355,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
                 let mut r#focal: Option<super::super::types::Boolean> = None;
                 let mut r#coverage: Option<Box<super::super::types::Reference>> = None;
                 let mut r#business_arrangement: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -421,21 +429,21 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "focal",
-                                            "coverage",
-                                            "businessArrangement",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "focal",
+                                        "coverage",
+                                        "businessArrangement",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CoverageEligibilityRequestInsurance {
@@ -443,7 +451,9 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#focal,
-                        r#coverage: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#coverage: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#coverage.unwrap_or(Default::default())
                         } else {
                             r#coverage.ok_or(serde::de::Error::missing_field("coverage"))?
@@ -539,7 +549,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
                     None;
                 let mut r#diagnosis: Option<CoverageEligibilityRequestItemDiagnosisDiagnosis> =
                     None;
-                fhirbolt_shared :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DiagnosisCodeableConcept => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisCodeableConcept")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DiagnosisReference => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisReference")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "diagnosisCodeableConcept" , "diagnosisReference" ,])) ; } } } Ok (CoverageEligibilityRequestItemDiagnosis { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#diagnosis , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DiagnosisCodeableConcept => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisCodeableConcept")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DiagnosisReference => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisReference")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "diagnosisCodeableConcept" , "diagnosisReference" ,])) ; } } } Ok (CoverageEligibilityRequestItemDiagnosis { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#diagnosis , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -720,7 +730,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                 let mut r#facility: Option<Box<super::super::types::Reference>> = None;
                 let mut r#diagnosis: Option<Vec<CoverageEligibilityRequestItemDiagnosis>> = None;
                 let mut r#detail: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -854,28 +864,28 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                                 }
                                 r#detail = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "supportingInfoSequence",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "provider",
-                                            "quantity",
-                                            "unitPrice",
-                                            "facility",
-                                            "diagnosis",
-                                            "detail",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "supportingInfoSequence",
+                                        "category",
+                                        "productOrService",
+                                        "modifier",
+                                        "provider",
+                                        "quantity",
+                                        "unitPrice",
+                                        "facility",
+                                        "diagnosis",
+                                        "detail",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CoverageEligibilityRequestItem {
@@ -1209,7 +1219,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                     None;
                 let mut r#insurance: Option<Vec<CoverageEligibilityRequestInsurance>> = None;
                 let mut r#item: Option<Vec<CoverageEligibilityRequestItem>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1500,38 +1510,38 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                                 }
                                 r#item = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "priority",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "enterer",
-                                            "provider",
-                                            "insurer",
-                                            "facility",
-                                            "supportingInfo",
-                                            "insurance",
-                                            "item",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "priority",
+                                        "purpose",
+                                        "patient",
+                                        "servicedDate",
+                                        "servicedPeriod",
+                                        "created",
+                                        "enterer",
+                                        "provider",
+                                        "insurer",
+                                        "facility",
+                                        "supportingInfo",
+                                        "insurance",
+                                        "item",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CoverageEligibilityRequest {
@@ -1544,27 +1554,35 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#priority,
                         r#purpose: r#purpose.unwrap_or(vec![]),
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
                         },
                         r#serviced,
-                        r#created: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#created: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#created.unwrap_or(Default::default())
                         } else {
                             r#created.ok_or(serde::de::Error::missing_field("created"))?
                         },
                         r#enterer,
                         r#provider,
-                        r#insurer: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#insurer: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#insurer.unwrap_or(Default::default())
                         } else {
                             r#insurer.ok_or(serde::de::Error::missing_field("insurer"))?

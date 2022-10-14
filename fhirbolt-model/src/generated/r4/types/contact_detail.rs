@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactDetail Type: Specifies contact information for a person or organization.\n\nNeed to track contact information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone)]
 pub struct ContactDetail {
@@ -11,7 +11,11 @@ pub struct ContactDetail {
     #[doc = "The contact details for the individual (if a name was provided) or the organization."]
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
 }
-impl crate::AnyResource for ContactDetail {}
+impl crate::AnyResource for ContactDetail {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ContactDetail {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -78,7 +82,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#name: Option<super::super::types::String> = None;
                 let mut r#telecom: Option<Vec<Box<super::super::types::ContactPoint>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -120,14 +124,14 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
                                 }
                                 r#telecom = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "name", "telecom"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "name", "telecom"],
+                                ));
+                            },
                         }
                     }
                     Ok(ContactDetail {

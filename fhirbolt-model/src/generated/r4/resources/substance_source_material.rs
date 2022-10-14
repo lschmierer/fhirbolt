@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceSourceMaterialFractionDescription {
@@ -13,7 +13,11 @@ pub struct SubstanceSourceMaterialFractionDescription {
     #[doc = "The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1."]
     pub r#material_type: Option<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for SubstanceSourceMaterialFractionDescription {}
+impl crate::AnyResource for SubstanceSourceMaterialFractionDescription {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SubstanceSourceMaterialFractionDescription {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -90,7 +94,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                     None;
                 let mut r#fraction: Option<super::super::types::String> = None;
                 let mut r#material_type: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -140,20 +144,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                                 }
                                 r#material_type = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "fraction",
-                                            "materialType",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "fraction",
+                                        "materialType",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterialFractionDescription {
@@ -259,7 +263,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                     None;
                 let mut r#author_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#author_description: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -313,20 +317,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "authorType",
-                                            "authorDescription",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "authorType",
+                                        "authorDescription",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterialOrganismAuthor {
@@ -492,7 +496,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                 let mut r#paternal_organism_id: Option<super::super::types::String> = None;
                 let mut r#paternal_organism_name: Option<super::super::types::String> = None;
                 let mut r#hybrid_type: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -622,23 +626,23 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                 }
                                 r#hybrid_type = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "maternalOrganismId",
-                                            "maternalOrganismName",
-                                            "paternalOrganismId",
-                                            "paternalOrganismName",
-                                            "hybridType",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "maternalOrganismId",
+                                        "maternalOrganismName",
+                                        "paternalOrganismId",
+                                        "paternalOrganismName",
+                                        "hybridType",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterialOrganismHybrid {
@@ -751,7 +755,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
                 let mut r#phylum: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#class: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#order: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -799,22 +803,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
                                 }
                                 r#order = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kingdom",
-                                            "phylum",
-                                            "class",
-                                            "order",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "kingdom",
+                                        "phylum",
+                                        "class",
+                                        "order",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterialOrganismOrganismGeneral {
@@ -972,7 +976,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                 let mut r#hybrid: Option<SubstanceSourceMaterialOrganismHybrid> = None;
                 let mut r#organism_general: Option<SubstanceSourceMaterialOrganismOrganismGeneral> =
                     None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1068,26 +1072,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                                 }
                                 r#organism_general = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "family",
-                                            "genus",
-                                            "species",
-                                            "intraspecificType",
-                                            "intraspecificDescription",
-                                            "author",
-                                            "hybrid",
-                                            "organismGeneral",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "family",
+                                        "genus",
+                                        "species",
+                                        "intraspecificType",
+                                        "intraspecificDescription",
+                                        "author",
+                                        "hybrid",
+                                        "organismGeneral",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterialOrganism {
@@ -1187,7 +1191,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
                     None;
                 let mut r#part: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#part_location: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1223,20 +1227,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
                                 }
                                 r#part_location = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "part",
-                                            "partLocation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "part",
+                                        "partLocation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterialPartDescription {
@@ -1566,7 +1570,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                 let mut r#organism: Option<SubstanceSourceMaterialOrganism> = None;
                 let mut r#part_description: Option<Vec<SubstanceSourceMaterialPartDescription>> =
                     None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1863,36 +1867,36 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                 }
                                 r#part_description = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sourceMaterialClass",
-                                            "sourceMaterialType",
-                                            "sourceMaterialState",
-                                            "organismId",
-                                            "organismName",
-                                            "parentSubstanceId",
-                                            "parentSubstanceName",
-                                            "countryOfOrigin",
-                                            "geographicalLocation",
-                                            "developmentStage",
-                                            "fractionDescription",
-                                            "organism",
-                                            "partDescription",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "sourceMaterialClass",
+                                        "sourceMaterialType",
+                                        "sourceMaterialState",
+                                        "organismId",
+                                        "organismName",
+                                        "parentSubstanceId",
+                                        "parentSubstanceName",
+                                        "countryOfOrigin",
+                                        "geographicalLocation",
+                                        "developmentStage",
+                                        "fractionDescription",
+                                        "organism",
+                                        "partDescription",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceSourceMaterial {

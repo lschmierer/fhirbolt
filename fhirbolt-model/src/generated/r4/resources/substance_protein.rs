@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceProteinSubunit {
@@ -25,7 +25,11 @@ pub struct SubstanceProteinSubunit {
     #[doc = "The modification at the C-terminal shall be specified."]
     pub r#c_terminal_modification: Option<super::super::types::String>,
 }
-impl crate::AnyResource for SubstanceProteinSubunit {}
+impl crate::AnyResource for SubstanceProteinSubunit {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SubstanceProteinSubunit {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -185,7 +189,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                 let mut r#c_terminal_modification_id: Option<Box<super::super::types::Identifier>> =
                     None;
                 let mut r#c_terminal_modification: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -345,26 +349,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subunit",
-                                            "sequence",
-                                            "length",
-                                            "sequenceAttachment",
-                                            "nTerminalModificationId",
-                                            "nTerminalModification",
-                                            "cTerminalModificationId",
-                                            "cTerminalModification",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "subunit",
+                                        "sequence",
+                                        "length",
+                                        "sequenceAttachment",
+                                        "nTerminalModificationId",
+                                        "nTerminalModification",
+                                        "cTerminalModificationId",
+                                        "cTerminalModification",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceProteinSubunit {
@@ -587,7 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                 let mut r#number_of_subunits: Option<super::super::types::Integer> = None;
                 let mut r#disulfide_linkage: Option<Vec<super::super::types::String>> = None;
                 let mut r#subunit: Option<Vec<SubstanceProteinSubunit>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -770,27 +774,27 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                                 }
                                 r#subunit = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequenceType",
-                                            "numberOfSubunits",
-                                            "disulfideLinkage",
-                                            "subunit",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "sequenceType",
+                                        "numberOfSubunits",
+                                        "disulfideLinkage",
+                                        "subunit",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceProtein {

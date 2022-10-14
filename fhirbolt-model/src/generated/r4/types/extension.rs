@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
@@ -71,7 +71,11 @@ pub struct Extension {
     #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
     pub r#value: Option<ExtensionValue>,
 }
-impl crate::AnyResource for Extension {}
+impl crate::AnyResource for Extension {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Extension {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -606,7 +610,7 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#url: Option<std::string::String> = None;
                 let mut r#value: Option<ExtensionValue> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1488,74 +1492,76 @@ impl<'de> serde::de::Deserialize<'de> for Extension {
                                 }
                                 r#value = Some(ExtensionValue::Meta(map_access.next_value()?));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "url",
-                                            "valueBase64Binary",
-                                            "valueBoolean",
-                                            "valueCanonical",
-                                            "valueCode",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueDecimal",
-                                            "valueId",
-                                            "valueInstant",
-                                            "valueInteger",
-                                            "valueMarkdown",
-                                            "valueOid",
-                                            "valuePositiveInt",
-                                            "valueString",
-                                            "valueTime",
-                                            "valueUnsignedInt",
-                                            "valueUri",
-                                            "valueUrl",
-                                            "valueUuid",
-                                            "valueAddress",
-                                            "valueAge",
-                                            "valueAnnotation",
-                                            "valueAttachment",
-                                            "valueCodeableConcept",
-                                            "valueCoding",
-                                            "valueContactPoint",
-                                            "valueCount",
-                                            "valueDistance",
-                                            "valueDuration",
-                                            "valueHumanName",
-                                            "valueIdentifier",
-                                            "valueMoney",
-                                            "valuePeriod",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueReference",
-                                            "valueSampledData",
-                                            "valueSignature",
-                                            "valueTiming",
-                                            "valueContactDetail",
-                                            "valueContributor",
-                                            "valueDataRequirement",
-                                            "valueExpression",
-                                            "valueParameterDefinition",
-                                            "valueRelatedArtifact",
-                                            "valueTriggerDefinition",
-                                            "valueUsageContext",
-                                            "valueDosage",
-                                            "valueMeta",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "url",
+                                        "valueBase64Binary",
+                                        "valueBoolean",
+                                        "valueCanonical",
+                                        "valueCode",
+                                        "valueDate",
+                                        "valueDateTime",
+                                        "valueDecimal",
+                                        "valueId",
+                                        "valueInstant",
+                                        "valueInteger",
+                                        "valueMarkdown",
+                                        "valueOid",
+                                        "valuePositiveInt",
+                                        "valueString",
+                                        "valueTime",
+                                        "valueUnsignedInt",
+                                        "valueUri",
+                                        "valueUrl",
+                                        "valueUuid",
+                                        "valueAddress",
+                                        "valueAge",
+                                        "valueAnnotation",
+                                        "valueAttachment",
+                                        "valueCodeableConcept",
+                                        "valueCoding",
+                                        "valueContactPoint",
+                                        "valueCount",
+                                        "valueDistance",
+                                        "valueDuration",
+                                        "valueHumanName",
+                                        "valueIdentifier",
+                                        "valueMoney",
+                                        "valuePeriod",
+                                        "valueQuantity",
+                                        "valueRange",
+                                        "valueRatio",
+                                        "valueReference",
+                                        "valueSampledData",
+                                        "valueSignature",
+                                        "valueTiming",
+                                        "valueContactDetail",
+                                        "valueContributor",
+                                        "valueDataRequirement",
+                                        "valueExpression",
+                                        "valueParameterDefinition",
+                                        "valueRelatedArtifact",
+                                        "valueTriggerDefinition",
+                                        "valueUsageContext",
+                                        "valueDosage",
+                                        "valueMeta",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Extension {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#url: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#url: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#url.unwrap_or(Default::default())
                         } else {
                             r#url.ok_or(serde::de::Error::missing_field("url"))?

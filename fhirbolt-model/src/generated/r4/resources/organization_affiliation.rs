@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.\n\nNeed to define relationships between organizations that are not sub-divisions of the same organization (part-of relationships)."]
 #[derive(Default, Debug, Clone)]
 pub struct OrganizationAffiliation {
@@ -43,7 +43,11 @@ pub struct OrganizationAffiliation {
     #[doc = "Technical endpoints providing access to services operated for this role."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for OrganizationAffiliation {}
+impl crate::AnyResource for OrganizationAffiliation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for OrganizationAffiliation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -236,7 +240,7 @@ impl<'de> serde::de::Deserialize<'de> for OrganizationAffiliation {
                     None;
                 let mut r#telecom: Option<Vec<Box<super::super::types::ContactPoint>>> = None;
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -419,35 +423,35 @@ impl<'de> serde::de::Deserialize<'de> for OrganizationAffiliation {
                                 }
                                 r#endpoint = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "period",
-                                            "organization",
-                                            "participatingOrganization",
-                                            "network",
-                                            "code",
-                                            "specialty",
-                                            "location",
-                                            "healthcareService",
-                                            "telecom",
-                                            "endpoint",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "period",
+                                        "organization",
+                                        "participatingOrganization",
+                                        "network",
+                                        "code",
+                                        "specialty",
+                                        "location",
+                                        "healthcareService",
+                                        "telecom",
+                                        "endpoint",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(OrganizationAffiliation {

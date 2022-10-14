@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection."]
 #[derive(Default, Debug, Clone)]
 pub struct AppointmentResponse {
@@ -35,7 +35,11 @@ pub struct AppointmentResponse {
     #[doc = "Additional comments about the appointment."]
     pub r#comment: Option<super::super::types::String>,
 }
-impl crate::AnyResource for AppointmentResponse {}
+impl crate::AnyResource for AppointmentResponse {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for AppointmentResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -236,7 +240,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
                 let mut r#participant_status: Option<super::super::types::Code> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -439,31 +443,31 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "appointment",
+                                        "start",
+                                        "end",
+                                        "participantType",
+                                        "actor",
+                                        "participantStatus",
+                                        "comment",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(AppointmentResponse {
@@ -476,7 +480,9 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#appointment: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#appointment: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#appointment.unwrap_or(Default::default())
                         } else {
                             r#appointment.ok_or(serde::de::Error::missing_field("appointment"))?
@@ -486,7 +492,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                         r#participant_type: r#participant_type.unwrap_or(vec![]),
                         r#actor,
                         r#participant_status: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#participant_status.unwrap_or(Default::default())
                         } else {

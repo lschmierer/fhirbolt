@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Compartment Consistency Rules."]
 #[derive(Default, Debug, Clone)]
 pub struct GraphDefinitionLinkTargetCompartment {
@@ -19,7 +19,11 @@ pub struct GraphDefinitionLinkTargetCompartment {
     #[doc = "Documentation for FHIRPath expression."]
     pub r#description: Option<super::super::types::String>,
 }
-impl crate::AnyResource for GraphDefinitionLinkTargetCompartment {}
+impl crate::AnyResource for GraphDefinitionLinkTargetCompartment {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for GraphDefinitionLinkTargetCompartment {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -156,7 +160,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                 let mut r#rule: Option<super::super::types::Code> = None;
                 let mut r#expression: Option<super::super::types::String> = None;
                 let mut r#description: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -280,40 +284,46 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "use",
-                                            "code",
-                                            "rule",
-                                            "expression",
-                                            "description",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "use",
+                                        "code",
+                                        "rule",
+                                        "expression",
+                                        "description",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(GraphDefinitionLinkTargetCompartment {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#use: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#use: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#use.unwrap_or(Default::default())
                         } else {
                             r#use.ok_or(serde::de::Error::missing_field("use"))?
                         },
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
                         },
-                        r#rule: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#rule: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#rule.unwrap_or(Default::default())
                         } else {
                             r#rule.ok_or(serde::de::Error::missing_field("rule"))?
@@ -460,7 +470,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                 let mut r#profile: Option<super::super::types::Canonical> = None;
                 let mut r#compartment: Option<Vec<GraphDefinitionLinkTargetCompartment>> = None;
                 let mut r#link: Option<Vec<GraphDefinitionLink>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -556,30 +566,32 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                                 }
                                 r#link = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "params",
-                                            "profile",
-                                            "compartment",
-                                            "link",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "params",
+                                        "profile",
+                                        "compartment",
+                                        "link",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(GraphDefinitionLinkTarget {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -762,7 +774,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                 let mut r#max: Option<super::super::types::String> = None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#target: Option<Vec<GraphDefinitionLinkTarget>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -892,24 +904,24 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                                 }
                                 r#target = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "sliceName",
-                                            "min",
-                                            "max",
-                                            "description",
-                                            "target",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "path",
+                                        "sliceName",
+                                        "min",
+                                        "max",
+                                        "description",
+                                        "target",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(GraphDefinitionLink {
@@ -1302,7 +1314,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                 let mut r#start: Option<super::super::types::Code> = None;
                 let mut r#profile: Option<super::super::types::Canonical> = None;
                 let mut r#link: Option<Vec<GraphDefinitionLink>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1639,38 +1651,38 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                 }
                                 r#link = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "url",
+                                        "version",
+                                        "name",
+                                        "status",
+                                        "experimental",
+                                        "date",
+                                        "publisher",
+                                        "contact",
+                                        "description",
+                                        "useContext",
+                                        "jurisdiction",
+                                        "purpose",
+                                        "start",
+                                        "profile",
+                                        "link",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(GraphDefinition {
@@ -1684,12 +1696,16 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#url,
                         r#version,
-                        r#name: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#name: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
                         },
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
@@ -1702,7 +1718,9 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                         r#use_context: r#use_context.unwrap_or(vec![]),
                         r#jurisdiction: r#jurisdiction.unwrap_or(vec![]),
                         r#purpose,
-                        r#start: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#start: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#start.unwrap_or(Default::default())
                         } else {
                             r#start.ok_or(serde::de::Error::missing_field("start"))?

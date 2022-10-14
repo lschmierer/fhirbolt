@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for date Type: A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates."]
 #[derive(Default, Debug, Clone)]
 pub struct Date {
@@ -9,4 +9,8 @@ pub struct Date {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Date {}
+impl crate::AnyResource for Date {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

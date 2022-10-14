@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Default, Debug, Clone)]
 pub struct VerificationResultPrimarySource {
@@ -23,7 +23,11 @@ pub struct VerificationResultPrimarySource {
     #[doc = "Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source)."]
     pub r#push_type_available: Vec<Box<super::super::types::CodeableConcept>>,
 }
-impl crate::AnyResource for VerificationResultPrimarySource {}
+impl crate::AnyResource for VerificationResultPrimarySource {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for VerificationResultPrimarySource {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -136,7 +140,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
                 let mut r#push_type_available: Option<
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -228,25 +232,25 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
                                 }
                                 r#push_type_available = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "who",
-                                            "type",
-                                            "communicationMethod",
-                                            "validationStatus",
-                                            "validationDate",
-                                            "canPushUpdates",
-                                            "pushTypeAvailable",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "who",
+                                        "type",
+                                        "communicationMethod",
+                                        "validationStatus",
+                                        "validationDate",
+                                        "canPushUpdates",
+                                        "pushTypeAvailable",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(VerificationResultPrimarySource {
@@ -430,7 +434,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                 let mut r#proxy_identity_certificate: Option<super::super::types::String> = None;
                 let mut r#proxy_signature: Option<Box<super::super::types::Signature>> = None;
                 let mut r#source_signature: Option<Box<super::super::types::Signature>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -562,26 +566,26 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                                 }
                                 r#source_signature = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "who",
-                                            "onBehalfOf",
-                                            "communicationMethod",
-                                            "date",
-                                            "sourceIdentityCertificate",
-                                            "proxyIdentityCertificate",
-                                            "proxySignature",
-                                            "sourceSignature",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "who",
+                                        "onBehalfOf",
+                                        "communicationMethod",
+                                        "date",
+                                        "sourceIdentityCertificate",
+                                        "proxyIdentityCertificate",
+                                        "proxySignature",
+                                        "sourceSignature",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(VerificationResultAttestation {
@@ -699,7 +703,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
                 let mut r#organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#identity_certificate: Option<super::super::types::String> = None;
                 let mut r#attestation_signature: Option<Box<super::super::types::Signature>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -761,28 +765,29 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
                                 }
                                 r#attestation_signature = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "organization",
-                                            "identityCertificate",
-                                            "attestationSignature",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "organization",
+                                        "identityCertificate",
+                                        "attestationSignature",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(VerificationResultValidator {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#organization: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#organization: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#organization.unwrap_or(Default::default())
                         } else {
@@ -1114,7 +1119,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                 let mut r#primary_source: Option<Vec<VerificationResultPrimarySource>> = None;
                 let mut r#attestation: Option<VerificationResultAttestation> = None;
                 let mut r#validator: Option<Vec<VerificationResultValidator>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1403,37 +1408,37 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                 }
                                 r#validator = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "target",
+                                        "targetLocation",
+                                        "need",
+                                        "status",
+                                        "statusDate",
+                                        "validationType",
+                                        "validationProcess",
+                                        "frequency",
+                                        "lastPerformed",
+                                        "nextScheduled",
+                                        "failureAction",
+                                        "primarySource",
+                                        "attestation",
+                                        "validator",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(VerificationResult {
@@ -1448,7 +1453,9 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                         r#target: r#target.unwrap_or(vec![]),
                         r#target_location: r#target_location.unwrap_or(vec![]),
                         r#need,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

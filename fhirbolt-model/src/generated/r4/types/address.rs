@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Address Type: An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.\n\nNeed to be able to record postal addresses, along with notes about their use."]
 #[derive(Default, Debug, Clone)]
 pub struct Address {
@@ -27,7 +27,11 @@ pub struct Address {
     #[doc = "Time period when address was/is in use."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
-impl crate::AnyResource for Address {}
+impl crate::AnyResource for Address {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Address {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -257,7 +261,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                 let mut r#postal_code: Option<super::super::types::String> = None;
                 let mut r#country: Option<super::super::types::String> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -489,27 +493,27 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                 }
                                 r#period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "use",
+                                        "type",
+                                        "text",
+                                        "line",
+                                        "city",
+                                        "district",
+                                        "state",
+                                        "postalCode",
+                                        "country",
+                                        "period",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Address {

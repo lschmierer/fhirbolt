@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RelatedArtifact Type: Related artifacts such as additional documentation, justification, or bibliographic references.\n\nKnowledge resources must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content."]
 #[derive(Default, Debug, Clone)]
 pub struct RelatedArtifact {
@@ -21,7 +21,11 @@ pub struct RelatedArtifact {
     #[doc = "The related resource, such as a library, value set, profile, or other knowledge resource."]
     pub r#resource: Option<super::super::types::Canonical>,
 }
-impl crate::AnyResource for RelatedArtifact {}
+impl crate::AnyResource for RelatedArtifact {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for RelatedArtifact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -176,7 +180,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                 let mut r#url: Option<super::super::types::Url> = None;
                 let mut r#document: Option<Box<super::super::types::Attachment>> = None;
                 let mut r#resource: Option<super::super::types::Canonical> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -318,30 +322,32 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "type",
+                                        "label",
+                                        "display",
+                                        "citation",
+                                        "url",
+                                        "document",
+                                        "resource",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(RelatedArtifact {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?

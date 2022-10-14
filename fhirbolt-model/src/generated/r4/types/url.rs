@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for url type: A URI that is a literal reference"]
 #[derive(Default, Debug, Clone)]
 pub struct Url {
@@ -9,4 +9,8 @@ pub struct Url {
     #[doc = "Primitive value for url"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Url {}
+impl crate::AnyResource for Url {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

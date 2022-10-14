@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Debug, Clone)]
 pub enum AllergyIntoleranceOnset {
@@ -38,7 +38,11 @@ pub struct AllergyIntoleranceReaction {
     #[doc = "Additional text about the adverse reaction event not captured in other fields."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
-impl crate::AnyResource for AllergyIntoleranceReaction {}
+impl crate::AnyResource for AllergyIntoleranceReaction {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for AllergyIntoleranceReaction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -167,7 +171,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                 let mut r#severity: Option<super::super::types::Code> = None;
                 let mut r#exposure_route: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -275,25 +279,25 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "manifestation",
-                                            "description",
-                                            "onset",
-                                            "severity",
-                                            "exposureRoute",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "substance",
+                                        "manifestation",
+                                        "description",
+                                        "onset",
+                                        "severity",
+                                        "exposureRoute",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(AllergyIntoleranceReaction {
@@ -697,7 +701,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                 let mut r#last_occurrence: Option<super::super::types::DateTime> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#reaction: Option<Vec<AllergyIntoleranceReaction>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1081,43 +1085,43 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                 }
                                 r#reaction = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "clinicalStatus",
+                                        "verificationStatus",
+                                        "type",
+                                        "category",
+                                        "criticality",
+                                        "code",
+                                        "patient",
+                                        "encounter",
+                                        "onsetDateTime",
+                                        "onsetAge",
+                                        "onsetPeriod",
+                                        "onsetRange",
+                                        "onsetString",
+                                        "recordedDate",
+                                        "recorder",
+                                        "asserter",
+                                        "lastOccurrence",
+                                        "note",
+                                        "reaction",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(AllergyIntolerance {
@@ -1136,7 +1140,9 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                         r#category: r#category.unwrap_or(vec![]),
                         r#criticality,
                         r#code,
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?

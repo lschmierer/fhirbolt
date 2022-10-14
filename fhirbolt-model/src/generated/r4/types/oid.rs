@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for oid type: An OID represented as a URI"]
 #[derive(Default, Debug, Clone)]
 pub struct Oid {
@@ -9,4 +9,8 @@ pub struct Oid {
     #[doc = "Primitive value for oid"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Oid {}
+impl crate::AnyResource for Oid {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

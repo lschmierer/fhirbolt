@@ -5,8 +5,10 @@ use serde::{
     forward_to_deserialize_any,
 };
 
-use fhirbolt_model::AnyResource;
-use fhirbolt_shared::{with_config, DeserializationConfig};
+use fhirbolt_shared::{
+    serde_config::de::{with_config, DeserializationConfig},
+    AnyResource,
+};
 
 use crate::xml::{
     error::{Error, Result},
@@ -19,7 +21,7 @@ pub fn from_reader<R: io::Read, T>(rdr: R, config: Option<DeserializationConfig>
 where
     T: DeserializeOwned + AnyResource,
 {
-    let mut deserializer = Deserializer::from_reader(rdr);
+    let mut deserializer = Deserializer::from_reader::<T>(rdr);
     with_config(config, || T::deserialize(&mut deserializer))
 }
 
@@ -27,7 +29,7 @@ pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<
 where
     T: DeserializeOwned + AnyResource,
 {
-    let mut deserializer = Deserializer::from_slice(v);
+    let mut deserializer = Deserializer::from_slice::<T>(v);
     with_config(config, || T::deserialize(&mut deserializer))
 }
 
@@ -35,7 +37,7 @@ pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Res
 where
     T: Deserialize<'a> + AnyResource,
 {
-    let mut deserializer = Deserializer::from_str(s);
+    let mut deserializer = Deserializer::from_str::<T>(s);
     with_config(config, || T::deserialize(&mut deserializer))
 }
 
@@ -249,30 +251,30 @@ pub struct Deserializer<R: Read> {
 }
 
 impl<R: Read> Deserializer<R> {
-    pub fn new(read: R) -> Self {
+    pub fn new<T: AnyResource>(read: R) -> Self {
         Deserializer {
             read,
-            current_path: ElementPath::new(),
+            current_path: ElementPath::new(T::fhir_release()),
             state: DeserializerState::new(),
         }
     }
 }
 
 impl<R: io::Read> Deserializer<read::IoRead<R>> {
-    pub fn from_reader(reader: R) -> Self {
-        Deserializer::new(read::IoRead::new(reader))
+    pub fn from_reader<T: AnyResource>(reader: R) -> Self {
+        Deserializer::new::<T>(read::IoRead::new(reader))
     }
 }
 
 impl<'a> Deserializer<read::SliceRead<'a>> {
-    pub fn from_slice(bytes: &'a [u8]) -> Self {
-        Deserializer::new(read::SliceRead::new(bytes))
+    pub fn from_slice<T: AnyResource>(bytes: &'a [u8]) -> Self {
+        Deserializer::new::<T>(read::SliceRead::new(bytes))
     }
 }
 
 impl<'a> Deserializer<read::StrRead<'a>> {
-    pub fn from_str(s: &'a str) -> Self {
-        Deserializer::new(read::StrRead::new(s))
+    pub fn from_str<T: AnyResource>(s: &'a str) -> Self {
+        Deserializer::new::<T>(read::StrRead::new(s))
     }
 }
 

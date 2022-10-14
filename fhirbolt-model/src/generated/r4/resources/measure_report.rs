@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
 #[derive(Default, Debug, Clone)]
 pub struct MeasureReportGroupPopulation {
@@ -15,7 +15,11 @@ pub struct MeasureReportGroupPopulation {
     #[doc = "This element refers to a List of subject level MeasureReport resources, one for each subject in this population."]
     pub r#subject_results: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for MeasureReportGroupPopulation {}
+impl crate::AnyResource for MeasureReportGroupPopulation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MeasureReportGroupPopulation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -98,7 +102,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#count: Option<super::super::types::Integer> = None;
                 let mut r#subject_results: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -156,21 +160,21 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
                                 }
                                 r#subject_results = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "count",
-                                            "subjectResults",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "code",
+                                        "count",
+                                        "subjectResults",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReportGroupPopulation {
@@ -261,7 +265,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
                     None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -297,26 +301,30 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
                                 }
                                 r#value = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "code", "value"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "code", "value"],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReportGroupStratifierStratumComponent {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
                         },
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value"))?
@@ -426,7 +434,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#count: Option<super::super::types::Integer> = None;
                 let mut r#subject_results: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -484,21 +492,21 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
                                 }
                                 r#subject_results = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "count",
-                                            "subjectResults",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "code",
+                                        "count",
+                                        "subjectResults",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReportGroupStratifierStratumPopulation {
@@ -611,7 +619,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
                 let mut r#population: Option<Vec<MeasureReportGroupStratifierStratumPopulation>> =
                     None;
                 let mut r#measure_score: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -659,22 +667,22 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
                                 }
                                 r#measure_score = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "value",
-                                            "component",
-                                            "population",
-                                            "measureScore",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "value",
+                                        "component",
+                                        "population",
+                                        "measureScore",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReportGroupStratifierStratum {
@@ -770,7 +778,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
                     None;
                 let mut r#code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#stratum: Option<Vec<MeasureReportGroupStratifierStratum>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -806,20 +814,14 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
                                 }
                                 r#stratum = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "stratum",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "code", "stratum"],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReportGroupStratifier {
@@ -926,7 +928,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
                 let mut r#population: Option<Vec<MeasureReportGroupPopulation>> = None;
                 let mut r#measure_score: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#stratifier: Option<Vec<MeasureReportGroupStratifier>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -974,22 +976,22 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
                                 }
                                 r#stratifier = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "population",
-                                            "measureScore",
-                                            "stratifier",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "code",
+                                        "population",
+                                        "measureScore",
+                                        "stratifier",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReportGroup {
@@ -1263,7 +1265,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                 let mut r#group: Option<Vec<MeasureReportGroup>> = None;
                 let mut r#evaluated_resource: Option<Vec<Box<super::super::types::Reference>>> =
                     None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1482,34 +1484,34 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                 }
                                 r#evaluated_resource = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "type",
+                                        "measure",
+                                        "subject",
+                                        "date",
+                                        "reporter",
+                                        "period",
+                                        "improvementNotation",
+                                        "group",
+                                        "evaluatedResource",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MeasureReport {
@@ -1522,17 +1524,23 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#measure: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#measure: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#measure.unwrap_or(Default::default())
                         } else {
                             r#measure.ok_or(serde::de::Error::missing_field("measure"))?
@@ -1540,7 +1548,9 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                         r#subject,
                         r#date,
                         r#reporter,
-                        r#period: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#period: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#period.unwrap_or(Default::default())
                         } else {
                             r#period.ok_or(serde::de::Error::missing_field("period"))?

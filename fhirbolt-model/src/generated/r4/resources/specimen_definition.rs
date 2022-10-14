@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Debug, Clone)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
@@ -35,7 +35,11 @@ pub struct SpecimenDefinitionTypeTestedContainerAdditive {
     #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
     pub r#additive: SpecimenDefinitionTypeTestedContainerAdditiveAdditive,
 }
-impl crate::AnyResource for SpecimenDefinitionTypeTestedContainerAdditive {}
+impl crate::AnyResource for SpecimenDefinitionTypeTestedContainerAdditive {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainerAdditive {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -105,7 +109,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainerA
                     None;
                 let mut r#additive: Option<SpecimenDefinitionTypeTestedContainerAdditiveAdditive> =
                     None;
-                fhirbolt_shared :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: AdditiveCodeableConcept => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveCodeableConcept")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AdditiveReference => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveReference")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "additiveCodeableConcept" , "additiveReference" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainerAdditive { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#additive : if config . mode == fhirbolt_shared :: DeserializationMode :: Lax { r#additive . unwrap_or (Default :: default ()) } else { r#additive . ok_or (serde :: de :: Error :: missing_field ("additive[x]")) ? } , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: AdditiveCodeableConcept => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveCodeableConcept")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AdditiveReference => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveReference")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "additiveCodeableConcept" , "additiveReference" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainerAdditive { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#additive : if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#additive . unwrap_or (Default :: default ()) } else { r#additive . ok_or (serde :: de :: Error :: missing_field ("additive[x]")) ? } , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -288,7 +292,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                 let mut r#additive: Option<Vec<SpecimenDefinitionTypeTestedContainerAdditive>> =
                     None;
                 let mut r#preparation: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -444,27 +448,27 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "material",
-                                            "type",
-                                            "cap",
-                                            "description",
-                                            "capacity",
-                                            "minimumVolumeQuantity",
-                                            "minimumVolumeString",
-                                            "additive",
-                                            "preparation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "material",
+                                        "type",
+                                        "cap",
+                                        "description",
+                                        "capacity",
+                                        "minimumVolumeQuantity",
+                                        "minimumVolumeString",
+                                        "additive",
+                                        "preparation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SpecimenDefinitionTypeTestedContainer {
@@ -593,7 +597,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
                 let mut r#temperature_range: Option<Box<super::super::types::Range>> = None;
                 let mut r#max_duration: Option<Box<super::super::types::Duration>> = None;
                 let mut r#instruction: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -659,22 +663,22 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "temperatureQualifier",
-                                            "temperatureRange",
-                                            "maxDuration",
-                                            "instruction",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "temperatureQualifier",
+                                        "temperatureRange",
+                                        "maxDuration",
+                                        "instruction",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SpecimenDefinitionTypeTestedHandling {
@@ -854,7 +858,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#handling: Option<Vec<SpecimenDefinitionTypeTestedHandling>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -970,26 +974,26 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                 }
                                 r#handling = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "isDerived",
-                                            "type",
-                                            "preference",
-                                            "container",
-                                            "requirement",
-                                            "retentionTime",
-                                            "rejectionCriterion",
-                                            "handling",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "isDerived",
+                                        "type",
+                                        "preference",
+                                        "container",
+                                        "requirement",
+                                        "retentionTime",
+                                        "rejectionCriterion",
+                                        "handling",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SpecimenDefinitionTypeTested {
@@ -998,7 +1002,9 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#is_derived,
                         r#type,
-                        r#preference: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#preference: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#preference.unwrap_or(Default::default())
                         } else {
                             r#preference.ok_or(serde::de::Error::missing_field("preference"))?
@@ -1203,7 +1209,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                 let mut r#time_aspect: Option<super::super::types::String> = None;
                 let mut r#collection: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#type_tested: Option<Vec<SpecimenDefinitionTypeTested>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1348,29 +1354,29 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                 }
                                 r#type_tested = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "typeCollected",
-                                            "patientPreparation",
-                                            "timeAspect",
-                                            "collection",
-                                            "typeTested",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "typeCollected",
+                                        "patientPreparation",
+                                        "timeAspect",
+                                        "collection",
+                                        "typeTested",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SpecimenDefinition {

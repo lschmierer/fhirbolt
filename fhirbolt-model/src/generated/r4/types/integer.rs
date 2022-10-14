@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for integer Type: A whole number"]
 #[derive(Default, Debug, Clone)]
 pub struct Integer {
@@ -9,4 +9,8 @@ pub struct Integer {
     #[doc = "The actual value"]
     pub r#value: Option<i32>,
 }
-impl crate::AnyResource for Integer {}
+impl crate::AnyResource for Integer {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

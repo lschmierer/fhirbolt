@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Debug, Clone)]
 pub enum CommunicationPayloadContent {
@@ -24,7 +24,11 @@ pub struct CommunicationPayload {
     #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
     pub r#content: CommunicationPayloadContent,
 }
-impl crate::AnyResource for CommunicationPayload {}
+impl crate::AnyResource for CommunicationPayload {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for CommunicationPayload {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -107,7 +111,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#content: Option<CommunicationPayloadContent> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -187,28 +191,30 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "contentString",
-                                            "contentAttachment",
-                                            "contentReference",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "contentString",
+                                        "contentAttachment",
+                                        "contentReference",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(CommunicationPayload {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#content: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#content: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#content.unwrap_or(Default::default())
                         } else {
                             r#content.ok_or(serde::de::Error::missing_field("content[x]"))?
@@ -640,7 +646,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                 let mut r#reason_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#payload: Option<Vec<CommunicationPayload>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1025,46 +1031,46 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "basedOn",
+                                        "partOf",
+                                        "inResponseTo",
+                                        "status",
+                                        "statusReason",
+                                        "category",
+                                        "priority",
+                                        "medium",
+                                        "subject",
+                                        "topic",
+                                        "about",
+                                        "encounter",
+                                        "sent",
+                                        "received",
+                                        "recipient",
+                                        "sender",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "payload",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Communication {
@@ -1082,7 +1088,9 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#part_of: r#part_of.unwrap_or(vec![]),
                         r#in_response_to: r#in_response_to.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

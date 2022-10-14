@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Money Type: An amount of economic utility in some recognized currency."]
 #[derive(Default, Debug, Clone)]
 pub struct Money {
@@ -11,7 +11,11 @@ pub struct Money {
     #[doc = "ISO 4217 Currency Code."]
     pub r#currency: Option<super::super::types::Code>,
 }
-impl crate::AnyResource for Money {}
+impl crate::AnyResource for Money {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Money {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -92,7 +96,7 @@ impl<'de> serde::de::Deserialize<'de> for Money {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#value: Option<super::super::types::Decimal> = None;
                 let mut r#currency: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -148,14 +152,14 @@ impl<'de> serde::de::Deserialize<'de> for Money {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "value", "currency"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "value", "currency"],
+                                ));
+                            },
                         }
                     }
                     Ok(Money {

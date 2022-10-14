@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductIndicationOtherTherapyMedication {
@@ -25,7 +25,11 @@ pub struct MedicinalProductIndicationOtherTherapy {
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#medication: MedicinalProductIndicationOtherTherapyMedication,
 }
-impl crate::AnyResource for MedicinalProductIndicationOtherTherapy {}
+impl crate::AnyResource for MedicinalProductIndicationOtherTherapy {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicinalProductIndicationOtherTherapy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -101,7 +105,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndicationOtherTherapy
                 > = None;
                 let mut r#medication: Option<MedicinalProductIndicationOtherTherapyMedication> =
                     None;
-                fhirbolt_shared :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: TherapyRelationshipType => { if r#therapy_relationship_type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("therapyRelationshipType")) ; } r#therapy_relationship_type = Some (map_access . next_value () ?) ; } , Field :: MedicationCodeableConcept => { if r#medication . is_some () { return Err (serde :: de :: Error :: duplicate_field ("medicationCodeableConcept")) ; } r#medication = Some (MedicinalProductIndicationOtherTherapyMedication :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: MedicationReference => { if r#medication . is_some () { return Err (serde :: de :: Error :: duplicate_field ("medicationReference")) ; } r#medication = Some (MedicinalProductIndicationOtherTherapyMedication :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "therapyRelationshipType" , "medicationCodeableConcept" , "medicationReference" ,])) ; } } } Ok (MedicinalProductIndicationOtherTherapy { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#therapy_relationship_type : if config . mode == fhirbolt_shared :: DeserializationMode :: Lax { r#therapy_relationship_type . unwrap_or (Default :: default ()) } else { r#therapy_relationship_type . ok_or (serde :: de :: Error :: missing_field ("therapyRelationshipType")) ? } , r#medication : if config . mode == fhirbolt_shared :: DeserializationMode :: Lax { r#medication . unwrap_or (Default :: default ()) } else { r#medication . ok_or (serde :: de :: Error :: missing_field ("medication[x]")) ? } , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: TherapyRelationshipType => { if r#therapy_relationship_type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("therapyRelationshipType")) ; } r#therapy_relationship_type = Some (map_access . next_value () ?) ; } , Field :: MedicationCodeableConcept => { if r#medication . is_some () { return Err (serde :: de :: Error :: duplicate_field ("medicationCodeableConcept")) ; } r#medication = Some (MedicinalProductIndicationOtherTherapyMedication :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: MedicationReference => { if r#medication . is_some () { return Err (serde :: de :: Error :: duplicate_field ("medicationReference")) ; } r#medication = Some (MedicinalProductIndicationOtherTherapyMedication :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "therapyRelationshipType" , "medicationCodeableConcept" , "medicationReference" ,])) ; } } } Ok (MedicinalProductIndicationOtherTherapy { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#therapy_relationship_type : if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#therapy_relationship_type . unwrap_or (Default :: default ()) } else { r#therapy_relationship_type . ok_or (serde :: de :: Error :: missing_field ("therapyRelationshipType")) ? } , r#medication : if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#medication . unwrap_or (Default :: default ()) } else { r#medication . ok_or (serde :: de :: Error :: missing_field ("medication[x]")) ? } , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -309,7 +313,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndication {
                 let mut r#undesirable_effect: Option<Vec<Box<super::super::types::Reference>>> =
                     None;
                 let mut r#population: Option<Vec<Box<super::super::types::Population>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -462,32 +466,32 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndication {
                                 }
                                 r#population = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "diseaseSymptomProcedure",
-                                            "diseaseStatus",
-                                            "comorbidity",
-                                            "intendedEffect",
-                                            "duration",
-                                            "otherTherapy",
-                                            "undesirableEffect",
-                                            "population",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "subject",
+                                        "diseaseSymptomProcedure",
+                                        "diseaseStatus",
+                                        "comorbidity",
+                                        "intendedEffect",
+                                        "duration",
+                                        "otherTherapy",
+                                        "undesirableEffect",
+                                        "population",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicinalProductIndication {

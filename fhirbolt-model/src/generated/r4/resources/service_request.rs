@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
 #[derive(Debug, Clone)]
 pub enum ServiceRequestQuantity {
@@ -123,7 +123,11 @@ pub struct ServiceRequest {
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for ServiceRequest {}
+impl crate::AnyResource for ServiceRequest {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ServiceRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -631,7 +635,7 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#patient_instruction: Option<super::super::types::String> = None;
                 let mut r#relevant_history: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1224,61 +1228,61 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                                 }
                                 r#relevant_history = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "requisition",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "code",
-                                            "orderDetail",
-                                            "quantityQuantity",
-                                            "quantityRatio",
-                                            "quantityRange",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "asNeededBoolean",
-                                            "asNeededCodeableConcept",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "locationCode",
-                                            "locationReference",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "specimen",
-                                            "bodySite",
-                                            "note",
-                                            "patientInstruction",
-                                            "relevantHistory",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "basedOn",
+                                        "replaces",
+                                        "requisition",
+                                        "status",
+                                        "intent",
+                                        "category",
+                                        "priority",
+                                        "doNotPerform",
+                                        "code",
+                                        "orderDetail",
+                                        "quantityQuantity",
+                                        "quantityRatio",
+                                        "quantityRange",
+                                        "subject",
+                                        "encounter",
+                                        "occurrenceDateTime",
+                                        "occurrencePeriod",
+                                        "occurrenceTiming",
+                                        "asNeededBoolean",
+                                        "asNeededCodeableConcept",
+                                        "authoredOn",
+                                        "requester",
+                                        "performerType",
+                                        "performer",
+                                        "locationCode",
+                                        "locationReference",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "insurance",
+                                        "supportingInfo",
+                                        "specimen",
+                                        "bodySite",
+                                        "note",
+                                        "patientInstruction",
+                                        "relevantHistory",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ServiceRequest {
@@ -1296,12 +1300,16 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#replaces: r#replaces.unwrap_or(vec![]),
                         r#requisition,
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#intent: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#intent: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#intent.unwrap_or(Default::default())
                         } else {
                             r#intent.ok_or(serde::de::Error::missing_field("intent"))?
@@ -1312,7 +1320,9 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
                         r#code,
                         r#order_detail: r#order_detail.unwrap_or(vec![]),
                         r#quantity,
-                        r#subject: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#subject: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#subject.unwrap_or(Default::default())
                         } else {
                             r#subject.ok_or(serde::de::Error::missing_field("subject"))?

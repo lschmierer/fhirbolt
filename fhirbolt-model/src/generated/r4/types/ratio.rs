@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Ratio Type: A relationship of two Quantity values - expressed as a numerator and a denominator.\n\nNeed to able to capture ratios for some measurements (titers) and some rates (costs)."]
 #[derive(Default, Debug, Clone)]
 pub struct Ratio {
@@ -11,7 +11,11 @@ pub struct Ratio {
     #[doc = "The value of the denominator."]
     pub r#denominator: Option<Box<super::super::types::Quantity>>,
 }
-impl crate::AnyResource for Ratio {}
+impl crate::AnyResource for Ratio {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Ratio {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -66,7 +70,7 @@ impl<'de> serde::de::Deserialize<'de> for Ratio {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#numerator: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#denominator: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -94,14 +98,14 @@ impl<'de> serde::de::Deserialize<'de> for Ratio {
                                 }
                                 r#denominator = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "numerator", "denominator"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "numerator", "denominator"],
+                                ));
+                            },
                         }
                     }
                     Ok(Ratio {

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Contact for the organization for a certain purpose."]
 #[derive(Default, Debug, Clone)]
 pub struct OrganizationContact {
@@ -17,7 +17,11 @@ pub struct OrganizationContact {
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
 }
-impl crate::AnyResource for OrganizationContact {}
+impl crate::AnyResource for OrganizationContact {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for OrganizationContact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -91,7 +95,7 @@ impl<'de> serde::de::Deserialize<'de> for OrganizationContact {
                 let mut r#name: Option<Box<super::super::types::HumanName>> = None;
                 let mut r#telecom: Option<Vec<Box<super::super::types::ContactPoint>>> = None;
                 let mut r#address: Option<Box<super::super::types::Address>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -139,22 +143,22 @@ impl<'de> serde::de::Deserialize<'de> for OrganizationContact {
                                 }
                                 r#address = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "purpose",
-                                            "name",
-                                            "telecom",
-                                            "address",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "purpose",
+                                        "name",
+                                        "telecom",
+                                        "address",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(OrganizationContact {
@@ -433,7 +437,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                 let mut r#part_of: Option<Box<super::super::types::Reference>> = None;
                 let mut r#contact: Option<Vec<OrganizationContact>> = None;
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -658,33 +662,33 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                                 }
                                 r#endpoint = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "name",
-                                            "alias",
-                                            "telecom",
-                                            "address",
-                                            "partOf",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "type",
+                                        "name",
+                                        "alias",
+                                        "telecom",
+                                        "address",
+                                        "partOf",
+                                        "contact",
+                                        "endpoint",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Organization {

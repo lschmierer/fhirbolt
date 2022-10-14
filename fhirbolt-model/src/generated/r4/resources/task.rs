@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the input parameter as a basic type."]
 #[derive(Debug, Clone)]
 pub enum TaskInputValue {
@@ -135,7 +135,11 @@ pub struct TaskRestriction {
     #[doc = "For requests that are targeted to more than on potential recipient/target, for whom is fulfillment sought?"]
     pub r#recipient: Vec<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for TaskRestriction {}
+impl crate::AnyResource for TaskRestriction {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for TaskRestriction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -215,7 +219,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskRestriction {
                 let mut r#repetitions: Option<super::super::types::PositiveInt> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
                 let mut r#recipient: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -271,21 +275,21 @@ impl<'de> serde::de::Deserialize<'de> for TaskRestriction {
                                 }
                                 r#recipient = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "repetitions",
-                                            "period",
-                                            "recipient",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "repetitions",
+                                        "period",
+                                        "recipient",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(TaskRestriction {
@@ -855,7 +859,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskInput {
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<TaskInputValue> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1745,81 +1749,85 @@ impl<'de> serde::de::Deserialize<'de> for TaskInput {
                                 }
                                 r#value = Some(TaskInputValue::Meta(map_access.next_value()?));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueBase64Binary",
-                                            "valueBoolean",
-                                            "valueCanonical",
-                                            "valueCode",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueDecimal",
-                                            "valueId",
-                                            "valueInstant",
-                                            "valueInteger",
-                                            "valueMarkdown",
-                                            "valueOid",
-                                            "valuePositiveInt",
-                                            "valueString",
-                                            "valueTime",
-                                            "valueUnsignedInt",
-                                            "valueUri",
-                                            "valueUrl",
-                                            "valueUuid",
-                                            "valueAddress",
-                                            "valueAge",
-                                            "valueAnnotation",
-                                            "valueAttachment",
-                                            "valueCodeableConcept",
-                                            "valueCoding",
-                                            "valueContactPoint",
-                                            "valueCount",
-                                            "valueDistance",
-                                            "valueDuration",
-                                            "valueHumanName",
-                                            "valueIdentifier",
-                                            "valueMoney",
-                                            "valuePeriod",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueReference",
-                                            "valueSampledData",
-                                            "valueSignature",
-                                            "valueTiming",
-                                            "valueContactDetail",
-                                            "valueContributor",
-                                            "valueDataRequirement",
-                                            "valueExpression",
-                                            "valueParameterDefinition",
-                                            "valueRelatedArtifact",
-                                            "valueTriggerDefinition",
-                                            "valueUsageContext",
-                                            "valueDosage",
-                                            "valueMeta",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "valueBase64Binary",
+                                        "valueBoolean",
+                                        "valueCanonical",
+                                        "valueCode",
+                                        "valueDate",
+                                        "valueDateTime",
+                                        "valueDecimal",
+                                        "valueId",
+                                        "valueInstant",
+                                        "valueInteger",
+                                        "valueMarkdown",
+                                        "valueOid",
+                                        "valuePositiveInt",
+                                        "valueString",
+                                        "valueTime",
+                                        "valueUnsignedInt",
+                                        "valueUri",
+                                        "valueUrl",
+                                        "valueUuid",
+                                        "valueAddress",
+                                        "valueAge",
+                                        "valueAnnotation",
+                                        "valueAttachment",
+                                        "valueCodeableConcept",
+                                        "valueCoding",
+                                        "valueContactPoint",
+                                        "valueCount",
+                                        "valueDistance",
+                                        "valueDuration",
+                                        "valueHumanName",
+                                        "valueIdentifier",
+                                        "valueMoney",
+                                        "valuePeriod",
+                                        "valueQuantity",
+                                        "valueRange",
+                                        "valueRatio",
+                                        "valueReference",
+                                        "valueSampledData",
+                                        "valueSignature",
+                                        "valueTiming",
+                                        "valueContactDetail",
+                                        "valueContributor",
+                                        "valueDataRequirement",
+                                        "valueExpression",
+                                        "valueParameterDefinition",
+                                        "valueRelatedArtifact",
+                                        "valueTriggerDefinition",
+                                        "valueUsageContext",
+                                        "valueDosage",
+                                        "valueMeta",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(TaskInput {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value[x]"))?
@@ -2384,7 +2392,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskOutput {
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<TaskOutputValue> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3284,81 +3292,85 @@ impl<'de> serde::de::Deserialize<'de> for TaskOutput {
                                 }
                                 r#value = Some(TaskOutputValue::Meta(map_access.next_value()?));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueBase64Binary",
-                                            "valueBoolean",
-                                            "valueCanonical",
-                                            "valueCode",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueDecimal",
-                                            "valueId",
-                                            "valueInstant",
-                                            "valueInteger",
-                                            "valueMarkdown",
-                                            "valueOid",
-                                            "valuePositiveInt",
-                                            "valueString",
-                                            "valueTime",
-                                            "valueUnsignedInt",
-                                            "valueUri",
-                                            "valueUrl",
-                                            "valueUuid",
-                                            "valueAddress",
-                                            "valueAge",
-                                            "valueAnnotation",
-                                            "valueAttachment",
-                                            "valueCodeableConcept",
-                                            "valueCoding",
-                                            "valueContactPoint",
-                                            "valueCount",
-                                            "valueDistance",
-                                            "valueDuration",
-                                            "valueHumanName",
-                                            "valueIdentifier",
-                                            "valueMoney",
-                                            "valuePeriod",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueReference",
-                                            "valueSampledData",
-                                            "valueSignature",
-                                            "valueTiming",
-                                            "valueContactDetail",
-                                            "valueContributor",
-                                            "valueDataRequirement",
-                                            "valueExpression",
-                                            "valueParameterDefinition",
-                                            "valueRelatedArtifact",
-                                            "valueTriggerDefinition",
-                                            "valueUsageContext",
-                                            "valueDosage",
-                                            "valueMeta",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "valueBase64Binary",
+                                        "valueBoolean",
+                                        "valueCanonical",
+                                        "valueCode",
+                                        "valueDate",
+                                        "valueDateTime",
+                                        "valueDecimal",
+                                        "valueId",
+                                        "valueInstant",
+                                        "valueInteger",
+                                        "valueMarkdown",
+                                        "valueOid",
+                                        "valuePositiveInt",
+                                        "valueString",
+                                        "valueTime",
+                                        "valueUnsignedInt",
+                                        "valueUri",
+                                        "valueUrl",
+                                        "valueUuid",
+                                        "valueAddress",
+                                        "valueAge",
+                                        "valueAnnotation",
+                                        "valueAttachment",
+                                        "valueCodeableConcept",
+                                        "valueCoding",
+                                        "valueContactPoint",
+                                        "valueCount",
+                                        "valueDistance",
+                                        "valueDuration",
+                                        "valueHumanName",
+                                        "valueIdentifier",
+                                        "valueMoney",
+                                        "valuePeriod",
+                                        "valueQuantity",
+                                        "valueRange",
+                                        "valueRatio",
+                                        "valueReference",
+                                        "valueSampledData",
+                                        "valueSignature",
+                                        "valueTiming",
+                                        "valueContactDetail",
+                                        "valueContributor",
+                                        "valueDataRequirement",
+                                        "valueExpression",
+                                        "valueParameterDefinition",
+                                        "valueRelatedArtifact",
+                                        "valueTriggerDefinition",
+                                        "valueUsageContext",
+                                        "valueDosage",
+                                        "valueMeta",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(TaskOutput {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value[x]"))?
@@ -3837,7 +3849,7 @@ impl<'de> serde::de::Deserialize<'de> for Task {
                 let mut r#restriction: Option<TaskRestriction> = None;
                 let mut r#input: Option<Vec<TaskInput>> = None;
                 let mut r#output: Option<Vec<TaskOutput>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4248,54 +4260,54 @@ impl<'de> serde::de::Deserialize<'de> for Task {
                                 }
                                 r#output = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "businessStatus",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "description",
-                                            "focus",
-                                            "for",
-                                            "encounter",
-                                            "executionPeriod",
-                                            "authoredOn",
-                                            "lastModified",
-                                            "requester",
-                                            "performerType",
-                                            "owner",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "note",
-                                            "relevantHistory",
-                                            "restriction",
-                                            "input",
-                                            "output",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "basedOn",
+                                        "groupIdentifier",
+                                        "partOf",
+                                        "status",
+                                        "statusReason",
+                                        "businessStatus",
+                                        "intent",
+                                        "priority",
+                                        "code",
+                                        "description",
+                                        "focus",
+                                        "for",
+                                        "encounter",
+                                        "executionPeriod",
+                                        "authoredOn",
+                                        "lastModified",
+                                        "requester",
+                                        "performerType",
+                                        "owner",
+                                        "location",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "insurance",
+                                        "note",
+                                        "relevantHistory",
+                                        "restriction",
+                                        "input",
+                                        "output",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Task {
@@ -4313,14 +4325,18 @@ impl<'de> serde::de::Deserialize<'de> for Task {
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#group_identifier,
                         r#part_of: r#part_of.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#status_reason,
                         r#business_status,
-                        r#intent: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#intent: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#intent.unwrap_or(Default::default())
                         } else {
                             r#intent.ok_or(serde::de::Error::missing_field("intent"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
 #[derive(Default, Debug, Clone)]
 pub struct HealthcareServiceEligibility {
@@ -13,7 +13,11 @@ pub struct HealthcareServiceEligibility {
     #[doc = "Describes the eligibility conditions for the service."]
     pub r#comment: Option<super::super::types::Markdown>,
 }
-impl crate::AnyResource for HealthcareServiceEligibility {}
+impl crate::AnyResource for HealthcareServiceEligibility {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for HealthcareServiceEligibility {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -90,7 +94,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceEligibility {
                     None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#comment: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -140,20 +144,14 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceEligibility {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "comment",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "code", "comment"],
+                                ));
+                            },
                         }
                     }
                     Ok(HealthcareServiceEligibility {
@@ -330,7 +328,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
                 let mut r#all_day: Option<super::super::types::Boolean> = None;
                 let mut r#available_start_time: Option<super::super::types::Time> = None;
                 let mut r#available_end_time: Option<super::super::types::Time> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -472,22 +470,22 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "availableStartTime",
-                                            "availableEndTime",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "daysOfWeek",
+                                        "allDay",
+                                        "availableStartTime",
+                                        "availableEndTime",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(HealthcareServiceAvailableTime {
@@ -593,7 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceNotAvailable {
                     None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#during: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -643,27 +641,29 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceNotAvailable {
                                 }
                                 r#during = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "during",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "description",
+                                        "during",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(HealthcareServiceNotAvailable {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#description: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#description: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#description.unwrap_or(Default::default())
                         } else {
                             r#description.ok_or(serde::de::Error::missing_field("description"))?
@@ -1071,7 +1071,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                 let mut r#not_available: Option<Vec<HealthcareServiceNotAvailable>> = None;
                 let mut r#availability_exceptions: Option<super::super::types::String> = None;
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1408,47 +1408,47 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                 }
                                 r#endpoint = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "active",
+                                        "providedBy",
+                                        "category",
+                                        "type",
+                                        "specialty",
+                                        "location",
+                                        "name",
+                                        "comment",
+                                        "extraDetails",
+                                        "photo",
+                                        "telecom",
+                                        "coverageArea",
+                                        "serviceProvisionCode",
+                                        "eligibility",
+                                        "program",
+                                        "characteristic",
+                                        "communication",
+                                        "referralMethod",
+                                        "appointmentRequired",
+                                        "availableTime",
+                                        "notAvailable",
+                                        "availabilityExceptions",
+                                        "endpoint",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(HealthcareService {

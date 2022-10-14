@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Debug, Clone)]
 pub enum SubstanceAmountAmount {
@@ -24,7 +24,11 @@ pub struct SubstanceAmountReferenceRange {
     #[doc = "Upper limit possible or expected."]
     pub r#high_limit: Option<Box<super::super::types::Quantity>>,
 }
-impl crate::AnyResource for SubstanceAmountReferenceRange {}
+impl crate::AnyResource for SubstanceAmountReferenceRange {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SubstanceAmountReferenceRange {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -82,7 +86,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#low_limit: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#high_limit: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -110,14 +114,14 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
                                 }
                                 r#high_limit = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "lowLimit", "highLimit"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "lowLimit", "highLimit"],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceAmountReferenceRange {
@@ -264,7 +268,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                 let mut r#amount_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#amount_text: Option<super::super::types::String> = None;
                 let mut r#reference_range: Option<SubstanceAmountReferenceRange> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -374,24 +378,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                                 }
                                 r#reference_range = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "amountQuantity",
-                                            "amountRange",
-                                            "amountString",
-                                            "amountType",
-                                            "amountText",
-                                            "referenceRange",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "amountQuantity",
+                                        "amountRange",
+                                        "amountString",
+                                        "amountType",
+                                        "amountText",
+                                        "referenceRange",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceAmount {

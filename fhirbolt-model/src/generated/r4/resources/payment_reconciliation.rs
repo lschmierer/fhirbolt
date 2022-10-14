@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Distribution of the payment amount for a previously acknowledged payable."]
 #[derive(Default, Debug, Clone)]
 pub struct PaymentReconciliationDetail {
@@ -29,7 +29,11 @@ pub struct PaymentReconciliationDetail {
     #[doc = "The monetary amount allocated from the total payment to the payable."]
     pub r#amount: Option<Box<super::super::types::Money>>,
 }
-impl crate::AnyResource for PaymentReconciliationDetail {}
+impl crate::AnyResource for PaymentReconciliationDetail {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for PaymentReconciliationDetail {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -152,7 +156,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                 let mut r#responsible: Option<Box<super::super::types::Reference>> = None;
                 let mut r#payee: Option<Box<super::super::types::Reference>> = None;
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -250,28 +254,28 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "predecessor",
-                                            "type",
-                                            "request",
-                                            "submitter",
-                                            "response",
-                                            "date",
-                                            "responsible",
-                                            "payee",
-                                            "amount",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "predecessor",
+                                        "type",
+                                        "request",
+                                        "submitter",
+                                        "response",
+                                        "date",
+                                        "responsible",
+                                        "payee",
+                                        "amount",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PaymentReconciliationDetail {
@@ -280,7 +284,9 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier,
                         r#predecessor,
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -401,7 +407,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                     None;
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#text: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -465,14 +471,14 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "type", "text"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "type", "text"],
+                                ));
+                            },
                         }
                     }
                     Ok(PaymentReconciliationProcessNote {
@@ -786,7 +792,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                 let mut r#detail: Option<Vec<PaymentReconciliationDetail>> = None;
                 let mut r#form_code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#process_note: Option<Vec<PaymentReconciliationProcessNote>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1041,38 +1047,38 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                 }
                                 r#process_note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "period",
+                                        "created",
+                                        "paymentIssuer",
+                                        "request",
+                                        "requestor",
+                                        "outcome",
+                                        "disposition",
+                                        "paymentDate",
+                                        "paymentAmount",
+                                        "paymentIdentifier",
+                                        "detail",
+                                        "formCode",
+                                        "processNote",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(PaymentReconciliation {
@@ -1085,13 +1091,17 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#period,
-                        r#created: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#created: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#created.unwrap_or(Default::default())
                         } else {
                             r#created.ok_or(serde::de::Error::missing_field("created"))?
@@ -1101,14 +1111,15 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                         r#requestor,
                         r#outcome,
                         r#disposition,
-                        r#payment_date: if config.mode == fhirbolt_shared::DeserializationMode::Lax
+                        r#payment_date: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#payment_date.unwrap_or(Default::default())
                         } else {
                             r#payment_date.ok_or(serde::de::Error::missing_field("paymentDate"))?
                         },
                         r#payment_amount: if config.mode
-                            == fhirbolt_shared::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#payment_amount.unwrap_or(Default::default())
                         } else {

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Narrative {
@@ -11,7 +11,11 @@ pub struct Narrative {
     #[doc = "The actual narrative content, a stripped down version of XHTML."]
     pub r#div: super::super::types::Xhtml,
 }
-impl crate::AnyResource for Narrative {}
+impl crate::AnyResource for Narrative {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Narrative {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -83,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#status: Option<super::super::types::Code> = None;
                 let mut r#div: Option<super::super::types::Xhtml> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -136,25 +140,29 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                                 } = map_access.next_value()?;
                                 some.id = id;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "status", "div"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "status", "div"],
+                                ));
+                            },
                         }
                     }
                     Ok(Narrative {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#div: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#div: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#div.unwrap_or(Default::default())
                         } else {
                             r#div.ok_or(serde::de::Error::missing_field("div"))?

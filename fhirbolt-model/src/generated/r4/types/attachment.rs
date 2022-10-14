@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Attachment Type: For referring to data content defined in other formats.\n\nMany models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc."]
 #[derive(Default, Debug, Clone)]
 pub struct Attachment {
@@ -23,7 +23,11 @@ pub struct Attachment {
     #[doc = "The date that the attachment was first created."]
     pub r#creation: Option<super::super::types::DateTime>,
 }
-impl crate::AnyResource for Attachment {}
+impl crate::AnyResource for Attachment {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Attachment {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -210,7 +214,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                 let mut r#hash: Option<super::super::types::Base64Binary> = None;
                 let mut r#title: Option<super::super::types::String> = None;
                 let mut r#creation: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -386,25 +390,25 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "contentType",
+                                        "language",
+                                        "data",
+                                        "url",
+                                        "size",
+                                        "hash",
+                                        "title",
+                                        "creation",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Attachment {

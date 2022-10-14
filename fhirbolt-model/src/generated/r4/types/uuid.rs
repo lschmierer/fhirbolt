@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for uuid type: A UUID, represented as a URI"]
 #[derive(Default, Debug, Clone)]
 pub struct Uuid {
@@ -9,4 +9,8 @@ pub struct Uuid {
     #[doc = "Primitive value for uuid"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Uuid {}
+impl crate::AnyResource for Uuid {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

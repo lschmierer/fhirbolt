@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit.\n\nNeed to be able to specify ranges of values."]
 #[derive(Default, Debug, Clone)]
 pub struct Range {
@@ -11,7 +11,11 @@ pub struct Range {
     #[doc = "The high limit. The boundary is inclusive."]
     pub r#high: Option<Box<super::super::types::Quantity>>,
 }
-impl crate::AnyResource for Range {}
+impl crate::AnyResource for Range {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Range {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -66,7 +70,7 @@ impl<'de> serde::de::Deserialize<'de> for Range {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#low: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#high: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -94,14 +98,14 @@ impl<'de> serde::de::Deserialize<'de> for Range {
                                 }
                                 r#high = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "low", "high"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "low", "high"],
+                                ));
+                            },
                         }
                     }
                     Ok(Range {

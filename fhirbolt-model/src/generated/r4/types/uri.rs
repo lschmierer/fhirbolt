@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for uri Type: String of characters used to identify a name or a resource"]
 #[derive(Default, Debug, Clone)]
 pub struct Uri {
@@ -9,4 +9,8 @@ pub struct Uri {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Uri {}
+impl crate::AnyResource for Uri {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

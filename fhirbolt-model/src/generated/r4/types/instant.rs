@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for instant Type: An instant in time - known at least to the second"]
 #[derive(Default, Debug, Clone)]
 pub struct Instant {
@@ -9,4 +9,8 @@ pub struct Instant {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Instant {}
+impl crate::AnyResource for Instant {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

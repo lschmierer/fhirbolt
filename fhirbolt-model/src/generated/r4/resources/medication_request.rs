@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Debug, Clone)]
 pub enum MedicationRequestReported {
@@ -49,7 +49,11 @@ pub struct MedicationRequestDispenseRequestInitialFill {
     #[doc = "The length of time that the first dispense is expected to last."]
     pub r#duration: Option<Box<super::super::types::Duration>>,
 }
-impl crate::AnyResource for MedicationRequestDispenseRequestInitialFill {}
+impl crate::AnyResource for MedicationRequestDispenseRequestInitialFill {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for MedicationRequestDispenseRequestInitialFill {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -114,7 +118,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequestInitia
                     None;
                 let mut r#quantity: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#duration: Option<Box<super::super::types::Duration>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -150,20 +154,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequestInitia
                                 }
                                 r#duration = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "quantity",
-                                            "duration",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "quantity",
+                                        "duration",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicationRequestDispenseRequestInitialFill {
@@ -311,7 +315,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequest {
                 let mut r#expected_supply_duration: Option<Box<super::super::types::Duration>> =
                     None;
                 let mut r#performer: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -403,25 +407,25 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequest {
                                 }
                                 r#performer = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "initialFill",
-                                            "dispenseInterval",
-                                            "validityPeriod",
-                                            "numberOfRepeatsAllowed",
-                                            "quantity",
-                                            "expectedSupplyDuration",
-                                            "performer",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "initialFill",
+                                        "dispenseInterval",
+                                        "validityPeriod",
+                                        "numberOfRepeatsAllowed",
+                                        "quantity",
+                                        "expectedSupplyDuration",
+                                        "performer",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicationRequestDispenseRequest {
@@ -542,7 +546,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
                     None;
                 let mut r#allowed: Option<MedicationRequestSubstitutionAllowed> = None;
                 let mut r#reason: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -627,28 +631,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
                                 }
                                 r#reason = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "allowedBoolean",
-                                            "allowedCodeableConcept",
-                                            "reason",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "allowedBoolean",
+                                        "allowedCodeableConcept",
+                                        "reason",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicationRequestSubstitution {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#allowed: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#allowed: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#allowed.unwrap_or(Default::default())
                         } else {
                             r#allowed.ok_or(serde::de::Error::missing_field("allowed[x]"))?
@@ -1198,7 +1204,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                 let mut r#prior_prescription: Option<Box<super::super::types::Reference>> = None;
                 let mut r#detected_issue: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#event_history: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1717,57 +1723,57 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                 }
                                 r#event_history = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "statusReason",
+                                        "intent",
+                                        "category",
+                                        "priority",
+                                        "doNotPerform",
+                                        "reportedBoolean",
+                                        "reportedReference",
+                                        "medicationCodeableConcept",
+                                        "medicationReference",
+                                        "subject",
+                                        "encounter",
+                                        "supportingInformation",
+                                        "authoredOn",
+                                        "requester",
+                                        "performer",
+                                        "performerType",
+                                        "recorder",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "basedOn",
+                                        "groupIdentifier",
+                                        "courseOfTherapyType",
+                                        "insurance",
+                                        "note",
+                                        "dosageInstruction",
+                                        "dispenseRequest",
+                                        "substitution",
+                                        "priorPrescription",
+                                        "detectedIssue",
+                                        "eventHistory",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(MedicationRequest {
@@ -1780,13 +1786,17 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#status_reason,
-                        r#intent: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#intent: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#intent.unwrap_or(Default::default())
                         } else {
                             r#intent.ok_or(serde::de::Error::missing_field("intent"))?
@@ -1795,12 +1805,16 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                         r#priority,
                         r#do_not_perform,
                         r#reported,
-                        r#medication: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#medication: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#medication.unwrap_or(Default::default())
                         } else {
                             r#medication.ok_or(serde::de::Error::missing_field("medication[x]"))?
                         },
-                        r#subject: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#subject: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#subject.unwrap_or(Default::default())
                         } else {
                             r#subject.ok_or(serde::de::Error::missing_field("subject"))?

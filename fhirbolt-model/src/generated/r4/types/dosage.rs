@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
 #[derive(Debug, Clone)]
 pub enum DosageAsNeeded {
@@ -50,7 +50,11 @@ pub struct DosageDoseAndRate {
     #[doc = "Amount of medication per unit of time."]
     pub r#rate: Option<DosageDoseAndRateRate>,
 }
-impl crate::AnyResource for DosageDoseAndRate {}
+impl crate::AnyResource for DosageDoseAndRate {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for DosageDoseAndRate {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -140,7 +144,7 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#dose: Option<DosageDoseAndRateDose> = None;
                 let mut r#rate: Option<DosageDoseAndRateRate> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -197,23 +201,23 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
                                 r#rate =
                                     Some(DosageDoseAndRateRate::Quantity(map_access.next_value()?));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "doseRange",
-                                            "doseQuantity",
-                                            "rateRatio",
-                                            "rateRange",
-                                            "rateQuantity",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "type",
+                                        "doseRange",
+                                        "doseQuantity",
+                                        "rateRatio",
+                                        "rateRange",
+                                        "rateQuantity",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(DosageDoseAndRate {
@@ -455,7 +459,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                 let mut r#max_dose_per_administration: Option<Box<super::super::types::Quantity>> =
                     None;
                 let mut r#max_dose_per_lifetime: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -648,32 +652,32 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 }
                                 r#max_dose_per_lifetime = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "text",
-                                            "additionalInstruction",
-                                            "patientInstruction",
-                                            "timing",
-                                            "asNeededBoolean",
-                                            "asNeededCodeableConcept",
-                                            "site",
-                                            "route",
-                                            "method",
-                                            "doseAndRate",
-                                            "maxDosePerPeriod",
-                                            "maxDosePerAdministration",
-                                            "maxDosePerLifetime",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "sequence",
+                                        "text",
+                                        "additionalInstruction",
+                                        "patientInstruction",
+                                        "timing",
+                                        "asNeededBoolean",
+                                        "asNeededCodeableConcept",
+                                        "site",
+                                        "route",
+                                        "method",
+                                        "doseAndRate",
+                                        "maxDosePerPeriod",
+                                        "maxDosePerAdministration",
+                                        "maxDosePerLifetime",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Dosage {

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Expression Type: A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."]
 #[derive(Default, Debug, Clone)]
 pub struct Expression {
@@ -17,7 +17,11 @@ pub struct Expression {
     #[doc = "A URI that defines where the expression is found."]
     pub r#reference: Option<super::super::types::Uri>,
 }
-impl crate::AnyResource for Expression {}
+impl crate::AnyResource for Expression {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Expression {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -148,7 +152,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                 let mut r#language: Option<super::super::types::Code> = None;
                 let mut r#expression: Option<super::super::types::String> = None;
                 let mut r#reference: Option<super::super::types::Uri> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -264,22 +268,22 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "description",
-                                            "name",
-                                            "language",
-                                            "expression",
-                                            "reference",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "description",
+                                        "name",
+                                        "language",
+                                        "expression",
+                                        "reference",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Expression {
@@ -287,7 +291,9 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#description,
                         r#name,
-                        r#language: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#language: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#language.unwrap_or(Default::default())
                         } else {
                             r#language.ok_or(serde::de::Error::missing_field("language"))?

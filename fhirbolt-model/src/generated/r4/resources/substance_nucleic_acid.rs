@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The linkages between sugar residues will also be captured."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
@@ -17,7 +17,11 @@ pub struct SubstanceNucleicAcidSubunitLinkage {
     #[doc = "Residues shall be captured as described in 5.3.6.8.3."]
     pub r#residue_site: Option<super::super::types::String>,
 }
-impl crate::AnyResource for SubstanceNucleicAcidSubunitLinkage {}
+impl crate::AnyResource for SubstanceNucleicAcidSubunitLinkage {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for SubstanceNucleicAcidSubunitLinkage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -130,7 +134,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                 let mut r#identifier: Option<Box<super::super::types::Identifier>> = None;
                 let mut r#name: Option<super::super::types::String> = None;
                 let mut r#residue_site: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -220,22 +224,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "connectivity",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "connectivity",
+                                        "identifier",
+                                        "name",
+                                        "residueSite",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceNucleicAcidSubunitLinkage {
@@ -363,7 +367,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                 let mut r#identifier: Option<Box<super::super::types::Identifier>> = None;
                 let mut r#name: Option<super::super::types::String> = None;
                 let mut r#residue_site: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -433,21 +437,21 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "name",
+                                        "residueSite",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceNucleicAcidSubunitSugar {
@@ -626,7 +630,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                 let mut r#three_prime: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#linkage: Option<Vec<SubstanceNucleicAcidSubunitLinkage>> = None;
                 let mut r#sugar: Option<Vec<SubstanceNucleicAcidSubunitSugar>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -742,26 +746,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                 }
                                 r#sugar = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subunit",
-                                            "sequence",
-                                            "length",
-                                            "sequenceAttachment",
-                                            "fivePrime",
-                                            "threePrime",
-                                            "linkage",
-                                            "sugar",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "subunit",
+                                        "sequence",
+                                        "length",
+                                        "sequenceAttachment",
+                                        "fivePrime",
+                                        "threePrime",
+                                        "linkage",
+                                        "sugar",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceNucleicAcidSubunit {
@@ -974,7 +978,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                 let mut r#oligo_nucleotide_type: Option<Box<super::super::types::CodeableConcept>> =
                     None;
                 let mut r#subunit: Option<Vec<SubstanceNucleicAcidSubunit>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1137,28 +1141,28 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                 }
                                 r#subunit = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequenceType",
-                                            "numberOfSubunits",
-                                            "areaOfHybridisation",
-                                            "oligoNucleotideType",
-                                            "subunit",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "sequenceType",
+                                        "numberOfSubunits",
+                                        "areaOfHybridisation",
+                                        "oligoNucleotideType",
+                                        "subunit",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(SubstanceNucleicAcid {

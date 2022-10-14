@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
 #[derive(Debug, Clone)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
@@ -25,7 +25,11 @@ pub struct NutritionOrderOralDietNutrient {
     #[doc = "The quantity of the specified nutrient to include in diet."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
 }
-impl crate::AnyResource for NutritionOrderOralDietNutrient {}
+impl crate::AnyResource for NutritionOrderOralDietNutrient {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for NutritionOrderOralDietNutrient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -90,7 +94,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
                     None;
                 let mut r#modifier: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#amount: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -126,20 +130,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "modifier",
-                                            "amount",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "modifier", "amount"],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrderOralDietNutrient {
@@ -233,7 +231,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
                     None;
                 let mut r#modifier: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#food_type: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -269,20 +267,20 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
                                 }
                                 r#food_type = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "modifier",
-                                            "foodType",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "modifier",
+                                        "foodType",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrderOralDietTexture {
@@ -419,7 +417,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#instruction: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -495,24 +493,24 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "schedule",
-                                            "nutrient",
-                                            "texture",
-                                            "fluidConsistencyType",
-                                            "instruction",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "schedule",
+                                        "nutrient",
+                                        "texture",
+                                        "fluidConsistencyType",
+                                        "instruction",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrderOralDiet {
@@ -655,7 +653,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                 let mut r#schedule: Option<Vec<Box<super::super::types::Timing>>> = None;
                 let mut r#quantity: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#instruction: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -737,23 +735,23 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "productName",
-                                            "schedule",
-                                            "quantity",
-                                            "instruction",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "productName",
+                                        "schedule",
+                                        "quantity",
+                                        "instruction",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrderSupplement {
@@ -870,7 +868,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
                 let mut r#schedule: Option<Box<super::super::types::Timing>> = None;
                 let mut r#quantity: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#rate: Option<NutritionOrderEnteralFormulaAdministrationRate> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -924,22 +922,22 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
                                         map_access.next_value()?,
                                     ));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "schedule",
-                                            "quantity",
-                                            "rateQuantity",
-                                            "rateRatio",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "schedule",
+                                        "quantity",
+                                        "rateQuantity",
+                                        "rateRatio",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrderEnteralFormulaAdministration {
@@ -1130,7 +1128,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                     None;
                 let mut r#max_volume_to_deliver: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#administration_instruction: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1278,27 +1276,27 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "baseFormulaType",
-                                            "baseFormulaProductName",
-                                            "additiveType",
-                                            "additiveProductName",
-                                            "caloricDensity",
-                                            "routeofAdministration",
-                                            "administration",
-                                            "maxVolumeToDeliver",
-                                            "administrationInstruction",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "baseFormulaType",
+                                        "baseFormulaProductName",
+                                        "additiveType",
+                                        "additiveProductName",
+                                        "caloricDensity",
+                                        "routeofAdministration",
+                                        "administration",
+                                        "maxVolumeToDeliver",
+                                        "administrationInstruction",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrderEnteralFormula {
@@ -1710,7 +1708,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                 let mut r#supplement: Option<Vec<NutritionOrderSupplement>> = None;
                 let mut r#enteral_formula: Option<NutritionOrderEnteralFormula> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2095,40 +2093,40 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "instantiates",
+                                        "status",
+                                        "intent",
+                                        "patient",
+                                        "encounter",
+                                        "dateTime",
+                                        "orderer",
+                                        "allergyIntolerance",
+                                        "foodPreferenceModifier",
+                                        "excludeFoodModifier",
+                                        "oralDiet",
+                                        "supplement",
+                                        "enteralFormula",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(NutritionOrder {
@@ -2144,23 +2142,31 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                         r#instantiates_canonical: r#instantiates_canonical.unwrap_or(vec![]),
                         r#instantiates_uri: r#instantiates_uri.unwrap_or(vec![]),
                         r#instantiates: r#instantiates.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#intent: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#intent: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#intent.unwrap_or(Default::default())
                         } else {
                             r#intent.ok_or(serde::de::Error::missing_field("intent"))?
                         },
-                        r#patient: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#patient: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
                         },
                         r#encounter,
-                        r#date_time: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#date_time: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#date_time.unwrap_or(Default::default())
                         } else {
                             r#date_time.ok_or(serde::de::Error::missing_field("dateTime"))?

@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')."]
 #[derive(Debug, Clone)]
 pub enum ElementDefinitionDefaultValue {
@@ -289,7 +289,11 @@ pub struct ElementDefinitionSlicingDiscriminator {
     #[doc = "A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based."]
     pub r#path: super::super::types::String,
 }
-impl crate::AnyResource for ElementDefinitionSlicingDiscriminator {}
+impl crate::AnyResource for ElementDefinitionSlicingDiscriminator {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ElementDefinitionSlicingDiscriminator {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -367,7 +371,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicingDiscriminator 
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#path: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -423,25 +427,29 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicingDiscriminator 
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "type", "path"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "type", "path"],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionSlicingDiscriminator {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#path: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#path: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#path.unwrap_or(Default::default())
                         } else {
                             r#path.ok_or(serde::de::Error::missing_field("path"))?
@@ -569,7 +577,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicing {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#ordered: Option<super::super::types::Boolean> = None;
                 let mut r#rules: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -651,21 +659,21 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicing {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "discriminator",
-                                            "description",
-                                            "ordered",
-                                            "rules",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "discriminator",
+                                        "description",
+                                        "ordered",
+                                        "rules",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionSlicing {
@@ -674,7 +682,9 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicing {
                         r#discriminator: r#discriminator.unwrap_or(vec![]),
                         r#description,
                         r#ordered,
-                        r#rules: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#rules: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#rules.unwrap_or(Default::default())
                         } else {
                             r#rules.ok_or(serde::de::Error::missing_field("rules"))?
@@ -790,7 +800,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBase {
                 let mut r#path: Option<super::super::types::String> = None;
                 let mut r#min: Option<super::super::types::UnsignedInt> = None;
                 let mut r#max: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -866,30 +876,36 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBase {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "path", "min", "max"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "path", "min", "max"],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionBase {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#path: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#path: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#path.unwrap_or(Default::default())
                         } else {
                             r#path.ok_or(serde::de::Error::missing_field("path"))?
                         },
-                        r#min: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#min: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#min.unwrap_or(Default::default())
                         } else {
                             r#min.ok_or(serde::de::Error::missing_field("min"))?
                         },
-                        r#max: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#max: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#max.unwrap_or(Default::default())
                         } else {
                             r#max.ok_or(serde::de::Error::missing_field("max"))?
@@ -1106,7 +1122,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionType {
                 let mut r#target_profile: Option<Vec<super::super::types::Canonical>> = None;
                 let mut r#aggregation: Option<Vec<super::super::types::Code>> = None;
                 let mut r#versioning: Option<super::super::types::Code> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1314,28 +1330,30 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionType {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "code",
-                                            "profile",
-                                            "targetProfile",
-                                            "aggregation",
-                                            "versioning",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "code",
+                                        "profile",
+                                        "targetProfile",
+                                        "aggregation",
+                                        "versioning",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionType {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#code: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#code: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
@@ -1907,7 +1925,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionExample {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#label: Option<super::super::types::String> = None;
                 let mut r#value: Option<ElementDefinitionExampleValue> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2891,79 +2909,83 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionExample {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "label",
-                                            "valueBase64Binary",
-                                            "valueBoolean",
-                                            "valueCanonical",
-                                            "valueCode",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueDecimal",
-                                            "valueId",
-                                            "valueInstant",
-                                            "valueInteger",
-                                            "valueMarkdown",
-                                            "valueOid",
-                                            "valuePositiveInt",
-                                            "valueString",
-                                            "valueTime",
-                                            "valueUnsignedInt",
-                                            "valueUri",
-                                            "valueUrl",
-                                            "valueUuid",
-                                            "valueAddress",
-                                            "valueAge",
-                                            "valueAnnotation",
-                                            "valueAttachment",
-                                            "valueCodeableConcept",
-                                            "valueCoding",
-                                            "valueContactPoint",
-                                            "valueCount",
-                                            "valueDistance",
-                                            "valueDuration",
-                                            "valueHumanName",
-                                            "valueIdentifier",
-                                            "valueMoney",
-                                            "valuePeriod",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueReference",
-                                            "valueSampledData",
-                                            "valueSignature",
-                                            "valueTiming",
-                                            "valueContactDetail",
-                                            "valueContributor",
-                                            "valueDataRequirement",
-                                            "valueExpression",
-                                            "valueParameterDefinition",
-                                            "valueRelatedArtifact",
-                                            "valueTriggerDefinition",
-                                            "valueUsageContext",
-                                            "valueDosage",
-                                            "valueMeta",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "label",
+                                        "valueBase64Binary",
+                                        "valueBoolean",
+                                        "valueCanonical",
+                                        "valueCode",
+                                        "valueDate",
+                                        "valueDateTime",
+                                        "valueDecimal",
+                                        "valueId",
+                                        "valueInstant",
+                                        "valueInteger",
+                                        "valueMarkdown",
+                                        "valueOid",
+                                        "valuePositiveInt",
+                                        "valueString",
+                                        "valueTime",
+                                        "valueUnsignedInt",
+                                        "valueUri",
+                                        "valueUrl",
+                                        "valueUuid",
+                                        "valueAddress",
+                                        "valueAge",
+                                        "valueAnnotation",
+                                        "valueAttachment",
+                                        "valueCodeableConcept",
+                                        "valueCoding",
+                                        "valueContactPoint",
+                                        "valueCount",
+                                        "valueDistance",
+                                        "valueDuration",
+                                        "valueHumanName",
+                                        "valueIdentifier",
+                                        "valueMoney",
+                                        "valuePeriod",
+                                        "valueQuantity",
+                                        "valueRange",
+                                        "valueRatio",
+                                        "valueReference",
+                                        "valueSampledData",
+                                        "valueSignature",
+                                        "valueTiming",
+                                        "valueContactDetail",
+                                        "valueContributor",
+                                        "valueDataRequirement",
+                                        "valueExpression",
+                                        "valueParameterDefinition",
+                                        "valueRelatedArtifact",
+                                        "valueTriggerDefinition",
+                                        "valueUsageContext",
+                                        "valueDosage",
+                                        "valueMeta",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionExample {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#label: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#label: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#label.unwrap_or(Default::default())
                         } else {
                             r#label.ok_or(serde::de::Error::missing_field("label"))?
                         },
-                        r#value: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#value: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#value.unwrap_or(Default::default())
                         } else {
                             r#value.ok_or(serde::de::Error::missing_field("value[x]"))?
@@ -3162,7 +3184,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionConstraint {
                 let mut r#expression: Option<super::super::types::String> = None;
                 let mut r#xpath: Option<super::super::types::String> = None;
                 let mut r#source: Option<super::super::types::Canonical> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3318,41 +3340,47 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionConstraint {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "key",
-                                            "requirements",
-                                            "severity",
-                                            "human",
-                                            "expression",
-                                            "xpath",
-                                            "source",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "key",
+                                        "requirements",
+                                        "severity",
+                                        "human",
+                                        "expression",
+                                        "xpath",
+                                        "source",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionConstraint {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#key: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#key: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#key.unwrap_or(Default::default())
                         } else {
                             r#key.ok_or(serde::de::Error::missing_field("key"))?
                         },
                         r#requirements,
-                        r#severity: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#severity: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#severity.unwrap_or(Default::default())
                         } else {
                             r#severity.ok_or(serde::de::Error::missing_field("severity"))?
                         },
-                        r#human: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#human: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#human.unwrap_or(Default::default())
                         } else {
                             r#human.ok_or(serde::de::Error::missing_field("human"))?
@@ -3475,7 +3503,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBinding {
                 let mut r#strength: Option<super::super::types::Code> = None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#value_set: Option<super::super::types::Canonical> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3551,20 +3579,22 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBinding {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "strength", "description", "valueSet"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "strength", "description", "valueSet"],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionBinding {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#strength: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#strength: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#strength.unwrap_or(Default::default())
                         } else {
                             r#strength.ok_or(serde::de::Error::missing_field("strength"))?
@@ -3704,7 +3734,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionMapping {
                 let mut r#language: Option<super::super::types::Code> = None;
                 let mut r#map: Option<super::super::types::String> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3800,33 +3830,30 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionMapping {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "identity",
-                                            "language",
-                                            "map",
-                                            "comment",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "identity", "language", "map", "comment"],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinitionMapping {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#identity: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#identity: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#identity.unwrap_or(Default::default())
                         } else {
                             r#identity.ok_or(serde::de::Error::missing_field("identity"))?
                         },
                         r#language,
-                        r#map: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#map: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#map.unwrap_or(Default::default())
                         } else {
                             r#map.ok_or(serde::de::Error::missing_field("map"))?
@@ -6213,7 +6240,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinition {
                 let mut r#is_summary: Option<super::super::types::Boolean> = None;
                 let mut r#binding: Option<ElementDefinitionBinding> = None;
                 let mut r#mapping: Option<Vec<ElementDefinitionMapping>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -10386,222 +10413,224 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinition {
                                 }
                                 r#mapping = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "representation",
-                                            "sliceName",
-                                            "sliceIsConstraining",
-                                            "label",
-                                            "code",
-                                            "slicing",
-                                            "short",
-                                            "definition",
-                                            "comment",
-                                            "requirements",
-                                            "alias",
-                                            "min",
-                                            "max",
-                                            "base",
-                                            "contentReference",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "meaningWhenMissing",
-                                            "orderMeaning",
-                                            "fixedBase64Binary",
-                                            "fixedBoolean",
-                                            "fixedCanonical",
-                                            "fixedCode",
-                                            "fixedDate",
-                                            "fixedDateTime",
-                                            "fixedDecimal",
-                                            "fixedId",
-                                            "fixedInstant",
-                                            "fixedInteger",
-                                            "fixedMarkdown",
-                                            "fixedOid",
-                                            "fixedPositiveInt",
-                                            "fixedString",
-                                            "fixedTime",
-                                            "fixedUnsignedInt",
-                                            "fixedUri",
-                                            "fixedUrl",
-                                            "fixedUuid",
-                                            "fixedAddress",
-                                            "fixedAge",
-                                            "fixedAnnotation",
-                                            "fixedAttachment",
-                                            "fixedCodeableConcept",
-                                            "fixedCoding",
-                                            "fixedContactPoint",
-                                            "fixedCount",
-                                            "fixedDistance",
-                                            "fixedDuration",
-                                            "fixedHumanName",
-                                            "fixedIdentifier",
-                                            "fixedMoney",
-                                            "fixedPeriod",
-                                            "fixedQuantity",
-                                            "fixedRange",
-                                            "fixedRatio",
-                                            "fixedReference",
-                                            "fixedSampledData",
-                                            "fixedSignature",
-                                            "fixedTiming",
-                                            "fixedContactDetail",
-                                            "fixedContributor",
-                                            "fixedDataRequirement",
-                                            "fixedExpression",
-                                            "fixedParameterDefinition",
-                                            "fixedRelatedArtifact",
-                                            "fixedTriggerDefinition",
-                                            "fixedUsageContext",
-                                            "fixedDosage",
-                                            "fixedMeta",
-                                            "patternBase64Binary",
-                                            "patternBoolean",
-                                            "patternCanonical",
-                                            "patternCode",
-                                            "patternDate",
-                                            "patternDateTime",
-                                            "patternDecimal",
-                                            "patternId",
-                                            "patternInstant",
-                                            "patternInteger",
-                                            "patternMarkdown",
-                                            "patternOid",
-                                            "patternPositiveInt",
-                                            "patternString",
-                                            "patternTime",
-                                            "patternUnsignedInt",
-                                            "patternUri",
-                                            "patternUrl",
-                                            "patternUuid",
-                                            "patternAddress",
-                                            "patternAge",
-                                            "patternAnnotation",
-                                            "patternAttachment",
-                                            "patternCodeableConcept",
-                                            "patternCoding",
-                                            "patternContactPoint",
-                                            "patternCount",
-                                            "patternDistance",
-                                            "patternDuration",
-                                            "patternHumanName",
-                                            "patternIdentifier",
-                                            "patternMoney",
-                                            "patternPeriod",
-                                            "patternQuantity",
-                                            "patternRange",
-                                            "patternRatio",
-                                            "patternReference",
-                                            "patternSampledData",
-                                            "patternSignature",
-                                            "patternTiming",
-                                            "patternContactDetail",
-                                            "patternContributor",
-                                            "patternDataRequirement",
-                                            "patternExpression",
-                                            "patternParameterDefinition",
-                                            "patternRelatedArtifact",
-                                            "patternTriggerDefinition",
-                                            "patternUsageContext",
-                                            "patternDosage",
-                                            "patternMeta",
-                                            "example",
-                                            "minValueDate",
-                                            "minValueDateTime",
-                                            "minValueInstant",
-                                            "minValueTime",
-                                            "minValueDecimal",
-                                            "minValueInteger",
-                                            "minValuePositiveInt",
-                                            "minValueUnsignedInt",
-                                            "minValueQuantity",
-                                            "maxValueDate",
-                                            "maxValueDateTime",
-                                            "maxValueInstant",
-                                            "maxValueTime",
-                                            "maxValueDecimal",
-                                            "maxValueInteger",
-                                            "maxValuePositiveInt",
-                                            "maxValueUnsignedInt",
-                                            "maxValueQuantity",
-                                            "maxLength",
-                                            "condition",
-                                            "constraint",
-                                            "mustSupport",
-                                            "isModifier",
-                                            "isModifierReason",
-                                            "isSummary",
-                                            "binding",
-                                            "mapping",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "path",
+                                        "representation",
+                                        "sliceName",
+                                        "sliceIsConstraining",
+                                        "label",
+                                        "code",
+                                        "slicing",
+                                        "short",
+                                        "definition",
+                                        "comment",
+                                        "requirements",
+                                        "alias",
+                                        "min",
+                                        "max",
+                                        "base",
+                                        "contentReference",
+                                        "type",
+                                        "defaultValueBase64Binary",
+                                        "defaultValueBoolean",
+                                        "defaultValueCanonical",
+                                        "defaultValueCode",
+                                        "defaultValueDate",
+                                        "defaultValueDateTime",
+                                        "defaultValueDecimal",
+                                        "defaultValueId",
+                                        "defaultValueInstant",
+                                        "defaultValueInteger",
+                                        "defaultValueMarkdown",
+                                        "defaultValueOid",
+                                        "defaultValuePositiveInt",
+                                        "defaultValueString",
+                                        "defaultValueTime",
+                                        "defaultValueUnsignedInt",
+                                        "defaultValueUri",
+                                        "defaultValueUrl",
+                                        "defaultValueUuid",
+                                        "defaultValueAddress",
+                                        "defaultValueAge",
+                                        "defaultValueAnnotation",
+                                        "defaultValueAttachment",
+                                        "defaultValueCodeableConcept",
+                                        "defaultValueCoding",
+                                        "defaultValueContactPoint",
+                                        "defaultValueCount",
+                                        "defaultValueDistance",
+                                        "defaultValueDuration",
+                                        "defaultValueHumanName",
+                                        "defaultValueIdentifier",
+                                        "defaultValueMoney",
+                                        "defaultValuePeriod",
+                                        "defaultValueQuantity",
+                                        "defaultValueRange",
+                                        "defaultValueRatio",
+                                        "defaultValueReference",
+                                        "defaultValueSampledData",
+                                        "defaultValueSignature",
+                                        "defaultValueTiming",
+                                        "defaultValueContactDetail",
+                                        "defaultValueContributor",
+                                        "defaultValueDataRequirement",
+                                        "defaultValueExpression",
+                                        "defaultValueParameterDefinition",
+                                        "defaultValueRelatedArtifact",
+                                        "defaultValueTriggerDefinition",
+                                        "defaultValueUsageContext",
+                                        "defaultValueDosage",
+                                        "defaultValueMeta",
+                                        "meaningWhenMissing",
+                                        "orderMeaning",
+                                        "fixedBase64Binary",
+                                        "fixedBoolean",
+                                        "fixedCanonical",
+                                        "fixedCode",
+                                        "fixedDate",
+                                        "fixedDateTime",
+                                        "fixedDecimal",
+                                        "fixedId",
+                                        "fixedInstant",
+                                        "fixedInteger",
+                                        "fixedMarkdown",
+                                        "fixedOid",
+                                        "fixedPositiveInt",
+                                        "fixedString",
+                                        "fixedTime",
+                                        "fixedUnsignedInt",
+                                        "fixedUri",
+                                        "fixedUrl",
+                                        "fixedUuid",
+                                        "fixedAddress",
+                                        "fixedAge",
+                                        "fixedAnnotation",
+                                        "fixedAttachment",
+                                        "fixedCodeableConcept",
+                                        "fixedCoding",
+                                        "fixedContactPoint",
+                                        "fixedCount",
+                                        "fixedDistance",
+                                        "fixedDuration",
+                                        "fixedHumanName",
+                                        "fixedIdentifier",
+                                        "fixedMoney",
+                                        "fixedPeriod",
+                                        "fixedQuantity",
+                                        "fixedRange",
+                                        "fixedRatio",
+                                        "fixedReference",
+                                        "fixedSampledData",
+                                        "fixedSignature",
+                                        "fixedTiming",
+                                        "fixedContactDetail",
+                                        "fixedContributor",
+                                        "fixedDataRequirement",
+                                        "fixedExpression",
+                                        "fixedParameterDefinition",
+                                        "fixedRelatedArtifact",
+                                        "fixedTriggerDefinition",
+                                        "fixedUsageContext",
+                                        "fixedDosage",
+                                        "fixedMeta",
+                                        "patternBase64Binary",
+                                        "patternBoolean",
+                                        "patternCanonical",
+                                        "patternCode",
+                                        "patternDate",
+                                        "patternDateTime",
+                                        "patternDecimal",
+                                        "patternId",
+                                        "patternInstant",
+                                        "patternInteger",
+                                        "patternMarkdown",
+                                        "patternOid",
+                                        "patternPositiveInt",
+                                        "patternString",
+                                        "patternTime",
+                                        "patternUnsignedInt",
+                                        "patternUri",
+                                        "patternUrl",
+                                        "patternUuid",
+                                        "patternAddress",
+                                        "patternAge",
+                                        "patternAnnotation",
+                                        "patternAttachment",
+                                        "patternCodeableConcept",
+                                        "patternCoding",
+                                        "patternContactPoint",
+                                        "patternCount",
+                                        "patternDistance",
+                                        "patternDuration",
+                                        "patternHumanName",
+                                        "patternIdentifier",
+                                        "patternMoney",
+                                        "patternPeriod",
+                                        "patternQuantity",
+                                        "patternRange",
+                                        "patternRatio",
+                                        "patternReference",
+                                        "patternSampledData",
+                                        "patternSignature",
+                                        "patternTiming",
+                                        "patternContactDetail",
+                                        "patternContributor",
+                                        "patternDataRequirement",
+                                        "patternExpression",
+                                        "patternParameterDefinition",
+                                        "patternRelatedArtifact",
+                                        "patternTriggerDefinition",
+                                        "patternUsageContext",
+                                        "patternDosage",
+                                        "patternMeta",
+                                        "example",
+                                        "minValueDate",
+                                        "minValueDateTime",
+                                        "minValueInstant",
+                                        "minValueTime",
+                                        "minValueDecimal",
+                                        "minValueInteger",
+                                        "minValuePositiveInt",
+                                        "minValueUnsignedInt",
+                                        "minValueQuantity",
+                                        "maxValueDate",
+                                        "maxValueDateTime",
+                                        "maxValueInstant",
+                                        "maxValueTime",
+                                        "maxValueDecimal",
+                                        "maxValueInteger",
+                                        "maxValuePositiveInt",
+                                        "maxValueUnsignedInt",
+                                        "maxValueQuantity",
+                                        "maxLength",
+                                        "condition",
+                                        "constraint",
+                                        "mustSupport",
+                                        "isModifier",
+                                        "isModifierReason",
+                                        "isSummary",
+                                        "binding",
+                                        "mapping",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ElementDefinition {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#path: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#path: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#path.unwrap_or(Default::default())
                         } else {
                             r#path.ok_or(serde::de::Error::missing_field("path"))?

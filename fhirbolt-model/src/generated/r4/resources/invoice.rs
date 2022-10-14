@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
 #[derive(Debug, Clone)]
 pub enum InvoiceLineItemChargeItem {
@@ -25,7 +25,11 @@ pub struct InvoiceParticipant {
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
     pub r#actor: Box<super::super::types::Reference>,
 }
-impl crate::AnyResource for InvoiceParticipant {}
+impl crate::AnyResource for InvoiceParticipant {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for InvoiceParticipant {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -85,7 +89,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
                     None;
                 let mut r#role: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -121,14 +125,14 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
                                 }
                                 r#actor = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &["id", "extension", "modifierExtension", "role", "actor"],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &["id", "extension", "modifierExtension", "role", "actor"],
+                                ));
+                            },
                         }
                     }
                     Ok(InvoiceParticipant {
@@ -136,7 +140,9 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#role,
-                        r#actor: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#actor: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#actor.unwrap_or(Default::default())
                         } else {
                             r#actor.ok_or(serde::de::Error::missing_field("actor"))?
@@ -266,7 +272,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#factor: Option<super::super::types::Decimal> = None;
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -342,29 +348,31 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "code",
-                                            "factor",
-                                            "amount",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "type",
+                                        "code",
+                                        "factor",
+                                        "amount",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(InvoiceLineItemPriceComponent {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#type: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
@@ -484,7 +492,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                 let mut r#sequence: Option<super::super::types::PositiveInt> = None;
                 let mut r#charge_item: Option<InvoiceLineItemChargeItem> = None;
                 let mut r#price_component: Option<Vec<InvoiceLineItemPriceComponent>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -556,22 +564,22 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                 }
                                 r#price_component = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "chargeItemReference",
-                                            "chargeItemCodeableConcept",
-                                            "priceComponent",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "sequence",
+                                        "chargeItemReference",
+                                        "chargeItemCodeableConcept",
+                                        "priceComponent",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(InvoiceLineItem {
@@ -579,7 +587,9 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#sequence,
-                        r#charge_item: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#charge_item: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#charge_item.unwrap_or(Default::default())
                         } else {
                             r#charge_item.ok_or(serde::de::Error::missing_field("chargeItem[x]"))?
@@ -892,7 +902,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                 let mut r#total_gross: Option<Box<super::super::types::Money>> = None;
                 let mut r#payment_terms: Option<super::super::types::Markdown> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1143,39 +1153,39 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "status",
+                                        "cancelledReason",
+                                        "type",
+                                        "subject",
+                                        "recipient",
+                                        "date",
+                                        "participant",
+                                        "issuer",
+                                        "account",
+                                        "lineItem",
+                                        "totalPriceComponent",
+                                        "totalNet",
+                                        "totalGross",
+                                        "paymentTerms",
+                                        "note",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Invoice {
@@ -1188,7 +1198,9 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?

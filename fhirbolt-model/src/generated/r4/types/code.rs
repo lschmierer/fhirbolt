@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"]
 #[derive(Default, Debug, Clone)]
 pub struct Code {
@@ -9,4 +9,8 @@ pub struct Code {
     #[doc = "Primitive value for code"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Code {}
+impl crate::AnyResource for Code {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

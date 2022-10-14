@@ -7,24 +7,27 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use zip::ZipArchive;
 
-use fhirbolt_model::{r4, AnyResource};
-use fhirbolt_serde::{DeserializationConfig, DeserializationMode};
+use fhirbolt::{
+    model::{self, AnyResource},
+    serde::{DeserializationConfig, DeserializationMode},
+    FhirRelease,
+};
 
 const FHIR_EXAMPLES_XML_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/examples.zip";
 
-fn fhir_examples_xml_download_url(fhir_release: &str) -> String {
+fn fhir_examples_xml_download_url(fhir_release: FhirRelease) -> String {
     str::replace(
         FHIR_EXAMPLES_XML_DOWNLOAD_URL,
         "{}",
-        &fhir_release.to_lowercase(),
+        &fhir_release.to_string().to_lowercase(),
     )
 }
 
-fn download_fhir_examples_xml(fhir_release: &str) -> path::PathBuf {
+fn download_fhir_examples_xml(fhir_release: FhirRelease) -> path::PathBuf {
     let examples_xml_download_url = fhir_examples_xml_download_url(fhir_release);
     let examples_xml_folder_path = path::PathBuf::from(env!("CARGO_TARGET_TMPDIR"))
         .join("fhirbolt")
-        .join(fhir_release.to_lowercase());
+        .join(fhir_release.to_string().to_lowercase());
     let examples_xml_zip_path = examples_xml_folder_path.join("examples.zip");
 
     if !examples_xml_zip_path.exists() {
@@ -42,11 +45,8 @@ fn download_fhir_examples_xml(fhir_release: &str) -> path::PathBuf {
     examples_xml_zip_path
 }
 
-fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(
-    fhir_release: &str,
-    mode: DeserializationMode,
-) {
-    let examples_xml_zip_path = download_fhir_examples_xml(fhir_release);
+fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(mode: DeserializationMode) {
+    let examples_xml_zip_path = download_fhir_examples_xml(R::fhir_release());
 
     let zip_file = fs::File::open(examples_xml_zip_path).expect("Error opening zip file");
     let mut archive = ZipArchive::new(zip_file).unwrap();
@@ -61,23 +61,19 @@ fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
-        let mut deserializer = fhirbolt_serde::xml::Deserializer::from_slice(&buffer[..]);
+        let mut deserializer = fhirbolt::xml::Deserializer::from_slice::<R>(&buffer[..]);
         let json_value = Value::deserialize(&mut deserializer).unwrap();
 
         let resource: R =
-            fhirbolt_serde::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode }))
-                .unwrap();
+            fhirbolt::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode })).unwrap();
 
-        assert_eq!(
-            fhirbolt_serde::json::to_value(resource).unwrap(),
-            json_value
-        );
+        assert_eq!(fhirbolt::json::to_value(resource).unwrap(), json_value);
     }
 }
 
 #[test]
 fn test_serde_xml_r4() {
-    test_serde_xml::<r4::Resource>("R4", DeserializationMode::Strict);
-    test_serde_xml::<r4::Resource>("R4", DeserializationMode::Compatibility);
-    test_serde_xml::<r4::Resource>("R4", DeserializationMode::Lax);
+    test_serde_xml::<model::r4::Resource>(DeserializationMode::Strict);
+    test_serde_xml::<model::r4::Resource>(DeserializationMode::Compatibility);
+    test_serde_xml::<model::r4::Resource>(DeserializationMode::Lax);
 }

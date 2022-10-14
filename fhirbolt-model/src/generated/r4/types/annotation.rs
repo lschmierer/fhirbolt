@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "The individual responsible for making the annotation."]
 #[derive(Debug, Clone)]
 pub enum AnnotationAuthor {
@@ -25,7 +25,11 @@ pub struct Annotation {
     #[doc = "The text of the annotation in markdown format."]
     pub r#text: super::super::types::Markdown,
 }
-impl crate::AnyResource for Annotation {}
+impl crate::AnyResource for Annotation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for Annotation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -132,7 +136,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                 let mut r#author: Option<AnnotationAuthor> = None;
                 let mut r#time: Option<super::super::types::DateTime> = None;
                 let mut r#text: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -231,21 +235,21 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "authorReference",
-                                            "authorString",
-                                            "time",
-                                            "text",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "authorReference",
+                                        "authorString",
+                                        "time",
+                                        "text",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Annotation {
@@ -253,7 +257,9 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#author,
                         r#time,
-                        r#text: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#text: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#text.unwrap_or(Default::default())
                         } else {
                             r#text.ok_or(serde::de::Error::missing_field("text"))?

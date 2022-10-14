@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Debug, Clone)]
 pub enum ProcedurePerformed {
@@ -30,7 +30,11 @@ pub struct ProcedurePerformer {
     #[doc = "The organization the device or practitioner was acting on behalf of."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
 }
-impl crate::AnyResource for ProcedurePerformer {}
+impl crate::AnyResource for ProcedurePerformer {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}
 impl serde::ser::Serialize for ProcedurePerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -96,7 +100,7 @@ impl<'de> serde::de::Deserialize<'de> for ProcedurePerformer {
                 let mut r#function: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
                 let mut r#on_behalf_of: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -138,21 +142,21 @@ impl<'de> serde::de::Deserialize<'de> for ProcedurePerformer {
                                 }
                                 r#on_behalf_of = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "function",
-                                            "actor",
-                                            "onBehalfOf",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "function",
+                                        "actor",
+                                        "onBehalfOf",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ProcedurePerformer {
@@ -160,7 +164,9 @@ impl<'de> serde::de::Deserialize<'de> for ProcedurePerformer {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#function,
-                        r#actor: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#actor: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#actor.unwrap_or(Default::default())
                         } else {
                             r#actor.ok_or(serde::de::Error::missing_field("actor"))?
@@ -246,7 +252,7 @@ impl<'de> serde::de::Deserialize<'de> for ProcedureFocalDevice {
                     None;
                 let mut r#action: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#manipulated: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -282,20 +288,20 @@ impl<'de> serde::de::Deserialize<'de> for ProcedureFocalDevice {
                                 }
                                 r#manipulated = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "action",
-                                            "manipulated",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "extension",
+                                        "modifierExtension",
+                                        "action",
+                                        "manipulated",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(ProcedureFocalDevice {
@@ -303,7 +309,9 @@ impl<'de> serde::de::Deserialize<'de> for ProcedureFocalDevice {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#action,
-                        r#manipulated: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#manipulated: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#manipulated.unwrap_or(Default::default())
                         } else {
                             r#manipulated.ok_or(serde::de::Error::missing_field("manipulated"))?
@@ -790,7 +798,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                 let mut r#focal_device: Option<Vec<ProcedureFocalDevice>> = None;
                 let mut r#used_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#used_code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
-                fhirbolt_shared::DESERIALIZATION_CONFIG.with(|config| {
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
                     let config = config.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1254,55 +1262,55 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                 }
                                 r#used_code = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => {
-                                if config.mode == fhirbolt_shared::DeserializationMode::Strict {
-                                    return Err(serde::de::Error::unknown_field(
-                                        &key,
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
-                                }
-                            }
+                            Field::Unknown(key) => if config.mode
+                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                            {
+                                return Err(serde::de::Error::unknown_field(
+                                    &key,
+                                    &[
+                                        "id",
+                                        "meta",
+                                        "implicitRules",
+                                        "language",
+                                        "text",
+                                        "contained",
+                                        "extension",
+                                        "modifierExtension",
+                                        "identifier",
+                                        "instantiatesCanonical",
+                                        "instantiatesUri",
+                                        "basedOn",
+                                        "partOf",
+                                        "status",
+                                        "statusReason",
+                                        "category",
+                                        "code",
+                                        "subject",
+                                        "encounter",
+                                        "performedDateTime",
+                                        "performedPeriod",
+                                        "performedString",
+                                        "performedAge",
+                                        "performedRange",
+                                        "recorder",
+                                        "asserter",
+                                        "performer",
+                                        "location",
+                                        "reasonCode",
+                                        "reasonReference",
+                                        "bodySite",
+                                        "outcome",
+                                        "report",
+                                        "complication",
+                                        "complicationDetail",
+                                        "followUp",
+                                        "note",
+                                        "focalDevice",
+                                        "usedReference",
+                                        "usedCode",
+                                    ],
+                                ));
+                            },
                         }
                     }
                     Ok(Procedure {
@@ -1319,7 +1327,9 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                         r#instantiates_uri: r#instantiates_uri.unwrap_or(vec![]),
                         r#based_on: r#based_on.unwrap_or(vec![]),
                         r#part_of: r#part_of.unwrap_or(vec![]),
-                        r#status: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#status: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
@@ -1327,7 +1337,9 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                         r#status_reason,
                         r#category,
                         r#code,
-                        r#subject: if config.mode == fhirbolt_shared::DeserializationMode::Lax {
+                        r#subject: if config.mode
+                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                        {
                             r#subject.unwrap_or(Default::default())
                         } else {
                             r#subject.ok_or(serde::de::Error::missing_field("subject"))?

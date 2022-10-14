@@ -1,4 +1,4 @@
-// Generated on 2022-10-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for decimal Type: A rational number with implicit precision"]
 #[derive(Default, Debug, Clone)]
 pub struct Decimal {
@@ -9,4 +9,8 @@ pub struct Decimal {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
-impl crate::AnyResource for Decimal {}
+impl crate::AnyResource for Decimal {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
+}

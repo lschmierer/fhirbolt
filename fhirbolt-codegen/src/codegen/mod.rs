@@ -8,6 +8,8 @@ use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 use regex::{Captures, Regex};
 
+use fhirbolt_shared::FhirRelease;
+
 use crate::{
     casing::RustCasing,
     ir::{RustFhirEnum, RustFhirModule, RustFhirStruct, RustFhirStructField},
@@ -53,11 +55,17 @@ fn format_doc_comment(text: &str) -> String {
     text.to_string()
 }
 
-pub fn generate_modules(modules: &[RustFhirModule]) -> Vec<SourceFile> {
-    modules.iter().map(|m| generate_module(m)).collect()
+pub fn generate_modules(modules: &[RustFhirModule], release: FhirRelease) -> Vec<SourceFile> {
+    modules
+        .iter()
+        .map(|m| generate_module(m, release))
+        .collect()
 }
 
-pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile {
+pub fn generate_resource_enum(
+    resource_modules: &[RustFhirModule],
+    release: FhirRelease,
+) -> SourceFile {
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
         let doc_comment = format_doc_comment(&r.doc_comment);
@@ -67,6 +75,8 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
             #ident(Box<super::resources::#ident>),
         }
     });
+
+    let release_ident = format_ident!("{}", release.to_string());
 
     SourceFile {
         name: "resource".into(),
@@ -82,17 +92,21 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
                 Invalid,
             }
 
-            impl crate::AnyResource for Resource {}
+            impl crate::AnyResource for Resource {
+                fn fhir_release() -> crate::FhirRelease {
+                    crate::FhirRelease::#release_ident
+                }
+            }
         },
     }
 }
 
-fn generate_module(module: &RustFhirModule) -> SourceFile {
-    let mut first = Some(true);
+fn generate_module(module: &RustFhirModule, release: FhirRelease) -> SourceFile {
+    let mut first = Some(release);
     let structs_tokens = module
         .structs
         .iter()
-        .map(|s| generate_struct(s, &module.enums, first.take().unwrap_or(false)));
+        .map(|s| generate_struct(s, &module.enums, first.take()));
     let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
@@ -111,13 +125,21 @@ fn generate_module(module: &RustFhirModule) -> SourceFile {
 fn generate_struct(
     r#struct: &RustFhirStruct,
     enums: &[RustFhirEnum],
-    is_resource: bool,
+    is_resource: Option<FhirRelease>,
 ) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
 
-    let impl_any_resource_tokens = if is_resource {
-        quote! { impl crate::AnyResource for #name_ident {} }
+    let impl_any_resource_tokens = if let Some(release) = is_resource {
+        let release_ident = format_ident!("{}", release.to_string());
+
+        quote! {
+            impl crate::AnyResource for #name_ident {
+                fn fhir_release() -> crate::FhirRelease {
+                    crate::FhirRelease::#release_ident
+                }
+            }
+        }
     } else {
         quote! {}
     };
