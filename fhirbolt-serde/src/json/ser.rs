@@ -1,5 +1,7 @@
 use serde::ser::Serialize;
 
+pub use serde_json::ser::*;
+
 use fhirbolt_shared::AnyResource;
 
 use crate::json::error::Result;

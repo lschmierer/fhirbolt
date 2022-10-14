@@ -1,2 +1,1 @@
-pub use serde_json::Error;
-pub use serde_json::Result;
+pub use serde_json::error::*;

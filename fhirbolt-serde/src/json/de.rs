@@ -1,5 +1,7 @@
 use serde::de::{Deserialize, DeserializeOwned};
 
+pub use serde_json::de::*;
+
 use fhirbolt_shared::{
     serde_config::de::{with_config, DeserializationConfig},
     AnyResource,
