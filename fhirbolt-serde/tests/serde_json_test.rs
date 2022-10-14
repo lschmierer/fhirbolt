@@ -6,10 +6,8 @@ use serde::Serialize;
 use serde_json::Value;
 use zip::ZipArchive;
 
-use fhirbolt::{
-    model::{r4, AnyResource},
-    serde::{DeserializationConfig, DeserializationMode},
-};
+use fhirbolt_model::{r4, AnyResource};
+use fhirbolt_serde::{DeserializationConfig, DeserializationMode};
 
 const FHIR_EXAMPLES_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/examples-json.zip";
 
@@ -71,10 +69,16 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(
 
         let json_value: Value = serde_json::from_reader(file).unwrap();
 
-        let resource: R =
-            fhirbolt::json::from_value(json_value.clone(), Some(DeserializationConfig { mode }))
-                .unwrap();
-        assert_eq!(fhirbolt::json::to_value(resource).unwrap(), json_value);
+        let resource: R = fhirbolt_serde::json::from_value(
+            json_value.clone(),
+            Some(DeserializationConfig { mode }),
+        )
+        .unwrap();
+
+        assert_eq!(
+            fhirbolt_serde::json::to_value(resource).unwrap(),
+            json_value
+        );
     }
 }
 
