@@ -2,17 +2,15 @@ use std::mem;
 
 use fhirbolt_shared::FhirRelease;
 
-use crate::helpers::type_hints::TypeHints;
+use crate::helpers::type_hints::{self, TypeHints};
 
 const RESOURCE_COMMON_PRIMITIVE_FIELDS: &[&str] = &["id", "url", "implicitRules", "language"];
 const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 
 fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
-    use crate::helpers::type_hints as th;
-
     match fhir_release {
-        FhirRelease::R4 => &th::r4::TYPE_HINTS,
-        FhirRelease::R4B => unimplemented!(),
+        FhirRelease::R4 => &type_hints::r4::TYPE_HINTS,
+        FhirRelease::R4B => &type_hints::r4b::TYPE_HINTS,
     }
 }
 

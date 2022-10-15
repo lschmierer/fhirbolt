@@ -6,7 +6,7 @@ pub trait AnyResource {
     fn fhir_release() -> FhirRelease;
 }
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, PartialEq, Eq, Debug)]
 pub enum FhirRelease {
     R4,
     R4B,

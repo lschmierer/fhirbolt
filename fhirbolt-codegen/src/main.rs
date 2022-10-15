@@ -13,7 +13,7 @@ use fhirbolt_shared::FhirRelease;
 
 use fhirbolt_codegen::{generate_all, model::Bundle, SourceFile};
 
-const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4 /*, FhirRelease::R4B*/];
+const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4, FhirRelease::R4B];
 
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
 

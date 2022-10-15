@@ -8,9 +8,8 @@ use serde_json::Value;
 use zip::ZipArchive;
 
 use fhirbolt::{
-    model::{self, AnyResource},
+    model::{self, AnyResource, FhirRelease},
     serde::{DeserializationConfig, DeserializationMode},
-    FhirRelease,
 };
 
 const FHIR_EXAMPLES_XML_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/examples.zip";
@@ -53,15 +52,33 @@ fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(mode: Deseriali
 
     let mut buffer = Vec::new();
 
-    for i in 0..archive.len() {
+    let start = if R::fhir_release() == FhirRelease::R4B {
+        1
+    } else {
+        0
+    };
+
+    for i in start..archive.len() {
         let mut file = archive.by_index(i).unwrap();
+
+        match R::fhir_release() {
+            FhirRelease::R4 => (),
+            FhirRelease::R4B => {
+                if mode != DeserializationMode::Lax {
+                    // missing status
+                    if file.name() == "valuesets.xml" {
+                        continue;
+                    }
+                }
+            }
+        };
 
         println!("{}", file.name());
 
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
-        let mut deserializer = fhirbolt::xml::Deserializer::from_slice::<R>(&buffer[..]);
+        let mut deserializer = fhirbolt::xml::Deserializer::from_slice::<R>(&buffer);
         let json_value = Value::deserialize(&mut deserializer).unwrap();
 
         let resource: R =
@@ -76,4 +93,11 @@ fn test_serde_xml_r4() {
     test_serde_xml::<model::r4::Resource>(DeserializationMode::Strict);
     test_serde_xml::<model::r4::Resource>(DeserializationMode::Compatibility);
     test_serde_xml::<model::r4::Resource>(DeserializationMode::Lax);
+}
+
+#[test]
+fn test_serde_xml_r4b() {
+    test_serde_xml::<model::r4b::Resource>(DeserializationMode::Strict);
+    test_serde_xml::<model::r4b::Resource>(DeserializationMode::Compatibility);
+    test_serde_xml::<model::r4b::Resource>(DeserializationMode::Lax);
 }
