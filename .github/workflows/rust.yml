@@ -11,12 +11,24 @@ env:
 
 jobs:
   build:
-
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Build
+        run: cargo build --release --verbose
+  
+  test:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --release --verbose
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test --release --verbose
