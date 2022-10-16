@@ -2,6 +2,7 @@ pub mod serde_config;
 
 use std::fmt;
 
+/// Marker trait for all types representing FHIR resources.
 pub trait AnyResource {
     fn fhir_release() -> FhirRelease;
 }

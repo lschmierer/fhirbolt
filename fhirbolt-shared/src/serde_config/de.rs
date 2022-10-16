@@ -14,6 +14,13 @@ where
     })
 }
 
+/// Deserialization configuration options.
+#[derive(Default, Copy, Clone)]
+pub struct DeserializationConfig {
+    // Deserialization mode
+    pub mode: DeserializationMode,
+}
+
 /// The deserializer supports different operating modes.
 /// The default mode is **strict**.
 ///
@@ -56,11 +63,4 @@ pub enum DeserializationMode {
     /// identical output.
     /// The content of unknown fields will be lost.
     Lax,
-}
-
-/// JSON Deserialization configuration options
-#[derive(Default, Copy, Clone)]
-pub struct DeserializationConfig {
-    // Deserialization mode
-    pub mode: DeserializationMode,
 }
