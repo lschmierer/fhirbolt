@@ -1,4 +1,4 @@
-// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
 #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
 #[derive(Default, Debug, Clone)]
 pub struct EncounterStatusHistory {

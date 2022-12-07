@@ -1,4 +1,4 @@
-// Generated on 2022-10-14 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Default, Debug, Clone)]
 pub struct RatioRange {
