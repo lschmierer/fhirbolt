@@ -1,50 +1,10 @@
 use std::{io, str};
 
-mod quick_xml {
-    pub use quick_xml::{
-        events::{BytesStart, Event},
-        name::{LocalName, Namespace, QName, ResolveResult},
-        reader::NsReader,
-        Result,
-    };
-}
-
-use crate::xml::error::{Error, Result};
-
-const VALID_XML_VERSION: &[u8] = b"1.0";
-const VALID_XML_ENCODING: &[u8] = b"UTF-8";
-const VALID_XML_STANDALONE: &[u8] = b"none";
-const BOUND_FHIR_NAMESPACE: quick_xml::ResolveResult =
-    quick_xml::ResolveResult::Bound(quick_xml::Namespace(b"http://hl7.org/fhir"));
-const BOUND_XHTML_NAMESPACE: quick_xml::ResolveResult =
-    quick_xml::ResolveResult::Bound(quick_xml::Namespace(b"http://www.w3.org/1999/xhtml"));
-
-#[derive(Debug)]
-pub enum Event {
-    ElementStart(Element),
-    ElementEnd,
-    EmptyElement(Element),
-    Eof,
-}
-
-#[derive(Debug)]
-pub struct Element {
-    pub name: String,
-    pub id: Option<String>,
-    pub url: Option<String>,
-    pub value: Option<String>,
-}
-
-impl Element {
-    fn new(name: &str) -> Element {
-        Element {
-            name: name.to_owned(),
-            id: None,
-            url: None,
-            value: None,
-        }
-    }
-}
+use crate::xml::{
+    consts::{FHIR_NAMESPACE, VALID_XML_STANDALONE, XHTML_NAMESPACE, XML_ENCODING, XML_VERSION},
+    error::{Error, Result},
+    event::{Element, Event},
+};
 
 #[derive(Default)]
 struct QuickXmlEventMapper {
@@ -56,12 +16,12 @@ impl QuickXmlEventMapper {
     fn map_event<R>(
         &mut self,
         reader: &mut quick_xml::NsReader<R>,
-        event: quick_xml::Event,
+        event: quick_xml::events::Event,
     ) -> Result<Option<Event>> {
         match event {
-            quick_xml::Event::Decl(decl) => {
+            quick_xml::events::Event::Decl(decl) => {
                 if let Ok(v) = decl.version() {
-                    if v != VALID_XML_VERSION {
+                    if v != XML_VERSION.as_bytes() {
                         return Err(Error::InvalidXmlVersion(Some(
                             str::from_utf8(&v)?.to_owned(),
                         )));
@@ -71,20 +31,20 @@ impl QuickXmlEventMapper {
                 }
 
                 if let Some(Ok(e)) = decl.encoding() {
-                    if e != VALID_XML_ENCODING {
+                    if e != XML_ENCODING.as_bytes() {
                         return Err(Error::InvalidXmlEncoding(str::from_utf8(&e)?.to_owned()));
                     }
                 }
 
                 if let Some(Ok(e)) = decl.standalone() {
-                    if e != VALID_XML_STANDALONE {
+                    if e != VALID_XML_STANDALONE.as_bytes() {
                         return Err(Error::InvalidXmlStandalone(str::from_utf8(&e)?.to_owned()));
                     }
                 }
 
                 Ok(None)
             }
-            quick_xml::Event::Start(start) => {
+            quick_xml::events::Event::Start(start) => {
                 let (namespace, local_name) = reader.resolve_element(start.name());
 
                 if self.scratch_div_element.is_some() {
@@ -95,8 +55,15 @@ impl QuickXmlEventMapper {
                     self.push_to_scratch_div(&format!("<{}>", str::from_utf8(&start)?));
 
                     Ok(None)
-                } else if local_name.as_ref() == b"div" && namespace == BOUND_XHTML_NAMESPACE {
-                    let mut div_element = Element::new(str::from_utf8(local_name.as_ref())?);
+                } else if local_name.as_ref() == b"div" {
+                    let mut div_element = self.map_bytes_start(
+                        reader,
+                        &start,
+                        local_name,
+                        namespace,
+                        XHTML_NAMESPACE,
+                    )?;
+
                     div_element.value =
                         Some("<div xmlns=\"http://www.w3.org/1999/xhtml\">".to_string());
 
@@ -105,12 +72,18 @@ impl QuickXmlEventMapper {
 
                     Ok(None)
                 } else {
-                    let element = self.map_bytes_start(reader, &start, namespace, local_name)?;
+                    let element = self.map_bytes_start(
+                        reader,
+                        &start,
+                        local_name,
+                        namespace,
+                        FHIR_NAMESPACE,
+                    )?;
 
-                    Ok(element.map(Event::ElementStart))
+                    Ok(Some(Event::ElementStart(element)))
                 }
             }
-            quick_xml::Event::End(end) => {
+            quick_xml::events::Event::End(end) => {
                 if self.scratch_div_element.is_some() {
                     if end.name().as_ref() == b"div" && self.nested_div_count > 0 {
                         self.nested_div_count -= 1;
@@ -134,7 +107,7 @@ impl QuickXmlEventMapper {
                     Ok(Some(Event::ElementEnd))
                 }
             }
-            quick_xml::Event::Empty(start) => {
+            quick_xml::events::Event::Empty(start) => {
                 let (namespace, local_name) = reader.resolve_element(start.name());
 
                 if self.scratch_div_element.is_some() {
@@ -142,12 +115,18 @@ impl QuickXmlEventMapper {
 
                     Ok(None)
                 } else {
-                    let element = self.map_bytes_start(reader, &start, namespace, local_name)?;
+                    let element = self.map_bytes_start(
+                        reader,
+                        &start,
+                        local_name,
+                        namespace,
+                        FHIR_NAMESPACE,
+                    )?;
 
-                    Ok(element.map(Event::EmptyElement))
+                    Ok(Some(Event::EmptyElement(element)))
                 }
             }
-            quick_xml::Event::Text(text) => {
+            quick_xml::events::Event::Text(text) => {
                 if self.scratch_div_element.is_some() {
                     self.push_to_scratch_div(str::from_utf8(&text)?);
 
@@ -156,11 +135,13 @@ impl QuickXmlEventMapper {
                     Err(Error::InvalidXmlEvent("text"))
                 }
             }
-            quick_xml::Event::Comment(_) => Ok(None),
-            quick_xml::Event::Eof => Ok(Some(Event::Eof)),
-            quick_xml::Event::CData(_) => Err(Error::InvalidXmlEvent("CData")),
-            quick_xml::Event::PI(_) => Err(Error::InvalidXmlEvent("processing instruction")),
-            quick_xml::Event::DocType(_) => Err(Error::InvalidXmlEvent("Doctype")),
+            quick_xml::events::Event::Comment(_) => Ok(None),
+            quick_xml::events::Event::Eof => Ok(Some(Event::Eof)),
+            quick_xml::events::Event::CData(_) => Err(Error::InvalidXmlEvent("CData")),
+            quick_xml::events::Event::PI(_) => {
+                Err(Error::InvalidXmlEvent("processing instruction"))
+            }
+            quick_xml::events::Event::DocType(_) => Err(Error::InvalidXmlEvent("Doctype")),
         }
     }
 
@@ -174,12 +155,17 @@ impl QuickXmlEventMapper {
     fn map_bytes_start<R>(
         &mut self,
         reader: &quick_xml::NsReader<R>,
-        start: &quick_xml::BytesStart,
-        namespace: quick_xml::ResolveResult,
-        local_name: quick_xml::LocalName,
-    ) -> Result<Option<Element>> {
-        if namespace != BOUND_FHIR_NAMESPACE {
-            return Err(Error::InvalidFhirNamespace);
+        start: &quick_xml::events::BytesStart,
+        local_name: quick_xml::name::LocalName,
+        namespace: quick_xml::name::ResolveResult,
+        expected_namespace: &str,
+    ) -> Result<Element> {
+        if namespace
+            != quick_xml::name::ResolveResult::Bound(quick_xml::name::Namespace(
+                expected_namespace.as_bytes(),
+            ))
+        {
+            return Err(Error::InvalidXmlNamespace(expected_namespace.to_string()));
         }
 
         let mut element = Element::new(str::from_utf8(local_name.as_ref())?);
@@ -189,8 +175,13 @@ impl QuickXmlEventMapper {
 
             let (namespace, local_name) = reader.resolve_attribute(attr.key);
 
-            if namespace != BOUND_FHIR_NAMESPACE && namespace != quick_xml::ResolveResult::Unbound {
-                return Err(Error::InvalidFhirNamespace);
+            if namespace
+                != quick_xml::name::ResolveResult::Bound(quick_xml::name::Namespace(
+                    expected_namespace.as_bytes(),
+                ))
+                && namespace != quick_xml::name::ResolveResult::Unbound
+            {
+                return Err(Error::InvalidXmlNamespace(expected_namespace.to_string()));
             }
 
             match local_name.as_ref() {
@@ -201,7 +192,7 @@ impl QuickXmlEventMapper {
             }
         }
 
-        Ok(Some(element))
+        Ok(element)
     }
 }
 
@@ -228,7 +219,7 @@ impl<R: io::Read> IoRead<R> {
     }
 }
 
-impl<'de, R: io::Read> Read for IoRead<R> {
+impl<R: io::Read> Read for IoRead<R> {
     fn next_event(&mut self) -> Result<Event> {
         loop {
             let quick_event = self.reader.read_event_into(&mut self.buf)?;

@@ -19,7 +19,7 @@ pub enum Error {
     InvalidXmlVersion(Option<String>),
     InvalidXmlEncoding(String),
     InvalidXmlStandalone(String),
-    InvalidFhirNamespace,
+    InvalidXmlNamespace(String),
     InvalidXmlEvent(&'static str),
     InvalidFhirEvent {
         found: &'static str,
@@ -61,8 +61,8 @@ impl Display for Error {
             Error::InvalidXmlStandalone(s) => {
                 write!(f, "invalid XML standalone '{}' (expected 'no')", s)
             }
-            Error::InvalidFhirNamespace => {
-                write!(f, "invalid XML namespace (expected 'http://hl7.org/fhir')")
+            Error::InvalidXmlNamespace(ns) => {
+                write!(f, "invalid XML namespace (expected '{}')", ns)
             }
             Error::InvalidXmlEvent(e) => write!(f, "invalid XML event: {}", e),
             Error::InvalidFhirEvent { found, expected } => {

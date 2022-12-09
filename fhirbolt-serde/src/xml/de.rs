@@ -12,9 +12,10 @@ use fhirbolt_shared::{
 
 use crate::xml::{
     error::{Error, Result},
+    event::{Element, Event},
     number::NumberDeserializer,
     path::ElementPath,
-    read::{self, Element, Event, Read},
+    read::{self, Read},
 };
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).

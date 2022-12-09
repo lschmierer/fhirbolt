@@ -28,6 +28,8 @@ pub mod de;
 
 pub mod error;
 
+mod consts;
+mod event;
 mod number;
 mod path;
 mod read;
