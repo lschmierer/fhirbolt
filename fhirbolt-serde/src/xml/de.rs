@@ -1,7 +1,7 @@
-use std::{collections::VecDeque, default::Default, io};
+use std::{borrow::Cow, collections::VecDeque, default::Default, io};
 
 use serde::{
-    de::{self, Deserialize, DeserializeOwned, DeserializeSeed, MapAccess, SeqAccess, Visitor},
+    de::{self, Deserialize, DeserializeOwned, DeserializeSeed, Visitor},
     forward_to_deserialize_any,
 };
 
@@ -155,7 +155,7 @@ impl NextVecExt for Vec<Next> {
 
 #[derive(Clone, PartialEq, Debug)]
 enum Next {
-    Key(String),
+    Key(Cow<'static, str>),
     Value(Value),
     MapStart,
     MapEnd,
@@ -192,7 +192,7 @@ impl Next {
 #[derive(Debug)]
 struct DeserializerState {
     next_queue: VecDeque<Next>,
-    state_stack: Vec<ElementState>,
+    stack: Vec<ElementState>,
 }
 
 #[derive(Default, Debug)]
@@ -217,7 +217,7 @@ impl DeserializerState {
     fn new() -> DeserializerState {
         DeserializerState {
             next_queue: VecDeque::from(vec![Next::MapStart]),
-            state_stack: vec![Default::default()],
+            stack: vec![Default::default()],
         }
     }
 
@@ -247,7 +247,7 @@ impl DeserializerState {
     }
 
     fn last_non_empty_primitive_collector(&mut self) -> Option<&mut PrimitiveCollector> {
-        self.state_stack
+        self.stack
             .iter_mut()
             .rev()
             .map(|s| s.in_primitive.as_mut())
@@ -267,7 +267,7 @@ impl DeserializerState {
     }
 
     fn last_primitive_collector(&mut self) -> &mut PrimitiveCollector {
-        self.state_stack
+        self.stack
             .last_mut()
             .unwrap()
             .in_primitive
@@ -276,21 +276,21 @@ impl DeserializerState {
     }
 
     fn push_state(&mut self) {
-        self.state_stack.push(Default::default());
+        self.stack.push(Default::default());
     }
 
     fn pop_state(&mut self) {
         self.leave_primitive();
 
-        self.state_stack.pop();
+        self.stack.pop();
     }
 
     fn in_sequence(&self) -> Option<&InSequence> {
-        self.state_stack.last().unwrap().in_sequence.as_ref()
+        self.stack.last().unwrap().in_sequence.as_ref()
     }
 
     fn enter_sequence(&mut self, element_name: &str, is_primitive: bool) {
-        self.state_stack
+        self.stack
             .last_mut()
             .unwrap()
             .in_sequence
@@ -301,14 +301,14 @@ impl DeserializerState {
     }
 
     fn leave_sequence(&mut self) {
-        self.state_stack.last_mut().unwrap().in_sequence.take();
+        self.stack.last_mut().unwrap().in_sequence.take();
     }
 
     fn enter_primitive(&mut self, is_primitive: bool) {
         self.leave_primitive();
 
         if is_primitive {
-            self.state_stack
+            self.stack
                 .last_mut()
                 .unwrap()
                 .in_primitive
@@ -317,7 +317,7 @@ impl DeserializerState {
     }
 
     fn leave_primitive(&mut self) {
-        if let Some(collector) = self.state_stack.last_mut().unwrap().in_primitive.take() {
+        if let Some(collector) = self.stack.last_mut().unwrap().in_primitive.take() {
             // push primitive value sequence if not only empty values
             if collector.next_value_queue.any_not_empty() {
                 self.push_next_all(collector.next_value_queue.into_iter());
@@ -331,15 +331,15 @@ impl DeserializerState {
     }
 }
 pub struct Deserializer<R: Read> {
-    read: R,
+    reader: R,
     current_path: ElementPath,
     state: DeserializerState,
 }
 
 impl<R: Read> Deserializer<R> {
-    pub fn new<T: AnyResource>(read: R) -> Self {
+    pub fn new<T: AnyResource>(reader: R) -> Self {
         Deserializer {
-            read,
+            reader,
             current_path: ElementPath::new(T::fhir_release()),
             state: DeserializerState::new(),
         }
@@ -367,7 +367,7 @@ impl<'a> Deserializer<read::StrRead<'a>> {
 impl<R: Read> Deserializer<R> {
     fn advance(&mut self) -> Result<()> {
         while self.state.next_queue.is_empty() {
-            let event = self.read.next_event()?;
+            let event = self.reader.next_event()?;
 
             match event {
                 Event::ElementStart(element) => {
@@ -376,9 +376,9 @@ impl<R: Read> Deserializer<R> {
                     if self.current_path.currently_is_empty_resource()
                         || self.current_path.current_element_is_resource()
                     {
-                        self.state.push_next(Next::Key("resourceType".to_owned()));
+                        self.state.push_next(Next::Key("resourceType".into()));
                         self.state
-                            .push_next(Next::Value(Value::String(element.name)));
+                            .push_next(Next::Value(Value::String(element.name.to_string())));
                     } else {
                         self.advance_element(element, false)?;
 
@@ -399,6 +399,13 @@ impl<R: Read> Deserializer<R> {
                     self.current_path.pop();
                 }
                 Event::EmptyElement(element) => {
+                    self.current_path.push(&element.name);
+
+                    self.advance_element(element, true)?;
+
+                    self.current_path.pop();
+                }
+                Event::Div(element) => {
                     self.current_path.push(&element.name);
 
                     self.advance_element(element, true)?;
@@ -495,14 +502,14 @@ impl<R: Read> Deserializer<R> {
         }
     }
 
-    fn advance_key(&mut self, name: &str) {
+    fn advance_key(&mut self, name: &Cow<'static, str>) {
         if self.current_path.current_element_is_primitive() {
             self.state
-                .push_next_primitive_value(Next::Key(name.to_string()));
+                .push_next_primitive_value(Next::Key(name.clone()));
             self.state
-                .push_next_primitive_element(Next::Key(format!("_{}", name)));
+                .push_next_primitive_element(Next::Key(format!("_{}", name).into()));
         } else {
-            self.state.push_next(Next::Key(name.to_string()));
+            self.state.push_next(Next::Key(name.clone()));
         }
     }
 
@@ -540,12 +547,12 @@ impl<R: Read> Deserializer<R> {
 
     fn advance_id_and_url(&mut self, mut element: Element) -> Result<()> {
         if element.id.is_some() {
-            self.advance_key("id");
+            self.advance_key(&"id".into());
             self.advance_value(&mut element.id, false)?;
         }
 
         if element.url.is_some() {
-            self.advance_key("url");
+            self.advance_key(&"url".into());
             self.advance_value(&mut element.url, false)?;
         }
 
@@ -563,7 +570,7 @@ impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut Deserializer<R> {
         self.advance()?;
 
         match self.state.pop_next().unwrap() {
-            Next::Key(s) => visitor.visit_string(s),
+            Next::Key(s) => visitor.visit_str(&s),
             Next::Value(Value::String(s)) => visitor.visit_string(s),
             Next::Value(Value::Boolean(b)) => visitor.visit_bool(b),
             Next::Value(Value::Integer(i)) => visitor.visit_i32(i),
@@ -595,7 +602,7 @@ impl<'a, R: Read> ElementAccess<'a, R> {
     }
 }
 
-impl<'de, 'a, R: Read> SeqAccess<'de> for ElementAccess<'a, R> {
+impl<'de, 'a, R: Read> de::SeqAccess<'de> for ElementAccess<'a, R> {
     type Error = Error;
 
     fn next_element_seed<T>(&mut self, seed: T) -> Result<Option<T::Value>>
@@ -620,7 +627,7 @@ impl<'de, 'a, R: Read> SeqAccess<'de> for ElementAccess<'a, R> {
     }
 }
 
-impl<'de, 'a, R: Read> MapAccess<'de> for ElementAccess<'a, R> {
+impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
     type Error = Error;
 
     fn next_key_seed<K>(&mut self, seed: K) -> Result<Option<K::Value>>

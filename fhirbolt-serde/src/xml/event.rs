@@ -1,23 +1,26 @@
+use std::borrow::Cow;
+
 #[derive(Debug)]
 pub enum Event {
     ElementStart(Element),
     ElementEnd,
     EmptyElement(Element),
+    Div(Element),
     Eof,
 }
 
 #[derive(Debug)]
 pub struct Element {
-    pub name: String,
+    pub name: Cow<'static, str>,
     pub id: Option<String>,
     pub url: Option<String>,
     pub value: Option<String>,
 }
 
 impl Element {
-    pub fn new(name: &str) -> Element {
+    pub fn new<S: Into<Cow<'static, str>>>(name: S) -> Element {
         Element {
-            name: name.to_owned(),
+            name: name.into(),
             id: None,
             url: None,
             value: None,

@@ -168,7 +168,7 @@ impl QuickXmlEventMapper {
             return Err(Error::InvalidXmlNamespace(expected_namespace.to_string()));
         }
 
-        let mut element = Element::new(str::from_utf8(local_name.as_ref())?);
+        let mut element = Element::new(str::from_utf8(local_name.as_ref())?.to_owned());
 
         for attr in start.attributes() {
             let attr = attr?;
