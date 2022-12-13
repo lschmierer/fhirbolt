@@ -26,14 +26,19 @@ pub fn implement_serialize(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) ->
             {
                 use serde::ser::SerializeMap;
 
-                let mut state = serializer.serialize_map(None)?;
-                #serialize_resource_type_tokens
+                fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
 
-                #(
-                    #serialized_fields_tokens
-                )*
+                    let mut state = serializer.serialize_map(None)?;
+                    #serialize_resource_type_tokens
 
-                state.end()
+                    #(
+                        #serialized_fields_tokens
+                    )*
+
+                    state.end()
+
+                })
             }
         }
     }
@@ -111,18 +116,22 @@ fn serialize_enum_variant(
 
     let serialize_tokens = if variant.r#type.contains_primitive {
         quote! {
-            if let Some(some) = value.value.as_ref() {
-                let some = #map_intermediate_type_tokens?;
-                state.serialize_entry(#fhir_name, &some)?;
-            }
+            if _ctx.output_json {
+                if let Some(some) = value.value.as_ref() {
+                    let some = #map_intermediate_type_tokens?;
+                    state.serialize_entry(#fhir_name, &some)?;
+                }
 
-            if value.id.is_some() || !value.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &value.id,
-                    extension: &value.extension,
-                };
+                if value.id.is_some() || !value.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: value.id.as_ref(),
+                        extension: &value.extension,
+                    };
 
-                state.serialize_entry(#fhir_primitive_element_name, &primitive_element)?;
+                    state.serialize_entry(#fhir_primitive_element_name, &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry(#fhir_name, value)?;
             }
         }
     } else {
@@ -139,6 +148,19 @@ fn serialize_enum_variant(
 }
 
 fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
+    let serialize_json_tokens = serialize_primitive_json(field);
+    let serialize_xml_tokens = serialize_element(field);
+
+    quote! {
+        if _ctx.output_json {
+            #serialize_json_tokens
+        } else {
+            #serialize_xml_tokens
+        }
+    }
+}
+
+fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
@@ -182,7 +204,7 @@ fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
                         .iter()
                         .map(|e| if e.id.is_some() || !e.extension.is_empty() {
                                 Some(super::super::serde_helpers::PrimitiveElement {
-                                    id: &e.id,
+                                    id: e.id.as_ref(),
                                     extension: &e.extension,
                                 })
                             } else {
@@ -203,8 +225,8 @@ fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
                 }
 
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &some.id,
+                    let primitive_element  = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
                         extension: &some.extension,
                     };
 
@@ -231,7 +253,7 @@ fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
 
             if self.#field_name_ident.id.is_some() #check_extension_is_empty_tokens {
                 let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &self.#field_name_ident.id,
+                    id: self.#field_name_ident.id.as_ref(),
                     extension: #extension_reference_tokens,
                 };
 

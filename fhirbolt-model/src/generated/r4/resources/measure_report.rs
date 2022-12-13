@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
 #[derive(Default, Debug, Clone)]
 pub struct MeasureReportGroupPopulation {
@@ -26,36 +26,45 @@ impl serde::ser::Serialize for MeasureReportGroupPopulation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if let Some(some) = self.r#count.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("count", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_count", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#subject_results.as_ref() {
-            state.serialize_entry("subjectResults", some)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#count.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("count", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_count", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#count.as_ref() {
+                    state.serialize_entry("count", some)?;
+                }
+            }
+            if let Some(some) = self.r#subject_results.as_ref() {
+                state.serialize_entry("subjectResults", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
@@ -102,8 +111,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#count: Option<super::super::types::Integer> = None;
                 let mut r#subject_results: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -160,7 +169,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
                                 }
                                 r#subject_results = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -211,19 +220,22 @@ impl serde::ser::Serialize for MeasureReportGroupStratifierStratumComponent {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("code", &self.r#code)?;
-        state.serialize_entry("value", &self.r#value)?;
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("code", &self.r#code)?;
+            state.serialize_entry("value", &self.r#value)?;
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumComponent {
@@ -265,8 +277,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
                     None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -301,7 +313,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
                                 }
                                 r#value = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -315,14 +327,14 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode
+                        r#code: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
                         },
-                        r#value: if config.mode
+                        r#value: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
@@ -358,36 +370,45 @@ impl serde::ser::Serialize for MeasureReportGroupStratifierStratumPopulation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if let Some(some) = self.r#count.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("count", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_count", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#subject_results.as_ref() {
-            state.serialize_entry("subjectResults", some)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#count.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("count", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_count", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#count.as_ref() {
+                    state.serialize_entry("count", some)?;
+                }
+            }
+            if let Some(some) = self.r#subject_results.as_ref() {
+                state.serialize_entry("subjectResults", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPopulation {
@@ -434,8 +455,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#count: Option<super::super::types::Integer> = None;
                 let mut r#subject_results: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -492,7 +513,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
                                 }
                                 r#subject_results = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -547,29 +568,32 @@ impl serde::ser::Serialize for MeasureReportGroupStratifierStratum {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#value.as_ref() {
-            state.serialize_entry("value", some)?;
-        }
-        if !self.r#component.is_empty() {
-            state.serialize_entry("component", &self.r#component)?;
-        }
-        if !self.r#population.is_empty() {
-            state.serialize_entry("population", &self.r#population)?;
-        }
-        if let Some(some) = self.r#measure_score.as_ref() {
-            state.serialize_entry("measureScore", some)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#value.as_ref() {
+                state.serialize_entry("value", some)?;
+            }
+            if !self.r#component.is_empty() {
+                state.serialize_entry("component", &self.r#component)?;
+            }
+            if !self.r#population.is_empty() {
+                state.serialize_entry("population", &self.r#population)?;
+            }
+            if let Some(some) = self.r#measure_score.as_ref() {
+                state.serialize_entry("measureScore", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
@@ -619,8 +643,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
                 let mut r#population: Option<Vec<MeasureReportGroupStratifierStratumPopulation>> =
                     None;
                 let mut r#measure_score: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -667,7 +691,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
                                 }
                                 r#measure_score = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -720,23 +744,26 @@ impl serde::ser::Serialize for MeasureReportGroupStratifier {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#code.is_empty() {
-            state.serialize_entry("code", &self.r#code)?;
-        }
-        if !self.r#stratum.is_empty() {
-            state.serialize_entry("stratum", &self.r#stratum)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#code.is_empty() {
+                state.serialize_entry("code", &self.r#code)?;
+            }
+            if !self.r#stratum.is_empty() {
+                state.serialize_entry("stratum", &self.r#stratum)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
@@ -778,8 +805,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
                     None;
                 let mut r#code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#stratum: Option<Vec<MeasureReportGroupStratifierStratum>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -814,7 +841,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
                                 }
                                 r#stratum = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -861,29 +888,32 @@ impl serde::ser::Serialize for MeasureReportGroup {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if !self.r#population.is_empty() {
-            state.serialize_entry("population", &self.r#population)?;
-        }
-        if let Some(some) = self.r#measure_score.as_ref() {
-            state.serialize_entry("measureScore", some)?;
-        }
-        if !self.r#stratifier.is_empty() {
-            state.serialize_entry("stratifier", &self.r#stratifier)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            if !self.r#population.is_empty() {
+                state.serialize_entry("population", &self.r#population)?;
+            }
+            if let Some(some) = self.r#measure_score.as_ref() {
+                state.serialize_entry("measureScore", some)?;
+            }
+            if !self.r#stratifier.is_empty() {
+                state.serialize_entry("stratifier", &self.r#stratifier)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
@@ -928,8 +958,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
                 let mut r#population: Option<Vec<MeasureReportGroupPopulation>> = None;
                 let mut r#measure_score: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#stratifier: Option<Vec<MeasureReportGroupStratifier>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -976,7 +1006,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
                                 }
                                 r#stratifier = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1057,118 +1087,151 @@ impl serde::ser::Serialize for MeasureReport {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "MeasureReport")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "MeasureReport")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("implicitRules", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#status.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("status", &some)?;
-        }
-        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#status.id,
-                extension: &self.r#status.extension,
-            };
-            state.serialize_entry("_status", &primitive_element)?;
-        }
-        if let Some(some) = self.r#type.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("type", &some)?;
-        }
-        if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#type.id,
-                extension: &self.r#type.extension,
-            };
-            state.serialize_entry("_type", &primitive_element)?;
-        }
-        if let Some(some) = self.r#measure.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("measure", &some)?;
-        }
-        if self.r#measure.id.is_some() || !self.r#measure.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#measure.id,
-                extension: &self.r#measure.extension,
-            };
-            state.serialize_entry("_measure", &primitive_element)?;
-        }
-        if let Some(some) = self.r#subject.as_ref() {
-            state.serialize_entry("subject", some)?;
-        }
-        if let Some(some) = self.r#date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("date", &some)?;
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_date", &primitive_element)?;
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
             }
-        }
-        if let Some(some) = self.r#reporter.as_ref() {
-            state.serialize_entry("reporter", some)?;
-        }
-        state.serialize_entry("period", &self.r#period)?;
-        if let Some(some) = self.r#improvement_notation.as_ref() {
-            state.serialize_entry("improvementNotation", some)?;
-        }
-        if !self.r#group.is_empty() {
-            state.serialize_entry("group", &self.r#group)?;
-        }
-        if !self.r#evaluated_resource.is_empty() {
-            state.serialize_entry("evaluatedResource", &self.r#evaluated_resource)?;
-        }
-        state.end()
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#status.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("status", &some)?;
+                }
+                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#status.id.as_ref(),
+                        extension: &self.r#status.extension,
+                    };
+                    state.serialize_entry("_status", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("status", &self.r#status)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#type.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("type", &some)?;
+                }
+                if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#type.id.as_ref(),
+                        extension: &self.r#type.extension,
+                    };
+                    state.serialize_entry("_type", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("type", &self.r#type)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#measure.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("measure", &some)?;
+                }
+                if self.r#measure.id.is_some() || !self.r#measure.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#measure.id.as_ref(),
+                        extension: &self.r#measure.extension,
+                    };
+                    state.serialize_entry("_measure", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("measure", &self.r#measure)?;
+            }
+            if let Some(some) = self.r#subject.as_ref() {
+                state.serialize_entry("subject", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("date", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_date", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#date.as_ref() {
+                    state.serialize_entry("date", some)?;
+                }
+            }
+            if let Some(some) = self.r#reporter.as_ref() {
+                state.serialize_entry("reporter", some)?;
+            }
+            state.serialize_entry("period", &self.r#period)?;
+            if let Some(some) = self.r#improvement_notation.as_ref() {
+                state.serialize_entry("improvementNotation", some)?;
+            }
+            if !self.r#group.is_empty() {
+                state.serialize_entry("group", &self.r#group)?;
+            }
+            if !self.r#evaluated_resource.is_empty() {
+                state.serialize_entry("evaluatedResource", &self.r#evaluated_resource)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MeasureReport {
@@ -1265,8 +1328,8 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                 let mut r#group: Option<Vec<MeasureReportGroup>> = None;
                 let mut r#evaluated_resource: Option<Vec<Box<super::super::types::Reference>>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -1484,7 +1547,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                 }
                                 r#evaluated_resource = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1524,21 +1587,21 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#type: if config.mode
+                        r#type: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#measure: if config.mode
+                        r#measure: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#measure.unwrap_or(Default::default())
@@ -1548,7 +1611,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                         r#subject,
                         r#date,
                         r#reporter,
-                        r#period: if config.mode
+                        r#period: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#period.unwrap_or(Default::default())

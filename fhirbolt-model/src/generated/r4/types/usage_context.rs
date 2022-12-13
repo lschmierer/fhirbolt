@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
 #[derive(Debug, Clone)]
 pub enum UsageContextValue {
@@ -36,32 +36,35 @@ impl serde::ser::Serialize for UsageContext {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        state.serialize_entry("code", &self.r#code)?;
-        match self.r#value {
-            UsageContextValue::CodeableConcept(ref value) => {
-                state.serialize_entry("valueCodeableConcept", value)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            UsageContextValue::Quantity(ref value) => {
-                state.serialize_entry("valueQuantity", value)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-            UsageContextValue::Range(ref value) => {
-                state.serialize_entry("valueRange", value)?;
+            state.serialize_entry("code", &self.r#code)?;
+            match self.r#value {
+                UsageContextValue::CodeableConcept(ref value) => {
+                    state.serialize_entry("valueCodeableConcept", value)?;
+                }
+                UsageContextValue::Quantity(ref value) => {
+                    state.serialize_entry("valueQuantity", value)?;
+                }
+                UsageContextValue::Range(ref value) => {
+                    state.serialize_entry("valueRange", value)?;
+                }
+                UsageContextValue::Reference(ref value) => {
+                    state.serialize_entry("valueReference", value)?;
+                }
+                UsageContextValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is a required field"))
+                }
             }
-            UsageContextValue::Reference(ref value) => {
-                state.serialize_entry("valueReference", value)?;
-            }
-            UsageContextValue::Invalid => {
-                return Err(serde::ser::Error::custom("value is a required field"))
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for UsageContext {
@@ -102,8 +105,8 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#code: Option<Box<super::super::types::Coding>> = None;
                 let mut r#value: Option<UsageContextValue> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -156,7 +159,7 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                                 r#value =
                                     Some(UsageContextValue::Reference(map_access.next_value()?));
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -177,14 +180,14 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
                     Ok(UsageContext {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
-                        r#code: if config.mode
+                        r#code: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
                         },
-                        r#value: if config.mode
+                        r#value: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())

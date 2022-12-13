@@ -29,4 +29,6 @@ mod helpers;
 pub mod json;
 pub mod xml;
 
-pub use fhirbolt_shared::serde_config::de::{DeserializationConfig, DeserializationMode};
+pub use fhirbolt_shared::serde_config as config;
+
+pub use config::de::{DeserializationConfig, DeserializationMode};

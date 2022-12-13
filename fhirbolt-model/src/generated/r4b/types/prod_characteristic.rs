@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProdCharacteristic Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct ProdCharacteristic {
@@ -42,118 +42,139 @@ impl serde::ser::Serialize for ProdCharacteristic {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#height.as_ref() {
-            state.serialize_entry("height", some)?;
-        }
-        if let Some(some) = self.r#width.as_ref() {
-            state.serialize_entry("width", some)?;
-        }
-        if let Some(some) = self.r#depth.as_ref() {
-            state.serialize_entry("depth", some)?;
-        }
-        if let Some(some) = self.r#weight.as_ref() {
-            state.serialize_entry("weight", some)?;
-        }
-        if let Some(some) = self.r#nominal_volume.as_ref() {
-            state.serialize_entry("nominalVolume", some)?;
-        }
-        if let Some(some) = self.r#external_diameter.as_ref() {
-            state.serialize_entry("externalDiameter", some)?;
-        }
-        if let Some(some) = self.r#shape.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("shape", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_shape", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if !self.r#color.is_empty() {
-            let values = self
-                .r#color
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("color", &values)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            let requires_elements = self
-                .r#color
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#color
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if let Some(some) = self.r#height.as_ref() {
+                state.serialize_entry("height", some)?;
+            }
+            if let Some(some) = self.r#width.as_ref() {
+                state.serialize_entry("width", some)?;
+            }
+            if let Some(some) = self.r#depth.as_ref() {
+                state.serialize_entry("depth", some)?;
+            }
+            if let Some(some) = self.r#weight.as_ref() {
+                state.serialize_entry("weight", some)?;
+            }
+            if let Some(some) = self.r#nominal_volume.as_ref() {
+                state.serialize_entry("nominalVolume", some)?;
+            }
+            if let Some(some) = self.r#external_diameter.as_ref() {
+                state.serialize_entry("externalDiameter", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#shape.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("shape", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_shape", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#shape.as_ref() {
+                    state.serialize_entry("shape", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if !self.r#color.is_empty() {
+                    let values = self
+                        .r#color
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("color", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#color
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#color
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_color", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_color", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#color.is_empty() {
+                    state.serialize_entry("color", &self.r#color)?;
+                }
             }
-        }
-        if !self.r#imprint.is_empty() {
-            let values = self
-                .r#imprint
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("imprint", &values)?;
-            }
-            let requires_elements = self
-                .r#imprint
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#imprint
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if !self.r#imprint.is_empty() {
+                    let values = self
+                        .r#imprint
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("imprint", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#imprint
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#imprint
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_imprint", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_imprint", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#imprint.is_empty() {
+                    state.serialize_entry("imprint", &self.r#imprint)?;
+                }
             }
-        }
-        if !self.r#image.is_empty() {
-            state.serialize_entry("image", &self.r#image)?;
-        }
-        if let Some(some) = self.r#scoring.as_ref() {
-            state.serialize_entry("scoring", some)?;
-        }
-        state.end()
+            if !self.r#image.is_empty() {
+                state.serialize_entry("image", &self.r#image)?;
+            }
+            if let Some(some) = self.r#scoring.as_ref() {
+                state.serialize_entry("scoring", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
@@ -225,8 +246,8 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                 let mut r#imprint: Option<Vec<super::super::types::String>> = None;
                 let mut r#image: Option<Vec<Box<super::super::types::Attachment>>> = None;
                 let mut r#scoring: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -419,7 +440,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 }
                                 r#scoring = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(

@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityResponseServiced {
@@ -64,90 +64,115 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("type", &self.r#type)?;
-        if let Some(some) = self.r#allowed.as_ref() {
-            match some {
-                CoverageEligibilityResponseInsuranceItemBenefitAllowed::UnsignedInt(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("allowedUnsignedInt", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("type", &self.r#type)?;
+            if let Some(some) = self.r#allowed.as_ref() {
+                match some {
+                    CoverageEligibilityResponseInsuranceItemBenefitAllowed::UnsignedInt(
+                        ref value,
+                    ) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("allowedUnsignedInt", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_allowedUnsignedInt", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("allowedUnsignedInt", value)?;
+                        }
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_allowedUnsignedInt", &primitive_element)?;
+                    CoverageEligibilityResponseInsuranceItemBenefitAllowed::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("allowedString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_allowedString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("allowedString", value)?;
+                        }
                     }
-                }
-                CoverageEligibilityResponseInsuranceItemBenefitAllowed::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("allowedString", &some)?;
+                    CoverageEligibilityResponseInsuranceItemBenefitAllowed::Money(ref value) => {
+                        state.serialize_entry("allowedMoney", value)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_allowedString", &primitive_element)?;
+                    CoverageEligibilityResponseInsuranceItemBenefitAllowed::Invalid => {
+                        return Err(serde::ser::Error::custom("allowed is invalid"))
                     }
-                }
-                CoverageEligibilityResponseInsuranceItemBenefitAllowed::Money(ref value) => {
-                    state.serialize_entry("allowedMoney", value)?;
-                }
-                CoverageEligibilityResponseInsuranceItemBenefitAllowed::Invalid => {
-                    return Err(serde::ser::Error::custom("allowed is invalid"))
                 }
             }
-        }
-        if let Some(some) = self.r#used.as_ref() {
-            match some {
-                CoverageEligibilityResponseInsuranceItemBenefitUsed::UnsignedInt(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("usedUnsignedInt", &some)?;
+            if let Some(some) = self.r#used.as_ref() {
+                match some {
+                    CoverageEligibilityResponseInsuranceItemBenefitUsed::UnsignedInt(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("usedUnsignedInt", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_usedUnsignedInt", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("usedUnsignedInt", value)?;
+                        }
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_usedUnsignedInt", &primitive_element)?;
+                    CoverageEligibilityResponseInsuranceItemBenefitUsed::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("usedString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_usedString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("usedString", value)?;
+                        }
                     }
-                }
-                CoverageEligibilityResponseInsuranceItemBenefitUsed::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("usedString", &some)?;
+                    CoverageEligibilityResponseInsuranceItemBenefitUsed::Money(ref value) => {
+                        state.serialize_entry("usedMoney", value)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_usedString", &primitive_element)?;
+                    CoverageEligibilityResponseInsuranceItemBenefitUsed::Invalid => {
+                        return Err(serde::ser::Error::custom("used is invalid"))
                     }
-                }
-                CoverageEligibilityResponseInsuranceItemBenefitUsed::Money(ref value) => {
-                    state.serialize_entry("usedMoney", value)?;
-                }
-                CoverageEligibilityResponseInsuranceItemBenefitUsed::Invalid => {
-                    return Err(serde::ser::Error::custom("used is invalid"))
                 }
             }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceItemBenefit {
@@ -209,7 +234,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                 let mut r#allowed: Option<CoverageEligibilityResponseInsuranceItemBenefitAllowed> =
                     None;
                 let mut r#used: Option<CoverageEligibilityResponseInsuranceItemBenefitUsed> = None;
-                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: AllowedUnsignedInt => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } , Field :: AllowedUnsignedIntPrimitiveElement => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } , Field :: AllowedString => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } , Field :: AllowedStringPrimitiveElement => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } , Field :: AllowedMoney => { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedMoney")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: Money (map_access . next_value () ?)) ; } , Field :: UsedUnsignedInt => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } , Field :: UsedUnsignedIntPrimitiveElement => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } , Field :: UsedString => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } , Field :: UsedStringPrimitiveElement => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } , Field :: UsedMoney => { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedMoney")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: Money (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } } Ok (CoverageEligibilityResponseInsuranceItemBenefit { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#allowed , r#used , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: AllowedUnsignedInt => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } , Field :: AllowedUnsignedIntPrimitiveElement => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } , Field :: AllowedString => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } , Field :: AllowedStringPrimitiveElement => { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } , Field :: AllowedMoney => { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedMoney")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: Money (map_access . next_value () ?)) ; } , Field :: UsedUnsignedInt => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } , Field :: UsedUnsignedIntPrimitiveElement => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } , Field :: UsedString => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } , Field :: UsedStringPrimitiveElement => { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } , Field :: UsedMoney => { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedMoney")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: Money (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } } Ok (CoverageEligibilityResponseInsuranceItemBenefit { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#allowed , r#used , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -259,109 +284,143 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItem {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#category.as_ref() {
-            state.serialize_entry("category", some)?;
-        }
-        if let Some(some) = self.r#product_or_service.as_ref() {
-            state.serialize_entry("productOrService", some)?;
-        }
-        if !self.r#modifier.is_empty() {
-            state.serialize_entry("modifier", &self.r#modifier)?;
-        }
-        if let Some(some) = self.r#provider.as_ref() {
-            state.serialize_entry("provider", some)?;
-        }
-        if let Some(some) = self.r#excluded.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("excluded", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_excluded", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#name.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("name", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_name", &primitive_element)?;
+            if let Some(some) = self.r#category.as_ref() {
+                state.serialize_entry("category", some)?;
             }
-        }
-        if let Some(some) = self.r#description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("description", &some)?;
+            if let Some(some) = self.r#product_or_service.as_ref() {
+                state.serialize_entry("productOrService", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_description", &primitive_element)?;
+            if !self.r#modifier.is_empty() {
+                state.serialize_entry("modifier", &self.r#modifier)?;
             }
-        }
-        if let Some(some) = self.r#network.as_ref() {
-            state.serialize_entry("network", some)?;
-        }
-        if let Some(some) = self.r#unit.as_ref() {
-            state.serialize_entry("unit", some)?;
-        }
-        if let Some(some) = self.r#term.as_ref() {
-            state.serialize_entry("term", some)?;
-        }
-        if !self.r#benefit.is_empty() {
-            state.serialize_entry("benefit", &self.r#benefit)?;
-        }
-        if let Some(some) = self.r#authorization_required.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("authorizationRequired", &some)?;
+            if let Some(some) = self.r#provider.as_ref() {
+                state.serialize_entry("provider", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_authorizationRequired", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#excluded.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("excluded", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_excluded", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#excluded.as_ref() {
+                    state.serialize_entry("excluded", some)?;
+                }
             }
-        }
-        if !self.r#authorization_supporting.is_empty() {
-            state.serialize_entry("authorizationSupporting", &self.r#authorization_supporting)?;
-        }
-        if let Some(some) = self.r#authorization_url.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("authorizationUrl", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#name.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("name", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_name", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#name.as_ref() {
+                    state.serialize_entry("name", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_authorizationUrl", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("description", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_description", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#description.as_ref() {
+                    state.serialize_entry("description", some)?;
+                }
             }
-        }
-        state.end()
+            if let Some(some) = self.r#network.as_ref() {
+                state.serialize_entry("network", some)?;
+            }
+            if let Some(some) = self.r#unit.as_ref() {
+                state.serialize_entry("unit", some)?;
+            }
+            if let Some(some) = self.r#term.as_ref() {
+                state.serialize_entry("term", some)?;
+            }
+            if !self.r#benefit.is_empty() {
+                state.serialize_entry("benefit", &self.r#benefit)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#authorization_required.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("authorizationRequired", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_authorizationRequired", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#authorization_required.as_ref() {
+                    state.serialize_entry("authorizationRequired", some)?;
+                }
+            }
+            if !self.r#authorization_supporting.is_empty() {
+                state
+                    .serialize_entry("authorizationSupporting", &self.r#authorization_supporting)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#authorization_url.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("authorizationUrl", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_authorizationUrl", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#authorization_url.as_ref() {
+                    state.serialize_entry("authorizationUrl", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceItem {
@@ -453,8 +512,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#authorization_url: Option<super::super::types::Uri> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -645,7 +704,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -722,37 +781,46 @@ impl serde::ser::Serialize for CoverageEligibilityResponseInsurance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("coverage", &self.r#coverage)?;
-        if let Some(some) = self.r#inforce.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("inforce", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_inforce", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#benefit_period.as_ref() {
-            state.serialize_entry("benefitPeriod", some)?;
-        }
-        if !self.r#item.is_empty() {
-            state.serialize_entry("item", &self.r#item)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("coverage", &self.r#coverage)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#inforce.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("inforce", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_inforce", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#inforce.as_ref() {
+                    state.serialize_entry("inforce", some)?;
+                }
+            }
+            if let Some(some) = self.r#benefit_period.as_ref() {
+                state.serialize_entry("benefitPeriod", some)?;
+            }
+            if !self.r#item.is_empty() {
+                state.serialize_entry("item", &self.r#item)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
@@ -802,8 +870,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
                 let mut r#inforce: Option<super::super::types::Boolean> = None;
                 let mut r#benefit_period: Option<Box<super::super::types::Period>> = None;
                 let mut r#item: Option<Vec<CoverageEligibilityResponseInsuranceItem>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -864,7 +932,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
                                 }
                                 r#item = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -886,7 +954,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#coverage: if config.mode
+                        r#coverage: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#coverage.unwrap_or(Default::default())
@@ -921,18 +989,21 @@ impl serde::ser::Serialize for CoverageEligibilityResponseError {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("code", &self.r#code)?;
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("code", &self.r#code)?;
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
@@ -971,8 +1042,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1001,7 +1072,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
                                 }
                                 r#code = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1015,7 +1086,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode
+                        r#code: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
@@ -1085,185 +1156,235 @@ impl serde::ser::Serialize for CoverageEligibilityResponse {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "CoverageEligibilityResponse")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "CoverageEligibilityResponse")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#status.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("status", &some)?;
-        }
-        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#status.id,
-                extension: &self.r#status.extension,
-            };
-            state.serialize_entry("_status", &primitive_element)?;
-        }
-        if !self.r#purpose.is_empty() {
-            let values = self
-                .r#purpose
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("purpose", &values)?;
-            }
-            let requires_elements = self
-                .r#purpose
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#purpose
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
-                            })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_purpose", &primitive_elements)?;
-            }
-        }
-        state.serialize_entry("patient", &self.r#patient)?;
-        if let Some(some) = self.r#serviced.as_ref() {
-            match some {
-                CoverageEligibilityResponseServiced::Date(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("servicedDate", &some)?;
+                        state.serialize_entry("implicitRules", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_servicedDate", &primitive_element)?;
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
                     }
                 }
-                CoverageEligibilityResponseServiced::Period(ref value) => {
-                    state.serialize_entry("servicedPeriod", value)?;
-                }
-                CoverageEligibilityResponseServiced::Invalid => {
-                    return Err(serde::ser::Error::custom("serviced is invalid"))
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#created.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("created", &some)?;
-        }
-        if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#created.id,
-                extension: &self.r#created.extension,
-            };
-            state.serialize_entry("_created", &primitive_element)?;
-        }
-        if let Some(some) = self.r#requestor.as_ref() {
-            state.serialize_entry("requestor", some)?;
-        }
-        state.serialize_entry("request", &self.r#request)?;
-        if let Some(some) = self.r#outcome.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("outcome", &some)?;
-        }
-        if self.r#outcome.id.is_some() || !self.r#outcome.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#outcome.id,
-                extension: &self.r#outcome.extension,
-            };
-            state.serialize_entry("_outcome", &primitive_element)?;
-        }
-        if let Some(some) = self.r#disposition.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("disposition", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_disposition", &primitive_element)?;
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
             }
-        }
-        state.serialize_entry("insurer", &self.r#insurer)?;
-        if !self.r#insurance.is_empty() {
-            state.serialize_entry("insurance", &self.r#insurance)?;
-        }
-        if let Some(some) = self.r#pre_auth_ref.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("preAuthRef", &some)?;
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_preAuthRef", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#form.as_ref() {
-            state.serialize_entry("form", some)?;
-        }
-        if !self.r#error.is_empty() {
-            state.serialize_entry("error", &self.r#error)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#status.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("status", &some)?;
+                }
+                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#status.id.as_ref(),
+                        extension: &self.r#status.extension,
+                    };
+                    state.serialize_entry("_status", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("status", &self.r#status)?;
+            }
+            if _ctx.output_json {
+                if !self.r#purpose.is_empty() {
+                    let values = self
+                        .r#purpose
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("purpose", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#purpose
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#purpose
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
+                            })
+                            .collect();
+                        state.serialize_entry("_purpose", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#purpose.is_empty() {
+                    state.serialize_entry("purpose", &self.r#purpose)?;
+                }
+            }
+            state.serialize_entry("patient", &self.r#patient)?;
+            if let Some(some) = self.r#serviced.as_ref() {
+                match some {
+                    CoverageEligibilityResponseServiced::Date(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("servicedDate", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_servicedDate", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("servicedDate", value)?;
+                        }
+                    }
+                    CoverageEligibilityResponseServiced::Period(ref value) => {
+                        state.serialize_entry("servicedPeriod", value)?;
+                    }
+                    CoverageEligibilityResponseServiced::Invalid => {
+                        return Err(serde::ser::Error::custom("serviced is invalid"))
+                    }
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#created.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("created", &some)?;
+                }
+                if self.r#created.id.is_some() || !self.r#created.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#created.id.as_ref(),
+                        extension: &self.r#created.extension,
+                    };
+                    state.serialize_entry("_created", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("created", &self.r#created)?;
+            }
+            if let Some(some) = self.r#requestor.as_ref() {
+                state.serialize_entry("requestor", some)?;
+            }
+            state.serialize_entry("request", &self.r#request)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#outcome.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("outcome", &some)?;
+                }
+                if self.r#outcome.id.is_some() || !self.r#outcome.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#outcome.id.as_ref(),
+                        extension: &self.r#outcome.extension,
+                    };
+                    state.serialize_entry("_outcome", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("outcome", &self.r#outcome)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#disposition.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("disposition", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_disposition", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#disposition.as_ref() {
+                    state.serialize_entry("disposition", some)?;
+                }
+            }
+            state.serialize_entry("insurer", &self.r#insurer)?;
+            if !self.r#insurance.is_empty() {
+                state.serialize_entry("insurance", &self.r#insurance)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#pre_auth_ref.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("preAuthRef", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_preAuthRef", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#pre_auth_ref.as_ref() {
+                    state.serialize_entry("preAuthRef", some)?;
+                }
+            }
+            if let Some(some) = self.r#form.as_ref() {
+                state.serialize_entry("form", some)?;
+            }
+            if !self.r#error.is_empty() {
+                state.serialize_entry("error", &self.r#error)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
@@ -1381,8 +1502,8 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                 let mut r#pre_auth_ref: Option<super::super::types::String> = None;
                 let mut r#form: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#error: Option<Vec<CoverageEligibilityResponseError>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -1718,7 +1839,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                 }
                                 r#error = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1763,7 +1884,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
@@ -1771,7 +1892,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#purpose: r#purpose.unwrap_or(vec![]),
-                        r#patient: if config.mode
+                        r#patient: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#patient.unwrap_or(Default::default())
@@ -1779,7 +1900,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
                         },
                         r#serviced,
-                        r#created: if config.mode
+                        r#created: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#created.unwrap_or(Default::default())
@@ -1787,14 +1908,14 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             r#created.ok_or(serde::de::Error::missing_field("created"))?
                         },
                         r#requestor,
-                        r#request: if config.mode
+                        r#request: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#request.unwrap_or(Default::default())
                         } else {
                             r#request.ok_or(serde::de::Error::missing_field("request"))?
                         },
-                        r#outcome: if config.mode
+                        r#outcome: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#outcome.unwrap_or(Default::default())
@@ -1802,7 +1923,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                             r#outcome.ok_or(serde::de::Error::missing_field("outcome"))?
                         },
                         r#disposition,
-                        r#insurer: if config.mode
+                        r#insurer: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#insurer.unwrap_or(Default::default())

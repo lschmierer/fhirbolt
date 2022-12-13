@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The actual characteristic value corresponding to the type."]
 #[derive(Debug, Clone)]
 pub enum NutritionProductProductCharacteristicValue {
@@ -40,23 +40,26 @@ impl serde::ser::Serialize for NutritionProductNutrient {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#item.as_ref() {
-            state.serialize_entry("item", some)?;
-        }
-        if !self.r#amount.is_empty() {
-            state.serialize_entry("amount", &self.r#amount)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#item.as_ref() {
+                state.serialize_entry("item", some)?;
+            }
+            if !self.r#amount.is_empty() {
+                state.serialize_entry("amount", &self.r#amount)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
@@ -95,8 +98,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
                     None;
                 let mut r#item: Option<Box<super::super::types::CodeableReference>> = None;
                 let mut r#amount: Option<Vec<Box<super::super::types::Ratio>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -131,7 +134,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -174,21 +177,24 @@ impl serde::ser::Serialize for NutritionProductIngredient {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("item", &self.r#item)?;
-        if !self.r#amount.is_empty() {
-            state.serialize_entry("amount", &self.r#amount)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("item", &self.r#item)?;
+            if !self.r#amount.is_empty() {
+                state.serialize_entry("amount", &self.r#amount)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
@@ -227,8 +233,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
                     None;
                 let mut r#item: Option<Box<super::super::types::CodeableReference>> = None;
                 let mut r#amount: Option<Vec<Box<super::super::types::Ratio>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -263,7 +269,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -277,7 +283,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#item: if config.mode
+                        r#item: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#item.unwrap_or(Default::default())
@@ -312,71 +318,86 @@ impl serde::ser::Serialize for NutritionProductProductCharacteristic {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("type", &self.r#type)?;
-        match self.r#value {
-            NutritionProductProductCharacteristicValue::CodeableConcept(ref value) => {
-                state.serialize_entry("valueCodeableConcept", value)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            NutritionProductProductCharacteristicValue::String(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueString", &some)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("type", &self.r#type)?;
+            match self.r#value {
+                NutritionProductProductCharacteristicValue::CodeableConcept(ref value) => {
+                    state.serialize_entry("valueCodeableConcept", value)?;
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueString", &primitive_element)?;
+                NutritionProductProductCharacteristicValue::String(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueString", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueString", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueString", value)?;
+                    }
+                }
+                NutritionProductProductCharacteristicValue::Quantity(ref value) => {
+                    state.serialize_entry("valueQuantity", value)?;
+                }
+                NutritionProductProductCharacteristicValue::Base64Binary(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueBase64Binary", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueBase64Binary", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueBase64Binary", value)?;
+                    }
+                }
+                NutritionProductProductCharacteristicValue::Attachment(ref value) => {
+                    state.serialize_entry("valueAttachment", value)?;
+                }
+                NutritionProductProductCharacteristicValue::Boolean(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueBoolean", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueBoolean", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueBoolean", value)?;
+                    }
+                }
+                NutritionProductProductCharacteristicValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is a required field"))
                 }
             }
-            NutritionProductProductCharacteristicValue::Quantity(ref value) => {
-                state.serialize_entry("valueQuantity", value)?;
-            }
-            NutritionProductProductCharacteristicValue::Base64Binary(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueBase64Binary", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueBase64Binary", &primitive_element)?;
-                }
-            }
-            NutritionProductProductCharacteristicValue::Attachment(ref value) => {
-                state.serialize_entry("valueAttachment", value)?;
-            }
-            NutritionProductProductCharacteristicValue::Boolean(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueBoolean", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueBoolean", &primitive_element)?;
-                }
-            }
-            NutritionProductProductCharacteristicValue::Invalid => {
-                return Err(serde::ser::Error::custom("value is a required field"))
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic {
@@ -434,8 +455,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<NutritionProductProductCharacteristicValue> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -632,7 +653,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                                     return Err(serde::de::Error::duplicate_field("_value[x]"));
                                 }
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -657,14 +678,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#type: if config.mode
+                        r#type: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
-                        r#value: if config.mode
+                        r#value: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
@@ -704,62 +725,83 @@ impl serde::ser::Serialize for NutritionProductInstance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#quantity.as_ref() {
-            state.serialize_entry("quantity", some)?;
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#lot_number.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("lotNumber", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_lotNumber", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#expiry.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("expiry", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_expiry", &primitive_element)?;
+            if let Some(some) = self.r#quantity.as_ref() {
+                state.serialize_entry("quantity", some)?;
             }
-        }
-        if let Some(some) = self.r#use_by.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("useBy", &some)?;
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_useBy", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#lot_number.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("lotNumber", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_lotNumber", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#lot_number.as_ref() {
+                    state.serialize_entry("lotNumber", some)?;
+                }
             }
-        }
-        state.end()
+            if _ctx.output_json {
+                if let Some(some) = self.r#expiry.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("expiry", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_expiry", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#expiry.as_ref() {
+                    state.serialize_entry("expiry", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#use_by.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("useBy", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_useBy", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#use_by.as_ref() {
+                    state.serialize_entry("useBy", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
@@ -813,8 +855,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                 let mut r#lot_number: Option<super::super::types::String> = None;
                 let mut r#expiry: Option<super::super::types::DateTime> = None;
                 let mut r#use_by: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -909,7 +951,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -990,91 +1032,110 @@ impl serde::ser::Serialize for NutritionProduct {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "NutritionProduct")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "NutritionProduct")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("implicitRules", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#status.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("status", &some)?;
-        }
-        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#status.id,
-                extension: &self.r#status.extension,
-            };
-            state.serialize_entry("_status", &primitive_element)?;
-        }
-        if !self.r#category.is_empty() {
-            state.serialize_entry("category", &self.r#category)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if !self.r#manufacturer.is_empty() {
-            state.serialize_entry("manufacturer", &self.r#manufacturer)?;
-        }
-        if !self.r#nutrient.is_empty() {
-            state.serialize_entry("nutrient", &self.r#nutrient)?;
-        }
-        if !self.r#ingredient.is_empty() {
-            state.serialize_entry("ingredient", &self.r#ingredient)?;
-        }
-        if !self.r#known_allergen.is_empty() {
-            state.serialize_entry("knownAllergen", &self.r#known_allergen)?;
-        }
-        if !self.r#product_characteristic.is_empty() {
-            state.serialize_entry("productCharacteristic", &self.r#product_characteristic)?;
-        }
-        if let Some(some) = self.r#instance.as_ref() {
-            state.serialize_entry("instance", some)?;
-        }
-        if !self.r#note.is_empty() {
-            state.serialize_entry("note", &self.r#note)?;
-        }
-        state.end()
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
+            }
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#status.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("status", &some)?;
+                }
+                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#status.id.as_ref(),
+                        extension: &self.r#status.extension,
+                    };
+                    state.serialize_entry("_status", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("status", &self.r#status)?;
+            }
+            if !self.r#category.is_empty() {
+                state.serialize_entry("category", &self.r#category)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            if !self.r#manufacturer.is_empty() {
+                state.serialize_entry("manufacturer", &self.r#manufacturer)?;
+            }
+            if !self.r#nutrient.is_empty() {
+                state.serialize_entry("nutrient", &self.r#nutrient)?;
+            }
+            if !self.r#ingredient.is_empty() {
+                state.serialize_entry("ingredient", &self.r#ingredient)?;
+            }
+            if !self.r#known_allergen.is_empty() {
+                state.serialize_entry("knownAllergen", &self.r#known_allergen)?;
+            }
+            if !self.r#product_characteristic.is_empty() {
+                state.serialize_entry("productCharacteristic", &self.r#product_characteristic)?;
+            }
+            if let Some(some) = self.r#instance.as_ref() {
+                state.serialize_entry("instance", some)?;
+            }
+            if !self.r#note.is_empty() {
+                state.serialize_entry("note", &self.r#note)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
@@ -1163,8 +1224,8 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                 > = None;
                 let mut r#instance: Option<NutritionProductInstance> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -1332,7 +1393,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1370,7 +1431,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                         r#contained: r#contained.unwrap_or(vec![]),
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())

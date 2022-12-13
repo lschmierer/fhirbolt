@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
 #[derive(Debug, Clone)]
 pub enum QuestionnaireItemEnableWhenAnswer {
@@ -84,146 +84,185 @@ impl serde::ser::Serialize for QuestionnaireItemEnableWhen {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#question.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("question", &some)?;
-        }
-        if self.r#question.id.is_some() || !self.r#question.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#question.id,
-                extension: &self.r#question.extension,
-            };
-            state.serialize_entry("_question", &primitive_element)?;
-        }
-        if let Some(some) = self.r#operator.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("operator", &some)?;
-        }
-        if self.r#operator.id.is_some() || !self.r#operator.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#operator.id,
-                extension: &self.r#operator.extension,
-            };
-            state.serialize_entry("_operator", &primitive_element)?;
-        }
-        match self.r#answer {
-            QuestionnaireItemEnableWhenAnswer::Boolean(ref value) => {
-                if let Some(some) = value.value.as_ref() {
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#question.value.as_ref() {
                     let some = Ok(some)?;
-                    state.serialize_entry("answerBoolean", &some)?;
+                    state.serialize_entry("question", &some)?;
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
+                if self.r#question.id.is_some() || !self.r#question.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
+                        id: self.r#question.id.as_ref(),
+                        extension: &self.r#question.extension,
                     };
-                    state.serialize_entry("_answerBoolean", &primitive_element)?;
+                    state.serialize_entry("_question", &primitive_element)?;
                 }
+            } else {
+                state.serialize_entry("question", &self.r#question)?;
             }
-            QuestionnaireItemEnableWhenAnswer::Decimal(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = some
-                        .parse::<serde_json::Number>()
-                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                    state.serialize_entry("answerDecimal", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_answerDecimal", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemEnableWhenAnswer::Integer(ref value) => {
-                if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#operator.value.as_ref() {
                     let some = Ok(some)?;
-                    state.serialize_entry("answerInteger", &some)?;
+                    state.serialize_entry("operator", &some)?;
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
+                if self.r#operator.id.is_some() || !self.r#operator.extension.is_empty() {
                     let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
+                        id: self.r#operator.id.as_ref(),
+                        extension: &self.r#operator.extension,
                     };
-                    state.serialize_entry("_answerInteger", &primitive_element)?;
+                    state.serialize_entry("_operator", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("operator", &self.r#operator)?;
+            }
+            match self.r#answer {
+                QuestionnaireItemEnableWhenAnswer::Boolean(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("answerBoolean", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerBoolean", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerBoolean", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::Decimal(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = some.parse::<serde_json::Number>().map_err(|_| {
+                                serde::ser::Error::custom("error serializing decimal")
+                            })?;
+                            state.serialize_entry("answerDecimal", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerDecimal", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerDecimal", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::Integer(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("answerInteger", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerInteger", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerInteger", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::Date(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("answerDate", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerDate", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerDate", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::DateTime(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("answerDateTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerDateTime", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerDateTime", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::Time(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("answerTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerTime", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerTime", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::String(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("answerString", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_answerString", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("answerString", value)?;
+                    }
+                }
+                QuestionnaireItemEnableWhenAnswer::Coding(ref value) => {
+                    state.serialize_entry("answerCoding", value)?;
+                }
+                QuestionnaireItemEnableWhenAnswer::Quantity(ref value) => {
+                    state.serialize_entry("answerQuantity", value)?;
+                }
+                QuestionnaireItemEnableWhenAnswer::Reference(ref value) => {
+                    state.serialize_entry("answerReference", value)?;
+                }
+                QuestionnaireItemEnableWhenAnswer::Invalid => {
+                    return Err(serde::ser::Error::custom("answer is a required field"))
                 }
             }
-            QuestionnaireItemEnableWhenAnswer::Date(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("answerDate", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_answerDate", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemEnableWhenAnswer::DateTime(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("answerDateTime", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_answerDateTime", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemEnableWhenAnswer::Time(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("answerTime", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_answerTime", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemEnableWhenAnswer::String(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("answerString", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_answerString", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemEnableWhenAnswer::Coding(ref value) => {
-                state.serialize_entry("answerCoding", value)?;
-            }
-            QuestionnaireItemEnableWhenAnswer::Quantity(ref value) => {
-                state.serialize_entry("answerQuantity", value)?;
-            }
-            QuestionnaireItemEnableWhenAnswer::Reference(ref value) => {
-                state.serialize_entry("answerReference", value)?;
-            }
-            QuestionnaireItemEnableWhenAnswer::Invalid => {
-                return Err(serde::ser::Error::custom("answer is a required field"))
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
@@ -304,8 +343,8 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                 let mut r#question: Option<super::super::types::String> = None;
                 let mut r#operator: Option<super::super::types::Code> = None;
                 let mut r#answer: Option<QuestionnaireItemEnableWhenAnswer> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -656,7 +695,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -686,21 +725,21 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#question: if config.mode
+                        r#question: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#question.unwrap_or(Default::default())
                         } else {
                             r#question.ok_or(serde::de::Error::missing_field("question"))?
                         },
-                        r#operator: if config.mode
+                        r#operator: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#operator.unwrap_or(Default::default())
                         } else {
                             r#operator.ok_or(serde::de::Error::missing_field("operator"))?
                         },
-                        r#answer: if config.mode
+                        r#answer: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#answer.unwrap_or(Default::default())
@@ -734,93 +773,118 @@ impl serde::ser::Serialize for QuestionnaireItemAnswerOption {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        match self.r#value {
-            QuestionnaireItemAnswerOptionValue::Integer(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueInteger", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            match self.r#value {
+                QuestionnaireItemAnswerOptionValue::Integer(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueInteger", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueInteger", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueInteger", value)?;
+                    }
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueInteger", &primitive_element)?;
+                QuestionnaireItemAnswerOptionValue::Date(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueDate", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueDate", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueDate", value)?;
+                    }
+                }
+                QuestionnaireItemAnswerOptionValue::Time(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueTime", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueTime", value)?;
+                    }
+                }
+                QuestionnaireItemAnswerOptionValue::String(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueString", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueString", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueString", value)?;
+                    }
+                }
+                QuestionnaireItemAnswerOptionValue::Coding(ref value) => {
+                    state.serialize_entry("valueCoding", value)?;
+                }
+                QuestionnaireItemAnswerOptionValue::Reference(ref value) => {
+                    state.serialize_entry("valueReference", value)?;
+                }
+                QuestionnaireItemAnswerOptionValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is a required field"))
                 }
             }
-            QuestionnaireItemAnswerOptionValue::Date(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueDate", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#initial_selected.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("initialSelected", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_initialSelected", &primitive_element)?;
+                    }
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueDate", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemAnswerOptionValue::Time(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueTime", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueTime", &primitive_element)?;
+            } else {
+                if let Some(some) = self.r#initial_selected.as_ref() {
+                    state.serialize_entry("initialSelected", some)?;
                 }
             }
-            QuestionnaireItemAnswerOptionValue::String(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueString", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueString", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemAnswerOptionValue::Coding(ref value) => {
-                state.serialize_entry("valueCoding", value)?;
-            }
-            QuestionnaireItemAnswerOptionValue::Reference(ref value) => {
-                state.serialize_entry("valueReference", value)?;
-            }
-            QuestionnaireItemAnswerOptionValue::Invalid => {
-                return Err(serde::ser::Error::custom("value is a required field"))
-            }
-        }
-        if let Some(some) = self.r#initial_selected.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("initialSelected", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_initialSelected", &primitive_element)?;
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
@@ -882,8 +946,8 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                     None;
                 let mut r#value: Option<QuestionnaireItemAnswerOptionValue> = None;
                 let mut r#initial_selected: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1092,7 +1156,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1117,7 +1181,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#value: if config.mode
+                        r#value: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
@@ -1150,140 +1214,175 @@ impl serde::ser::Serialize for QuestionnaireItemInitial {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        match self.r#value {
-            QuestionnaireItemInitialValue::Boolean(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueBoolean", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            match self.r#value {
+                QuestionnaireItemInitialValue::Boolean(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueBoolean", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueBoolean", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueBoolean", value)?;
+                    }
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueBoolean", &primitive_element)?;
+                QuestionnaireItemInitialValue::Decimal(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = some.parse::<serde_json::Number>().map_err(|_| {
+                                serde::ser::Error::custom("error serializing decimal")
+                            })?;
+                            state.serialize_entry("valueDecimal", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueDecimal", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueDecimal", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::Integer(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueInteger", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueInteger", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueInteger", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::Date(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueDate", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueDate", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueDate", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::DateTime(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueDateTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueDateTime", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueDateTime", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::Time(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueTime", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueTime", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::String(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueString", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueString", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueString", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::Uri(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueUri", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_valueUri", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("valueUri", value)?;
+                    }
+                }
+                QuestionnaireItemInitialValue::Attachment(ref value) => {
+                    state.serialize_entry("valueAttachment", value)?;
+                }
+                QuestionnaireItemInitialValue::Coding(ref value) => {
+                    state.serialize_entry("valueCoding", value)?;
+                }
+                QuestionnaireItemInitialValue::Quantity(ref value) => {
+                    state.serialize_entry("valueQuantity", value)?;
+                }
+                QuestionnaireItemInitialValue::Reference(ref value) => {
+                    state.serialize_entry("valueReference", value)?;
+                }
+                QuestionnaireItemInitialValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is a required field"))
                 }
             }
-            QuestionnaireItemInitialValue::Decimal(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = some
-                        .parse::<serde_json::Number>()
-                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                    state.serialize_entry("valueDecimal", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueDecimal", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::Integer(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueInteger", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueInteger", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::Date(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueDate", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueDate", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::DateTime(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueDateTime", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueDateTime", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::Time(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueTime", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueTime", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::String(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueString", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueString", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::Uri(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueUri", &some)?;
-                }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_valueUri", &primitive_element)?;
-                }
-            }
-            QuestionnaireItemInitialValue::Attachment(ref value) => {
-                state.serialize_entry("valueAttachment", value)?;
-            }
-            QuestionnaireItemInitialValue::Coding(ref value) => {
-                state.serialize_entry("valueCoding", value)?;
-            }
-            QuestionnaireItemInitialValue::Quantity(ref value) => {
-                state.serialize_entry("valueQuantity", value)?;
-            }
-            QuestionnaireItemInitialValue::Reference(ref value) => {
-                state.serialize_entry("valueReference", value)?;
-            }
-            QuestionnaireItemInitialValue::Invalid => {
-                return Err(serde::ser::Error::custom("value is a required field"))
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
@@ -1357,8 +1456,8 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                 let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
                     None;
                 let mut r#value: Option<QuestionnaireItemInitialValue> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1697,7 +1796,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                     map_access.next_value()?,
                                 ));
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1727,7 +1826,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#value: if config.mode
+                        r#value: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
@@ -1789,171 +1888,236 @@ impl serde::ser::Serialize for QuestionnaireItem {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#link_id.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("linkId", &some)?;
-        }
-        if self.r#link_id.id.is_some() || !self.r#link_id.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#link_id.id,
-                extension: &self.r#link_id.extension,
-            };
-            state.serialize_entry("_linkId", &primitive_element)?;
-        }
-        if let Some(some) = self.r#definition.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("definition", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_definition", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if !self.r#code.is_empty() {
-            state.serialize_entry("code", &self.r#code)?;
-        }
-        if let Some(some) = self.r#prefix.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("prefix", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_prefix", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#link_id.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("linkId", &some)?;
+                }
+                if self.r#link_id.id.is_some() || !self.r#link_id.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#link_id.id.as_ref(),
+                        extension: &self.r#link_id.extension,
+                    };
+                    state.serialize_entry("_linkId", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("linkId", &self.r#link_id)?;
             }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("text", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#definition.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("definition", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_definition", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#definition.as_ref() {
+                    state.serialize_entry("definition", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_text", &primitive_element)?;
+            if !self.r#code.is_empty() {
+                state.serialize_entry("code", &self.r#code)?;
             }
-        }
-        if let Some(some) = self.r#type.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("type", &some)?;
-        }
-        if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#type.id,
-                extension: &self.r#type.extension,
-            };
-            state.serialize_entry("_type", &primitive_element)?;
-        }
-        if !self.r#enable_when.is_empty() {
-            state.serialize_entry("enableWhen", &self.r#enable_when)?;
-        }
-        if let Some(some) = self.r#enable_behavior.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("enableBehavior", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#prefix.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("prefix", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_prefix", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#prefix.as_ref() {
+                    state.serialize_entry("prefix", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_enableBehavior", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#text.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("text", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_text", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#text.as_ref() {
+                    state.serialize_entry("text", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#required.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("required", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#type.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("type", &some)?;
+                }
+                if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#type.id.as_ref(),
+                        extension: &self.r#type.extension,
+                    };
+                    state.serialize_entry("_type", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("type", &self.r#type)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_required", &primitive_element)?;
+            if !self.r#enable_when.is_empty() {
+                state.serialize_entry("enableWhen", &self.r#enable_when)?;
             }
-        }
-        if let Some(some) = self.r#repeats.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("repeats", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#enable_behavior.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("enableBehavior", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_enableBehavior", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#enable_behavior.as_ref() {
+                    state.serialize_entry("enableBehavior", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_repeats", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#required.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("required", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_required", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#required.as_ref() {
+                    state.serialize_entry("required", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#read_only.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("readOnly", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#repeats.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("repeats", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_repeats", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#repeats.as_ref() {
+                    state.serialize_entry("repeats", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_readOnly", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#read_only.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("readOnly", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_readOnly", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#read_only.as_ref() {
+                    state.serialize_entry("readOnly", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#max_length.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("maxLength", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#max_length.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("maxLength", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_maxLength", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#max_length.as_ref() {
+                    state.serialize_entry("maxLength", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_maxLength", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#answer_value_set.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("answerValueSet", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_answerValueSet", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#answer_value_set.as_ref() {
+                    state.serialize_entry("answerValueSet", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#answer_value_set.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("answerValueSet", &some)?;
+            if !self.r#answer_option.is_empty() {
+                state.serialize_entry("answerOption", &self.r#answer_option)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_answerValueSet", &primitive_element)?;
+            if !self.r#initial.is_empty() {
+                state.serialize_entry("initial", &self.r#initial)?;
             }
-        }
-        if !self.r#answer_option.is_empty() {
-            state.serialize_entry("answerOption", &self.r#answer_option)?;
-        }
-        if !self.r#initial.is_empty() {
-            state.serialize_entry("initial", &self.r#initial)?;
-        }
-        if !self.r#item.is_empty() {
-            state.serialize_entry("item", &self.r#item)?;
-        }
-        state.end()
+            if !self.r#item.is_empty() {
+                state.serialize_entry("item", &self.r#item)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
@@ -2056,8 +2220,8 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                 let mut r#answer_option: Option<Vec<QuestionnaireItemAnswerOption>> = None;
                 let mut r#initial: Option<Vec<QuestionnaireItemInitial>> = None;
                 let mut r#item: Option<Vec<QuestionnaireItem>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -2338,7 +2502,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                 }
                                 r#item = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -2372,7 +2536,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#link_id: if config.mode
+                        r#link_id: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#link_id.unwrap_or(Default::default())
@@ -2383,7 +2547,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                         r#code: r#code.unwrap_or(vec![]),
                         r#prefix,
                         r#text,
-                        r#type: if config.mode
+                        r#type: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
@@ -2477,305 +2641,408 @@ impl serde::ser::Serialize for Questionnaire {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "Questionnaire")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "Questionnaire")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("implicitRules", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#url.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("url", &some)?;
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_url", &primitive_element)?;
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
             }
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#version.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("version", &some)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_version", &primitive_element)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-        }
-        if let Some(some) = self.r#name.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("name", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#url.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("url", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_url", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#url.as_ref() {
+                    state.serialize_entry("url", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_name", &primitive_element)?;
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
             }
-        }
-        if let Some(some) = self.r#title.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("title", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#version.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("version", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_version", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#version.as_ref() {
+                    state.serialize_entry("version", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_title", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#name.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("name", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_name", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#name.as_ref() {
+                    state.serialize_entry("name", some)?;
+                }
             }
-        }
-        if !self.r#derived_from.is_empty() {
-            let values = self
-                .r#derived_from
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("derivedFrom", &values)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#title.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("title", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_title", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#title.as_ref() {
+                    state.serialize_entry("title", some)?;
+                }
             }
-            let requires_elements = self
-                .r#derived_from
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#derived_from
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if !self.r#derived_from.is_empty() {
+                    let values = self
+                        .r#derived_from
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("derivedFrom", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#derived_from
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#derived_from
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_derivedFrom", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_derivedFrom", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#derived_from.is_empty() {
+                    state.serialize_entry("derivedFrom", &self.r#derived_from)?;
+                }
             }
-        }
-        if let Some(some) = self.r#status.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("status", &some)?;
-        }
-        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#status.id,
-                extension: &self.r#status.extension,
-            };
-            state.serialize_entry("_status", &primitive_element)?;
-        }
-        if let Some(some) = self.r#experimental.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("experimental", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#status.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("status", &some)?;
+                }
+                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#status.id.as_ref(),
+                        extension: &self.r#status.extension,
+                    };
+                    state.serialize_entry("_status", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("status", &self.r#status)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_experimental", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#experimental.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("experimental", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_experimental", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#experimental.as_ref() {
+                    state.serialize_entry("experimental", some)?;
+                }
             }
-        }
-        if !self.r#subject_type.is_empty() {
-            let values = self
-                .r#subject_type
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("subjectType", &values)?;
-            }
-            let requires_elements = self
-                .r#subject_type
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#subject_type
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if !self.r#subject_type.is_empty() {
+                    let values = self
+                        .r#subject_type
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("subjectType", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#subject_type
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#subject_type
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_subjectType", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_subjectType", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#subject_type.is_empty() {
+                    state.serialize_entry("subjectType", &self.r#subject_type)?;
+                }
             }
-        }
-        if let Some(some) = self.r#date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("date", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("date", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_date", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#date.as_ref() {
+                    state.serialize_entry("date", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_date", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#publisher.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("publisher", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_publisher", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#publisher.as_ref() {
+                    state.serialize_entry("publisher", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#publisher.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("publisher", &some)?;
+            if !self.r#contact.is_empty() {
+                state.serialize_entry("contact", &self.r#contact)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_publisher", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("description", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_description", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#description.as_ref() {
+                    state.serialize_entry("description", some)?;
+                }
             }
-        }
-        if !self.r#contact.is_empty() {
-            state.serialize_entry("contact", &self.r#contact)?;
-        }
-        if let Some(some) = self.r#description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("description", &some)?;
+            if !self.r#use_context.is_empty() {
+                state.serialize_entry("useContext", &self.r#use_context)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_description", &primitive_element)?;
+            if !self.r#jurisdiction.is_empty() {
+                state.serialize_entry("jurisdiction", &self.r#jurisdiction)?;
             }
-        }
-        if !self.r#use_context.is_empty() {
-            state.serialize_entry("useContext", &self.r#use_context)?;
-        }
-        if !self.r#jurisdiction.is_empty() {
-            state.serialize_entry("jurisdiction", &self.r#jurisdiction)?;
-        }
-        if let Some(some) = self.r#purpose.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("purpose", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#purpose.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("purpose", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_purpose", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#purpose.as_ref() {
+                    state.serialize_entry("purpose", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_purpose", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#copyright.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("copyright", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_copyright", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#copyright.as_ref() {
+                    state.serialize_entry("copyright", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#copyright.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("copyright", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#approval_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("approvalDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_approvalDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#approval_date.as_ref() {
+                    state.serialize_entry("approvalDate", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_copyright", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#last_review_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("lastReviewDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_lastReviewDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#last_review_date.as_ref() {
+                    state.serialize_entry("lastReviewDate", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#approval_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("approvalDate", &some)?;
+            if let Some(some) = self.r#effective_period.as_ref() {
+                state.serialize_entry("effectivePeriod", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_approvalDate", &primitive_element)?;
+            if !self.r#code.is_empty() {
+                state.serialize_entry("code", &self.r#code)?;
             }
-        }
-        if let Some(some) = self.r#last_review_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("lastReviewDate", &some)?;
+            if !self.r#item.is_empty() {
+                state.serialize_entry("item", &self.r#item)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_lastReviewDate", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#effective_period.as_ref() {
-            state.serialize_entry("effectivePeriod", some)?;
-        }
-        if !self.r#code.is_empty() {
-            state.serialize_entry("code", &self.r#code)?;
-        }
-        if !self.r#item.is_empty() {
-            state.serialize_entry("item", &self.r#item)?;
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Questionnaire {
@@ -2926,8 +3193,8 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                 let mut r#effective_period: Option<Box<super::super::types::Period>> = None;
                 let mut r#code: Option<Vec<Box<super::super::types::Coding>>> = None;
                 let mut r#item: Option<Vec<QuestionnaireItem>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -3427,7 +3694,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                 }
                                 r#item = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -3483,7 +3750,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                         r#name,
                         r#title,
                         r#derived_from: r#derived_from.unwrap_or(vec![]),
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())

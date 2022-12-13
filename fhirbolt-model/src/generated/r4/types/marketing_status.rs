@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct MarketingStatus {
@@ -30,36 +30,45 @@ impl serde::ser::Serialize for MarketingStatus {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("country", &self.r#country)?;
-        if let Some(some) = self.r#jurisdiction.as_ref() {
-            state.serialize_entry("jurisdiction", some)?;
-        }
-        state.serialize_entry("status", &self.r#status)?;
-        state.serialize_entry("dateRange", &self.r#date_range)?;
-        if let Some(some) = self.r#restore_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("restoreDate", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_restoreDate", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("country", &self.r#country)?;
+            if let Some(some) = self.r#jurisdiction.as_ref() {
+                state.serialize_entry("jurisdiction", some)?;
+            }
+            state.serialize_entry("status", &self.r#status)?;
+            state.serialize_entry("dateRange", &self.r#date_range)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#restore_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("restoreDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_restoreDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#restore_date.as_ref() {
+                    state.serialize_entry("restoreDate", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
@@ -109,8 +118,8 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date_range: Option<Box<super::super::types::Period>> = None;
                 let mut r#restore_date: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -177,7 +186,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -200,7 +209,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#country: if config.mode
+                        r#country: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#country.unwrap_or(Default::default())
@@ -208,14 +217,14 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                             r#country.ok_or(serde::de::Error::missing_field("country"))?
                         },
                         r#jurisdiction,
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
-                        r#date_range: if config.mode
+                        r#date_range: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#date_range.unwrap_or(Default::default())

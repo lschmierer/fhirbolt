@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Signature Type: A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.\n\nThere are a number of places where content must be signed in healthcare."]
 #[derive(Default, Debug, Clone)]
 pub struct Signature {
@@ -32,71 +32,96 @@ impl serde::ser::Serialize for Signature {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#type.is_empty() {
-            state.serialize_entry("type", &self.r#type)?;
-        }
-        if let Some(some) = self.r#when.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("when", &some)?;
-        }
-        if self.r#when.id.is_some() || !self.r#when.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#when.id,
-                extension: &self.r#when.extension,
-            };
-            state.serialize_entry("_when", &primitive_element)?;
-        }
-        state.serialize_entry("who", &self.r#who)?;
-        if let Some(some) = self.r#on_behalf_of.as_ref() {
-            state.serialize_entry("onBehalfOf", some)?;
-        }
-        if let Some(some) = self.r#target_format.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("targetFormat", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_targetFormat", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#sig_format.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("sigFormat", &some)?;
+            if !self.r#type.is_empty() {
+                state.serialize_entry("type", &self.r#type)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_sigFormat", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#when.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("when", &some)?;
+                }
+                if self.r#when.id.is_some() || !self.r#when.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#when.id.as_ref(),
+                        extension: &self.r#when.extension,
+                    };
+                    state.serialize_entry("_when", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("when", &self.r#when)?;
             }
-        }
-        if let Some(some) = self.r#data.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("data", &some)?;
+            state.serialize_entry("who", &self.r#who)?;
+            if let Some(some) = self.r#on_behalf_of.as_ref() {
+                state.serialize_entry("onBehalfOf", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_data", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#target_format.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("targetFormat", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_targetFormat", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#target_format.as_ref() {
+                    state.serialize_entry("targetFormat", some)?;
+                }
             }
-        }
-        state.end()
+            if _ctx.output_json {
+                if let Some(some) = self.r#sig_format.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("sigFormat", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_sigFormat", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#sig_format.as_ref() {
+                    state.serialize_entry("sigFormat", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#data.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("data", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_data", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#data.as_ref() {
+                    state.serialize_entry("data", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Signature {
@@ -154,8 +179,8 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                 let mut r#target_format: Option<super::super::types::Code> = None;
                 let mut r#sig_format: Option<super::super::types::Code> = None;
                 let mut r#data: Option<super::super::types::Base64Binary> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -268,7 +293,7 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -292,14 +317,14 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#type: r#type.unwrap_or(vec![]),
-                        r#when: if config.mode
+                        r#when: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#when.unwrap_or(Default::default())
                         } else {
                             r#when.ok_or(serde::de::Error::missing_field("when"))?
                         },
-                        r#who: if config.mode
+                        r#who: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#who.unwrap_or(Default::default())

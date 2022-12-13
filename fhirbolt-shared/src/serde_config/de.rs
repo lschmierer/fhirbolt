@@ -1,17 +1,24 @@
 use std::cell::Cell;
 
 thread_local! {
-    pub static DESERIALIZATION_CONFIG: Cell<DeserializationConfig> = Cell::new(Default::default());
+    pub static DESERIALIZATION_CONTEXT: Cell<DeserializationContext> = Cell::new(Default::default());
 }
 
-pub fn with_config<F, R>(config: Option<DeserializationConfig>, f: F) -> R
+pub fn with_context<F, R>(config: DeserializationContext, f: F) -> R
 where
     F: FnOnce() -> R,
 {
-    DESERIALIZATION_CONFIG.with(|c| {
-        c.set(config.unwrap_or(Default::default()));
+    DESERIALIZATION_CONTEXT.with(|c| {
+        c.set(config);
         f()
     })
+}
+
+/// Context for deserialization.
+#[derive(Default, Copy, Clone)]
+pub struct DeserializationContext {
+    // Deserialization config
+    pub config: DeserializationConfig,
 }
 
 /// Deserialization configuration options.

@@ -3,7 +3,10 @@ use serde::ser::Serialize;
 
 pub use serde_json::ser::*;
 
-use fhirbolt_shared::AnyResource;
+use fhirbolt_shared::{
+    serde_config::ser::{with_context, SerializationContext},
+    AnyResource,
+};
 
 use crate::json::error::Result;
 
@@ -13,7 +16,9 @@ where
     W: std::io::Write,
     T: ?Sized + Serialize + AnyResource,
 {
-    serde_json::to_writer(writer, value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_writer(writer, value)
+    })
 }
 
 /// Serialize the given resource as pretty=printed JSON into the IO stream.
@@ -22,7 +27,9 @@ where
     W: std::io::Write,
     T: ?Sized + serde::ser::Serialize + AnyResource,
 {
-    serde_json::to_writer_pretty(writer, value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_writer_pretty(writer, value)
+    })
 }
 
 /// Serialize the given resource as a JSON byte vector.
@@ -30,7 +37,9 @@ pub fn to_vec<T>(value: &T) -> Result<Vec<u8>>
 where
     T: ?Sized + serde::ser::Serialize + AnyResource,
 {
-    serde_json::to_vec(value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_vec(value)
+    })
 }
 
 /// Serialize the given resource as a pretty-printed JSON byte vector.
@@ -38,7 +47,9 @@ pub fn to_vec_pretty<T>(value: &T) -> Result<Vec<u8>>
 where
     T: ?Sized + serde::ser::Serialize + AnyResource,
 {
-    serde_json::to_vec_pretty(value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_vec_pretty(value)
+    })
 }
 
 /// Serialize the given resource as a String of JSON.
@@ -46,7 +57,9 @@ pub fn to_string<T>(value: &T) -> Result<String>
 where
     T: ?Sized + serde::ser::Serialize + AnyResource,
 {
-    serde_json::to_string(value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_string(value)
+    })
 }
 
 /// Serialize the given resource as a pretty-printed String of JSON.
@@ -54,12 +67,16 @@ pub fn to_string_pretty<T>(value: &T) -> Result<String>
 where
     T: ?Sized + serde::ser::Serialize + AnyResource,
 {
-    serde_json::to_string_pretty(value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_string_pretty(value)
+    })
 }
 
 pub fn to_value<T>(value: T) -> Result<serde_json::Value>
 where
     T: serde::ser::Serialize + AnyResource,
 {
-    serde_json::to_value(value)
+    with_context(SerializationContext { output_json: true }, || {
+        serde_json::to_value(value)
+    })
 }

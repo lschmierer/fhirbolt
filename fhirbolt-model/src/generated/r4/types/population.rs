@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The age of the specific population."]
 #[derive(Debug, Clone)]
 pub enum PopulationAge {
@@ -40,37 +40,42 @@ impl serde::ser::Serialize for Population {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#age.as_ref() {
-            match some {
-                PopulationAge::Range(ref value) => {
-                    state.serialize_entry("ageRange", value)?;
-                }
-                PopulationAge::CodeableConcept(ref value) => {
-                    state.serialize_entry("ageCodeableConcept", value)?;
-                }
-                PopulationAge::Invalid => return Err(serde::ser::Error::custom("age is invalid")),
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-        }
-        if let Some(some) = self.r#gender.as_ref() {
-            state.serialize_entry("gender", some)?;
-        }
-        if let Some(some) = self.r#race.as_ref() {
-            state.serialize_entry("race", some)?;
-        }
-        if let Some(some) = self.r#physiological_condition.as_ref() {
-            state.serialize_entry("physiologicalCondition", some)?;
-        }
-        state.end()
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#age.as_ref() {
+                match some {
+                    PopulationAge::Range(ref value) => {
+                        state.serialize_entry("ageRange", value)?;
+                    }
+                    PopulationAge::CodeableConcept(ref value) => {
+                        state.serialize_entry("ageCodeableConcept", value)?;
+                    }
+                    PopulationAge::Invalid => {
+                        return Err(serde::ser::Error::custom("age is invalid"))
+                    }
+                }
+            }
+            if let Some(some) = self.r#gender.as_ref() {
+                state.serialize_entry("gender", some)?;
+            }
+            if let Some(some) = self.r#race.as_ref() {
+                state.serialize_entry("race", some)?;
+            }
+            if let Some(some) = self.r#physiological_condition.as_ref() {
+                state.serialize_entry("physiologicalCondition", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Population {
@@ -119,8 +124,8 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                 let mut r#physiological_condition: Option<
                     Box<super::super::types::CodeableConcept>,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -178,7 +183,7 @@ impl<'de> serde::de::Deserialize<'de> for Population {
                                 }
                                 r#physiological_condition = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(

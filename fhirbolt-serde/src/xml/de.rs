@@ -6,7 +6,7 @@ use serde::{
 };
 
 use fhirbolt_shared::{
-    serde_config::de::{with_config, DeserializationConfig},
+    serde_config::de::{with_context, DeserializationConfig, DeserializationContext},
     AnyResource,
 };
 
@@ -52,7 +52,12 @@ where
     T: DeserializeOwned + AnyResource,
 {
     let mut deserializer = Deserializer::from_reader::<T>(rdr);
-    with_config(config, || T::deserialize(&mut deserializer))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || T::deserialize(&mut deserializer),
+    )
 }
 
 /// Deserialize an instance of resource type `T` from a bytes of XML.
@@ -88,7 +93,12 @@ where
     T: DeserializeOwned + AnyResource,
 {
     let mut deserializer = Deserializer::from_slice::<T>(v);
-    with_config(config, || T::deserialize(&mut deserializer))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || T::deserialize(&mut deserializer),
+    )
 }
 
 /// Deserialize an instance of resource type `T` from a string of XML.
@@ -124,7 +134,12 @@ where
     T: Deserialize<'a> + AnyResource,
 {
     let mut deserializer = Deserializer::from_str::<T>(s);
-    with_config(config, || T::deserialize(&mut deserializer))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || T::deserialize(&mut deserializer),
+    )
 }
 
 trait NextVecExt {

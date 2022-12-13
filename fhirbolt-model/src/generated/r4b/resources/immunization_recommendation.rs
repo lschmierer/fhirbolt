@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
@@ -48,29 +48,36 @@ impl serde::ser::Serialize for ImmunizationRecommendationRecommendationDateCrite
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("code", &self.r#code)?;
-        if let Some(some) = self.r#value.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("value", &some)?;
-        }
-        if self.r#value.id.is_some() || !self.r#value.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#value.id,
-                extension: &self.r#value.extension,
-            };
-            state.serialize_entry("_value", &primitive_element)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("code", &self.r#code)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#value.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("value", &some)?;
+                }
+                if self.r#value.id.is_some() || !self.r#value.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#value.id.as_ref(),
+                        extension: &self.r#value.extension,
+                    };
+                    state.serialize_entry("_value", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("value", &self.r#value)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendationDateCriterion {
@@ -114,8 +121,8 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                     None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -164,7 +171,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -178,14 +185,14 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#code: if config.mode
+                        r#code: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {
                             r#code.ok_or(serde::de::Error::missing_field("code"))?
                         },
-                        r#value: if config.mode
+                        r#value: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
@@ -239,137 +246,178 @@ impl serde::ser::Serialize for ImmunizationRecommendationRecommendation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#vaccine_code.is_empty() {
-            state.serialize_entry("vaccineCode", &self.r#vaccine_code)?;
-        }
-        if let Some(some) = self.r#target_disease.as_ref() {
-            state.serialize_entry("targetDisease", some)?;
-        }
-        if !self.r#contraindicated_vaccine_code.is_empty() {
-            state.serialize_entry(
-                "contraindicatedVaccineCode",
-                &self.r#contraindicated_vaccine_code,
-            )?;
-        }
-        state.serialize_entry("forecastStatus", &self.r#forecast_status)?;
-        if !self.r#forecast_reason.is_empty() {
-            state.serialize_entry("forecastReason", &self.r#forecast_reason)?;
-        }
-        if !self.r#date_criterion.is_empty() {
-            state.serialize_entry("dateCriterion", &self.r#date_criterion)?;
-        }
-        if let Some(some) = self.r#description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("description", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_description", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#series.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("series", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_series", &primitive_element)?;
+            if !self.r#vaccine_code.is_empty() {
+                state.serialize_entry("vaccineCode", &self.r#vaccine_code)?;
             }
-        }
-        if let Some(some) = self.r#dose_number.as_ref() {
-            match some {
-                ImmunizationRecommendationRecommendationDoseNumber::PositiveInt(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if let Some(some) = self.r#target_disease.as_ref() {
+                state.serialize_entry("targetDisease", some)?;
+            }
+            if !self.r#contraindicated_vaccine_code.is_empty() {
+                state.serialize_entry(
+                    "contraindicatedVaccineCode",
+                    &self.r#contraindicated_vaccine_code,
+                )?;
+            }
+            state.serialize_entry("forecastStatus", &self.r#forecast_status)?;
+            if !self.r#forecast_reason.is_empty() {
+                state.serialize_entry("forecastReason", &self.r#forecast_reason)?;
+            }
+            if !self.r#date_criterion.is_empty() {
+                state.serialize_entry("dateCriterion", &self.r#date_criterion)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("doseNumberPositiveInt", &some)?;
+                        state.serialize_entry("description", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_doseNumberPositiveInt", &primitive_element)?;
+                        state.serialize_entry("_description", &primitive_element)?;
                     }
                 }
-                ImmunizationRecommendationRecommendationDoseNumber::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("doseNumberString", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_doseNumberString", &primitive_element)?;
-                    }
-                }
-                ImmunizationRecommendationRecommendationDoseNumber::Invalid => {
-                    return Err(serde::ser::Error::custom("dose_number is invalid"))
+            } else {
+                if let Some(some) = self.r#description.as_ref() {
+                    state.serialize_entry("description", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#series_doses.as_ref() {
-            match some {
-                ImmunizationRecommendationRecommendationSeriesDoses::PositiveInt(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#series.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("seriesDosesPositiveInt", &some)?;
+                        state.serialize_entry("series", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_seriesDosesPositiveInt", &primitive_element)?;
+                        state.serialize_entry("_series", &primitive_element)?;
                     }
                 }
-                ImmunizationRecommendationRecommendationSeriesDoses::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("seriesDosesString", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_seriesDosesString", &primitive_element)?;
-                    }
-                }
-                ImmunizationRecommendationRecommendationSeriesDoses::Invalid => {
-                    return Err(serde::ser::Error::custom("series_doses is invalid"))
+            } else {
+                if let Some(some) = self.r#series.as_ref() {
+                    state.serialize_entry("series", some)?;
                 }
             }
-        }
-        if !self.r#supporting_immunization.is_empty() {
-            state.serialize_entry("supportingImmunization", &self.r#supporting_immunization)?;
-        }
-        if !self.r#supporting_patient_information.is_empty() {
-            state.serialize_entry(
-                "supportingPatientInformation",
-                &self.r#supporting_patient_information,
-            )?;
-        }
-        state.end()
+            if let Some(some) = self.r#dose_number.as_ref() {
+                match some {
+                    ImmunizationRecommendationRecommendationDoseNumber::PositiveInt(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("doseNumberPositiveInt", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry(
+                                    "_doseNumberPositiveInt",
+                                    &primitive_element,
+                                )?;
+                            }
+                        } else {
+                            state.serialize_entry("doseNumberPositiveInt", value)?;
+                        }
+                    }
+                    ImmunizationRecommendationRecommendationDoseNumber::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("doseNumberString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_doseNumberString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("doseNumberString", value)?;
+                        }
+                    }
+                    ImmunizationRecommendationRecommendationDoseNumber::Invalid => {
+                        return Err(serde::ser::Error::custom("dose_number is invalid"))
+                    }
+                }
+            }
+            if let Some(some) = self.r#series_doses.as_ref() {
+                match some {
+                    ImmunizationRecommendationRecommendationSeriesDoses::PositiveInt(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("seriesDosesPositiveInt", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry(
+                                    "_seriesDosesPositiveInt",
+                                    &primitive_element,
+                                )?;
+                            }
+                        } else {
+                            state.serialize_entry("seriesDosesPositiveInt", value)?;
+                        }
+                    }
+                    ImmunizationRecommendationRecommendationSeriesDoses::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("seriesDosesString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_seriesDosesString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("seriesDosesString", value)?;
+                        }
+                    }
+                    ImmunizationRecommendationRecommendationSeriesDoses::Invalid => {
+                        return Err(serde::ser::Error::custom("series_doses is invalid"))
+                    }
+                }
+            }
+            if !self.r#supporting_immunization.is_empty() {
+                state.serialize_entry("supportingImmunization", &self.r#supporting_immunization)?;
+            }
+            if !self.r#supporting_patient_information.is_empty() {
+                state.serialize_entry(
+                    "supportingPatientInformation",
+                    &self.r#supporting_patient_information,
+                )?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendation {
@@ -470,7 +518,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
                 let mut r#supporting_patient_information: Option<
                     Vec<Box<super::super::types::Reference>>,
                 > = None;
-                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: VaccineCode => { if r#vaccine_code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("vaccineCode")) ; } r#vaccine_code = Some (map_access . next_value () ?) ; } , Field :: TargetDisease => { if r#target_disease . is_some () { return Err (serde :: de :: Error :: duplicate_field ("targetDisease")) ; } r#target_disease = Some (map_access . next_value () ?) ; } , Field :: ContraindicatedVaccineCode => { if r#contraindicated_vaccine_code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("contraindicatedVaccineCode")) ; } r#contraindicated_vaccine_code = Some (map_access . next_value () ?) ; } , Field :: ForecastStatus => { if r#forecast_status . is_some () { return Err (serde :: de :: Error :: duplicate_field ("forecastStatus")) ; } r#forecast_status = Some (map_access . next_value () ?) ; } , Field :: ForecastReason => { if r#forecast_reason . is_some () { return Err (serde :: de :: Error :: duplicate_field ("forecastReason")) ; } r#forecast_reason = Some (map_access . next_value () ?) ; } , Field :: DateCriterion => { if r#date_criterion . is_some () { return Err (serde :: de :: Error :: duplicate_field ("dateCriterion")) ; } r#date_criterion = Some (map_access . next_value () ?) ; } , Field :: Description => { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: DescriptionPrimitiveElement => { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: Series => { let some = r#series . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("series")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: SeriesPrimitiveElement => { let some = r#series . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_series")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: DoseNumberPositiveInt => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("doseNumberPositiveInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("doseNumber[x]")) ; } } , Field :: DoseNumberPositiveIntPrimitiveElement => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_doseNumberPositiveInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_doseNumber[x]")) ; } } , Field :: DoseNumberString => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("doseNumberString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("doseNumber[x]")) ; } } , Field :: DoseNumberStringPrimitiveElement => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_doseNumberString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_doseNumber[x]")) ; } } , Field :: SeriesDosesPositiveInt => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("seriesDosesPositiveInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("seriesDoses[x]")) ; } } , Field :: SeriesDosesPositiveIntPrimitiveElement => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_seriesDosesPositiveInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_seriesDoses[x]")) ; } } , Field :: SeriesDosesString => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("seriesDosesString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("seriesDoses[x]")) ; } } , Field :: SeriesDosesStringPrimitiveElement => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_seriesDosesString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_seriesDoses[x]")) ; } } , Field :: SupportingImmunization => { if r#supporting_immunization . is_some () { return Err (serde :: de :: Error :: duplicate_field ("supportingImmunization")) ; } r#supporting_immunization = Some (map_access . next_value () ?) ; } , Field :: SupportingPatientInformation => { if r#supporting_patient_information . is_some () { return Err (serde :: de :: Error :: duplicate_field ("supportingPatientInformation")) ; } r#supporting_patient_information = Some (map_access . next_value () ?) ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "vaccineCode" , "targetDisease" , "contraindicatedVaccineCode" , "forecastStatus" , "forecastReason" , "dateCriterion" , "description" , "series" , "doseNumberPositiveInt" , "doseNumberString" , "seriesDosesPositiveInt" , "seriesDosesString" , "supportingImmunization" , "supportingPatientInformation" ,])) ; } } } Ok (ImmunizationRecommendationRecommendation { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#vaccine_code : r#vaccine_code . unwrap_or (vec ! []) , r#target_disease , r#contraindicated_vaccine_code : r#contraindicated_vaccine_code . unwrap_or (vec ! []) , r#forecast_status : if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#forecast_status . unwrap_or (Default :: default ()) } else { r#forecast_status . ok_or (serde :: de :: Error :: missing_field ("forecastStatus")) ? } , r#forecast_reason : r#forecast_reason . unwrap_or (vec ! []) , r#date_criterion : r#date_criterion . unwrap_or (vec ! []) , r#description , r#series , r#dose_number , r#series_doses , r#supporting_immunization : r#supporting_immunization . unwrap_or (vec ! []) , r#supporting_patient_information : r#supporting_patient_information . unwrap_or (vec ! []) , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: VaccineCode => { if r#vaccine_code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("vaccineCode")) ; } r#vaccine_code = Some (map_access . next_value () ?) ; } , Field :: TargetDisease => { if r#target_disease . is_some () { return Err (serde :: de :: Error :: duplicate_field ("targetDisease")) ; } r#target_disease = Some (map_access . next_value () ?) ; } , Field :: ContraindicatedVaccineCode => { if r#contraindicated_vaccine_code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("contraindicatedVaccineCode")) ; } r#contraindicated_vaccine_code = Some (map_access . next_value () ?) ; } , Field :: ForecastStatus => { if r#forecast_status . is_some () { return Err (serde :: de :: Error :: duplicate_field ("forecastStatus")) ; } r#forecast_status = Some (map_access . next_value () ?) ; } , Field :: ForecastReason => { if r#forecast_reason . is_some () { return Err (serde :: de :: Error :: duplicate_field ("forecastReason")) ; } r#forecast_reason = Some (map_access . next_value () ?) ; } , Field :: DateCriterion => { if r#date_criterion . is_some () { return Err (serde :: de :: Error :: duplicate_field ("dateCriterion")) ; } r#date_criterion = Some (map_access . next_value () ?) ; } , Field :: Description => { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: DescriptionPrimitiveElement => { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: Series => { let some = r#series . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("series")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: SeriesPrimitiveElement => { let some = r#series . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_series")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: DoseNumberPositiveInt => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("doseNumberPositiveInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("doseNumber[x]")) ; } } , Field :: DoseNumberPositiveIntPrimitiveElement => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: PositiveInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_doseNumberPositiveInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_doseNumber[x]")) ; } } , Field :: DoseNumberString => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("doseNumberString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("doseNumber[x]")) ; } } , Field :: DoseNumberStringPrimitiveElement => { let r#enum = r#dose_number . get_or_insert (ImmunizationRecommendationRecommendationDoseNumber :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationDoseNumber :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_doseNumberString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_doseNumber[x]")) ; } } , Field :: SeriesDosesPositiveInt => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("seriesDosesPositiveInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("seriesDoses[x]")) ; } } , Field :: SeriesDosesPositiveIntPrimitiveElement => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: PositiveInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_seriesDosesPositiveInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_seriesDoses[x]")) ; } } , Field :: SeriesDosesString => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("seriesDosesString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("seriesDoses[x]")) ; } } , Field :: SeriesDosesStringPrimitiveElement => { let r#enum = r#series_doses . get_or_insert (ImmunizationRecommendationRecommendationSeriesDoses :: String (Default :: default ())) ; if let ImmunizationRecommendationRecommendationSeriesDoses :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_seriesDosesString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_seriesDoses[x]")) ; } } , Field :: SupportingImmunization => { if r#supporting_immunization . is_some () { return Err (serde :: de :: Error :: duplicate_field ("supportingImmunization")) ; } r#supporting_immunization = Some (map_access . next_value () ?) ; } , Field :: SupportingPatientInformation => { if r#supporting_patient_information . is_some () { return Err (serde :: de :: Error :: duplicate_field ("supportingPatientInformation")) ; } r#supporting_patient_information = Some (map_access . next_value () ?) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "vaccineCode" , "targetDisease" , "contraindicatedVaccineCode" , "forecastStatus" , "forecastReason" , "dateCriterion" , "description" , "series" , "doseNumberPositiveInt" , "doseNumberString" , "seriesDosesPositiveInt" , "seriesDosesString" , "supportingImmunization" , "supportingPatientInformation" ,])) ; } } } Ok (ImmunizationRecommendationRecommendation { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#vaccine_code : r#vaccine_code . unwrap_or (vec ! []) , r#target_disease , r#contraindicated_vaccine_code : r#contraindicated_vaccine_code . unwrap_or (vec ! []) , r#forecast_status : if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#forecast_status . unwrap_or (Default :: default ()) } else { r#forecast_status . ok_or (serde :: de :: Error :: missing_field ("forecastStatus")) ? } , r#forecast_reason : r#forecast_reason . unwrap_or (vec ! []) , r#date_criterion : r#date_criterion . unwrap_or (vec ! []) , r#description , r#series , r#dose_number , r#series_doses , r#supporting_immunization : r#supporting_immunization . unwrap_or (vec ! []) , r#supporting_patient_information : r#supporting_patient_information . unwrap_or (vec ! []) , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -512,74 +560,93 @@ impl serde::ser::Serialize for ImmunizationRecommendation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "ImmunizationRecommendation")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "ImmunizationRecommendation")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("implicitRules", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        state.serialize_entry("patient", &self.r#patient)?;
-        if let Some(some) = self.r#date.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("date", &some)?;
-        }
-        if self.r#date.id.is_some() || !self.r#date.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#date.id,
-                extension: &self.r#date.extension,
-            };
-            state.serialize_entry("_date", &primitive_element)?;
-        }
-        if let Some(some) = self.r#authority.as_ref() {
-            state.serialize_entry("authority", some)?;
-        }
-        if !self.r#recommendation.is_empty() {
-            state.serialize_entry("recommendation", &self.r#recommendation)?;
-        }
-        state.end()
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
+            }
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
+            }
+            state.serialize_entry("patient", &self.r#patient)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#date.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("date", &some)?;
+                }
+                if self.r#date.id.is_some() || !self.r#date.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#date.id.as_ref(),
+                        extension: &self.r#date.extension,
+                    };
+                    state.serialize_entry("_date", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("date", &self.r#date)?;
+            }
+            if let Some(some) = self.r#authority.as_ref() {
+                state.serialize_entry("authority", some)?;
+            }
+            if !self.r#recommendation.is_empty() {
+                state.serialize_entry("recommendation", &self.r#recommendation)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendation {
@@ -651,8 +718,8 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendation {
                 let mut r#authority: Option<Box<super::super::types::Reference>> = None;
                 let mut r#recommendation: Option<Vec<ImmunizationRecommendationRecommendation>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -790,7 +857,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendation {
                                 }
                                 r#recommendation = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -824,14 +891,14 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendation {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
-                        r#patient: if config.mode
+                        r#patient: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#patient.unwrap_or(Default::default())
                         } else {
                             r#patient.ok_or(serde::de::Error::missing_field("patient"))?
                         },
-                        r#date: if config.mode
+                        r#date: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#date.unwrap_or(Default::default())

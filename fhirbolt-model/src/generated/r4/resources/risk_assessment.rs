@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentOccurrence {
@@ -68,89 +68,109 @@ impl serde::ser::Serialize for RiskAssessmentPrediction {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#outcome.as_ref() {
-            state.serialize_entry("outcome", some)?;
-        }
-        if let Some(some) = self.r#probability.as_ref() {
-            match some {
-                RiskAssessmentPredictionProbability::Decimal(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#outcome.as_ref() {
+                state.serialize_entry("outcome", some)?;
+            }
+            if let Some(some) = self.r#probability.as_ref() {
+                match some {
+                    RiskAssessmentPredictionProbability::Decimal(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = some.parse::<serde_json::Number>().map_err(|_| {
+                                    serde::ser::Error::custom("error serializing decimal")
+                                })?;
+                                state.serialize_entry("probabilityDecimal", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_probabilityDecimal", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("probabilityDecimal", value)?;
+                        }
+                    }
+                    RiskAssessmentPredictionProbability::Range(ref value) => {
+                        state.serialize_entry("probabilityRange", value)?;
+                    }
+                    RiskAssessmentPredictionProbability::Invalid => {
+                        return Err(serde::ser::Error::custom("probability is invalid"))
+                    }
+                }
+            }
+            if let Some(some) = self.r#qualitative_risk.as_ref() {
+                state.serialize_entry("qualitativeRisk", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#relative_risk.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = some
                             .parse::<serde_json::Number>()
                             .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                        state.serialize_entry("probabilityDecimal", &some)?;
+                        state.serialize_entry("relativeRisk", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_probabilityDecimal", &primitive_element)?;
+                        state.serialize_entry("_relativeRisk", &primitive_element)?;
                     }
                 }
-                RiskAssessmentPredictionProbability::Range(ref value) => {
-                    state.serialize_entry("probabilityRange", value)?;
-                }
-                RiskAssessmentPredictionProbability::Invalid => {
-                    return Err(serde::ser::Error::custom("probability is invalid"))
+            } else {
+                if let Some(some) = self.r#relative_risk.as_ref() {
+                    state.serialize_entry("relativeRisk", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#qualitative_risk.as_ref() {
-            state.serialize_entry("qualitativeRisk", some)?;
-        }
-        if let Some(some) = self.r#relative_risk.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = some
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("relativeRisk", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_relativeRisk", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#when.as_ref() {
-            match some {
-                RiskAssessmentPredictionWhen::Period(ref value) => {
-                    state.serialize_entry("whenPeriod", value)?;
-                }
-                RiskAssessmentPredictionWhen::Range(ref value) => {
-                    state.serialize_entry("whenRange", value)?;
-                }
-                RiskAssessmentPredictionWhen::Invalid => {
-                    return Err(serde::ser::Error::custom("when is invalid"))
+            if let Some(some) = self.r#when.as_ref() {
+                match some {
+                    RiskAssessmentPredictionWhen::Period(ref value) => {
+                        state.serialize_entry("whenPeriod", value)?;
+                    }
+                    RiskAssessmentPredictionWhen::Range(ref value) => {
+                        state.serialize_entry("whenRange", value)?;
+                    }
+                    RiskAssessmentPredictionWhen::Invalid => {
+                        return Err(serde::ser::Error::custom("when is invalid"))
+                    }
                 }
             }
-        }
-        if let Some(some) = self.r#rationale.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("rationale", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#rationale.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("rationale", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_rationale", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#rationale.as_ref() {
+                    state.serialize_entry("rationale", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_rationale", &primitive_element)?;
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
@@ -212,8 +232,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                 let mut r#relative_risk: Option<super::super::types::Decimal> = None;
                 let mut r#when: Option<RiskAssessmentPredictionWhen> = None;
                 let mut r#rationale: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -366,7 +386,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -465,140 +485,170 @@ impl serde::ser::Serialize for RiskAssessment {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "RiskAssessment")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "RiskAssessment")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#based_on.as_ref() {
-            state.serialize_entry("basedOn", some)?;
-        }
-        if let Some(some) = self.r#parent.as_ref() {
-            state.serialize_entry("parent", some)?;
-        }
-        if let Some(some) = self.r#status.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("status", &some)?;
-        }
-        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#status.id,
-                extension: &self.r#status.extension,
-            };
-            state.serialize_entry("_status", &primitive_element)?;
-        }
-        if let Some(some) = self.r#method.as_ref() {
-            state.serialize_entry("method", some)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        state.serialize_entry("subject", &self.r#subject)?;
-        if let Some(some) = self.r#encounter.as_ref() {
-            state.serialize_entry("encounter", some)?;
-        }
-        if let Some(some) = self.r#occurrence.as_ref() {
-            match some {
-                RiskAssessmentOccurrence::DateTime(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("occurrenceDateTime", &some)?;
+                        state.serialize_entry("implicitRules", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_occurrenceDateTime", &primitive_element)?;
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
                     }
                 }
-                RiskAssessmentOccurrence::Period(ref value) => {
-                    state.serialize_entry("occurrencePeriod", value)?;
-                }
-                RiskAssessmentOccurrence::Invalid => {
-                    return Err(serde::ser::Error::custom("occurrence is invalid"))
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#condition.as_ref() {
-            state.serialize_entry("condition", some)?;
-        }
-        if let Some(some) = self.r#performer.as_ref() {
-            state.serialize_entry("performer", some)?;
-        }
-        if !self.r#reason_code.is_empty() {
-            state.serialize_entry("reasonCode", &self.r#reason_code)?;
-        }
-        if !self.r#reason_reference.is_empty() {
-            state.serialize_entry("reasonReference", &self.r#reason_reference)?;
-        }
-        if !self.r#basis.is_empty() {
-            state.serialize_entry("basis", &self.r#basis)?;
-        }
-        if !self.r#prediction.is_empty() {
-            state.serialize_entry("prediction", &self.r#prediction)?;
-        }
-        if let Some(some) = self.r#mitigation.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("mitigation", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_mitigation", &primitive_element)?;
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
             }
-        }
-        if !self.r#note.is_empty() {
-            state.serialize_entry("note", &self.r#note)?;
-        }
-        state.end()
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
+            }
+            if let Some(some) = self.r#based_on.as_ref() {
+                state.serialize_entry("basedOn", some)?;
+            }
+            if let Some(some) = self.r#parent.as_ref() {
+                state.serialize_entry("parent", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#status.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("status", &some)?;
+                }
+                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#status.id.as_ref(),
+                        extension: &self.r#status.extension,
+                    };
+                    state.serialize_entry("_status", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("status", &self.r#status)?;
+            }
+            if let Some(some) = self.r#method.as_ref() {
+                state.serialize_entry("method", some)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            state.serialize_entry("subject", &self.r#subject)?;
+            if let Some(some) = self.r#encounter.as_ref() {
+                state.serialize_entry("encounter", some)?;
+            }
+            if let Some(some) = self.r#occurrence.as_ref() {
+                match some {
+                    RiskAssessmentOccurrence::DateTime(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("occurrenceDateTime", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_occurrenceDateTime", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("occurrenceDateTime", value)?;
+                        }
+                    }
+                    RiskAssessmentOccurrence::Period(ref value) => {
+                        state.serialize_entry("occurrencePeriod", value)?;
+                    }
+                    RiskAssessmentOccurrence::Invalid => {
+                        return Err(serde::ser::Error::custom("occurrence is invalid"))
+                    }
+                }
+            }
+            if let Some(some) = self.r#condition.as_ref() {
+                state.serialize_entry("condition", some)?;
+            }
+            if let Some(some) = self.r#performer.as_ref() {
+                state.serialize_entry("performer", some)?;
+            }
+            if !self.r#reason_code.is_empty() {
+                state.serialize_entry("reasonCode", &self.r#reason_code)?;
+            }
+            if !self.r#reason_reference.is_empty() {
+                state.serialize_entry("reasonReference", &self.r#reason_reference)?;
+            }
+            if !self.r#basis.is_empty() {
+                state.serialize_entry("basis", &self.r#basis)?;
+            }
+            if !self.r#prediction.is_empty() {
+                state.serialize_entry("prediction", &self.r#prediction)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#mitigation.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("mitigation", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_mitigation", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#mitigation.as_ref() {
+                    state.serialize_entry("mitigation", some)?;
+                }
+            }
+            if !self.r#note.is_empty() {
+                state.serialize_entry("note", &self.r#note)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
@@ -712,8 +762,8 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                 let mut r#prediction: Option<Vec<RiskAssessmentPrediction>> = None;
                 let mut r#mitigation: Option<super::super::types::String> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -979,7 +1029,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                 }
                                 r#note = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1028,7 +1078,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#based_on,
                         r#parent,
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
@@ -1037,7 +1087,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                         },
                         r#method,
                         r#code,
-                        r#subject: if config.mode
+                        r#subject: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#subject.unwrap_or(Default::default())

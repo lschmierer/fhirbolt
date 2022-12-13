@@ -128,7 +128,10 @@ fn generate_struct(
     is_resource: Option<FhirRelease>,
 ) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
-    let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
+    let fields_tokens = r#struct
+        .fields
+        .iter()
+        .map(|f| generate_field(f, r#struct.is_primitive, r#struct.struct_name == "Xhtml"));
 
     let impl_any_resource_tokens = if let Some(release) = is_resource {
         let release_ident = format_ident!("{}", release.to_string());
@@ -157,9 +160,15 @@ fn generate_struct(
 
     let doc_comment = format_doc_comment(&r#struct.doc_comment);
 
+    let derive_serialize_tokens = if r#struct.is_primitive {
+        quote! {, serde::Serialize}
+    } else {
+        quote! {}
+    };
+
     quote! {
         #[doc=#doc_comment]
-        #[derive(Default, Debug, Clone)]
+        #[derive(Default, Debug, Clone #derive_serialize_tokens)]
         pub struct #name_ident {
             #(
                 #fields_tokens
@@ -172,7 +181,7 @@ fn generate_struct(
     }
 }
 
-fn generate_field(field: &RustFhirStructField) -> TokenStream {
+fn generate_field(field: &RustFhirStructField, is_primitive: bool, is_xhtml: bool) -> TokenStream {
     let name_ident = format_ident!("r#{}", field.name);
 
     let type_tokens = field.r#type.name.parse().unwrap();
@@ -193,8 +202,20 @@ fn generate_field(field: &RustFhirStructField) -> TokenStream {
 
     let doc_comment = format_doc_comment(&field.doc_comment);
 
+    let serde_attribute_tokens = match (is_primitive, is_xhtml, field.name.as_ref()) {
+        (true, _, "id") => {
+            quote! { #[serde(skip_serializing_if = "Option::is_none")] }
+        }
+        (true, false, "value") => {
+            quote! { #[serde(skip_serializing_if = "Option::is_none")] }
+        }
+        (true, _, "extension") => quote! { #[serde(skip_serializing_if = "Vec::is_empty")] },
+        _ => quote! {},
+    };
+
     quote! {
         #[doc=#doc_comment]
+        #serde_attribute_tokens
         pub #name_ident: #type_tokens,
     }
 }

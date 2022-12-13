@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Debug, Clone)]
 pub enum PatientDeceased {
@@ -58,48 +58,57 @@ impl serde::ser::Serialize for PatientContact {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#relationship.is_empty() {
-            state.serialize_entry("relationship", &self.r#relationship)?;
-        }
-        if let Some(some) = self.r#name.as_ref() {
-            state.serialize_entry("name", some)?;
-        }
-        if !self.r#telecom.is_empty() {
-            state.serialize_entry("telecom", &self.r#telecom)?;
-        }
-        if let Some(some) = self.r#address.as_ref() {
-            state.serialize_entry("address", some)?;
-        }
-        if let Some(some) = self.r#gender.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("gender", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_gender", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#organization.as_ref() {
-            state.serialize_entry("organization", some)?;
-        }
-        if let Some(some) = self.r#period.as_ref() {
-            state.serialize_entry("period", some)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#relationship.is_empty() {
+                state.serialize_entry("relationship", &self.r#relationship)?;
+            }
+            if let Some(some) = self.r#name.as_ref() {
+                state.serialize_entry("name", some)?;
+            }
+            if !self.r#telecom.is_empty() {
+                state.serialize_entry("telecom", &self.r#telecom)?;
+            }
+            if let Some(some) = self.r#address.as_ref() {
+                state.serialize_entry("address", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#gender.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("gender", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_gender", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#gender.as_ref() {
+                    state.serialize_entry("gender", some)?;
+                }
+            }
+            if let Some(some) = self.r#organization.as_ref() {
+                state.serialize_entry("organization", some)?;
+            }
+            if let Some(some) = self.r#period.as_ref() {
+                state.serialize_entry("period", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for PatientContact {
@@ -156,8 +165,8 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                 let mut r#gender: Option<super::super::types::Code> = None;
                 let mut r#organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -236,7 +245,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                                 }
                                 r#period = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -295,31 +304,40 @@ impl serde::ser::Serialize for PatientCommunication {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("language", &self.r#language)?;
-        if let Some(some) = self.r#preferred.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("preferred", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_preferred", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("language", &self.r#language)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#preferred.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("preferred", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_preferred", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#preferred.as_ref() {
+                    state.serialize_entry("preferred", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
@@ -360,8 +378,8 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                     None;
                 let mut r#language: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#preferred: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -410,7 +428,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -430,7 +448,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#language: if config.mode
+                        r#language: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#language.unwrap_or(Default::default())
@@ -465,29 +483,36 @@ impl serde::ser::Serialize for PatientLink {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        state.serialize_entry("other", &self.r#other)?;
-        if let Some(some) = self.r#type.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("type", &some)?;
-        }
-        if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#type.id,
-                extension: &self.r#type.extension,
-            };
-            state.serialize_entry("_type", &primitive_element)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            state.serialize_entry("other", &self.r#other)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#type.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("type", &some)?;
+                }
+                if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#type.id.as_ref(),
+                        extension: &self.r#type.extension,
+                    };
+                    state.serialize_entry("_type", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("type", &self.r#type)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for PatientLink {
@@ -528,8 +553,8 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                     None;
                 let mut r#other: Option<Box<super::super::types::Reference>> = None;
                 let mut r#type: Option<super::super::types::Code> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -578,7 +603,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -592,14 +617,14 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#other: if config.mode
+                        r#other: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#other.unwrap_or(Default::default())
                         } else {
                             r#other.ok_or(serde::de::Error::missing_field("other"))?
                         },
-                        r#type: if config.mode
+                        r#type: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
@@ -671,191 +696,246 @@ impl serde::ser::Serialize for Patient {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "Patient")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "Patient")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#active.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("active", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_active", &primitive_element)?;
-            }
-        }
-        if !self.r#name.is_empty() {
-            state.serialize_entry("name", &self.r#name)?;
-        }
-        if !self.r#telecom.is_empty() {
-            state.serialize_entry("telecom", &self.r#telecom)?;
-        }
-        if let Some(some) = self.r#gender.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("gender", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_gender", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#birth_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("birthDate", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_birthDate", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#deceased.as_ref() {
-            match some {
-                PatientDeceased::Boolean(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("deceasedBoolean", &some)?;
+                        state.serialize_entry("implicitRules", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_deceasedBoolean", &primitive_element)?;
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
                     }
                 }
-                PatientDeceased::DateTime(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("deceasedDateTime", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_deceasedDateTime", &primitive_element)?;
-                    }
-                }
-                PatientDeceased::Invalid => {
-                    return Err(serde::ser::Error::custom("deceased is invalid"))
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
                 }
             }
-        }
-        if !self.r#address.is_empty() {
-            state.serialize_entry("address", &self.r#address)?;
-        }
-        if let Some(some) = self.r#marital_status.as_ref() {
-            state.serialize_entry("maritalStatus", some)?;
-        }
-        if let Some(some) = self.r#multiple_birth.as_ref() {
-            match some {
-                PatientMultipleBirth::Boolean(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("multipleBirthBoolean", &some)?;
+                        state.serialize_entry("language", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_multipleBirthBoolean", &primitive_element)?;
+                        state.serialize_entry("_language", &primitive_element)?;
                     }
                 }
-                PatientMultipleBirth::Integer(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("multipleBirthInteger", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
-                        };
-                        state.serialize_entry("_multipleBirthInteger", &primitive_element)?;
-                    }
-                }
-                PatientMultipleBirth::Invalid => {
-                    return Err(serde::ser::Error::custom("multiple_birth is invalid"))
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
                 }
             }
-        }
-        if !self.r#photo.is_empty() {
-            state.serialize_entry("photo", &self.r#photo)?;
-        }
-        if !self.r#contact.is_empty() {
-            state.serialize_entry("contact", &self.r#contact)?;
-        }
-        if !self.r#communication.is_empty() {
-            state.serialize_entry("communication", &self.r#communication)?;
-        }
-        if !self.r#general_practitioner.is_empty() {
-            state.serialize_entry("generalPractitioner", &self.r#general_practitioner)?;
-        }
-        if let Some(some) = self.r#managing_organization.as_ref() {
-            state.serialize_entry("managingOrganization", some)?;
-        }
-        if !self.r#link.is_empty() {
-            state.serialize_entry("link", &self.r#link)?;
-        }
-        state.end()
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
+            }
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#active.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("active", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_active", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#active.as_ref() {
+                    state.serialize_entry("active", some)?;
+                }
+            }
+            if !self.r#name.is_empty() {
+                state.serialize_entry("name", &self.r#name)?;
+            }
+            if !self.r#telecom.is_empty() {
+                state.serialize_entry("telecom", &self.r#telecom)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#gender.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("gender", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_gender", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#gender.as_ref() {
+                    state.serialize_entry("gender", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#birth_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("birthDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_birthDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#birth_date.as_ref() {
+                    state.serialize_entry("birthDate", some)?;
+                }
+            }
+            if let Some(some) = self.r#deceased.as_ref() {
+                match some {
+                    PatientDeceased::Boolean(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("deceasedBoolean", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_deceasedBoolean", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("deceasedBoolean", value)?;
+                        }
+                    }
+                    PatientDeceased::DateTime(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("deceasedDateTime", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_deceasedDateTime", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("deceasedDateTime", value)?;
+                        }
+                    }
+                    PatientDeceased::Invalid => {
+                        return Err(serde::ser::Error::custom("deceased is invalid"))
+                    }
+                }
+            }
+            if !self.r#address.is_empty() {
+                state.serialize_entry("address", &self.r#address)?;
+            }
+            if let Some(some) = self.r#marital_status.as_ref() {
+                state.serialize_entry("maritalStatus", some)?;
+            }
+            if let Some(some) = self.r#multiple_birth.as_ref() {
+                match some {
+                    PatientMultipleBirth::Boolean(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("multipleBirthBoolean", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state
+                                    .serialize_entry("_multipleBirthBoolean", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("multipleBirthBoolean", value)?;
+                        }
+                    }
+                    PatientMultipleBirth::Integer(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("multipleBirthInteger", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state
+                                    .serialize_entry("_multipleBirthInteger", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("multipleBirthInteger", value)?;
+                        }
+                    }
+                    PatientMultipleBirth::Invalid => {
+                        return Err(serde::ser::Error::custom("multiple_birth is invalid"))
+                    }
+                }
+            }
+            if !self.r#photo.is_empty() {
+                state.serialize_entry("photo", &self.r#photo)?;
+            }
+            if !self.r#contact.is_empty() {
+                state.serialize_entry("contact", &self.r#contact)?;
+            }
+            if !self.r#communication.is_empty() {
+                state.serialize_entry("communication", &self.r#communication)?;
+            }
+            if !self.r#general_practitioner.is_empty() {
+                state.serialize_entry("generalPractitioner", &self.r#general_practitioner)?;
+            }
+            if let Some(some) = self.r#managing_organization.as_ref() {
+                state.serialize_entry("managingOrganization", some)?;
+            }
+            if !self.r#link.is_empty() {
+                state.serialize_entry("link", &self.r#link)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Patient {
@@ -976,8 +1056,8 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                     None;
                 let mut r#managing_organization: Option<Box<super::super::types::Reference>> = None;
                 let mut r#link: Option<Vec<PatientLink>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -1347,7 +1427,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                 }
                                 r#link = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(

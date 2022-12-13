@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
@@ -61,277 +61,364 @@ impl serde::ser::Serialize for TimingRepeat {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#bounds.as_ref() {
-            match some {
-                TimingRepeatBounds::Duration(ref value) => {
-                    state.serialize_entry("boundsDuration", value)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if let Some(some) = self.r#bounds.as_ref() {
+                match some {
+                    TimingRepeatBounds::Duration(ref value) => {
+                        state.serialize_entry("boundsDuration", value)?;
+                    }
+                    TimingRepeatBounds::Range(ref value) => {
+                        state.serialize_entry("boundsRange", value)?;
+                    }
+                    TimingRepeatBounds::Period(ref value) => {
+                        state.serialize_entry("boundsPeriod", value)?;
+                    }
+                    TimingRepeatBounds::Invalid => {
+                        return Err(serde::ser::Error::custom("bounds is invalid"))
+                    }
                 }
-                TimingRepeatBounds::Range(ref value) => {
-                    state.serialize_entry("boundsRange", value)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#count.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("count", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_count", &primitive_element)?;
+                    }
                 }
-                TimingRepeatBounds::Period(ref value) => {
-                    state.serialize_entry("boundsPeriod", value)?;
-                }
-                TimingRepeatBounds::Invalid => {
-                    return Err(serde::ser::Error::custom("bounds is invalid"))
+            } else {
+                if let Some(some) = self.r#count.as_ref() {
+                    state.serialize_entry("count", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#count.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("count", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#count_max.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("countMax", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_countMax", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#count_max.as_ref() {
+                    state.serialize_entry("countMax", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_count", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#duration.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("duration", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_duration", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#duration.as_ref() {
+                    state.serialize_entry("duration", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#count_max.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("countMax", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#duration_max.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("durationMax", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_durationMax", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#duration_max.as_ref() {
+                    state.serialize_entry("durationMax", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_countMax", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#duration_unit.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("durationUnit", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_durationUnit", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#duration_unit.as_ref() {
+                    state.serialize_entry("durationUnit", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#duration.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = some
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("duration", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#frequency.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("frequency", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_frequency", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#frequency.as_ref() {
+                    state.serialize_entry("frequency", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_duration", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#frequency_max.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("frequencyMax", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_frequencyMax", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#frequency_max.as_ref() {
+                    state.serialize_entry("frequencyMax", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#duration_max.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = some
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("durationMax", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#period.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("period", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_period", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#period.as_ref() {
+                    state.serialize_entry("period", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_durationMax", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#period_max.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = some
+                            .parse::<serde_json::Number>()
+                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                        state.serialize_entry("periodMax", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_periodMax", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#period_max.as_ref() {
+                    state.serialize_entry("periodMax", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#duration_unit.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("durationUnit", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#period_unit.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("periodUnit", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_periodUnit", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#period_unit.as_ref() {
+                    state.serialize_entry("periodUnit", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_durationUnit", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#frequency.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("frequency", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_frequency", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#frequency_max.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("frequencyMax", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_frequencyMax", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#period.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = some
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("period", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_period", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#period_max.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = some
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("periodMax", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_periodMax", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#period_unit.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("periodUnit", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_periodUnit", &primitive_element)?;
-            }
-        }
-        if !self.r#day_of_week.is_empty() {
-            let values = self
-                .r#day_of_week
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("dayOfWeek", &values)?;
-            }
-            let requires_elements = self
-                .r#day_of_week
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#day_of_week
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if !self.r#day_of_week.is_empty() {
+                    let values = self
+                        .r#day_of_week
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("dayOfWeek", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#day_of_week
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#day_of_week
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_dayOfWeek", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_dayOfWeek", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#day_of_week.is_empty() {
+                    state.serialize_entry("dayOfWeek", &self.r#day_of_week)?;
+                }
             }
-        }
-        if !self.r#time_of_day.is_empty() {
-            let values = self
-                .r#time_of_day
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("timeOfDay", &values)?;
-            }
-            let requires_elements = self
-                .r#time_of_day
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#time_of_day
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if !self.r#time_of_day.is_empty() {
+                    let values = self
+                        .r#time_of_day
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("timeOfDay", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#time_of_day
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#time_of_day
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_timeOfDay", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_timeOfDay", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#time_of_day.is_empty() {
+                    state.serialize_entry("timeOfDay", &self.r#time_of_day)?;
+                }
             }
-        }
-        if !self.r#when.is_empty() {
-            let values = self
-                .r#when
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("when", &values)?;
-            }
-            let requires_elements = self
-                .r#when
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#when
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if !self.r#when.is_empty() {
+                    let values = self
+                        .r#when
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("when", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#when
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#when
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_when", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_when", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#when.is_empty() {
+                    state.serialize_entry("when", &self.r#when)?;
+                }
             }
-        }
-        if let Some(some) = self.r#offset.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("offset", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#offset.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("offset", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_offset", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#offset.as_ref() {
+                    state.serialize_entry("offset", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_offset", &primitive_element)?;
-            }
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
@@ -437,8 +524,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                 let mut r#time_of_day: Option<Vec<super::super::types::Time>> = None;
                 let mut r#when: Option<Vec<super::super::types::Code>> = None;
                 let mut r#offset: Option<super::super::types::UnsignedInt> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -846,7 +933,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -923,55 +1010,64 @@ impl serde::ser::Serialize for Timing {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#event.is_empty() {
-            let values = self
-                .r#event
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("event", &values)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            let requires_elements = self
-                .r#event
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#event
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if _ctx.output_json {
+                if !self.r#event.is_empty() {
+                    let values = self
+                        .r#event
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("event", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#event
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#event
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_event", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_event", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#event.is_empty() {
+                    state.serialize_entry("event", &self.r#event)?;
+                }
             }
-        }
-        if let Some(some) = self.r#repeat.as_ref() {
-            state.serialize_entry("repeat", some)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        state.end()
+            if let Some(some) = self.r#repeat.as_ref() {
+                state.serialize_entry("repeat", some)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Timing {
@@ -1015,8 +1111,8 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                 let mut r#event: Option<Vec<super::super::types::DateTime>> = None;
                 let mut r#repeat: Option<TimingRepeat> = None;
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1101,7 +1197,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 }
                                 r#code = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(

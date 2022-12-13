@@ -4,7 +4,7 @@ use serde::de::{Deserialize, DeserializeOwned};
 pub use serde_json::de::*;
 
 use fhirbolt_shared::{
-    serde_config::de::{with_config, DeserializationConfig},
+    serde_config::de::{with_context, DeserializationConfig, DeserializationContext},
     AnyResource,
 };
 
@@ -44,7 +44,12 @@ where
     R: std::io::Read,
     T: DeserializeOwned + AnyResource,
 {
-    with_config(config, || serde_json::from_reader(rdr))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || serde_json::from_reader(rdr),
+    )
 }
 
 /// Deserialize an instance of resource type `T` from bytes of JSON text.
@@ -79,7 +84,12 @@ pub fn from_slice<'a, T>(v: &'a [u8], config: Option<DeserializationConfig>) -> 
 where
     T: Deserialize<'a> + AnyResource,
 {
-    with_config(config, || serde_json::from_slice(v))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || serde_json::from_slice(v),
+    )
 }
 
 /// Deserialize an instance of resource type `T` from a string of JSON text.
@@ -114,7 +124,12 @@ pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Res
 where
     T: Deserialize<'a> + AnyResource,
 {
-    with_config(config, || serde_json::from_str(s))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || serde_json::from_str(s),
+    )
 }
 
 /// Deserialize an instance of resource type `T` from a `serde_json::Value`.
@@ -151,5 +166,10 @@ pub fn from_value<T>(value: serde_json::Value, config: Option<DeserializationCon
 where
     T: DeserializeOwned + AnyResource,
 {
-    with_config(config, || serde_json::from_value(value))
+    with_context(
+        DeserializationContext {
+            config: config.unwrap_or_default(),
+        },
+        || serde_json::from_value(value),
+    )
 }

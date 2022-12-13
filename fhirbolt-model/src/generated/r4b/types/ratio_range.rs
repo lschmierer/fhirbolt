@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Default, Debug, Clone)]
 pub struct RatioRange {
@@ -24,23 +24,26 @@ impl serde::ser::Serialize for RatioRange {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#low_numerator.as_ref() {
-            state.serialize_entry("lowNumerator", some)?;
-        }
-        if let Some(some) = self.r#high_numerator.as_ref() {
-            state.serialize_entry("highNumerator", some)?;
-        }
-        if let Some(some) = self.r#denominator.as_ref() {
-            state.serialize_entry("denominator", some)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if let Some(some) = self.r#low_numerator.as_ref() {
+                state.serialize_entry("lowNumerator", some)?;
+            }
+            if let Some(some) = self.r#high_numerator.as_ref() {
+                state.serialize_entry("highNumerator", some)?;
+            }
+            if let Some(some) = self.r#denominator.as_ref() {
+                state.serialize_entry("denominator", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for RatioRange {
@@ -78,8 +81,8 @@ impl<'de> serde::de::Deserialize<'de> for RatioRange {
                 let mut r#low_numerator: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#high_numerator: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#denominator: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -112,7 +115,7 @@ impl<'de> serde::de::Deserialize<'de> for RatioRange {
                                 }
                                 r#denominator = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(

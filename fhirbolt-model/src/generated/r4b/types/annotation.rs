@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The individual responsible for making the annotation."]
 #[derive(Debug, Clone)]
 pub enum AnnotationAuthor {
@@ -36,61 +36,79 @@ impl serde::ser::Serialize for Annotation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if let Some(some) = self.r#author.as_ref() {
-            match some {
-                AnnotationAuthor::Reference(ref value) => {
-                    state.serialize_entry("authorReference", value)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if let Some(some) = self.r#author.as_ref() {
+                match some {
+                    AnnotationAuthor::Reference(ref value) => {
+                        state.serialize_entry("authorReference", value)?;
+                    }
+                    AnnotationAuthor::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("authorString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_authorString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("authorString", value)?;
+                        }
+                    }
+                    AnnotationAuthor::Invalid => {
+                        return Err(serde::ser::Error::custom("author is invalid"))
+                    }
                 }
-                AnnotationAuthor::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#time.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("authorString", &some)?;
+                        state.serialize_entry("time", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_authorString", &primitive_element)?;
+                        state.serialize_entry("_time", &primitive_element)?;
                     }
                 }
-                AnnotationAuthor::Invalid => {
-                    return Err(serde::ser::Error::custom("author is invalid"))
+            } else {
+                if let Some(some) = self.r#time.as_ref() {
+                    state.serialize_entry("time", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#time.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("time", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#text.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("text", &some)?;
+                }
+                if self.r#text.id.is_some() || !self.r#text.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#text.id.as_ref(),
+                        extension: &self.r#text.extension,
+                    };
+                    state.serialize_entry("_text", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("text", &self.r#text)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_time", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("text", &some)?;
-        }
-        if self.r#text.id.is_some() || !self.r#text.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#text.id,
-                extension: &self.r#text.extension,
-            };
-            state.serialize_entry("_text", &primitive_element)?;
-        }
-        state.end()
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Annotation {
@@ -136,8 +154,8 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                 let mut r#author: Option<AnnotationAuthor> = None;
                 let mut r#time: Option<super::super::types::DateTime> = None;
                 let mut r#text: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -235,7 +253,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -257,7 +275,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#author,
                         r#time,
-                        r#text: if config.mode
+                        r#text: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#text.unwrap_or(Default::default())

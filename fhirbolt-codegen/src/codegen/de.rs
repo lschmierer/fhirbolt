@@ -83,8 +83,8 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                             #field_mut_vars_tokens
                         )*
 
-                        fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                            let config = config.get();
+                        fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                            let _ctx = _ctx.get();
 
                             while let Some(map_access_key) = map_access.next_key()? {
                                 match map_access_key {
@@ -92,7 +92,7 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                                     #(
                                         #deserialize_fields_tokens
                                     )*
-                                    Field::Unknown(key) => if config.mode == fhirbolt_shared::serde_config::de::DeserializationMode::Strict {
+                                    Field::Unknown(key) => if _ctx.config.mode == fhirbolt_shared::serde_config::de::DeserializationMode::Strict {
                                         return Err(serde::de::Error::unknown_field(
                                             &key,
                                             &[
@@ -227,7 +227,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
     } else {
         if field.polymorph {
             quote! {
-                #field_name_ident: if config.mode == fhirbolt_shared::serde_config::de::DeserializationMode::Lax {
+                #field_name_ident: if _ctx.config.mode == fhirbolt_shared::serde_config::de::DeserializationMode::Lax {
                     #field_name_ident.unwrap_or(Default::default())
                 } else {
                     #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?
@@ -235,7 +235,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
             }
         } else {
             quote! {
-                #field_name_ident: if config.mode == fhirbolt_shared::serde_config::de::DeserializationMode::Lax {
+                #field_name_ident: if _ctx.config.mode == fhirbolt_shared::serde_config::de::DeserializationMode::Lax {
                     #field_name_ident.unwrap_or(Default::default())
                 } else {
                     #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?

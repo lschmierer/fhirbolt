@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the ResearchElementDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchElementDefinition can be anything."]
 #[derive(Debug, Clone)]
 pub enum ResearchElementDefinitionSubject {
@@ -99,186 +99,248 @@ impl serde::ser::Serialize for ResearchElementDefinitionCharacteristic {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        match self.r#definition {
-            ResearchElementDefinitionCharacteristicDefinition::CodeableConcept(ref value) => {
-                state.serialize_entry("definitionCodeableConcept", value)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            ResearchElementDefinitionCharacteristicDefinition::Canonical(ref value) => {
-                if let Some(some) = value.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("definitionCanonical", &some)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            match self.r#definition {
+                ResearchElementDefinitionCharacteristicDefinition::CodeableConcept(ref value) => {
+                    state.serialize_entry("definitionCodeableConcept", value)?;
                 }
-                if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: &value.id,
-                        extension: &value.extension,
-                    };
-                    state.serialize_entry("_definitionCanonical", &primitive_element)?;
+                ResearchElementDefinitionCharacteristicDefinition::Canonical(ref value) => {
+                    if _ctx.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("definitionCanonical", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            state.serialize_entry("_definitionCanonical", &primitive_element)?;
+                        }
+                    } else {
+                        state.serialize_entry("definitionCanonical", value)?;
+                    }
+                }
+                ResearchElementDefinitionCharacteristicDefinition::Expression(ref value) => {
+                    state.serialize_entry("definitionExpression", value)?;
+                }
+                ResearchElementDefinitionCharacteristicDefinition::DataRequirement(ref value) => {
+                    state.serialize_entry("definitionDataRequirement", value)?;
+                }
+                ResearchElementDefinitionCharacteristicDefinition::Invalid => {
+                    return Err(serde::ser::Error::custom("definition is a required field"))
                 }
             }
-            ResearchElementDefinitionCharacteristicDefinition::Expression(ref value) => {
-                state.serialize_entry("definitionExpression", value)?;
+            if !self.r#usage_context.is_empty() {
+                state.serialize_entry("usageContext", &self.r#usage_context)?;
             }
-            ResearchElementDefinitionCharacteristicDefinition::DataRequirement(ref value) => {
-                state.serialize_entry("definitionDataRequirement", value)?;
-            }
-            ResearchElementDefinitionCharacteristicDefinition::Invalid => {
-                return Err(serde::ser::Error::custom("definition is a required field"))
-            }
-        }
-        if !self.r#usage_context.is_empty() {
-            state.serialize_entry("usageContext", &self.r#usage_context)?;
-        }
-        if let Some(some) = self.r#exclude.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("exclude", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_exclude", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#unit_of_measure.as_ref() {
-            state.serialize_entry("unitOfMeasure", some)?;
-        }
-        if let Some(some) = self.r#study_effective_description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("studyEffectiveDescription", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_studyEffectiveDescription", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#study_effective.as_ref() {
-            match some {
-                ResearchElementDefinitionCharacteristicStudyEffective::DateTime(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#exclude.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("studyEffectiveDateTime", &some)?;
+                        state.serialize_entry("exclude", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_studyEffectiveDateTime", &primitive_element)?;
+                        state.serialize_entry("_exclude", &primitive_element)?;
                     }
                 }
-                ResearchElementDefinitionCharacteristicStudyEffective::Period(ref value) => {
-                    state.serialize_entry("studyEffectivePeriod", value)?;
-                }
-                ResearchElementDefinitionCharacteristicStudyEffective::Duration(ref value) => {
-                    state.serialize_entry("studyEffectiveDuration", value)?;
-                }
-                ResearchElementDefinitionCharacteristicStudyEffective::Timing(ref value) => {
-                    state.serialize_entry("studyEffectiveTiming", value)?;
-                }
-                ResearchElementDefinitionCharacteristicStudyEffective::Invalid => {
-                    return Err(serde::ser::Error::custom("study_effective is invalid"))
+            } else {
+                if let Some(some) = self.r#exclude.as_ref() {
+                    state.serialize_entry("exclude", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#study_effective_time_from_start.as_ref() {
-            state.serialize_entry("studyEffectiveTimeFromStart", some)?;
-        }
-        if let Some(some) = self.r#study_effective_group_measure.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("studyEffectiveGroupMeasure", &some)?;
+            if let Some(some) = self.r#unit_of_measure.as_ref() {
+                state.serialize_entry("unitOfMeasure", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_studyEffectiveGroupMeasure", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#participant_effective_description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("participantEffectiveDescription", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_participantEffectiveDescription", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#participant_effective.as_ref() {
-            match some {
-                ResearchElementDefinitionCharacteristicParticipantEffective::DateTime(
-                    ref value,
-                ) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#study_effective_description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("participantEffectiveDateTime", &some)?;
+                        state.serialize_entry("studyEffectiveDescription", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state
-                            .serialize_entry("_participantEffectiveDateTime", &primitive_element)?;
+                        state.serialize_entry("_studyEffectiveDescription", &primitive_element)?;
                     }
                 }
-                ResearchElementDefinitionCharacteristicParticipantEffective::Period(ref value) => {
-                    state.serialize_entry("participantEffectivePeriod", value)?;
-                }
-                ResearchElementDefinitionCharacteristicParticipantEffective::Duration(
-                    ref value,
-                ) => {
-                    state.serialize_entry("participantEffectiveDuration", value)?;
-                }
-                ResearchElementDefinitionCharacteristicParticipantEffective::Timing(ref value) => {
-                    state.serialize_entry("participantEffectiveTiming", value)?;
-                }
-                ResearchElementDefinitionCharacteristicParticipantEffective::Invalid => {
-                    return Err(serde::ser::Error::custom(
-                        "participant_effective is invalid",
-                    ))
+            } else {
+                if let Some(some) = self.r#study_effective_description.as_ref() {
+                    state.serialize_entry("studyEffectiveDescription", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#participant_effective_time_from_start.as_ref() {
-            state.serialize_entry("participantEffectiveTimeFromStart", some)?;
-        }
-        if let Some(some) = self.r#participant_effective_group_measure.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("participantEffectiveGroupMeasure", &some)?;
+            if let Some(some) = self.r#study_effective.as_ref() {
+                match some {
+                    ResearchElementDefinitionCharacteristicStudyEffective::DateTime(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("studyEffectiveDateTime", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry(
+                                    "_studyEffectiveDateTime",
+                                    &primitive_element,
+                                )?;
+                            }
+                        } else {
+                            state.serialize_entry("studyEffectiveDateTime", value)?;
+                        }
+                    }
+                    ResearchElementDefinitionCharacteristicStudyEffective::Period(ref value) => {
+                        state.serialize_entry("studyEffectivePeriod", value)?;
+                    }
+                    ResearchElementDefinitionCharacteristicStudyEffective::Duration(ref value) => {
+                        state.serialize_entry("studyEffectiveDuration", value)?;
+                    }
+                    ResearchElementDefinitionCharacteristicStudyEffective::Timing(ref value) => {
+                        state.serialize_entry("studyEffectiveTiming", value)?;
+                    }
+                    ResearchElementDefinitionCharacteristicStudyEffective::Invalid => {
+                        return Err(serde::ser::Error::custom("study_effective is invalid"))
+                    }
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_participantEffectiveGroupMeasure", &primitive_element)?;
+            if let Some(some) = self.r#study_effective_time_from_start.as_ref() {
+                state.serialize_entry("studyEffectiveTimeFromStart", some)?;
             }
-        }
-        state.end()
+            if _ctx.output_json {
+                if let Some(some) = self.r#study_effective_group_measure.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("studyEffectiveGroupMeasure", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_studyEffectiveGroupMeasure", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#study_effective_group_measure.as_ref() {
+                    state.serialize_entry("studyEffectiveGroupMeasure", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#participant_effective_description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("participantEffectiveDescription", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry(
+                            "_participantEffectiveDescription",
+                            &primitive_element,
+                        )?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#participant_effective_description.as_ref() {
+                    state.serialize_entry("participantEffectiveDescription", some)?;
+                }
+            }
+            if let Some(some) = self.r#participant_effective.as_ref() {
+                match some {
+                    ResearchElementDefinitionCharacteristicParticipantEffective::DateTime(
+                        ref value,
+                    ) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("participantEffectiveDateTime", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry(
+                                    "_participantEffectiveDateTime",
+                                    &primitive_element,
+                                )?;
+                            }
+                        } else {
+                            state.serialize_entry("participantEffectiveDateTime", value)?;
+                        }
+                    }
+                    ResearchElementDefinitionCharacteristicParticipantEffective::Period(
+                        ref value,
+                    ) => {
+                        state.serialize_entry("participantEffectivePeriod", value)?;
+                    }
+                    ResearchElementDefinitionCharacteristicParticipantEffective::Duration(
+                        ref value,
+                    ) => {
+                        state.serialize_entry("participantEffectiveDuration", value)?;
+                    }
+                    ResearchElementDefinitionCharacteristicParticipantEffective::Timing(
+                        ref value,
+                    ) => {
+                        state.serialize_entry("participantEffectiveTiming", value)?;
+                    }
+                    ResearchElementDefinitionCharacteristicParticipantEffective::Invalid => {
+                        return Err(serde::ser::Error::custom(
+                            "participant_effective is invalid",
+                        ))
+                    }
+                }
+            }
+            if let Some(some) = self.r#participant_effective_time_from_start.as_ref() {
+                state.serialize_entry("participantEffectiveTimeFromStart", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#participant_effective_group_measure.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("participantEffectiveGroupMeasure", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry(
+                            "_participantEffectiveGroupMeasure",
+                            &primitive_element,
+                        )?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#participant_effective_group_measure.as_ref() {
+                    state.serialize_entry("participantEffectiveGroupMeasure", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristic {
@@ -395,7 +457,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
                 > = None;
                 let mut r#participant_effective_group_measure: Option<super::super::types::Code> =
                     None;
-                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DefinitionCodeableConcept => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCodeableConcept")) ; } r#definition = Some (ResearchElementDefinitionCharacteristicDefinition :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DefinitionCanonical => { let r#enum = r#definition . get_or_insert (ResearchElementDefinitionCharacteristicDefinition :: Canonical (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCanonical")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("definition[x]")) ; } } , Field :: DefinitionCanonicalPrimitiveElement => { let r#enum = r#definition . get_or_insert (ResearchElementDefinitionCharacteristicDefinition :: Canonical (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_definitionCanonical")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_definition[x]")) ; } } , Field :: DefinitionExpression => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionExpression")) ; } r#definition = Some (ResearchElementDefinitionCharacteristicDefinition :: Expression (map_access . next_value () ?)) ; } , Field :: DefinitionDataRequirement => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionDataRequirement")) ; } r#definition = Some (ResearchElementDefinitionCharacteristicDefinition :: DataRequirement (map_access . next_value () ?)) ; } , Field :: UsageContext => { if r#usage_context . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usageContext")) ; } r#usage_context = Some (map_access . next_value () ?) ; } , Field :: Exclude => { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("exclude")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ExcludePrimitiveElement => { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_exclude")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: UnitOfMeasure => { if r#unit_of_measure . is_some () { return Err (serde :: de :: Error :: duplicate_field ("unitOfMeasure")) ; } r#unit_of_measure = Some (map_access . next_value () ?) ; } , Field :: StudyEffectiveDescription => { let some = r#study_effective_description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveDescription")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: StudyEffectiveDescriptionPrimitiveElement => { let some = r#study_effective_description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_studyEffectiveDescription")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: StudyEffectiveDateTime => { let r#enum = r#study_effective . get_or_insert (ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("studyEffective[x]")) ; } } , Field :: StudyEffectiveDateTimePrimitiveElement => { let r#enum = r#study_effective . get_or_insert (ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_studyEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_studyEffective[x]")) ; } } , Field :: StudyEffectivePeriod => { if r#study_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectivePeriod")) ; } r#study_effective = Some (ResearchElementDefinitionCharacteristicStudyEffective :: Period (map_access . next_value () ?)) ; } , Field :: StudyEffectiveDuration => { if r#study_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveDuration")) ; } r#study_effective = Some (ResearchElementDefinitionCharacteristicStudyEffective :: Duration (map_access . next_value () ?)) ; } , Field :: StudyEffectiveTiming => { if r#study_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveTiming")) ; } r#study_effective = Some (ResearchElementDefinitionCharacteristicStudyEffective :: Timing (map_access . next_value () ?)) ; } , Field :: StudyEffectiveTimeFromStart => { if r#study_effective_time_from_start . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveTimeFromStart")) ; } r#study_effective_time_from_start = Some (map_access . next_value () ?) ; } , Field :: StudyEffectiveGroupMeasure => { let some = r#study_effective_group_measure . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveGroupMeasure")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: StudyEffectiveGroupMeasurePrimitiveElement => { let some = r#study_effective_group_measure . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_studyEffectiveGroupMeasure")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: ParticipantEffectiveDescription => { let some = r#participant_effective_description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDescription")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ParticipantEffectiveDescriptionPrimitiveElement => { let some = r#participant_effective_description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDescription")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: ParticipantEffectiveDateTime => { let r#enum = r#participant_effective . get_or_insert (ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("participantEffective[x]")) ; } } , Field :: ParticipantEffectiveDateTimePrimitiveElement => { let r#enum = r#participant_effective . get_or_insert (ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_participantEffective[x]")) ; } } , Field :: ParticipantEffectivePeriod => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectivePeriod")) ; } r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Period (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveDuration => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDuration")) ; } r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Duration (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveTiming => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveTiming")) ; } r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Timing (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveTimeFromStart => { if r#participant_effective_time_from_start . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveTimeFromStart")) ; } r#participant_effective_time_from_start = Some (map_access . next_value () ?) ; } , Field :: ParticipantEffectiveGroupMeasure => { let some = r#participant_effective_group_measure . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveGroupMeasure")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ParticipantEffectiveGroupMeasurePrimitiveElement => { let some = r#participant_effective_group_measure . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveGroupMeasure")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "definitionCodeableConcept" , "definitionCanonical" , "definitionExpression" , "definitionDataRequirement" , "usageContext" , "exclude" , "unitOfMeasure" , "studyEffectiveDescription" , "studyEffectiveDateTime" , "studyEffectivePeriod" , "studyEffectiveDuration" , "studyEffectiveTiming" , "studyEffectiveTimeFromStart" , "studyEffectiveGroupMeasure" , "participantEffectiveDescription" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "participantEffectiveTimeFromStart" , "participantEffectiveGroupMeasure" ,])) ; } } } Ok (ResearchElementDefinitionCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#definition : if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#definition . unwrap_or (Default :: default ()) } else { r#definition . ok_or (serde :: de :: Error :: missing_field ("definition[x]")) ? } , r#usage_context : r#usage_context . unwrap_or (vec ! []) , r#exclude , r#unit_of_measure , r#study_effective_description , r#study_effective , r#study_effective_time_from_start , r#study_effective_group_measure , r#participant_effective_description , r#participant_effective , r#participant_effective_time_from_start , r#participant_effective_group_measure , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DefinitionCodeableConcept => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCodeableConcept")) ; } r#definition = Some (ResearchElementDefinitionCharacteristicDefinition :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DefinitionCanonical => { let r#enum = r#definition . get_or_insert (ResearchElementDefinitionCharacteristicDefinition :: Canonical (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCanonical")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("definition[x]")) ; } } , Field :: DefinitionCanonicalPrimitiveElement => { let r#enum = r#definition . get_or_insert (ResearchElementDefinitionCharacteristicDefinition :: Canonical (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_definitionCanonical")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_definition[x]")) ; } } , Field :: DefinitionExpression => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionExpression")) ; } r#definition = Some (ResearchElementDefinitionCharacteristicDefinition :: Expression (map_access . next_value () ?)) ; } , Field :: DefinitionDataRequirement => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionDataRequirement")) ; } r#definition = Some (ResearchElementDefinitionCharacteristicDefinition :: DataRequirement (map_access . next_value () ?)) ; } , Field :: UsageContext => { if r#usage_context . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usageContext")) ; } r#usage_context = Some (map_access . next_value () ?) ; } , Field :: Exclude => { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("exclude")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ExcludePrimitiveElement => { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_exclude")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: UnitOfMeasure => { if r#unit_of_measure . is_some () { return Err (serde :: de :: Error :: duplicate_field ("unitOfMeasure")) ; } r#unit_of_measure = Some (map_access . next_value () ?) ; } , Field :: StudyEffectiveDescription => { let some = r#study_effective_description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveDescription")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: StudyEffectiveDescriptionPrimitiveElement => { let some = r#study_effective_description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_studyEffectiveDescription")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: StudyEffectiveDateTime => { let r#enum = r#study_effective . get_or_insert (ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("studyEffective[x]")) ; } } , Field :: StudyEffectiveDateTimePrimitiveElement => { let r#enum = r#study_effective . get_or_insert (ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicStudyEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_studyEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_studyEffective[x]")) ; } } , Field :: StudyEffectivePeriod => { if r#study_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectivePeriod")) ; } r#study_effective = Some (ResearchElementDefinitionCharacteristicStudyEffective :: Period (map_access . next_value () ?)) ; } , Field :: StudyEffectiveDuration => { if r#study_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveDuration")) ; } r#study_effective = Some (ResearchElementDefinitionCharacteristicStudyEffective :: Duration (map_access . next_value () ?)) ; } , Field :: StudyEffectiveTiming => { if r#study_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveTiming")) ; } r#study_effective = Some (ResearchElementDefinitionCharacteristicStudyEffective :: Timing (map_access . next_value () ?)) ; } , Field :: StudyEffectiveTimeFromStart => { if r#study_effective_time_from_start . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveTimeFromStart")) ; } r#study_effective_time_from_start = Some (map_access . next_value () ?) ; } , Field :: StudyEffectiveGroupMeasure => { let some = r#study_effective_group_measure . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("studyEffectiveGroupMeasure")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: StudyEffectiveGroupMeasurePrimitiveElement => { let some = r#study_effective_group_measure . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_studyEffectiveGroupMeasure")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: ParticipantEffectiveDescription => { let some = r#participant_effective_description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDescription")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ParticipantEffectiveDescriptionPrimitiveElement => { let some = r#participant_effective_description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDescription")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: ParticipantEffectiveDateTime => { let r#enum = r#participant_effective . get_or_insert (ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("participantEffective[x]")) ; } } , Field :: ParticipantEffectiveDateTimePrimitiveElement => { let r#enum = r#participant_effective . get_or_insert (ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let ResearchElementDefinitionCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_participantEffective[x]")) ; } } , Field :: ParticipantEffectivePeriod => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectivePeriod")) ; } r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Period (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveDuration => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDuration")) ; } r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Duration (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveTiming => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveTiming")) ; } r#participant_effective = Some (ResearchElementDefinitionCharacteristicParticipantEffective :: Timing (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveTimeFromStart => { if r#participant_effective_time_from_start . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveTimeFromStart")) ; } r#participant_effective_time_from_start = Some (map_access . next_value () ?) ; } , Field :: ParticipantEffectiveGroupMeasure => { let some = r#participant_effective_group_measure . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveGroupMeasure")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ParticipantEffectiveGroupMeasurePrimitiveElement => { let some = r#participant_effective_group_measure . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveGroupMeasure")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "definitionCodeableConcept" , "definitionCanonical" , "definitionExpression" , "definitionDataRequirement" , "usageContext" , "exclude" , "unitOfMeasure" , "studyEffectiveDescription" , "studyEffectiveDateTime" , "studyEffectivePeriod" , "studyEffectiveDuration" , "studyEffectiveTiming" , "studyEffectiveTimeFromStart" , "studyEffectiveGroupMeasure" , "participantEffectiveDescription" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "participantEffectiveTimeFromStart" , "participantEffectiveGroupMeasure" ,])) ; } } } Ok (ResearchElementDefinitionCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#definition : if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Lax { r#definition . unwrap_or (Default :: default ()) } else { r#definition . ok_or (serde :: de :: Error :: missing_field ("definition[x]")) ? } , r#usage_context : r#usage_context . unwrap_or (vec ! []) , r#exclude , r#unit_of_measure , r#study_effective_description , r#study_effective , r#study_effective_time_from_start , r#study_effective_group_measure , r#participant_effective_description , r#participant_effective , r#participant_effective_time_from_start , r#participant_effective_group_measure , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -493,396 +555,527 @@ impl serde::ser::Serialize for ResearchElementDefinition {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "ResearchElementDefinition")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "ResearchElementDefinition")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#url.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("url", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_url", &primitive_element)?;
-            }
-        }
-        if !self.r#identifier.is_empty() {
-            state.serialize_entry("identifier", &self.r#identifier)?;
-        }
-        if let Some(some) = self.r#version.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("version", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_version", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#name.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("name", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_name", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#title.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("title", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_title", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#short_title.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("shortTitle", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_shortTitle", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#subtitle.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("subtitle", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_subtitle", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#status.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("status", &some)?;
-        }
-        if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#status.id,
-                extension: &self.r#status.extension,
-            };
-            state.serialize_entry("_status", &primitive_element)?;
-        }
-        if let Some(some) = self.r#experimental.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("experimental", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_experimental", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#subject.as_ref() {
-            match some {
-                ResearchElementDefinitionSubject::CodeableConcept(ref value) => {
-                    state.serialize_entry("subjectCodeableConcept", value)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("implicitRules", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
+                    }
                 }
-                ResearchElementDefinitionSubject::Reference(ref value) => {
-                    state.serialize_entry("subjectReference", value)?;
-                }
-                ResearchElementDefinitionSubject::Invalid => {
-                    return Err(serde::ser::Error::custom("subject is invalid"))
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("date", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_date", &primitive_element)?;
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
             }
-        }
-        if let Some(some) = self.r#publisher.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("publisher", &some)?;
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_publisher", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if !self.r#contact.is_empty() {
-            state.serialize_entry("contact", &self.r#contact)?;
-        }
-        if let Some(some) = self.r#description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("description", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_description", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#url.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("url", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_url", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#url.as_ref() {
+                    state.serialize_entry("url", some)?;
+                }
             }
-        }
-        if !self.r#comment.is_empty() {
-            let values = self
-                .r#comment
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("comment", &values)?;
+            if !self.r#identifier.is_empty() {
+                state.serialize_entry("identifier", &self.r#identifier)?;
             }
-            let requires_elements = self
-                .r#comment
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#comment
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if _ctx.output_json {
+                if let Some(some) = self.r#version.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("version", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_version", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#version.as_ref() {
+                    state.serialize_entry("version", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#name.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("name", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_name", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#name.as_ref() {
+                    state.serialize_entry("name", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#title.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("title", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_title", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#title.as_ref() {
+                    state.serialize_entry("title", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#short_title.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("shortTitle", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_shortTitle", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#short_title.as_ref() {
+                    state.serialize_entry("shortTitle", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#subtitle.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("subtitle", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_subtitle", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#subtitle.as_ref() {
+                    state.serialize_entry("subtitle", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#status.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("status", &some)?;
+                }
+                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#status.id.as_ref(),
+                        extension: &self.r#status.extension,
+                    };
+                    state.serialize_entry("_status", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("status", &self.r#status)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#experimental.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("experimental", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_experimental", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#experimental.as_ref() {
+                    state.serialize_entry("experimental", some)?;
+                }
+            }
+            if let Some(some) = self.r#subject.as_ref() {
+                match some {
+                    ResearchElementDefinitionSubject::CodeableConcept(ref value) => {
+                        state.serialize_entry("subjectCodeableConcept", value)?;
+                    }
+                    ResearchElementDefinitionSubject::Reference(ref value) => {
+                        state.serialize_entry("subjectReference", value)?;
+                    }
+                    ResearchElementDefinitionSubject::Invalid => {
+                        return Err(serde::ser::Error::custom("subject is invalid"))
+                    }
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("date", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_date", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#date.as_ref() {
+                    state.serialize_entry("date", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#publisher.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("publisher", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_publisher", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#publisher.as_ref() {
+                    state.serialize_entry("publisher", some)?;
+                }
+            }
+            if !self.r#contact.is_empty() {
+                state.serialize_entry("contact", &self.r#contact)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("description", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_description", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#description.as_ref() {
+                    state.serialize_entry("description", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if !self.r#comment.is_empty() {
+                    let values = self
+                        .r#comment
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("comment", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#comment
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#comment
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_comment", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_comment", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#comment.is_empty() {
+                    state.serialize_entry("comment", &self.r#comment)?;
+                }
             }
-        }
-        if !self.r#use_context.is_empty() {
-            state.serialize_entry("useContext", &self.r#use_context)?;
-        }
-        if !self.r#jurisdiction.is_empty() {
-            state.serialize_entry("jurisdiction", &self.r#jurisdiction)?;
-        }
-        if let Some(some) = self.r#purpose.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("purpose", &some)?;
+            if !self.r#use_context.is_empty() {
+                state.serialize_entry("useContext", &self.r#use_context)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_purpose", &primitive_element)?;
+            if !self.r#jurisdiction.is_empty() {
+                state.serialize_entry("jurisdiction", &self.r#jurisdiction)?;
             }
-        }
-        if let Some(some) = self.r#usage.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("usage", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#purpose.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("purpose", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_purpose", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#purpose.as_ref() {
+                    state.serialize_entry("purpose", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_usage", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#usage.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("usage", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_usage", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#usage.as_ref() {
+                    state.serialize_entry("usage", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#copyright.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("copyright", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#copyright.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("copyright", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_copyright", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#copyright.as_ref() {
+                    state.serialize_entry("copyright", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_copyright", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#approval_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("approvalDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_approvalDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#approval_date.as_ref() {
+                    state.serialize_entry("approvalDate", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#approval_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("approvalDate", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#last_review_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("lastReviewDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_lastReviewDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#last_review_date.as_ref() {
+                    state.serialize_entry("lastReviewDate", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_approvalDate", &primitive_element)?;
+            if let Some(some) = self.r#effective_period.as_ref() {
+                state.serialize_entry("effectivePeriod", some)?;
             }
-        }
-        if let Some(some) = self.r#last_review_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("lastReviewDate", &some)?;
+            if !self.r#topic.is_empty() {
+                state.serialize_entry("topic", &self.r#topic)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_lastReviewDate", &primitive_element)?;
+            if !self.r#author.is_empty() {
+                state.serialize_entry("author", &self.r#author)?;
             }
-        }
-        if let Some(some) = self.r#effective_period.as_ref() {
-            state.serialize_entry("effectivePeriod", some)?;
-        }
-        if !self.r#topic.is_empty() {
-            state.serialize_entry("topic", &self.r#topic)?;
-        }
-        if !self.r#author.is_empty() {
-            state.serialize_entry("author", &self.r#author)?;
-        }
-        if !self.r#editor.is_empty() {
-            state.serialize_entry("editor", &self.r#editor)?;
-        }
-        if !self.r#reviewer.is_empty() {
-            state.serialize_entry("reviewer", &self.r#reviewer)?;
-        }
-        if !self.r#endorser.is_empty() {
-            state.serialize_entry("endorser", &self.r#endorser)?;
-        }
-        if !self.r#related_artifact.is_empty() {
-            state.serialize_entry("relatedArtifact", &self.r#related_artifact)?;
-        }
-        if !self.r#library.is_empty() {
-            let values = self
-                .r#library
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("library", &values)?;
+            if !self.r#editor.is_empty() {
+                state.serialize_entry("editor", &self.r#editor)?;
             }
-            let requires_elements = self
-                .r#library
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#library
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
+            if !self.r#reviewer.is_empty() {
+                state.serialize_entry("reviewer", &self.r#reviewer)?;
+            }
+            if !self.r#endorser.is_empty() {
+                state.serialize_entry("endorser", &self.r#endorser)?;
+            }
+            if !self.r#related_artifact.is_empty() {
+                state.serialize_entry("relatedArtifact", &self.r#related_artifact)?;
+            }
+            if _ctx.output_json {
+                if !self.r#library.is_empty() {
+                    let values = self
+                        .r#library
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("library", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#library
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#library
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
                             })
-                        } else {
-                            None
-                        }
-                    })
-                    .collect();
-                state.serialize_entry("_library", &primitive_elements)?;
+                            .collect();
+                        state.serialize_entry("_library", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#library.is_empty() {
+                    state.serialize_entry("library", &self.r#library)?;
+                }
             }
-        }
-        if let Some(some) = self.r#type.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("type", &some)?;
-        }
-        if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#type.id,
-                extension: &self.r#type.extension,
-            };
-            state.serialize_entry("_type", &primitive_element)?;
-        }
-        if let Some(some) = self.r#variable_type.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("variableType", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#type.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("type", &some)?;
+                }
+                if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#type.id.as_ref(),
+                        extension: &self.r#type.extension,
+                    };
+                    state.serialize_entry("_type", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("type", &self.r#type)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_variableType", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#variable_type.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("variableType", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_variableType", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#variable_type.as_ref() {
+                    state.serialize_entry("variableType", some)?;
+                }
             }
-        }
-        if !self.r#characteristic.is_empty() {
-            state.serialize_entry("characteristic", &self.r#characteristic)?;
-        }
-        state.end()
+            if !self.r#characteristic.is_empty() {
+                state.serialize_entry("characteristic", &self.r#characteristic)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
@@ -1080,8 +1273,8 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                 let mut r#variable_type: Option<super::super::types::Code> = None;
                 let mut r#characteristic: Option<Vec<ResearchElementDefinitionCharacteristic>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -1736,7 +1929,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                                 }
                                 r#characteristic = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1805,7 +1998,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                         r#title,
                         r#short_title,
                         r#subtitle,
-                        r#status: if config.mode
+                        r#status: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
@@ -1834,7 +2027,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
                         r#endorser: r#endorser.unwrap_or(vec![]),
                         r#related_artifact: r#related_artifact.unwrap_or(vec![]),
                         r#library: r#library.unwrap_or(vec![]),
-                        r#type: if config.mode
+                        r#type: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())

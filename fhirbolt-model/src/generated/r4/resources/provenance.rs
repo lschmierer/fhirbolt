@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "The period during which the activity occurred."]
 #[derive(Debug, Clone)]
 pub enum ProvenanceOccurred {
@@ -40,27 +40,30 @@ impl serde::ser::Serialize for ProvenanceAgent {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#type.as_ref() {
-            state.serialize_entry("type", some)?;
-        }
-        if !self.r#role.is_empty() {
-            state.serialize_entry("role", &self.r#role)?;
-        }
-        state.serialize_entry("who", &self.r#who)?;
-        if let Some(some) = self.r#on_behalf_of.as_ref() {
-            state.serialize_entry("onBehalfOf", some)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#type.as_ref() {
+                state.serialize_entry("type", some)?;
+            }
+            if !self.r#role.is_empty() {
+                state.serialize_entry("role", &self.r#role)?;
+            }
+            state.serialize_entry("who", &self.r#who)?;
+            if let Some(some) = self.r#on_behalf_of.as_ref() {
+                state.serialize_entry("onBehalfOf", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
@@ -105,8 +108,8 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                 let mut r#role: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#who: Option<Box<super::super::types::Reference>> = None;
                 let mut r#on_behalf_of: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -153,7 +156,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                                 }
                                 r#on_behalf_of = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -177,7 +180,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type,
                         r#role: r#role.unwrap_or(vec![]),
-                        r#who: if config.mode
+                        r#who: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#who.unwrap_or(Default::default())
@@ -214,32 +217,39 @@ impl serde::ser::Serialize for ProvenanceEntity {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#role.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("role", &some)?;
-        }
-        if self.r#role.id.is_some() || !self.r#role.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#role.id,
-                extension: &self.r#role.extension,
-            };
-            state.serialize_entry("_role", &primitive_element)?;
-        }
-        state.serialize_entry("what", &self.r#what)?;
-        if !self.r#agent.is_empty() {
-            state.serialize_entry("agent", &self.r#agent)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#role.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("role", &some)?;
+                }
+                if self.r#role.id.is_some() || !self.r#role.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#role.id.as_ref(),
+                        extension: &self.r#role.extension,
+                    };
+                    state.serialize_entry("_role", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("role", &self.r#role)?;
+            }
+            state.serialize_entry("what", &self.r#what)?;
+            if !self.r#agent.is_empty() {
+                state.serialize_entry("agent", &self.r#agent)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
@@ -283,8 +293,8 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                 let mut r#role: Option<super::super::types::Code> = None;
                 let mut r#what: Option<Box<super::super::types::Reference>> = None;
                 let mut r#agent: Option<Vec<ProvenanceAgent>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -339,7 +349,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                                 }
                                 r#agent = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -360,14 +370,14 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#role: if config.mode
+                        r#role: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#role.unwrap_or(Default::default())
                         } else {
                             r#role.ok_or(serde::de::Error::missing_field("role"))?
                         },
-                        r#what: if config.mode
+                        r#what: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#what.unwrap_or(Default::default())
@@ -428,140 +438,170 @@ impl serde::ser::Serialize for Provenance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "Provenance")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "Provenance")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
-            }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if !self.r#target.is_empty() {
-            state.serialize_entry("target", &self.r#target)?;
-        }
-        if let Some(some) = self.r#occurred.as_ref() {
-            match some {
-                ProvenanceOccurred::Period(ref value) => {
-                    state.serialize_entry("occurredPeriod", value)?;
-                }
-                ProvenanceOccurred::DateTime(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("occurredDateTime", &some)?;
+                        state.serialize_entry("implicitRules", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_occurredDateTime", &primitive_element)?;
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
                     }
                 }
-                ProvenanceOccurred::Invalid => {
-                    return Err(serde::ser::Error::custom("occurred is invalid"))
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#recorded.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("recorded", &some)?;
-        }
-        if self.r#recorded.id.is_some() || !self.r#recorded.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#recorded.id,
-                extension: &self.r#recorded.extension,
-            };
-            state.serialize_entry("_recorded", &primitive_element)?;
-        }
-        if !self.r#policy.is_empty() {
-            let values = self
-                .r#policy
-                .iter()
-                .map(|v| &v.value)
-                .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                .collect::<Result<Vec<_>, _>>()?;
-            if values.iter().any(|v| v.is_some()) {
-                state.serialize_entry("policy", &values)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-            let requires_elements = self
-                .r#policy
-                .iter()
-                .any(|e| e.id.is_some() || !e.extension.is_empty());
-            if requires_elements {
-                let primitive_elements: Vec<_> = self
-                    .r#policy
-                    .iter()
-                    .map(|e| {
-                        if e.id.is_some() || !e.extension.is_empty() {
-                            Some(super::super::serde_helpers::PrimitiveElement {
-                                id: &e.id,
-                                extension: &e.extension,
-                            })
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
+            }
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if !self.r#target.is_empty() {
+                state.serialize_entry("target", &self.r#target)?;
+            }
+            if let Some(some) = self.r#occurred.as_ref() {
+                match some {
+                    ProvenanceOccurred::Period(ref value) => {
+                        state.serialize_entry("occurredPeriod", value)?;
+                    }
+                    ProvenanceOccurred::DateTime(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("occurredDateTime", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_occurredDateTime", &primitive_element)?;
+                            }
                         } else {
-                            None
+                            state.serialize_entry("occurredDateTime", value)?;
                         }
-                    })
-                    .collect();
-                state.serialize_entry("_policy", &primitive_elements)?;
+                    }
+                    ProvenanceOccurred::Invalid => {
+                        return Err(serde::ser::Error::custom("occurred is invalid"))
+                    }
+                }
             }
-        }
-        if let Some(some) = self.r#location.as_ref() {
-            state.serialize_entry("location", some)?;
-        }
-        if !self.r#reason.is_empty() {
-            state.serialize_entry("reason", &self.r#reason)?;
-        }
-        if let Some(some) = self.r#activity.as_ref() {
-            state.serialize_entry("activity", some)?;
-        }
-        if !self.r#agent.is_empty() {
-            state.serialize_entry("agent", &self.r#agent)?;
-        }
-        if !self.r#entity.is_empty() {
-            state.serialize_entry("entity", &self.r#entity)?;
-        }
-        if !self.r#signature.is_empty() {
-            state.serialize_entry("signature", &self.r#signature)?;
-        }
-        state.end()
+            if _ctx.output_json {
+                if let Some(some) = self.r#recorded.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("recorded", &some)?;
+                }
+                if self.r#recorded.id.is_some() || !self.r#recorded.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#recorded.id.as_ref(),
+                        extension: &self.r#recorded.extension,
+                    };
+                    state.serialize_entry("_recorded", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("recorded", &self.r#recorded)?;
+            }
+            if _ctx.output_json {
+                if !self.r#policy.is_empty() {
+                    let values = self
+                        .r#policy
+                        .iter()
+                        .map(|v| &v.value)
+                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                        .collect::<Result<Vec<_>, _>>()?;
+                    if values.iter().any(|v| v.is_some()) {
+                        state.serialize_entry("policy", &values)?;
+                    }
+                    let requires_elements = self
+                        .r#policy
+                        .iter()
+                        .any(|e| e.id.is_some() || !e.extension.is_empty());
+                    if requires_elements {
+                        let primitive_elements: Vec<_> = self
+                            .r#policy
+                            .iter()
+                            .map(|e| {
+                                if e.id.is_some() || !e.extension.is_empty() {
+                                    Some(super::super::serde_helpers::PrimitiveElement {
+                                        id: e.id.as_ref(),
+                                        extension: &e.extension,
+                                    })
+                                } else {
+                                    None
+                                }
+                            })
+                            .collect();
+                        state.serialize_entry("_policy", &primitive_elements)?;
+                    }
+                }
+            } else {
+                if !self.r#policy.is_empty() {
+                    state.serialize_entry("policy", &self.r#policy)?;
+                }
+            }
+            if let Some(some) = self.r#location.as_ref() {
+                state.serialize_entry("location", some)?;
+            }
+            if !self.r#reason.is_empty() {
+                state.serialize_entry("reason", &self.r#reason)?;
+            }
+            if let Some(some) = self.r#activity.as_ref() {
+                state.serialize_entry("activity", some)?;
+            }
+            if !self.r#agent.is_empty() {
+                state.serialize_entry("agent", &self.r#agent)?;
+            }
+            if !self.r#entity.is_empty() {
+                state.serialize_entry("entity", &self.r#entity)?;
+            }
+            if !self.r#signature.is_empty() {
+                state.serialize_entry("signature", &self.r#signature)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for Provenance {
@@ -653,8 +693,8 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                 let mut r#agent: Option<Vec<ProvenanceAgent>> = None;
                 let mut r#entity: Option<Vec<ProvenanceEntity>> = None;
                 let mut r#signature: Option<Vec<Box<super::super::types::Signature>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -903,7 +943,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                 }
                                 r#signature = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -944,7 +984,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#target: r#target.unwrap_or(vec![]),
                         r#occurred,
-                        r#recorded: if config.mode
+                        r#recorded: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#recorded.unwrap_or(Default::default())

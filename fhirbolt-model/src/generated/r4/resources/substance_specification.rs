@@ -1,4 +1,4 @@
-// Generated on 2022-12-07 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
 #[doc = "Quantitative value for this moiety."]
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationMoietyAmount {
@@ -96,78 +96,98 @@ impl serde::ser::Serialize for SubstanceSpecificationMoiety {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#role.as_ref() {
-            state.serialize_entry("role", some)?;
-        }
-        if let Some(some) = self.r#identifier.as_ref() {
-            state.serialize_entry("identifier", some)?;
-        }
-        if let Some(some) = self.r#name.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("name", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_name", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#stereochemistry.as_ref() {
-            state.serialize_entry("stereochemistry", some)?;
-        }
-        if let Some(some) = self.r#optical_activity.as_ref() {
-            state.serialize_entry("opticalActivity", some)?;
-        }
-        if let Some(some) = self.r#molecular_formula.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("molecularFormula", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_molecularFormula", &primitive_element)?;
+            if let Some(some) = self.r#role.as_ref() {
+                state.serialize_entry("role", some)?;
             }
-        }
-        if let Some(some) = self.r#amount.as_ref() {
-            match some {
-                SubstanceSpecificationMoietyAmount::Quantity(ref value) => {
-                    state.serialize_entry("amountQuantity", value)?;
-                }
-                SubstanceSpecificationMoietyAmount::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if let Some(some) = self.r#identifier.as_ref() {
+                state.serialize_entry("identifier", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#name.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("amountString", &some)?;
+                        state.serialize_entry("name", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_amountString", &primitive_element)?;
+                        state.serialize_entry("_name", &primitive_element)?;
                     }
                 }
-                SubstanceSpecificationMoietyAmount::Invalid => {
-                    return Err(serde::ser::Error::custom("amount is invalid"))
+            } else {
+                if let Some(some) = self.r#name.as_ref() {
+                    state.serialize_entry("name", some)?;
                 }
             }
-        }
-        state.end()
+            if let Some(some) = self.r#stereochemistry.as_ref() {
+                state.serialize_entry("stereochemistry", some)?;
+            }
+            if let Some(some) = self.r#optical_activity.as_ref() {
+                state.serialize_entry("opticalActivity", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#molecular_formula.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("molecularFormula", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_molecularFormula", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#molecular_formula.as_ref() {
+                    state.serialize_entry("molecularFormula", some)?;
+                }
+            }
+            if let Some(some) = self.r#amount.as_ref() {
+                match some {
+                    SubstanceSpecificationMoietyAmount::Quantity(ref value) => {
+                        state.serialize_entry("amountQuantity", value)?;
+                    }
+                    SubstanceSpecificationMoietyAmount::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("amountString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_amountString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("amountString", value)?;
+                        }
+                    }
+                    SubstanceSpecificationMoietyAmount::Invalid => {
+                        return Err(serde::ser::Error::custom("amount is invalid"))
+                    }
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
@@ -233,8 +253,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                     None;
                 let mut r#molecular_formula: Option<super::super::types::String> = None;
                 let mut r#amount: Option<SubstanceSpecificationMoietyAmount> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -377,7 +397,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                                     return Err(serde::de::Error::duplicate_field("_amount[x]"));
                                 }
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -443,72 +463,86 @@ impl serde::ser::Serialize for SubstanceSpecificationProperty {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#category.as_ref() {
-            state.serialize_entry("category", some)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if let Some(some) = self.r#parameters.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("parameters", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_parameters", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#defining_substance.as_ref() {
-            match some {
-                SubstanceSpecificationPropertyDefiningSubstance::Reference(ref value) => {
-                    state.serialize_entry("definingSubstanceReference", value)?;
-                }
-                SubstanceSpecificationPropertyDefiningSubstance::CodeableConcept(ref value) => {
-                    state.serialize_entry("definingSubstanceCodeableConcept", value)?;
-                }
-                SubstanceSpecificationPropertyDefiningSubstance::Invalid => {
-                    return Err(serde::ser::Error::custom("defining_substance is invalid"))
-                }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-        }
-        if let Some(some) = self.r#amount.as_ref() {
-            match some {
-                SubstanceSpecificationPropertyAmount::Quantity(ref value) => {
-                    state.serialize_entry("amountQuantity", value)?;
-                }
-                SubstanceSpecificationPropertyAmount::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if let Some(some) = self.r#category.as_ref() {
+                state.serialize_entry("category", some)?;
+            }
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#parameters.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("amountString", &some)?;
+                        state.serialize_entry("parameters", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_amountString", &primitive_element)?;
+                        state.serialize_entry("_parameters", &primitive_element)?;
                     }
                 }
-                SubstanceSpecificationPropertyAmount::Invalid => {
-                    return Err(serde::ser::Error::custom("amount is invalid"))
+            } else {
+                if let Some(some) = self.r#parameters.as_ref() {
+                    state.serialize_entry("parameters", some)?;
                 }
             }
-        }
-        state.end()
+            if let Some(some) = self.r#defining_substance.as_ref() {
+                match some {
+                    SubstanceSpecificationPropertyDefiningSubstance::Reference(ref value) => {
+                        state.serialize_entry("definingSubstanceReference", value)?;
+                    }
+                    SubstanceSpecificationPropertyDefiningSubstance::CodeableConcept(ref value) => {
+                        state.serialize_entry("definingSubstanceCodeableConcept", value)?;
+                    }
+                    SubstanceSpecificationPropertyDefiningSubstance::Invalid => {
+                        return Err(serde::ser::Error::custom("defining_substance is invalid"))
+                    }
+                }
+            }
+            if let Some(some) = self.r#amount.as_ref() {
+                match some {
+                    SubstanceSpecificationPropertyAmount::Quantity(ref value) => {
+                        state.serialize_entry("amountQuantity", value)?;
+                    }
+                    SubstanceSpecificationPropertyAmount::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("amountString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_amountString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("amountString", value)?;
+                        }
+                    }
+                    SubstanceSpecificationPropertyAmount::Invalid => {
+                        return Err(serde::ser::Error::custom("amount is invalid"))
+                    }
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
@@ -569,7 +603,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
                     SubstanceSpecificationPropertyDefiningSubstance,
                 > = None;
                 let mut r#amount: Option<SubstanceSpecificationPropertyAmount> = None;
-                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONFIG . with (| config | { let config = config . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Category => { if r#category . is_some () { return Err (serde :: de :: Error :: duplicate_field ("category")) ; } r#category = Some (map_access . next_value () ?) ; } , Field :: Code => { if r#code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("code")) ; } r#code = Some (map_access . next_value () ?) ; } , Field :: Parameters => { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("parameters")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ParametersPrimitiveElement => { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_parameters")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: DefiningSubstanceReference => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceReference")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: Reference (map_access . next_value () ?)) ; } , Field :: DefiningSubstanceCodeableConcept => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceCodeableConcept")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AmountQuantity => { if r#amount . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountQuantity")) ; } r#amount = Some (SubstanceSpecificationPropertyAmount :: Quantity (map_access . next_value () ?)) ; } , Field :: AmountString => { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("amount[x]")) ; } } , Field :: AmountStringPrimitiveElement => { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_amountString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_amount[x]")) ; } } , Field :: Unknown (key) => if config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "category" , "code" , "parameters" , "definingSubstanceReference" , "definingSubstanceCodeableConcept" , "amountQuantity" , "amountString" ,])) ; } } } Ok (SubstanceSpecificationProperty { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#category , r#code , r#parameters , r#defining_substance , r#amount , }) })
+                fhirbolt_shared :: serde_config :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Category => { if r#category . is_some () { return Err (serde :: de :: Error :: duplicate_field ("category")) ; } r#category = Some (map_access . next_value () ?) ; } , Field :: Code => { if r#code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("code")) ; } r#code = Some (map_access . next_value () ?) ; } , Field :: Parameters => { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("parameters")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } , Field :: ParametersPrimitiveElement => { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_parameters")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } , Field :: DefiningSubstanceReference => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceReference")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: Reference (map_access . next_value () ?)) ; } , Field :: DefiningSubstanceCodeableConcept => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceCodeableConcept")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AmountQuantity => { if r#amount . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountQuantity")) ; } r#amount = Some (SubstanceSpecificationPropertyAmount :: Quantity (map_access . next_value () ?)) ; } , Field :: AmountString => { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("amount[x]")) ; } } , Field :: AmountStringPrimitiveElement => { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_amountString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_amount[x]")) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_config :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "category" , "code" , "parameters" , "definingSubstanceReference" , "definingSubstanceCodeableConcept" , "amountQuantity" , "amountString" ,])) ; } } } Ok (SubstanceSpecificationProperty { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#category , r#code , r#parameters , r#defining_substance , r#amount , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -597,26 +631,29 @@ impl serde::ser::Serialize for SubstanceSpecificationStructureIsotopeMolecularWe
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#method.as_ref() {
-            state.serialize_entry("method", some)?;
-        }
-        if let Some(some) = self.r#type.as_ref() {
-            state.serialize_entry("type", some)?;
-        }
-        if let Some(some) = self.r#amount.as_ref() {
-            state.serialize_entry("amount", some)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#method.as_ref() {
+                state.serialize_entry("method", some)?;
+            }
+            if let Some(some) = self.r#type.as_ref() {
+                state.serialize_entry("type", some)?;
+            }
+            if let Some(some) = self.r#amount.as_ref() {
+                state.serialize_entry("amount", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotopeMolecularWeight {
@@ -661,8 +698,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
                 let mut r#method: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#amount: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -703,7 +740,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
                                 }
                                 r#amount = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -760,32 +797,35 @@ impl serde::ser::Serialize for SubstanceSpecificationStructureIsotope {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#identifier.as_ref() {
-            state.serialize_entry("identifier", some)?;
-        }
-        if let Some(some) = self.r#name.as_ref() {
-            state.serialize_entry("name", some)?;
-        }
-        if let Some(some) = self.r#substitution.as_ref() {
-            state.serialize_entry("substitution", some)?;
-        }
-        if let Some(some) = self.r#half_life.as_ref() {
-            state.serialize_entry("halfLife", some)?;
-        }
-        if let Some(some) = self.r#molecular_weight.as_ref() {
-            state.serialize_entry("molecularWeight", some)?;
-        }
-        state.end()
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#identifier.as_ref() {
+                state.serialize_entry("identifier", some)?;
+            }
+            if let Some(some) = self.r#name.as_ref() {
+                state.serialize_entry("name", some)?;
+            }
+            if let Some(some) = self.r#substitution.as_ref() {
+                state.serialize_entry("substitution", some)?;
+            }
+            if let Some(some) = self.r#half_life.as_ref() {
+                state.serialize_entry("halfLife", some)?;
+            }
+            if let Some(some) = self.r#molecular_weight.as_ref() {
+                state.serialize_entry("molecularWeight", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope {
@@ -838,8 +878,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
                 let mut r#molecular_weight: Option<
                     SubstanceSpecificationStructureIsotopeMolecularWeight,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -894,7 +934,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
                                 }
                                 r#molecular_weight = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -951,36 +991,45 @@ impl serde::ser::Serialize for SubstanceSpecificationStructureRepresentation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#type.as_ref() {
-            state.serialize_entry("type", some)?;
-        }
-        if let Some(some) = self.r#representation.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("representation", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_representation", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#attachment.as_ref() {
-            state.serialize_entry("attachment", some)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#type.as_ref() {
+                state.serialize_entry("type", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#representation.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("representation", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_representation", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#representation.as_ref() {
+                    state.serialize_entry("representation", some)?;
+                }
+            }
+            if let Some(some) = self.r#attachment.as_ref() {
+                state.serialize_entry("attachment", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureRepresentation {
@@ -1027,8 +1076,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#representation: Option<super::super::types::String> = None;
                 let mut r#attachment: Option<Box<super::super::types::Attachment>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1087,7 +1136,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
                                 }
                                 r#attachment = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1150,61 +1199,76 @@ impl serde::ser::Serialize for SubstanceSpecificationStructure {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#stereochemistry.as_ref() {
-            state.serialize_entry("stereochemistry", some)?;
-        }
-        if let Some(some) = self.r#optical_activity.as_ref() {
-            state.serialize_entry("opticalActivity", some)?;
-        }
-        if let Some(some) = self.r#molecular_formula.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("molecularFormula", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_molecularFormula", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#molecular_formula_by_moiety.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("molecularFormulaByMoiety", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_molecularFormulaByMoiety", &primitive_element)?;
+            if let Some(some) = self.r#stereochemistry.as_ref() {
+                state.serialize_entry("stereochemistry", some)?;
             }
-        }
-        if !self.r#isotope.is_empty() {
-            state.serialize_entry("isotope", &self.r#isotope)?;
-        }
-        if let Some(some) = self.r#molecular_weight.as_ref() {
-            state.serialize_entry("molecularWeight", some)?;
-        }
-        if !self.r#source.is_empty() {
-            state.serialize_entry("source", &self.r#source)?;
-        }
-        if !self.r#representation.is_empty() {
-            state.serialize_entry("representation", &self.r#representation)?;
-        }
-        state.end()
+            if let Some(some) = self.r#optical_activity.as_ref() {
+                state.serialize_entry("opticalActivity", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#molecular_formula.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("molecularFormula", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_molecularFormula", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#molecular_formula.as_ref() {
+                    state.serialize_entry("molecularFormula", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#molecular_formula_by_moiety.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("molecularFormulaByMoiety", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_molecularFormulaByMoiety", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#molecular_formula_by_moiety.as_ref() {
+                    state.serialize_entry("molecularFormulaByMoiety", some)?;
+                }
+            }
+            if !self.r#isotope.is_empty() {
+                state.serialize_entry("isotope", &self.r#isotope)?;
+            }
+            if let Some(some) = self.r#molecular_weight.as_ref() {
+                state.serialize_entry("molecularWeight", some)?;
+            }
+            if !self.r#source.is_empty() {
+                state.serialize_entry("source", &self.r#source)?;
+            }
+            if !self.r#representation.is_empty() {
+                state.serialize_entry("representation", &self.r#representation)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
@@ -1273,8 +1337,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
                 let mut r#representation: Option<
                     Vec<SubstanceSpecificationStructureRepresentation>,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1391,7 +1455,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
                                 }
                                 r#representation = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1458,52 +1522,67 @@ impl serde::ser::Serialize for SubstanceSpecificationCode {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#code.as_ref() {
-            state.serialize_entry("code", some)?;
-        }
-        if let Some(some) = self.r#status.as_ref() {
-            state.serialize_entry("status", some)?;
-        }
-        if let Some(some) = self.r#status_date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("statusDate", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_statusDate", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if let Some(some) = self.r#comment.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("comment", &some)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_comment", &primitive_element)?;
+            if let Some(some) = self.r#code.as_ref() {
+                state.serialize_entry("code", some)?;
             }
-        }
-        if !self.r#source.is_empty() {
-            state.serialize_entry("source", &self.r#source)?;
-        }
-        state.end()
+            if let Some(some) = self.r#status.as_ref() {
+                state.serialize_entry("status", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#status_date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("statusDate", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_statusDate", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#status_date.as_ref() {
+                    state.serialize_entry("statusDate", some)?;
+                }
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#comment.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("comment", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_comment", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#comment.as_ref() {
+                    state.serialize_entry("comment", some)?;
+                }
+            }
+            if !self.r#source.is_empty() {
+                state.serialize_entry("source", &self.r#source)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
@@ -1555,8 +1634,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
                 let mut r#status_date: Option<super::super::types::DateTime> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1637,7 +1716,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
                                 }
                                 r#source = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1694,36 +1773,45 @@ impl serde::ser::Serialize for SubstanceSpecificationNameOfficial {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#authority.as_ref() {
-            state.serialize_entry("authority", some)?;
-        }
-        if let Some(some) = self.r#status.as_ref() {
-            state.serialize_entry("status", some)?;
-        }
-        if let Some(some) = self.r#date.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("date", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_date", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#authority.as_ref() {
+                state.serialize_entry("authority", some)?;
+            }
+            if let Some(some) = self.r#status.as_ref() {
+                state.serialize_entry("status", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#date.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("date", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_date", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#date.as_ref() {
+                    state.serialize_entry("date", some)?;
+                }
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
@@ -1770,8 +1858,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
                 let mut r#authority: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1826,7 +1914,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
                                 some.id = id;
                                 some.extension = extension;
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -1895,68 +1983,81 @@ impl serde::ser::Serialize for SubstanceSpecificationName {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#name.value.as_ref() {
-            let some = Ok(some)?;
-            state.serialize_entry("name", &some)?;
-        }
-        if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
-            let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                id: &self.r#name.id,
-                extension: &self.r#name.extension,
-            };
-            state.serialize_entry("_name", &primitive_element)?;
-        }
-        if let Some(some) = self.r#type.as_ref() {
-            state.serialize_entry("type", some)?;
-        }
-        if let Some(some) = self.r#status.as_ref() {
-            state.serialize_entry("status", some)?;
-        }
-        if let Some(some) = self.r#preferred.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("preferred", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_preferred", &primitive_element)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-        }
-        if !self.r#language.is_empty() {
-            state.serialize_entry("language", &self.r#language)?;
-        }
-        if !self.r#domain.is_empty() {
-            state.serialize_entry("domain", &self.r#domain)?;
-        }
-        if !self.r#jurisdiction.is_empty() {
-            state.serialize_entry("jurisdiction", &self.r#jurisdiction)?;
-        }
-        if !self.r#synonym.is_empty() {
-            state.serialize_entry("synonym", &self.r#synonym)?;
-        }
-        if !self.r#translation.is_empty() {
-            state.serialize_entry("translation", &self.r#translation)?;
-        }
-        if !self.r#official.is_empty() {
-            state.serialize_entry("official", &self.r#official)?;
-        }
-        if !self.r#source.is_empty() {
-            state.serialize_entry("source", &self.r#source)?;
-        }
-        state.end()
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#name.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("name", &some)?;
+                }
+                if self.r#name.id.is_some() || !self.r#name.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: self.r#name.id.as_ref(),
+                        extension: &self.r#name.extension,
+                    };
+                    state.serialize_entry("_name", &primitive_element)?;
+                }
+            } else {
+                state.serialize_entry("name", &self.r#name)?;
+            }
+            if let Some(some) = self.r#type.as_ref() {
+                state.serialize_entry("type", some)?;
+            }
+            if let Some(some) = self.r#status.as_ref() {
+                state.serialize_entry("status", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#preferred.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("preferred", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_preferred", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#preferred.as_ref() {
+                    state.serialize_entry("preferred", some)?;
+                }
+            }
+            if !self.r#language.is_empty() {
+                state.serialize_entry("language", &self.r#language)?;
+            }
+            if !self.r#domain.is_empty() {
+                state.serialize_entry("domain", &self.r#domain)?;
+            }
+            if !self.r#jurisdiction.is_empty() {
+                state.serialize_entry("jurisdiction", &self.r#jurisdiction)?;
+            }
+            if !self.r#synonym.is_empty() {
+                state.serialize_entry("synonym", &self.r#synonym)?;
+            }
+            if !self.r#translation.is_empty() {
+                state.serialize_entry("translation", &self.r#translation)?;
+            }
+            if !self.r#official.is_empty() {
+                state.serialize_entry("official", &self.r#official)?;
+            }
+            if !self.r#source.is_empty() {
+                state.serialize_entry("source", &self.r#source)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
@@ -2027,8 +2128,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                 let mut r#translation: Option<Vec<SubstanceSpecificationName>> = None;
                 let mut r#official: Option<Vec<SubstanceSpecificationNameOfficial>> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -2145,7 +2246,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                                 }
                                 r#source = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -2174,7 +2275,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#name: if config.mode
+                        r#name: if _ctx.config.mode
                             == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
                         {
                             r#name.unwrap_or(Default::default())
@@ -2228,84 +2329,98 @@ impl serde::ser::Serialize for SubstanceSpecificationRelationship {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#substance.as_ref() {
-            match some {
-                SubstanceSpecificationRelationshipSubstance::Reference(ref value) => {
-                    state.serialize_entry("substanceReference", value)?;
-                }
-                SubstanceSpecificationRelationshipSubstance::CodeableConcept(ref value) => {
-                    state.serialize_entry("substanceCodeableConcept", value)?;
-                }
-                SubstanceSpecificationRelationshipSubstance::Invalid => {
-                    return Err(serde::ser::Error::custom("substance is invalid"))
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
+            }
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
+            }
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
+            }
+            if let Some(some) = self.r#substance.as_ref() {
+                match some {
+                    SubstanceSpecificationRelationshipSubstance::Reference(ref value) => {
+                        state.serialize_entry("substanceReference", value)?;
+                    }
+                    SubstanceSpecificationRelationshipSubstance::CodeableConcept(ref value) => {
+                        state.serialize_entry("substanceCodeableConcept", value)?;
+                    }
+                    SubstanceSpecificationRelationshipSubstance::Invalid => {
+                        return Err(serde::ser::Error::custom("substance is invalid"))
+                    }
                 }
             }
-        }
-        if let Some(some) = self.r#relationship.as_ref() {
-            state.serialize_entry("relationship", some)?;
-        }
-        if let Some(some) = self.r#is_defining.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("isDefining", &some)?;
+            if let Some(some) = self.r#relationship.as_ref() {
+                state.serialize_entry("relationship", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_isDefining", &primitive_element)?;
-            }
-        }
-        if let Some(some) = self.r#amount.as_ref() {
-            match some {
-                SubstanceSpecificationRelationshipAmount::Quantity(ref value) => {
-                    state.serialize_entry("amountQuantity", value)?;
-                }
-                SubstanceSpecificationRelationshipAmount::Range(ref value) => {
-                    state.serialize_entry("amountRange", value)?;
-                }
-                SubstanceSpecificationRelationshipAmount::Ratio(ref value) => {
-                    state.serialize_entry("amountRatio", value)?;
-                }
-                SubstanceSpecificationRelationshipAmount::String(ref value) => {
-                    if let Some(some) = value.value.as_ref() {
+            if _ctx.output_json {
+                if let Some(some) = self.r#is_defining.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
                         let some = Ok(some)?;
-                        state.serialize_entry("amountString", &some)?;
+                        state.serialize_entry("isDefining", &some)?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
+                    if some.id.is_some() || !some.extension.is_empty() {
                         let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: &value.id,
-                            extension: &value.extension,
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
                         };
-                        state.serialize_entry("_amountString", &primitive_element)?;
+                        state.serialize_entry("_isDefining", &primitive_element)?;
                     }
                 }
-                SubstanceSpecificationRelationshipAmount::Invalid => {
-                    return Err(serde::ser::Error::custom("amount is invalid"))
+            } else {
+                if let Some(some) = self.r#is_defining.as_ref() {
+                    state.serialize_entry("isDefining", some)?;
                 }
             }
-        }
-        if let Some(some) = self.r#amount_ratio_low_limit.as_ref() {
-            state.serialize_entry("amountRatioLowLimit", some)?;
-        }
-        if let Some(some) = self.r#amount_type.as_ref() {
-            state.serialize_entry("amountType", some)?;
-        }
-        if !self.r#source.is_empty() {
-            state.serialize_entry("source", &self.r#source)?;
-        }
-        state.end()
+            if let Some(some) = self.r#amount.as_ref() {
+                match some {
+                    SubstanceSpecificationRelationshipAmount::Quantity(ref value) => {
+                        state.serialize_entry("amountQuantity", value)?;
+                    }
+                    SubstanceSpecificationRelationshipAmount::Range(ref value) => {
+                        state.serialize_entry("amountRange", value)?;
+                    }
+                    SubstanceSpecificationRelationshipAmount::Ratio(ref value) => {
+                        state.serialize_entry("amountRatio", value)?;
+                    }
+                    SubstanceSpecificationRelationshipAmount::String(ref value) => {
+                        if _ctx.output_json {
+                            if let Some(some) = value.value.as_ref() {
+                                let some = Ok(some)?;
+                                state.serialize_entry("amountString", &some)?;
+                            }
+                            if value.id.is_some() || !value.extension.is_empty() {
+                                let primitive_element =
+                                    super::super::serde_helpers::PrimitiveElement {
+                                        id: value.id.as_ref(),
+                                        extension: &value.extension,
+                                    };
+                                state.serialize_entry("_amountString", &primitive_element)?;
+                            }
+                        } else {
+                            state.serialize_entry("amountString", value)?;
+                        }
+                    }
+                    SubstanceSpecificationRelationshipAmount::Invalid => {
+                        return Err(serde::ser::Error::custom("amount is invalid"))
+                    }
+                }
+            }
+            if let Some(some) = self.r#amount_ratio_low_limit.as_ref() {
+                state.serialize_entry("amountRatioLowLimit", some)?;
+            }
+            if let Some(some) = self.r#amount_type.as_ref() {
+                state.serialize_entry("amountType", some)?;
+            }
+            if !self.r#source.is_empty() {
+                state.serialize_entry("source", &self.r#source)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
@@ -2374,8 +2489,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
                 let mut r#amount_ratio_low_limit: Option<Box<super::super::types::Ratio>> = None;
                 let mut r#amount_type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#source: Option<Vec<Box<super::super::types::Reference>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -2538,7 +2653,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
                                 }
                                 r#source = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
@@ -2645,130 +2760,157 @@ impl serde::ser::Serialize for SubstanceSpecification {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "SubstanceSpecification")?;
-        if let Some(some) = self.r#id.as_ref() {
-            state.serialize_entry("id", some)?;
-        }
-        if let Some(some) = self.r#meta.as_ref() {
-            state.serialize_entry("meta", some)?;
-        }
-        if let Some(some) = self.r#implicit_rules.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("implicitRules", &some)?;
+        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+            let _ctx = _ctx.get();
+            let mut state = serializer.serialize_map(None)?;
+            state.serialize_entry("resourceType", "SubstanceSpecification")?;
+            if let Some(some) = self.r#id.as_ref() {
+                state.serialize_entry("id", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_implicitRules", &primitive_element)?;
+            if let Some(some) = self.r#meta.as_ref() {
+                state.serialize_entry("meta", some)?;
             }
-        }
-        if let Some(some) = self.r#language.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("language", &some)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("implicitRules", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_implicitRules", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#implicit_rules.as_ref() {
+                    state.serialize_entry("implicitRules", some)?;
+                }
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_language", &primitive_element)?;
+            if _ctx.output_json {
+                if let Some(some) = self.r#language.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("language", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_language", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#language.as_ref() {
+                    state.serialize_entry("language", some)?;
+                }
             }
-        }
-        if let Some(some) = self.r#text.as_ref() {
-            state.serialize_entry("text", some)?;
-        }
-        if !self.r#contained.is_empty() {
-            state.serialize_entry("contained", &self.r#contained)?;
-        }
-        if !self.r#extension.is_empty() {
-            state.serialize_entry("extension", &self.r#extension)?;
-        }
-        if !self.r#modifier_extension.is_empty() {
-            state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-        }
-        if let Some(some) = self.r#identifier.as_ref() {
-            state.serialize_entry("identifier", some)?;
-        }
-        if let Some(some) = self.r#type.as_ref() {
-            state.serialize_entry("type", some)?;
-        }
-        if let Some(some) = self.r#status.as_ref() {
-            state.serialize_entry("status", some)?;
-        }
-        if let Some(some) = self.r#domain.as_ref() {
-            state.serialize_entry("domain", some)?;
-        }
-        if let Some(some) = self.r#description.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("description", &some)?;
+            if let Some(some) = self.r#text.as_ref() {
+                state.serialize_entry("text", some)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_description", &primitive_element)?;
+            if !self.r#contained.is_empty() {
+                state.serialize_entry("contained", &self.r#contained)?;
             }
-        }
-        if !self.r#source.is_empty() {
-            state.serialize_entry("source", &self.r#source)?;
-        }
-        if let Some(some) = self.r#comment.as_ref() {
-            if let Some(some) = some.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("comment", &some)?;
+            if !self.r#extension.is_empty() {
+                state.serialize_entry("extension", &self.r#extension)?;
             }
-            if some.id.is_some() || !some.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                    id: &some.id,
-                    extension: &some.extension,
-                };
-                state.serialize_entry("_comment", &primitive_element)?;
+            if !self.r#modifier_extension.is_empty() {
+                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
             }
-        }
-        if !self.r#moiety.is_empty() {
-            state.serialize_entry("moiety", &self.r#moiety)?;
-        }
-        if !self.r#property.is_empty() {
-            state.serialize_entry("property", &self.r#property)?;
-        }
-        if let Some(some) = self.r#reference_information.as_ref() {
-            state.serialize_entry("referenceInformation", some)?;
-        }
-        if let Some(some) = self.r#structure.as_ref() {
-            state.serialize_entry("structure", some)?;
-        }
-        if !self.r#code.is_empty() {
-            state.serialize_entry("code", &self.r#code)?;
-        }
-        if !self.r#name.is_empty() {
-            state.serialize_entry("name", &self.r#name)?;
-        }
-        if !self.r#molecular_weight.is_empty() {
-            state.serialize_entry("molecularWeight", &self.r#molecular_weight)?;
-        }
-        if !self.r#relationship.is_empty() {
-            state.serialize_entry("relationship", &self.r#relationship)?;
-        }
-        if let Some(some) = self.r#nucleic_acid.as_ref() {
-            state.serialize_entry("nucleicAcid", some)?;
-        }
-        if let Some(some) = self.r#polymer.as_ref() {
-            state.serialize_entry("polymer", some)?;
-        }
-        if let Some(some) = self.r#protein.as_ref() {
-            state.serialize_entry("protein", some)?;
-        }
-        if let Some(some) = self.r#source_material.as_ref() {
-            state.serialize_entry("sourceMaterial", some)?;
-        }
-        state.end()
+            if let Some(some) = self.r#identifier.as_ref() {
+                state.serialize_entry("identifier", some)?;
+            }
+            if let Some(some) = self.r#type.as_ref() {
+                state.serialize_entry("type", some)?;
+            }
+            if let Some(some) = self.r#status.as_ref() {
+                state.serialize_entry("status", some)?;
+            }
+            if let Some(some) = self.r#domain.as_ref() {
+                state.serialize_entry("domain", some)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#description.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("description", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_description", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#description.as_ref() {
+                    state.serialize_entry("description", some)?;
+                }
+            }
+            if !self.r#source.is_empty() {
+                state.serialize_entry("source", &self.r#source)?;
+            }
+            if _ctx.output_json {
+                if let Some(some) = self.r#comment.as_ref() {
+                    if let Some(some) = some.value.as_ref() {
+                        let some = Ok(some)?;
+                        state.serialize_entry("comment", &some)?;
+                    }
+                    if some.id.is_some() || !some.extension.is_empty() {
+                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                            id: some.id.as_ref(),
+                            extension: &some.extension,
+                        };
+                        state.serialize_entry("_comment", &primitive_element)?;
+                    }
+                }
+            } else {
+                if let Some(some) = self.r#comment.as_ref() {
+                    state.serialize_entry("comment", some)?;
+                }
+            }
+            if !self.r#moiety.is_empty() {
+                state.serialize_entry("moiety", &self.r#moiety)?;
+            }
+            if !self.r#property.is_empty() {
+                state.serialize_entry("property", &self.r#property)?;
+            }
+            if let Some(some) = self.r#reference_information.as_ref() {
+                state.serialize_entry("referenceInformation", some)?;
+            }
+            if let Some(some) = self.r#structure.as_ref() {
+                state.serialize_entry("structure", some)?;
+            }
+            if !self.r#code.is_empty() {
+                state.serialize_entry("code", &self.r#code)?;
+            }
+            if !self.r#name.is_empty() {
+                state.serialize_entry("name", &self.r#name)?;
+            }
+            if !self.r#molecular_weight.is_empty() {
+                state.serialize_entry("molecularWeight", &self.r#molecular_weight)?;
+            }
+            if !self.r#relationship.is_empty() {
+                state.serialize_entry("relationship", &self.r#relationship)?;
+            }
+            if let Some(some) = self.r#nucleic_acid.as_ref() {
+                state.serialize_entry("nucleicAcid", some)?;
+            }
+            if let Some(some) = self.r#polymer.as_ref() {
+                state.serialize_entry("polymer", some)?;
+            }
+            if let Some(some) = self.r#protein.as_ref() {
+                state.serialize_entry("protein", some)?;
+            }
+            if let Some(some) = self.r#source_material.as_ref() {
+                state.serialize_entry("sourceMaterial", some)?;
+            }
+            state.end()
+        })
     }
 }
 impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
@@ -2885,8 +3027,8 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                 let mut r#polymer: Option<Box<super::super::types::Reference>> = None;
                 let mut r#protein: Option<Box<super::super::types::Reference>> = None;
                 let mut r#source_material: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONFIG.with(|config| {
-                    let config = config.get();
+                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                    let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
@@ -3126,7 +3268,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                                 }
                                 r#source_material = Some(map_access.next_value()?);
                             }
-                            Field::Unknown(key) => if config.mode
+                            Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
