@@ -24,7 +24,7 @@
 //! ```
 
 pub mod de;
-//pub mod ser;
+pub mod ser;
 
 pub mod error;
 
@@ -33,8 +33,9 @@ mod event;
 mod number;
 mod path;
 mod read;
+mod write;
 
 pub use de::{from_reader, from_slice, from_str, Deserializer};
-//pub use ser::{to_string, Serializer};
+pub use ser::{to_string, to_vec, to_writer, Serializer};
 
 pub use error::{Error, Result};

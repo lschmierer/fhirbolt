@@ -1,16 +1,15 @@
-use std::fs;
-use std::io::Read;
-use std::path;
+use std::{fs, io::Read, path, str};
 
 use serde::de::DeserializeOwned;
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
+use serde::Serialize;
 use zip::ZipArchive;
 
 use fhirbolt::{
     model::{self, AnyResource, FhirRelease},
     serde::{DeserializationConfig, DeserializationMode},
 };
+
+use test_utils::assert_xml_eq;
 
 const FHIR_EXAMPLES_XML_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/examples.zip";
 
@@ -78,13 +77,14 @@ fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(mode: Deseriali
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
-        let mut deserializer = fhirbolt::xml::Deserializer::from_slice::<R>(&buffer);
-        let json_value = Value::deserialize(&mut deserializer).unwrap();
-
         let resource: R =
             fhirbolt::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode })).unwrap();
 
-        assert_eq!(fhirbolt::json::to_value(resource).unwrap(), json_value);
+        assert_xml_eq(
+            &fhirbolt::xml::to_vec(&resource).unwrap(),
+            &buffer,
+            R::fhir_release() == FhirRelease::R4B && file.name() == "valuesets.xml",
+        );
     }
 }
 

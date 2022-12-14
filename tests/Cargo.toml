@@ -4,14 +4,20 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 
-[dev-dependencies]
+[lib]
+name = "test_utils"
+path = "utils/lib.rs"
+
+[dependencies]
 reqwest = { version = "0.11", features = ["blocking"] }
 zip = { version = "0.6", features = ["deflate"] }
 serde = "1.0"
 serde_json = { version = "1.0", features = ["preserve_order"] }
 assert-json-diff = "2.0"
+quick-xml = "0.25"
 
 fhirbolt = { path = "../fhirbolt", features = ["r4", "r4b"] }
+
 
 [[test]]
 name = "test_serde_json"

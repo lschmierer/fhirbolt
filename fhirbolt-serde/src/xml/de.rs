@@ -208,6 +208,7 @@ impl Next {
 struct DeserializerState {
     next_queue: VecDeque<Next>,
     stack: Vec<ElementState>,
+    current_path: ElementPath,
 }
 
 #[derive(Default, Debug)]
@@ -229,10 +230,11 @@ struct PrimitiveCollector {
 }
 
 impl DeserializerState {
-    fn new() -> DeserializerState {
+    fn new<T: AnyResource>() -> DeserializerState {
         DeserializerState {
             next_queue: VecDeque::from(vec![Next::MapStart]),
             stack: vec![Default::default()],
+            current_path: ElementPath::new(T::fhir_release()),
         }
     }
 
@@ -347,7 +349,6 @@ impl DeserializerState {
 }
 pub struct Deserializer<R: Read> {
     reader: R,
-    current_path: ElementPath,
     state: DeserializerState,
 }
 
@@ -355,8 +356,7 @@ impl<R: Read> Deserializer<R> {
     pub fn new<T: AnyResource>(reader: R) -> Self {
         Deserializer {
             reader,
-            current_path: ElementPath::new(T::fhir_release()),
-            state: DeserializerState::new(),
+            state: DeserializerState::new::<T>(),
         }
     }
 }
@@ -386,10 +386,10 @@ impl<R: Read> Deserializer<R> {
 
             match event {
                 Event::ElementStart(element) => {
-                    self.current_path.push(&element.name);
+                    self.state.current_path.push(&element.name);
 
-                    if self.current_path.currently_is_empty_resource()
-                        || self.current_path.current_element_is_resource()
+                    if self.state.current_path.currently_is_empty_resource()
+                        || self.state.current_path.current_element_is_resource()
                     {
                         self.state.push_next(Next::Key("resourceType".into()));
                         self.state
@@ -401,7 +401,7 @@ impl<R: Read> Deserializer<R> {
                     }
                 }
                 Event::ElementEnd => {
-                    if !self.current_path.current_element_is_resource() {
+                    if !self.state.current_path.current_element_is_resource() {
                         if let Some(s) = self.state.in_sequence() {
                             self.advance_sequence_end(s.is_primitive);
                         }
@@ -411,21 +411,21 @@ impl<R: Read> Deserializer<R> {
                         self.state.push_next(Next::MapEnd);
                     }
 
-                    self.current_path.pop();
+                    self.state.current_path.pop();
                 }
                 Event::EmptyElement(element) => {
-                    self.current_path.push(&element.name);
+                    self.state.current_path.push(&element.name);
 
                     self.advance_element(element, true)?;
 
-                    self.current_path.pop();
+                    self.state.current_path.pop();
                 }
                 Event::Div(element) => {
-                    self.current_path.push(&element.name);
+                    self.state.current_path.push(&element.name);
 
                     self.advance_element(element, true)?;
 
-                    self.current_path.pop();
+                    self.state.current_path.pop();
                 }
                 Event::Eof => self.state.push_next(Next::Eof),
             }
@@ -437,14 +437,14 @@ impl<R: Read> Deserializer<R> {
     fn advance_element(&mut self, mut element: Element, is_empty: bool) -> Result<()> {
         match (
             self.state.in_sequence(),
-            self.current_path.current_element_is_sequence(),
+            self.state.current_path.current_element_is_sequence(),
         ) {
             (Some(s), false) => {
                 self.advance_sequence_end(s.is_primitive);
                 self.state.leave_sequence();
 
                 self.state
-                    .enter_primitive(self.current_path.current_element_is_primitive());
+                    .enter_primitive(self.state.current_path.current_element_is_primitive());
                 self.advance_key(&element.name);
             }
             (Some(s), true) => {
@@ -453,10 +453,10 @@ impl<R: Read> Deserializer<R> {
                     self.state.leave_sequence();
 
                     self.state
-                        .enter_primitive(self.current_path.current_element_is_primitive());
+                        .enter_primitive(self.state.current_path.current_element_is_primitive());
                     self.state.enter_sequence(
                         &element.name,
-                        self.current_path.current_element_is_primitive(),
+                        self.state.current_path.current_element_is_primitive(),
                     );
                     self.advance_key(&element.name);
                     self.advance_sequence_start();
@@ -464,22 +464,22 @@ impl<R: Read> Deserializer<R> {
             }
             (None, true) => {
                 self.state
-                    .enter_primitive(self.current_path.current_element_is_primitive());
+                    .enter_primitive(self.state.current_path.current_element_is_primitive());
                 self.state.enter_sequence(
                     &element.name,
-                    self.current_path.current_element_is_primitive(),
+                    self.state.current_path.current_element_is_primitive(),
                 );
                 self.advance_key(&element.name);
                 self.advance_sequence_start();
             }
             (None, false) => {
                 self.state
-                    .enter_primitive(self.current_path.current_element_is_primitive());
+                    .enter_primitive(self.state.current_path.current_element_is_primitive());
                 self.advance_key(&element.name);
             }
         };
 
-        if self.current_path.current_element_is_primitive() {
+        if self.state.current_path.current_element_is_primitive() {
             self.advance_value(&mut element.value, true)?;
 
             // primitive element
@@ -500,7 +500,7 @@ impl<R: Read> Deserializer<R> {
     }
 
     fn advance_sequence_start(&mut self) {
-        if self.current_path.current_element_is_primitive() {
+        if self.state.current_path.current_element_is_primitive() {
             self.state.push_next_primitive_value(Next::SequenceStart);
             self.state.push_next_primitive_element(Next::SequenceStart);
         } else {
@@ -518,7 +518,7 @@ impl<R: Read> Deserializer<R> {
     }
 
     fn advance_key(&mut self, name: &Cow<'static, str>) {
-        if self.current_path.current_element_is_primitive() {
+        if self.state.current_path.current_element_is_primitive() {
             self.state
                 .push_next_primitive_value(Next::Key(name.clone()));
             self.state
@@ -534,15 +534,23 @@ impl<R: Read> Deserializer<R> {
         is_primitive_value: bool,
     ) -> Result<()> {
         let next = if let Some(value) = value.take() {
-            if self.current_path.current_element_is_boolean() {
+            if self.state.current_path.current_element_is_boolean() {
                 Next::Value(Value::Boolean(value.parse()?))
-            } else if self.current_path.current_element_is_integer() {
+            } else if self.state.current_path.current_element_is_integer() {
                 Next::Value(Value::Integer(value.parse()?))
-            } else if self.current_path.current_element_is_unsigned_integer() {
+            } else if self
+                .state
+                .current_path
+                .current_element_is_unsigned_integer()
+            {
                 Next::Value(Value::UnsignedInteger(value.parse()?))
-            } else if self.current_path.current_element_is_positive_integer() {
+            } else if self
+                .state
+                .current_path
+                .current_element_is_positive_integer()
+            {
                 Next::Value(Value::PositiveInteger(value.parse()?))
-            } else if self.current_path.current_element_is_decimal() {
+            } else if self.state.current_path.current_element_is_decimal() {
                 Next::Value(Value::Decimal(value))
             } else {
                 Next::Value(Value::String(value))

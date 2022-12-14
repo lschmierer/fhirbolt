@@ -9,7 +9,7 @@ pub enum Event {
     Eof,
 }
 
-#[derive(Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct Element {
     pub name: Cow<'static, str>,
     pub id: Option<String>,
