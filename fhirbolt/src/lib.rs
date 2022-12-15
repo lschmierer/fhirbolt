@@ -25,7 +25,7 @@
 //! // If the resource type is known in advance, you could also use a concrete resource type
 //! // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
 //! use fhirbolt::model::r4b::Resource as R4BResource;
-//! use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
+//! use fhirbolt::{DeserializationConfig, DeserializationMode};
 //!
 //! // The type of `s` is `&str`
 //! let s = "{

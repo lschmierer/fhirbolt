@@ -5,7 +5,7 @@ use serde_json::Value;
 
 use fhirbolt::{
     model::{self, AnyResource, FhirRelease},
-    serde::{DeserializationConfig, DeserializationMode},
+    DeserializationConfig, DeserializationMode,
 };
 
 use test_utils::examples::{examples, JsonOrXml};
@@ -99,7 +99,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
             }
         }
 
-        assert_json_eq!(fhirbolt::json::to_value(resource).unwrap(), json_value);
+        assert_json_eq!(fhirbolt::json::to_json_value(resource).unwrap(), json_value);
     }
 }
 

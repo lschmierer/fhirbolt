@@ -5,7 +5,7 @@ use serde::Serialize;
 
 use fhirbolt::{
     model::{self, AnyResource, FhirRelease},
-    serde::{DeserializationConfig, DeserializationMode},
+    DeserializationConfig, DeserializationMode,
 };
 
 use test_utils::{

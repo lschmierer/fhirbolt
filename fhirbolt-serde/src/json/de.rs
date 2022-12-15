@@ -152,7 +152,7 @@ where
 ///
 /// let v: serde_json::Value = serde_json::from_str(s).unwrap();
 ///
-/// let r: R4BResource = fhirbolt::json::from_value(v, None).unwrap();
+/// let r: R4BResource = fhirbolt::json::from_json_value(v, None).unwrap();
 /// println!("{:?}", r);
 /// # }
 /// ```
