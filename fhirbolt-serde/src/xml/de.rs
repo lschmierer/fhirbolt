@@ -6,7 +6,7 @@ use serde::{
 };
 
 use fhirbolt_shared::{
-    serde_config::de::{with_context, DeserializationConfig, DeserializationContext},
+    serde_context::de::{with_context, DeserializationConfig, DeserializationContext},
     AnyResource,
 };
 

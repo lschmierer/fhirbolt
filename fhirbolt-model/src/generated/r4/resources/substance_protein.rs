@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceProteinSubunit {
@@ -36,7 +36,7 @@ impl serde::ser::Serialize for SubstanceProteinSubunit {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -222,7 +222,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                 let mut r#c_terminal_modification_id: Option<Box<super::super::types::Identifier>> =
                     None;
                 let mut r#c_terminal_modification: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -383,7 +383,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -457,7 +457,7 @@ impl serde::ser::Serialize for SubstanceProtein {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "SubstanceProtein")?;
@@ -651,7 +651,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                 let mut r#number_of_subunits: Option<super::super::types::Integer> = None;
                 let mut r#disulfide_linkage: Option<Vec<super::super::types::String>> = None;
                 let mut r#subunit: Option<Vec<SubstanceProteinSubunit>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -835,7 +835,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
                                 r#subunit = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,

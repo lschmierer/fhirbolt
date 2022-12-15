@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept)."]
 #[derive(Default, Debug, Clone)]
 pub struct OperationDefinitionParameterBinding {
@@ -24,7 +24,7 @@ impl serde::ser::Serialize for OperationDefinitionParameterBinding {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -113,7 +113,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
                     None;
                 let mut r#strength: Option<super::super::types::Code> = None;
                 let mut r#value_set: Option<super::super::types::Canonical> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -178,7 +178,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -198,14 +198,14 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#strength: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#strength.unwrap_or(Default::default())
                         } else {
                             r#strength.ok_or(serde::de::Error::missing_field("strength"))?
                         },
                         r#value_set: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#value_set.unwrap_or(Default::default())
                         } else {
@@ -238,7 +238,7 @@ impl serde::ser::Serialize for OperationDefinitionParameterReferencedFrom {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -331,7 +331,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
                     None;
                 let mut r#source: Option<super::super::types::String> = None;
                 let mut r#source_id: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -396,7 +396,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -410,7 +410,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#source: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#source.unwrap_or(Default::default())
                         } else {
@@ -462,7 +462,7 @@ impl serde::ser::Serialize for OperationDefinitionParameter {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -725,7 +725,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                 let mut r#referenced_from: Option<Vec<OperationDefinitionParameterReferencedFrom>> =
                     None;
                 let mut r#part: Option<Vec<OperationDefinitionParameter>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -964,7 +964,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                 r#part = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -993,28 +993,28 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#name: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#name.unwrap_or(Default::default())
                         } else {
                             r#name.ok_or(serde::de::Error::missing_field("name"))?
                         },
                         r#use: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#use.unwrap_or(Default::default())
                         } else {
                             r#use.ok_or(serde::de::Error::missing_field("use"))?
                         },
                         r#min: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#min.unwrap_or(Default::default())
                         } else {
                             r#min.ok_or(serde::de::Error::missing_field("min"))?
                         },
                         r#max: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#max.unwrap_or(Default::default())
                         } else {
@@ -1054,7 +1054,7 @@ impl serde::ser::Serialize for OperationDefinitionOverload {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1170,7 +1170,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                     None;
                 let mut r#parameter_name: Option<Vec<super::super::types::String>> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1267,7 +1267,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1373,7 +1373,7 @@ impl serde::ser::Serialize for OperationDefinition {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "OperationDefinition")?;
@@ -2014,7 +2014,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                 let mut r#output_profile: Option<super::super::types::Canonical> = None;
                 let mut r#parameter: Option<Vec<OperationDefinitionParameter>> = None;
                 let mut r#overload: Option<Vec<OperationDefinitionOverload>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2590,7 +2590,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                 r#overload = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2646,7 +2646,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                         r#url,
                         r#version,
                         r#name: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#name.unwrap_or(Default::default())
                         } else {
@@ -2654,14 +2654,14 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                         },
                         r#title,
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#kind: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#kind.unwrap_or(Default::default())
                         } else {
@@ -2677,7 +2677,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                         r#purpose,
                         r#affects_state,
                         r#code: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {
@@ -2687,21 +2687,21 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                         r#base,
                         r#resource: r#resource.unwrap_or(vec![]),
                         r#system: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#system.unwrap_or(Default::default())
                         } else {
                             r#system.ok_or(serde::de::Error::missing_field("system"))?
                         },
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
                         r#instance: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#instance.unwrap_or(Default::default())
                         } else {

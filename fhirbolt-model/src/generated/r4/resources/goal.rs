@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Debug, Clone)]
 pub enum GoalStart {
@@ -67,7 +67,7 @@ impl serde::ser::Serialize for GoalTarget {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -248,7 +248,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                 let mut r#measure: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#detail: Option<GoalTargetDetail> = None;
                 let mut r#due: Option<GoalTargetDue> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -448,7 +448,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                 r#due = Some(GoalTargetDue::Duration(map_access.next_value()?));
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -543,7 +543,7 @@ impl serde::ser::Serialize for Goal {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Goal")?;
@@ -834,7 +834,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                     None;
                 let mut r#outcome_reference: Option<Vec<Box<super::super::types::Reference>>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1109,7 +1109,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                 r#outcome_reference = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1155,7 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#lifecycle_status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#lifecycle_status.unwrap_or(Default::default())
                         } else {
@@ -1166,14 +1166,14 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                         r#category: r#category.unwrap_or(vec![]),
                         r#priority,
                         r#description: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#description.unwrap_or(Default::default())
                         } else {
                             r#description.ok_or(serde::de::Error::missing_field("description"))?
                         },
                         r#subject: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#subject.unwrap_or(Default::default())
                         } else {

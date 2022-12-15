@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Expressions that describe applicability criteria for the billing code."]
 #[derive(Default, Debug, Clone)]
 pub struct ChargeItemDefinitionApplicability {
@@ -26,7 +26,7 @@ impl serde::ser::Serialize for ChargeItemDefinitionApplicability {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -147,7 +147,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#language: Option<super::super::types::String> = None;
                 let mut r#expression: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -232,7 +232,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -286,7 +286,7 @@ impl serde::ser::Serialize for ChargeItemDefinitionPropertyGroupPriceComponent {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -393,7 +393,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#factor: Option<super::super::types::Decimal> = None;
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -470,7 +470,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                                 r#amount = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -492,7 +492,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
@@ -528,7 +528,7 @@ impl serde::ser::Serialize for ChargeItemDefinitionPropertyGroup {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -591,7 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
                 let mut r#price_component: Option<
                     Vec<ChargeItemDefinitionPropertyGroupPriceComponent>,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -630,7 +630,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
                                 r#price_component = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -730,7 +730,7 @@ impl serde::ser::Serialize for ChargeItemDefinition {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "ChargeItemDefinition")?;
@@ -1285,7 +1285,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                 let mut r#instance: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#applicability: Option<Vec<ChargeItemDefinitionApplicability>> = None;
                 let mut r#property_group: Option<Vec<ChargeItemDefinitionPropertyGroup>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1813,7 +1813,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                                 r#property_group = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1864,7 +1864,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#url: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#url.unwrap_or(Default::default())
                         } else {
@@ -1877,7 +1877,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
                         r#part_of: r#part_of.unwrap_or(vec![]),
                         r#replaces: r#replaces.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {

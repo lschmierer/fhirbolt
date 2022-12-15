@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "The actual characteristic value corresponding to the type."]
 #[derive(Debug, Clone)]
 pub enum NutritionProductProductCharacteristicValue {
@@ -40,7 +40,7 @@ impl serde::ser::Serialize for NutritionProductNutrient {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -98,7 +98,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
                     None;
                 let mut r#item: Option<Box<super::super::types::CodeableReference>> = None;
                 let mut r#amount: Option<Vec<Box<super::super::types::Ratio>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -135,7 +135,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
                                 r#amount = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -177,7 +177,7 @@ impl serde::ser::Serialize for NutritionProductIngredient {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -233,7 +233,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
                     None;
                 let mut r#item: Option<Box<super::super::types::CodeableReference>> = None;
                 let mut r#amount: Option<Vec<Box<super::super::types::Ratio>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -270,7 +270,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
                                 r#amount = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -284,7 +284,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#item: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#item.unwrap_or(Default::default())
                         } else {
@@ -318,7 +318,7 @@ impl serde::ser::Serialize for NutritionProductProductCharacteristic {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -455,7 +455,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<NutritionProductProductCharacteristicValue> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -654,7 +654,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -679,14 +679,14 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
                         r#value: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
                         } else {
@@ -725,7 +725,7 @@ impl serde::ser::Serialize for NutritionProductInstance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -855,7 +855,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                 let mut r#lot_number: Option<super::super::types::String> = None;
                 let mut r#expiry: Option<super::super::types::DateTime> = None;
                 let mut r#use_by: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -952,7 +952,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1032,7 +1032,7 @@ impl serde::ser::Serialize for NutritionProduct {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "NutritionProduct")?;
@@ -1224,7 +1224,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                 > = None;
                 let mut r#instance: Option<NutritionProductInstance> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1394,7 +1394,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                                 r#note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1432,7 +1432,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {

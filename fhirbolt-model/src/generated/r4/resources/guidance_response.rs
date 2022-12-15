@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "An identifier, CodeableConcept or canonical reference to the guidance that was requested."]
 #[derive(Debug, Clone)]
 pub enum GuidanceResponseModule {
@@ -73,7 +73,7 @@ impl serde::ser::Serialize for GuidanceResponse {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "GuidanceResponse")?;
@@ -360,7 +360,7 @@ impl<'de> serde::de::Deserialize<'de> for GuidanceResponse {
                 let mut r#result: Option<Box<super::super::types::Reference>> = None;
                 let mut r#data_requirement: Option<Vec<Box<super::super::types::DataRequirement>>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -658,7 +658,7 @@ impl<'de> serde::de::Deserialize<'de> for GuidanceResponse {
                                 r#data_requirement = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -705,14 +705,14 @@ impl<'de> serde::de::Deserialize<'de> for GuidanceResponse {
                         r#request_identifier,
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#module: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#module.unwrap_or(Default::default())
                         } else {
                             r#module.ok_or(serde::de::Error::missing_field("module[x]"))?
                         },
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {

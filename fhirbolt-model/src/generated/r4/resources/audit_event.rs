@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
 #[derive(Debug, Clone)]
 pub enum AuditEventEntityDetailValue {
@@ -36,7 +36,7 @@ impl serde::ser::Serialize for AuditEventAgentNetwork {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -130,7 +130,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                     None;
                 let mut r#address: Option<super::super::types::String> = None;
                 let mut r#type: Option<super::super::types::Code> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -195,7 +195,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -255,7 +255,7 @@ impl serde::ser::Serialize for AuditEventAgent {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -455,7 +455,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                 let mut r#network: Option<AuditEventAgentNetwork> = None;
                 let mut r#purpose_of_use: Option<Vec<Box<super::super::types::CodeableConcept>>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -632,7 +632,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                 r#purpose_of_use = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -666,7 +666,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                         r#alt_id,
                         r#name,
                         r#requestor: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#requestor.unwrap_or(Default::default())
                         } else {
@@ -706,7 +706,7 @@ impl serde::ser::Serialize for AuditEventSource {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -786,7 +786,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                 let mut r#site: Option<super::super::types::String> = None;
                 let mut r#observer: Option<Box<super::super::types::Reference>> = None;
                 let mut r#type: Option<Vec<Box<super::super::types::Coding>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -843,7 +843,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                                 r#type = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -865,7 +865,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#site,
                         r#observer: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#observer.unwrap_or(Default::default())
                         } else {
@@ -899,7 +899,7 @@ impl serde::ser::Serialize for AuditEventEntityDetail {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1013,7 +1013,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                     None;
                 let mut r#type: Option<super::super::types::String> = None;
                 let mut r#value: Option<AuditEventEntityDetailValue> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1130,7 +1130,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1151,14 +1151,14 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
                             r#type.ok_or(serde::de::Error::missing_field("type"))?
                         },
                         r#value: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
                         } else {
@@ -1205,7 +1205,7 @@ impl serde::ser::Serialize for AuditEventEntity {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1359,7 +1359,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#query: Option<super::super::types::Base64Binary> = None;
                 let mut r#detail: Option<Vec<AuditEventEntityDetail>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1480,7 +1480,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                                 r#detail = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1570,7 +1570,7 @@ impl serde::ser::Serialize for AuditEvent {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "AuditEvent")?;
@@ -1816,7 +1816,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                 let mut r#agent: Option<Vec<AuditEventAgent>> = None;
                 let mut r#source: Option<AuditEventSource> = None;
                 let mut r#entity: Option<Vec<AuditEventEntity>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2034,7 +2034,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                 r#entity = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2073,7 +2073,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
@@ -2083,7 +2083,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                         r#action,
                         r#period,
                         r#recorded: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#recorded.unwrap_or(Default::default())
                         } else {
@@ -2094,7 +2094,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                         r#purpose_of_event: r#purpose_of_event.unwrap_or(vec![]),
                         r#agent: r#agent.unwrap_or(vec![]),
                         r#source: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#source.unwrap_or(Default::default())
                         } else {

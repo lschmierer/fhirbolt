@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
 #[derive(Debug, Clone)]
 pub enum CitationRelatesToTarget {
@@ -52,7 +52,7 @@ impl serde::ser::Serialize for CitationSummary {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -124,7 +124,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationSummary {
                     None;
                 let mut r#style: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#text: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -175,7 +175,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationSummary {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -190,7 +190,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationSummary {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#style,
                         r#text: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#text.unwrap_or(Default::default())
                         } else {
@@ -223,7 +223,7 @@ impl serde::ser::Serialize for CitationClassification {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -281,7 +281,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationClassification {
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#classifier: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -318,7 +318,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationClassification {
                                 r#classifier = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -362,7 +362,7 @@ impl serde::ser::Serialize for CitationStatusDate {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -440,7 +440,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
                 let mut r#activity: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actual: Option<super::super::types::Boolean> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -497,7 +497,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
                                 r#period = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -518,7 +518,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#activity: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#activity.unwrap_or(Default::default())
                         } else {
@@ -526,7 +526,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
                         },
                         r#actual,
                         r#period: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#period.unwrap_or(Default::default())
                         } else {
@@ -561,7 +561,7 @@ impl serde::ser::Serialize for CitationRelatesTo {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -662,7 +662,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#target: Option<CitationRelatesToTarget> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -767,7 +767,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
                                 ));
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -791,7 +791,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#relationship_type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#relationship_type.unwrap_or(Default::default())
                         } else {
@@ -800,7 +800,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
                         },
                         r#target_classifier: r#target_classifier.unwrap_or(vec![]),
                         r#target: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#target.unwrap_or(Default::default())
                         } else {
@@ -833,7 +833,7 @@ impl serde::ser::Serialize for CitationCitedArtifactVersion {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -908,7 +908,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactVersion {
                     None;
                 let mut r#value: Option<super::super::types::String> = None;
                 let mut r#base_citation: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -959,7 +959,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactVersion {
                                 r#base_citation = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -979,7 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactVersion {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#value: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
                         } else {
@@ -1015,7 +1015,7 @@ impl serde::ser::Serialize for CitationCitedArtifactStatusDate {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1096,7 +1096,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
                 let mut r#activity: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actual: Option<super::super::types::Boolean> = None;
                 let mut r#period: Option<Box<super::super::types::Period>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1153,7 +1153,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
                                 r#period = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1174,7 +1174,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#activity: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#activity.unwrap_or(Default::default())
                         } else {
@@ -1182,7 +1182,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
                         },
                         r#actual,
                         r#period: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#period.unwrap_or(Default::default())
                         } else {
@@ -1217,7 +1217,7 @@ impl serde::ser::Serialize for CitationCitedArtifactTitle {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1295,7 +1295,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactTitle {
                 let mut r#type: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#language: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#text: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1352,7 +1352,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactTitle {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1375,7 +1375,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactTitle {
                         r#type: r#type.unwrap_or(vec![]),
                         r#language,
                         r#text: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#text.unwrap_or(Default::default())
                         } else {
@@ -1412,7 +1412,7 @@ impl serde::ser::Serialize for CitationCitedArtifactAbstract {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1517,7 +1517,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactAbstract {
                 let mut r#language: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#text: Option<super::super::types::Markdown> = None;
                 let mut r#copyright: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1594,7 +1594,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactAbstract {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1618,7 +1618,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactAbstract {
                         r#type,
                         r#language,
                         r#text: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#text.unwrap_or(Default::default())
                         } else {
@@ -1654,7 +1654,7 @@ impl serde::ser::Serialize for CitationCitedArtifactPart {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1736,7 +1736,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPart {
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<super::super::types::String> = None;
                 let mut r#base_citation: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1793,7 +1793,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPart {
                                 r#base_citation = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1845,7 +1845,7 @@ impl serde::ser::Serialize for CitationCitedArtifactRelatesTo {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1949,7 +1949,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#target: Option<CitationCitedArtifactRelatesToTarget> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2054,7 +2054,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
                                 ));
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2078,7 +2078,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#relationship_type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#relationship_type.unwrap_or(Default::default())
                         } else {
@@ -2087,7 +2087,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
                         },
                         r#target_classifier: r#target_classifier.unwrap_or(vec![]),
                         r#target: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#target.unwrap_or(Default::default())
                         } else {
@@ -2126,7 +2126,7 @@ impl serde::ser::Serialize for CitationCitedArtifactPublicationFormPublishedIn {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -2241,7 +2241,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPu
                 let mut r#title: Option<super::super::types::String> = None;
                 let mut r#publisher: Option<Box<super::super::types::Reference>> = None;
                 let mut r#publisher_location: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2328,7 +2328,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPu
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2392,7 +2392,7 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -2592,7 +2592,7 @@ impl<'de> serde::de::Deserialize<'de>
                 let mut r#day: Option<super::super::types::String> = None;
                 let mut r#season: Option<super::super::types::String> = None;
                 let mut r#text: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2737,7 +2737,7 @@ impl<'de> serde::de::Deserialize<'de>
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2800,7 +2800,7 @@ impl serde::ser::Serialize for CitationCitedArtifactPublicationFormPeriodicRelea
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -2911,7 +2911,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPe
                 let mut r#date_of_publication: Option<
                     CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2990,7 +2990,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPe
                                 r#date_of_publication = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -3060,7 +3060,7 @@ impl serde::ser::Serialize for CitationCitedArtifactPublicationForm {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -3322,7 +3322,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationForm {
                 let mut r#last_page: Option<super::super::types::String> = None;
                 let mut r#page_count: Option<super::super::types::String> = None;
                 let mut r#copyright: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3535,7 +3535,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationForm {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -3601,7 +3601,7 @@ impl serde::ser::Serialize for CitationCitedArtifactWebLocation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -3680,7 +3680,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactWebLocation {
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#url: Option<super::super::types::Uri> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3731,7 +3731,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactWebLocation {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -3779,7 +3779,7 @@ impl serde::ser::Serialize for CitationCitedArtifactClassificationWhoClassified 
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -3894,7 +3894,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassificationWho
                 let mut r#publisher: Option<Box<super::super::types::Reference>> = None;
                 let mut r#classifier_copyright: Option<super::super::types::String> = None;
                 let mut r#free_to_share: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -3981,7 +3981,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassificationWho
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -4037,7 +4037,7 @@ impl serde::ser::Serialize for CitationCitedArtifactClassification {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -4105,7 +4105,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassification {
                 let mut r#classifier: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#who_classified: Option<CitationCitedArtifactClassificationWhoClassified> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4148,7 +4148,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassification {
                                 r#who_classified = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -4200,7 +4200,7 @@ impl serde::ser::Serialize for CitationCitedArtifactContributorshipEntryAffiliat
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -4303,7 +4303,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                 let mut r#affiliation: Option<super::super::types::String> = None;
                 let mut r#role: Option<super::super::types::String> = None;
                 let mut r#identifier: Option<Vec<Box<super::super::types::Identifier>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4374,7 +4374,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -4424,7 +4424,7 @@ impl serde::ser::Serialize for CitationCitedArtifactContributorshipEntryContribu
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -4503,7 +4503,7 @@ impl<'de> serde::de::Deserialize<'de>
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#time: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4554,7 +4554,7 @@ impl<'de> serde::de::Deserialize<'de>
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -4569,7 +4569,7 @@ impl<'de> serde::de::Deserialize<'de>
                             r#extension: r#extension.unwrap_or(vec![]),
                             r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                             r#type: if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                             {
                                 r#type.unwrap_or(Default::default())
                             } else {
@@ -4624,7 +4624,7 @@ impl serde::ser::Serialize for CitationCitedArtifactContributorshipEntry {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -4823,7 +4823,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                 > = None;
                 let mut r#corresponding_contact: Option<super::super::types::Boolean> = None;
                 let mut r#list_order: Option<super::super::types::PositiveInt> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -4992,7 +4992,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -5064,7 +5064,7 @@ impl serde::ser::Serialize for CitationCitedArtifactContributorshipSummary {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -5151,7 +5151,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipSu
                 let mut r#style: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#source: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<super::super::types::Markdown> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -5214,7 +5214,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipSu
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -5239,7 +5239,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipSu
                         r#style,
                         r#source,
                         r#value: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#value.unwrap_or(Default::default())
                         } else {
@@ -5274,7 +5274,7 @@ impl serde::ser::Serialize for CitationCitedArtifactContributorship {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -5359,7 +5359,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorship {
                 let mut r#complete: Option<super::super::types::Boolean> = None;
                 let mut r#entry: Option<Vec<CitationCitedArtifactContributorshipEntry>> = None;
                 let mut r#summary: Option<Vec<CitationCitedArtifactContributorshipSummary>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -5416,7 +5416,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorship {
                                 r#summary = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -5492,7 +5492,7 @@ impl serde::ser::Serialize for CitationCitedArtifact {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -5649,7 +5649,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
                 let mut r#classification: Option<Vec<CitationCitedArtifactClassification>> = None;
                 let mut r#contributorship: Option<CitationCitedArtifactContributorship> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -5786,7 +5786,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
                                 r#note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -5924,7 +5924,7 @@ impl serde::ser::Serialize for Citation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Citation")?;
@@ -6445,7 +6445,7 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                 let mut r#status_date: Option<Vec<CitationStatusDate>> = None;
                 let mut r#relates_to: Option<Vec<CitationRelatesTo>> = None;
                 let mut r#cited_artifact: Option<CitationCitedArtifact> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -6903,7 +6903,7 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                                 r#cited_artifact = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -6965,7 +6965,7 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                         r#name,
                         r#title,
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {

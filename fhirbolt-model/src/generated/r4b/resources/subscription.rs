@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionChannel {
@@ -28,7 +28,7 @@ impl serde::ser::Serialize for SubscriptionChannel {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -185,7 +185,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                 let mut r#endpoint: Option<super::super::types::Url> = None;
                 let mut r#payload: Option<super::super::types::Code> = None;
                 let mut r#header: Option<Vec<super::super::types::String>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -320,7 +320,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -342,7 +342,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
@@ -398,7 +398,7 @@ impl serde::ser::Serialize for Subscription {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Subscription")?;
@@ -631,7 +631,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                 let mut r#criteria: Option<super::super::types::String> = None;
                 let mut r#error: Option<super::super::types::String> = None;
                 let mut r#channel: Option<SubscriptionChannel> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -837,7 +837,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                 r#channel = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -872,7 +872,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
@@ -881,14 +881,14 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                         r#contact: r#contact.unwrap_or(vec![]),
                         r#end,
                         r#reason: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#reason.unwrap_or(Default::default())
                         } else {
                             r#reason.ok_or(serde::de::Error::missing_field("reason"))?
                         },
                         r#criteria: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#criteria.unwrap_or(Default::default())
                         } else {
@@ -896,7 +896,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                         },
                         r#error,
                         r#channel: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#channel.unwrap_or(Default::default())
                         } else {

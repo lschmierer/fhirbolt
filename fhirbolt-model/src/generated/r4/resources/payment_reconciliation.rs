@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Distribution of the payment amount for a previously acknowledged payable."]
 #[derive(Default, Debug, Clone)]
 pub struct PaymentReconciliationDetail {
@@ -40,7 +40,7 @@ impl serde::ser::Serialize for PaymentReconciliationDetail {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -165,7 +165,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                 let mut r#responsible: Option<Box<super::super::types::Reference>> = None;
                 let mut r#payee: Option<Box<super::super::types::Reference>> = None;
                 let mut r#amount: Option<Box<super::super::types::Money>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -264,7 +264,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                                 r#amount = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -294,7 +294,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                         r#identifier,
                         r#predecessor,
                         r#type: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#type.unwrap_or(Default::default())
                         } else {
@@ -334,7 +334,7 @@ impl serde::ser::Serialize for PaymentReconciliationProcessNote {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -431,7 +431,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                     None;
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#text: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -496,7 +496,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -574,7 +574,7 @@ impl serde::ser::Serialize for PaymentReconciliation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "PaymentReconciliation")?;
@@ -855,7 +855,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                 let mut r#detail: Option<Vec<PaymentReconciliationDetail>> = None;
                 let mut r#form_code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#process_note: Option<Vec<PaymentReconciliationProcessNote>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1111,7 +1111,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                 r#process_note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1155,7 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
@@ -1163,7 +1163,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                         },
                         r#period,
                         r#created: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#created.unwrap_or(Default::default())
                         } else {
@@ -1175,14 +1175,14 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                         r#outcome,
                         r#disposition,
                         r#payment_date: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#payment_date.unwrap_or(Default::default())
                         } else {
                             r#payment_date.ok_or(serde::de::Error::missing_field("paymentDate"))?
                         },
                         r#payment_amount: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#payment_amount.unwrap_or(Default::default())
                         } else {

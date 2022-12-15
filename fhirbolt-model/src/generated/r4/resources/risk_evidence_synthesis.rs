@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
 #[derive(Default, Debug, Clone)]
 pub struct RiskEvidenceSynthesisSampleSize {
@@ -26,7 +26,7 @@ impl serde::ser::Serialize for RiskEvidenceSynthesisSampleSize {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -147,7 +147,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#number_of_studies: Option<super::super::types::Integer> = None;
                 let mut r#number_of_participants: Option<super::super::types::Integer> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -242,7 +242,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -296,7 +296,7 @@ impl serde::ser::Serialize for RiskEvidenceSynthesisRiskEstimatePrecisionEstimat
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -429,7 +429,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
                 let mut r#level: Option<super::super::types::Decimal> = None;
                 let mut r#from: Option<super::super::types::Decimal> = None;
                 let mut r#to: Option<super::super::types::Decimal> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -520,7 +520,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -582,7 +582,7 @@ impl serde::ser::Serialize for RiskEvidenceSynthesisRiskEstimate {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -749,7 +749,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                 let mut r#precision_estimate: Option<
                     Vec<RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -882,7 +882,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
                                 r#precision_estimate = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -942,7 +942,7 @@ impl serde::ser::Serialize for RiskEvidenceSynthesisCertaintyCertaintySubcompone
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1009,7 +1009,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertaintyCertaint
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#rating: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1052,7 +1052,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertaintyCertaint
                                 r#note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1104,7 +1104,7 @@ impl serde::ser::Serialize for RiskEvidenceSynthesisCertainty {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1173,7 +1173,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertainty {
                 let mut r#certainty_subcomponent: Option<
                     Vec<RiskEvidenceSynthesisCertaintyCertaintySubcomponent>,
                 > = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1218,7 +1218,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertainty {
                                 r#certainty_subcomponent = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1336,7 +1336,7 @@ impl serde::ser::Serialize for RiskEvidenceSynthesis {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "RiskEvidenceSynthesis")?;
@@ -1829,7 +1829,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                 let mut r#sample_size: Option<RiskEvidenceSynthesisSampleSize> = None;
                 let mut r#risk_estimate: Option<RiskEvidenceSynthesisRiskEstimate> = None;
                 let mut r#certainty: Option<Vec<RiskEvidenceSynthesisCertainty>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2271,7 +2271,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                                 r#certainty = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2335,7 +2335,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                         r#name,
                         r#title,
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
@@ -2361,7 +2361,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                         r#synthesis_type,
                         r#study_type,
                         r#population: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#population.unwrap_or(Default::default())
                         } else {
@@ -2369,7 +2369,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
                         },
                         r#exposure,
                         r#outcome: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#outcome.unwrap_or(Default::default())
                         } else {

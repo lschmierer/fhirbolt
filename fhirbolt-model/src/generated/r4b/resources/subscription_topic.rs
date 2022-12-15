@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {
@@ -30,7 +30,7 @@ impl serde::ser::Serialize for SubscriptionTopicResourceTriggerQueryCriteria {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -199,7 +199,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                 let mut r#current: Option<super::super::types::String> = None;
                 let mut r#result_for_delete: Option<super::super::types::Code> = None;
                 let mut r#require_both: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -332,7 +332,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -392,7 +392,7 @@ impl serde::ser::Serialize for SubscriptionTopicResourceTrigger {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -559,7 +559,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                 let mut r#query_criteria: Option<SubscriptionTopicResourceTriggerQueryCriteria> =
                     None;
                 let mut r#fhir_path_criteria: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -708,7 +708,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -732,7 +732,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#description,
                         r#resource: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#resource.unwrap_or(Default::default())
                         } else {
@@ -770,7 +770,7 @@ impl serde::ser::Serialize for SubscriptionTopicEventTrigger {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -867,7 +867,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
                 let mut r#description: Option<super::super::types::Markdown> = None;
                 let mut r#event: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#resource: Option<super::super::types::Uri> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -938,7 +938,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -960,14 +960,14 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#description,
                         r#event: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#event.unwrap_or(Default::default())
                         } else {
                             r#event.ok_or(serde::de::Error::missing_field("event"))?
                         },
                         r#resource: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#resource.unwrap_or(Default::default())
                         } else {
@@ -1006,7 +1006,7 @@ impl serde::ser::Serialize for SubscriptionTopicCanFilterBy {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1192,7 +1192,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                 let mut r#filter_parameter: Option<super::super::types::String> = None;
                 let mut r#filter_definition: Option<super::super::types::Uri> = None;
                 let mut r#modifier: Option<Vec<super::super::types::Code>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1355,7 +1355,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1380,7 +1380,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                         r#description,
                         r#resource,
                         r#filter_parameter: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#filter_parameter.unwrap_or(Default::default())
                         } else {
@@ -1418,7 +1418,7 @@ impl serde::ser::Serialize for SubscriptionTopicNotificationShape {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1573,7 +1573,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
                 let mut r#resource: Option<super::super::types::Uri> = None;
                 let mut r#include: Option<Vec<super::super::types::String>> = None;
                 let mut r#rev_include: Option<Vec<super::super::types::String>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1718,7 +1718,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1739,7 +1739,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#resource: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#resource.unwrap_or(Default::default())
                         } else {
@@ -1824,7 +1824,7 @@ impl serde::ser::Serialize for SubscriptionTopic {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "SubscriptionTopic")?;
@@ -2318,7 +2318,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                 let mut r#can_filter_by: Option<Vec<SubscriptionTopicCanFilterBy>> = None;
                 let mut r#notification_shape: Option<Vec<SubscriptionTopicNotificationShape>> =
                     None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2766,7 +2766,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                 r#notification_shape = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2816,7 +2816,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#url: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#url.unwrap_or(Default::default())
                         } else {
@@ -2827,7 +2827,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                         r#title,
                         r#derived_from: r#derived_from.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {

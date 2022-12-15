@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"<http://terminology.hl7.org/CodeSystem/message>-events\".  Alternatively uri to the EventDefinition."]
 #[derive(Debug, Clone)]
 pub enum MessageHeaderEvent {
@@ -40,7 +40,7 @@ impl serde::ser::Serialize for MessageHeaderDestination {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -142,7 +142,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
                 let mut r#target: Option<Box<super::super::types::Reference>> = None;
                 let mut r#endpoint: Option<super::super::types::Url> = None;
                 let mut r#receiver: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -219,7 +219,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
                                 r#receiver = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -243,7 +243,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
                         r#name,
                         r#target,
                         r#endpoint: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#endpoint.unwrap_or(Default::default())
                         } else {
@@ -283,7 +283,7 @@ impl serde::ser::Serialize for MessageHeaderSource {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -427,7 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                 let mut r#version: Option<super::super::types::String> = None;
                 let mut r#contact: Option<Box<super::super::types::ContactPoint>> = None;
                 let mut r#endpoint: Option<super::super::types::Url> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -538,7 +538,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -565,7 +565,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                         r#version,
                         r#contact,
                         r#endpoint: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#endpoint.unwrap_or(Default::default())
                         } else {
@@ -600,7 +600,7 @@ impl serde::ser::Serialize for MessageHeaderResponse {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -692,7 +692,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
                 let mut r#identifier: Option<super::super::types::Id> = None;
                 let mut r#code: Option<super::super::types::Code> = None;
                 let mut r#details: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -763,7 +763,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
                                 r#details = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -784,14 +784,14 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#identifier.unwrap_or(Default::default())
                         } else {
                             r#identifier.ok_or(serde::de::Error::missing_field("identifier"))?
                         },
                         r#code: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {
@@ -853,7 +853,7 @@ impl serde::ser::Serialize for MessageHeader {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "MessageHeader")?;
@@ -1076,7 +1076,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                 let mut r#response: Option<MessageHeaderResponse> = None;
                 let mut r#focus: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#definition: Option<super::super::types::Canonical> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1281,7 +1281,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1321,7 +1321,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#event: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#event.unwrap_or(Default::default())
                         } else {
@@ -1332,7 +1332,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                         r#enterer,
                         r#author,
                         r#source: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#source.unwrap_or(Default::default())
                         } else {

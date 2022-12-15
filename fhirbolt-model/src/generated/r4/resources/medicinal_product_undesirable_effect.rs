@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Describe the undesirable effects of the medicinal product."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductUndesirableEffect {
@@ -40,7 +40,7 @@ impl serde::ser::Serialize for MedicinalProductUndesirableEffect {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "MedicinalProductUndesirableEffect")?;
@@ -192,7 +192,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductUndesirableEffect {
                     Box<super::super::types::CodeableConcept>,
                 > = None;
                 let mut r#population: Option<Vec<Box<super::super::types::Population>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -322,7 +322,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductUndesirableEffect {
                                 r#population = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,

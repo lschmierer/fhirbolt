@@ -1,10 +1,8 @@
 /// Serialize FHIR resources to JSON.
 use serde::ser::Serialize;
 
-pub use serde_json::ser::*;
-
 use fhirbolt_shared::{
-    serde_config::ser::{with_context, SerializationContext},
+    serde_context::ser::{with_context, SerializationContext},
     AnyResource,
 };
 
@@ -21,7 +19,7 @@ where
     })
 }
 
-/// Serialize the given resource as pretty=printed JSON into the IO stream.
+/// Serialize the given resource as pretty-printed JSON into the IO stream.
 pub fn to_writer_pretty<W, T>(writer: W, value: &T) -> Result<()>
 where
     W: std::io::Write,
@@ -72,7 +70,8 @@ where
     })
 }
 
-pub fn to_value<T>(value: T) -> Result<serde_json::Value>
+/// Serialize the given resource as a [`serde_json::Value`].
+pub fn to_json_value<T>(value: T) -> Result<serde_json::Value>
 where
     T: serde::ser::Serialize + AnyResource,
 {

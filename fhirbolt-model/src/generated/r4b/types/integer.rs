@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for integer Type: A whole number"]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct Integer {

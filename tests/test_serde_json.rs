@@ -55,9 +55,11 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
 
         let mut json_value: Value = serde_json::from_reader(file).unwrap();
 
-        let resource: R =
-            fhirbolt::json::from_value(json_value.clone(), Some(DeserializationConfig { mode }))
-                .unwrap();
+        let resource: R = fhirbolt::json::from_json_value(
+            json_value.clone(),
+            Some(DeserializationConfig { mode }),
+        )
+        .unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
         if R::fhir_release() == FhirRelease::R4B {

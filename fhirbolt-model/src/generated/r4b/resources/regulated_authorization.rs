@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Relevant date for this case."]
 #[derive(Debug, Clone)]
 pub enum RegulatedAuthorizationCaseDate {
@@ -42,7 +42,7 @@ impl serde::ser::Serialize for RegulatedAuthorizationCase {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -147,7 +147,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorizationCase {
                 let mut r#status: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#date: Option<RegulatedAuthorizationCaseDate> = None;
                 let mut r#application: Option<Vec<RegulatedAuthorizationCase>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -240,7 +240,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorizationCase {
                                 r#application = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -329,7 +329,7 @@ impl serde::ser::Serialize for RegulatedAuthorization {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "RegulatedAuthorization")?;
@@ -564,7 +564,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
                 let mut r#holder: Option<Box<super::super::types::Reference>> = None;
                 let mut r#regulator: Option<Box<super::super::types::Reference>> = None;
                 let mut r#case: Option<RegulatedAuthorizationCase> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -772,7 +772,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
                                 r#case = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,

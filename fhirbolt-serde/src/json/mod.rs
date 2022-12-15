@@ -1,9 +1,6 @@
 //! Deserialize and serialize FHIR resources to and from JSON.
 //!
-//! This module uses `serde_json` for (de)serialization and directly reexports some of its types (like [`Error`] and [`Deserializer`]).
-//! While you could use `serde_json`s `from_` and `to_` directly,
-//! the functions in this module allow to pass a [`DeserializationConfig`](crate::DeserializationConfig)
-//! to configure (de)serialization behavior.
+//! This module uses `serde_json` under the hood and reexports its [`Error`] type.
 //!
 //! # Example
 //! ```
@@ -32,14 +29,13 @@
 //! ```
 //!
 //! See [`DeserializationMode`](crate::DeserializationMode) for different supported deserialization modes.
-pub mod de;
-pub mod error;
-pub mod ser;
+mod de;
+mod error;
+mod ser;
 
-pub use de::{from_reader, from_slice, from_str, from_value, Deserializer};
+pub use de::{from_json_value, from_reader, from_slice, from_str};
 pub use ser::{
-    to_string, to_string_pretty, to_value, to_vec, to_vec_pretty, to_writer, to_writer_pretty,
-    Serializer,
+    to_json_value, to_string, to_string_pretty, to_vec, to_vec_pretty, to_writer, to_writer_pretty,
 };
 
 pub use error::{Error, Result};

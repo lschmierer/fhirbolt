@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for SampledData Type: A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.\n\nThere is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency."]
 #[derive(Default, Debug, Clone)]
 pub struct SampledData {
@@ -32,7 +32,7 @@ impl serde::ser::Serialize for SampledData {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -219,7 +219,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                 let mut r#upper_limit: Option<super::super::types::Decimal> = None;
                 let mut r#dimensions: Option<super::super::types::PositiveInt> = None;
                 let mut r#data: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -362,7 +362,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -385,14 +385,14 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                         r#id,
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#origin: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#origin.unwrap_or(Default::default())
                         } else {
                             r#origin.ok_or(serde::de::Error::missing_field("origin"))?
                         },
                         r#period: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#period.unwrap_or(Default::default())
                         } else {
@@ -402,7 +402,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                         r#lower_limit,
                         r#upper_limit,
                         r#dimensions: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#dimensions.unwrap_or(Default::default())
                         } else {

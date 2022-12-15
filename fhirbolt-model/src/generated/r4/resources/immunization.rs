@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationOccurrence {
@@ -60,7 +60,7 @@ impl serde::ser::Serialize for ImmunizationPerformer {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -116,7 +116,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                     None;
                 let mut r#function: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -153,7 +153,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                                 r#actor = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -168,7 +168,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#function,
                         r#actor: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#actor.unwrap_or(Default::default())
                         } else {
@@ -205,7 +205,7 @@ impl serde::ser::Serialize for ImmunizationEducation {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -347,7 +347,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                 let mut r#reference: Option<super::super::types::Uri> = None;
                 let mut r#publication_date: Option<super::super::types::DateTime> = None;
                 let mut r#presentation_date: Option<super::super::types::DateTime> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -460,7 +460,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -514,7 +514,7 @@ impl serde::ser::Serialize for ImmunizationReaction {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -614,7 +614,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                 let mut r#date: Option<super::super::types::DateTime> = None;
                 let mut r#detail: Option<Box<super::super::types::Reference>> = None;
                 let mut r#reported: Option<super::super::types::Boolean> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -685,7 +685,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -741,7 +741,7 @@ impl serde::ser::Serialize for ImmunizationProtocolApplied {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -930,7 +930,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                     None;
                 let mut r#dose_number: Option<ImmunizationProtocolAppliedDoseNumber> = None;
                 let mut r#series_doses: Option<ImmunizationProtocolAppliedSeriesDoses> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1177,7 +1177,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1205,7 +1205,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                         r#authority,
                         r#target_disease: r#target_disease.unwrap_or(vec![]),
                         r#dose_number: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#dose_number.unwrap_or(Default::default())
                         } else {
@@ -1301,7 +1301,7 @@ impl serde::ser::Serialize for Immunization {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Immunization")?;
@@ -1730,7 +1730,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                 let mut r#funding_source: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#reaction: Option<Vec<ImmunizationReaction>> = None;
                 let mut r#protocol_applied: Option<Vec<ImmunizationProtocolApplied>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -2160,7 +2160,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                 r#protocol_applied = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -2218,7 +2218,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
@@ -2226,14 +2226,14 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                         },
                         r#status_reason,
                         r#vaccine_code: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#vaccine_code.unwrap_or(Default::default())
                         } else {
                             r#vaccine_code.ok_or(serde::de::Error::missing_field("vaccineCode"))?
                         },
                         r#patient: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#patient.unwrap_or(Default::default())
                         } else {
@@ -2241,7 +2241,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                         },
                         r#encounter,
                         r#occurrence: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#occurrence.unwrap_or(Default::default())
                         } else {

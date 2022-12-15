@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "The actual or approximate date of birth of the relative."]
 #[derive(Debug, Clone)]
 pub enum FamilyMemberHistoryBorn {
@@ -85,7 +85,7 @@ impl serde::ser::Serialize for FamilyMemberHistoryCondition {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -219,7 +219,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                 let mut r#contributed_to_death: Option<super::super::types::Boolean> = None;
                 let mut r#onset: Option<FamilyMemberHistoryConditionOnset> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -346,7 +346,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                 r#note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -372,7 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#code: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {
@@ -451,7 +451,7 @@ impl serde::ser::Serialize for FamilyMemberHistory {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "FamilyMemberHistory")?;
@@ -979,7 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                 let mut r#reason_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#condition: Option<Vec<FamilyMemberHistoryCondition>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1565,7 +1565,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                 r#condition = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1622,7 +1622,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                         r#instantiates_canonical: r#instantiates_canonical.unwrap_or(vec![]),
                         r#instantiates_uri: r#instantiates_uri.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
@@ -1630,7 +1630,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                         },
                         r#data_absent_reason,
                         r#patient: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#patient.unwrap_or(Default::default())
                         } else {
@@ -1639,7 +1639,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                         r#date,
                         r#name,
                         r#relationship: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#relationship.unwrap_or(Default::default())
                         } else {

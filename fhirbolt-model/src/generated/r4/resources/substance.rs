@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Another substance that is a component of this substance."]
 #[derive(Debug, Clone)]
 pub enum SubstanceIngredientSubstance {
@@ -38,7 +38,7 @@ impl serde::ser::Serialize for SubstanceInstance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceInstance {
                 let mut r#identifier: Option<Box<super::super::types::Identifier>> = None;
                 let mut r#expiry: Option<super::super::types::DateTime> = None;
                 let mut r#quantity: Option<Box<super::super::types::Quantity>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -177,7 +177,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceInstance {
                                 r#quantity = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -227,7 +227,7 @@ impl serde::ser::Serialize for SubstanceIngredient {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -295,7 +295,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceIngredient {
                     None;
                 let mut r#quantity: Option<Box<super::super::types::Ratio>> = None;
                 let mut r#substance: Option<SubstanceIngredientSubstance> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -346,7 +346,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceIngredient {
                                 ));
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -368,7 +368,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceIngredient {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#quantity,
                         r#substance: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#substance.unwrap_or(Default::default())
                         } else {
@@ -421,7 +421,7 @@ impl serde::ser::Serialize for Substance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Substance")?;
@@ -612,7 +612,7 @@ impl<'de> serde::de::Deserialize<'de> for Substance {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#instance: Option<Vec<SubstanceInstance>> = None;
                 let mut r#ingredient: Option<Vec<SubstanceIngredient>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -776,7 +776,7 @@ impl<'de> serde::de::Deserialize<'de> for Substance {
                                 r#ingredient = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -814,7 +814,7 @@ impl<'de> serde::de::Deserialize<'de> for Substance {
                         r#status,
                         r#category: r#category.unwrap_or(vec![]),
                         r#code: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#code.unwrap_or(Default::default())
                         } else {

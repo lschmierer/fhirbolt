@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates who or what performed the series and how they were involved."]
 #[derive(Default, Debug, Clone)]
 pub struct ImagingStudySeriesPerformer {
@@ -24,7 +24,7 @@ impl serde::ser::Serialize for ImagingStudySeriesPerformer {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -83,7 +83,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
                     None;
                 let mut r#function: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
                                 r#actor = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -135,7 +135,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#function,
                         r#actor: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#actor.unwrap_or(Default::default())
                         } else {
@@ -172,7 +172,7 @@ impl serde::ser::Serialize for ImagingStudySeriesInstance {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -290,7 +290,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                 let mut r#sop_class: Option<Box<super::super::types::Coding>> = None;
                 let mut r#number: Option<super::super::types::UnsignedInt> = None;
                 let mut r#title: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -381,7 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -403,14 +403,14 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#uid: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#uid.unwrap_or(Default::default())
                         } else {
                             r#uid.ok_or(serde::de::Error::missing_field("uid"))?
                         },
                         r#sop_class: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#sop_class.unwrap_or(Default::default())
                         } else {
@@ -465,7 +465,7 @@ impl serde::ser::Serialize for ImagingStudySeries {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -667,7 +667,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                 let mut r#started: Option<super::super::types::DateTime> = None;
                 let mut r#performer: Option<Vec<ImagingStudySeriesPerformer>> = None;
                 let mut r#instance: Option<Vec<ImagingStudySeriesInstance>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -838,7 +838,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                 r#instance = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -868,7 +868,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#uid: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#uid.unwrap_or(Default::default())
                         } else {
@@ -876,7 +876,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                         },
                         r#number,
                         r#modality: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#modality.unwrap_or(Default::default())
                         } else {
@@ -964,7 +964,7 @@ impl serde::ser::Serialize for ImagingStudy {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "ImagingStudy")?;
@@ -1285,7 +1285,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#series: Option<Vec<ImagingStudySeries>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1581,7 +1581,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                 r#series = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1630,7 +1630,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
@@ -1638,7 +1638,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                         },
                         r#modality: r#modality.unwrap_or(vec![]),
                         r#subject: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#subject.unwrap_or(Default::default())
                         } else {

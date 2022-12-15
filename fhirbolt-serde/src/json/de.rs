@@ -1,10 +1,8 @@
 /// Deserialize FHIR resources from JSON.
 use serde::de::{Deserialize, DeserializeOwned};
 
-pub use serde_json::de::*;
-
 use fhirbolt_shared::{
-    serde_config::de::{with_context, DeserializationConfig, DeserializationContext},
+    serde_context::de::{with_context, DeserializationConfig, DeserializationContext},
     AnyResource,
 };
 
@@ -162,7 +160,10 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_value<T>(value: serde_json::Value, config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_json_value<T>(
+    value: serde_json::Value,
+    config: Option<DeserializationConfig>,
+) -> Result<T>
 where
     T: DeserializeOwned + AnyResource,
 {

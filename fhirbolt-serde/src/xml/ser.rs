@@ -3,7 +3,7 @@ use std::{borrow::Cow, io, mem};
 use serde::ser::{self, Impossible, Serialize};
 
 use fhirbolt_shared::{
-    serde_config::ser::{with_context, SerializationContext},
+    serde_context::ser::{with_context, SerializationContext},
     AnyResource,
 };
 
@@ -13,6 +13,7 @@ use crate::xml::{
     write::{self, Write},
 };
 
+/// Serialize the given resource as XML into the IO stream.
 pub fn to_writer<W, T>(writer: W, value: &T) -> Result<()>
 where
     W: io::Write,
@@ -24,6 +25,7 @@ where
     })
 }
 
+/// Serialize the given resource as a XML byte vector.
 pub fn to_vec<T>(value: &T) -> Result<Vec<u8>>
 where
     T: ?Sized + Serialize + AnyResource,
@@ -35,6 +37,7 @@ where
     })
 }
 
+/// Serialize the given resource as a String of JSON.
 pub fn to_string<T>(value: &T) -> Result<String>
 where
     T: ?Sized + Serialize + AnyResource,

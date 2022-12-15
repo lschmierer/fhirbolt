@@ -9,25 +9,40 @@ mod quick_xml {
     pub use quick_xml::{events::attributes::AttrError, Error};
 }
 
+/// Alias for a Result with the error type [`fhirbolt::xml::Error`](Error).
 pub type Result<T> = std::result::Result<T, Error>;
 
+/// This type represents all possible errors that can occur when serializing or deserializing XML data.
 #[derive(Debug)]
 pub enum Error {
+    /// Generic error message.
     Message(String),
+    /// Generic error reading or writing XML.
     InvalidXml(quick_xml::Error),
+    /// Invalid XML attribute.
     InvalidXmlAttribute(quick_xml::AttrError),
+    /// Invalid XML version.
     InvalidXmlVersion(Option<String>),
+    /// Invalid XML encoding.
     InvalidXmlEncoding(String),
+    /// Invalid XML standalone.
     InvalidXmlStandalone(String),
+    /// Invalid XML namespace.
     InvalidXmlNamespace(String),
+    /// Unsupported XML event.
     InvalidXmlEvent(&'static str),
+    /// Unexpected Fhir event.
     InvalidFhirEvent {
         found: &'static str,
         expected: &'static str,
     },
+    /// Error reading UTF8.
     Utf8Error(str::Utf8Error),
+    /// Error parsing integer.
     ParseIntError(num::ParseIntError),
+    /// Error parsing boolean.
     ParseBoolError(str::ParseBoolError),
+    /// Unexpected end of file.
     Eof,
 }
 

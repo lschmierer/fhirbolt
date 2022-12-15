@@ -1,4 +1,4 @@
-//! Deserialize and serialize FHIR resources to and from JSON.
+//! Deserialize and serialize FHIR resources to and from XML.
 //!
 //! # Example
 //! ```
@@ -23,10 +23,10 @@
 //! # }
 //! ```
 
-pub mod de;
-pub mod ser;
+mod de;
+mod ser;
 
-pub mod error;
+mod error;
 
 mod consts;
 mod event;
@@ -35,7 +35,7 @@ mod path;
 mod read;
 mod write;
 
-pub use de::{from_reader, from_slice, from_str, Deserializer};
-pub use ser::{to_string, to_vec, to_writer, Serializer};
+pub use de::{from_reader, from_slice, from_str};
+pub use ser::{to_string, to_vec, to_writer};
 
 pub use error::{Error, Result};

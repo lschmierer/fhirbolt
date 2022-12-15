@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "A slot of time on a schedule that may be available for booking appointments."]
 #[derive(Default, Debug, Clone)]
 pub struct Slot {
@@ -52,7 +52,7 @@ impl serde::ser::Serialize for Slot {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Slot")?;
@@ -312,7 +312,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                 let mut r#end: Option<super::super::types::Instant> = None;
                 let mut r#overbooked: Option<super::super::types::Boolean> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -546,7 +546,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                 some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -590,28 +590,28 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                         r#specialty: r#specialty.unwrap_or(vec![]),
                         r#appointment_type,
                         r#schedule: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#schedule.unwrap_or(Default::default())
                         } else {
                             r#schedule.ok_or(serde::de::Error::missing_field("schedule"))?
                         },
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
                             r#status.ok_or(serde::de::Error::missing_field("status"))?
                         },
                         r#start: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#start.unwrap_or(Default::default())
                         } else {
                             r#start.ok_or(serde::de::Error::missing_field("start"))?
                         },
                         r#end: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#end.unwrap_or(Default::default())
                         } else {

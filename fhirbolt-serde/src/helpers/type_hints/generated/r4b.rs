@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 use phf::{phf_map, phf_set};
 pub static TYPE_HINTS: crate::helpers::type_hints::TypeHints =
     crate::helpers::type_hints::TypeHints {

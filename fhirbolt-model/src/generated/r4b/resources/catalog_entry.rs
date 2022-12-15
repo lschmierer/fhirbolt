@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Default, Debug, Clone)]
 pub struct CatalogEntryRelatedEntry {
@@ -24,7 +24,7 @@ impl serde::ser::Serialize for CatalogEntryRelatedEntry {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
@@ -94,7 +94,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                     None;
                 let mut r#relationtype: Option<super::super::types::Code> = None;
                 let mut r#item: Option<Box<super::super::types::Reference>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -145,7 +145,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                                 r#item = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -165,14 +165,14 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                         r#extension: r#extension.unwrap_or(vec![]),
                         r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
                         r#relationtype: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#relationtype.unwrap_or(Default::default())
                         } else {
                             r#relationtype.ok_or(serde::de::Error::missing_field("relationtype"))?
                         },
                         r#item: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#item.unwrap_or(Default::default())
                         } else {
@@ -237,7 +237,7 @@ impl serde::ser::Serialize for CatalogEntry {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "CatalogEntry")?;
@@ -508,7 +508,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 let mut r#related_entry: Option<Vec<CatalogEntryRelatedEntry>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -748,7 +748,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                 r#related_entry = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -791,14 +791,14 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                         r#identifier: r#identifier.unwrap_or(vec![]),
                         r#type,
                         r#orderable: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#orderable.unwrap_or(Default::default())
                         } else {
                             r#orderable.ok_or(serde::de::Error::missing_field("orderable"))?
                         },
                         r#referenced_item: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#referenced_item.unwrap_or(Default::default())
                         } else {

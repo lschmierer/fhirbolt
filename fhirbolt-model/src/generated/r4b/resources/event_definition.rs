@@ -1,4 +1,4 @@
-// Generated on 2022-12-13 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the event definition."]
 #[derive(Debug, Clone)]
 pub enum EventDefinitionSubject {
@@ -98,7 +98,7 @@ impl serde::ser::Serialize for EventDefinition {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_config::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
+        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
             let _ctx = _ctx.get();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "EventDefinition")?;
@@ -661,7 +661,7 @@ impl<'de> serde::de::Deserialize<'de> for EventDefinition {
                 let mut r#related_artifact: Option<Vec<Box<super::super::types::RelatedArtifact>>> =
                     None;
                 let mut r#trigger: Option<Vec<Box<super::super::types::TriggerDefinition>>> = None;
-                fhirbolt_shared::serde_config::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
+                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
                     let _ctx = _ctx.get();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
@@ -1155,7 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for EventDefinition {
                                 r#trigger = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_config::de::DeserializationMode::Strict
+                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
                             {
                                 return Err(serde::de::Error::unknown_field(
                                     &key,
@@ -1218,7 +1218,7 @@ impl<'de> serde::de::Deserialize<'de> for EventDefinition {
                         r#title,
                         r#subtitle,
                         r#status: if _ctx.config.mode
-                            == fhirbolt_shared::serde_config::de::DeserializationMode::Lax
+                            == fhirbolt_shared::serde_context::de::DeserializationMode::Lax
                         {
                             r#status.unwrap_or(Default::default())
                         } else {
