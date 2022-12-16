@@ -43,4 +43,4 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Run benches
-        run: cargo bench --release --verbose
+        run: cargo bench --verbose
