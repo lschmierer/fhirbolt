@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the activity being defined."]
 #[derive(Debug, Clone)]
 pub enum ActivityDefinitionSubject {
@@ -52,11 +52,6 @@ pub struct ActivityDefinitionParticipant {
     pub r#type: super::super::types::Code,
     #[doc = "The role the participant should play in performing the described action."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for ActivityDefinitionParticipant {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ActivityDefinitionParticipant {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -507,6 +502,11 @@ pub struct ActivityDefinition {
     pub r#transform: Option<super::super::types::Canonical>,
     #[doc = "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result."]
     pub r#dynamic_value: Vec<ActivityDefinitionDynamicValue>,
+}
+impl crate::AnyResource for ActivityDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ActivityDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

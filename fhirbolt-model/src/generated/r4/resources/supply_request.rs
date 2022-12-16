@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Debug, Clone)]
 pub enum SupplyRequestItem {
@@ -51,11 +51,6 @@ pub struct SupplyRequestParameter {
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The value of the device detail."]
     pub r#value: Option<SupplyRequestParameterValue>,
-}
-impl crate::AnyResource for SupplyRequestParameter {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SupplyRequestParameter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -333,6 +328,11 @@ pub struct SupplyRequest {
     pub r#deliver_from: Option<Box<super::super::types::Reference>>,
     #[doc = "Where the supply is destined to go."]
     pub r#deliver_to: Option<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for SupplyRequest {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for SupplyRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

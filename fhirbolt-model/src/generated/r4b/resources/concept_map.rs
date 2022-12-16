@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings."]
 #[derive(Debug, Clone)]
 pub enum ConceptMapSource {
@@ -40,11 +40,6 @@ pub struct ConceptMapGroupElementTargetDependsOn {
     pub r#value: super::super::types::String,
     #[doc = "The display for the code. The display is only provided to help editors when editing the concept map."]
     pub r#display: Option<super::super::types::String>,
-}
-impl crate::AnyResource for ConceptMapGroupElementTargetDependsOn {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ConceptMapGroupElementTargetDependsOn {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1600,6 +1595,11 @@ pub struct ConceptMap {
     pub r#target: Option<ConceptMapTarget>,
     #[doc = "A group of mappings that all have the same source and target system."]
     pub r#group: Vec<ConceptMapGroup>,
+}
+impl crate::AnyResource for ConceptMap {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ConceptMap {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The age of the specific population."]
 #[derive(Debug, Clone)]
 pub enum PopulationAge {
@@ -28,11 +28,6 @@ pub struct Population {
     pub r#race: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The existing physiological conditions of the specific population to which this applies."]
     pub r#physiological_condition: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for Population {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Population {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

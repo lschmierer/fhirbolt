@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information."]
 #[derive(Default, Debug, Clone)]
 pub struct Endpoint {

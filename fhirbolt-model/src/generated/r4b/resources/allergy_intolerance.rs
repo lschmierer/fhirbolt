@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Debug, Clone)]
 pub enum AllergyIntoleranceOnset {
@@ -37,11 +37,6 @@ pub struct AllergyIntoleranceReaction {
     pub r#exposure_route: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Additional text about the adverse reaction event not captured in other fields."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for AllergyIntoleranceReaction {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for AllergyIntoleranceReaction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -390,6 +385,11 @@ pub struct AllergyIntolerance {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Details about each adverse reaction event linked to exposure to the identified substance."]
     pub r#reaction: Vec<AllergyIntoleranceReaction>,
+}
+impl crate::AnyResource for AllergyIntolerance {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for AllergyIntolerance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

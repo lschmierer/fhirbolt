@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A value to use if there is no existing value in the source object."]
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
@@ -91,11 +91,6 @@ pub struct StructureMapStructure {
     pub r#alias: Option<super::super::types::String>,
     #[doc = "Documentation that describes how the structure is used in the mapping."]
     pub r#documentation: Option<super::super::types::String>,
-}
-impl crate::AnyResource for StructureMapStructure {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for StructureMapStructure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -5106,6 +5101,11 @@ pub struct StructureMap {
     pub r#import: Vec<super::super::types::Canonical>,
     #[doc = "Organizes the mapping into manageable chunks for human review/ease of maintenance."]
     pub r#group: Vec<StructureMapGroup>,
+}
+impl crate::AnyResource for StructureMap {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for StructureMap {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

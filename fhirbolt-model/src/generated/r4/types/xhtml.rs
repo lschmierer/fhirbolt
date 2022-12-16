@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for xhtml Type"]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct Xhtml {
@@ -7,9 +7,4 @@ pub struct Xhtml {
     pub r#id: Option<std::string::String>,
     #[doc = "Actual xhtml"]
     pub r#value: std::string::String,
-}
-impl crate::AnyResource for Xhtml {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Citation Resource or display of suggested citation for this evidence."]
 #[derive(Debug, Clone)]
 pub enum EvidenceCiteAs {
@@ -32,11 +32,6 @@ pub struct EvidenceVariableDefinition {
     pub r#intended: Option<Box<super::super::types::Reference>>,
     #[doc = "Indication of quality of match between intended variable to actual variable."]
     pub r#directness_match: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for EvidenceVariableDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for EvidenceVariableDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2035,6 +2030,11 @@ pub struct Evidence {
     pub r#statistic: Vec<EvidenceStatistic>,
     #[doc = "Assessment of certainty, confidence in the estimates, or quality of the evidence."]
     pub r#certainty: Vec<EvidenceCertainty>,
+}
+impl crate::AnyResource for Evidence {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Evidence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityResponseServiced {
@@ -52,11 +52,6 @@ pub struct CoverageEligibilityResponseInsuranceItemBenefit {
     pub r#allowed: Option<CoverageEligibilityResponseInsuranceItemBenefitAllowed>,
     #[doc = "The quantity of the benefit which have been consumed to date."]
     pub r#used: Option<CoverageEligibilityResponseInsuranceItemBenefitUsed>,
-}
-impl crate::AnyResource for CoverageEligibilityResponseInsuranceItemBenefit {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for CoverageEligibilityResponseInsuranceItemBenefit {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1149,6 +1144,11 @@ pub struct CoverageEligibilityResponse {
     pub r#form: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Errors encountered during the processing of the request."]
     pub r#error: Vec<CoverageEligibilityResponseError>,
+}
+impl crate::AnyResource for CoverageEligibilityResponse {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for CoverageEligibilityResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

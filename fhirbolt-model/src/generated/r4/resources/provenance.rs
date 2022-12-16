@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The period during which the activity occurred."]
 #[derive(Debug, Clone)]
 pub enum ProvenanceOccurred {
@@ -28,11 +28,6 @@ pub struct ProvenanceAgent {
     pub r#who: Box<super::super::types::Reference>,
     #[doc = "The individual, device, or organization for whom the change was made."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ProvenanceAgent {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ProvenanceAgent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -431,6 +426,11 @@ pub struct Provenance {
     pub r#entity: Vec<ProvenanceEntity>,
     #[doc = "A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated."]
     pub r#signature: Vec<Box<super::super::types::Signature>>,
+}
+impl crate::AnyResource for Provenance {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Provenance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

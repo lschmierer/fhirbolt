@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The answer (or one of the answers) provided by the respondent to the question."]
 #[derive(Debug, Clone)]
 pub enum QuestionnaireResponseItemAnswerValue {
@@ -34,11 +34,6 @@ pub struct QuestionnaireResponseItemAnswer {
     pub r#value: Option<QuestionnaireResponseItemAnswerValue>,
     #[doc = "Nested groups and/or questions found within this particular answer."]
     pub r#item: Vec<QuestionnaireResponseItem>,
-}
-impl crate::AnyResource for QuestionnaireResponseItemAnswer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for QuestionnaireResponseItemAnswer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1069,6 +1064,11 @@ pub struct QuestionnaireResponse {
     pub r#source: Option<Box<super::super::types::Reference>>,
     #[doc = "A group or question item from the original questionnaire for which answers are provided."]
     pub r#item: Vec<QuestionnaireResponseItem>,
+}
+impl crate::AnyResource for QuestionnaireResponse {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for QuestionnaireResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

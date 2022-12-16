@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Debug, Clone)]
 pub enum SubstanceAmountAmount {
@@ -23,11 +23,6 @@ pub struct SubstanceAmountReferenceRange {
     pub r#low_limit: Option<Box<super::super::types::Quantity>>,
     #[doc = "Upper limit possible or expected."]
     pub r#high_limit: Option<Box<super::super::types::Quantity>>,
-}
-impl crate::AnyResource for SubstanceAmountReferenceRange {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SubstanceAmountReferenceRange {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

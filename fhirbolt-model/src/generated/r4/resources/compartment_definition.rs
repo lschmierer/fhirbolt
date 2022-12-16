@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Information about how a resource is related to the compartment."]
 #[derive(Default, Debug, Clone)]
 pub struct CompartmentDefinitionResource {
@@ -14,11 +14,6 @@ pub struct CompartmentDefinitionResource {
     pub r#param: Vec<super::super::types::String>,
     #[doc = "Additional documentation about the resource and compartment."]
     pub r#documentation: Option<super::super::types::String>,
-}
-impl crate::AnyResource for CompartmentDefinitionResource {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for CompartmentDefinitionResource {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -362,6 +357,11 @@ pub struct CompartmentDefinition {
     pub r#search: super::super::types::Boolean,
     #[doc = "Information about how a resource is related to the compartment."]
     pub r#resource: Vec<CompartmentDefinitionResource>,
+}
+impl crate::AnyResource for CompartmentDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for CompartmentDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

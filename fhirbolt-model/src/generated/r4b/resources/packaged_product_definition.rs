@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Debug, Clone)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
@@ -39,11 +39,6 @@ pub struct PackagedProductDefinitionLegalStatusOfSupply {
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The place where the legal status of supply applies. When not specified, this indicates it is unknown in this context."]
     pub r#jurisdiction: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for PackagedProductDefinitionLegalStatusOfSupply {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for PackagedProductDefinitionLegalStatusOfSupply {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1146,6 +1141,11 @@ pub struct PackagedProductDefinition {
     pub r#manufacturer: Vec<Box<super::super::types::Reference>>,
     #[doc = "A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap (which is not a device or a medication manufactured item)."]
     pub r#package: Option<PackagedProductDefinitionPackage>,
+}
+impl crate::AnyResource for PackagedProductDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for PackagedProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

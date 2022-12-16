@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactDetail Type: Specifies contact information for a person or organization.\n\nNeed to track contact information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone)]
 pub struct ContactDetail {
@@ -10,11 +10,6 @@ pub struct ContactDetail {
     pub r#name: Option<super::super::types::String>,
     #[doc = "The contact details for the individual (if a name was provided) or the organization."]
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
-}
-impl crate::AnyResource for ContactDetail {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ContactDetail {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

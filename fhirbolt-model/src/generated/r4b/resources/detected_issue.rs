@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The date or period when the detected issue was initially identified."]
 #[derive(Debug, Clone)]
 pub enum DetectedIssueIdentified {
@@ -24,11 +24,6 @@ pub struct DetectedIssueEvidence {
     pub r#code: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Links to resources that constitute evidence for the detected issue such as a GuidanceResponse or MeasureReport."]
     pub r#detail: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for DetectedIssueEvidence {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for DetectedIssueEvidence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -391,6 +386,11 @@ pub struct DetectedIssue {
     pub r#reference: Option<super::super::types::Uri>,
     #[doc = "Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action."]
     pub r#mitigation: Vec<DetectedIssueMitigation>,
+}
+impl crate::AnyResource for DetectedIssue {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for DetectedIssue {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

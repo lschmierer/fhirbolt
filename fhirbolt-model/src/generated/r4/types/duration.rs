@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Duration Type: A length of time."]
 #[derive(Default, Debug, Clone)]
 pub struct Duration {
@@ -16,11 +16,6 @@ pub struct Duration {
     pub r#system: Option<super::super::types::Uri>,
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for Duration {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Duration {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

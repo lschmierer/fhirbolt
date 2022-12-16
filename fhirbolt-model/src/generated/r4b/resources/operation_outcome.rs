@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "An error, warning, or information message that results from a system action."]
 #[derive(Default, Debug, Clone)]
 pub struct OperationOutcomeIssue {
@@ -20,11 +20,6 @@ pub struct OperationOutcomeIssue {
     pub r#location: Vec<super::super::types::String>,
     #[doc = "A [simple subset of FHIRPath](fhirpath.html#simple) limited to element names, repetition indicators and the default child accessor that identifies one of the elements in the resource that caused this issue to be raised."]
     pub r#expression: Vec<super::super::types::String>,
-}
-impl crate::AnyResource for OperationOutcomeIssue {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for OperationOutcomeIssue {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -494,6 +489,11 @@ pub struct OperationOutcome {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "An error, warning, or information message that results from a system action."]
     pub r#issue: Vec<OperationOutcomeIssue>,
+}
+impl crate::AnyResource for OperationOutcome {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for OperationOutcome {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

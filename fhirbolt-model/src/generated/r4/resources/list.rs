@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Entries in this list."]
 #[derive(Default, Debug, Clone)]
 pub struct ListEntry {
@@ -16,11 +16,6 @@ pub struct ListEntry {
     pub r#date: Option<super::super::types::DateTime>,
     #[doc = "A reference to the actual resource from which data was derived."]
     pub r#item: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for ListEntry {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ListEntry {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -292,6 +287,11 @@ pub struct List {
     pub r#entry: Vec<ListEntry>,
     #[doc = "If the list is empty, why the list is empty."]
     pub r#empty_reason: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl crate::AnyResource for List {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for List {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

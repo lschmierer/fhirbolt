@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
@@ -49,11 +49,6 @@ pub struct TimingRepeat {
     pub r#when: Vec<super::super::types::Code>,
     #[doc = "The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event."]
     pub r#offset: Option<super::super::types::UnsignedInt>,
-}
-impl crate::AnyResource for TimingRepeat {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for TimingRepeat {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

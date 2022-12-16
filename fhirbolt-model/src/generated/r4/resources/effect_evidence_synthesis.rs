@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
 #[derive(Default, Debug, Clone)]
 pub struct EffectEvidenceSynthesisSampleSize {
@@ -14,11 +14,6 @@ pub struct EffectEvidenceSynthesisSampleSize {
     pub r#number_of_studies: Option<super::super::types::Integer>,
     #[doc = "Number of participants included in this evidence synthesis."]
     pub r#number_of_participants: Option<super::super::types::Integer>,
-}
-impl crate::AnyResource for EffectEvidenceSynthesisSampleSize {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for EffectEvidenceSynthesisSampleSize {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1497,6 +1492,11 @@ pub struct EffectEvidenceSynthesis {
     pub r#effect_estimate: Vec<EffectEvidenceSynthesisEffectEstimate>,
     #[doc = "A description of the certainty of the effect estimate."]
     pub r#certainty: Vec<EffectEvidenceSynthesisCertainty>,
+}
+impl crate::AnyResource for EffectEvidenceSynthesis {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for EffectEvidenceSynthesis {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
 #[derive(Debug, Clone)]
 pub enum ContractTopic {
@@ -139,11 +139,6 @@ pub struct ContractContentDefinition {
     pub r#publication_status: super::super::types::Code,
     #[doc = "A copyright statement relating to Contract precursor content. Copyright statements are generally legal restrictions on the use and publishing of the Contract precursor content."]
     pub r#copyright: Option<super::super::types::Markdown>,
-}
-impl crate::AnyResource for ContractContentDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ContractContentDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -5857,6 +5852,11 @@ pub struct Contract {
     pub r#rule: Vec<ContractRule>,
     #[doc = "Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the \"source of truth\" and which would be the basis for legal action related to enforcement of this Contract."]
     pub r#legally_binding: Option<ContractLegallyBinding>,
+}
+impl crate::AnyResource for Contract {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Contract {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Default, Debug, Clone)]
 pub struct RatioRange {
@@ -12,11 +12,6 @@ pub struct RatioRange {
     pub r#high_numerator: Option<Box<super::super::types::Quantity>>,
     #[doc = "The value of the denominator."]
     pub r#denominator: Option<Box<super::super::types::Quantity>>,
-}
-impl crate::AnyResource for RatioRange {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for RatioRange {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

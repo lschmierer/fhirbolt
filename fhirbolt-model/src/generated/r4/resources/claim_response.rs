@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Debug, Clone)]
 pub enum ClaimResponseAddItemServiced {
@@ -41,11 +41,6 @@ pub struct ClaimResponseItemAdjudication {
     pub r#amount: Option<Box<super::super::types::Money>>,
     #[doc = "A non-monetary value associated with the category. Mutually exclusive to the amount element above."]
     pub r#value: Option<super::super::types::Decimal>,
-}
-impl crate::AnyResource for ClaimResponseItemAdjudication {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ClaimResponseItemAdjudication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -4070,6 +4065,11 @@ pub struct ClaimResponse {
     pub r#insurance: Vec<ClaimResponseInsurance>,
     #[doc = "Errors encountered during the processing of the adjudication."]
     pub r#error: Vec<ClaimResponseError>,
+}
+impl crate::AnyResource for ClaimResponse {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ClaimResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

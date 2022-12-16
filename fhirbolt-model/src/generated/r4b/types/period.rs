@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Period Type: A time period defined by a start and end date and optionally time."]
 #[derive(Default, Debug, Clone)]
 pub struct Period {
@@ -10,11 +10,6 @@ pub struct Period {
     pub r#start: Option<super::super::types::DateTime>,
     #[doc = "The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time."]
     pub r#end: Option<super::super::types::DateTime>,
-}
-impl crate::AnyResource for Period {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Period {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

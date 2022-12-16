@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The contact for the health insurance product for a certain purpose."]
 #[derive(Default, Debug, Clone)]
 pub struct InsurancePlanContact {
@@ -16,11 +16,6 @@ pub struct InsurancePlanContact {
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
-}
-impl crate::AnyResource for InsurancePlanContact {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for InsurancePlanContact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1652,6 +1647,11 @@ pub struct InsurancePlan {
     pub r#coverage: Vec<InsurancePlanCoverage>,
     #[doc = "Details about an insurance plan."]
     pub r#plan: Vec<InsurancePlanPlan>,
+}
+impl crate::AnyResource for InsurancePlan {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for InsurancePlan {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

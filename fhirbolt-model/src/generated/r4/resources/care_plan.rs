@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
 #[derive(Debug, Clone)]
 pub enum CarePlanActivityDetailScheduled {
@@ -67,11 +67,6 @@ pub struct CarePlanActivityDetail {
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "This provides a textual description of constraints on the intended activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc."]
     pub r#description: Option<super::super::types::String>,
-}
-impl crate::AnyResource for CarePlanActivityDetail {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for CarePlanActivityDetail {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1094,6 +1089,11 @@ pub struct CarePlan {
     pub r#activity: Vec<CarePlanActivity>,
     #[doc = "General notes about the care plan not covered elsewhere."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for CarePlan {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for CarePlan {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
 #[derive(Debug, Clone)]
 pub enum ClinicalUseDefinitionIndicationDuration {
@@ -36,11 +36,6 @@ pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     pub r#relationship_type: Box<super::super::types::CodeableConcept>,
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#therapy: Box<super::super::types::CodeableReference>,
-}
-impl crate::AnyResource for ClinicalUseDefinitionContraindicationOtherTherapy {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ClinicalUseDefinitionContraindicationOtherTherapy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1379,6 +1374,11 @@ pub struct ClinicalUseDefinition {
     pub r#undesirable_effect: Option<ClinicalUseDefinitionUndesirableEffect>,
     #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
     pub r#warning: Option<ClinicalUseDefinitionWarning>,
+}
+impl crate::AnyResource for ClinicalUseDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ClinicalUseDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

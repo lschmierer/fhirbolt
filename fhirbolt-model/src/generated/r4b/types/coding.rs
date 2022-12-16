@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Coding Type: A reference to a code defined by a terminology system.\n\nReferences to codes are very common in healthcare models."]
 #[derive(Default, Debug, Clone)]
 pub struct Coding {
@@ -16,11 +16,6 @@ pub struct Coding {
     pub r#display: Option<super::super::types::String>,
     #[doc = "Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)."]
     pub r#user_selected: Option<super::super::types::Boolean>,
-}
-impl crate::AnyResource for Coding {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Coding {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for integer Type: A whole number"]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct Integer {
@@ -11,9 +11,4 @@ pub struct Integer {
     #[doc = "The actual value"]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#value: Option<i32>,
-}
-impl crate::AnyResource for Integer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }

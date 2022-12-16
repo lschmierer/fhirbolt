@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Another substance that is a component of this substance."]
 #[derive(Debug, Clone)]
 pub enum SubstanceIngredientSubstance {
@@ -26,11 +26,6 @@ pub struct SubstanceInstance {
     pub r#expiry: Option<super::super::types::DateTime>,
     #[doc = "The amount of the substance."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
-}
-impl crate::AnyResource for SubstanceInstance {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SubstanceInstance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -414,6 +409,11 @@ pub struct Substance {
     pub r#instance: Vec<SubstanceInstance>,
     #[doc = "A substance can be composed of other substances."]
     pub r#ingredient: Vec<SubstanceIngredient>,
+}
+impl crate::AnyResource for Substance {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Substance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

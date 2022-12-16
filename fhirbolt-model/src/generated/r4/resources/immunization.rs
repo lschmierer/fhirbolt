@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationOccurrence {
@@ -48,11 +48,6 @@ pub struct ImmunizationPerformer {
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The practitioner or organization who performed the action."]
     pub r#actor: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for ImmunizationPerformer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ImmunizationPerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1294,6 +1289,11 @@ pub struct Immunization {
     pub r#reaction: Vec<ImmunizationReaction>,
     #[doc = "The protocol (set of recommendations) being followed by the provider who administered the dose."]
     pub r#protocol_applied: Vec<ImmunizationProtocolApplied>,
+}
+impl crate::AnyResource for Immunization {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Immunization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

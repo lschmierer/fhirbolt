@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for id type: Any combination of letters, numerals, \"-\" and \".\", with a length limit of 64 characters.  (This might be an integer, an unprefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case-insensitive."]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct Id {
@@ -11,9 +11,4 @@ pub struct Id {
     #[doc = "Primitive value for id"]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#value: Option<std::string::String>,
-}
-impl crate::AnyResource for Id {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }

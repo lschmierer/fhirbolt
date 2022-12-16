@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
 #[derive(Default, Debug, Clone)]
 pub struct HealthcareServiceEligibility {
@@ -12,11 +12,6 @@ pub struct HealthcareServiceEligibility {
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Describes the eligibility conditions for the service."]
     pub r#comment: Option<super::super::types::Markdown>,
-}
-impl crate::AnyResource for HealthcareServiceEligibility {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for HealthcareServiceEligibility {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -786,6 +781,11 @@ pub struct HealthcareService {
     pub r#availability_exceptions: Option<super::super::types::String>,
     #[doc = "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for HealthcareService {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for HealthcareService {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The point in time or period over which the subject was assessed."]
 #[derive(Debug, Clone)]
 pub enum ClinicalImpressionEffective {
@@ -24,11 +24,6 @@ pub struct ClinicalImpressionInvestigation {
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "A record of a specific investigation that was undertaken."]
     pub r#item: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ClinicalImpressionInvestigation {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ClinicalImpressionInvestigation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -413,6 +408,11 @@ pub struct ClinicalImpression {
     pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
     #[doc = "Commentary about the impression, typically recorded after the impression itself was made, though supplemental notes by the original author could also appear."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for ClinicalImpression {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ClinicalImpression {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up."]
 #[derive(Default, Debug, Clone)]
 pub struct ResearchStudyArm {
@@ -14,11 +14,6 @@ pub struct ResearchStudyArm {
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A succinct description of the path through the study that would be followed by a subject adhering to this arm."]
     pub r#description: Option<super::super::types::String>,
-}
-impl crate::AnyResource for ResearchStudyArm {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ResearchStudyArm {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -465,6 +460,11 @@ pub struct ResearchStudy {
     pub r#arm: Vec<ResearchStudyArm>,
     #[doc = "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study."]
     pub r#objective: Vec<ResearchStudyObjective>,
+}
+impl crate::AnyResource for ResearchStudy {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ResearchStudy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

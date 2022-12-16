@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for unsignedInt type: An integer with a value that is not negative (e.g. >= 0)"]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct UnsignedInt {
@@ -11,9 +11,4 @@ pub struct UnsignedInt {
     #[doc = "Primitive value for unsignedInt"]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#value: Option<u32>,
-}
-impl crate::AnyResource for UnsignedInt {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }

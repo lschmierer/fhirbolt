@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A name of the manufacturer."]
 #[derive(Debug, Clone)]
 pub enum DeviceDefinitionManufacturer {
@@ -26,11 +26,6 @@ pub struct DeviceDefinitionUdiDeviceIdentifier {
     pub r#issuer: super::super::types::Uri,
     #[doc = "The jurisdiction to which the deviceIdentifier applies."]
     pub r#jurisdiction: super::super::types::Uri,
-}
-impl crate::AnyResource for DeviceDefinitionUdiDeviceIdentifier {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for DeviceDefinitionUdiDeviceIdentifier {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1309,6 +1304,11 @@ pub struct DeviceDefinition {
     pub r#parent_device: Option<Box<super::super::types::Reference>>,
     #[doc = "A substance used to create the material(s) of which the device is made."]
     pub r#material: Vec<DeviceDefinitionMaterial>,
+}
+impl crate::AnyResource for DeviceDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for DeviceDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

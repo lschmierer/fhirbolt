@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Contact for the organization for a certain purpose."]
 #[derive(Default, Debug, Clone)]
 pub struct OrganizationContact {
@@ -16,11 +16,6 @@ pub struct OrganizationContact {
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
-}
-impl crate::AnyResource for OrganizationContact {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for OrganizationContact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -218,6 +213,11 @@ pub struct Organization {
     pub r#contact: Vec<OrganizationContact>,
     #[doc = "Technical endpoints providing access to services operated for the organization."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for Organization {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Organization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

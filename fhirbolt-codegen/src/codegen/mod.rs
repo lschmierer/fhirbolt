@@ -102,11 +102,10 @@ pub fn generate_resource_enum(
 }
 
 fn generate_module(module: &RustFhirModule, release: FhirRelease) -> SourceFile {
-    let mut first = Some(release);
     let structs_tokens = module
         .structs
         .iter()
-        .map(|s| generate_struct(s, &module.enums, first.take()));
+        .map(|s| generate_struct(s, &module.enums, release));
     let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
@@ -125,7 +124,7 @@ fn generate_module(module: &RustFhirModule, release: FhirRelease) -> SourceFile 
 fn generate_struct(
     r#struct: &RustFhirStruct,
     enums: &[RustFhirEnum],
-    is_resource: Option<FhirRelease>,
+    release: FhirRelease,
 ) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
     let fields_tokens = r#struct
@@ -133,7 +132,7 @@ fn generate_struct(
         .iter()
         .map(|f| generate_field(f, r#struct.is_primitive, r#struct.struct_name == "Xhtml"));
 
-    let impl_any_resource_tokens = if let Some(release) = is_resource {
+    let impl_any_resource_tokens = if r#struct.resource_name.is_some() {
         let release_ident = format_ident!("{}", release.to_string());
 
         quote! {

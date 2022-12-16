@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProdCharacteristic Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct ProdCharacteristic {
@@ -30,11 +30,6 @@ pub struct ProdCharacteristic {
     pub r#image: Vec<Box<super::super::types::Attachment>>,
     #[doc = "Where applicable, the scoring can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used."]
     pub r#scoring: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for ProdCharacteristic {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ProdCharacteristic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

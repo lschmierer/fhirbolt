@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct MarketingStatus {
@@ -18,11 +18,6 @@ pub struct MarketingStatus {
     pub r#date_range: Option<Box<super::super::types::Period>>,
     #[doc = "The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain."]
     pub r#restore_date: Option<super::super::types::DateTime>,
-}
-impl crate::AnyResource for MarketingStatus {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MarketingStatus {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

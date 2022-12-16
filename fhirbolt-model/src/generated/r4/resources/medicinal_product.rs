@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Condition for which the medicinal use applies."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductSpecialDesignationIndication {
@@ -24,11 +24,6 @@ pub struct MedicinalProductNameNamePart {
     pub r#part: super::super::types::String,
     #[doc = "Idenifying type for this part of the name (e.g. strength part)."]
     pub r#type: Box<super::super::types::Coding>,
-}
-impl crate::AnyResource for MedicinalProductNameNamePart {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicinalProductNameNamePart {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1158,6 +1153,11 @@ pub struct MedicinalProduct {
     pub r#manufacturing_business_operation: Vec<MedicinalProductManufacturingBusinessOperation>,
     #[doc = "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease."]
     pub r#special_designation: Vec<MedicinalProductSpecialDesignation>,
+}
+impl crate::AnyResource for MedicinalProduct {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProduct {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

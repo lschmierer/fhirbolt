@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A participant in the test execution, either the execution engine, a client, or a server."]
 #[derive(Default, Debug, Clone)]
 pub struct TestReportParticipant {
@@ -14,11 +14,6 @@ pub struct TestReportParticipant {
     pub r#uri: super::super::types::Uri,
     #[doc = "The display name of the participant."]
     pub r#display: Option<super::super::types::String>,
-}
-impl crate::AnyResource for TestReportParticipant {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for TestReportParticipant {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1705,6 +1700,11 @@ pub struct TestReport {
     pub r#test: Vec<TestReportTest>,
     #[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
     pub r#teardown: Option<TestReportTeardown>,
+}
+impl crate::AnyResource for TestReport {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for TestReport {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

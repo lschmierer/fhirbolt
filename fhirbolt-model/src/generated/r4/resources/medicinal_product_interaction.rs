@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductInteractionInteractantItem {
@@ -22,11 +22,6 @@ pub struct MedicinalProductInteractionInteractant {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: MedicinalProductInteractionInteractantItem,
-}
-impl crate::AnyResource for MedicinalProductInteractionInteractant {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicinalProductInteractionInteractant {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -211,6 +206,11 @@ pub struct MedicinalProductInteraction {
     pub r#incidence: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Actions for managing the interaction."]
     pub r#management: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl crate::AnyResource for MedicinalProductInteraction {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProductInteraction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

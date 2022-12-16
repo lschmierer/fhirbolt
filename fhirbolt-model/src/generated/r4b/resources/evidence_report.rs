@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Citation Resource or display of suggested citation for this report."]
 #[derive(Debug, Clone)]
 pub enum EvidenceReportCiteAs {
@@ -55,11 +55,6 @@ pub struct EvidenceReportSubjectCharacteristic {
     pub r#exclude: Option<super::super::types::Boolean>,
     #[doc = "Timeframe for the characteristic."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for EvidenceReportSubjectCharacteristic {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for EvidenceReportSubjectCharacteristic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1167,6 +1162,11 @@ pub struct EvidenceReport {
     pub r#relates_to: Vec<EvidenceReportRelatesTo>,
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<EvidenceReportSection>,
+}
+impl crate::AnyResource for EvidenceReport {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for EvidenceReport {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

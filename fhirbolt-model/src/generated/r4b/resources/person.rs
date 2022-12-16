@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Link to a resource that concerns the same actual person."]
 #[derive(Default, Debug, Clone)]
 pub struct PersonLink {
@@ -12,11 +12,6 @@ pub struct PersonLink {
     pub r#target: Box<super::super::types::Reference>,
     #[doc = "Level of assurance that this link is associated with the target resource."]
     pub r#assurance: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for PersonLink {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for PersonLink {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -222,6 +217,11 @@ pub struct Person {
     pub r#active: Option<super::super::types::Boolean>,
     #[doc = "Link to a resource that concerns the same actual person."]
     pub r#link: Vec<PersonLink>,
+}
+impl crate::AnyResource for Person {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Person {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

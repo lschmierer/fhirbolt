@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account."]
 #[derive(Default, Debug, Clone)]
 pub struct AccountCoverage {
@@ -12,11 +12,6 @@ pub struct AccountCoverage {
     pub r#coverage: Box<super::super::types::Reference>,
     #[doc = "The priority of the coverage in the context of this account."]
     pub r#priority: Option<super::super::types::PositiveInt>,
-}
-impl crate::AnyResource for AccountCoverage {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for AccountCoverage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -419,6 +414,11 @@ pub struct Account {
     pub r#guarantor: Vec<AccountGuarantor>,
     #[doc = "Reference to a parent Account."]
     pub r#part_of: Option<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for Account {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Account {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

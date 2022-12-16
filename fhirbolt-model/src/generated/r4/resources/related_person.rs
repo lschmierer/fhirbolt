@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
 #[derive(Default, Debug, Clone)]
 pub struct RelatedPersonCommunication {
@@ -12,11 +12,6 @@ pub struct RelatedPersonCommunication {
     pub r#language: Box<super::super::types::CodeableConcept>,
     #[doc = "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
-}
-impl crate::AnyResource for RelatedPersonCommunication {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for RelatedPersonCommunication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -226,6 +221,11 @@ pub struct RelatedPerson {
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "A language which may be used to communicate with about the patient's health."]
     pub r#communication: Vec<RelatedPersonCommunication>,
+}
+impl crate::AnyResource for RelatedPerson {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for RelatedPerson {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

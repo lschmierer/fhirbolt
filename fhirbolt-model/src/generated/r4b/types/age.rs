@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Age Type: A duration of time during which an organism (or a process) has existed."]
 #[derive(Default, Debug, Clone)]
 pub struct Age {
@@ -16,11 +16,6 @@ pub struct Age {
     pub r#system: Option<super::super::types::Uri>,
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for Age {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Age {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

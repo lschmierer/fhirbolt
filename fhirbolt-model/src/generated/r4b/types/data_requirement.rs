@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed."]
 #[derive(Debug, Clone)]
 pub enum DataRequirementSubject {
@@ -39,11 +39,6 @@ pub struct DataRequirementCodeFilter {
     pub r#value_set: Option<super::super::types::Canonical>,
     #[doc = "The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes."]
     pub r#code: Vec<Box<super::super::types::Coding>>,
-}
-impl crate::AnyResource for DataRequirementCodeFilter {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for DataRequirementCodeFilter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

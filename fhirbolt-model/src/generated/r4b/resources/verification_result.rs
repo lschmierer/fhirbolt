@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Default, Debug, Clone)]
 pub struct VerificationResultPrimarySource {
@@ -22,11 +22,6 @@ pub struct VerificationResultPrimarySource {
     pub r#can_push_updates: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source)."]
     pub r#push_type_available: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for VerificationResultPrimarySource {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for VerificationResultPrimarySource {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -888,6 +883,11 @@ pub struct VerificationResult {
     pub r#attestation: Option<VerificationResultAttestation>,
     #[doc = "Information about the entity validating information."]
     pub r#validator: Vec<VerificationResultValidator>,
+}
+impl crate::AnyResource for VerificationResult {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for VerificationResult {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

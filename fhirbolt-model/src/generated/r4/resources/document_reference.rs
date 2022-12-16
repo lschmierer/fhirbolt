@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Relationships that this document has with other document references that already exist."]
 #[derive(Default, Debug, Clone)]
 pub struct DocumentReferenceRelatesTo {
@@ -12,11 +12,6 @@ pub struct DocumentReferenceRelatesTo {
     pub r#code: super::super::types::Code,
     #[doc = "The target document of this relationship."]
     pub r#target: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for DocumentReferenceRelatesTo {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for DocumentReferenceRelatesTo {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -605,6 +600,11 @@ pub struct DocumentReference {
     pub r#content: Vec<DocumentReferenceContent>,
     #[doc = "The clinical context in which the document was prepared."]
     pub r#context: Option<DocumentReferenceContext>,
+}
+impl crate::AnyResource for DocumentReference {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for DocumentReference {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

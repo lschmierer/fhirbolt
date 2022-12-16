@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Quantitative value for this moiety."]
 #[derive(Debug, Clone)]
 pub enum SubstanceSpecificationMoietyAmount {
@@ -84,11 +84,6 @@ pub struct SubstanceSpecificationMoiety {
     pub r#molecular_formula: Option<super::super::types::String>,
     #[doc = "Quantitative value for this moiety."]
     pub r#amount: Option<SubstanceSpecificationMoietyAmount>,
-}
-impl crate::AnyResource for SubstanceSpecificationMoiety {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SubstanceSpecificationMoiety {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2753,6 +2748,11 @@ pub struct SubstanceSpecification {
     pub r#protein: Option<Box<super::super::types::Reference>>,
     #[doc = "Material or taxonomic/anatomical source for the substance."]
     pub r#source_material: Option<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for SubstanceSpecification {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for SubstanceSpecification {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

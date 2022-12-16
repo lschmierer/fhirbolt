@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Meta {
@@ -18,11 +18,6 @@ pub struct Meta {
     pub r#security: Vec<Box<super::super::types::Coding>>,
     #[doc = "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource."]
     pub r#tag: Vec<Box<super::super::types::Coding>>,
-}
-impl crate::AnyResource for Meta {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Meta {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

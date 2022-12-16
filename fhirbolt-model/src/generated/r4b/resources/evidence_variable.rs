@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
 #[derive(Debug, Clone)]
 pub enum EvidenceVariableCharacteristicDefinition {
@@ -43,11 +43,6 @@ pub struct EvidenceVariableCharacteristicTimeFromStart {
     pub r#range: Option<Box<super::super::types::Range>>,
     #[doc = "A human-readable string to clarify or explain concepts about the resource."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for EvidenceVariableCharacteristicTimeFromStart {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for EvidenceVariableCharacteristicTimeFromStart {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -966,6 +961,11 @@ pub struct EvidenceVariable {
     pub r#handling: Option<super::super::types::Code>,
     #[doc = "A grouping (or set of values) described along with other groupings to specify the set of groupings allowed for the variable."]
     pub r#category: Vec<EvidenceVariableCategory>,
+}
+impl crate::AnyResource for EvidenceVariable {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for EvidenceVariable {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

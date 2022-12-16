@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
 #[derive(Default, Debug, Clone)]
 pub struct CareTeamParticipant {
@@ -16,11 +16,6 @@ pub struct CareTeamParticipant {
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
     #[doc = "Indicates when the specific member or organization did (or is intended to) come into effect and end."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for CareTeamParticipant {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for CareTeamParticipant {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -224,6 +219,11 @@ pub struct CareTeam {
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
     #[doc = "Comments made about the CareTeam."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for CareTeam {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for CareTeam {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Identifier Type: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.\n\nNeed to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation."]
 #[derive(Default, Debug, Clone)]
 pub struct Identifier {
@@ -18,11 +18,6 @@ pub struct Identifier {
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "Organization that issued/manages the identifier."]
     pub r#assigner: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Identifier {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Identifier {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

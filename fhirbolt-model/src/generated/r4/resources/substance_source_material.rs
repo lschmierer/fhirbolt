@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceSourceMaterialFractionDescription {
@@ -12,11 +12,6 @@ pub struct SubstanceSourceMaterialFractionDescription {
     pub r#fraction: Option<super::super::types::String>,
     #[doc = "The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1."]
     pub r#material_type: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for SubstanceSourceMaterialFractionDescription {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SubstanceSourceMaterialFractionDescription {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1361,6 +1356,11 @@ pub struct SubstanceSourceMaterial {
     pub r#organism: Option<SubstanceSourceMaterialOrganism>,
     #[doc = "To do."]
     pub r#part_description: Vec<SubstanceSourceMaterialPartDescription>,
+}
+impl crate::AnyResource for SubstanceSourceMaterial {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for SubstanceSourceMaterial {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

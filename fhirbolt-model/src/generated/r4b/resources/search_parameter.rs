@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Used to define the parts of a composite search parameter."]
 #[derive(Default, Debug, Clone)]
 pub struct SearchParameterComponent {
@@ -12,11 +12,6 @@ pub struct SearchParameterComponent {
     pub r#definition: super::super::types::Canonical,
     #[doc = "A sub-expression that defines how to extract values for this component from the output of the main SearchParameter.expression."]
     pub r#expression: super::super::types::String,
-}
-impl crate::AnyResource for SearchParameterComponent {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SearchParameterComponent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -286,6 +281,11 @@ pub struct SearchParameter {
     pub r#chain: Vec<super::super::types::String>,
     #[doc = "Used to define the parts of a composite search parameter."]
     pub r#component: Vec<SearchParameterComponent>,
+}
+impl crate::AnyResource for SearchParameter {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for SearchParameter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

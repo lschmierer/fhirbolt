@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductIndicationOtherTherapyMedication {
@@ -24,11 +24,6 @@ pub struct MedicinalProductIndicationOtherTherapy {
     pub r#therapy_relationship_type: Box<super::super::types::CodeableConcept>,
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#medication: MedicinalProductIndicationOtherTherapyMedication,
-}
-impl crate::AnyResource for MedicinalProductIndicationOtherTherapy {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicinalProductIndicationOtherTherapy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -151,6 +146,11 @@ pub struct MedicinalProductIndication {
     pub r#undesirable_effect: Vec<Box<super::super::types::Reference>>,
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<Box<super::super::types::Population>>,
+}
+impl crate::AnyResource for MedicinalProductIndication {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProductIndication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

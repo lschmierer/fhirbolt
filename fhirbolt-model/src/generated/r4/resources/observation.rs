@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone)]
 pub enum ObservationEffective {
@@ -76,11 +76,6 @@ pub struct ObservationReferenceRange {
     pub r#age: Option<Box<super::super::types::Range>>,
     #[doc = "Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of \"Negative\" or a list or table of \"normals\"."]
     pub r#text: Option<super::super::types::String>,
-}
-impl crate::AnyResource for ObservationReferenceRange {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ObservationReferenceRange {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -945,6 +940,11 @@ pub struct Observation {
     pub r#derived_from: Vec<Box<super::super::types::Reference>>,
     #[doc = "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations."]
     pub r#component: Vec<ObservationComponent>,
+}
+impl crate::AnyResource for Observation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Observation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

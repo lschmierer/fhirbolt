@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Debug, Clone)]
 pub enum ProcedurePerformed {
@@ -29,11 +29,6 @@ pub struct ProcedurePerformer {
     pub r#actor: Box<super::super::types::Reference>,
     #[doc = "The organization the device or practitioner was acting on behalf of."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ProcedurePerformer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ProcedurePerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -404,6 +399,11 @@ pub struct Procedure {
     pub r#used_reference: Vec<Box<super::super::types::Reference>>,
     #[doc = "Identifies coded items that were used as part of the procedure."]
     pub r#used_code: Vec<Box<super::super::types::CodeableConcept>>,
+}
+impl crate::AnyResource for Procedure {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Procedure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

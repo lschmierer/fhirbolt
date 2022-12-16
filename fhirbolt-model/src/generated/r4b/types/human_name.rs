@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for HumanName Type: A human's name with the ability to identify parts and usage.\n\nNeed to be able to record names, along with notes about their use."]
 #[derive(Default, Debug, Clone)]
 pub struct HumanName {
@@ -20,11 +20,6 @@ pub struct HumanName {
     pub r#suffix: Vec<super::super::types::String>,
     #[doc = "Indicates the period of time when this name was valid for the named person."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for HumanName {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for HumanName {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

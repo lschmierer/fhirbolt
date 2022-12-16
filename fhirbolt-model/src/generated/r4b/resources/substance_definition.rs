@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Quantitative value for this moiety."]
 #[derive(Debug, Clone)]
 pub enum SubstanceDefinitionMoietyAmount {
@@ -76,11 +76,6 @@ pub struct SubstanceDefinitionMoiety {
     pub r#amount: Option<SubstanceDefinitionMoietyAmount>,
     #[doc = "The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio."]
     pub r#measurement_type: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for SubstanceDefinitionMoiety {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SubstanceDefinitionMoiety {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2675,6 +2670,11 @@ pub struct SubstanceDefinition {
     pub r#relationship: Vec<SubstanceDefinitionRelationship>,
     #[doc = "Material or taxonomic/anatomical source for the substance."]
     pub r#source_material: Option<SubstanceDefinitionSourceMaterial>,
+}
+impl crate::AnyResource for SubstanceDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for SubstanceDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

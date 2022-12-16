@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The value of this property."]
 #[derive(Debug, Clone)]
 pub enum CodeSystemConceptPropertyValue {
@@ -33,11 +33,6 @@ pub struct CodeSystemFilter {
     pub r#operator: Vec<super::super::types::Code>,
     #[doc = "A description of what the value for the filter should be."]
     pub r#value: super::super::types::String,
-}
-impl crate::AnyResource for CodeSystemFilter {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for CodeSystemFilter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1826,6 +1821,11 @@ pub struct CodeSystem {
     pub r#property: Vec<CodeSystemProperty>,
     #[doc = "Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are."]
     pub r#concept: Vec<CodeSystemConcept>,
+}
+impl crate::AnyResource for CodeSystem {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for CodeSystem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

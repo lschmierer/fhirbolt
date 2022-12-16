@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The details of the device to be used."]
 #[derive(Debug, Clone)]
 pub enum DeviceRequestCode {
@@ -51,11 +51,6 @@ pub struct DeviceRequestParameter {
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The value of the device detail."]
     pub r#value: Option<DeviceRequestParameterValue>,
-}
-impl crate::AnyResource for DeviceRequestParameter {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for DeviceRequestParameter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -351,6 +346,11 @@ pub struct DeviceRequest {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for DeviceRequest {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for DeviceRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Software that is covered by this terminology capability statement.  It is used when the statement describes the capabilities of a particular software version, independent of an installation."]
 #[derive(Default, Debug, Clone)]
 pub struct TerminologyCapabilitiesSoftware {
@@ -12,11 +12,6 @@ pub struct TerminologyCapabilitiesSoftware {
     pub r#name: super::super::types::String,
     #[doc = "The version identifier for the software covered by this statement."]
     pub r#version: Option<super::super::types::String>,
-}
-impl crate::AnyResource for TerminologyCapabilitiesSoftware {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for TerminologyCapabilitiesSoftware {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2446,6 +2441,11 @@ pub struct TerminologyCapabilities {
     pub r#translation: Option<TerminologyCapabilitiesTranslation>,
     #[doc = "Whether the $closure operation is supported."]
     pub r#closure: Option<TerminologyCapabilitiesClosure>,
+}
+impl crate::AnyResource for TerminologyCapabilities {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for TerminologyCapabilities {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
 #[derive(Default, Debug, Clone)]
 pub struct LinkageItem {
@@ -12,11 +12,6 @@ pub struct LinkageItem {
     pub r#type: super::super::types::Code,
     #[doc = "The resource instance being linked as part of the group."]
     pub r#resource: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for LinkageItem {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for LinkageItem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -204,6 +199,11 @@ pub struct Linkage {
     pub r#author: Option<Box<super::super::types::Reference>>,
     #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
     pub r#item: Vec<LinkageItem>,
+}
+impl crate::AnyResource for Linkage {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Linkage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

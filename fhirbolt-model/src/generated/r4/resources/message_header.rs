@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"<http://terminology.hl7.org/CodeSystem/message>-events\".  Alternatively uri to the EventDefinition."]
 #[derive(Debug, Clone)]
 pub enum MessageHeaderEvent {
@@ -28,11 +28,6 @@ pub struct MessageHeaderDestination {
     pub r#endpoint: super::super::types::Url,
     #[doc = "Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient."]
     pub r#receiver: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for MessageHeaderDestination {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MessageHeaderDestination {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -846,6 +841,11 @@ pub struct MessageHeader {
     pub r#focus: Vec<Box<super::super::types::Reference>>,
     #[doc = "Permanent link to the MessageDefinition for this message."]
     pub r#definition: Option<super::super::types::Canonical>,
+}
+impl crate::AnyResource for MessageHeader {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MessageHeader {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Debug, Clone)]
 pub enum RiskAssessmentOccurrence {
@@ -56,11 +56,6 @@ pub struct RiskAssessmentPrediction {
     pub r#when: Option<RiskAssessmentPredictionWhen>,
     #[doc = "Additional information explaining the basis for the prediction."]
     pub r#rationale: Option<super::super::types::String>,
-}
-impl crate::AnyResource for RiskAssessmentPrediction {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for RiskAssessmentPrediction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -478,6 +473,11 @@ pub struct RiskAssessment {
     pub r#mitigation: Option<super::super::types::String>,
     #[doc = "Additional comments about the risk assessment."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for RiskAssessment {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for RiskAssessment {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

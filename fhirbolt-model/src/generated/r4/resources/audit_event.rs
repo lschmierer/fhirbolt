@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
 #[derive(Debug, Clone)]
 pub enum AuditEventEntityDetailValue {
@@ -24,11 +24,6 @@ pub struct AuditEventAgentNetwork {
     pub r#address: Option<super::super::types::String>,
     #[doc = "An identifier for the type of network access point that originated the audit event."]
     pub r#type: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for AuditEventAgentNetwork {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for AuditEventAgentNetwork {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1563,6 +1558,11 @@ pub struct AuditEvent {
     pub r#source: AuditEventSource,
     #[doc = "Specific instances of data or objects that have been accessed."]
     pub r#entity: Vec<AuditEventEntity>,
+}
+impl crate::AnyResource for AuditEvent {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for AuditEvent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
 #[derive(Debug, Clone)]
 pub enum TriggerDefinitionTiming {
@@ -30,11 +30,6 @@ pub struct TriggerDefinition {
     pub r#data: Vec<Box<super::super::types::DataRequirement>>,
     #[doc = "A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires."]
     pub r#condition: Option<Box<super::super::types::Expression>>,
-}
-impl crate::AnyResource for TriggerDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for TriggerDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

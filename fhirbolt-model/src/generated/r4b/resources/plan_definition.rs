@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
 #[derive(Debug, Clone)]
 pub enum PlanDefinitionSubject {
@@ -93,11 +93,6 @@ pub struct PlanDefinitionGoalTarget {
     pub r#detail: Option<PlanDefinitionGoalTargetDetail>,
     #[doc = "Indicates the timeframe after the start of the goal in which the goal should be met."]
     pub r#due: Option<Box<super::super::types::Duration>>,
-}
-impl crate::AnyResource for PlanDefinitionGoalTarget {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for PlanDefinitionGoalTarget {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2697,6 +2692,11 @@ pub struct PlanDefinition {
     pub r#goal: Vec<PlanDefinitionGoal>,
     #[doc = "An action or group of actions to be taken as part of the plan. For example, in clinical care, an action would be to prescribe a particular indicated medication, or perform a particular test as appropriate. In pharmaceutical quality, an action would be the test that needs to be performed on a drug product as defined in the quality specification."]
     pub r#action: Vec<PlanDefinitionAction>,
+}
+impl crate::AnyResource for PlanDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for PlanDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone)]
 pub enum ManufacturedItemDefinitionPropertyValue {
@@ -27,11 +27,6 @@ pub struct ManufacturedItemDefinitionProperty {
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "A value for the characteristic."]
     pub r#value: Option<ManufacturedItemDefinitionPropertyValue>,
-}
-impl crate::AnyResource for ManufacturedItemDefinitionProperty {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ManufacturedItemDefinitionProperty {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -377,6 +372,11 @@ pub struct ManufacturedItemDefinition {
     pub r#ingredient: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "General characteristics of this item."]
     pub r#property: Vec<ManufacturedItemDefinitionProperty>,
+}
+impl crate::AnyResource for ManufacturedItemDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ManufacturedItemDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

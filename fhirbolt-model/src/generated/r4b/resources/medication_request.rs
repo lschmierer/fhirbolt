@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Debug, Clone)]
 pub enum MedicationRequestReported {
@@ -48,11 +48,6 @@ pub struct MedicationRequestDispenseRequestInitialFill {
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "The length of time that the first dispense is expected to last."]
     pub r#duration: Option<Box<super::super::types::Duration>>,
-}
-impl crate::AnyResource for MedicationRequestDispenseRequestInitialFill {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MedicationRequestDispenseRequestInitialFill {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -769,6 +764,11 @@ pub struct MedicationRequest {
     pub r#detected_issue: Vec<Box<super::super::types::Reference>>,
     #[doc = "Links to Provenance records for past versions of this resource or fulfilling request or event resources that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the resource."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for MedicationRequest {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for MedicationRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

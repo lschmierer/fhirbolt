@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Debug, Clone)]
 pub enum SpecimenCollectionCollected {
@@ -70,11 +70,6 @@ pub struct SpecimenCollection {
     pub r#body_site: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection."]
     pub r#fasting_status: Option<SpecimenCollectionFastingStatus>,
-}
-impl crate::AnyResource for SpecimenCollection {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SpecimenCollection {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -960,6 +955,11 @@ pub struct Specimen {
     pub r#condition: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen)."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for Specimen {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Specimen {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

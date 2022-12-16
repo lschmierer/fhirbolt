@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
 #[derive(Debug, Clone)]
 pub enum ExtensionValue {
@@ -70,11 +70,6 @@ pub struct Extension {
     pub r#url: std::string::String,
     #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
     pub r#value: Option<ExtensionValue>,
-}
-impl crate::AnyResource for Extension {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Extension {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

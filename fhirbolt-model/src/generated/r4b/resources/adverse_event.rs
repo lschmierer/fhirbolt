@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Information on the possible cause of the event."]
 #[derive(Default, Debug, Clone)]
 pub struct AdverseEventSuspectEntityCausality {
@@ -16,11 +16,6 @@ pub struct AdverseEventSuspectEntityCausality {
     pub r#author: Option<Box<super::super::types::Reference>>,
     #[doc = "ProbabilityScale | Bayesian | Checklist."]
     pub r#method: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for AdverseEventSuspectEntityCausality {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for AdverseEventSuspectEntityCausality {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -424,6 +419,11 @@ pub struct AdverseEvent {
     pub r#reference_document: Vec<Box<super::super::types::Reference>>,
     #[doc = "AdverseEvent.study."]
     pub r#study: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for AdverseEvent {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for AdverseEvent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

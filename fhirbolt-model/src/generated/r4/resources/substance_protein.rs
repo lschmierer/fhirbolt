@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceProteinSubunit {
@@ -24,11 +24,6 @@ pub struct SubstanceProteinSubunit {
     pub r#c_terminal_modification_id: Option<Box<super::super::types::Identifier>>,
     #[doc = "The modification at the C-terminal shall be specified."]
     pub r#c_terminal_modification: Option<super::super::types::String>,
-}
-impl crate::AnyResource for SubstanceProteinSubunit {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SubstanceProteinSubunit {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -450,6 +445,11 @@ pub struct SubstanceProtein {
     pub r#disulfide_linkage: Vec<super::super::types::String>,
     #[doc = "This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times."]
     pub r#subunit: Vec<SubstanceProteinSubunit>,
+}
+impl crate::AnyResource for SubstanceProtein {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for SubstanceProtein {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

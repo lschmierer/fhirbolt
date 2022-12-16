@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
 #[derive(Debug, Clone)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
@@ -24,11 +24,6 @@ pub struct NutritionOrderOralDietNutrient {
     pub r#modifier: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The quantity of the specified nutrient to include in diet."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
-}
-impl crate::AnyResource for NutritionOrderOralDietNutrient {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for NutritionOrderOralDietNutrient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1426,6 +1421,11 @@ pub struct NutritionOrder {
     pub r#enteral_formula: Option<NutritionOrderEnteralFormula>,
     #[doc = "Comments made about the {{title}} by the requester, performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for NutritionOrder {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for NutritionOrder {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

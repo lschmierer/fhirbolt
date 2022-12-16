@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication."]
 #[derive(Debug, Clone)]
 pub enum MedicationKnowledgeIngredientItem {
@@ -63,11 +63,6 @@ pub struct MedicationKnowledgeRelatedMedicationKnowledge {
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "Associated documentation about the associated medication knowledge."]
     pub r#reference: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for MedicationKnowledgeRelatedMedicationKnowledge {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MedicationKnowledgeRelatedMedicationKnowledge {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2739,6 +2734,11 @@ pub struct MedicationKnowledge {
     pub r#regulatory: Vec<MedicationKnowledgeRegulatory>,
     #[doc = "The time course of drug absorption, distribution, metabolism and excretion of a medication from the body."]
     pub r#kinetics: Vec<MedicationKnowledgeKinetics>,
+}
+impl crate::AnyResource for MedicationKnowledge {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for MedicationKnowledge {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

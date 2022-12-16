@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "An external specification that the content is mapped to."]
 #[derive(Default, Debug, Clone)]
 pub struct StructureDefinitionMapping {
@@ -16,11 +16,6 @@ pub struct StructureDefinitionMapping {
     pub r#name: Option<super::super::types::String>,
     #[doc = "Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage."]
     pub r#comment: Option<super::super::types::String>,
-}
-impl crate::AnyResource for StructureDefinitionMapping {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for StructureDefinitionMapping {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -837,6 +832,11 @@ pub struct StructureDefinition {
     pub r#snapshot: Option<StructureDefinitionSnapshot>,
     #[doc = "A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies."]
     pub r#differential: Option<StructureDefinitionDifferential>,
+}
+impl crate::AnyResource for StructureDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for StructureDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

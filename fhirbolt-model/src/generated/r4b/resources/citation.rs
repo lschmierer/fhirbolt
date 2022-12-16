@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
 #[derive(Debug, Clone)]
 pub enum CitationRelatesToTarget {
@@ -40,11 +40,6 @@ pub struct CitationSummary {
     pub r#style: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The human-readable display of the citation."]
     pub r#text: super::super::types::Markdown,
-}
-impl crate::AnyResource for CitationSummary {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for CitationSummary {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -5917,6 +5912,11 @@ pub struct Citation {
     pub r#relates_to: Vec<CitationRelatesTo>,
     #[doc = "The article or artifact being described."]
     pub r#cited_artifact: Option<CitationCitedArtifact>,
+}
+impl crate::AnyResource for Citation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Citation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

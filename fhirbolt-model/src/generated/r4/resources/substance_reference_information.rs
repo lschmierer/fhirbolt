@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Debug, Clone)]
 pub enum SubstanceReferenceInformationTargetAmount {
@@ -27,11 +27,6 @@ pub struct SubstanceReferenceInformationGene {
     pub r#gene: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for SubstanceReferenceInformationGene {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for SubstanceReferenceInformationGene {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -888,6 +883,11 @@ pub struct SubstanceReferenceInformation {
     pub r#classification: Vec<SubstanceReferenceInformationClassification>,
     #[doc = "Todo."]
     pub r#target: Vec<SubstanceReferenceInformationTarget>,
+}
+impl crate::AnyResource for SubstanceReferenceInformation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for SubstanceReferenceInformation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

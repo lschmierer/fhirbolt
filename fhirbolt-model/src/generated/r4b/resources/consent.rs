@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."]
 #[derive(Debug, Clone)]
 pub enum ConsentSource {
@@ -24,11 +24,6 @@ pub struct ConsentPolicy {
     pub r#authority: Option<super::super::types::Uri>,
     #[doc = "The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law."]
     pub r#uri: Option<super::super::types::Uri>,
-}
-impl crate::AnyResource for ConsentPolicy {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ConsentPolicy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1136,6 +1131,11 @@ pub struct Consent {
     pub r#verification: Vec<ConsentVerification>,
     #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
     pub r#provision: Option<ConsentProvision>,
+}
+impl crate::AnyResource for Consent {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Consent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

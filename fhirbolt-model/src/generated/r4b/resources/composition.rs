@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The target composition/document of this relationship."]
 #[derive(Debug, Clone)]
 pub enum CompositionRelatesToTarget {
@@ -26,11 +26,6 @@ pub struct CompositionAttester {
     pub r#time: Option<super::super::types::DateTime>,
     #[doc = "Who attested the composition in the specified way."]
     pub r#party: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for CompositionAttester {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for CompositionAttester {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -992,6 +987,11 @@ pub struct Composition {
     pub r#event: Vec<CompositionEvent>,
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<CompositionSection>,
+}
+impl crate::AnyResource for Composition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Composition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

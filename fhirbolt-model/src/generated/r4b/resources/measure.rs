@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
 #[derive(Debug, Clone)]
 pub enum MeasureSubject {
@@ -26,11 +26,6 @@ pub struct MeasureGroupPopulation {
     pub r#description: Option<super::super::types::String>,
     #[doc = "An expression that specifies the criteria for the population, typically the name of an expression in a library."]
     pub r#criteria: Box<super::super::types::Expression>,
-}
-impl crate::AnyResource for MeasureGroupPopulation {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MeasureGroupPopulation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1135,6 +1130,11 @@ pub struct Measure {
     pub r#group: Vec<MeasureGroup>,
     #[doc = "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path."]
     pub r#supplemental_data: Vec<MeasureSupplementalData>,
+}
+impl crate::AnyResource for Measure {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Measure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

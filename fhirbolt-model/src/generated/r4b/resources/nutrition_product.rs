@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The actual characteristic value corresponding to the type."]
 #[derive(Debug, Clone)]
 pub enum NutritionProductProductCharacteristicValue {
@@ -28,11 +28,6 @@ pub struct NutritionProductNutrient {
     pub r#item: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "The amount of nutrient expressed in one or more units: X per pack / per serving / per dose."]
     pub r#amount: Vec<Box<super::super::types::Ratio>>,
-}
-impl crate::AnyResource for NutritionProductNutrient {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for NutritionProductNutrient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1025,6 +1020,11 @@ pub struct NutritionProduct {
     pub r#instance: Option<NutritionProductInstance>,
     #[doc = "Comments made about the product."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for NutritionProduct {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for NutritionProduct {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

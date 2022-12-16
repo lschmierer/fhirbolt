@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Batch numbering."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductPackagedBatchIdentifier {
@@ -12,11 +12,6 @@ pub struct MedicinalProductPackagedBatchIdentifier {
     pub r#outer_packaging: Box<super::super::types::Identifier>,
     #[doc = "A number appearing on the immediate packaging (and not the outer packaging)."]
     pub r#immediate_packaging: Option<Box<super::super::types::Identifier>>,
-}
-impl crate::AnyResource for MedicinalProductPackagedBatchIdentifier {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicinalProductPackagedBatchIdentifier {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -529,6 +524,11 @@ pub struct MedicinalProductPackaged {
     pub r#batch_identifier: Vec<MedicinalProductPackagedBatchIdentifier>,
     #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
     pub r#package_item: Vec<MedicinalProductPackagedPackageItem>,
+}
+impl crate::AnyResource for MedicinalProductPackaged {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProductPackaged {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

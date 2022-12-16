@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {
@@ -18,11 +18,6 @@ pub struct SubscriptionTopicResourceTriggerQueryCriteria {
     pub r#result_for_delete: Option<super::super::types::Code>,
     #[doc = "If set to true, both current and previous criteria must evaluate true to  trigger a notification for this topic.  Otherwise a notification for this topic will be triggered if either one evaluates to true."]
     pub r#require_both: Option<super::super::types::Boolean>,
-}
-impl crate::AnyResource for SubscriptionTopicResourceTriggerQueryCriteria {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SubscriptionTopicResourceTriggerQueryCriteria {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1817,6 +1812,11 @@ pub struct SubscriptionTopic {
     pub r#can_filter_by: Vec<SubscriptionTopicCanFilterBy>,
     #[doc = "List of properties to describe the shape (e.g., resources) included in notifications from this Subscription Topic."]
     pub r#notification_shape: Vec<SubscriptionTopicNotificationShape>,
+}
+impl crate::AnyResource for SubscriptionTopic {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for SubscriptionTopic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

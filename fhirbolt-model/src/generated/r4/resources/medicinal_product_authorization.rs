@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Date of procedure."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
@@ -30,11 +30,6 @@ pub struct MedicinalProductAuthorizationJurisdictionalAuthorization {
     pub r#legal_status_of_supply: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The start and expected end date of the authorization."]
     pub r#validity_period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for MedicinalProductAuthorizationJurisdictionalAuthorization {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicinalProductAuthorizationJurisdictionalAuthorization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -529,6 +524,11 @@ pub struct MedicinalProductAuthorization {
     pub r#regulator: Option<Box<super::super::types::Reference>>,
     #[doc = "The regulatory procedure for granting or amending a marketing authorization."]
     pub r#procedure: Option<MedicinalProductAuthorizationProcedure>,
+}
+impl crate::AnyResource for MedicinalProductAuthorization {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProductAuthorization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

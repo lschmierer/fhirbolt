@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Attachment Type: For referring to data content defined in other formats.\n\nMany models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc."]
 #[derive(Default, Debug, Clone)]
 pub struct Attachment {
@@ -22,11 +22,6 @@ pub struct Attachment {
     pub r#title: Option<super::super::types::String>,
     #[doc = "The date that the attachment was first created."]
     pub r#creation: Option<super::super::types::DateTime>,
-}
-impl crate::AnyResource for Attachment {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Attachment {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

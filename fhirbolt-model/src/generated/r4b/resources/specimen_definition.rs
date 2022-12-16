@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Debug, Clone)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
@@ -34,11 +34,6 @@ pub struct SpecimenDefinitionTypeTestedContainerAdditive {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
     pub r#additive: SpecimenDefinitionTypeTestedContainerAdditiveAdditive,
-}
-impl crate::AnyResource for SpecimenDefinitionTypeTestedContainerAdditive {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SpecimenDefinitionTypeTestedContainerAdditive {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1106,6 +1101,11 @@ pub struct SpecimenDefinition {
     pub r#collection: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Specimen conditioned in a container as expected by the testing laboratory."]
     pub r#type_tested: Vec<SpecimenDefinitionTypeTested>,
+}
+impl crate::AnyResource for SpecimenDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for SpecimenDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

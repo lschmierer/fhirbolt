@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProductShelfLife Type: The shelf-life and storage information for a medicinal product item or container can be described using this class."]
 #[derive(Default, Debug, Clone)]
 pub struct ProductShelfLife {
@@ -16,11 +16,6 @@ pub struct ProductShelfLife {
     pub r#period: Box<super::super::types::Quantity>,
     #[doc = "Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified."]
     pub r#special_precautions_for_storage: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for ProductShelfLife {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ProductShelfLife {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

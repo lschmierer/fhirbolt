@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication of a medication."]
 #[derive(Debug, Clone)]
 pub enum MedicationIngredientItem {
@@ -26,11 +26,6 @@ pub struct MedicationIngredient {
     pub r#is_active: Option<super::super::types::Boolean>,
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet."]
     pub r#strength: Option<Box<super::super::types::Ratio>>,
-}
-impl crate::AnyResource for MedicationIngredient {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MedicationIngredient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -482,6 +477,11 @@ pub struct Medication {
     pub r#ingredient: Vec<MedicationIngredient>,
     #[doc = "Information that only applies to packages (not products)."]
     pub r#batch: Option<MedicationBatch>,
+}
+impl crate::AnyResource for Medication {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Medication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

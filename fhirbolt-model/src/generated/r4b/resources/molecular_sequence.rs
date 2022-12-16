@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
 #[derive(Default, Debug, Clone)]
 pub struct MolecularSequenceReferenceSeq {
@@ -26,11 +26,6 @@ pub struct MolecularSequenceReferenceSeq {
     pub r#window_start: Option<super::super::types::Integer>,
     #[doc = "End position of the window on the reference sequence. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#window_end: Option<super::super::types::Integer>,
-}
-impl crate::AnyResource for MolecularSequenceReferenceSeq {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MolecularSequenceReferenceSeq {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -3505,6 +3500,11 @@ pub struct MolecularSequence {
     pub r#pointer: Vec<Box<super::super::types::Reference>>,
     #[doc = "Information about chromosome structure variation."]
     pub r#structure_variant: Vec<MolecularSequenceStructureVariant>,
+}
+impl crate::AnyResource for MolecularSequence {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for MolecularSequence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

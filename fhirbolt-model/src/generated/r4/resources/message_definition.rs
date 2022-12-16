@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Event code or link to the EventDefinition."]
 #[derive(Debug, Clone)]
 pub enum MessageDefinitionEvent {
@@ -28,11 +28,6 @@ pub struct MessageDefinitionFocus {
     pub r#min: super::super::types::UnsignedInt,
     #[doc = "Identifies the maximum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition."]
     pub r#max: Option<super::super::types::String>,
-}
-impl crate::AnyResource for MessageDefinitionFocus {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MessageDefinitionFocus {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -602,6 +597,11 @@ pub struct MessageDefinition {
     pub r#allowed_response: Vec<MessageDefinitionAllowedResponse>,
     #[doc = "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](https://hl7.org/FHIR/graphdefinition.html)) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources."]
     pub r#graph: Vec<super::super::types::Canonical>,
+}
+impl crate::AnyResource for MessageDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MessageDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

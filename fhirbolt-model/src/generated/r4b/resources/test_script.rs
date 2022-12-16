@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "An abstract server used in operations within this test script in the origin element."]
 #[derive(Default, Debug, Clone)]
 pub struct TestScriptOrigin {
@@ -12,11 +12,6 @@ pub struct TestScriptOrigin {
     pub r#index: super::super::types::Integer,
     #[doc = "The type of origin profile the test system supports."]
     pub r#profile: Box<super::super::types::Coding>,
-}
-impl crate::AnyResource for TestScriptOrigin {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for TestScriptOrigin {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -5200,6 +5195,11 @@ pub struct TestScript {
     pub r#test: Vec<TestScriptTest>,
     #[doc = "A series of operations required to clean up after all the tests are executed (successfully or otherwise)."]
     pub r#teardown: Option<TestScriptTeardown>,
+}
+impl crate::AnyResource for TestScript {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for TestScript {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

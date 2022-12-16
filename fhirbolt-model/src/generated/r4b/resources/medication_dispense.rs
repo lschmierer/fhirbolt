@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates the reason why a dispense was not performed."]
 #[derive(Debug, Clone)]
 pub enum MedicationDispenseStatusReason {
@@ -36,11 +36,6 @@ pub struct MedicationDispensePerformer {
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication."]
     pub r#actor: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for MedicationDispensePerformer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MedicationDispensePerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -461,6 +456,11 @@ pub struct MedicationDispense {
     pub r#detected_issue: Vec<Box<super::super::types::Reference>>,
     #[doc = "A summary of the events of interest that have occurred, such as when the dispense was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for MedicationDispense {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for MedicationDispense {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

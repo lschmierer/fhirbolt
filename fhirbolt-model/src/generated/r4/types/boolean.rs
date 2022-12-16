@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for boolean Type: Value of \"true\" or \"false\""]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct Boolean {
@@ -11,9 +11,4 @@ pub struct Boolean {
     #[doc = "The actual value"]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#value: Option<bool>,
-}
-impl crate::AnyResource for Boolean {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.\n\nNeed to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc."]
 #[derive(Default, Debug, Clone)]
 pub struct ContactPoint {
@@ -16,11 +16,6 @@ pub struct ContactPoint {
     pub r#rank: Option<super::super::types::PositiveInt>,
     #[doc = "Time period when the contact point was/is in use."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for ContactPoint {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ContactPoint {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

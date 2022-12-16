@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
 #[derive(Default, Debug, Clone)]
 pub struct DeviceMetricCalibration {
@@ -14,11 +14,6 @@ pub struct DeviceMetricCalibration {
     pub r#state: Option<super::super::types::Code>,
     #[doc = "Describes the time last calibration has been performed."]
     pub r#time: Option<super::super::types::Instant>,
-}
-impl crate::AnyResource for DeviceMetricCalibration {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for DeviceMetricCalibration {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -298,6 +293,11 @@ pub struct DeviceMetric {
     pub r#measurement_period: Option<Box<super::super::types::Timing>>,
     #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
     pub r#calibration: Vec<DeviceMetricCalibration>,
+}
+impl crate::AnyResource for DeviceMetric {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for DeviceMetric {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

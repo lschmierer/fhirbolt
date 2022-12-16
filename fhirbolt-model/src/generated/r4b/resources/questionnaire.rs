@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
 #[derive(Debug, Clone)]
 pub enum QuestionnaireItemEnableWhenAnswer {
@@ -72,11 +72,6 @@ pub struct QuestionnaireItemEnableWhen {
     pub r#operator: super::super::types::Code,
     #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
     pub r#answer: QuestionnaireItemEnableWhenAnswer,
-}
-impl crate::AnyResource for QuestionnaireItemEnableWhen {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for QuestionnaireItemEnableWhen {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2634,6 +2629,11 @@ pub struct Questionnaire {
     pub r#code: Vec<Box<super::super::types::Coding>>,
     #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
     pub r#item: Vec<QuestionnaireItem>,
+}
+impl crate::AnyResource for Questionnaire {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Questionnaire {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

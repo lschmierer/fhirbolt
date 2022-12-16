@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Date/time(s) or duration when the charged service was applied."]
 #[derive(Debug, Clone)]
 pub enum ChargeItemOccurrence {
@@ -37,11 +37,6 @@ pub struct ChargeItemPerformer {
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
     pub r#actor: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for ChargeItemPerformer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ChargeItemPerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -241,6 +236,11 @@ pub struct ChargeItem {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Further information supporting this charge."]
     pub r#supporting_information: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for ChargeItem {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ChargeItem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

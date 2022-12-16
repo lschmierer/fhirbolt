@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
 #[derive(Default, Debug, Clone)]
 pub struct DeviceUdiCarrier {
@@ -20,11 +20,6 @@ pub struct DeviceUdiCarrier {
     pub r#carrier_hrf: Option<super::super::types::String>,
     #[doc = "A coded entry to indicate how the data was entered."]
     pub r#entry_type: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for DeviceUdiCarrier {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for DeviceUdiCarrier {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1218,6 +1213,11 @@ pub struct Device {
     pub r#safety: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "The parent device."]
     pub r#parent: Option<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for Device {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Device {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

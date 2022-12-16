@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for instant Type: An instant in time - known at least to the second"]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct Instant {
@@ -11,9 +11,4 @@ pub struct Instant {
     #[doc = "The actual value"]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#value: Option<std::string::String>,
-}
-impl crate::AnyResource for Instant {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. Unit of presentation refers to the quantity that the item occurs in e.g. a strength per tablet size, perhaps 'per 20mg' (the size of the tablet). It is not generally normalized as a unitary unit, which would be 'per mg')."]
 #[derive(Debug, Clone)]
 pub enum IngredientSubstanceStrengthPresentation {
@@ -48,11 +48,6 @@ pub struct IngredientManufacturer {
     pub r#role: Option<super::super::types::Code>,
     #[doc = "An organization that manufactures this ingredient."]
     pub r#manufacturer: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for IngredientManufacturer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for IngredientManufacturer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -923,6 +918,11 @@ pub struct Ingredient {
     pub r#manufacturer: Vec<IngredientManufacturer>,
     #[doc = "The substance that comprises this ingredient."]
     pub r#substance: IngredientSubstance,
+}
+impl crate::AnyResource for Ingredient {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Ingredient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

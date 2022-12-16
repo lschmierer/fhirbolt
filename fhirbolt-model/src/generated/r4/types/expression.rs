@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Expression Type: A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."]
 #[derive(Default, Debug, Clone)]
 pub struct Expression {
@@ -16,11 +16,6 @@ pub struct Expression {
     pub r#expression: Option<super::super::types::String>,
     #[doc = "A URI that defines where the expression is found."]
     pub r#reference: Option<super::super::types::Uri>,
-}
-impl crate::AnyResource for Expression {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Expression {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

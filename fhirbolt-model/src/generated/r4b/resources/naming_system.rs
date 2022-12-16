@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates how the system may be identified when referenced in electronic exchange."]
 #[derive(Default, Debug, Clone)]
 pub struct NamingSystemUniqueId {
@@ -18,11 +18,6 @@ pub struct NamingSystemUniqueId {
     pub r#comment: Option<super::super::types::String>,
     #[doc = "Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for NamingSystemUniqueId {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for NamingSystemUniqueId {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -372,6 +367,11 @@ pub struct NamingSystem {
     pub r#usage: Option<super::super::types::String>,
     #[doc = "Indicates how the system may be identified when referenced in electronic exchange."]
     pub r#unique_id: Vec<NamingSystemUniqueId>,
+}
+impl crate::AnyResource for NamingSystem {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for NamingSystem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

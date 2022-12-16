@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone)]
 pub enum DiagnosticReportEffective {
@@ -24,11 +24,6 @@ pub struct DiagnosticReportMedia {
     pub r#comment: Option<super::super::types::String>,
     #[doc = "Reference to the image source."]
     pub r#link: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for DiagnosticReportMedia {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for DiagnosticReportMedia {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -244,6 +239,11 @@ pub struct DiagnosticReport {
     pub r#conclusion_code: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent."]
     pub r#presented_form: Vec<Box<super::super::types::Attachment>>,
+}
+impl crate::AnyResource for DiagnosticReport {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for DiagnosticReport {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

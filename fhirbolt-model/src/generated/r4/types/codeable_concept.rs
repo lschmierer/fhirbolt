@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for CodeableConcept Type: A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.\n\nThis is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept."]
 #[derive(Default, Debug, Clone)]
 pub struct CodeableConcept {
@@ -10,11 +10,6 @@ pub struct CodeableConcept {
     pub r#coding: Vec<Box<super::super::types::Coding>>,
     #[doc = "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user."]
     pub r#text: Option<super::super::types::String>,
-}
-impl crate::AnyResource for CodeableConcept {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for CodeableConcept {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The individual responsible for making the annotation."]
 #[derive(Debug, Clone)]
 pub enum AnnotationAuthor {
@@ -24,11 +24,6 @@ pub struct Annotation {
     pub r#time: Option<super::super::types::DateTime>,
     #[doc = "The text of the annotation in markdown format."]
     pub r#text: super::super::types::Markdown,
-}
-impl crate::AnyResource for Annotation {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Annotation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

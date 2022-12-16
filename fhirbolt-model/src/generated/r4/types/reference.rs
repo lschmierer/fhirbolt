@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Reference Type: A reference from one resource to another."]
 #[derive(Default, Debug, Clone)]
 pub struct Reference {
@@ -14,11 +14,6 @@ pub struct Reference {
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "Plain text narrative that identifies the resource in addition to the resource reference."]
     pub r#display: Option<super::super::types::String>,
-}
-impl crate::AnyResource for Reference {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Reference {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

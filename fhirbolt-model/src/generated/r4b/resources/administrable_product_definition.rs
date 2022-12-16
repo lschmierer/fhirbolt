@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone)]
 pub enum AdministrableProductDefinitionPropertyValue {
@@ -29,11 +29,6 @@ pub struct AdministrableProductDefinitionProperty {
     pub r#value: Option<AdministrableProductDefinitionPropertyValue>,
     #[doc = "The status of characteristic e.g. assigned or pending."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for AdministrableProductDefinitionProperty {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for AdministrableProductDefinitionProperty {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -915,6 +910,11 @@ pub struct AdministrableProductDefinition {
     pub r#property: Vec<AdministrableProductDefinitionProperty>,
     #[doc = "The path by which the product is taken into or makes contact with the body. In some regions this is referred to as the licenced or approved route. RouteOfAdministration cannot be used when the 'formOf' product already uses MedicinalProductDefinition.route (and vice versa)."]
     pub r#route_of_administration: Vec<AdministrableProductDefinitionRouteOfAdministration>,
+}
+impl crate::AnyResource for AdministrableProductDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for AdministrableProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

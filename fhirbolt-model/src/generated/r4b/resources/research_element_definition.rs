@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the ResearchElementDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchElementDefinition can be anything."]
 #[derive(Debug, Clone)]
 pub enum ResearchElementDefinitionSubject {
@@ -87,11 +87,6 @@ pub struct ResearchElementDefinitionCharacteristic {
     pub r#participant_effective_time_from_start: Option<Box<super::super::types::Duration>>,
     #[doc = "Indicates how elements are aggregated within the study effective period."]
     pub r#participant_effective_group_measure: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for ResearchElementDefinitionCharacteristic {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ResearchElementDefinitionCharacteristic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -548,6 +543,11 @@ pub struct ResearchElementDefinition {
     pub r#variable_type: Option<super::super::types::Code>,
     #[doc = "A characteristic that defines the members of the research element. Multiple characteristics are applied with \"and\" semantics."]
     pub r#characteristic: Vec<ResearchElementDefinitionCharacteristic>,
+}
+impl crate::AnyResource for ResearchElementDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ResearchElementDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

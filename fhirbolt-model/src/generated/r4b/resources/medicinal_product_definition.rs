@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductDefinitionCharacteristicValue {
@@ -27,11 +27,6 @@ pub struct MedicinalProductDefinitionContact {
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A product specific contact, person (in a role), or an organization."]
     pub r#contact: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for MedicinalProductDefinitionContact {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for MedicinalProductDefinitionContact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1460,6 +1455,11 @@ pub struct MedicinalProductDefinition {
     pub r#operation: Vec<MedicinalProductDefinitionOperation>,
     #[doc = "Allows the key product features to be recorded, such as \"sugar free\", \"modified release\", \"parallel import\"."]
     pub r#characteristic: Vec<MedicinalProductDefinitionCharacteristic>,
+}
+impl crate::AnyResource for MedicinalProductDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for MedicinalProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

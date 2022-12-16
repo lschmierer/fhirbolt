@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
 #[derive(Debug, Clone)]
 pub enum GroupCharacteristicValue {
@@ -31,11 +31,6 @@ pub struct GroupCharacteristic {
     pub r#exclude: super::super::types::Boolean,
     #[doc = "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for GroupCharacteristic {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for GroupCharacteristic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -582,6 +577,11 @@ pub struct Group {
     pub r#characteristic: Vec<GroupCharacteristic>,
     #[doc = "Identifies the resource instances that are members of the group."]
     pub r#member: Vec<GroupMember>,
+}
+impl crate::AnyResource for Group {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Group {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

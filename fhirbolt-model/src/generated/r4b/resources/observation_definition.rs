@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics for quantitative results of this observation."]
 #[derive(Default, Debug, Clone)]
 pub struct ObservationDefinitionQuantitativeDetails {
@@ -16,11 +16,6 @@ pub struct ObservationDefinitionQuantitativeDetails {
     pub r#conversion_factor: Option<super::super::types::Decimal>,
     #[doc = "Number of digits after decimal separator when the results of such observations are of type Quantity."]
     pub r#decimal_precision: Option<super::super::types::Integer>,
-}
-impl crate::AnyResource for ObservationDefinitionQuantitativeDetails {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ObservationDefinitionQuantitativeDetails {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -641,6 +636,11 @@ pub struct ObservationDefinition {
     pub r#abnormal_coded_value_set: Option<Box<super::super::types::Reference>>,
     #[doc = "The set of critical coded results for the observation conforming to this ObservationDefinition."]
     pub r#critical_coded_value_set: Option<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for ObservationDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ObservationDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

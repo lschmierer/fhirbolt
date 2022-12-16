@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Expressions that describe applicability criteria for the billing code."]
 #[derive(Default, Debug, Clone)]
 pub struct ChargeItemDefinitionApplicability {
@@ -14,11 +14,6 @@ pub struct ChargeItemDefinitionApplicability {
     pub r#language: Option<super::super::types::String>,
     #[doc = "An expression that returns true or false, indicating whether the condition is satisfied. When using FHIRPath expressions, the %context environment variable must be replaced at runtime with the ChargeItem resource to which this definition is applied."]
     pub r#expression: Option<super::super::types::String>,
-}
-impl crate::AnyResource for ChargeItemDefinitionApplicability {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ChargeItemDefinitionApplicability {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -723,6 +718,11 @@ pub struct ChargeItemDefinition {
     pub r#applicability: Vec<ChargeItemDefinitionApplicability>,
     #[doc = "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply."]
     pub r#property_group: Vec<ChargeItemDefinitionPropertyGroup>,
+}
+impl crate::AnyResource for ChargeItemDefinition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ChargeItemDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

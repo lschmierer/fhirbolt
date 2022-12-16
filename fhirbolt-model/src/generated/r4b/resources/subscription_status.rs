@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionStatusNotificationEvent {
@@ -16,11 +16,6 @@ pub struct SubscriptionStatusNotificationEvent {
     pub r#focus: Option<Box<super::super::types::Reference>>,
     #[doc = "Additional context information for this event. Generally, this will contain references to additional resources included with the event (e.g., the Patient relevant to an Encounter), however it MAY refer to non-FHIR objects."]
     pub r#additional_context: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for SubscriptionStatusNotificationEvent {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SubscriptionStatusNotificationEvent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -284,6 +279,11 @@ pub struct SubscriptionStatus {
     pub r#topic: Option<super::super::types::Canonical>,
     #[doc = "A record of errors that occurred when the server processed a notification."]
     pub r#error: Vec<Box<super::super::types::CodeableConcept>>,
+}
+impl crate::AnyResource for SubscriptionStatus {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for SubscriptionStatus {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

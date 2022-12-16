@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "If the parameter is a data type."]
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
@@ -76,11 +76,6 @@ pub struct ParametersParameter {
     pub r#resource: Option<Box<super::super::Resource>>,
     #[doc = "A named part of a multi-part parameter."]
     pub r#part: Vec<ParametersParameter>,
-}
-impl crate::AnyResource for ParametersParameter {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ParametersParameter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1842,6 +1837,11 @@ pub struct Parameters {
     pub r#language: Option<super::super::types::Code>,
     #[doc = "A parameter passed to or received from the operation."]
     pub r#parameter: Vec<ParametersParameter>,
+}
+impl crate::AnyResource for Parameters {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Parameters {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

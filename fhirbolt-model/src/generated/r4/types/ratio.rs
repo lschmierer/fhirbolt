@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Ratio Type: A relationship of two Quantity values - expressed as a numerator and a denominator.\n\nNeed to able to capture ratios for some measurements (titers) and some rates (costs)."]
 #[derive(Default, Debug, Clone)]
 pub struct Ratio {
@@ -10,11 +10,6 @@ pub struct Ratio {
     pub r#numerator: Option<Box<super::super::types::Quantity>>,
     #[doc = "The value of the denominator."]
     pub r#denominator: Option<Box<super::super::types::Quantity>>,
-}
-impl crate::AnyResource for Ratio {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Ratio {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

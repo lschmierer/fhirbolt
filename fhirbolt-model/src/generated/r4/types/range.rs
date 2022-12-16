@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit.\n\nNeed to be able to specify ranges of values."]
 #[derive(Default, Debug, Clone)]
 pub struct Range {
@@ -10,11 +10,6 @@ pub struct Range {
     pub r#low: Option<Box<super::super::types::Quantity>>,
     #[doc = "The high limit. The boundary is inclusive."]
     pub r#high: Option<Box<super::super::types::Quantity>>,
-}
-impl crate::AnyResource for Range {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Range {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

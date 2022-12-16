@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for SampledData Type: A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.\n\nThere is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency."]
 #[derive(Default, Debug, Clone)]
 pub struct SampledData {
@@ -20,11 +20,6 @@ pub struct SampledData {
     pub r#dimensions: super::super::types::PositiveInt,
     #[doc = "A series of data points which are decimal values separated by a single space (character u20). The special values \"E\" (error), \"L\" (below detection limit) and \"U\" (above detection limit) can also be used in place of a decimal value."]
     pub r#data: Option<super::super::types::String>,
-}
-impl crate::AnyResource for SampledData {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SampledData {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

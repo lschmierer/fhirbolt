@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Debug, Clone)]
 pub enum MedicationAdministrationMedication {
@@ -48,11 +48,6 @@ pub struct MedicationAdministrationPerformer {
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Indicates who or what performed the medication administration."]
     pub r#actor: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for MedicationAdministrationPerformer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicationAdministrationPerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -506,6 +501,11 @@ pub struct MedicationAdministration {
     pub r#dosage: Option<MedicationAdministrationDosage>,
     #[doc = "A summary of the events of interest that have occurred, such as when the administration was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for MedicationAdministration {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicationAdministration {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

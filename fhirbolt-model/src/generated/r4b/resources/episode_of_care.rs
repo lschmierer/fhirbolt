@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)."]
 #[derive(Default, Debug, Clone)]
 pub struct EpisodeOfCareStatusHistory {
@@ -12,11 +12,6 @@ pub struct EpisodeOfCareStatusHistory {
     pub r#status: super::super::types::Code,
     #[doc = "The period during this EpisodeOfCare that the specific status applied."]
     pub r#period: Box<super::super::types::Period>,
-}
-impl crate::AnyResource for EpisodeOfCareStatusHistory {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for EpisodeOfCareStatusHistory {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -417,6 +412,11 @@ pub struct EpisodeOfCare {
     pub r#team: Vec<Box<super::super::types::Reference>>,
     #[doc = "The set of accounts that may be used for billing for this EpisodeOfCare."]
     pub r#account: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for EpisodeOfCare {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for EpisodeOfCare {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

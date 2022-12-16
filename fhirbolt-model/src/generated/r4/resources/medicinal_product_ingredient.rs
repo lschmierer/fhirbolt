@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Strength expressed in terms of a reference substance."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
@@ -18,11 +18,6 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
     pub r#measurement_point: Option<super::super::types::String>,
     #[doc = "The country or countries for which the strength range applies."]
     pub r#country: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize
     for MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
@@ -893,6 +888,11 @@ pub struct MedicinalProductIngredient {
     pub r#specified_substance: Vec<MedicinalProductIngredientSpecifiedSubstance>,
     #[doc = "The ingredient substance."]
     pub r#substance: Option<MedicinalProductIngredientSubstance>,
+}
+impl crate::AnyResource for MedicinalProductIngredient {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProductIngredient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

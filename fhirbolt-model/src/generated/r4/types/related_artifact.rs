@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RelatedArtifact Type: Related artifacts such as additional documentation, justification, or bibliographic references.\n\nKnowledge resources must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content."]
 #[derive(Default, Debug, Clone)]
 pub struct RelatedArtifact {
@@ -20,11 +20,6 @@ pub struct RelatedArtifact {
     pub r#document: Option<Box<super::super::types::Attachment>>,
     #[doc = "The related resource, such as a library, value set, profile, or other knowledge resource."]
     pub r#resource: Option<super::super::types::Canonical>,
-}
-impl crate::AnyResource for RelatedArtifact {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for RelatedArtifact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

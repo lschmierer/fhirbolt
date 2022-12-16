@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Actor participating in the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct ExampleScenarioActor {
@@ -16,11 +16,6 @@ pub struct ExampleScenarioActor {
     pub r#name: Option<super::super::types::String>,
     #[doc = "The description of the actor."]
     pub r#description: Option<super::super::types::Markdown>,
-}
-impl crate::AnyResource for ExampleScenarioActor {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ExampleScenarioActor {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2436,6 +2431,11 @@ pub struct ExampleScenario {
     pub r#process: Vec<ExampleScenarioProcess>,
     #[doc = "Another nested workflow."]
     pub r#workflow: Vec<super::super::types::Canonical>,
+}
+impl crate::AnyResource for ExampleScenario {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ExampleScenario {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

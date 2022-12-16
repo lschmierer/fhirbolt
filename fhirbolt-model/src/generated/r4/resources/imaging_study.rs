@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates who or what performed the series and how they were involved."]
 #[derive(Default, Debug, Clone)]
 pub struct ImagingStudySeriesPerformer {
@@ -12,11 +12,6 @@ pub struct ImagingStudySeriesPerformer {
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Indicates who or what performed the series."]
     pub r#actor: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for ImagingStudySeriesPerformer {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ImagingStudySeriesPerformer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -957,6 +952,11 @@ pub struct ImagingStudy {
     pub r#description: Option<super::super::types::String>,
     #[doc = "Each study has one or more series of images or other content."]
     pub r#series: Vec<ImagingStudySeries>,
+}
+impl crate::AnyResource for ImagingStudy {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ImagingStudy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

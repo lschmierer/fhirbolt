@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the parameter."]
 #[derive(Debug, Clone)]
 pub enum ValueSetExpansionParameterValue {
@@ -31,11 +31,6 @@ pub struct ValueSetComposeIncludeConceptDesignation {
     pub r#use: Option<Box<super::super::types::Coding>>,
     #[doc = "The text value for this designation."]
     pub r#value: super::super::types::String,
-}
-impl crate::AnyResource for ValueSetComposeIncludeConceptDesignation {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ValueSetComposeIncludeConceptDesignation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -2720,6 +2715,11 @@ pub struct ValueSet {
     pub r#compose: Option<ValueSetCompose>,
     #[doc = "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."]
     pub r#expansion: Option<ValueSetExpansion>,
+}
+impl crate::AnyResource for ValueSet {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ValueSet {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

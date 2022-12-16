@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
 #[derive(Debug, Clone)]
 pub enum ConditionOnset {
@@ -44,11 +44,6 @@ pub struct ConditionStage {
     pub r#assessment: Vec<Box<super::super::types::Reference>>,
     #[doc = "The kind of staging, such as pathological or clinical staging."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for ConditionStage {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ConditionStage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -383,6 +378,11 @@ pub struct Condition {
     pub r#evidence: Vec<ConditionEvidence>,
     #[doc = "Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl crate::AnyResource for Condition {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Condition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

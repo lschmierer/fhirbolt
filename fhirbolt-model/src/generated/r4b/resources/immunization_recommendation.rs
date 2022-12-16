@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
@@ -36,11 +36,6 @@ pub struct ImmunizationRecommendationRecommendationDateCriterion {
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The date whose meaning is specified by dateCriterion.code."]
     pub r#value: super::super::types::DateTime,
-}
-impl crate::AnyResource for ImmunizationRecommendationRecommendationDateCriterion {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ImmunizationRecommendationRecommendationDateCriterion {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -553,6 +548,11 @@ pub struct ImmunizationRecommendation {
     pub r#authority: Option<Box<super::super::types::Reference>>,
     #[doc = "Vaccine administration recommendations."]
     pub r#recommendation: Vec<ImmunizationRecommendationRecommendation>,
+}
+impl crate::AnyResource for ImmunizationRecommendation {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ImmunizationRecommendation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

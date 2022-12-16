@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
 #[derive(Default, Debug, Clone)]
 pub struct EncounterStatusHistory {
@@ -12,11 +12,6 @@ pub struct EncounterStatusHistory {
     pub r#status: super::super::types::Code,
     #[doc = "The time that the episode was in the specified status."]
     pub r#period: Box<super::super::types::Period>,
-}
-impl crate::AnyResource for EncounterStatusHistory {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for EncounterStatusHistory {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1225,6 +1220,11 @@ pub struct Encounter {
     pub r#service_provider: Option<Box<super::super::types::Reference>>,
     #[doc = "Another Encounter of which this encounter is a part of (administratively or in time)."]
     pub r#part_of: Option<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for Encounter {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Encounter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

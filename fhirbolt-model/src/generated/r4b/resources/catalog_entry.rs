@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Default, Debug, Clone)]
 pub struct CatalogEntryRelatedEntry {
@@ -12,11 +12,6 @@ pub struct CatalogEntryRelatedEntry {
     pub r#relationtype: super::super::types::Code,
     #[doc = "The reference to the related item."]
     pub r#item: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for CatalogEntryRelatedEntry {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for CatalogEntryRelatedEntry {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -230,6 +225,11 @@ pub struct CatalogEntry {
     pub r#additional_classification: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
     pub r#related_entry: Vec<CatalogEntryRelatedEntry>,
+}
+impl crate::AnyResource for CatalogEntry {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for CatalogEntry {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

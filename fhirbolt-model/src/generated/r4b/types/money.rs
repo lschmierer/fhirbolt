@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Money Type: An amount of economic utility in some recognized currency."]
 #[derive(Default, Debug, Clone)]
 pub struct Money {
@@ -10,11 +10,6 @@ pub struct Money {
     pub r#value: Option<super::super::types::Decimal>,
     #[doc = "ISO 4217 Currency Code."]
     pub r#currency: Option<super::super::types::Code>,
-}
-impl crate::AnyResource for Money {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for Money {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

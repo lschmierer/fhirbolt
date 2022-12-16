@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics e.g. a products onset of action."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductPharmaceuticalCharacteristics {
@@ -12,11 +12,6 @@ pub struct MedicinalProductPharmaceuticalCharacteristics {
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The status of characteristic e.g. assigned or pending."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for MedicinalProductPharmaceuticalCharacteristics {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for MedicinalProductPharmaceuticalCharacteristics {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -693,6 +688,11 @@ pub struct MedicinalProductPharmaceutical {
     pub r#characteristics: Vec<MedicinalProductPharmaceuticalCharacteristics>,
     #[doc = "The path by which the pharmaceutical product is taken into or makes contact with the body."]
     pub r#route_of_administration: Vec<MedicinalProductPharmaceuticalRouteOfAdministration>,
+}
+impl crate::AnyResource for MedicinalProductPharmaceutical {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for MedicinalProductPharmaceutical {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

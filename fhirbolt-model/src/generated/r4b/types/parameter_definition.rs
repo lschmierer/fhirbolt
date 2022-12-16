@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ParameterDefinition Type: The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse."]
 #[derive(Default, Debug, Clone)]
 pub struct ParameterDefinition {
@@ -20,11 +20,6 @@ pub struct ParameterDefinition {
     pub r#type: super::super::types::Code,
     #[doc = "If specified, this indicates a profile that the input data must conform to, or that the output data will conform to."]
     pub r#profile: Option<super::super::types::Canonical>,
-}
-impl crate::AnyResource for ParameterDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ParameterDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

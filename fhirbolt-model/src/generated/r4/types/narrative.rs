@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Narrative {
@@ -10,11 +10,6 @@ pub struct Narrative {
     pub r#status: super::super::types::Code,
     #[doc = "The actual narrative content, a stripped down version of XHTML."]
     pub r#div: super::super::types::Xhtml,
-}
-impl crate::AnyResource for Narrative {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for Narrative {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

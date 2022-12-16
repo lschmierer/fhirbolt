@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Debug, Clone)]
 pub enum SupplyDeliverySuppliedItemItem {
@@ -37,11 +37,6 @@ pub struct SupplyDeliverySuppliedItem {
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
     pub r#item: Option<SupplyDeliverySuppliedItemItem>,
-}
-impl crate::AnyResource for SupplyDeliverySuppliedItem {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for SupplyDeliverySuppliedItem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -238,6 +233,11 @@ pub struct SupplyDelivery {
     pub r#destination: Option<Box<super::super::types::Reference>>,
     #[doc = "Identifies the person who picked up the Supply."]
     pub r#receiver: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for SupplyDelivery {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for SupplyDelivery {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

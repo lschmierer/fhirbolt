@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Debug, Clone)]
 pub enum PatientDeceased {
@@ -46,11 +46,6 @@ pub struct PatientContact {
     pub r#organization: Option<Box<super::super::types::Reference>>,
     #[doc = "The period during which this contact person or organization is valid to be contacted relating to this patient."]
     pub r#period: Option<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for PatientContact {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for PatientContact {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -689,6 +684,11 @@ pub struct Patient {
     pub r#managing_organization: Option<Box<super::super::types::Reference>>,
     #[doc = "Link to another patient resource that concerns the same actual patient."]
     pub r#link: Vec<PatientLink>,
+}
+impl crate::AnyResource for Patient {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Patient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

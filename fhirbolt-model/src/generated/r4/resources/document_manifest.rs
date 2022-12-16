@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Related identifiers or resources associated with the DocumentManifest."]
 #[derive(Default, Debug, Clone)]
 pub struct DocumentManifestRelated {
@@ -12,11 +12,6 @@ pub struct DocumentManifestRelated {
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "Related Resource to this DocumentManifest. For example, Order, ServiceRequest,  Procedure, EligibilityRequest, etc."]
     pub r#ref: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for DocumentManifestRelated {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for DocumentManifestRelated {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -184,6 +179,11 @@ pub struct DocumentManifest {
     pub r#content: Vec<Box<super::super::types::Reference>>,
     #[doc = "Related identifiers or resources associated with the DocumentManifest."]
     pub r#related: Vec<DocumentManifestRelated>,
+}
+impl crate::AnyResource for DocumentManifest {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for DocumentManifest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

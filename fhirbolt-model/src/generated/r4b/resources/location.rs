@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)."]
 #[derive(Default, Debug, Clone)]
 pub struct LocationPosition {
@@ -14,11 +14,6 @@ pub struct LocationPosition {
     pub r#latitude: super::super::types::Decimal,
     #[doc = "Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below)."]
     pub r#altitude: Option<super::super::types::Decimal>,
-}
-impl crate::AnyResource for LocationPosition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for LocationPosition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -674,6 +669,11 @@ pub struct Location {
     pub r#availability_exceptions: Option<super::super::types::String>,
     #[doc = "Technical endpoints providing access to services operated for the location."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl crate::AnyResource for Location {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for Location {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

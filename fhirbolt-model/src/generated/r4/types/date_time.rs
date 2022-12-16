@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for dateTime Type: A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a time zone SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates."]
 #[derive(Default, Debug, Clone, serde :: Serialize)]
 pub struct DateTime {
@@ -11,9 +11,4 @@ pub struct DateTime {
     #[doc = "The actual value"]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub r#value: Option<std::string::String>,
-}
-impl crate::AnyResource for DateTime {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }

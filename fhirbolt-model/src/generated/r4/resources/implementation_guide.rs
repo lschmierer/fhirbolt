@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
 #[derive(Debug, Clone)]
 pub enum ImplementationGuideDefinitionResourceExample {
@@ -50,11 +50,6 @@ pub struct ImplementationGuideDependsOn {
     pub r#package_id: Option<super::super::types::Id>,
     #[doc = "The version of the IG that is depended on, when the correct version is required to understand the IG correctly."]
     pub r#version: Option<super::super::types::String>,
-}
-impl crate::AnyResource for ImplementationGuideDependsOn {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for ImplementationGuideDependsOn {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -3307,6 +3302,11 @@ pub struct ImplementationGuide {
     pub r#definition: Option<ImplementationGuideDefinition>,
     #[doc = "Information about an assembled implementation guide, created by the publication tooling."]
     pub r#manifest: Option<ImplementationGuideManifest>,
+}
+impl crate::AnyResource for ImplementationGuide {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for ImplementationGuide {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

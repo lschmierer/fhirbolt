@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The date when or period to which this information refers."]
 #[derive(Debug, Clone)]
 pub enum ExplanationOfBenefitSupportingInfoTiming {
@@ -152,11 +152,6 @@ pub struct ExplanationOfBenefitRelated {
     pub r#relationship: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "An alternate organizational reference to the case or file to which this particular claim pertains."]
     pub r#reference: Option<Box<super::super::types::Identifier>>,
-}
-impl crate::AnyResource for ExplanationOfBenefitRelated {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ExplanationOfBenefitRelated {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -7469,6 +7464,11 @@ pub struct ExplanationOfBenefit {
     pub r#benefit_period: Option<Box<super::super::types::Period>>,
     #[doc = "Balance by Benefit Category."]
     pub r#benefit_balance: Vec<ExplanationOfBenefitBenefitBalance>,
+}
+impl crate::AnyResource for ExplanationOfBenefit {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4B
+    }
 }
 impl serde::ser::Serialize for ExplanationOfBenefit {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

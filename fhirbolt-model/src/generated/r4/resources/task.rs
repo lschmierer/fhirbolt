@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the input parameter as a basic type."]
 #[derive(Debug, Clone)]
 pub enum TaskInputValue {
@@ -134,11 +134,6 @@ pub struct TaskRestriction {
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "For requests that are targeted to more than on potential recipient/target, for whom is fulfillment sought?"]
     pub r#recipient: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for TaskRestriction {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
 }
 impl serde::ser::Serialize for TaskRestriction {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -3630,6 +3625,11 @@ pub struct Task {
     pub r#input: Vec<TaskInput>,
     #[doc = "Outputs produced by the Task."]
     pub r#output: Vec<TaskOutput>,
+}
+impl crate::AnyResource for Task {
+    fn fhir_release() -> crate::FhirRelease {
+        crate::FhirRelease::R4
+    }
 }
 impl serde::ser::Serialize for Task {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

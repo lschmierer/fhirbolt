@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "A physical entity which is the primary unit of operational and/or administrative interest in a study."]
 #[derive(Default, Debug, Clone)]
 pub struct ResearchSubject {

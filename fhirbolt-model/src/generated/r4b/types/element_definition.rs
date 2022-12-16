@@ -1,4 +1,4 @@
-// Generated on 2022-12-15 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
 #[doc = "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')."]
 #[derive(Debug, Clone)]
 pub enum ElementDefinitionDefaultValue {
@@ -292,11 +292,6 @@ pub struct ElementDefinitionSlicingDiscriminator {
     pub r#type: super::super::types::Code,
     #[doc = "A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based."]
     pub r#path: super::super::types::String,
-}
-impl crate::AnyResource for ElementDefinitionSlicingDiscriminator {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }
 impl serde::ser::Serialize for ElementDefinitionSlicingDiscriminator {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
