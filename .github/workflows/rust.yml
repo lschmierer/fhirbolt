@@ -32,3 +32,15 @@ jobs:
           shared-key: "rust-cache"
       - name: Run tests
         run: cargo test --release --verbose
+
+  benchmark:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run benches
+        run: cargo bench --release --verbose
