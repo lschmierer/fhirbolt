@@ -11,11 +11,6 @@ fhirbolt = { path = "../fhirbolt", features = ["r4", "r4b"] }
 tests = { path = "../tests" }
 
 [[bench]]
-name = "bench_serde_json"
-path = "bench_serde_json.rs"
-harness = false
-
-[[bench]]
-name = "bench_serde_xml"
-path = "bench_serde_xml.rs"
+name = "bench_serde"
+path = "bench_serde.rs"
 harness = false
