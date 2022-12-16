@@ -11,7 +11,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
 
     let valuesets_bytes = examples.get("valuesets.xml").read_to_vec();
     let valuesets_bundle =
-        fhirbolt::json::from_slice::<model::r4::resources::Bundle>(&valuesets_bytes, None).unwrap();
+        fhirbolt::xml::from_slice::<model::r4::resources::Bundle>(&valuesets_bytes, None).unwrap();
 
     c.bench_function("read valuesets", |b| {
         b.iter(|| {
