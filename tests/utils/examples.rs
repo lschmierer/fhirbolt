@@ -1,5 +1,6 @@
 use std::{
     fs::{self, File},
+    io::Read,
     path::PathBuf,
 };
 
@@ -24,6 +25,18 @@ impl JsonOrXml {
     }
 }
 
+pub trait ExampleFile {
+    fn read_to_vec(self) -> Vec<u8>;
+}
+
+impl ExampleFile for ZipFile<'_> {
+    fn read_to_vec(mut self) -> Vec<u8> {
+        let mut vec = Vec::new();
+        self.read_to_end(&mut vec).unwrap();
+        vec
+    }
+}
+
 pub struct ExamplesIterator {
     archive: ZipArchive<File>,
     index: usize,
@@ -40,6 +53,10 @@ impl ExamplesIterator {
         } else {
             None
         }
+    }
+
+    pub fn get(&mut self, name: &str) -> ZipFile {
+        self.archive.by_name(name).unwrap()
     }
 }
 

@@ -6,4 +6,5 @@ members = [
     "fhirbolt-serde",
     "fhirbolt-shared",
     "tests",
+    "benches",
 ]
