@@ -252,7 +252,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
             Organization,
             #[serde(rename = "requestProvider")]
             RequestProvider,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

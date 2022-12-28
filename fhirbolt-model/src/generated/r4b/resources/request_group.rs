@@ -101,7 +101,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionCondition {
             KindPrimitiveElement,
             #[serde(rename = "expression")]
             Expression,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -328,7 +328,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionRelatedAction {
             OffsetDuration,
             #[serde(rename = "offsetRange")]
             OffsetRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -934,7 +934,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
             Resource,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2296,7 +2296,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
             Note,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

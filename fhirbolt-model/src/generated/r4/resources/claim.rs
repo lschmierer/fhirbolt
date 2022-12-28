@@ -154,7 +154,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimRelated {
             Relationship,
             #[serde(rename = "reference")]
             Reference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -304,7 +304,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimPayee {
             Type,
             #[serde(rename = "party")]
             Party,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -498,7 +498,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimCareTeam {
             Role,
             #[serde(rename = "qualification")]
             Qualification,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -890,7 +890,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
             ValueReference,
             #[serde(rename = "reason")]
             Reason,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1407,7 +1407,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimDiagnosis {
             OnAdmission,
             #[serde(rename = "packageCode")]
             PackageCode,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1705,7 +1705,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimProcedure {
             ProcedureReference,
             #[serde(rename = "udi")]
             Udi,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2094,7 +2094,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
             PreAuthRefPrimitiveElement,
             #[serde(rename = "claimResponse")]
             ClaimResponse,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2533,7 +2533,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimAccident {
             LocationAddress,
             #[serde(rename = "locationReference")]
             LocationReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2836,7 +2836,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetailSubDetail {
             Net,
             #[serde(rename = "udi")]
             Udi,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3265,7 +3265,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetail {
             Udi,
             #[serde(rename = "subDetail")]
             SubDetail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3962,7 +3962,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
             Encounter,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5173,7 +5173,7 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
             Item,
             #[serde(rename = "total")]
             Total,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

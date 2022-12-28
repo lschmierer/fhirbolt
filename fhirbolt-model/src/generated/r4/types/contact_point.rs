@@ -145,7 +145,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
             RankPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

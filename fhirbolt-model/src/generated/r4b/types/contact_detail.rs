@@ -70,7 +70,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
             NamePrimitiveElement,
             #[serde(rename = "telecom")]
             Telecom,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

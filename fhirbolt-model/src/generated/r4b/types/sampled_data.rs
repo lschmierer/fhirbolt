@@ -193,7 +193,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
             Data,
             #[serde(rename = "_data")]
             DataPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

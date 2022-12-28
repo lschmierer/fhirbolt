@@ -59,7 +59,7 @@ impl<'de> serde::de::Deserialize<'de> for RatioRange {
             HighNumerator,
             #[serde(rename = "denominator")]
             Denominator,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

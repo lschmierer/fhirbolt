@@ -195,7 +195,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
             EntryType,
             #[serde(rename = "_entryType")]
             EntryTypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -658,7 +658,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
             Type,
             #[serde(rename = "_type")]
             TypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -879,7 +879,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
             Version,
             #[serde(rename = "_version")]
             VersionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1083,7 +1083,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1281,7 +1281,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
             ValueQuantity,
             #[serde(rename = "valueCode")]
             ValueCode,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1866,7 +1866,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
             Safety,
             #[serde(rename = "parent")]
             Parent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

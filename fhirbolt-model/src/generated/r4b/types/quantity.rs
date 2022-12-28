@@ -165,7 +165,7 @@ impl<'de> serde::de::Deserialize<'de> for Quantity {
             Code,
             #[serde(rename = "_code")]
             CodePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

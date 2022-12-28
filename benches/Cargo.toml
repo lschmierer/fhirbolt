@@ -7,7 +7,7 @@ publish = false
 [dependencies]
 criterion = "0.4"
 
-fhirbolt = { path = "../fhirbolt", features = ["r4", "r4b"] }
+fhirbolt = { path = "../fhirbolt", features = ["r4"] }
 tests = { path = "../tests" }
 
 [[bench]]

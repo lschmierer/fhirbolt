@@ -87,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
             NamePrimitiveElement,
             #[serde(rename = "contact")]
             Contact,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

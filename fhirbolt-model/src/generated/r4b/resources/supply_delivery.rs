@@ -96,7 +96,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDeliverySuppliedItem {
             ItemCodeableConcept,
             #[serde(rename = "itemReference")]
             ItemReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -446,7 +446,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyDelivery {
             Destination,
             #[serde(rename = "receiver")]
             Receiver,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

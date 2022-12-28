@@ -107,7 +107,7 @@ impl<'de> serde::de::Deserialize<'de> for ListEntry {
             DatePrimitiveElement,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -566,7 +566,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
             Entry,
             #[serde(rename = "emptyReason")]
             EmptyReason,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

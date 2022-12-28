@@ -214,7 +214,7 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
             Image,
             #[serde(rename = "patient")]
             Patient,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

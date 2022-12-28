@@ -170,7 +170,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
             RequireBoth,
             #[serde(rename = "_requireBoth")]
             RequireBothPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -658,7 +658,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
             FhirPathCriteria,
             #[serde(rename = "_fhirPathCriteria")]
             FhirPathCriteriaPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1073,7 +1073,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
             Resource,
             #[serde(rename = "_resource")]
             ResourcePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1444,7 +1444,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
             Modifier,
             #[serde(rename = "_modifier")]
             ModifierPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1954,7 +1954,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
             RevInclude,
             #[serde(rename = "_revInclude")]
             RevIncludePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2750,7 +2750,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
             CanFilterBy,
             #[serde(rename = "notificationShape")]
             NotificationShape,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

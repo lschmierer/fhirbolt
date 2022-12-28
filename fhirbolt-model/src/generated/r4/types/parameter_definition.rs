@@ -205,7 +205,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
             Profile,
             #[serde(rename = "_profile")]
             ProfilePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

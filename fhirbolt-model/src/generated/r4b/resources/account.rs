@@ -75,7 +75,7 @@ impl<'de> serde::de::Deserialize<'de> for AccountCoverage {
             Priority,
             #[serde(rename = "_priority")]
             PriorityPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -281,7 +281,7 @@ impl<'de> serde::de::Deserialize<'de> for AccountGuarantor {
             OnHoldPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -666,7 +666,7 @@ impl<'de> serde::de::Deserialize<'de> for Account {
             Guarantor,
             #[serde(rename = "partOf")]
             PartOf,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -490,7 +490,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
             Offset,
             #[serde(rename = "_offset")]
             OffsetPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1595,7 +1595,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
             Repeat,
             #[serde(rename = "code")]
             Code,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

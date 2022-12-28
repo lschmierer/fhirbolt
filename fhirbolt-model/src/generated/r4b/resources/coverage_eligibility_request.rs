@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
             AppliesToAll,
             #[serde(rename = "_appliesToAll")]
             AppliesToAllPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -404,7 +404,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
             BusinessArrangement,
             #[serde(rename = "_businessArrangement")]
             BusinessArrangementPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -650,7 +650,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
             DiagnosisCodeableConcept,
             #[serde(rename = "diagnosisReference")]
             DiagnosisReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -833,7 +833,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
             Diagnosis,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1386,7 +1386,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
             Insurance,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

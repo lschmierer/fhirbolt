@@ -224,7 +224,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
             DueDatePrimitiveElement,
             #[serde(rename = "dueDuration")]
             DueDuration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -931,7 +931,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
             OutcomeCode,
             #[serde(rename = "outcomeReference")]
             OutcomeReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

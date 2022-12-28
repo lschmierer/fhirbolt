@@ -122,7 +122,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
             Jurisdiction,
             #[serde(rename = "_jurisdiction")]
             JurisdictionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -443,7 +443,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
             Type,
             #[serde(rename = "_type")]
             TypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -680,7 +680,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
             Version,
             #[serde(rename = "_version")]
             VersionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -904,7 +904,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionCapability {
             Type,
             #[serde(rename = "description")]
             Description,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1059,7 +1059,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionProperty {
             ValueQuantity,
             #[serde(rename = "valueCode")]
             ValueCode,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1258,7 +1258,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
             AllergenicIndicator,
             #[serde(rename = "_allergenicIndicator")]
             AllergenicIndicatorPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1835,7 +1835,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
             ParentDevice,
             #[serde(rename = "material")]
             Material,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -173,7 +173,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemFilter {
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -604,7 +604,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemProperty {
             Type,
             #[serde(rename = "_type")]
             TypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -966,7 +966,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptDesignation {
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1344,7 +1344,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptProperty {
             ValueDecimal,
             #[serde(rename = "_valueDecimal")]
             ValueDecimalPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2037,7 +2037,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConcept {
             Property,
             #[serde(rename = "concept")]
             Concept,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2923,7 +2923,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystem {
             Property,
             #[serde(rename = "concept")]
             Concept,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -83,7 +83,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
             Who,
             #[serde(rename = "onBehalfOf")]
             OnBehalfOf,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -269,7 +269,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
             What,
             #[serde(rename = "agent")]
             Agent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -683,7 +683,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
             Entity,
             #[serde(rename = "signature")]
             Signature,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

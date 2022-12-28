@@ -158,7 +158,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -617,7 +617,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
             Compartment,
             #[serde(rename = "link")]
             Link,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1022,7 +1022,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
             DescriptionPrimitiveElement,
             #[serde(rename = "target")]
             Target,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1755,7 +1755,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
             ProfilePrimitiveElement,
             #[serde(rename = "link")]
             Link,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

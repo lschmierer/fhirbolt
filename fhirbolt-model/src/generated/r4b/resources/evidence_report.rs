@@ -169,7 +169,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportSubjectCharacteristic {
             ExcludePrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -499,7 +499,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportSubject {
             Characteristic,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -668,7 +668,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportRelatesTo {
             TargetIdentifier,
             #[serde(rename = "targetReference")]
             TargetReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -979,7 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportSection {
             EmptyReason,
             #[serde(rename = "section")]
             Section,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1575,7 +1575,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReport {
             RelatesTo,
             #[serde(rename = "section")]
             Section,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

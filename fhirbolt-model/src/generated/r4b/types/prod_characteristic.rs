@@ -214,7 +214,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
             Image,
             #[serde(rename = "scoring")]
             Scoring,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

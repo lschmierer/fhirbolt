@@ -159,7 +159,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
             Reference,
             #[serde(rename = "_reference")]
             ReferencePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

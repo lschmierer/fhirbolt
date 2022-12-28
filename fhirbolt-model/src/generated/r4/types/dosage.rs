@@ -125,7 +125,7 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
             RateRange,
             #[serde(rename = "rateQuantity")]
             RateQuantity,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -451,7 +451,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
             MaxDosePerAdministration,
             #[serde(rename = "maxDosePerLifetime")]
             MaxDosePerLifetime,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

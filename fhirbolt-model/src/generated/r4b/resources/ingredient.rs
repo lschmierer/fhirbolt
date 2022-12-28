@@ -111,7 +111,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientManufacturer {
             RolePrimitiveElement,
             #[serde(rename = "manufacturer")]
             Manufacturer,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -336,7 +336,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientSubstanceStrengthReferenceSt
             MeasurementPointPrimitiveElement,
             #[serde(rename = "country")]
             Country,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -539,7 +539,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientSubstanceStrength {
             Country,
             #[serde(rename = "referenceStrength")]
             ReferenceStrength,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -913,7 +913,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientSubstance {
             Code,
             #[serde(rename = "strength")]
             Strength,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1205,7 +1205,7 @@ impl<'de> serde::de::Deserialize<'de> for Ingredient {
             Manufacturer,
             #[serde(rename = "substance")]
             Substance,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

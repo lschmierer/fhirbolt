@@ -216,7 +216,7 @@ impl<'de> serde::de::Deserialize<'de> for Schedule {
             Comment,
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

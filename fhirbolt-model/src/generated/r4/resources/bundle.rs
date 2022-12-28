@@ -87,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleLink {
             Url,
             #[serde(rename = "_url")]
             UrlPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -342,7 +342,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntrySearch {
             Score,
             #[serde(rename = "_score")]
             ScorePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -663,7 +663,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntryRequest {
             IfNoneExist,
             #[serde(rename = "_ifNoneExist")]
             IfNoneExistPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1191,7 +1191,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntryResponse {
             LastModifiedPrimitiveElement,
             #[serde(rename = "outcome")]
             Outcome,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1567,7 +1567,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntry {
             Request,
             #[serde(rename = "response")]
             Response,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1920,7 +1920,7 @@ impl<'de> serde::de::Deserialize<'de> for Bundle {
             Entry,
             #[serde(rename = "signature")]
             Signature,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

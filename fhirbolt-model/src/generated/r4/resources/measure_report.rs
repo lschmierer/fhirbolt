@@ -84,7 +84,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
             CountPrimitiveElement,
             #[serde(rename = "subjectResults")]
             SubjectResults,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -272,7 +272,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
             Code,
             #[serde(rename = "value")]
             Value,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -449,7 +449,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
             CountPrimitiveElement,
             #[serde(rename = "subjectResults")]
             SubjectResults,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -655,7 +655,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
             Population,
             #[serde(rename = "measureScore")]
             MeasureScore,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -821,7 +821,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
             Code,
             #[serde(rename = "stratum")]
             Stratum,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -975,7 +975,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
             MeasureScore,
             #[serde(rename = "stratifier")]
             Stratifier,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1336,7 +1336,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
             Group,
             #[serde(rename = "evaluatedResource")]
             EvaluatedResource,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

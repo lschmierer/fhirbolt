@@ -161,7 +161,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
             Display,
             #[serde(rename = "_display")]
             DisplayPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -577,7 +577,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
             DependsOn,
             #[serde(rename = "product")]
             Product,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -966,7 +966,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
             DisplayPrimitiveElement,
             #[serde(rename = "target")]
             Target,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1270,7 +1270,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
             Url,
             #[serde(rename = "_url")]
             UrlPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1681,7 +1681,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
             Element,
             #[serde(rename = "unmapped")]
             Unmapped,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2501,7 +2501,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
             TargetCanonicalPrimitiveElement,
             #[serde(rename = "group")]
             Group,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -378,7 +378,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1199,7 +1199,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivity {
             Reference,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1757,7 +1757,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
             Activity,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -161,7 +161,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -539,7 +539,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
             Interpretation,
             #[serde(rename = "referenceRange")]
             ReferenceRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1603,7 +1603,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
             DerivedFrom,
             #[serde(rename = "component")]
             Component,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

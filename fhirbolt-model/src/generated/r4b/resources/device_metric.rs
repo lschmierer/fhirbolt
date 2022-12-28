@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
             Time,
             #[serde(rename = "_time")]
             TimePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -560,7 +560,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
             MeasurementPeriod,
             #[serde(rename = "calibration")]
             Calibration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -144,7 +144,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
             CommentPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -760,7 +760,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
             UsagePrimitiveElement,
             #[serde(rename = "uniqueId")]
             UniqueId,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

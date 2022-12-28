@@ -145,7 +145,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
             ValueSetPrimitiveElement,
             #[serde(rename = "code")]
             Code,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -468,7 +468,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
             ValuePeriod,
             #[serde(rename = "valueDuration")]
             ValueDuration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -791,7 +791,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementSort {
             Direction,
             #[serde(rename = "_direction")]
             DirectionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1140,7 +1140,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
             LimitPrimitiveElement,
             #[serde(rename = "sort")]
             Sort,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

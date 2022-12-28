@@ -96,7 +96,7 @@ impl<'de> serde::de::Deserialize<'de> for ConditionStage {
             Assessment,
             #[serde(rename = "type")]
             Type,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -248,7 +248,7 @@ impl<'de> serde::de::Deserialize<'de> for ConditionEvidence {
             Code,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -707,7 +707,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
             Evidence,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -77,7 +77,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
             FractionPrimitiveElement,
             #[serde(rename = "materialType")]
             MaterialType,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -275,7 +275,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
             AuthorDescription,
             #[serde(rename = "_authorDescription")]
             AuthorDescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -556,7 +556,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
             PaternalOrganismNamePrimitiveElement,
             #[serde(rename = "hybridType")]
             HybridType,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -923,7 +923,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
             Class,
             #[serde(rename = "order")]
             Order,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1147,7 +1147,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
             Hybrid,
             #[serde(rename = "organismGeneral")]
             OrganismGeneral,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1401,7 +1401,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
             Part,
             #[serde(rename = "partLocation")]
             PartLocation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1795,7 +1795,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
             Organism,
             #[serde(rename = "partDescription")]
             PartDescription,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

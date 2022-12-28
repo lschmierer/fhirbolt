@@ -87,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
             ValueSet,
             #[serde(rename = "_valueSet")]
             ValueSetPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -345,7 +345,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
             SourceId,
             #[serde(rename = "_sourceId")]
             SourceIdPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -769,7 +769,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
             ReferencedFrom,
             #[serde(rename = "part")]
             Part,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1470,7 +1470,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
             Comment,
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2336,7 +2336,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
             Parameter,
             #[serde(rename = "overload")]
             Overload,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

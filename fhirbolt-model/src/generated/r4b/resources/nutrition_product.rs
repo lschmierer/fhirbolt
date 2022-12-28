@@ -75,7 +75,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
             Item,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -210,7 +210,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
             Item,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -429,7 +429,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
             ValueBoolean,
             #[serde(rename = "_valueBoolean")]
             ValueBooleanPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -591,7 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
             UseBy,
             #[serde(rename = "_useBy")]
             UseByPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1023,7 +1023,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
             Instance,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

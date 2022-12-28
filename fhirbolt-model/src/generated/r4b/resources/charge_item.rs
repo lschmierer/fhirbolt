@@ -82,7 +82,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemPerformer {
             Function,
             #[serde(rename = "actor")]
             Actor,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -658,7 +658,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
             Note,
             #[serde(rename = "supportingInformation")]
             SupportingInformation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

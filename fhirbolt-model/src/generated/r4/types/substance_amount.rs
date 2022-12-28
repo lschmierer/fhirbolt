@@ -65,7 +65,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
             LowLimit,
             #[serde(rename = "highLimit")]
             HighLimit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -260,7 +260,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
             AmountTextPrimitiveElement,
             #[serde(rename = "referenceRange")]
             ReferenceRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

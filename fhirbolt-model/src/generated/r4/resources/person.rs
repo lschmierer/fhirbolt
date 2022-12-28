@@ -75,7 +75,7 @@ impl<'de> serde::de::Deserialize<'de> for PersonLink {
             Assurance,
             #[serde(rename = "_assurance")]
             AssurancePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -449,7 +449,7 @@ impl<'de> serde::de::Deserialize<'de> for Person {
             ActivePrimitiveElement,
             #[serde(rename = "link")]
             Link,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

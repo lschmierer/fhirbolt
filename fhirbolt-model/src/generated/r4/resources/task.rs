@@ -204,7 +204,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskRestriction {
             Period,
             #[serde(rename = "recipient")]
             Recipient,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -951,7 +951,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskInput {
             ValueDosage,
             #[serde(rename = "valueMeta")]
             ValueMeta,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3942,7 +3942,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskOutput {
             ValueDosage,
             #[serde(rename = "valueMeta")]
             ValueMeta,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6813,7 +6813,7 @@ impl<'de> serde::de::Deserialize<'de> for Task {
             Input,
             #[serde(rename = "output")]
             Output,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

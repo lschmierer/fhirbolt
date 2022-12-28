@@ -127,10 +127,7 @@ fn generate_struct(
     release: FhirRelease,
 ) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
-    let fields_tokens = r#struct
-        .fields
-        .iter()
-        .map(|f| generate_field(f, r#struct.is_primitive, r#struct.struct_name == "Xhtml"));
+    let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
 
     let impl_any_resource_tokens = if r#struct.resource_name.is_some() {
         let release_ident = format_ident!("{}", release.to_string());
@@ -146,28 +143,20 @@ fn generate_struct(
         quote! {}
     };
 
-    let serde_impl_tokens = if !r#struct.is_primitive {
+    let serde_impl_tokens = {
         let serialize_impl_tokens = implement_serialize(&r#struct, enums);
         let deserialize_impl_tokens = implement_deserialze(&r#struct, enums);
         quote! {
             #serialize_impl_tokens
             #deserialize_impl_tokens
         }
-    } else {
-        quote! {}
     };
 
     let doc_comment = format_doc_comment(&r#struct.doc_comment);
 
-    let derive_serialize_tokens = if r#struct.is_primitive {
-        quote! {, serde::Serialize, serde::Deserialize}
-    } else {
-        quote! {}
-    };
-
     quote! {
         #[doc=#doc_comment]
-        #[derive(Default, Debug, Clone #derive_serialize_tokens)]
+        #[derive(Default, Debug, Clone)]
         pub struct #name_ident {
             #(
                 #fields_tokens
@@ -180,7 +169,7 @@ fn generate_struct(
     }
 }
 
-fn generate_field(field: &RustFhirStructField, is_primitive: bool, is_xhtml: bool) -> TokenStream {
+fn generate_field(field: &RustFhirStructField) -> TokenStream {
     let name_ident = format_ident!("r#{}", field.name);
 
     let type_tokens = field.r#type.name.parse().unwrap();
@@ -201,22 +190,8 @@ fn generate_field(field: &RustFhirStructField, is_primitive: bool, is_xhtml: boo
 
     let doc_comment = format_doc_comment(&field.doc_comment);
 
-    let serde_attribute_tokens = match (is_primitive, is_xhtml, field.name.as_ref()) {
-        (true, _, "id") => {
-            quote! { #[serde(skip_serializing_if = "Option::is_none")] }
-        }
-        (true, false, "value") => {
-            quote! { #[serde(skip_serializing_if = "Option::is_none")] }
-        }
-        (true, _, "extension") => {
-            quote! { #[serde(default, skip_serializing_if = "Vec::is_empty")] }
-        }
-        _ => quote! {},
-    };
-
     quote! {
         #[doc=#doc_comment]
-        #serde_attribute_tokens
         pub #name_ident: #type_tokens,
     }
 }

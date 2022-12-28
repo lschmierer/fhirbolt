@@ -190,7 +190,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
             OnsetStringPrimitiveElement,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1005,7 +1005,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
             Note,
             #[serde(rename = "condition")]
             Condition,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

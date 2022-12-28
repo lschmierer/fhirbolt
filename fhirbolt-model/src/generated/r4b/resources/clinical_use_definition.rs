@@ -79,7 +79,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionContraindicationO
             RelationshipType,
             #[serde(rename = "therapy")]
             Therapy,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -262,7 +262,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionContraindication 
             Indication,
             #[serde(rename = "otherTherapy")]
             OtherTherapy,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -507,7 +507,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionIndication {
             UndesirableEffect,
             #[serde(rename = "otherTherapy")]
             OtherTherapy,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -799,7 +799,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionInteractionIntera
             ItemReference,
             #[serde(rename = "itemCodeableConcept")]
             ItemCodeableConcept,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -906,7 +906,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionInteraction {
             Incidence,
             #[serde(rename = "management")]
             Management,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1087,7 +1087,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionUndesirableEffect
             Classification,
             #[serde(rename = "frequencyOfOccurrence")]
             FrequencyOfOccurrence,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1270,7 +1270,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionWarning {
             DescriptionPrimitiveElement,
             #[serde(rename = "code")]
             Code,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1612,7 +1612,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinition {
             UndesirableEffect,
             #[serde(rename = "warning")]
             Warning,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -610,7 +610,7 @@ impl<'de> serde::de::Deserialize<'de> for EventDefinition {
             RelatedArtifact,
             #[serde(rename = "trigger")]
             Trigger,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

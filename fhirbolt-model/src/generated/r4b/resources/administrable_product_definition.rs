@@ -140,7 +140,7 @@ impl<'de> serde::de::Deserialize<'de> for AdministrableProductDefinitionProperty
             ValueAttachment,
             #[serde(rename = "status")]
             Status,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -506,7 +506,7 @@ impl<'de> serde::de::Deserialize<'de>
             SupportingInformation,
             #[serde(rename = "_supportingInformation")]
             SupportingInformationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -599,7 +599,7 @@ impl<'de> serde::de::Deserialize<'de>
             Code,
             #[serde(rename = "withdrawalPeriod")]
             WithdrawalPeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -789,7 +789,7 @@ impl<'de> serde::de::Deserialize<'de> for AdministrableProductDefinitionRouteOfA
             MaxTreatmentPeriod,
             #[serde(rename = "targetSpecies")]
             TargetSpecies,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1142,7 +1142,7 @@ impl<'de> serde::de::Deserialize<'de> for AdministrableProductDefinition {
             Property,
             #[serde(rename = "routeOfAdministration")]
             RouteOfAdministration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

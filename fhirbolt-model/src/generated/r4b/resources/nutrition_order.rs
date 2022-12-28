@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
             Modifier,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -211,7 +211,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
             Modifier,
             #[serde(rename = "foodType")]
             FoodType,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -403,7 +403,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
             Instruction,
             #[serde(rename = "_instruction")]
             InstructionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -687,7 +687,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
             Instruction,
             #[serde(rename = "_instruction")]
             InstructionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -962,7 +962,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
             RateQuantity,
             #[serde(rename = "rateRatio")]
             RateRatio,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1233,7 +1233,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
             AdministrationInstruction,
             #[serde(rename = "_administrationInstruction")]
             AdministrationInstructionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1940,7 +1940,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
             EnteralFormula,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -113,7 +113,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionParticipant {
             TypePrimitiveElement,
             #[serde(rename = "role")]
             Role,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -299,7 +299,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionDynamicValue {
             PathPrimitiveElement,
             #[serde(rename = "expression")]
             Expression,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1359,7 +1359,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
             TransformPrimitiveElement,
             #[serde(rename = "dynamicValue")]
             DynamicValue,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

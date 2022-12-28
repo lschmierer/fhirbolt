@@ -135,7 +135,7 @@ impl<'de> serde::de::Deserialize<'de> for CompartmentDefinitionResource {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -778,7 +778,7 @@ impl<'de> serde::de::Deserialize<'de> for CompartmentDefinition {
             SearchPrimitiveElement,
             #[serde(rename = "resource")]
             Resource,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -108,7 +108,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequestPayload {
             ContentAttachment,
             #[serde(rename = "contentReference")]
             ContentReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -656,7 +656,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequest {
             ReasonReference,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

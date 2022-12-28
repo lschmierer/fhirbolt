@@ -131,7 +131,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
             Payee,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -433,7 +433,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -875,7 +875,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
             FormCode,
             #[serde(rename = "processNote")]
             ProcessNote,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

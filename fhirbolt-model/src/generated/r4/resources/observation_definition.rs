@@ -111,7 +111,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
             DecimalPrecision,
             #[serde(rename = "_decimalPrecision")]
             DecimalPrecisionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -459,7 +459,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
             Condition,
             #[serde(rename = "_condition")]
             ConditionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1010,7 +1010,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
             AbnormalCodedValueSet,
             #[serde(rename = "criticalCodedValueSet")]
             CriticalCodedValueSet,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

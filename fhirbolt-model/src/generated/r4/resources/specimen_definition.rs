@@ -88,7 +88,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainerA
             AdditiveCodeableConcept,
             #[serde(rename = "additiveReference")]
             AdditiveReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -283,7 +283,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
             Preparation,
             #[serde(rename = "_preparation")]
             PreparationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -411,7 +411,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
             Instruction,
             #[serde(rename = "_instruction")]
             InstructionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -714,7 +714,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
             RejectionCriterion,
             #[serde(rename = "handling")]
             Handling,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1183,7 +1183,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
             Collection,
             #[serde(rename = "typeTested")]
             TypeTested,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

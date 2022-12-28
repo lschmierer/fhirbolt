@@ -141,7 +141,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionMapping {
             Comment,
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -480,7 +480,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionContext {
             Expression,
             #[serde(rename = "_expression")]
             ExpressionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -696,7 +696,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionSnapshot {
             ModifierExtension,
             #[serde(rename = "element")]
             Element,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -821,7 +821,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionDifferential {
             ModifierExtension,
             #[serde(rename = "element")]
             Element,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1526,7 +1526,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinition {
             Snapshot,
             #[serde(rename = "differential")]
             Differential,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

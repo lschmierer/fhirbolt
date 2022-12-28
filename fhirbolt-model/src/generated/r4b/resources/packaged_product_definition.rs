@@ -86,7 +86,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionLegalStatusOf
             Code,
             #[serde(rename = "jurisdiction")]
             Jurisdiction,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -271,7 +271,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageShelfL
             PeriodStringPrimitiveElement,
             #[serde(rename = "specialPrecautionsForStorage")]
             SpecialPrecautionsForStorage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -421,7 +421,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageProper
             ValueBooleanPrimitiveElement,
             #[serde(rename = "valueAttachment")]
             ValueAttachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -751,7 +751,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageContai
             Item,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -971,7 +971,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackage {
             ContainedItem,
             #[serde(rename = "package")]
             Package,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1476,7 +1476,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
             Manufacturer,
             #[serde(rename = "package")]
             Package,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

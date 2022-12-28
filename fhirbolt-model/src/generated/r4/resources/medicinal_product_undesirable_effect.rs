@@ -159,7 +159,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductUndesirableEffect {
             FrequencyOfOccurrence,
             #[serde(rename = "population")]
             Population,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -101,7 +101,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationSummary {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -272,7 +272,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationClassification {
             Type,
             #[serde(rename = "classifier")]
             Classifier,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -430,7 +430,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
             ActualPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -670,7 +670,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
             TargetReference,
             #[serde(rename = "targetAttachment")]
             TargetAttachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -947,7 +947,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactVersion {
             ValuePrimitiveElement,
             #[serde(rename = "baseCitation")]
             BaseCitation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1154,7 +1154,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
             ActualPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1377,7 +1377,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactTitle {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1616,7 +1616,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactAbstract {
             Copyright,
             #[serde(rename = "_copyright")]
             CopyrightPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1885,7 +1885,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPart {
             ValuePrimitiveElement,
             #[serde(rename = "baseCitation")]
             BaseCitation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2113,7 +2113,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
             TargetReference,
             #[serde(rename = "targetAttachment")]
             TargetAttachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2444,7 +2444,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPu
             PublisherLocation,
             #[serde(rename = "_publisherLocation")]
             PublisherLocationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2839,7 +2839,7 @@ impl<'de> serde::de::Deserialize<'de>
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3307,7 +3307,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPe
             IssuePrimitiveElement,
             #[serde(rename = "dateOfPublication")]
             DateOfPublication,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3754,7 +3754,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationForm {
             Copyright,
             #[serde(rename = "_copyright")]
             CopyrightPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4380,7 +4380,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactWebLocation {
             Url,
             #[serde(rename = "_url")]
             UrlPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4605,7 +4605,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassificationWho
             FreeToShare,
             #[serde(rename = "_freeToShare")]
             FreeToSharePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4873,7 +4873,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassification {
             Classifier,
             #[serde(rename = "whoClassified")]
             WhoClassified,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5072,7 +5072,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
             RolePrimitiveElement,
             #[serde(rename = "identifier")]
             Identifier,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5321,7 +5321,7 @@ impl<'de> serde::de::Deserialize<'de>
             Time,
             #[serde(rename = "_time")]
             TimePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5639,7 +5639,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
             ListOrder,
             #[serde(rename = "_listOrder")]
             ListOrderPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6107,7 +6107,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipSu
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6338,7 +6338,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorship {
             Entry,
             #[serde(rename = "summary")]
             Summary,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6637,7 +6637,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
             Contributorship,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7459,7 +7459,7 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
             RelatesTo,
             #[serde(rename = "citedArtifact")]
             CitedArtifact,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

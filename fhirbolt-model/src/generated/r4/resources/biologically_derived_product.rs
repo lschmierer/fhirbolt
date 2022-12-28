@@ -131,7 +131,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductCollection {
             CollectedDateTimePrimitiveElement,
             #[serde(rename = "collectedPeriod")]
             CollectedPeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -431,7 +431,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
             TimeDateTimePrimitiveElement,
             #[serde(rename = "timePeriod")]
             TimePeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -762,7 +762,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
             TimeDateTimePrimitiveElement,
             #[serde(rename = "timePeriod")]
             TimePeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1094,7 +1094,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
             ScalePrimitiveElement,
             #[serde(rename = "duration")]
             Duration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1574,7 +1574,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
             Manipulation,
             #[serde(rename = "storage")]
             Storage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

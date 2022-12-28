@@ -1,4 +1,4 @@
-name: Pull Request Benchmark
+name: Benchmark PR
 
 on: [pull_request]
 

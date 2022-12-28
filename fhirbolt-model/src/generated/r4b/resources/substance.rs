@@ -96,7 +96,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceInstance {
             ExpiryPrimitiveElement,
             #[serde(rename = "quantity")]
             Quantity,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -293,7 +293,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceIngredient {
             SubstanceCodeableConcept,
             #[serde(rename = "substanceReference")]
             SubstanceReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -605,7 +605,7 @@ impl<'de> serde::de::Deserialize<'de> for Substance {
             Instance,
             #[serde(rename = "ingredient")]
             Ingredient,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

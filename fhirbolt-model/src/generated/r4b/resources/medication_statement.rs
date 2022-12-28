@@ -336,7 +336,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
             Note,
             #[serde(rename = "dosage")]
             Dosage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

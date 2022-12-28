@@ -81,7 +81,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispensePerformer {
             Function,
             #[serde(rename = "actor")]
             Actor,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -257,7 +257,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispenseSubstitution {
             Reason,
             #[serde(rename = "responsibleParty")]
             ResponsibleParty,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -779,7 +779,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
             DetectedIssue,
             #[serde(rename = "eventHistory")]
             EventHistory,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

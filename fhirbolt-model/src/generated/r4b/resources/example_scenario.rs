@@ -137,7 +137,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioActor {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -488,7 +488,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceVersion {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -754,7 +754,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceContainedInstan
             VersionId,
             #[serde(rename = "_versionId")]
             VersionIdPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1074,7 +1074,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstance {
             Version,
             #[serde(rename = "containedInstance")]
             ContainedInstance,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1636,7 +1636,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStepOperation {
             Request,
             #[serde(rename = "response")]
             Response,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2255,7 +2255,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStepAlternative 
             DescriptionPrimitiveElement,
             #[serde(rename = "step")]
             Step,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2524,7 +2524,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStep {
             Operation,
             #[serde(rename = "alternative")]
             Alternative,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2810,7 +2810,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcess {
             PostConditionsPrimitiveElement,
             #[serde(rename = "step")]
             Step,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3531,7 +3531,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenario {
             Workflow,
             #[serde(rename = "_workflow")]
             WorkflowPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -112,7 +112,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
             CanPushUpdates,
             #[serde(rename = "pushTypeAvailable")]
             PushTypeAvailable,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -458,7 +458,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
             ProxySignature,
             #[serde(rename = "sourceSignature")]
             SourceSignature,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -824,7 +824,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
             IdentityCertificatePrimitiveElement,
             #[serde(rename = "attestationSignature")]
             AttestationSignature,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1298,7 +1298,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
             Attestation,
             #[serde(rename = "validator")]
             Validator,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

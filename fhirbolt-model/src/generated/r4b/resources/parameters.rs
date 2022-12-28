@@ -724,7 +724,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
             Resource,
             #[serde(rename = "part")]
             Part,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3434,7 +3434,7 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
             LanguagePrimitiveElement,
             #[serde(rename = "parameter")]
             Parameter,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

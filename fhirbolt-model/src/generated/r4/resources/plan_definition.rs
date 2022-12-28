@@ -160,7 +160,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoalTarget {
             DetailCodeableConcept,
             #[serde(rename = "due")]
             Due,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -369,7 +369,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoal {
             Documentation,
             #[serde(rename = "target")]
             Target,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -578,7 +578,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionCondition {
             KindPrimitiveElement,
             #[serde(rename = "expression")]
             Expression,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -805,7 +805,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
             OffsetDuration,
             #[serde(rename = "offsetRange")]
             OffsetRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1077,7 +1077,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionParticipant {
             TypePrimitiveElement,
             #[serde(rename = "role")]
             Role,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1269,7 +1269,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionDynamicValue {
             PathPrimitiveElement,
             #[serde(rename = "expression")]
             Expression,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1961,7 +1961,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
             DynamicValue,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4147,7 +4147,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
             Goal,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

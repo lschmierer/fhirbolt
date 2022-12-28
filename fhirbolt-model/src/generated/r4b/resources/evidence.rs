@@ -115,7 +115,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableDefinition {
             Intended,
             #[serde(rename = "directnessMatch")]
             DirectnessMatch,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -441,7 +441,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticSampleSize {
             KnownDataCount,
             #[serde(rename = "_knownDataCount")]
             KnownDataCountPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -863,7 +863,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticAttributeEstimate {
             Range,
             #[serde(rename = "attributeEstimate")]
             AttributeEstimate,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1178,7 +1178,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticModelCharacteristicVa
             ValueQuantity,
             #[serde(rename = "valueRange")]
             ValueRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1410,7 +1410,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticModelCharacteristic {
             Variable,
             #[serde(rename = "attributeEstimate")]
             AttributeEstimate,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1694,7 +1694,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatistic {
             AttributeEstimate,
             #[serde(rename = "modelCharacteristic")]
             ModelCharacteristic,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2123,7 +2123,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceCertainty {
             RaterPrimitiveElement,
             #[serde(rename = "subcomponent")]
             Subcomponent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2829,7 +2829,7 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
             Statistic,
             #[serde(rename = "certainty")]
             Certainty,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

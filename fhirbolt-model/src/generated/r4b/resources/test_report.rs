@@ -112,7 +112,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportParticipant {
             Display,
             #[serde(rename = "_display")]
             DisplayPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -438,7 +438,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionOperation {
             Detail,
             #[serde(rename = "_detail")]
             DetailPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -761,7 +761,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionAssert {
             Detail,
             #[serde(rename = "_detail")]
             DetailPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1027,7 +1027,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupAction {
             Operation,
             #[serde(rename = "assert")]
             Assert,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1163,7 +1163,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetup {
             ModifierExtension,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1292,7 +1292,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTestAction {
             Operation,
             #[serde(rename = "assert")]
             Assert,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1478,7 +1478,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTest {
             DescriptionPrimitiveElement,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1697,7 +1697,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardownAction {
             ModifierExtension,
             #[serde(rename = "operation")]
             Operation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1825,7 +1825,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardown {
             ModifierExtension,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2203,7 +2203,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReport {
             Test,
             #[serde(rename = "teardown")]
             Teardown,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

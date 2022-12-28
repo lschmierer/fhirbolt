@@ -281,7 +281,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItemAnswer {
             ValueReference,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1165,7 +1165,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItem {
             Answer,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1650,7 +1650,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponse {
             Source,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

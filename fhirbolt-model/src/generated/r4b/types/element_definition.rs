@@ -362,7 +362,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicingDiscriminator 
             Path,
             #[serde(rename = "_path")]
             PathPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -616,7 +616,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicing {
             Rules,
             #[serde(rename = "_rules")]
             RulesPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -924,7 +924,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBase {
             Max,
             #[serde(rename = "_max")]
             MaxPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1317,7 +1317,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionType {
             Versioning,
             #[serde(rename = "_versioning")]
             VersioningPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2337,7 +2337,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionExample {
             ValueUsageContext,
             #[serde(rename = "valueDosage")]
             ValueDosage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5144,7 +5144,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionConstraint {
             Source,
             #[serde(rename = "_source")]
             SourcePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5669,7 +5669,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBinding {
             ValueSet,
             #[serde(rename = "_valueSet")]
             ValueSetPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5970,7 +5970,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionMapping {
             Comment,
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -9058,7 +9058,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinition {
             Binding,
             #[serde(rename = "mapping")]
             Mapping,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

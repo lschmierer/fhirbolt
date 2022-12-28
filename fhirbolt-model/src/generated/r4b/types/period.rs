@@ -88,7 +88,7 @@ impl<'de> serde::de::Deserialize<'de> for Period {
             End,
             #[serde(rename = "_end")]
             EndPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -116,7 +116,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementSoftware {
             ReleaseDate,
             #[serde(rename = "_releaseDate")]
             ReleaseDatePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -427,7 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementImplementation {
             UrlPrimitiveElement,
             #[serde(rename = "custodian")]
             Custodian,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -707,7 +707,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestSecurity {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -970,7 +970,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResourceInterac
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1274,7 +1274,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResourceSearchP
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1659,7 +1659,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResourceOperati
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2372,7 +2372,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
             SearchParam,
             #[serde(rename = "operation")]
             Operation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3577,7 +3577,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestInteraction {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3914,7 +3914,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRest {
             Compartment,
             #[serde(rename = "_compartment")]
             CompartmentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4292,7 +4292,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementMessagingEndpoint {
             Address,
             #[serde(rename = "_address")]
             AddressPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4512,7 +4512,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementMessagingSupportedM
             Definition,
             #[serde(rename = "_definition")]
             DefinitionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4788,7 +4788,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementMessaging {
             DocumentationPrimitiveElement,
             #[serde(rename = "supportedMessage")]
             SupportedMessage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5093,7 +5093,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementDocument {
             Profile,
             #[serde(rename = "_profile")]
             ProfilePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6021,7 +6021,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatement {
             Messaging,
             #[serde(rename = "document")]
             Document,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

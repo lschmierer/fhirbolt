@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
             RelationtypePrimitiveElement,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -494,7 +494,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
             AdditionalClassification,
             #[serde(rename = "relatedEntry")]
             RelatedEntry,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

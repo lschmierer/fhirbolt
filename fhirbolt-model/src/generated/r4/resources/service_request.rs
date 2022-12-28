@@ -646,7 +646,7 @@ impl<'de> serde::de::Deserialize<'de> for ServiceRequest {
             PatientInstructionPrimitiveElement,
             #[serde(rename = "relevantHistory")]
             RelevantHistory,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

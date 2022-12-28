@@ -238,7 +238,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
             Creation,
             #[serde(rename = "_creation")]
             CreationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

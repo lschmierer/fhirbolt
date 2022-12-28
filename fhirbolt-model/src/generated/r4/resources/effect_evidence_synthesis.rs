@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisSampleSize {
             NumberOfParticipants,
             #[serde(rename = "_numberOfParticipants")]
             NumberOfParticipantsPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -450,7 +450,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisResultsByExposu
             VariantState,
             #[serde(rename = "riskEvidenceSynthesis")]
             RiskEvidenceSynthesis,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -782,7 +782,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimateP
             To,
             #[serde(rename = "_to")]
             ToPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1120,7 +1120,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimate 
             UnitOfMeasure,
             #[serde(rename = "precisionEstimate")]
             PrecisionEstimate,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1395,7 +1395,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertaintyCertai
             Rating,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1557,7 +1557,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertainty {
             Note,
             #[serde(rename = "certaintySubcomponent")]
             CertaintySubcomponent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2198,7 +2198,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesis {
             EffectEstimate,
             #[serde(rename = "certainty")]
             Certainty,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptOrigin {
             IndexPrimitiveElement,
             #[serde(rename = "profile")]
             Profile,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -266,7 +266,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptDestination {
             IndexPrimitiveElement,
             #[serde(rename = "profile")]
             Profile,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -481,7 +481,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataLink {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -885,7 +885,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
             Capabilities,
             #[serde(rename = "_capabilities")]
             CapabilitiesPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1447,7 +1447,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadata {
             Link,
             #[serde(rename = "capability")]
             Capability,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1619,7 +1619,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptFixture {
             AutodeletePrimitiveElement,
             #[serde(rename = "resource")]
             Resource,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2047,7 +2047,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
             SourceId,
             #[serde(rename = "_sourceId")]
             SourceIdPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2622,7 +2622,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperationRequestH
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3203,7 +3203,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
             Url,
             #[serde(rename = "_url")]
             UrlPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4793,7 +4793,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
             WarningOnly,
             #[serde(rename = "_warningOnly")]
             WarningOnlyPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6403,7 +6403,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupAction {
             Operation,
             #[serde(rename = "assert")]
             Assert,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6539,7 +6539,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetup {
             ModifierExtension,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6668,7 +6668,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTestAction {
             Operation,
             #[serde(rename = "assert")]
             Assert,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6854,7 +6854,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTest {
             DescriptionPrimitiveElement,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7073,7 +7073,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardownAction {
             ModifierExtension,
             #[serde(rename = "operation")]
             Operation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7201,7 +7201,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardown {
             ModifierExtension,
             #[serde(rename = "action")]
             Action,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7749,7 +7749,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
             Test,
             #[serde(rename = "teardown")]
             Teardown,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -137,7 +137,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
             ValueBoolean,
             #[serde(rename = "_valueBoolean")]
             ValueBooleanPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -784,7 +784,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
             Note,
             #[serde(rename = "relevantHistory")]
             RelevantHistory,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -91,7 +91,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
             IsDefiningPrimitiveElement,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -297,7 +297,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
             RatioType,
             #[serde(rename = "startingMaterial")]
             StartingMaterial,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -444,7 +444,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
             Degree,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -609,7 +609,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
             RepresentationPrimitiveElement,
             #[serde(rename = "attachment")]
             Attachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -848,7 +848,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
             DegreeOfPolymerisation,
             #[serde(rename = "structuralRepresentation")]
             StructuralRepresentation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1126,7 +1126,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
             RepeatUnitAmountType,
             #[serde(rename = "repeatUnit")]
             RepeatUnit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1521,7 +1521,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
             MonomerSet,
             #[serde(rename = "repeat")]
             Repeat,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

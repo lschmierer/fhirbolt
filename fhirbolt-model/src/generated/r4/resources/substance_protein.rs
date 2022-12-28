@@ -191,7 +191,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProteinSubunit {
             CTerminalModification,
             #[serde(rename = "_cTerminalModification")]
             CTerminalModificationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -760,7 +760,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceProtein {
             DisulfideLinkagePrimitiveElement,
             #[serde(rename = "subunit")]
             Subunit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

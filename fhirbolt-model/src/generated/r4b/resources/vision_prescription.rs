@@ -89,7 +89,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
             Base,
             #[serde(rename = "_base")]
             BasePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -567,7 +567,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
             BrandPrimitiveElement,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1454,7 +1454,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
             Prescriber,
             #[serde(rename = "lensSpecification")]
             LensSpecification,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

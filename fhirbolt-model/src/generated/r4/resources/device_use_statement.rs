@@ -290,7 +290,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
             BodySite,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

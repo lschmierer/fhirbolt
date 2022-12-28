@@ -45,7 +45,7 @@ impl<'de> serde::de::Deserialize<'de> for BackboneElement {
             Extension,
             #[serde(rename = "modifierExtension")]
             ModifierExtension,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -73,7 +73,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanContact {
             Telecom,
             #[serde(rename = "address")]
             Address,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -234,7 +234,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefitLimit {
             Value,
             #[serde(rename = "code")]
             Code,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -397,7 +397,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
             RequirementPrimitiveElement,
             #[serde(rename = "limit")]
             Limit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -604,7 +604,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverage {
             Network,
             #[serde(rename = "benefit")]
             Benefit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -812,7 +812,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
             Comment,
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1062,7 +1062,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefitCo
             Qualifiers,
             #[serde(rename = "value")]
             Value,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1230,7 +1230,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefit {
             Type,
             #[serde(rename = "cost")]
             Cost,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1374,7 +1374,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCost {
             Category,
             #[serde(rename = "benefit")]
             Benefit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1554,7 +1554,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlan {
             GeneralCost,
             #[serde(rename = "specificCost")]
             SpecificCost,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1969,7 +1969,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlan {
             Coverage,
             #[serde(rename = "plan")]
             Plan,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

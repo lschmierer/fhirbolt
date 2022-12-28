@@ -212,7 +212,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -613,7 +613,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1770,7 +1770,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
             LogMessage,
             #[serde(rename = "_logMessage")]
             LogMessagePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5929,7 +5929,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
             ValueDecimal,
             #[serde(rename = "_valueDecimal")]
             ValueDecimalPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6622,7 +6622,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
             TransformPrimitiveElement,
             #[serde(rename = "parameter")]
             Parameter,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7197,7 +7197,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
             Variable,
             #[serde(rename = "_variable")]
             VariablePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7501,7 +7501,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7860,7 +7860,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
             Input,
             #[serde(rename = "rule")]
             Rule,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -8623,7 +8623,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
             ImportPrimitiveElement,
             #[serde(rename = "group")]
             Group,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

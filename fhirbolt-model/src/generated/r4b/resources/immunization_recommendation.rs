@@ -95,7 +95,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -483,7 +483,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
             SupportingImmunization,
             #[serde(rename = "supportingPatientInformation")]
             SupportingPatientInformation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -705,7 +705,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendation {
             Authority,
             #[serde(rename = "recommendation")]
             Recommendation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

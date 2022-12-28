@@ -190,7 +190,7 @@ impl<'de> serde::de::Deserialize<'de> for Flag {
             Encounter,
             #[serde(rename = "author")]
             Author,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

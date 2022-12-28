@@ -79,7 +79,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGene {
             Gene,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -244,7 +244,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGeneEleme
             Element,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -413,7 +413,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationClassific
             Subtype,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -655,7 +655,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationTarget {
             AmountType,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1069,7 +1069,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
             Classification,
             #[serde(rename = "target")]
             Target,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

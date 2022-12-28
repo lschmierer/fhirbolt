@@ -57,7 +57,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
             Function,
             #[serde(rename = "actor")]
             Actor,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -265,7 +265,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
             Title,
             #[serde(rename = "_title")]
             TitlePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -700,7 +700,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
             Performer,
             #[serde(rename = "instance")]
             Instance,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1468,7 +1468,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
             DescriptionPrimitiveElement,
             #[serde(rename = "series")]
             Series,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

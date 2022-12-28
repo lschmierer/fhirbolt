@@ -118,7 +118,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
             Altitude,
             #[serde(rename = "_altitude")]
             AltitudePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -494,7 +494,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
             ClosingTime,
             #[serde(rename = "_closingTime")]
             ClosingTimePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1158,7 +1158,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
             AvailabilityExceptionsPrimitiveElement,
             #[serde(rename = "endpoint")]
             Endpoint,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -87,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
             CommentPrimitiveElement,
             #[serde(rename = "link")]
             Link,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -532,7 +532,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
             ConclusionCode,
             #[serde(rename = "presentedForm")]
             PresentedForm,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

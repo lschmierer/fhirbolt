@@ -221,7 +221,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
             AmountString,
             #[serde(rename = "_amountString")]
             AmountStringPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -666,7 +666,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
             AmountString,
             #[serde(rename = "_amountString")]
             AmountStringPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -765,7 +765,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
             Type,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -941,7 +941,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
             HalfLife,
             #[serde(rename = "molecularWeight")]
             MolecularWeight,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1143,7 +1143,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
             RepresentationPrimitiveElement,
             #[serde(rename = "attachment")]
             Attachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1417,7 +1417,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
             Source,
             #[serde(rename = "representation")]
             Representation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1783,7 +1783,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
             CommentPrimitiveElement,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2058,7 +2058,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
             Date,
             #[serde(rename = "_date")]
             DatePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2343,7 +2343,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
             Official,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2766,7 +2766,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
             AmountType,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3366,7 +3366,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
             Protein,
             #[serde(rename = "sourceMaterial")]
             SourceMaterial,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

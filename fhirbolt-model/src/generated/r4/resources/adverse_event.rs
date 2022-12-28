@@ -91,7 +91,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEventSuspectEntityCausality {
             Author,
             #[serde(rename = "method")]
             Method,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -297,7 +297,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEventSuspectEntity {
             Instance,
             #[serde(rename = "causality")]
             Causality,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -717,7 +717,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
             ReferenceDocument,
             #[serde(rename = "study")]
             Study,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

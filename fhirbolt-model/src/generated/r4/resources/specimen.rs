@@ -183,7 +183,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenCollection {
             FastingStatusCodeableConcept,
             #[serde(rename = "fastingStatusDuration")]
             FastingStatusDuration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -524,7 +524,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenProcessing {
             TimeDateTimePrimitiveElement,
             #[serde(rename = "timePeriod")]
             TimePeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -851,7 +851,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenContainer {
             AdditiveCodeableConcept,
             #[serde(rename = "additiveReference")]
             AdditiveReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1284,7 +1284,7 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
             Condition,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

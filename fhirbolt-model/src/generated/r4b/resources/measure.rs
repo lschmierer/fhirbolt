@@ -94,7 +94,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupPopulation {
             DescriptionPrimitiveElement,
             #[serde(rename = "criteria")]
             Criteria,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -316,7 +316,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupStratifierComponent {
             DescriptionPrimitiveElement,
             #[serde(rename = "criteria")]
             Criteria,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -550,7 +550,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupStratifier {
             Criteria,
             #[serde(rename = "component")]
             Component,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -785,7 +785,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroup {
             Population,
             #[serde(rename = "stratifier")]
             Stratifier,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1018,7 +1018,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureSupplementalData {
             DescriptionPrimitiveElement,
             #[serde(rename = "criteria")]
             Criteria,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2042,7 +2042,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
             Group,
             #[serde(rename = "supplementalData")]
             SupplementalData,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

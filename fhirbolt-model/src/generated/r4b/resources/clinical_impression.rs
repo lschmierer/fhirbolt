@@ -69,7 +69,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionInvestigation {
             Code,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -240,7 +240,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionFinding {
             Basis,
             #[serde(rename = "_basis")]
             BasisPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -770,7 +770,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
             SupportingInfo,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

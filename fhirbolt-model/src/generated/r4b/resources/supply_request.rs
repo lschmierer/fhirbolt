@@ -137,7 +137,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
             ValueBoolean,
             #[serde(rename = "_valueBoolean")]
             ValueBooleanPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -632,7 +632,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
             DeliverFrom,
             #[serde(rename = "deliverTo")]
             DeliverTo,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

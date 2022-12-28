@@ -77,7 +77,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceEligibility {
             Comment,
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -356,7 +356,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
             AvailableEndTime,
             #[serde(rename = "_availableEndTime")]
             AvailableEndTimePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -730,7 +730,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceNotAvailable {
             DescriptionPrimitiveElement,
             #[serde(rename = "during")]
             During,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1263,7 +1263,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
             AvailabilityExceptionsPrimitiveElement,
             #[serde(rename = "endpoint")]
             Endpoint,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

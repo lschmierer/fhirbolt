@@ -52,7 +52,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeableReference {
             Concept,
             #[serde(rename = "reference")]
             Reference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

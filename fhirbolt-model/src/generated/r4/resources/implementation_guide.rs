@@ -152,7 +152,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDependsOn {
             Version,
             #[serde(rename = "_version")]
             VersionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -448,7 +448,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideGlobal {
             Profile,
             #[serde(rename = "_profile")]
             ProfilePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -697,7 +697,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionGrouping 
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1086,7 +1086,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionResource 
             GroupingId,
             #[serde(rename = "_groupingId")]
             GroupingIdPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1703,7 +1703,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionPage {
             GenerationPrimitiveElement,
             #[serde(rename = "page")]
             Page,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2065,7 +2065,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionParameter
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2326,7 +2326,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionTemplate 
             Scope,
             #[serde(rename = "_scope")]
             ScopePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2619,7 +2619,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinition {
             Parameter,
             #[serde(rename = "template")]
             Template,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2861,7 +2861,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifestResource {
             RelativePath,
             #[serde(rename = "_relativePath")]
             RelativePathPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3290,7 +3290,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifestPage {
             Anchor,
             #[serde(rename = "_anchor")]
             AnchorPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3699,7 +3699,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifest {
             Other,
             #[serde(rename = "_other")]
             OtherPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4487,7 +4487,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuide {
             Definition,
             #[serde(rename = "manifest")]
             Manifest,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

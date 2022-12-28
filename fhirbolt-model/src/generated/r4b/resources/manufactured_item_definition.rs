@@ -133,7 +133,7 @@ impl<'de> serde::de::Deserialize<'de> for ManufacturedItemDefinitionProperty {
             ValueBooleanPrimitiveElement,
             #[serde(rename = "valueAttachment")]
             ValueAttachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -584,7 +584,7 @@ impl<'de> serde::de::Deserialize<'de> for ManufacturedItemDefinition {
             Ingredient,
             #[serde(rename = "property")]
             Property,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

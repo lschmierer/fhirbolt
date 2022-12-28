@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerQualification {
             Period,
             #[serde(rename = "issuer")]
             Issuer,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -427,7 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for Practitioner {
             Qualification,
             #[serde(rename = "communication")]
             Communication,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

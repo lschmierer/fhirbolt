@@ -268,7 +268,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
             GroupMeasure,
             #[serde(rename = "_groupMeasure")]
             GroupMeasurePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -864,7 +864,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
             TypePrimitiveElement,
             #[serde(rename = "characteristic")]
             Characteristic,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

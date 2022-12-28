@@ -136,7 +136,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
             Organization,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -380,7 +380,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
             Preferred,
             #[serde(rename = "_preferred")]
             PreferredPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -577,7 +577,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
             Type,
             #[serde(rename = "_type")]
             TypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1079,7 +1079,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
             ManagingOrganization,
             #[serde(rename = "link")]
             Link,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

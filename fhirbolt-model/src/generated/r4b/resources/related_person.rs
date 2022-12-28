@@ -75,7 +75,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPersonCommunication {
             Preferred,
             #[serde(rename = "_preferred")]
             PreferredPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -461,7 +461,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
             Period,
             #[serde(rename = "communication")]
             Communication,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

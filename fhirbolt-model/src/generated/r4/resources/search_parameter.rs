@@ -87,7 +87,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameterComponent {
             Expression,
             #[serde(rename = "_expression")]
             ExpressionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1036,7 +1036,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
             ChainPrimitiveElement,
             #[serde(rename = "component")]
             Component,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

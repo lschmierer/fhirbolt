@@ -79,7 +79,7 @@ impl<'de> serde::de::Deserialize<'de> for ProcedurePerformer {
             Actor,
             #[serde(rename = "onBehalfOf")]
             OnBehalfOf,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -235,7 +235,7 @@ impl<'de> serde::de::Deserialize<'de> for ProcedureFocalDevice {
             Action,
             #[serde(rename = "manipulated")]
             Manipulated,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -793,7 +793,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
             UsedReference,
             #[serde(rename = "usedCode")]
             UsedCode,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -319,7 +319,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
             Header,
             #[serde(rename = "_header")]
             HeaderPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

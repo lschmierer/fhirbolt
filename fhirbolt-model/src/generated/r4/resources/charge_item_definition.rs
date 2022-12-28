@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionApplicability {
             Expression,
             #[serde(rename = "_expression")]
             ExpressionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -440,7 +440,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroupPrice
             FactorPrimitiveElement,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -682,7 +682,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinitionPropertyGroup {
             Applicability,
             #[serde(rename = "priceComponent")]
             PriceComponent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1359,7 +1359,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemDefinition {
             Applicability,
             #[serde(rename = "propertyGroup")]
             PropertyGroup,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

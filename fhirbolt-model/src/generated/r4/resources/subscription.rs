@@ -160,7 +160,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
             Header,
             #[serde(rename = "_header")]
             HeaderPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -691,7 +691,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
             ErrorPrimitiveElement,
             #[serde(rename = "channel")]
             Channel,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

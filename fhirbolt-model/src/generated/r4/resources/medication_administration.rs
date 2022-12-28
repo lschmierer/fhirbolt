@@ -93,7 +93,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministrationPerformer {
             Function,
             #[serde(rename = "actor")]
             Actor,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -297,7 +297,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministrationDosage {
             RateRatio,
             #[serde(rename = "rateQuantity")]
             RateQuantity,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -812,7 +812,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
             Dosage,
             #[serde(rename = "eventHistory")]
             EventHistory,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

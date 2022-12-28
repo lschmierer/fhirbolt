@@ -92,7 +92,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
             LegalStatusOfSupply,
             #[serde(rename = "validityPeriod")]
             ValidityPeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -313,7 +313,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
             DateDateTimePrimitiveElement,
             #[serde(rename = "application")]
             Application,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -813,7 +813,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
             Regulator,
             #[serde(rename = "procedure")]
             Procedure,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -112,7 +112,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentParticipant {
             StatusPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -739,7 +739,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
             Participant,
             #[serde(rename = "requestedPeriod")]
             RequestedPeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

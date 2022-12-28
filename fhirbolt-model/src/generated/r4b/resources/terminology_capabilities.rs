@@ -91,7 +91,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesSoftware {
             Version,
             #[serde(rename = "_version")]
             VersionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -337,7 +337,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesImplementation 
             Url,
             #[serde(rename = "_url")]
             UrlPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -608,7 +608,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystemVersi
             Op,
             #[serde(rename = "_op")]
             OpPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -996,7 +996,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystemVersi
             Property,
             #[serde(rename = "_property")]
             PropertyPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1480,7 +1480,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystem {
             Subsumption,
             #[serde(rename = "_subsumption")]
             SubsumptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1743,7 +1743,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesExpansionParame
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2062,7 +2062,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesExpansion {
             TextFilter,
             #[serde(rename = "_textFilter")]
             TextFilterPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2408,7 +2408,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesValidateCode {
             Translations,
             #[serde(rename = "_translations")]
             TranslationsPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2587,7 +2587,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesTranslation {
             NeedsMap,
             #[serde(rename = "_needsMap")]
             NeedsMapPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2764,7 +2764,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesClosure {
             Translation,
             #[serde(rename = "_translation")]
             TranslationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3403,7 +3403,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilities {
             Translation,
             #[serde(rename = "closure")]
             Closure,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

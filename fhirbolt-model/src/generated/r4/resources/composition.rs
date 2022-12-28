@@ -110,7 +110,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionAttester {
             TimePrimitiveElement,
             #[serde(rename = "party")]
             Party,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -362,7 +362,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionRelatesTo {
             TargetIdentifier,
             #[serde(rename = "targetReference")]
             TargetReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -574,7 +574,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionEvent {
             Period,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -818,7 +818,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionSection {
             EmptyReason,
             #[serde(rename = "section")]
             Section,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1345,7 +1345,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
             Event,
             #[serde(rename = "section")]
             Section,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

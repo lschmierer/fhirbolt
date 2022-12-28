@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for EpisodeOfCareStatusHistory {
             StatusPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -277,7 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for EpisodeOfCareDiagnosis {
             Rank,
             #[serde(rename = "_rank")]
             RankPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -631,7 +631,7 @@ impl<'de> serde::de::Deserialize<'de> for EpisodeOfCare {
             Team,
             #[serde(rename = "account")]
             Account,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -108,7 +108,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageClass {
             Name,
             #[serde(rename = "_name")]
             NamePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -340,7 +340,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiaryException {
             Type,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -503,7 +503,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiary {
             ValueMoney,
             #[serde(rename = "exception")]
             Exception,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -958,7 +958,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
             SubrogationPrimitiveElement,
             #[serde(rename = "contract")]
             Contract,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

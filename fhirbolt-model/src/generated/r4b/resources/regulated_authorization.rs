@@ -121,7 +121,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorizationCase {
             DateDateTimePrimitiveElement,
             #[serde(rename = "application")]
             Application,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -567,7 +567,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
             Regulator,
             #[serde(rename = "case")]
             Case,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

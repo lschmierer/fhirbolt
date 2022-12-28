@@ -629,7 +629,7 @@ impl<'de> serde::de::Deserialize<'de> for Library {
             DataRequirement,
             #[serde(rename = "content")]
             Content,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

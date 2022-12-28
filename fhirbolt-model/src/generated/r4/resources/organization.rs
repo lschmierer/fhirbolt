@@ -73,7 +73,7 @@ impl<'de> serde::de::Deserialize<'de> for OrganizationContact {
             Telecom,
             #[serde(rename = "address")]
             Address,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -442,7 +442,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
             Contact,
             #[serde(rename = "endpoint")]
             Endpoint,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

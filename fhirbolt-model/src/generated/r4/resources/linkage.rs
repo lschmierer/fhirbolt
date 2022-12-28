@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for LinkageItem {
             TypePrimitiveElement,
             #[serde(rename = "resource")]
             Resource,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -358,7 +358,7 @@ impl<'de> serde::de::Deserialize<'de> for Linkage {
             Author,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

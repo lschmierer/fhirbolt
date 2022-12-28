@@ -141,7 +141,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
             ExcludePrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -482,7 +482,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupMember {
             Inactive,
             #[serde(rename = "_inactive")]
             InactivePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -892,7 +892,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
             Characteristic,
             #[serde(rename = "member")]
             Member,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

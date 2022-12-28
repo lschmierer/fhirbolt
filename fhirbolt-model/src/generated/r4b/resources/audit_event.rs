@@ -107,7 +107,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
             Type,
             #[serde(rename = "_type")]
             TypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -462,7 +462,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
             Network,
             #[serde(rename = "purposeOfUse")]
             PurposeOfUse,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -920,7 +920,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
             Observer,
             #[serde(rename = "type")]
             Type,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1169,7 +1169,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
             ValueBase64Binary,
             #[serde(rename = "_valueBase64Binary")]
             ValueBase64BinaryPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1587,7 +1587,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
             QueryPrimitiveElement,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2128,7 +2128,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
             Source,
             #[serde(rename = "entity")]
             Entity,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

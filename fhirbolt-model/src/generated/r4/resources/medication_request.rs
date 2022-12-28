@@ -95,7 +95,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequestInitia
             Quantity,
             #[serde(rename = "duration")]
             Duration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -294,7 +294,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequest {
             ExpectedSupplyDuration,
             #[serde(rename = "performer")]
             Performer,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -566,7 +566,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
             AllowedCodeableConcept,
             #[serde(rename = "reason")]
             Reason,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1281,7 +1281,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
             DetectedIssue,
             #[serde(rename = "eventHistory")]
             EventHistory,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

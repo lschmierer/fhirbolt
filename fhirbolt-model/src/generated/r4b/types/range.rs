@@ -52,7 +52,7 @@ impl<'de> serde::de::Deserialize<'de> for Range {
             Low,
             #[serde(rename = "high")]
             High,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

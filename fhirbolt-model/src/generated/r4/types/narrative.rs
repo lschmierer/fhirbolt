@@ -77,7 +77,7 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
             Div,
             #[serde(rename = "_div")]
             DivPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

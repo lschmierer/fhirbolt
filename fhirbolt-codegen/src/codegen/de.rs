@@ -67,7 +67,7 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                     #(
                         #field_enum_variants_tokens
                     )*
-                    Unknown(String),
+                    Unknown(std::string::String),
                 }
 
                 struct Visitor;

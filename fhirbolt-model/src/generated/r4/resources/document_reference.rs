@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReferenceRelatesTo {
             CodePrimitiveElement,
             #[serde(rename = "target")]
             Target,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -246,7 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReferenceContent {
             Attachment,
             #[serde(rename = "format")]
             Format,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -430,7 +430,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReferenceContext {
             SourcePatientInfo,
             #[serde(rename = "related")]
             Related,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -868,7 +868,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentReference {
             Content,
             #[serde(rename = "context")]
             Context,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

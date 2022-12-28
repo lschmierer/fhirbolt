@@ -115,7 +115,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConceptDesignati
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -385,7 +385,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConcept {
             DisplayPrimitiveElement,
             #[serde(rename = "designation")]
             Designation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -665,7 +665,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeFilter {
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1037,7 +1037,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeInclude {
             ValueSet,
             #[serde(rename = "_valueSet")]
             ValueSetPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1398,7 +1398,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetCompose {
             Include,
             #[serde(rename = "exclude")]
             Exclude,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1809,7 +1809,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionParameter {
             ValueDateTime,
             #[serde(rename = "_valueDateTime")]
             ValueDateTimePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2646,7 +2646,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionContains {
             Designation,
             #[serde(rename = "contains")]
             Contains,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3179,7 +3179,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansion {
             Parameter,
             #[serde(rename = "contains")]
             Contains,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3927,7 +3927,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSet {
             Compose,
             #[serde(rename = "expansion")]
             Expansion,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

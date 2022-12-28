@@ -149,7 +149,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
             Max,
             #[serde(rename = "_max")]
             MaxPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -498,7 +498,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
             Situation,
             #[serde(rename = "_situation")]
             SituationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1334,7 +1334,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
             Graph,
             #[serde(rename = "_graph")]
             GraphPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

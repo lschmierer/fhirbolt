@@ -207,7 +207,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
             Expression,
             #[serde(rename = "_expression")]
             ExpressionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -732,7 +732,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
             ModifierExtension,
             #[serde(rename = "issue")]
             Issue,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

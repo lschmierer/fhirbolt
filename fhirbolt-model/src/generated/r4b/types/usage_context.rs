@@ -84,7 +84,7 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
             ValueRange,
             #[serde(rename = "valueReference")]
             ValueReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

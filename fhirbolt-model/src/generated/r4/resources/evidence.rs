@@ -548,7 +548,7 @@ impl<'de> serde::de::Deserialize<'de> for Evidence {
             ExposureVariant,
             #[serde(rename = "outcome")]
             Outcome,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

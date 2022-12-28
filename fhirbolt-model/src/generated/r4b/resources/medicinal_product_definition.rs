@@ -72,7 +72,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionContact {
             Type,
             #[serde(rename = "contact")]
             Contact,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -230,7 +230,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionNameNamePart
             PartPrimitiveElement,
             #[serde(rename = "type")]
             Type,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -413,7 +413,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionNameCountryL
             Jurisdiction,
             #[serde(rename = "language")]
             Language,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -608,7 +608,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionName {
             NamePart,
             #[serde(rename = "countryLanguage")]
             CountryLanguage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -822,7 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionCrossReferen
             Product,
             #[serde(rename = "type")]
             Type,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -982,7 +982,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionOperation {
             Organization,
             #[serde(rename = "confidentialityIndicator")]
             ConfidentialityIndicator,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1209,7 +1209,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionCharacterist
             ValueBooleanPrimitiveElement,
             #[serde(rename = "valueAttachment")]
             ValueAttachment,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1877,7 +1877,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinition {
             Operation,
             #[serde(rename = "characteristic")]
             Characteristic,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

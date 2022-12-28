@@ -216,7 +216,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
             WindowEnd,
             #[serde(rename = "_windowEnd")]
             WindowEndPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -822,7 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
             CigarPrimitiveElement,
             #[serde(rename = "variantPointer")]
             VariantPointer,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1523,7 +1523,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
             FMeasure,
             #[serde(rename = "_fMeasure")]
             FMeasurePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2509,7 +2509,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
             FScorePrimitiveElement,
             #[serde(rename = "roc")]
             Roc,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3429,7 +3429,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
             ReadsetId,
             #[serde(rename = "_readsetId")]
             ReadsetIdPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3891,7 +3891,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
             End,
             #[serde(rename = "_end")]
             EndPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4123,7 +4123,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
             End,
             #[serde(rename = "_end")]
             EndPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4376,7 +4376,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
             Outer,
             #[serde(rename = "inner")]
             Inner,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4870,7 +4870,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
             Pointer,
             #[serde(rename = "structureVariant")]
             StructureVariant,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

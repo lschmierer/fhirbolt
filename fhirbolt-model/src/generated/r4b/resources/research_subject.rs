@@ -226,7 +226,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
             ActualArmPrimitiveElement,
             #[serde(rename = "consent")]
             Consent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

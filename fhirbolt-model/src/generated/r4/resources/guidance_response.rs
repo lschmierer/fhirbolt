@@ -321,7 +321,7 @@ impl<'de> serde::de::Deserialize<'de> for GuidanceResponse {
             Result,
             #[serde(rename = "dataRequirement")]
             DataRequirement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

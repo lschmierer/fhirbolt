@@ -106,7 +106,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationIngredient {
             IsActivePrimitiveElement,
             #[serde(rename = "strength")]
             Strength,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -349,7 +349,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationBatch {
             ExpirationDate,
             #[serde(rename = "_expirationDate")]
             ExpirationDatePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -707,7 +707,7 @@ impl<'de> serde::de::Deserialize<'de> for Medication {
             Ingredient,
             #[serde(rename = "batch")]
             Batch,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

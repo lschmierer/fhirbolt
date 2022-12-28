@@ -163,7 +163,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
             UserSelected,
             #[serde(rename = "_userSelected")]
             UserSelectedPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

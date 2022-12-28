@@ -169,7 +169,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
             PhysicalCharacteristics,
             #[serde(rename = "otherCharacteristics")]
             OtherCharacteristics,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

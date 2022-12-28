@@ -59,7 +59,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifestRelated {
             Identifier,
             #[serde(rename = "ref")]
             Ref,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -413,7 +413,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
             Content,
             #[serde(rename = "related")]
             Related,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

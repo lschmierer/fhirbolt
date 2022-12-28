@@ -316,7 +316,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
             AnswerQuantity,
             #[serde(rename = "answerReference")]
             AnswerReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1268,7 +1268,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
             InitialSelected,
             #[serde(rename = "_initialSelected")]
             InitialSelectedPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1957,7 +1957,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
             ValueQuantity,
             #[serde(rename = "valueReference")]
             ValueReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2988,7 +2988,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
             Initial,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4340,7 +4340,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
             Code,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

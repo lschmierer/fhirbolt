@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
             NumberOfParticipants,
             #[serde(rename = "_numberOfParticipants")]
             NumberOfParticipantsPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -476,7 +476,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
             To,
             #[serde(rename = "_to")]
             ToPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -857,7 +857,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
             NumeratorCountPrimitiveElement,
             #[serde(rename = "precisionEstimate")]
             PrecisionEstimate,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1235,7 +1235,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertaintyCertaint
             Rating,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1397,7 +1397,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertainty {
             Note,
             #[serde(rename = "certaintySubcomponent")]
             CertaintySubcomponent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2028,7 +2028,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesis {
             RiskEstimate,
             #[serde(rename = "certainty")]
             Certainty,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

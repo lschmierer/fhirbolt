@@ -118,7 +118,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristicTimeFrom
             Range,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -449,7 +449,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
             GroupMeasure,
             #[serde(rename = "_groupMeasure")]
             GroupMeasurePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -934,7 +934,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCategory {
             ValueQuantity,
             #[serde(rename = "valueRange")]
             ValueRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1598,7 +1598,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
             HandlingPrimitiveElement,
             #[serde(rename = "category")]
             Category,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

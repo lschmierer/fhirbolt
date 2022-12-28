@@ -206,7 +206,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
             UsedStringPrimitiveElement,
             #[serde(rename = "usedMoney")]
             UsedMoney,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -470,7 +470,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
             AuthorizationUrl,
             #[serde(rename = "_authorizationUrl")]
             AuthorizationUrlPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1014,7 +1014,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
             BenefitPeriod,
             #[serde(rename = "item")]
             Item,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1211,7 +1211,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
             ModifierExtension,
             #[serde(rename = "code")]
             Code,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1657,7 +1657,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
             Form,
             #[serde(rename = "error")]
             Error,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -117,7 +117,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
             EndpointPrimitiveElement,
             #[serde(rename = "receiver")]
             Receiver,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -445,7 +445,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
             Endpoint,
             #[serde(rename = "_endpoint")]
             EndpointPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -804,7 +804,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
             CodePrimitiveElement,
             #[serde(rename = "details")]
             Details,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1228,7 +1228,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
             Definition,
             #[serde(rename = "_definition")]
             DefinitionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

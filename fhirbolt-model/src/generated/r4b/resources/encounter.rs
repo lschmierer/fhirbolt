@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterStatusHistory {
             StatusPrimitiveElement,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -250,7 +250,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterClassHistory {
             Class,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -406,7 +406,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterParticipant {
             Period,
             #[serde(rename = "individual")]
             Individual,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -581,7 +581,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterDiagnosis {
             Rank,
             #[serde(rename = "_rank")]
             RankPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -823,7 +823,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterHospitalization {
             Destination,
             #[serde(rename = "dischargeDisposition")]
             DischargeDisposition,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1075,7 +1075,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterLocation {
             PhysicalType,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1516,7 +1516,7 @@ impl<'de> serde::de::Deserialize<'de> for Encounter {
             ServiceProvider,
             #[serde(rename = "partOf")]
             PartOf,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

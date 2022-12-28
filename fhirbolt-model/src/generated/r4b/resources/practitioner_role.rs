@@ -164,7 +164,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
             AvailableEndTime,
             #[serde(rename = "_availableEndTime")]
             AvailableEndTimePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -538,7 +538,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
             DescriptionPrimitiveElement,
             #[serde(rename = "during")]
             During,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -929,7 +929,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
             AvailabilityExceptionsPrimitiveElement,
             #[serde(rename = "endpoint")]
             Endpoint,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

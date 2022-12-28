@@ -98,7 +98,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyArm {
             Description,
             #[serde(rename = "_description")]
             DescriptionPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -350,7 +350,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyObjective {
             NamePrimitiveElement,
             #[serde(rename = "type")]
             Type,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -798,7 +798,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
             Arm,
             #[serde(rename = "objective")]
             Objective,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

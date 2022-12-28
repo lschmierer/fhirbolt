@@ -93,7 +93,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
             Function,
             #[serde(rename = "actor")]
             Actor,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -322,7 +322,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
             PresentationDate,
             #[serde(rename = "_presentationDate")]
             PresentationDatePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -692,7 +692,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
             Reported,
             #[serde(rename = "_reported")]
             ReportedPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1044,7 +1044,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
             SeriesDosesString,
             #[serde(rename = "_seriesDosesString")]
             SeriesDosesStringPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1972,7 +1972,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
             Reaction,
             #[serde(rename = "protocolApplied")]
             ProtocolApplied,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -108,7 +108,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRelatedMedicationKn
             Type,
             #[serde(rename = "reference")]
             Reference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -254,7 +254,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonograph {
             Type,
             #[serde(rename = "source")]
             Source,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -429,7 +429,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
             IsActivePrimitiveElement,
             #[serde(rename = "strength")]
             Strength,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -660,7 +660,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeCost {
             SourcePrimitiveElement,
             #[serde(rename = "cost")]
             Cost,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -877,7 +877,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonitoringProgram {
             Name,
             #[serde(rename = "_name")]
             NamePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1043,7 +1043,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
             Type,
             #[serde(rename = "dosage")]
             Dosage,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1177,7 +1177,7 @@ impl<'de> serde::de::Deserialize<'de>
             Value,
             #[serde(rename = "_value")]
             ValuePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1289,7 +1289,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
             IndicationReference,
             #[serde(rename = "patientCharacteristics")]
             PatientCharacteristics,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1380,7 +1380,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMedicineClassificat
             Type,
             #[serde(rename = "classification")]
             Classification,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1535,7 +1535,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgePackaging {
             Type,
             #[serde(rename = "quantity")]
             Quantity,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1731,7 +1731,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
             ValueBase64Binary,
             #[serde(rename = "_valueBase64Binary")]
             ValueBase64BinaryPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1830,7 +1830,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySubstitut
             Allowed,
             #[serde(rename = "_allowed")]
             AllowedPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2007,7 +2007,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySchedule 
             ModifierExtension,
             #[serde(rename = "schedule")]
             Schedule,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2143,7 +2143,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatoryMaxDispen
             Quantity,
             #[serde(rename = "period")]
             Period,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2301,7 +2301,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatory {
             Schedule,
             #[serde(rename = "maxDispense")]
             MaxDispense,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2482,7 +2482,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeKinetics {
             LethalDose50,
             #[serde(rename = "halfLifePeriod")]
             HalfLifePeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2939,7 +2939,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
             Regulatory,
             #[serde(rename = "kinetics")]
             Kinetics,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

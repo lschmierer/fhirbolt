@@ -410,7 +410,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
             ParticipantEffectiveGroupMeasure,
             #[serde(rename = "_participantEffectiveGroupMeasure")]
             ParticipantEffectiveGroupMeasurePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1216,7 +1216,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinition {
             VariableTypePrimitiveElement,
             #[serde(rename = "characteristic")]
             Characteristic,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

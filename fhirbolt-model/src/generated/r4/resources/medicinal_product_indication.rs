@@ -79,7 +79,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndicationOtherTherapy
             MedicationCodeableConcept,
             #[serde(rename = "medicationReference")]
             MedicationReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -297,7 +297,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndication {
             UndesirableEffect,
             #[serde(rename = "population")]
             Population,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

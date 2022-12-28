@@ -107,7 +107,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
             Uri,
             #[serde(rename = "_uri")]
             UriPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -353,7 +353,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
             VerificationDate,
             #[serde(rename = "_verificationDate")]
             VerificationDatePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -585,7 +585,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionActor {
             Role,
             #[serde(rename = "reference")]
             Reference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -746,7 +746,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionData {
             MeaningPrimitiveElement,
             #[serde(rename = "reference")]
             Reference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1016,7 +1016,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvision {
             Data,
             #[serde(rename = "provision")]
             Provision,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1481,7 +1481,7 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
             Verification,
             #[serde(rename = "provision")]
             Provision,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

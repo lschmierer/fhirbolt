@@ -256,7 +256,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
             Copyright,
             #[serde(rename = "_copyright")]
             CopyrightPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -627,7 +627,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
             Category,
             #[serde(rename = "control")]
             Control,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -861,7 +861,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferParty {
             Reference,
             #[serde(rename = "role")]
             Role,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1187,7 +1187,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
             ValueQuantity,
             #[serde(rename = "valueReference")]
             ValueReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2072,7 +2072,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
             SecurityLabelNumber,
             #[serde(rename = "_securityLabelNumber")]
             SecurityLabelNumberPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2506,7 +2506,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetContext {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2957,7 +2957,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
             SecurityLabelNumber,
             #[serde(rename = "_securityLabelNumber")]
             SecurityLabelNumberPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3836,7 +3836,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
             SecurityLabelNumberPrimitiveElement,
             #[serde(rename = "valuedItem")]
             ValuedItem,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4354,7 +4354,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermActionSubject {
             Reference,
             #[serde(rename = "role")]
             Role,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4929,7 +4929,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
             SecurityLabelNumber,
             #[serde(rename = "_securityLabelNumber")]
             SecurityLabelNumberPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6171,7 +6171,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
             Action,
             #[serde(rename = "group")]
             Group,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6517,7 +6517,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractSigner {
             Party,
             #[serde(rename = "signature")]
             Signature,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6684,7 +6684,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractFriendly {
             ContentAttachment,
             #[serde(rename = "contentReference")]
             ContentReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6842,7 +6842,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractLegal {
             ContentAttachment,
             #[serde(rename = "contentReference")]
             ContentReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6999,7 +6999,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractRule {
             ContentAttachment,
             #[serde(rename = "contentReference")]
             ContentReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7653,7 +7653,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
             LegallyBindingAttachment,
             #[serde(rename = "legallyBindingReference")]
             LegallyBindingReference,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

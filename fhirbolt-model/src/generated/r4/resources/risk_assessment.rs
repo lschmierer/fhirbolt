@@ -204,7 +204,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
             Rationale,
             #[serde(rename = "_rationale")]
             RationalePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -812,7 +812,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
             MitigationPrimitiveElement,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

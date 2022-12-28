@@ -105,7 +105,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatusNotificationEvent {
             Focus,
             #[serde(rename = "additionalContext")]
             AdditionalContext,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -539,7 +539,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatus {
             TopicPrimitiveElement,
             #[serde(rename = "error")]
             Error,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

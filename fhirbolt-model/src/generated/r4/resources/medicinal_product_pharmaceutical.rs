@@ -57,7 +57,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalCharacte
             Code,
             #[serde(rename = "status")]
             Status,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -228,7 +228,7 @@ impl<'de> serde::de::Deserialize<'de>
             SupportingInformation,
             #[serde(rename = "_supportingInformation")]
             SupportingInformationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -321,7 +321,7 @@ impl<'de> serde::de::Deserialize<'de>
             Code,
             #[serde(rename = "withdrawalPeriod")]
             WithdrawalPeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -511,7 +511,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
             MaxTreatmentPeriod,
             #[serde(rename = "targetSpecies")]
             TargetSpecies,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -827,7 +827,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceutical {
             Characteristics,
             #[serde(rename = "routeOfAdministration")]
             RouteOfAdministration,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

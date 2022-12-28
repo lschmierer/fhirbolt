@@ -71,7 +71,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
             Code,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -231,7 +231,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
             DatePrimitiveElement,
             #[serde(rename = "author")]
             Author,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -670,7 +670,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
             ReferencePrimitiveElement,
             #[serde(rename = "mitigation")]
             Mitigation,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

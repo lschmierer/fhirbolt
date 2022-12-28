@@ -69,7 +69,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
             Role,
             #[serde(rename = "actor")]
             Actor,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -260,7 +260,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
             FactorPrimitiveElement,
             #[serde(rename = "amount")]
             Amount,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -537,7 +537,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
             ChargeItemCodeableConcept,
             #[serde(rename = "priceComponent")]
             PriceComponent,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -993,7 +993,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
             PaymentTermsPrimitiveElement,
             #[serde(rename = "note")]
             Note,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -127,7 +127,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
             ResidueSite,
             #[serde(rename = "_residueSite")]
             ResidueSitePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -454,7 +454,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
             ResidueSite,
             #[serde(rename = "_residueSite")]
             ResidueSitePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -781,7 +781,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
             Linkage,
             #[serde(rename = "sugar")]
             Sugar,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1239,7 +1239,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
             OligoNucleotideType,
             #[serde(rename = "subunit")]
             Subunit,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
