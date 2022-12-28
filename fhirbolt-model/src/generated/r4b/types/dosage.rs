@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
 #[derive(Debug, Clone)]
 pub enum DosageAsNeeded {
@@ -508,44 +508,108 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Sequence => {
-                                let some = r#sequence.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("sequence"));
+                                if _ctx.from_json {
+                                    let some = r#sequence.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("sequence"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#sequence.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("sequence"));
+                                    }
+                                    r#sequence = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::SequencePrimitiveElement => {
-                                let some = r#sequence.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_sequence"));
+                                if _ctx.from_json {
+                                    let some = r#sequence.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_sequence"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "sequence",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "sequence",
+                                            "text",
+                                            "additionalInstruction",
+                                            "patientInstruction",
+                                            "timing",
+                                            "asNeededBoolean",
+                                            "asNeededCodeableConcept",
+                                            "site",
+                                            "route",
+                                            "method",
+                                            "doseAndRate",
+                                            "maxDosePerPeriod",
+                                            "maxDosePerAdministration",
+                                            "maxDosePerLifetime",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
-                                let some = r#text.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("text"));
+                                if _ctx.from_json {
+                                    let some = r#text.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("text"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#text.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("text"));
+                                    }
+                                    r#text = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TextPrimitiveElement => {
-                                let some = r#text.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_text"));
+                                if _ctx.from_json {
+                                    let some = r#text.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_text"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "text",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "sequence",
+                                            "text",
+                                            "additionalInstruction",
+                                            "patientInstruction",
+                                            "timing",
+                                            "asNeededBoolean",
+                                            "asNeededCodeableConcept",
+                                            "site",
+                                            "route",
+                                            "method",
+                                            "doseAndRate",
+                                            "maxDosePerPeriod",
+                                            "maxDosePerAdministration",
+                                            "maxDosePerLifetime",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::AdditionalInstruction => {
                                 if r#additional_instruction.is_some() {
@@ -556,28 +620,64 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 r#additional_instruction = Some(map_access.next_value()?);
                             }
                             Field::PatientInstruction => {
-                                let some = r#patient_instruction.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "patientInstruction",
-                                    ));
+                                if _ctx.from_json {
+                                    let some =
+                                        r#patient_instruction.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "patientInstruction",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#patient_instruction.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "patientInstruction",
+                                        ));
+                                    }
+                                    r#patient_instruction = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PatientInstructionPrimitiveElement => {
-                                let some = r#patient_instruction.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_patientInstruction",
+                                if _ctx.from_json {
+                                    let some =
+                                        r#patient_instruction.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_patientInstruction",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "patientInstruction",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "sequence",
+                                            "text",
+                                            "additionalInstruction",
+                                            "patientInstruction",
+                                            "timing",
+                                            "asNeededBoolean",
+                                            "asNeededCodeableConcept",
+                                            "site",
+                                            "route",
+                                            "method",
+                                            "doseAndRate",
+                                            "maxDosePerPeriod",
+                                            "maxDosePerAdministration",
+                                            "maxDosePerLifetime",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Timing => {
                                 if r#timing.is_some() {
@@ -586,37 +686,76 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 r#timing = Some(map_access.next_value()?);
                             }
                             Field::AsNeededBoolean => {
-                                let r#enum = r#as_needed
-                                    .get_or_insert(DosageAsNeeded::Boolean(Default::default()));
-                                if let DosageAsNeeded::Boolean(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#as_needed
+                                        .get_or_insert(DosageAsNeeded::Boolean(Default::default()));
+                                    if let DosageAsNeeded::Boolean(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "asNeededBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "asNeeded[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#as_needed.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "asNeededBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("asNeeded[x]"));
+                                    r#as_needed =
+                                        Some(DosageAsNeeded::Boolean(map_access.next_value()?));
                                 }
                             }
                             Field::AsNeededBooleanPrimitiveElement => {
-                                let r#enum = r#as_needed
-                                    .get_or_insert(DosageAsNeeded::Boolean(Default::default()));
-                                if let DosageAsNeeded::Boolean(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#as_needed
+                                        .get_or_insert(DosageAsNeeded::Boolean(Default::default()));
+                                    if let DosageAsNeeded::Boolean(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_asNeededBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_asNeededBoolean",
+                                            "_asNeeded[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_asNeeded[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "asNeededBoolean",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "sequence",
+                                            "text",
+                                            "additionalInstruction",
+                                            "patientInstruction",
+                                            "timing",
+                                            "asNeededBoolean",
+                                            "asNeededCodeableConcept",
+                                            "site",
+                                            "route",
+                                            "method",
+                                            "doseAndRate",
+                                            "maxDosePerPeriod",
+                                            "maxDosePerAdministration",
+                                            "maxDosePerLifetime",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::AsNeededCodeableConcept => {

@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductDefinitionCharacteristicValue {
@@ -276,24 +276,38 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionNameNamePart
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Part => {
-                                let some = r#part.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("part"));
+                                if _ctx.from_json {
+                                    let some = r#part.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("part"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#part.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("part"));
+                                    }
+                                    r#part = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PartPrimitiveElement => {
-                                let some = r#part.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_part"));
+                                if _ctx.from_json {
+                                    let some = r#part.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_part"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "part",
+                                        &["id", "extension", "modifierExtension", "part", "type"],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -644,24 +658,52 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionName {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::ProductName => {
-                                let some = r#product_name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("productName"));
+                                if _ctx.from_json {
+                                    let some = r#product_name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "productName",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#product_name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "productName",
+                                        ));
+                                    }
+                                    r#product_name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ProductNamePrimitiveElement => {
-                                let some = r#product_name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_productName"));
+                                if _ctx.from_json {
+                                    let some = r#product_name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_productName",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "productName",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "productName",
+                                            "type",
+                                            "namePart",
+                                            "countryLanguage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -1240,93 +1282,152 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinitionCharacterist
                                     ));
                             }
                             Field::ValueDate => {
-                                let r#enum = r#value.get_or_insert(
-                                    MedicinalProductDefinitionCharacteristicValue::Date(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let MedicinalProductDefinitionCharacteristicValue::Date(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        MedicinalProductDefinitionCharacteristicValue::Date(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let MedicinalProductDefinitionCharacteristicValue::Date(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDate",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueDate"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(MedicinalProductDefinitionCharacteristicValue::Date(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::ValueDatePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    MedicinalProductDefinitionCharacteristicValue::Date(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let MedicinalProductDefinitionCharacteristicValue::Date(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDate",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        MedicinalProductDefinitionCharacteristicValue::Date(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let MedicinalProductDefinitionCharacteristicValue::Date(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDate",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDate",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "valueCodeableConcept",
+                                            "valueQuantity",
+                                            "valueDate",
+                                            "valueBoolean",
+                                            "valueAttachment",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueBoolean => {
-                                let r#enum = r#value.get_or_insert(
-                                    MedicinalProductDefinitionCharacteristicValue::Boolean(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let MedicinalProductDefinitionCharacteristicValue::Boolean(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        MedicinalProductDefinitionCharacteristicValue::Boolean(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let MedicinalProductDefinitionCharacteristicValue::Boolean(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(
+                                        MedicinalProductDefinitionCharacteristicValue::Boolean(
+                                            map_access.next_value()?,
+                                        ),
+                                    );
                                 }
                             }
                             Field::ValueBooleanPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    MedicinalProductDefinitionCharacteristicValue::Boolean(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let MedicinalProductDefinitionCharacteristicValue::Boolean(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBoolean",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        MedicinalProductDefinitionCharacteristicValue::Boolean(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let MedicinalProductDefinitionCharacteristicValue::Boolean(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBoolean",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "valueCodeableConcept",
+                                            "valueQuantity",
+                                            "valueDate",
+                                            "valueBoolean",
+                                            "valueAttachment",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueAttachment => {
@@ -1867,46 +1968,152 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinition {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "domain",
+                                            "version",
+                                            "status",
+                                            "statusDate",
+                                            "description",
+                                            "combinedPharmaceuticalDoseForm",
+                                            "route",
+                                            "indication",
+                                            "legalStatusOfSupply",
+                                            "additionalMonitoringIndicator",
+                                            "specialMeasures",
+                                            "pediatricUseIndicator",
+                                            "classification",
+                                            "marketingStatus",
+                                            "packagedMedicinalProduct",
+                                            "ingredient",
+                                            "impurity",
+                                            "attachedDocument",
+                                            "masterFile",
+                                            "contact",
+                                            "clinicalTrial",
+                                            "code",
+                                            "name",
+                                            "crossReference",
+                                            "operation",
+                                            "characteristic",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "domain",
+                                            "version",
+                                            "status",
+                                            "statusDate",
+                                            "description",
+                                            "combinedPharmaceuticalDoseForm",
+                                            "route",
+                                            "indication",
+                                            "legalStatusOfSupply",
+                                            "additionalMonitoringIndicator",
+                                            "specialMeasures",
+                                            "pediatricUseIndicator",
+                                            "classification",
+                                            "marketingStatus",
+                                            "packagedMedicinalProduct",
+                                            "ingredient",
+                                            "impurity",
+                                            "attachedDocument",
+                                            "masterFile",
+                                            "contact",
+                                            "clinicalTrial",
+                                            "code",
+                                            "name",
+                                            "crossReference",
+                                            "operation",
+                                            "characteristic",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -1953,24 +2160,75 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinition {
                                 r#domain = Some(map_access.next_value()?);
                             }
                             Field::Version => {
-                                let some = r#version.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("version"));
+                                if _ctx.from_json {
+                                    let some = r#version.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("version"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#version.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("version"));
+                                    }
+                                    r#version = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::VersionPrimitiveElement => {
-                                let some = r#version.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_version"));
+                                if _ctx.from_json {
+                                    let some = r#version.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_version"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "version",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "domain",
+                                            "version",
+                                            "status",
+                                            "statusDate",
+                                            "description",
+                                            "combinedPharmaceuticalDoseForm",
+                                            "route",
+                                            "indication",
+                                            "legalStatusOfSupply",
+                                            "additionalMonitoringIndicator",
+                                            "specialMeasures",
+                                            "pediatricUseIndicator",
+                                            "classification",
+                                            "marketingStatus",
+                                            "packagedMedicinalProduct",
+                                            "ingredient",
+                                            "impurity",
+                                            "attachedDocument",
+                                            "masterFile",
+                                            "contact",
+                                            "clinicalTrial",
+                                            "code",
+                                            "name",
+                                            "crossReference",
+                                            "operation",
+                                            "characteristic",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Status => {
                                 if r#status.is_some() {
@@ -1979,44 +2237,158 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinition {
                                 r#status = Some(map_access.next_value()?);
                             }
                             Field::StatusDate => {
-                                let some = r#status_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("statusDate"));
+                                if _ctx.from_json {
+                                    let some = r#status_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#status_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusDate",
+                                        ));
+                                    }
+                                    r#status_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::StatusDatePrimitiveElement => {
-                                let some = r#status_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_statusDate"));
+                                if _ctx.from_json {
+                                    let some = r#status_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_statusDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "statusDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "domain",
+                                            "version",
+                                            "status",
+                                            "statusDate",
+                                            "description",
+                                            "combinedPharmaceuticalDoseForm",
+                                            "route",
+                                            "indication",
+                                            "legalStatusOfSupply",
+                                            "additionalMonitoringIndicator",
+                                            "specialMeasures",
+                                            "pediatricUseIndicator",
+                                            "classification",
+                                            "marketingStatus",
+                                            "packagedMedicinalProduct",
+                                            "ingredient",
+                                            "impurity",
+                                            "attachedDocument",
+                                            "masterFile",
+                                            "contact",
+                                            "clinicalTrial",
+                                            "code",
+                                            "name",
+                                            "crossReference",
+                                            "operation",
+                                            "characteristic",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Description => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#description.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    r#description = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DescriptionPrimitiveElement => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_description",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "description",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "domain",
+                                            "version",
+                                            "status",
+                                            "statusDate",
+                                            "description",
+                                            "combinedPharmaceuticalDoseForm",
+                                            "route",
+                                            "indication",
+                                            "legalStatusOfSupply",
+                                            "additionalMonitoringIndicator",
+                                            "specialMeasures",
+                                            "pediatricUseIndicator",
+                                            "classification",
+                                            "marketingStatus",
+                                            "packagedMedicinalProduct",
+                                            "ingredient",
+                                            "impurity",
+                                            "attachedDocument",
+                                            "masterFile",
+                                            "contact",
+                                            "clinicalTrial",
+                                            "code",
+                                            "name",
+                                            "crossReference",
+                                            "operation",
+                                            "characteristic",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::CombinedPharmaceuticalDoseForm => {
                                 if r#combined_pharmaceutical_dose_form.is_some() {
@@ -2034,24 +2406,81 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductDefinition {
                                 r#route = Some(map_access.next_value()?);
                             }
                             Field::Indication => {
-                                let some = r#indication.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("indication"));
+                                if _ctx.from_json {
+                                    let some = r#indication.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "indication",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#indication.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "indication",
+                                        ));
+                                    }
+                                    r#indication = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::IndicationPrimitiveElement => {
-                                let some = r#indication.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_indication"));
+                                if _ctx.from_json {
+                                    let some = r#indication.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_indication",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "indication",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "domain",
+                                            "version",
+                                            "status",
+                                            "statusDate",
+                                            "description",
+                                            "combinedPharmaceuticalDoseForm",
+                                            "route",
+                                            "indication",
+                                            "legalStatusOfSupply",
+                                            "additionalMonitoringIndicator",
+                                            "specialMeasures",
+                                            "pediatricUseIndicator",
+                                            "classification",
+                                            "marketingStatus",
+                                            "packagedMedicinalProduct",
+                                            "ingredient",
+                                            "impurity",
+                                            "attachedDocument",
+                                            "masterFile",
+                                            "contact",
+                                            "clinicalTrial",
+                                            "code",
+                                            "name",
+                                            "crossReference",
+                                            "operation",
+                                            "characteristic",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::LegalStatusOfSupply => {
                                 if r#legal_status_of_supply.is_some() {

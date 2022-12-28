@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "If the parameter is a data type."]
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
@@ -769,683 +769,2189 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::ValueBase64Binary => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Base64Binary(Default::default()),
-                                );
-                                if let ParametersParameterValue::Base64Binary(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Base64Binary(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Base64Binary(variant) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBase64Binary",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBase64Binary",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Base64Binary(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueBase64BinaryPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Base64Binary(Default::default()),
-                                );
-                                if let ParametersParameterValue::Base64Binary(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBase64Binary",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Base64Binary(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Base64Binary(variant) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBase64Binary",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBase64Binary",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueBoolean => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Boolean(Default::default()),
-                                );
-                                if let ParametersParameterValue::Boolean(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Boolean(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Boolean(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Boolean(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueBooleanPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Boolean(Default::default()),
-                                );
-                                if let ParametersParameterValue::Boolean(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBoolean",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Boolean(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Boolean(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBoolean",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueCanonical => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Canonical(Default::default()),
-                                );
-                                if let ParametersParameterValue::Canonical(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Canonical(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Canonical(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueCanonical",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueCanonical",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Canonical(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueCanonicalPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Canonical(Default::default()),
-                                );
-                                if let ParametersParameterValue::Canonical(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueCanonical",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Canonical(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Canonical(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueCanonical",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueCanonical",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueCode => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Code(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Code(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Code(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Code(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueCode",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueCode"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Code(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueCodePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Code(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Code(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueCode",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Code(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Code(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueCode",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueCode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueDate => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Date(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Date(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Date(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Date(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDate",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueDate"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Date(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueDatePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Date(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Date(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDate",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Date(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Date(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDate",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDate",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueDateTime => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::DateTime(Default::default()),
-                                );
-                                if let ParametersParameterValue::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::DateTime(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::DateTime(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueDateTimePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::DateTime(Default::default()),
-                                );
-                                if let ParametersParameterValue::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDateTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::DateTime(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDateTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueDecimal => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Decimal(Default::default()),
-                                );
-                                if let ParametersParameterValue::Decimal(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Decimal(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Decimal(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDecimal",
+                                            ));
+                                        }
+                                        let value: serde_json::Number = map_access.next_value()?;
+                                        variant.value = Some(format!("{}", value));
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueDecimal",
                                         ));
                                     }
-                                    let value: serde_json::Number = map_access.next_value()?;
-                                    variant.value = Some(format!("{}", value));
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Decimal(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueDecimalPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Decimal(Default::default()),
-                                );
-                                if let ParametersParameterValue::Decimal(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDecimal",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Decimal(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Decimal(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDecimal",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDecimal",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueId => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Id(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Id(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Id(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Id(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueId",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueId"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Id(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueIdPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Id(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Id(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field("_valueId"));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Id(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Id(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueId",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueId",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueInstant => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Instant(Default::default()),
-                                );
-                                if let ParametersParameterValue::Instant(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Instant(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Instant(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueInstant",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueInstant",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Instant(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueInstantPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Instant(Default::default()),
-                                );
-                                if let ParametersParameterValue::Instant(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueInstant",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Instant(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Instant(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueInstant",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueInstant",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueInteger => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Integer(Default::default()),
-                                );
-                                if let ParametersParameterValue::Integer(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Integer(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Integer(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueInteger",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueInteger",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Integer(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueIntegerPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Integer(Default::default()),
-                                );
-                                if let ParametersParameterValue::Integer(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueInteger",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Integer(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Integer(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueInteger",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueInteger",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueMarkdown => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Markdown(Default::default()),
-                                );
-                                if let ParametersParameterValue::Markdown(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Markdown(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Markdown(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueMarkdown",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueMarkdown",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Markdown(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueMarkdownPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::Markdown(Default::default()),
-                                );
-                                if let ParametersParameterValue::Markdown(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueMarkdown",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Markdown(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Markdown(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueMarkdown",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueMarkdown",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueOid => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Oid(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Oid(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Oid(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Oid(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueOid",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueOid"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Oid(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueOidPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Oid(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Oid(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field("_valueOid"));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Oid(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Oid(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueOid",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueOid",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValuePositiveInt => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::PositiveInt(Default::default()),
-                                );
-                                if let ParametersParameterValue::PositiveInt(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::PositiveInt(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::PositiveInt(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valuePositiveInt",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valuePositiveInt",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::PositiveInt(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValuePositiveIntPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::PositiveInt(Default::default()),
-                                );
-                                if let ParametersParameterValue::PositiveInt(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valuePositiveInt",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::PositiveInt(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::PositiveInt(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valuePositiveInt",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valuePositiveInt",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueString => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::String(Default::default()),
-                                );
-                                if let ParametersParameterValue::String(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::String(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::String(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::String(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueStringPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::String(Default::default()),
-                                );
-                                if let ParametersParameterValue::String(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueString",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::String(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::String(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueString",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueTime => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Time(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Time(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Time(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Time(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueTime"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Time(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueTimePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Time(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Time(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Time(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Time(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueUnsignedInt => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::UnsignedInt(Default::default()),
-                                );
-                                if let ParametersParameterValue::UnsignedInt(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::UnsignedInt(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::UnsignedInt(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueUnsignedInt",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueUnsignedInt",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::UnsignedInt(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueUnsignedIntPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ParametersParameterValue::UnsignedInt(Default::default()),
-                                );
-                                if let ParametersParameterValue::UnsignedInt(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueUnsignedInt",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::UnsignedInt(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::UnsignedInt(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueUnsignedInt",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueUnsignedInt",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueUri => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Uri(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Uri(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Uri(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Uri(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueUri",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueUri"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Uri(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueUriPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Uri(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Uri(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field("_valueUri"));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Uri(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Uri(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueUri",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueUri",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueUrl => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Url(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Url(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Url(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Url(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueUrl",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueUrl"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Url(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueUrlPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Url(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Url(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field("_valueUrl"));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Url(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Url(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueUrl",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueUrl",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueUuid => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Uuid(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Uuid(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Uuid(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Uuid(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueUuid",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueUuid"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ParametersParameterValue::Uuid(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueUuidPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(ParametersParameterValue::Uuid(
-                                    Default::default(),
-                                ));
-                                if let ParametersParameterValue::Uuid(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueUuid",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ParametersParameterValue::Uuid(Default::default()),
+                                    );
+                                    if let ParametersParameterValue::Uuid(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueUuid",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueUuid",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "valueBase64Binary",
+                                            "valueBoolean",
+                                            "valueCanonical",
+                                            "valueCode",
+                                            "valueDate",
+                                            "valueDateTime",
+                                            "valueDecimal",
+                                            "valueId",
+                                            "valueInstant",
+                                            "valueInteger",
+                                            "valueMarkdown",
+                                            "valueOid",
+                                            "valuePositiveInt",
+                                            "valueString",
+                                            "valueTime",
+                                            "valueUnsignedInt",
+                                            "valueUri",
+                                            "valueUrl",
+                                            "valueUuid",
+                                            "valueAddress",
+                                            "valueAge",
+                                            "valueAnnotation",
+                                            "valueAttachment",
+                                            "valueCodeableConcept",
+                                            "valueCoding",
+                                            "valueContactPoint",
+                                            "valueCount",
+                                            "valueDistance",
+                                            "valueDuration",
+                                            "valueHumanName",
+                                            "valueIdentifier",
+                                            "valueMoney",
+                                            "valuePeriod",
+                                            "valueQuantity",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueReference",
+                                            "valueSampledData",
+                                            "valueSignature",
+                                            "valueTiming",
+                                            "valueContactDetail",
+                                            "valueContributor",
+                                            "valueDataRequirement",
+                                            "valueExpression",
+                                            "valueParameterDefinition",
+                                            "valueRelatedArtifact",
+                                            "valueTriggerDefinition",
+                                            "valueUsageContext",
+                                            "valueDosage",
+                                            "valueMeta",
+                                            "resource",
+                                            "part",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueAddress => {
@@ -1971,46 +3477,78 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &["id", "meta", "implicitRules", "language", "parameter"],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &["id", "meta", "implicitRules", "language", "parameter"],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Parameter => {
                                 if r#parameter.is_some() {

@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
@@ -559,374 +559,882 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     Some(TimingRepeatBounds::Period(map_access.next_value()?));
                             }
                             Field::Count => {
-                                let some = r#count.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("count"));
+                                if _ctx.from_json {
+                                    let some = r#count.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("count"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#count.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("count"));
+                                    }
+                                    r#count = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::CountPrimitiveElement => {
-                                let some = r#count.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_count"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::CountMax => {
-                                let some = r#count_max.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("countMax"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::CountMaxPrimitiveElement => {
-                                let some = r#count_max.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_countMax"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Duration => {
-                                let some = r#duration.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("duration"));
-                                }
-                                let value: serde_json::Number = map_access.next_value()?;
-                                some.value = Some(format!("{}", value));
-                            }
-                            Field::DurationPrimitiveElement => {
-                                let some = r#duration.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_duration"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::DurationMax => {
-                                let some = r#duration_max.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("durationMax"));
-                                }
-                                let value: serde_json::Number = map_access.next_value()?;
-                                some.value = Some(format!("{}", value));
-                            }
-                            Field::DurationMaxPrimitiveElement => {
-                                let some = r#duration_max.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_durationMax"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::DurationUnit => {
-                                let some = r#duration_unit.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("durationUnit"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::DurationUnitPrimitiveElement => {
-                                let some = r#duration_unit.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_durationUnit"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Frequency => {
-                                let some = r#frequency.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("frequency"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::FrequencyPrimitiveElement => {
-                                let some = r#frequency.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_frequency"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::FrequencyMax => {
-                                let some = r#frequency_max.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("frequencyMax"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::FrequencyMaxPrimitiveElement => {
-                                let some = r#frequency_max.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_frequencyMax"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Period => {
-                                let some = r#period.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("period"));
-                                }
-                                let value: serde_json::Number = map_access.next_value()?;
-                                some.value = Some(format!("{}", value));
-                            }
-                            Field::PeriodPrimitiveElement => {
-                                let some = r#period.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_period"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::PeriodMax => {
-                                let some = r#period_max.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("periodMax"));
-                                }
-                                let value: serde_json::Number = map_access.next_value()?;
-                                some.value = Some(format!("{}", value));
-                            }
-                            Field::PeriodMaxPrimitiveElement => {
-                                let some = r#period_max.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_periodMax"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::PeriodUnit => {
-                                let some = r#period_unit.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("periodUnit"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::PeriodUnitPrimitiveElement => {
-                                let some = r#period_unit.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_periodUnit"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::DayOfWeek => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#day_of_week.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
+                                if _ctx.from_json {
+                                    let some = r#count.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_count"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "count",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
                                     ));
                                 }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("dayOfWeek"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                            }
+                            Field::CountMax => {
+                                if _ctx.from_json {
+                                    let some = r#count_max.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("countMax"));
                                     }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#count_max.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("countMax"));
+                                    }
+                                    r#count_max = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::CountMaxPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#count_max.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_countMax"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "countMax",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Duration => {
+                                if _ctx.from_json {
+                                    let some = r#duration.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("duration"));
+                                    }
+                                    let value: serde_json::Number = map_access.next_value()?;
+                                    some.value = Some(format!("{}", value));
+                                } else {
+                                    if r#duration.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("duration"));
+                                    }
+                                    r#duration = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DurationPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#duration.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_duration"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "duration",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::DurationMax => {
+                                if _ctx.from_json {
+                                    let some = r#duration_max.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "durationMax",
+                                        ));
+                                    }
+                                    let value: serde_json::Number = map_access.next_value()?;
+                                    some.value = Some(format!("{}", value));
+                                } else {
+                                    if r#duration_max.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "durationMax",
+                                        ));
+                                    }
+                                    r#duration_max = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DurationMaxPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#duration_max.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_durationMax",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "durationMax",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::DurationUnit => {
+                                if _ctx.from_json {
+                                    let some = r#duration_unit.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "durationUnit",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#duration_unit.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "durationUnit",
+                                        ));
+                                    }
+                                    r#duration_unit = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DurationUnitPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#duration_unit.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_durationUnit",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "durationUnit",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Frequency => {
+                                if _ctx.from_json {
+                                    let some = r#frequency.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("frequency"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#frequency.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("frequency"));
+                                    }
+                                    r#frequency = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::FrequencyPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#frequency.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_frequency",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "frequency",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::FrequencyMax => {
+                                if _ctx.from_json {
+                                    let some = r#frequency_max.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "frequencyMax",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#frequency_max.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "frequencyMax",
+                                        ));
+                                    }
+                                    r#frequency_max = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::FrequencyMaxPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#frequency_max.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_frequencyMax",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "frequencyMax",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Period => {
+                                if _ctx.from_json {
+                                    let some = r#period.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("period"));
+                                    }
+                                    let value: serde_json::Number = map_access.next_value()?;
+                                    some.value = Some(format!("{}", value));
+                                } else {
+                                    if r#period.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("period"));
+                                    }
+                                    r#period = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::PeriodPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#period.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_period"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "period",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::PeriodMax => {
+                                if _ctx.from_json {
+                                    let some = r#period_max.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("periodMax"));
+                                    }
+                                    let value: serde_json::Number = map_access.next_value()?;
+                                    some.value = Some(format!("{}", value));
+                                } else {
+                                    if r#period_max.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("periodMax"));
+                                    }
+                                    r#period_max = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::PeriodMaxPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#period_max.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_periodMax",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "periodMax",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::PeriodUnit => {
+                                if _ctx.from_json {
+                                    let some = r#period_unit.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "periodUnit",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#period_unit.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "periodUnit",
+                                        ));
+                                    }
+                                    r#period_unit = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::PeriodUnitPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#period_unit.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_periodUnit",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "periodUnit",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::DayOfWeek => {
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#day_of_week.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
+                                    }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("dayOfWeek"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#day_of_week.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("dayOfWeek"));
+                                    }
+                                    r#day_of_week = Some(map_access.next_value()?);
                                 }
                             }
                             Field::DayOfWeekPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#day_of_week.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_dayOfWeek"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#day_of_week.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_dayOfWeek",
+                                        ));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "dayOfWeek",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::TimeOfDay => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#time_of_day.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("timeOfDay"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#time_of_day.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("timeOfDay"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#time_of_day.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("timeOfDay"));
+                                    }
+                                    r#time_of_day = Some(map_access.next_value()?);
                                 }
                             }
                             Field::TimeOfDayPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#time_of_day.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_timeOfDay"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#time_of_day.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_timeOfDay",
+                                        ));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "timeOfDay",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::When => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#when.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("when"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#when.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("when"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#when.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("when"));
+                                    }
+                                    r#when = Some(map_access.next_value()?);
                                 }
                             }
                             Field::WhenPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#when.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_when"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#when.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_when"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "when",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Offset => {
-                                let some = r#offset.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("offset"));
+                                if _ctx.from_json {
+                                    let some = r#offset.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("offset"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#offset.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("offset"));
+                                    }
+                                    r#offset = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::OffsetPrimitiveElement => {
-                                let some = r#offset.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_offset"));
+                                if _ctx.from_json {
+                                    let some = r#offset.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_offset"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "offset",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "boundsDuration",
+                                            "boundsRange",
+                                            "boundsPeriod",
+                                            "count",
+                                            "countMax",
+                                            "duration",
+                                            "durationMax",
+                                            "durationUnit",
+                                            "frequency",
+                                            "frequencyMax",
+                                            "period",
+                                            "periodMax",
+                                            "periodUnit",
+                                            "dayOfWeek",
+                                            "timeOfDay",
+                                            "when",
+                                            "offset",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -1131,53 +1639,74 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Event => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#event.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("event"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#event.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("event"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#event.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("event"));
+                                    }
+                                    r#event = Some(map_access.next_value()?);
                                 }
                             }
                             Field::EventPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#event.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_event"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#event.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_event"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "event",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "event",
+                                            "repeat",
+                                            "code",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Repeat => {

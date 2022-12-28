@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
 #[derive(Debug, Clone)]
 pub enum ConditionOnset {
@@ -772,46 +772,146 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -898,37 +998,90 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                 r#encounter = Some(map_access.next_value()?);
                             }
                             Field::OnsetDateTime => {
-                                let r#enum = r#onset
-                                    .get_or_insert(ConditionOnset::DateTime(Default::default()));
-                                if let ConditionOnset::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#onset.get_or_insert(ConditionOnset::DateTime(
+                                        Default::default(),
+                                    ));
+                                    if let ConditionOnset::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "onsetDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("onset[x]"));
+                                    }
+                                } else {
+                                    if r#onset.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "onsetDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("onset[x]"));
+                                    r#onset =
+                                        Some(ConditionOnset::DateTime(map_access.next_value()?));
                                 }
                             }
                             Field::OnsetDateTimePrimitiveElement => {
-                                let r#enum = r#onset
-                                    .get_or_insert(ConditionOnset::DateTime(Default::default()));
-                                if let ConditionOnset::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_onsetDateTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#onset.get_or_insert(ConditionOnset::DateTime(
+                                        Default::default(),
+                                    ));
+                                    if let ConditionOnset::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_onsetDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_onset[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "onsetDateTime",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::OnsetAge => {
@@ -950,73 +1103,180 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                 r#onset = Some(ConditionOnset::Range(map_access.next_value()?));
                             }
                             Field::OnsetString => {
-                                let r#enum = r#onset
-                                    .get_or_insert(ConditionOnset::String(Default::default()));
-                                if let ConditionOnset::String(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#onset
+                                        .get_or_insert(ConditionOnset::String(Default::default()));
+                                    if let ConditionOnset::String(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "onsetString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("onset[x]"));
+                                    }
+                                } else {
+                                    if r#onset.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "onsetString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("onset[x]"));
+                                    r#onset =
+                                        Some(ConditionOnset::String(map_access.next_value()?));
                                 }
                             }
                             Field::OnsetStringPrimitiveElement => {
-                                let r#enum = r#onset
-                                    .get_or_insert(ConditionOnset::String(Default::default()));
-                                if let ConditionOnset::String(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_onsetString",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#onset
+                                        .get_or_insert(ConditionOnset::String(Default::default()));
+                                    if let ConditionOnset::String(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_onsetString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_onset[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "onsetString",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::AbatementDateTime => {
-                                let r#enum = r#abatement.get_or_insert(
-                                    ConditionAbatement::DateTime(Default::default()),
-                                );
-                                if let ConditionAbatement::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#abatement.get_or_insert(
+                                        ConditionAbatement::DateTime(Default::default()),
+                                    );
+                                    if let ConditionAbatement::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "abatementDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "abatement[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#abatement.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "abatementDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("abatement[x]"));
+                                    r#abatement = Some(ConditionAbatement::DateTime(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::AbatementDateTimePrimitiveElement => {
-                                let r#enum = r#abatement.get_or_insert(
-                                    ConditionAbatement::DateTime(Default::default()),
-                                );
-                                if let ConditionAbatement::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#abatement.get_or_insert(
+                                        ConditionAbatement::DateTime(Default::default()),
+                                    );
+                                    if let ConditionAbatement::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_abatementDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_abatementDateTime",
+                                            "_abatement[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_abatement[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "abatementDateTime",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::AbatementAge => {
@@ -1045,58 +1305,169 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                     Some(ConditionAbatement::Range(map_access.next_value()?));
                             }
                             Field::AbatementString => {
-                                let r#enum = r#abatement
-                                    .get_or_insert(ConditionAbatement::String(Default::default()));
-                                if let ConditionAbatement::String(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#abatement.get_or_insert(
+                                        ConditionAbatement::String(Default::default()),
+                                    );
+                                    if let ConditionAbatement::String(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "abatementString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "abatement[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#abatement.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "abatementString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("abatement[x]"));
+                                    r#abatement =
+                                        Some(ConditionAbatement::String(map_access.next_value()?));
                                 }
                             }
                             Field::AbatementStringPrimitiveElement => {
-                                let r#enum = r#abatement
-                                    .get_or_insert(ConditionAbatement::String(Default::default()));
-                                if let ConditionAbatement::String(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#abatement.get_or_insert(
+                                        ConditionAbatement::String(Default::default()),
+                                    );
+                                    if let ConditionAbatement::String(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_abatementString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_abatementString",
+                                            "_abatement[x]",
+                                        ));
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "abatementString",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::RecordedDate => {
+                                if _ctx.from_json {
+                                    let some = r#recorded_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "recordedDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#recorded_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "recordedDate",
+                                        ));
+                                    }
+                                    r#recorded_date = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::RecordedDatePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#recorded_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_recordedDate",
                                         ));
                                     }
                                     let super::super::serde_helpers::PrimitiveElementOwned {
                                         id,
                                         extension,
                                     } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
+                                    some.id = id;
+                                    some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_abatement[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "recordedDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "clinicalStatus",
+                                            "verificationStatus",
+                                            "category",
+                                            "severity",
+                                            "code",
+                                            "bodySite",
+                                            "subject",
+                                            "encounter",
+                                            "onsetDateTime",
+                                            "onsetAge",
+                                            "onsetPeriod",
+                                            "onsetRange",
+                                            "onsetString",
+                                            "abatementDateTime",
+                                            "abatementAge",
+                                            "abatementPeriod",
+                                            "abatementRange",
+                                            "abatementString",
+                                            "recordedDate",
+                                            "recorder",
+                                            "asserter",
+                                            "stage",
+                                            "evidence",
+                                            "note",
+                                        ],
+                                    ));
                                 }
-                            }
-                            Field::RecordedDate => {
-                                let some = r#recorded_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("recordedDate"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::RecordedDatePrimitiveElement => {
-                                let some = r#recorded_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_recordedDate"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Recorder => {
                                 if r#recorder.is_some() {

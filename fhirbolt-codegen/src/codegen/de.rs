@@ -36,7 +36,8 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
         .fields
         .iter()
         .map(|f| possible_fhir_names(f, enums))
-        .flatten();
+        .flatten()
+        .collect::<Vec<_>>();
 
     let field_enum_variants_tokens = r#struct
         .fields
@@ -48,7 +49,10 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
     let field_struct_assign_vars_tokens =
         r#struct.fields.iter().map(|f| field_struct_assign_var(f));
 
-    let deserialize_fields_tokens = r#struct.fields.iter().map(|f| deserialize_field(f, enums));
+    let deserialize_fields_tokens = r#struct
+        .fields
+        .iter()
+        .map(|f| deserialize_field(f, enums, all_possible_fields_names.clone()));
 
     quote! {
         impl<'de> serde::de::Deserialize<'de> for #stuct_name_ident {
@@ -245,25 +249,33 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
     }
 }
 
-fn deserialize_field(field: &RustFhirStructField, enums: &[RustFhirEnum]) -> TokenStream {
+fn deserialize_field(
+    field: &RustFhirStructField,
+    enums: &[RustFhirEnum],
+    all_possible_fields_names: Vec<String>,
+) -> TokenStream {
     if field.polymorph {
-        deserialize_enum(field, enums)
+        deserialize_enum(field, enums, all_possible_fields_names)
     } else {
         if field.r#type.contains_primitive {
-            deserialize_primitive(field)
+            deserialize_primitive(field, all_possible_fields_names)
         } else {
             deserialize_element(field)
         }
     }
 }
 
-fn deserialize_enum(field: &RustFhirStructField, enums: &[RustFhirEnum]) -> TokenStream {
+fn deserialize_enum(
+    field: &RustFhirStructField,
+    enums: &[RustFhirEnum],
+    all_possible_fields_names: Vec<String>,
+) -> TokenStream {
     let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
 
     let deserialize_enum_variants_tokens = r#enum
         .variants
         .iter()
-        .map(|v| deserialize_enum_variant(field, r#enum, v));
+        .map(|v| deserialize_enum_variant(field, r#enum, v, all_possible_fields_names.clone()));
 
     quote! {
         #(
@@ -276,6 +288,7 @@ fn deserialize_enum_variant(
     field: &RustFhirStructField,
     r#enum: &RustFhirEnum,
     variant: &RustFhirEnumVariant,
+    all_possible_fields_names: Vec<String>,
 ) -> TokenStream {
     let field_name_ident = format_ident!("r#{}", field.name);
     let enum_ident = format_ident!("{}", r#enum.name);
@@ -304,33 +317,51 @@ fn deserialize_enum_variant(
     if variant.r#type.contains_primitive {
         quote! {
             Field::#field_enum_type_name => {
-                let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
+                if _ctx.from_json {
+                    let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
 
-                if let #enum_ident::#variant_ident(variant) = r#enum {
-                    if variant.value.is_some() {
+                    if let #enum_ident::#variant_ident(variant) = r#enum {
+                        if variant.value.is_some() {
+                            return Err(serde::de::Error::duplicate_field(#fhir_name));
+                        }
+
+                        let value: #intermediate_type_tokens = map_access.next_value()?;
+
+                        variant.value = Some(#convert_intermediate_type_tokens);
+                    } else {
+                        return Err(serde::de::Error::duplicate_field(#fhir_name_poly));
+                    }
+                } else {
+                    if #field_name_ident.is_some() {
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
-
-                    let value: #intermediate_type_tokens = map_access.next_value()?;
-
-                    variant.value = Some(#convert_intermediate_type_tokens);
-                } else {
-                    return Err(serde::de::Error::duplicate_field(#fhir_name_poly));
+                    #field_name_ident = Some(#enum_ident::#variant_ident(map_access.next_value()?));
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
+                if _ctx.from_json {
+                    let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
 
-                if let #enum_ident::#variant_ident(variant) = r#enum {
-                    if variant.id.is_some() || !variant.extension.is_empty() {
-                        return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name));
+                    if let #enum_ident::#variant_ident(variant) = r#enum {
+                        if variant.id.is_some() || !variant.extension.is_empty() {
+                            return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name));
+                        }
+
+                        let super::super::serde_helpers::PrimitiveElementOwned { id, extension } = map_access.next_value()?;
+                        variant.id = id;
+                        variant.extension = extension;
+                    } else {
+                        return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name_poly));
                     }
-
-                    let super::super::serde_helpers::PrimitiveElementOwned { id, extension } = map_access.next_value()?;
-                    variant.id = id;
-                    variant.extension = extension;
                 } else {
-                    return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name_poly));
+                    return Err(serde::de::Error::unknown_field(
+                        #fhir_name,
+                        &[
+                            #(
+                                #all_possible_fields_names,
+                            )*
+                        ]
+                    ));
                 }
             },
         }
@@ -346,7 +377,10 @@ fn deserialize_enum_variant(
     }
 }
 
-fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
+fn deserialize_primitive(
+    field: &RustFhirStructField,
+    all_possible_fields_names: Vec<String>,
+) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
@@ -380,38 +414,56 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                let values: Vec<Option<#intermediate_type_tokens>> = map_access.next_value()?;
+                if _ctx.from_json {
+                    let values: Vec<Option<#intermediate_type_tokens>> = map_access.next_value()?;
 
-                let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
-                if vec.len() != values.len() {
-                    return Err(serde::de::Error::invalid_length(values.len(), &"primitive elements length"));
-                }
-                if vec.iter().any(|v| v.value.is_some()) {
-                    return Err(serde::de::Error::duplicate_field(#fhir_name));
-                }
-
-                for (i, value) in values.into_iter().enumerate() {
-                    if let Some(value) = value {
-                        vec[i].value = Some(#convert_intermediate_type_tokens);
+                    let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
+                    if vec.len() != values.len() {
+                        return Err(serde::de::Error::invalid_length(values.len(), &"primitive elements length"));
                     }
+                    if vec.iter().any(|v| v.value.is_some()) {
+                        return Err(serde::de::Error::duplicate_field(#fhir_name));
+                    }
+
+                    for (i, value) in values.into_iter().enumerate() {
+                        if let Some(value) = value {
+                            vec[i].value = Some(#convert_intermediate_type_tokens);
+                        }
+                    }
+                } else {
+                    if #field_name_ident.is_some() {
+                        return Err(serde::de::Error::duplicate_field(#fhir_name));
+                    }
+                    #field_name_ident = Some(map_access.next_value()?);
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                let elements: Vec<Option<super::super::serde_helpers::PrimitiveElementOwned>> = map_access.next_value()?;
+                if _ctx.from_json {
+                    let elements: Vec<Option<super::super::serde_helpers::PrimitiveElementOwned>> = map_access.next_value()?;
 
-                let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(elements.len()).collect::<Vec<_>>());
-                if vec.len() != elements.len() {
-                    return Err(serde::de::Error::invalid_length(elements.len(), &"primitive values length"));
-                }
-                if vec.iter().any(|e| e.id.is_some() || !e.extension.is_empty()) {
-                    return Err(serde::de::Error::duplicate_field(#primitive_element_name));
-                }
-
-                for (i, element) in elements.into_iter().enumerate() {
-                    if let Some(element) = element {
-                    vec[i].id = element.id;
-                    vec[i].extension = element.extension;
+                    let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(elements.len()).collect::<Vec<_>>());
+                    if vec.len() != elements.len() {
+                        return Err(serde::de::Error::invalid_length(elements.len(), &"primitive values length"));
                     }
+                    if vec.iter().any(|e| e.id.is_some() || !e.extension.is_empty()) {
+                        return Err(serde::de::Error::duplicate_field(#primitive_element_name));
+                    }
+
+                    for (i, element) in elements.into_iter().enumerate() {
+                        if let Some(element) = element {
+                        vec[i].id = element.id;
+                        vec[i].extension = element.extension;
+                        }
+                    }
+                } else {
+                    return Err(serde::de::Error::unknown_field(
+                        #fhir_name,
+                        &[
+                            #(
+                                #all_possible_fields_names,
+                            )*
+                        ]
+                    ));
                 }
             },
         }
@@ -435,20 +487,38 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
 
         quote! {
             Field::#field_enum_type_name => {
-                let some = #field_name_ident.get_or_insert(Default::default());
+                if _ctx.from_json {
+                    let some = #field_name_ident.get_or_insert(Default::default());
 
-                #deserialize_value_tokens
+                    #deserialize_value_tokens
+                } else {
+                    if #field_name_ident.is_some() {
+                        return Err(serde::de::Error::duplicate_field(#fhir_name));
+                    }
+                    #field_name_ident = Some(map_access.next_value()?);
+                }
             },
             Field::#field_enum_type_primitive_element_name => {
-                let some = #field_name_ident.get_or_insert(Default::default());
+                if _ctx.from_json {
+                    let some = #field_name_ident.get_or_insert(Default::default());
 
-                if some.id.is_some() #check_extension_is_empty_tokens {
-                    return Err(serde::de::Error::duplicate_field(#primitive_element_name));
+                    if some.id.is_some() #check_extension_is_empty_tokens {
+                        return Err(serde::de::Error::duplicate_field(#primitive_element_name));
+                    }
+
+                    let super::super::serde_helpers::PrimitiveElementOwned { id, #extension_tokens } = map_access.next_value()?;
+                    some.id = id;
+                    #assign_extension_tokens
+                } else {
+                    return Err(serde::de::Error::unknown_field(
+                        #fhir_name,
+                        &[
+                            #(
+                                #all_possible_fields_names,
+                            )*
+                        ]
+                    ));
                 }
-
-                let super::super::serde_helpers::PrimitiveElementOwned { id, #extension_tokens } = map_access.next_value()?;
-                some.id = id;
-                #assign_extension_tokens
             },
         }
     }

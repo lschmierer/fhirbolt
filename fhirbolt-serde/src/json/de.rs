@@ -45,6 +45,7 @@ where
     with_context(
         DeserializationContext {
             config: config.unwrap_or_default(),
+            from_json: true,
         },
         || serde_json::from_reader(rdr),
     )
@@ -85,6 +86,7 @@ where
     with_context(
         DeserializationContext {
             config: config.unwrap_or_default(),
+            from_json: true,
         },
         || serde_json::from_slice(v),
     )
@@ -125,6 +127,7 @@ where
     with_context(
         DeserializationContext {
             config: config.unwrap_or_default(),
+            from_json: true,
         },
         || serde_json::from_str(s),
     )
@@ -170,6 +173,7 @@ where
     with_context(
         DeserializationContext {
             config: config.unwrap_or_default(),
+            from_json: true,
         },
         || serde_json::from_value(value),
     )

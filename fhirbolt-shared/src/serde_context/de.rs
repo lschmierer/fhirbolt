@@ -19,6 +19,8 @@ where
 pub struct DeserializationContext {
     // Deserialization config
     pub config: DeserializationConfig,
+    // The JSON data model differs from the FHIR data model
+    pub from_json: bool,
 }
 
 /// Deserialization configuration options.

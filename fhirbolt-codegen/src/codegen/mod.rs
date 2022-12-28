@@ -160,7 +160,7 @@ fn generate_struct(
     let doc_comment = format_doc_comment(&r#struct.doc_comment);
 
     let derive_serialize_tokens = if r#struct.is_primitive {
-        quote! {, serde::Serialize}
+        quote! {, serde::Serialize, serde::Deserialize}
     } else {
         quote! {}
     };
@@ -208,7 +208,9 @@ fn generate_field(field: &RustFhirStructField, is_primitive: bool, is_xhtml: boo
         (true, false, "value") => {
             quote! { #[serde(skip_serializing_if = "Option::is_none")] }
         }
-        (true, _, "extension") => quote! { #[serde(skip_serializing_if = "Vec::is_empty")] },
+        (true, _, "extension") => {
+            quote! { #[serde(default, skip_serializing_if = "Vec::is_empty")] }
+        }
         _ => quote! {},
     };
 
