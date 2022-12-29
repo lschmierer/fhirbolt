@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
 #[derive(Debug, Clone)]
 pub enum AuditEventEntityDetailValue {
@@ -107,7 +107,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
             Type,
             #[serde(rename = "_type")]
             TypePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -150,44 +150,84 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Address => {
-                                let some = r#address.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("address"));
+                                if _ctx.from_json {
+                                    let some = r#address.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("address"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#address.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("address"));
+                                    }
+                                    r#address = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::AddressPrimitiveElement => {
-                                let some = r#address.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_address"));
+                                if _ctx.from_json {
+                                    let some = r#address.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_address"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "address",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "address",
+                                            "type",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Type => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TypePrimitiveElement => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_type"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "type",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "address",
+                                            "type",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -422,7 +462,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
             Network,
             #[serde(rename = "purposeOfUse")]
             PurposeOfUse,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -493,64 +533,153 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                 r#who = Some(map_access.next_value()?);
                             }
                             Field::AltId => {
-                                let some = r#alt_id.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("altId"));
+                                if _ctx.from_json {
+                                    let some = r#alt_id.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("altId"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#alt_id.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("altId"));
+                                    }
+                                    r#alt_id = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::AltIdPrimitiveElement => {
-                                let some = r#alt_id.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_altId"));
+                                if _ctx.from_json {
+                                    let some = r#alt_id.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_altId"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "altId",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "role",
+                                            "who",
+                                            "altId",
+                                            "name",
+                                            "requestor",
+                                            "location",
+                                            "policy",
+                                            "media",
+                                            "network",
+                                            "purposeOfUse",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "role",
+                                            "who",
+                                            "altId",
+                                            "name",
+                                            "requestor",
+                                            "location",
+                                            "policy",
+                                            "media",
+                                            "network",
+                                            "purposeOfUse",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Requestor => {
-                                let some = r#requestor.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("requestor"));
+                                if _ctx.from_json {
+                                    let some = r#requestor.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("requestor"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#requestor.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("requestor"));
+                                    }
+                                    r#requestor = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::RequestorPrimitiveElement => {
-                                let some = r#requestor.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_requestor"));
+                                if _ctx.from_json {
+                                    let some = r#requestor.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_requestor",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "requestor",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "role",
+                                            "who",
+                                            "altId",
+                                            "name",
+                                            "requestor",
+                                            "location",
+                                            "policy",
+                                            "media",
+                                            "network",
+                                            "purposeOfUse",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Location => {
                                 if r#location.is_some() {
@@ -559,53 +688,82 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                 r#location = Some(map_access.next_value()?);
                             }
                             Field::Policy => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#policy.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("policy"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#policy.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("policy"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#policy.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("policy"));
+                                    }
+                                    r#policy = Some(map_access.next_value()?);
                                 }
                             }
                             Field::PolicyPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#policy.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_policy"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#policy.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_policy"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "policy",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "role",
+                                            "who",
+                                            "altId",
+                                            "name",
+                                            "requestor",
+                                            "location",
+                                            "policy",
+                                            "media",
+                                            "network",
+                                            "purposeOfUse",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Media => {
@@ -762,7 +920,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
             Observer,
             #[serde(rename = "type")]
             Type,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -806,24 +964,45 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Site => {
-                                let some = r#site.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("site"));
+                                if _ctx.from_json {
+                                    let some = r#site.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("site"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#site.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("site"));
+                                    }
+                                    r#site = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::SitePrimitiveElement => {
-                                let some = r#site.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_site"));
+                                if _ctx.from_json {
+                                    let some = r#site.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_site"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "site",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "site",
+                                            "observer",
+                                            "type",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Observer => {
                                 if r#observer.is_some() {
@@ -990,7 +1169,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
             ValueBase64Binary,
             #[serde(rename = "_valueBase64Binary")]
             ValueBase64BinaryPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1033,95 +1212,174 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TypePrimitiveElement => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_type"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "type",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "valueString",
+                                            "valueBase64Binary",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::ValueString => {
-                                let r#enum = r#value.get_or_insert(
-                                    AuditEventEntityDetailValue::String(Default::default()),
-                                );
-                                if let AuditEventEntityDetailValue::String(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        AuditEventEntityDetailValue::String(Default::default()),
+                                    );
+                                    if let AuditEventEntityDetailValue::String(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(AuditEventEntityDetailValue::String(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueStringPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    AuditEventEntityDetailValue::String(Default::default()),
-                                );
-                                if let AuditEventEntityDetailValue::String(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueString",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        AuditEventEntityDetailValue::String(Default::default()),
+                                    );
+                                    if let AuditEventEntityDetailValue::String(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueString",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "valueString",
+                                            "valueBase64Binary",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueBase64Binary => {
-                                let r#enum = r#value.get_or_insert(
-                                    AuditEventEntityDetailValue::Base64Binary(Default::default()),
-                                );
-                                if let AuditEventEntityDetailValue::Base64Binary(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        AuditEventEntityDetailValue::Base64Binary(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let AuditEventEntityDetailValue::Base64Binary(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBase64Binary",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBase64Binary",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(AuditEventEntityDetailValue::Base64Binary(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueBase64BinaryPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    AuditEventEntityDetailValue::Base64Binary(Default::default()),
-                                );
-                                if let AuditEventEntityDetailValue::Base64Binary(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBase64Binary",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        AuditEventEntityDetailValue::Base64Binary(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let AuditEventEntityDetailValue::Base64Binary(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBase64Binary",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBase64Binary",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "valueString",
+                                            "valueBase64Binary",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1329,7 +1587,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
             QueryPrimitiveElement,
             #[serde(rename = "detail")]
             Detail,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1409,64 +1667,151 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                                 r#security_label = Some(map_access.next_value()?);
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "what",
+                                            "type",
+                                            "role",
+                                            "lifecycle",
+                                            "securityLabel",
+                                            "name",
+                                            "description",
+                                            "query",
+                                            "detail",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Description => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#description.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    r#description = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DescriptionPrimitiveElement => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_description",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "description",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "what",
+                                            "type",
+                                            "role",
+                                            "lifecycle",
+                                            "securityLabel",
+                                            "name",
+                                            "description",
+                                            "query",
+                                            "detail",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Query => {
-                                let some = r#query.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("query"));
+                                if _ctx.from_json {
+                                    let some = r#query.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("query"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#query.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("query"));
+                                    }
+                                    r#query = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::QueryPrimitiveElement => {
-                                let some = r#query.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_query"));
+                                if _ctx.from_json {
+                                    let some = r#query.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_query"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "query",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "what",
+                                            "type",
+                                            "role",
+                                            "lifecycle",
+                                            "securityLabel",
+                                            "name",
+                                            "description",
+                                            "query",
+                                            "detail",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Detail => {
                                 if r#detail.is_some() {
@@ -1783,7 +2128,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
             Source,
             #[serde(rename = "entity")]
             Entity,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1842,46 +2187,118 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "subtype",
+                                            "action",
+                                            "period",
+                                            "recorded",
+                                            "outcome",
+                                            "outcomeDesc",
+                                            "purposeOfEvent",
+                                            "agent",
+                                            "source",
+                                            "entity",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "subtype",
+                                            "action",
+                                            "period",
+                                            "recorded",
+                                            "outcome",
+                                            "outcomeDesc",
+                                            "purposeOfEvent",
+                                            "agent",
+                                            "source",
+                                            "entity",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -1922,24 +2339,58 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                 r#subtype = Some(map_access.next_value()?);
                             }
                             Field::Action => {
-                                let some = r#action.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("action"));
+                                if _ctx.from_json {
+                                    let some = r#action.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("action"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#action.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("action"));
+                                    }
+                                    r#action = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ActionPrimitiveElement => {
-                                let some = r#action.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_action"));
+                                if _ctx.from_json {
+                                    let some = r#action.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_action"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "action",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "subtype",
+                                            "action",
+                                            "period",
+                                            "recorded",
+                                            "outcome",
+                                            "outcomeDesc",
+                                            "purposeOfEvent",
+                                            "agent",
+                                            "source",
+                                            "entity",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Period => {
                                 if r#period.is_some() {
@@ -1948,64 +2399,172 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                 r#period = Some(map_access.next_value()?);
                             }
                             Field::Recorded => {
-                                let some = r#recorded.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("recorded"));
+                                if _ctx.from_json {
+                                    let some = r#recorded.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("recorded"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#recorded.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("recorded"));
+                                    }
+                                    r#recorded = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::RecordedPrimitiveElement => {
-                                let some = r#recorded.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_recorded"));
+                                if _ctx.from_json {
+                                    let some = r#recorded.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_recorded"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "recorded",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "subtype",
+                                            "action",
+                                            "period",
+                                            "recorded",
+                                            "outcome",
+                                            "outcomeDesc",
+                                            "purposeOfEvent",
+                                            "agent",
+                                            "source",
+                                            "entity",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Outcome => {
-                                let some = r#outcome.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("outcome"));
+                                if _ctx.from_json {
+                                    let some = r#outcome.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("outcome"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#outcome.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("outcome"));
+                                    }
+                                    r#outcome = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::OutcomePrimitiveElement => {
-                                let some = r#outcome.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_outcome"));
+                                if _ctx.from_json {
+                                    let some = r#outcome.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_outcome"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "outcome",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "subtype",
+                                            "action",
+                                            "period",
+                                            "recorded",
+                                            "outcome",
+                                            "outcomeDesc",
+                                            "purposeOfEvent",
+                                            "agent",
+                                            "source",
+                                            "entity",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::OutcomeDesc => {
-                                let some = r#outcome_desc.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("outcomeDesc"));
+                                if _ctx.from_json {
+                                    let some = r#outcome_desc.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "outcomeDesc",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#outcome_desc.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "outcomeDesc",
+                                        ));
+                                    }
+                                    r#outcome_desc = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::OutcomeDescPrimitiveElement => {
-                                let some = r#outcome_desc.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_outcomeDesc"));
+                                if _ctx.from_json {
+                                    let some = r#outcome_desc.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_outcomeDesc",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "outcomeDesc",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "type",
+                                            "subtype",
+                                            "action",
+                                            "period",
+                                            "recorded",
+                                            "outcome",
+                                            "outcomeDesc",
+                                            "purposeOfEvent",
+                                            "agent",
+                                            "source",
+                                            "entity",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::PurposeOfEvent => {
                                 if r#purpose_of_event.is_some() {

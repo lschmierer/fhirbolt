@@ -65,6 +65,7 @@ impl ElementPath {
             .map(|t| *t)
     }
 
+    #[allow(dead_code)]
     pub fn currently_is_empty_resource(&self) -> bool {
         self.type_stack.len() == 1
             && self.type_stack[0].len() == 1
@@ -87,6 +88,7 @@ impl ElementPath {
         contained_resource
     }
 
+    #[allow(dead_code)]
     pub fn current_element_is_primitive(&self) -> bool {
         let current_type_path = self.current_type_path();
 

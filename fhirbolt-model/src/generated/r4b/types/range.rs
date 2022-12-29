@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit.\n\nNeed to be able to specify ranges of values."]
 #[derive(Default, Debug, Clone)]
 pub struct Range {
@@ -52,7 +52,7 @@ impl<'de> serde::de::Deserialize<'de> for Range {
             Low,
             #[serde(rename = "high")]
             High,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct MarketingStatus {
@@ -92,7 +92,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
             RestoreDate,
             #[serde(rename = "_restoreDate")]
             RestoreDatePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -162,24 +162,53 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                                 r#date_range = Some(map_access.next_value()?);
                             }
                             Field::RestoreDate => {
-                                let some = r#restore_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("restoreDate"));
+                                if _ctx.from_json {
+                                    let some = r#restore_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "restoreDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#restore_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "restoreDate",
+                                        ));
+                                    }
+                                    r#restore_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::RestoreDatePrimitiveElement => {
-                                let some = r#restore_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_restoreDate"));
+                                if _ctx.from_json {
+                                    let some = r#restore_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_restoreDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "restoreDate",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "dateRange",
+                                            "restoreDate",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the activity being defined.  Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
 #[derive(Debug, Clone)]
 pub enum ActivityDefinitionSubject {
@@ -114,7 +114,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionParticipant {
             TypePrimitiveElement,
             #[serde(rename = "role")]
             Role,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -160,24 +160,38 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionParticipant {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TypePrimitiveElement => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_type"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "type",
+                                        &["id", "extension", "modifierExtension", "type", "role"],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Role => {
                                 if r#role.is_some() {
@@ -286,7 +300,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionDynamicValue {
             PathPrimitiveElement,
             #[serde(rename = "expression")]
             Expression,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -332,24 +346,44 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionDynamicValue {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Path => {
-                                let some = r#path.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("path"));
+                                if _ctx.from_json {
+                                    let some = r#path.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("path"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#path.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("path"));
+                                    }
+                                    r#path = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PathPrimitiveElement => {
-                                let some = r#path.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_path"));
+                                if _ctx.from_json {
+                                    let some = r#path.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_path"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "path",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "path",
+                                            "expression",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Expression => {
                                 if r#expression.is_some() {
@@ -1348,7 +1382,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
             TransformPrimitiveElement,
             #[serde(rename = "dynamicValue")]
             DynamicValue,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1448,46 +1482,204 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -1516,24 +1708,101 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Url => {
-                                let some = r#url.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("url"));
+                                if _ctx.from_json {
+                                    let some = r#url.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("url"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#url.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("url"));
+                                    }
+                                    r#url = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::UrlPrimitiveElement => {
-                                let some = r#url.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_url"));
+                                if _ctx.from_json {
+                                    let some = r#url.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_url"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "url",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Identifier => {
                                 if r#identifier.is_some() {
@@ -1542,124 +1811,592 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Version => {
-                                let some = r#version.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("version"));
+                                if _ctx.from_json {
+                                    let some = r#version.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("version"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#version.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("version"));
+                                    }
+                                    r#version = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::VersionPrimitiveElement => {
-                                let some = r#version.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_version"));
+                                if _ctx.from_json {
+                                    let some = r#version.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_version"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "version",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Title => {
-                                let some = r#title.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("title"));
+                                if _ctx.from_json {
+                                    let some = r#title.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("title"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#title.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("title"));
+                                    }
+                                    r#title = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TitlePrimitiveElement => {
-                                let some = r#title.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_title"));
+                                if _ctx.from_json {
+                                    let some = r#title.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_title"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "title",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Subtitle => {
-                                let some = r#subtitle.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("subtitle"));
+                                if _ctx.from_json {
+                                    let some = r#subtitle.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("subtitle"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#subtitle.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("subtitle"));
+                                    }
+                                    r#subtitle = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::SubtitlePrimitiveElement => {
-                                let some = r#subtitle.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_subtitle"));
+                                if _ctx.from_json {
+                                    let some = r#subtitle.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_subtitle"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "subtitle",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Status => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#status.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    r#status = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::StatusPrimitiveElement => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_status"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "status",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Experimental => {
-                                let some = r#experimental.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("experimental"));
+                                if _ctx.from_json {
+                                    let some = r#experimental.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "experimental",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#experimental.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "experimental",
+                                        ));
+                                    }
+                                    r#experimental = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ExperimentalPrimitiveElement => {
-                                let some = r#experimental.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_experimental"));
+                                if _ctx.from_json {
+                                    let some = r#experimental.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_experimental",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "experimental",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::SubjectCodeableConcept => {
                                 if r#subject.is_some() {
@@ -1682,80 +2419,321 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 ));
                             }
                             Field::SubjectCanonical => {
-                                let r#enum = r#subject.get_or_insert(
-                                    ActivityDefinitionSubject::Canonical(Default::default()),
-                                );
-                                if let ActivityDefinitionSubject::Canonical(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#subject.get_or_insert(
+                                        ActivityDefinitionSubject::Canonical(Default::default()),
+                                    );
+                                    if let ActivityDefinitionSubject::Canonical(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "subjectCanonical",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "subject[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#subject.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "subjectCanonical",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("subject[x]"));
+                                    r#subject = Some(ActivityDefinitionSubject::Canonical(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::SubjectCanonicalPrimitiveElement => {
-                                let r#enum = r#subject.get_or_insert(
-                                    ActivityDefinitionSubject::Canonical(Default::default()),
-                                );
-                                if let ActivityDefinitionSubject::Canonical(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#subject.get_or_insert(
+                                        ActivityDefinitionSubject::Canonical(Default::default()),
+                                    );
+                                    if let ActivityDefinitionSubject::Canonical(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_subjectCanonical",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_subjectCanonical",
+                                            "_subject[x]",
+                                        ));
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "subjectCanonical",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Date => {
+                                if _ctx.from_json {
+                                    let some = r#date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("date"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("date"));
+                                    }
+                                    r#date = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DatePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_date"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "date",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Publisher => {
+                                if _ctx.from_json {
+                                    let some = r#publisher.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("publisher"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#publisher.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("publisher"));
+                                    }
+                                    r#publisher = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::PublisherPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#publisher.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_publisher",
                                         ));
                                     }
                                     let super::super::serde_helpers::PrimitiveElementOwned {
                                         id,
                                         extension,
                                     } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
+                                    some.id = id;
+                                    some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_subject[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "publisher",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                            }
-                            Field::Date => {
-                                let some = r#date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("date"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::DatePrimitiveElement => {
-                                let some = r#date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_date"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Publisher => {
-                                let some = r#publisher.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("publisher"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::PublisherPrimitiveElement => {
-                                let some = r#publisher.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_publisher"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Contact => {
                                 if r#contact.is_some() {
@@ -1764,24 +2742,107 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#contact = Some(map_access.next_value()?);
                             }
                             Field::Description => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#description.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    r#description = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DescriptionPrimitiveElement => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_description",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "description",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::UseContext => {
                                 if r#use_context.is_some() {
@@ -1796,108 +2857,503 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#jurisdiction = Some(map_access.next_value()?);
                             }
                             Field::Purpose => {
-                                let some = r#purpose.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("purpose"));
+                                if _ctx.from_json {
+                                    let some = r#purpose.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("purpose"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#purpose.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("purpose"));
+                                    }
+                                    r#purpose = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PurposePrimitiveElement => {
-                                let some = r#purpose.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_purpose"));
+                                if _ctx.from_json {
+                                    let some = r#purpose.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_purpose"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "purpose",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Usage => {
-                                let some = r#usage.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("usage"));
+                                if _ctx.from_json {
+                                    let some = r#usage.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("usage"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#usage.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("usage"));
+                                    }
+                                    r#usage = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::UsagePrimitiveElement => {
-                                let some = r#usage.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_usage"));
+                                if _ctx.from_json {
+                                    let some = r#usage.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_usage"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "usage",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Copyright => {
-                                let some = r#copyright.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("copyright"));
+                                if _ctx.from_json {
+                                    let some = r#copyright.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("copyright"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#copyright.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("copyright"));
+                                    }
+                                    r#copyright = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::CopyrightPrimitiveElement => {
-                                let some = r#copyright.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_copyright"));
+                                if _ctx.from_json {
+                                    let some = r#copyright.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_copyright",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "copyright",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::ApprovalDate => {
-                                let some = r#approval_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("approvalDate"));
+                                if _ctx.from_json {
+                                    let some = r#approval_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "approvalDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#approval_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "approvalDate",
+                                        ));
+                                    }
+                                    r#approval_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ApprovalDatePrimitiveElement => {
-                                let some = r#approval_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_approvalDate"));
+                                if _ctx.from_json {
+                                    let some = r#approval_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_approvalDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "approvalDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::LastReviewDate => {
-                                let some = r#last_review_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "lastReviewDate",
-                                    ));
+                                if _ctx.from_json {
+                                    let some = r#last_review_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "lastReviewDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#last_review_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "lastReviewDate",
+                                        ));
+                                    }
+                                    r#last_review_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LastReviewDatePrimitiveElement => {
-                                let some = r#last_review_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_lastReviewDate",
+                                if _ctx.from_json {
+                                    let some = r#last_review_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_lastReviewDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "lastReviewDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::EffectivePeriod => {
                                 if r#effective_period.is_some() {
@@ -1946,94 +3402,325 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#related_artifact = Some(map_access.next_value()?);
                             }
                             Field::Library => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#library.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("library"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#library.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("library"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#library.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("library"));
+                                    }
+                                    r#library = Some(map_access.next_value()?);
                                 }
                             }
                             Field::LibraryPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#library.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_library"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#library.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_library"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "library",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Kind => {
-                                let some = r#kind.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("kind"));
+                                if _ctx.from_json {
+                                    let some = r#kind.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("kind"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#kind.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("kind"));
+                                    }
+                                    r#kind = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::KindPrimitiveElement => {
-                                let some = r#kind.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_kind"));
+                                if _ctx.from_json {
+                                    let some = r#kind.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_kind"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "kind",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Profile => {
-                                let some = r#profile.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("profile"));
+                                if _ctx.from_json {
+                                    let some = r#profile.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("profile"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#profile.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("profile"));
+                                    }
+                                    r#profile = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ProfilePrimitiveElement => {
-                                let some = r#profile.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_profile"));
+                                if _ctx.from_json {
+                                    let some = r#profile.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_profile"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "profile",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Code => {
                                 if r#code.is_some() {
@@ -2042,64 +3729,301 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#code = Some(map_access.next_value()?);
                             }
                             Field::Intent => {
-                                let some = r#intent.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("intent"));
+                                if _ctx.from_json {
+                                    let some = r#intent.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("intent"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#intent.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("intent"));
+                                    }
+                                    r#intent = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::IntentPrimitiveElement => {
-                                let some = r#intent.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_intent"));
+                                if _ctx.from_json {
+                                    let some = r#intent.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_intent"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "intent",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Priority => {
-                                let some = r#priority.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("priority"));
+                                if _ctx.from_json {
+                                    let some = r#priority.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("priority"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#priority.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("priority"));
+                                    }
+                                    r#priority = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PriorityPrimitiveElement => {
-                                let some = r#priority.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_priority"));
+                                if _ctx.from_json {
+                                    let some = r#priority.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_priority"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "priority",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::DoNotPerform => {
-                                let some = r#do_not_perform.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("doNotPerform"));
+                                if _ctx.from_json {
+                                    let some = r#do_not_perform.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "doNotPerform",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#do_not_perform.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "doNotPerform",
+                                        ));
+                                    }
+                                    r#do_not_perform = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DoNotPerformPrimitiveElement => {
-                                let some = r#do_not_perform.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_doNotPerform"));
+                                if _ctx.from_json {
+                                    let some = r#do_not_perform.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_doNotPerform",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "doNotPerform",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::TimingTiming => {
                                 if r#timing.is_some() {
@@ -2110,39 +4034,122 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 ));
                             }
                             Field::TimingDateTime => {
-                                let r#enum = r#timing.get_or_insert(
-                                    ActivityDefinitionTiming::DateTime(Default::default()),
-                                );
-                                if let ActivityDefinitionTiming::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#timing.get_or_insert(
+                                        ActivityDefinitionTiming::DateTime(Default::default()),
+                                    );
+                                    if let ActivityDefinitionTiming::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "timingDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("timing[x]"));
+                                    }
+                                } else {
+                                    if r#timing.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "timingDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("timing[x]"));
+                                    r#timing = Some(ActivityDefinitionTiming::DateTime(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::TimingDateTimePrimitiveElement => {
-                                let r#enum = r#timing.get_or_insert(
-                                    ActivityDefinitionTiming::DateTime(Default::default()),
-                                );
-                                if let ActivityDefinitionTiming::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#timing.get_or_insert(
+                                        ActivityDefinitionTiming::DateTime(Default::default()),
+                                    );
+                                    if let ActivityDefinitionTiming::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_timingDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_timingDateTime",
+                                            "_timing[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_timing[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "timingDateTime",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::TimingAge => {
@@ -2252,24 +4259,103 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                                 r#observation_result_requirement = Some(map_access.next_value()?);
                             }
                             Field::Transform => {
-                                let some = r#transform.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("transform"));
+                                if _ctx.from_json {
+                                    let some = r#transform.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("transform"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#transform.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("transform"));
+                                    }
+                                    r#transform = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TransformPrimitiveElement => {
-                                let some = r#transform.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_transform"));
+                                if _ctx.from_json {
+                                    let some = r#transform.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_transform",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "transform",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "subtitle",
+                                            "status",
+                                            "experimental",
+                                            "subjectCodeableConcept",
+                                            "subjectReference",
+                                            "subjectCanonical",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "usage",
+                                            "copyright",
+                                            "approvalDate",
+                                            "lastReviewDate",
+                                            "effectivePeriod",
+                                            "topic",
+                                            "author",
+                                            "editor",
+                                            "reviewer",
+                                            "endorser",
+                                            "relatedArtifact",
+                                            "library",
+                                            "kind",
+                                            "profile",
+                                            "code",
+                                            "intent",
+                                            "priority",
+                                            "doNotPerform",
+                                            "timingTiming",
+                                            "timingDateTime",
+                                            "timingAge",
+                                            "timingPeriod",
+                                            "timingRange",
+                                            "timingDuration",
+                                            "location",
+                                            "participant",
+                                            "productReference",
+                                            "productCodeableConcept",
+                                            "quantity",
+                                            "dosage",
+                                            "bodySite",
+                                            "specimenRequirement",
+                                            "observationRequirement",
+                                            "observationResultRequirement",
+                                            "transform",
+                                            "dynamicValue",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::DynamicValue => {
                                 if r#dynamic_value.is_some() {

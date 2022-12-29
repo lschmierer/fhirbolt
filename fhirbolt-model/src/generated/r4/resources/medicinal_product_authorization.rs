@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Date of procedure."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
@@ -92,7 +92,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
             LegalStatusOfSupply,
             #[serde(rename = "validityPeriod")]
             ValidityPeriod,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -313,7 +313,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
             DateDateTimePrimitiveElement,
             #[serde(rename = "application")]
             Application,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -381,49 +381,77 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                 ));
                             }
                             Field::DateDateTime => {
-                                let r#enum = r#date.get_or_insert(
-                                    MedicinalProductAuthorizationProcedureDate::DateTime(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let MedicinalProductAuthorizationProcedureDate::DateTime(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#date.get_or_insert(
+                                        MedicinalProductAuthorizationProcedureDate::DateTime(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let MedicinalProductAuthorizationProcedureDate::DateTime(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "dateDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("date[x]"));
+                                    }
+                                } else {
+                                    if r#date.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "dateDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("date[x]"));
+                                    r#date =
+                                        Some(MedicinalProductAuthorizationProcedureDate::DateTime(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DateDateTimePrimitiveElement => {
-                                let r#enum = r#date.get_or_insert(
-                                    MedicinalProductAuthorizationProcedureDate::DateTime(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let MedicinalProductAuthorizationProcedureDate::DateTime(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_dateDateTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#date.get_or_insert(
+                                        MedicinalProductAuthorizationProcedureDate::DateTime(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let MedicinalProductAuthorizationProcedureDate::DateTime(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_dateDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_date[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_date[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "dateDateTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "type",
+                                            "datePeriod",
+                                            "dateDateTime",
+                                            "application",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Application => {
@@ -785,7 +813,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
             Regulator,
             #[serde(rename = "procedure")]
             Procedure,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -854,46 +882,128 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "subject",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "statusDate",
+                                            "restoreDate",
+                                            "validityPeriod",
+                                            "dataExclusivityPeriod",
+                                            "dateOfFirstAuthorization",
+                                            "internationalBirthDate",
+                                            "legalBasis",
+                                            "jurisdictionalAuthorization",
+                                            "holder",
+                                            "regulator",
+                                            "procedure",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "subject",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "statusDate",
+                                            "restoreDate",
+                                            "validityPeriod",
+                                            "dataExclusivityPeriod",
+                                            "dateOfFirstAuthorization",
+                                            "internationalBirthDate",
+                                            "legalBasis",
+                                            "jurisdictionalAuthorization",
+                                            "holder",
+                                            "regulator",
+                                            "procedure",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -952,44 +1062,134 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                 r#status = Some(map_access.next_value()?);
                             }
                             Field::StatusDate => {
-                                let some = r#status_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("statusDate"));
+                                if _ctx.from_json {
+                                    let some = r#status_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#status_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusDate",
+                                        ));
+                                    }
+                                    r#status_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::StatusDatePrimitiveElement => {
-                                let some = r#status_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_statusDate"));
+                                if _ctx.from_json {
+                                    let some = r#status_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_statusDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "statusDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "subject",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "statusDate",
+                                            "restoreDate",
+                                            "validityPeriod",
+                                            "dataExclusivityPeriod",
+                                            "dateOfFirstAuthorization",
+                                            "internationalBirthDate",
+                                            "legalBasis",
+                                            "jurisdictionalAuthorization",
+                                            "holder",
+                                            "regulator",
+                                            "procedure",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::RestoreDate => {
-                                let some = r#restore_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("restoreDate"));
+                                if _ctx.from_json {
+                                    let some = r#restore_date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "restoreDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#restore_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "restoreDate",
+                                        ));
+                                    }
+                                    r#restore_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::RestoreDatePrimitiveElement => {
-                                let some = r#restore_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_restoreDate"));
+                                if _ctx.from_json {
+                                    let some = r#restore_date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_restoreDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "restoreDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "subject",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "statusDate",
+                                            "restoreDate",
+                                            "validityPeriod",
+                                            "dataExclusivityPeriod",
+                                            "dateOfFirstAuthorization",
+                                            "internationalBirthDate",
+                                            "legalBasis",
+                                            "jurisdictionalAuthorization",
+                                            "holder",
+                                            "regulator",
+                                            "procedure",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::ValidityPeriod => {
                                 if r#validity_period.is_some() {
@@ -1008,56 +1208,138 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                 r#data_exclusivity_period = Some(map_access.next_value()?);
                             }
                             Field::DateOfFirstAuthorization => {
-                                let some =
-                                    r#date_of_first_authorization.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "dateOfFirstAuthorization",
-                                    ));
+                                if _ctx.from_json {
+                                    let some = r#date_of_first_authorization
+                                        .get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "dateOfFirstAuthorization",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#date_of_first_authorization.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "dateOfFirstAuthorization",
+                                        ));
+                                    }
+                                    r#date_of_first_authorization = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DateOfFirstAuthorizationPrimitiveElement => {
-                                let some =
-                                    r#date_of_first_authorization.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_dateOfFirstAuthorization",
+                                if _ctx.from_json {
+                                    let some = r#date_of_first_authorization
+                                        .get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_dateOfFirstAuthorization",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "dateOfFirstAuthorization",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "subject",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "statusDate",
+                                            "restoreDate",
+                                            "validityPeriod",
+                                            "dataExclusivityPeriod",
+                                            "dateOfFirstAuthorization",
+                                            "internationalBirthDate",
+                                            "legalBasis",
+                                            "jurisdictionalAuthorization",
+                                            "holder",
+                                            "regulator",
+                                            "procedure",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::InternationalBirthDate => {
-                                let some =
-                                    r#international_birth_date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "internationalBirthDate",
-                                    ));
+                                if _ctx.from_json {
+                                    let some = r#international_birth_date
+                                        .get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "internationalBirthDate",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#international_birth_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "internationalBirthDate",
+                                        ));
+                                    }
+                                    r#international_birth_date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::InternationalBirthDatePrimitiveElement => {
-                                let some =
-                                    r#international_birth_date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_internationalBirthDate",
+                                if _ctx.from_json {
+                                    let some = r#international_birth_date
+                                        .get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_internationalBirthDate",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "internationalBirthDate",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "subject",
+                                            "country",
+                                            "jurisdiction",
+                                            "status",
+                                            "statusDate",
+                                            "restoreDate",
+                                            "validityPeriod",
+                                            "dataExclusivityPeriod",
+                                            "dateOfFirstAuthorization",
+                                            "internationalBirthDate",
+                                            "legalBasis",
+                                            "jurisdictionalAuthorization",
+                                            "holder",
+                                            "regulator",
+                                            "procedure",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::LegalBasis => {
                                 if r#legal_basis.is_some() {

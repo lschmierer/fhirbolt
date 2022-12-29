@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Narrative {
@@ -77,7 +77,7 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
             Div,
             #[serde(rename = "_div")]
             DivPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -110,41 +110,70 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                                 r#extension = Some(map_access.next_value()?);
                             }
                             Field::Status => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#status.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    r#status = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::StatusPrimitiveElement => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_status"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "status",
+                                        &["id", "extension", "status", "div"],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Div => {
-                                let some = r#div.get_or_insert(Default::default());
-                                if !some.value.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("div"));
+                                if _ctx.from_json {
+                                    let some = r#div.get_or_insert(Default::default());
+                                    if !some.value.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("div"));
+                                    }
+                                    some.value = map_access.next_value()?;
+                                } else {
+                                    if r#div.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("div"));
+                                    }
+                                    r#div = Some(map_access.next_value()?);
                                 }
-                                some.value = map_access.next_value()?;
                             }
                             Field::DivPrimitiveElement => {
-                                let some = r#div.get_or_insert(Default::default());
-                                if some.id.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("_div"));
+                                if _ctx.from_json {
+                                    let some = r#div.get_or_insert(Default::default());
+                                    if some.id.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("_div"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        ..
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "div",
+                                        &["id", "extension", "status", "div"],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id, ..
-                                } = map_access.next_value()?;
-                                some.id = id;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

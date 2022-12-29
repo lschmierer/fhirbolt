@@ -26,4 +26,20 @@ impl Element {
             value: None,
         }
     }
+
+    pub fn is_resource(&self) -> bool {
+        self.name
+            .chars()
+            .next()
+            .map(|c| c.is_uppercase())
+            .unwrap_or(false)
+    }
+
+    pub fn resource_type(&self) -> Option<&str> {
+        if self.is_resource() {
+            Some(&self.name)
+        } else {
+            None
+        }
+    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "A value to use if there is no existing value in the source object."]
 #[derive(Debug, Clone)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
@@ -212,7 +212,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -257,86 +257,178 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Url => {
-                                let some = r#url.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("url"));
+                                if _ctx.from_json {
+                                    let some = r#url.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("url"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#url.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("url"));
+                                    }
+                                    r#url = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::UrlPrimitiveElement => {
-                                let some = r#url.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_url"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Mode => {
-                                let some = r#mode.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("mode"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::ModePrimitiveElement => {
-                                let some = r#mode.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_mode"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Alias => {
-                                let some = r#alias.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("alias"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::AliasPrimitiveElement => {
-                                let some = r#alias.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_alias"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Documentation => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("documentation"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::DocumentationPrimitiveElement => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_documentation",
+                                if _ctx.from_json {
+                                    let some = r#url.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_url"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "url",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "mode",
+                                            "alias",
+                                            "documentation",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
+                            }
+                            Field::Mode => {
+                                if _ctx.from_json {
+                                    let some = r#mode.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("mode"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#mode.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("mode"));
+                                    }
+                                    r#mode = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::ModePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#mode.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_mode"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "mode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "mode",
+                                            "alias",
+                                            "documentation",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Alias => {
+                                if _ctx.from_json {
+                                    let some = r#alias.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("alias"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#alias.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("alias"));
+                                    }
+                                    r#alias = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::AliasPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#alias.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_alias"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "alias",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "mode",
+                                            "alias",
+                                            "documentation",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Documentation => {
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#documentation.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    r#documentation = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DocumentationPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_documentation",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "documentation",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "mode",
+                                            "alias",
+                                            "documentation",
+                                        ],
+                                    ));
+                                }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -521,7 +613,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -566,86 +658,178 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Type => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::TypePrimitiveElement => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_type"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Mode => {
-                                let some = r#mode.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("mode"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::ModePrimitiveElement => {
-                                let some = r#mode.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_mode"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Documentation => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("documentation"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::DocumentationPrimitiveElement => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_documentation",
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "type",
+                                            "mode",
+                                            "documentation",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
+                            }
+                            Field::Type => {
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::TypePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_type"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "type",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "type",
+                                            "mode",
+                                            "documentation",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Mode => {
+                                if _ctx.from_json {
+                                    let some = r#mode.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("mode"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#mode.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("mode"));
+                                    }
+                                    r#mode = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::ModePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#mode.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_mode"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "mode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "type",
+                                            "mode",
+                                            "documentation",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Documentation => {
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#documentation.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    r#documentation = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DocumentationPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_documentation",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "documentation",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "type",
+                                            "mode",
+                                            "documentation",
+                                        ],
+                                    ));
+                                }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -1586,7 +1770,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
             LogMessage,
             #[serde(rename = "_logMessage")]
             LogMessagePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1641,1000 +1825,2906 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Context => {
-                                let some = r#context.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("context"));
+                                if _ctx.from_json {
+                                    let some = r#context.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("context"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#context.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("context"));
+                                    }
+                                    r#context = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ContextPrimitiveElement => {
-                                let some = r#context.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_context"));
+                                if _ctx.from_json {
+                                    let some = r#context.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_context"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "context",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Min => {
-                                let some = r#min.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("min"));
+                                if _ctx.from_json {
+                                    let some = r#min.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("min"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#min.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("min"));
+                                    }
+                                    r#min = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::MinPrimitiveElement => {
-                                let some = r#min.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_min"));
+                                if _ctx.from_json {
+                                    let some = r#min.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_min"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "min",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Max => {
-                                let some = r#max.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("max"));
+                                if _ctx.from_json {
+                                    let some = r#max.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("max"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#max.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("max"));
+                                    }
+                                    r#max = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::MaxPrimitiveElement => {
-                                let some = r#max.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_max"));
+                                if _ctx.from_json {
+                                    let some = r#max.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_max"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "max",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Type => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TypePrimitiveElement => {
-                                let some = r#type.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_type"));
+                                if _ctx.from_json {
+                                    let some = r#type.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_type"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "type",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::DefaultValueBase64Binary => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Base64Binary(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Base64Binary(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Base64Binary(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Base64Binary(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueBase64Binary",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueBase64Binary",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value = Some(
+                                        StructureMapGroupRuleSourceDefaultValue::Base64Binary(
+                                            map_access.next_value()?,
+                                        ),
+                                    );
                                 }
                             }
                             Field::DefaultValueBase64BinaryPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Base64Binary(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Base64Binary(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Base64Binary(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Base64Binary(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueBase64Binary",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueBase64Binary",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueBase64Binary",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueBoolean => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Boolean(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Boolean(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Boolean(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Boolean(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Boolean(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueBooleanPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Boolean(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Boolean(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Boolean(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Boolean(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueBoolean",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueBoolean",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueCanonical => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Canonical(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Canonical(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Canonical(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Canonical(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueCanonical",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueCanonical",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Canonical(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueCanonicalPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Canonical(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Canonical(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Canonical(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Canonical(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueCanonical",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueCanonical",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueCanonical",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueCode => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Code(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Code(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Code(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Code(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueCode",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueCode",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Code(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueCodePrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Code(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Code(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Code(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Code(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueCode",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueCode",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueCode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueDate => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Date(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Date(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Date(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Date(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueDate",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueDate",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Date(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueDatePrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Date(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Date(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Date(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Date(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueDate",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueDate",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueDate",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueDateTime => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::DateTime(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::DateTime(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::DateTime(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::DateTime(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::DateTime(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueDateTimePrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::DateTime(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::DateTime(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::DateTime(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::DateTime(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueDateTime",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueDateTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueDecimal => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Decimal(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Decimal(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Decimal(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Decimal(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueDecimal",
+                                            ));
+                                        }
+                                        let value: serde_json::Number = map_access.next_value()?;
+                                        variant.value = Some(format!("{}", value));
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueDecimal",
                                         ));
                                     }
-                                    let value: serde_json::Number = map_access.next_value()?;
-                                    variant.value = Some(format!("{}", value));
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Decimal(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueDecimalPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Decimal(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Decimal(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Decimal(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Decimal(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueDecimal",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueDecimal",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueDecimal",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueId => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Id(Default::default()),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Id(variant) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Id(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Id(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueId",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueId",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Id(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueIdPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Id(Default::default()),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Id(variant) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Id(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Id(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueId",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueId",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueId",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueInstant => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Instant(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Instant(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Instant(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Instant(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueInstant",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueInstant",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Instant(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueInstantPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Instant(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Instant(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Instant(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Instant(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueInstant",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueInstant",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueInstant",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueInteger => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Integer(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Integer(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Integer(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Integer(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueInteger",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueInteger",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Integer(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueIntegerPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Integer(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Integer(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Integer(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Integer(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueInteger",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueInteger",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueInteger",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueMarkdown => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Markdown(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Markdown(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Markdown(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Markdown(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueMarkdown",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueMarkdown",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Markdown(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueMarkdownPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Markdown(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Markdown(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Markdown(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Markdown(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueMarkdown",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueMarkdown",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueMarkdown",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueOid => {
-                                let r#enum =
-                                    r#default_value.get_or_insert(
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
                                         StructureMapGroupRuleSourceDefaultValue::Oid(
                                             Default::default(),
                                         ),
                                     );
-                                if let StructureMapGroupRuleSourceDefaultValue::Oid(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                    if let StructureMapGroupRuleSourceDefaultValue::Oid(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueOid",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueOid",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Oid(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueOidPrimitiveElement => {
-                                let r#enum =
-                                    r#default_value.get_or_insert(
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
                                         StructureMapGroupRuleSourceDefaultValue::Oid(
                                             Default::default(),
                                         ),
                                     );
-                                if let StructureMapGroupRuleSourceDefaultValue::Oid(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                    if let StructureMapGroupRuleSourceDefaultValue::Oid(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueOid",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueOid",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueOid",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValuePositiveInt => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::PositiveInt(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::PositiveInt(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::PositiveInt(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::PositiveInt(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValuePositiveInt",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValuePositiveInt",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::PositiveInt(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValuePositiveIntPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::PositiveInt(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::PositiveInt(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::PositiveInt(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::PositiveInt(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValuePositiveInt",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValuePositiveInt",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValuePositiveInt",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueString => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::String(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::String(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::String(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::String(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::String(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueStringPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::String(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::String(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::String(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::String(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueString",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueString",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueTime => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Time(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Time(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Time(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Time(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Time(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueTimePrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Time(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Time(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Time(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Time(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueTime",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueUnsignedInt => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueUnsignedInt",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueUnsignedInt",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueUnsignedIntPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
-                                    variant,
-                                ) = r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::UnsignedInt(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueUnsignedInt",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueUnsignedInt",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueUnsignedInt",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueUri => {
-                                let r#enum =
-                                    r#default_value.get_or_insert(
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
                                         StructureMapGroupRuleSourceDefaultValue::Uri(
                                             Default::default(),
                                         ),
                                     );
-                                if let StructureMapGroupRuleSourceDefaultValue::Uri(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                    if let StructureMapGroupRuleSourceDefaultValue::Uri(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueUri",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueUri",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Uri(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueUriPrimitiveElement => {
-                                let r#enum =
-                                    r#default_value.get_or_insert(
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
                                         StructureMapGroupRuleSourceDefaultValue::Uri(
                                             Default::default(),
                                         ),
                                     );
-                                if let StructureMapGroupRuleSourceDefaultValue::Uri(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                    if let StructureMapGroupRuleSourceDefaultValue::Uri(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueUri",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueUri",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueUri",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueUrl => {
-                                let r#enum =
-                                    r#default_value.get_or_insert(
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
                                         StructureMapGroupRuleSourceDefaultValue::Url(
                                             Default::default(),
                                         ),
                                     );
-                                if let StructureMapGroupRuleSourceDefaultValue::Url(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                    if let StructureMapGroupRuleSourceDefaultValue::Url(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueUrl",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueUrl",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Url(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueUrlPrimitiveElement => {
-                                let r#enum =
-                                    r#default_value.get_or_insert(
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
                                         StructureMapGroupRuleSourceDefaultValue::Url(
                                             Default::default(),
                                         ),
                                     );
-                                if let StructureMapGroupRuleSourceDefaultValue::Url(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                    if let StructureMapGroupRuleSourceDefaultValue::Url(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueUrl",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueUrl",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueUrl",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
                             Field::DefaultValueUuid => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Uuid(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Uuid(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Uuid(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Uuid(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "defaultValueUuid",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "defaultValue[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#default_value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "defaultValueUuid",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "defaultValue[x]",
-                                    ));
+                                    r#default_value =
+                                        Some(StructureMapGroupRuleSourceDefaultValue::Uuid(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::DefaultValueUuidPrimitiveElement => {
-                                let r#enum = r#default_value.get_or_insert(
-                                    StructureMapGroupRuleSourceDefaultValue::Uuid(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleSourceDefaultValue::Uuid(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#default_value.get_or_insert(
+                                        StructureMapGroupRuleSourceDefaultValue::Uuid(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleSourceDefaultValue::Uuid(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_defaultValueUuid",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_defaultValueUuid",
+                                            "_defaultValue[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_defaultValue[x]",
+                                    return Err(serde::de::Error::unknown_field(
+                                        "defaultValueUuid",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
                                     ));
                                 }
                             }
@@ -2982,124 +5072,600 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     ));
                             }
                             Field::Element => {
-                                let some = r#element.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("element"));
+                                if _ctx.from_json {
+                                    let some = r#element.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("element"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#element.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("element"));
+                                    }
+                                    r#element = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ElementPrimitiveElement => {
-                                let some = r#element.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_element"));
+                                if _ctx.from_json {
+                                    let some = r#element.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_element"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "element",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::ListMode => {
-                                let some = r#list_mode.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("listMode"));
+                                if _ctx.from_json {
+                                    let some = r#list_mode.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("listMode"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#list_mode.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("listMode"));
+                                    }
+                                    r#list_mode = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ListModePrimitiveElement => {
-                                let some = r#list_mode.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_listMode"));
+                                if _ctx.from_json {
+                                    let some = r#list_mode.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_listMode"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "listMode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Variable => {
-                                let some = r#variable.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("variable"));
+                                if _ctx.from_json {
+                                    let some = r#variable.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("variable"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#variable.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("variable"));
+                                    }
+                                    r#variable = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::VariablePrimitiveElement => {
-                                let some = r#variable.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_variable"));
+                                if _ctx.from_json {
+                                    let some = r#variable.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_variable"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "variable",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Condition => {
-                                let some = r#condition.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("condition"));
+                                if _ctx.from_json {
+                                    let some = r#condition.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("condition"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#condition.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("condition"));
+                                    }
+                                    r#condition = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ConditionPrimitiveElement => {
-                                let some = r#condition.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_condition"));
+                                if _ctx.from_json {
+                                    let some = r#condition.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_condition",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "condition",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Check => {
-                                let some = r#check.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("check"));
+                                if _ctx.from_json {
+                                    let some = r#check.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("check"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#check.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("check"));
+                                    }
+                                    r#check = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::CheckPrimitiveElement => {
-                                let some = r#check.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_check"));
+                                if _ctx.from_json {
+                                    let some = r#check.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_check"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "check",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::LogMessage => {
-                                let some = r#log_message.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("logMessage"));
+                                if _ctx.from_json {
+                                    let some = r#log_message.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "logMessage",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#log_message.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "logMessage",
+                                        ));
+                                    }
+                                    r#log_message = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LogMessagePrimitiveElement => {
-                                let some = r#log_message.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_logMessage"));
+                                if _ctx.from_json {
+                                    let some = r#log_message.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_logMessage",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "logMessage",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "min",
+                                            "max",
+                                            "type",
+                                            "defaultValueBase64Binary",
+                                            "defaultValueBoolean",
+                                            "defaultValueCanonical",
+                                            "defaultValueCode",
+                                            "defaultValueDate",
+                                            "defaultValueDateTime",
+                                            "defaultValueDecimal",
+                                            "defaultValueId",
+                                            "defaultValueInstant",
+                                            "defaultValueInteger",
+                                            "defaultValueMarkdown",
+                                            "defaultValueOid",
+                                            "defaultValuePositiveInt",
+                                            "defaultValueString",
+                                            "defaultValueTime",
+                                            "defaultValueUnsignedInt",
+                                            "defaultValueUri",
+                                            "defaultValueUrl",
+                                            "defaultValueUuid",
+                                            "defaultValueAddress",
+                                            "defaultValueAge",
+                                            "defaultValueAnnotation",
+                                            "defaultValueAttachment",
+                                            "defaultValueCodeableConcept",
+                                            "defaultValueCoding",
+                                            "defaultValueContactPoint",
+                                            "defaultValueCount",
+                                            "defaultValueDistance",
+                                            "defaultValueDuration",
+                                            "defaultValueHumanName",
+                                            "defaultValueIdentifier",
+                                            "defaultValueMoney",
+                                            "defaultValuePeriod",
+                                            "defaultValueQuantity",
+                                            "defaultValueRange",
+                                            "defaultValueRatio",
+                                            "defaultValueReference",
+                                            "defaultValueSampledData",
+                                            "defaultValueSignature",
+                                            "defaultValueTiming",
+                                            "defaultValueContactDetail",
+                                            "defaultValueContributor",
+                                            "defaultValueDataRequirement",
+                                            "defaultValueExpression",
+                                            "defaultValueParameterDefinition",
+                                            "defaultValueRelatedArtifact",
+                                            "defaultValueTriggerDefinition",
+                                            "defaultValueUsageContext",
+                                            "defaultValueDosage",
+                                            "defaultValueMeta",
+                                            "element",
+                                            "listMode",
+                                            "variable",
+                                            "condition",
+                                            "check",
+                                            "logMessage",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -3363,7 +5929,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
             ValueDecimal,
             #[serde(rename = "_valueDecimal")]
             ValueDecimalPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3408,219 +5974,368 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::ValueId => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Id(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Id(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Id(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Id(variant) =
+                                        r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueId",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueId"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(StructureMapGroupRuleTargetParameterValue::Id(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueIdPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Id(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Id(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field("_valueId"));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Id(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Id(variant) =
+                                        r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueId",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueId",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "valueId",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueDecimal",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueString => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::String(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::String(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::String(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::String(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(StructureMapGroupRuleTargetParameterValue::String(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::ValueStringPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::String(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::String(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueString",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::String(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::String(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueString",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "valueId",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueDecimal",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueBoolean => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Boolean(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Boolean(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Boolean(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Boolean(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(StructureMapGroupRuleTargetParameterValue::Boolean(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::ValueBooleanPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Boolean(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Boolean(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBoolean",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Boolean(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Boolean(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBoolean",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "valueId",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueDecimal",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueInteger => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Integer(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Integer(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Integer(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Integer(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueInteger",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueInteger",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(StructureMapGroupRuleTargetParameterValue::Integer(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::ValueIntegerPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Integer(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Integer(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueInteger",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Integer(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Integer(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueInteger",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueInteger",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "valueId",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueDecimal",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueDecimal => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Decimal(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Decimal(variant) =
-                                    r#enum
-                                {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Decimal(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Decimal(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDecimal",
+                                            ));
+                                        }
+                                        let value: serde_json::Number = map_access.next_value()?;
+                                        variant.value = Some(format!("{}", value));
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueDecimal",
                                         ));
                                     }
-                                    let value: serde_json::Number = map_access.next_value()?;
-                                    variant.value = Some(format!("{}", value));
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(StructureMapGroupRuleTargetParameterValue::Decimal(
+                                            map_access.next_value()?,
+                                        ));
                                 }
                             }
                             Field::ValueDecimalPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    StructureMapGroupRuleTargetParameterValue::Decimal(
-                                        Default::default(),
-                                    ),
-                                );
-                                if let StructureMapGroupRuleTargetParameterValue::Decimal(variant) =
-                                    r#enum
-                                {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDecimal",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        StructureMapGroupRuleTargetParameterValue::Decimal(
+                                            Default::default(),
+                                        ),
+                                    );
+                                    if let StructureMapGroupRuleTargetParameterValue::Decimal(
+                                        variant,
+                                    ) = r#enum
+                                    {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDecimal",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDecimal",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "valueId",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueDecimal",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -3907,7 +6622,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
             TransformPrimitiveElement,
             #[serde(rename = "parameter")]
             Parameter,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3959,174 +6674,370 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Context => {
-                                let some = r#context.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("context"));
+                                if _ctx.from_json {
+                                    let some = r#context.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("context"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#context.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("context"));
+                                    }
+                                    r#context = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ContextPrimitiveElement => {
-                                let some = r#context.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_context"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::ContextType => {
-                                let some = r#context_type.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contextType"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::ContextTypePrimitiveElement => {
-                                let some = r#context_type.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_contextType"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Element => {
-                                let some = r#element.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("element"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::ElementPrimitiveElement => {
-                                let some = r#element.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_element"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Variable => {
-                                let some = r#variable.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("variable"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::VariablePrimitiveElement => {
-                                let some = r#variable.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_variable"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::ListMode => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#list_mode.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
+                                if _ctx.from_json {
+                                    let some = r#context.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_context"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "context",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
                                     ));
                                 }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("listMode"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                            }
+                            Field::ContextType => {
+                                if _ctx.from_json {
+                                    let some = r#context_type.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "contextType",
+                                        ));
                                     }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#context_type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "contextType",
+                                        ));
+                                    }
+                                    r#context_type = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::ContextTypePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#context_type.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_contextType",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "contextType",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Element => {
+                                if _ctx.from_json {
+                                    let some = r#element.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("element"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#element.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("element"));
+                                    }
+                                    r#element = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::ElementPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#element.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_element"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "element",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Variable => {
+                                if _ctx.from_json {
+                                    let some = r#variable.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("variable"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#variable.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("variable"));
+                                    }
+                                    r#variable = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::VariablePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#variable.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_variable"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "variable",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::ListMode => {
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#list_mode.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
+                                    }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("listMode"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#list_mode.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("listMode"));
+                                    }
+                                    r#list_mode = Some(map_access.next_value()?);
                                 }
                             }
                             Field::ListModePrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#list_mode.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_listMode"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#list_mode.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_listMode"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "listMode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ListRuleId => {
-                                let some = r#list_rule_id.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("listRuleId"));
+                                if _ctx.from_json {
+                                    let some = r#list_rule_id.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "listRuleId",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#list_rule_id.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "listRuleId",
+                                        ));
+                                    }
+                                    r#list_rule_id = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ListRuleIdPrimitiveElement => {
-                                let some = r#list_rule_id.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_listRuleId"));
+                                if _ctx.from_json {
+                                    let some = r#list_rule_id.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_listRuleId",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "listRuleId",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Transform => {
-                                let some = r#transform.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("transform"));
+                                if _ctx.from_json {
+                                    let some = r#transform.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("transform"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#transform.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("transform"));
+                                    }
+                                    r#transform = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TransformPrimitiveElement => {
-                                let some = r#transform.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_transform"));
+                                if _ctx.from_json {
+                                    let some = r#transform.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_transform",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "transform",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "context",
+                                            "contextType",
+                                            "element",
+                                            "variable",
+                                            "listMode",
+                                            "listRuleId",
+                                            "transform",
+                                            "parameter",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Parameter => {
                                 if r#parameter.is_some() {
@@ -4286,7 +7197,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
             Variable,
             #[serde(rename = "_variable")]
             VariablePrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4332,73 +7243,113 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Variable => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#variable.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "variable",
+                                        ],
                                     ));
                                 }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("variable"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                            }
+                            Field::Variable => {
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#variable.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("variable"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#variable.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("variable"));
+                                    }
+                                    r#variable = Some(map_access.next_value()?);
                                 }
                             }
                             Field::VariablePrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#variable.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_variable"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#variable.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_variable"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "variable",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "variable",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -4550,7 +7501,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
             Documentation,
             #[serde(rename = "_documentation")]
             DocumentationPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4597,24 +7548,48 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "source",
+                                            "target",
+                                            "rule",
+                                            "dependent",
+                                            "documentation",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Source => {
                                 if r#source.is_some() {
@@ -4641,26 +7616,54 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                                 r#dependent = Some(map_access.next_value()?);
                             }
                             Field::Documentation => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("documentation"));
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#documentation.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    r#documentation = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DocumentationPrimitiveElement => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_documentation",
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_documentation",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "documentation",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "source",
+                                            "target",
+                                            "rule",
+                                            "dependent",
+                                            "documentation",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -4857,7 +7860,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
             Input,
             #[serde(rename = "rule")]
             Rule,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -4904,86 +7907,186 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Extends => {
-                                let some = r#extends.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extends"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::ExtendsPrimitiveElement => {
-                                let some = r#extends.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_extends"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::TypeMode => {
-                                let some = r#type_mode.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("typeMode"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::TypeModePrimitiveElement => {
-                                let some = r#type_mode.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_typeMode"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
-                            }
-                            Field::Documentation => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("documentation"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::DocumentationPrimitiveElement => {
-                                let some = r#documentation.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_documentation",
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "extends",
+                                            "typeMode",
+                                            "documentation",
+                                            "input",
+                                            "rule",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
+                            }
+                            Field::Extends => {
+                                if _ctx.from_json {
+                                    let some = r#extends.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extends"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#extends.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extends"));
+                                    }
+                                    r#extends = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::ExtendsPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#extends.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_extends"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "extends",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "extends",
+                                            "typeMode",
+                                            "documentation",
+                                            "input",
+                                            "rule",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::TypeMode => {
+                                if _ctx.from_json {
+                                    let some = r#type_mode.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("typeMode"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#type_mode.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("typeMode"));
+                                    }
+                                    r#type_mode = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::TypeModePrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#type_mode.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_typeMode"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "typeMode",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "extends",
+                                            "typeMode",
+                                            "documentation",
+                                            "input",
+                                            "rule",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Documentation => {
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#documentation.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "documentation",
+                                        ));
+                                    }
+                                    r#documentation = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::DocumentationPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#documentation.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_documentation",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "documentation",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "name",
+                                            "extends",
+                                            "typeMode",
+                                            "documentation",
+                                            "input",
+                                            "rule",
+                                        ],
+                                    ));
+                                }
                             }
                             Field::Input => {
                                 if r#input.is_some() {
@@ -5520,7 +8623,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
             ImportPrimitiveElement,
             #[serde(rename = "group")]
             Group,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5586,46 +8689,132 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -5654,24 +8843,65 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Url => {
-                                let some = r#url.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("url"));
+                                if _ctx.from_json {
+                                    let some = r#url.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("url"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#url.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("url"));
+                                    }
+                                    r#url = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::UrlPrimitiveElement => {
-                                let some = r#url.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_url"));
+                                if _ctx.from_json {
+                                    let some = r#url.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_url"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "url",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Identifier => {
                                 if r#identifier.is_some() {
@@ -5680,144 +8910,439 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Version => {
-                                let some = r#version.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("version"));
+                                if _ctx.from_json {
+                                    let some = r#version.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("version"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#version.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("version"));
+                                    }
+                                    r#version = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::VersionPrimitiveElement => {
-                                let some = r#version.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_version"));
+                                if _ctx.from_json {
+                                    let some = r#version.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_version"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "version",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Name => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#name.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("name"));
+                                    }
+                                    r#name = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::NamePrimitiveElement => {
-                                let some = r#name.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                if _ctx.from_json {
+                                    let some = r#name.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_name"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "name",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Title => {
-                                let some = r#title.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("title"));
+                                if _ctx.from_json {
+                                    let some = r#title.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("title"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#title.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("title"));
+                                    }
+                                    r#title = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TitlePrimitiveElement => {
-                                let some = r#title.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_title"));
+                                if _ctx.from_json {
+                                    let some = r#title.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_title"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "title",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Status => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#status.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    r#status = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::StatusPrimitiveElement => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_status"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "status",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Experimental => {
-                                let some = r#experimental.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("experimental"));
+                                if _ctx.from_json {
+                                    let some = r#experimental.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "experimental",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#experimental.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "experimental",
+                                        ));
+                                    }
+                                    r#experimental = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ExperimentalPrimitiveElement => {
-                                let some = r#experimental.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_experimental"));
+                                if _ctx.from_json {
+                                    let some = r#experimental.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_experimental",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "experimental",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Date => {
-                                let some = r#date.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("date"));
+                                if _ctx.from_json {
+                                    let some = r#date.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("date"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("date"));
+                                    }
+                                    r#date = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DatePrimitiveElement => {
-                                let some = r#date.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_date"));
+                                if _ctx.from_json {
+                                    let some = r#date.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_date"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "date",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Publisher => {
-                                let some = r#publisher.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("publisher"));
+                                if _ctx.from_json {
+                                    let some = r#publisher.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("publisher"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#publisher.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("publisher"));
+                                    }
+                                    r#publisher = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PublisherPrimitiveElement => {
-                                let some = r#publisher.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_publisher"));
+                                if _ctx.from_json {
+                                    let some = r#publisher.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_publisher",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "publisher",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Contact => {
                                 if r#contact.is_some() {
@@ -5826,24 +9351,71 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 r#contact = Some(map_access.next_value()?);
                             }
                             Field::Description => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#description.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "description",
+                                        ));
+                                    }
+                                    r#description = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::DescriptionPrimitiveElement => {
-                                let some = r#description.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_description"));
+                                if _ctx.from_json {
+                                    let some = r#description.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_description",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "description",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::UseContext => {
                                 if r#use_context.is_some() {
@@ -5858,44 +9430,128 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 r#jurisdiction = Some(map_access.next_value()?);
                             }
                             Field::Purpose => {
-                                let some = r#purpose.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("purpose"));
+                                if _ctx.from_json {
+                                    let some = r#purpose.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("purpose"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#purpose.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("purpose"));
+                                    }
+                                    r#purpose = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::PurposePrimitiveElement => {
-                                let some = r#purpose.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_purpose"));
+                                if _ctx.from_json {
+                                    let some = r#purpose.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_purpose"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "purpose",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Copyright => {
-                                let some = r#copyright.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("copyright"));
+                                if _ctx.from_json {
+                                    let some = r#copyright.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("copyright"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#copyright.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("copyright"));
+                                    }
+                                    r#copyright = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::CopyrightPrimitiveElement => {
-                                let some = r#copyright.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_copyright"));
+                                if _ctx.from_json {
+                                    let some = r#copyright.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_copyright",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "copyright",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Structure => {
                                 if r#structure.is_some() {
@@ -5904,53 +9560,94 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                 r#structure = Some(map_access.next_value()?);
                             }
                             Field::Import => {
-                                let values: Vec<Option<_>> = map_access.next_value()?;
-                                let vec = r#import.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(values.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != values.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        values.len(),
-                                        &"primitive elements length",
-                                    ));
-                                }
-                                if vec.iter().any(|v| v.value.is_some()) {
-                                    return Err(serde::de::Error::duplicate_field("import"));
-                                }
-                                for (i, value) in values.into_iter().enumerate() {
-                                    if let Some(value) = value {
-                                        vec[i].value = Some(value);
+                                if _ctx.from_json {
+                                    let values: Vec<Option<_>> = map_access.next_value()?;
+                                    let vec = r#import.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(values.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != values.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            values.len(),
+                                            &"primitive elements length",
+                                        ));
                                     }
+                                    if vec.iter().any(|v| v.value.is_some()) {
+                                        return Err(serde::de::Error::duplicate_field("import"));
+                                    }
+                                    for (i, value) in values.into_iter().enumerate() {
+                                        if let Some(value) = value {
+                                            vec[i].value = Some(value);
+                                        }
+                                    }
+                                } else {
+                                    if r#import.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("import"));
+                                    }
+                                    r#import = Some(map_access.next_value()?);
                                 }
                             }
                             Field::ImportPrimitiveElement => {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > = map_access.next_value()?;
-                                let vec = r#import.get_or_insert(
-                                    std::iter::repeat(Default::default())
-                                        .take(elements.len())
-                                        .collect::<Vec<_>>(),
-                                );
-                                if vec.len() != elements.len() {
-                                    return Err(serde::de::Error::invalid_length(
-                                        elements.len(),
-                                        &"primitive values length",
-                                    ));
-                                }
-                                if vec
-                                    .iter()
-                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
-                                {
-                                    return Err(serde::de::Error::duplicate_field("_import"));
-                                }
-                                for (i, element) in elements.into_iter().enumerate() {
-                                    if let Some(element) = element {
-                                        vec[i].id = element.id;
-                                        vec[i].extension = element.extension;
+                                if _ctx.from_json {
+                                    let elements: Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    > = map_access.next_value()?;
+                                    let vec = r#import.get_or_insert(
+                                        std::iter::repeat(Default::default())
+                                            .take(elements.len())
+                                            .collect::<Vec<_>>(),
+                                    );
+                                    if vec.len() != elements.len() {
+                                        return Err(serde::de::Error::invalid_length(
+                                            elements.len(),
+                                            &"primitive values length",
+                                        ));
                                     }
+                                    if vec
+                                        .iter()
+                                        .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                    {
+                                        return Err(serde::de::Error::duplicate_field("_import"));
+                                    }
+                                    for (i, element) in elements.into_iter().enumerate() {
+                                        if let Some(element) = element {
+                                            vec[i].id = element.id;
+                                            vec[i].extension = element.extension;
+                                        }
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "import",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "url",
+                                            "identifier",
+                                            "version",
+                                            "name",
+                                            "title",
+                                            "status",
+                                            "experimental",
+                                            "date",
+                                            "publisher",
+                                            "contact",
+                                            "description",
+                                            "useContext",
+                                            "jurisdiction",
+                                            "purpose",
+                                            "copyright",
+                                            "structure",
+                                            "import",
+                                            "group",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::Group => {

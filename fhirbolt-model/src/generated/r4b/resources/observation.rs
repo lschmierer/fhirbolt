@@ -1,4 +1,4 @@
-// Generated on 2022-12-16 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone)]
 pub enum ObservationEffective {
@@ -161,7 +161,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
             Text,
             #[serde(rename = "_text")]
             TextPrimitiveElement,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -238,24 +238,48 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
                                 r#age = Some(map_access.next_value()?);
                             }
                             Field::Text => {
-                                let some = r#text.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("text"));
+                                if _ctx.from_json {
+                                    let some = r#text.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("text"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#text.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("text"));
+                                    }
+                                    r#text = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::TextPrimitiveElement => {
-                                let some = r#text.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_text"));
+                                if _ctx.from_json {
+                                    let some = r#text.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_text"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "text",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "low",
+                                            "high",
+                                            "type",
+                                            "appliesTo",
+                                            "age",
+                                            "text",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -515,7 +539,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
             Interpretation,
             #[serde(rename = "referenceRange")]
             ReferenceRange,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -587,111 +611,222 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                 ));
                             }
                             Field::ValueString => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::String(Default::default()),
-                                );
-                                if let ObservationComponentValue::String(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::String(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::String(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ObservationComponentValue::String(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueStringPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::String(Default::default()),
-                                );
-                                if let ObservationComponentValue::String(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueString",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::String(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::String(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueString",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "code",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "referenceRange",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueBoolean => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::Boolean(Default::default()),
-                                );
-                                if let ObservationComponentValue::Boolean(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::Boolean(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::Boolean(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ObservationComponentValue::Boolean(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueBooleanPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::Boolean(Default::default()),
-                                );
-                                if let ObservationComponentValue::Boolean(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBoolean",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::Boolean(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::Boolean(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBoolean",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "code",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "referenceRange",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueInteger => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::Integer(Default::default()),
-                                );
-                                if let ObservationComponentValue::Integer(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::Integer(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::Integer(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueInteger",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueInteger",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ObservationComponentValue::Integer(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueIntegerPrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::Integer(Default::default()),
-                                );
-                                if let ObservationComponentValue::Integer(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueInteger",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::Integer(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::Integer(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueInteger",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueInteger",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "code",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "referenceRange",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueRange => {
@@ -721,73 +856,147 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                 ));
                             }
                             Field::ValueTime => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::Time(Default::default()),
-                                );
-                                if let ObservationComponentValue::Time(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::Time(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::Time(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueTime"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ObservationComponentValue::Time(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueTimePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::Time(Default::default()),
-                                );
-                                if let ObservationComponentValue::Time(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::Time(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::Time(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "code",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "referenceRange",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueDateTime => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::DateTime(Default::default()),
-                                );
-                                if let ObservationComponentValue::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::DateTime(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value = Some(ObservationComponentValue::DateTime(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::ValueDateTimePrimitiveElement => {
-                                let r#enum = r#value.get_or_insert(
-                                    ObservationComponentValue::DateTime(Default::default()),
-                                );
-                                if let ObservationComponentValue::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDateTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(
+                                        ObservationComponentValue::DateTime(Default::default()),
+                                    );
+                                    if let ObservationComponentValue::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDateTime",
+                                        &[
+                                            "id",
+                                            "extension",
+                                            "modifierExtension",
+                                            "code",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "referenceRange",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValuePeriod => {
@@ -1394,7 +1603,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
             DerivedFrom,
             #[serde(rename = "component")]
             Component,
-            Unknown(String),
+            Unknown(std::string::String),
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1467,46 +1676,170 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                 r#meta = Some(map_access.next_value()?);
                             }
                             Field::ImplicitRules => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#implicit_rules.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "implicitRules",
+                                        ));
+                                    }
+                                    r#implicit_rules = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::ImplicitRulesPrimitiveElement => {
-                                let some = r#implicit_rules.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "_implicitRules",
+                                if _ctx.from_json {
+                                    let some = r#implicit_rules.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_implicitRules",
+                                        ));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "implicitRules",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
                                     ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Language => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::LanguagePrimitiveElement => {
-                                let some = r#language.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                if _ctx.from_json {
+                                    let some = r#language.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_language"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "language",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Text => {
                                 if r#text.is_some() {
@@ -1553,24 +1886,84 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                 r#part_of = Some(map_access.next_value()?);
                             }
                             Field::Status => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#status.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("status"));
+                                    }
+                                    r#status = Some(map_access.next_value()?);
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
                             }
                             Field::StatusPrimitiveElement => {
-                                let some = r#status.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                if _ctx.from_json {
+                                    let some = r#status.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_status"));
+                                    }
+                                    let super::super::serde_helpers::PrimitiveElementOwned {
+                                        id,
+                                        extension,
+                                    } = map_access.next_value()?;
+                                    some.id = id;
+                                    some.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "status",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Category => {
                                 if r#category.is_some() {
@@ -1603,39 +1996,107 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                 r#encounter = Some(map_access.next_value()?);
                             }
                             Field::EffectiveDateTime => {
-                                let r#enum = r#effective.get_or_insert(
-                                    ObservationEffective::DateTime(Default::default()),
-                                );
-                                if let ObservationEffective::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#effective.get_or_insert(
+                                        ObservationEffective::DateTime(Default::default()),
+                                    );
+                                    if let ObservationEffective::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "effectiveDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "effective[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#effective.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "effectiveDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("effective[x]"));
+                                    r#effective = Some(ObservationEffective::DateTime(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::EffectiveDateTimePrimitiveElement => {
-                                let r#enum = r#effective.get_or_insert(
-                                    ObservationEffective::DateTime(Default::default()),
-                                );
-                                if let ObservationEffective::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#effective.get_or_insert(
+                                        ObservationEffective::DateTime(Default::default()),
+                                    );
+                                    if let ObservationEffective::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_effectiveDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_effectiveDateTime",
+                                            "_effective[x]",
                                         ));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_effective[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "effectiveDateTime",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -1657,60 +2118,188 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                     Some(ObservationEffective::Timing(map_access.next_value()?));
                             }
                             Field::EffectiveInstant => {
-                                let r#enum = r#effective.get_or_insert(
-                                    ObservationEffective::Instant(Default::default()),
-                                );
-                                if let ObservationEffective::Instant(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#effective.get_or_insert(
+                                        ObservationEffective::Instant(Default::default()),
+                                    );
+                                    if let ObservationEffective::Instant(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "effectiveInstant",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "effective[x]",
+                                        ));
+                                    }
+                                } else {
+                                    if r#effective.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "effectiveInstant",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("effective[x]"));
+                                    r#effective = Some(ObservationEffective::Instant(
+                                        map_access.next_value()?,
+                                    ));
                                 }
                             }
                             Field::EffectiveInstantPrimitiveElement => {
-                                let r#enum = r#effective.get_or_insert(
-                                    ObservationEffective::Instant(Default::default()),
-                                );
-                                if let ObservationEffective::Instant(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                if _ctx.from_json {
+                                    let r#enum = r#effective.get_or_insert(
+                                        ObservationEffective::Instant(Default::default()),
+                                    );
+                                    if let ObservationEffective::Instant(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_effectiveInstant",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
                                         return Err(serde::de::Error::duplicate_field(
-                                            "_effectiveInstant",
+                                            "_effective[x]",
                                         ));
+                                    }
+                                } else {
+                                    return Err(serde::de::Error::unknown_field(
+                                        "effectiveInstant",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
+                                }
+                            }
+                            Field::Issued => {
+                                if _ctx.from_json {
+                                    let some = r#issued.get_or_insert(Default::default());
+                                    if some.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("issued"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    some.value = Some(value);
+                                } else {
+                                    if r#issued.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("issued"));
+                                    }
+                                    r#issued = Some(map_access.next_value()?);
+                                }
+                            }
+                            Field::IssuedPrimitiveElement => {
+                                if _ctx.from_json {
+                                    let some = r#issued.get_or_insert(Default::default());
+                                    if some.id.is_some() || !some.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_issued"));
                                     }
                                     let super::super::serde_helpers::PrimitiveElementOwned {
                                         id,
                                         extension,
                                     } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
+                                    some.id = id;
+                                    some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_effective[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "issued",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
-                            }
-                            Field::Issued => {
-                                let some = r#issued.get_or_insert(Default::default());
-                                if some.value.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("issued"));
-                                }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
-                            }
-                            Field::IssuedPrimitiveElement => {
-                                let some = r#issued.get_or_insert(Default::default());
-                                if some.id.is_some() || !some.extension.is_empty() {
-                                    return Err(serde::de::Error::duplicate_field("_issued"));
-                                }
-                                let super::super::serde_helpers::PrimitiveElementOwned {
-                                    id,
-                                    extension,
-                                } = map_access.next_value()?;
-                                some.id = id;
-                                some.extension = extension;
                             }
                             Field::Performer => {
                                 if r#performer.is_some() {
@@ -1736,105 +2325,300 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                 ));
                             }
                             Field::ValueString => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::String(Default::default()));
-                                if let ObservationValue::String(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::String(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::String(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueString",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueString",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(ObservationValue::String(map_access.next_value()?));
                                 }
                             }
                             Field::ValueStringPrimitiveElement => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::String(Default::default()));
-                                if let ObservationValue::String(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueString",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::String(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::String(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueString",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueString",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueBoolean => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::Boolean(Default::default()));
-                                if let ObservationValue::Boolean(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::Boolean(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::Boolean(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueBoolean",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueBoolean",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(ObservationValue::Boolean(map_access.next_value()?));
                                 }
                             }
                             Field::ValueBooleanPrimitiveElement => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::Boolean(Default::default()));
-                                if let ObservationValue::Boolean(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueBoolean",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::Boolean(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::Boolean(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueBoolean",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueBoolean",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueInteger => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::Integer(Default::default()));
-                                if let ObservationValue::Integer(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::Integer(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::Integer(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueInteger",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueInteger",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(ObservationValue::Integer(map_access.next_value()?));
                                 }
                             }
                             Field::ValueIntegerPrimitiveElement => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::Integer(Default::default()));
-                                if let ObservationValue::Integer(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueInteger",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::Integer(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::Integer(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueInteger",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueInteger",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueRange => {
@@ -1859,69 +2643,197 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                     Some(ObservationValue::SampledData(map_access.next_value()?));
                             }
                             Field::ValueTime => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::Time(Default::default()));
-                                if let ObservationValue::Time(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value
+                                        .get_or_insert(ObservationValue::Time(Default::default()));
+                                    if let ObservationValue::Time(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field("valueTime"));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(ObservationValue::Time(map_access.next_value()?));
                                 }
                             }
                             Field::ValueTimePrimitiveElement => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::Time(Default::default()));
-                                if let ObservationValue::Time(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value
+                                        .get_or_insert(ObservationValue::Time(Default::default()));
+                                    if let ObservationValue::Time(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueTime",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValueDateTime => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::DateTime(Default::default()));
-                                if let ObservationValue::DateTime(variant) = r#enum {
-                                    if variant.value.is_some() {
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::DateTime(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::DateTime(variant) = r#enum {
+                                        if variant.value.is_some() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "valueDateTime",
+                                            ));
+                                        }
+                                        let value: _ = map_access.next_value()?;
+                                        variant.value = Some(value);
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    }
+                                } else {
+                                    if r#value.is_some() {
                                         return Err(serde::de::Error::duplicate_field(
                                             "valueDateTime",
                                         ));
                                     }
-                                    let value: _ = map_access.next_value()?;
-                                    variant.value = Some(value);
-                                } else {
-                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                    r#value =
+                                        Some(ObservationValue::DateTime(map_access.next_value()?));
                                 }
                             }
                             Field::ValueDateTimePrimitiveElement => {
-                                let r#enum = r#value
-                                    .get_or_insert(ObservationValue::DateTime(Default::default()));
-                                if let ObservationValue::DateTime(variant) = r#enum {
-                                    if variant.id.is_some() || !variant.extension.is_empty() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "_valueDateTime",
-                                        ));
+                                if _ctx.from_json {
+                                    let r#enum = r#value.get_or_insert(ObservationValue::DateTime(
+                                        Default::default(),
+                                    ));
+                                    if let ObservationValue::DateTime(variant) = r#enum {
+                                        if variant.id.is_some() || !variant.extension.is_empty() {
+                                            return Err(serde::de::Error::duplicate_field(
+                                                "_valueDateTime",
+                                            ));
+                                        }
+                                        let super::super::serde_helpers::PrimitiveElementOwned {
+                                            id,
+                                            extension,
+                                        } = map_access.next_value()?;
+                                        variant.id = id;
+                                        variant.extension = extension;
+                                    } else {
+                                        return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
-                                    let super::super::serde_helpers::PrimitiveElementOwned {
-                                        id,
-                                        extension,
-                                    } = map_access.next_value()?;
-                                    variant.id = id;
-                                    variant.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                    return Err(serde::de::Error::unknown_field(
+                                        "valueDateTime",
+                                        &[
+                                            "id",
+                                            "meta",
+                                            "implicitRules",
+                                            "language",
+                                            "text",
+                                            "contained",
+                                            "extension",
+                                            "modifierExtension",
+                                            "identifier",
+                                            "basedOn",
+                                            "partOf",
+                                            "status",
+                                            "category",
+                                            "code",
+                                            "subject",
+                                            "focus",
+                                            "encounter",
+                                            "effectiveDateTime",
+                                            "effectivePeriod",
+                                            "effectiveTiming",
+                                            "effectiveInstant",
+                                            "issued",
+                                            "performer",
+                                            "valueQuantity",
+                                            "valueCodeableConcept",
+                                            "valueString",
+                                            "valueBoolean",
+                                            "valueInteger",
+                                            "valueRange",
+                                            "valueRatio",
+                                            "valueSampledData",
+                                            "valueTime",
+                                            "valueDateTime",
+                                            "valuePeriod",
+                                            "dataAbsentReason",
+                                            "interpretation",
+                                            "note",
+                                            "bodySite",
+                                            "method",
+                                            "specimen",
+                                            "device",
+                                            "referenceRange",
+                                            "hasMember",
+                                            "derivedFrom",
+                                            "component",
+                                        ],
+                                    ));
                                 }
                             }
                             Field::ValuePeriod => {

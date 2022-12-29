@@ -23,14 +23,13 @@
 //! # }
 //! ```
 
-mod de;
+pub mod de;
 mod ser;
 
 mod error;
 
 mod consts;
 mod event;
-mod number;
 mod path;
 mod read;
 mod write;
