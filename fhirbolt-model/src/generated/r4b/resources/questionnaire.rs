@@ -1,4 +1,4 @@
-// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
 #[derive(Debug, Clone)]
 pub enum QuestionnaireItemEnableWhenAnswer {

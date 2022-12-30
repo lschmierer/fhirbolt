@@ -1,4 +1,4 @@
-// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
 #[doc = "A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.\n\nThere are situations where it is useful or required to handle pure binary content using the same framework as other resources."]
 #[derive(Default, Debug, Clone)]
 pub struct Binary {

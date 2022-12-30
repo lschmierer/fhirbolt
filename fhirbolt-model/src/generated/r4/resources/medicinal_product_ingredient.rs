@@ -1,4 +1,4 @@
-// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
 #[doc = "Strength expressed in terms of a reference substance."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {

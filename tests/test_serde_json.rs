@@ -1,3 +1,5 @@
+use std::io::Read;
+
 use assert_json_diff::assert_json_eq;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
@@ -13,11 +15,11 @@ use test_utils::examples::{examples, JsonOrXml};
 fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: DeserializationMode) {
     let mut examples_iter = examples(R::fhir_release(), JsonOrXml::Json);
 
-    while let Some(file) = examples_iter.next() {
-        let file_name = file.name().to_owned();
+    let mut buffer = Vec::new();
 
+    while let Some(mut file) = examples_iter.next() {
         // not a FHIR resource
-        if file_name.ends_with("package-min-ver.json") {
+        if file.name().ends_with("package-min-ver.json") {
             continue;
         }
 
@@ -25,14 +27,14 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
             FhirRelease::R4 => {
                 if mode != DeserializationMode::Lax {
                     // all questionnaires seem to have missing linkIds
-                    if file_name.ends_with("-questionnaire.json") {
+                    if file.name().ends_with("-questionnaire.json") {
                         continue;
                     }
                 }
             }
             FhirRelease::R4B => {
                 // R4B examples contain some rubbish
-                if file_name.starts_with("__MACOSX/") {
+                if file.name().starts_with("__MACOSX/") {
                     continue;
                 }
 
@@ -43,7 +45,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                         "examples-json/valueset-catalogType.json",
                         "examples-json/valuesets.json",
                     ]
-                    .contains(&file_name.as_str())
+                    .contains(&file.name())
                     {
                         continue;
                     }
@@ -51,19 +53,29 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
             }
         };
 
-        println!("{}", file_name);
+        println!("{}", file.name());
 
-        let mut json_value: Value = serde_json::from_reader(file).unwrap();
+        buffer.clear();
+        file.read_to_end(&mut buffer).unwrap();
 
-        let resource: R = fhirbolt::json::from_json_value(
-            json_value.clone(),
-            Some(DeserializationConfig { mode }),
-        )
-        .unwrap();
+        let mut json_value: Value = serde_json::from_slice(&buffer).unwrap();
+
+        use serde::de::DeserializeSeed;
+
+        let _ = fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
+            .deserialize(&mut serde_json::Deserializer::from_slice(&buffer))
+            .unwrap();
+
+        let _ = fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
+            .deserialize(json_value.clone())
+            .unwrap();
+
+        let resource: R =
+            fhirbolt::json::from_slice(&buffer, Some(DeserializationConfig { mode })).unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
         if R::fhir_release() == FhirRelease::R4B {
-            if file_name.starts_with("examples-json/activitydefinition-") {
+            if file.name().starts_with("examples-json/activitydefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
                     .unwrap()
@@ -73,7 +85,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                     timing.remove("event");
                 }
             }
-            if file_name.starts_with("examples-json/plandefinition-") {
+            if file.name().starts_with("examples-json/plandefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
                     .unwrap()

@@ -1,5 +1,10 @@
 pub mod serde_context;
 
+#[cfg(feature = "path")]
+pub mod path;
+#[cfg(feature = "serde_helpers")]
+pub mod serde_helpers;
+
 use std::fmt;
 
 /// Marker trait for all types representing FHIR resources.

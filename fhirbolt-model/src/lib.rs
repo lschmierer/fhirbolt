@@ -10,6 +10,9 @@
 #[warn(variant_size_differences)]
 mod generated;
 
+mod element;
+
 pub use fhirbolt_shared::{AnyResource, FhirRelease};
 
+pub use element::*;
 pub use generated::*;

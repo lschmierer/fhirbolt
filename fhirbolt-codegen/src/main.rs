@@ -18,7 +18,7 @@ const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4, FhirRelease::R4B]
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
 
 const MODEL_OUTPUT_DIRECTORY: &str = "fhirbolt-model/src/generated";
-const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-serde/src/helpers/type_hints/generated";
+const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-shared/src/serde_helpers/type_hints/generated";
 
 fn tmp_dir(fhir_release: FhirRelease) -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))

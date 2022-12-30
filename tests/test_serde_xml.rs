@@ -36,6 +36,12 @@ fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(mode: Deseriali
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
+        use serde::de::DeserializeSeed;
+
+        let _ = fhirbolt::model::DeserializationContext::new(R::fhir_release(), false)
+            .deserialize(&mut fhirbolt::xml::de::Deserializer::from_slice::<R>(&buffer).unwrap())
+            .unwrap();
+
         let resource: R =
             fhirbolt::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode })).unwrap();
 

@@ -6,6 +6,7 @@ use serde::{
 };
 
 use fhirbolt_shared::{
+    path::ElementPath,
     serde_context::de::{with_context, DeserializationConfig, DeserializationContext},
     AnyResource,
 };
@@ -13,7 +14,6 @@ use fhirbolt_shared::{
 use crate::xml::{
     error::{Error, Result},
     event::{Element, Event},
-    path::ElementPath,
     read::{self, Read},
 };
 

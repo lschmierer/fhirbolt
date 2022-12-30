@@ -1,4 +1,4 @@
-// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
+// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Debug, Clone)]
 pub enum PatientDeceased {

@@ -24,13 +24,12 @@
 //! ```
 
 pub mod de;
-mod ser;
+pub mod ser;
 
 mod error;
 
 mod consts;
 mod event;
-mod path;
 mod read;
 mod write;
 
