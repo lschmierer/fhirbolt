@@ -14,7 +14,7 @@ pub fn bench(c: &mut Criterion) {
     let account_json_struct =
         fhirbolt::json::from_slice::<model::r4::resources::Account>(&account_bytes_json, None)
             .unwrap();
-    let account_json_value = fhirbolt::model::DeserializationContext::new(FhirRelease::R4, true)
+    let account_json_element = fhirbolt::model::DeserializationContext::new(FhirRelease::R4, true)
         .deserialize(&mut serde_json::Deserializer::from_slice(
             &account_bytes_json,
         ))
@@ -28,10 +28,13 @@ pub fn bench(c: &mut Criterion) {
     let account_xml_struct =
         fhirbolt::xml::from_slice::<model::r4::resources::Account>(&account_bytes_xml, None)
             .unwrap();
-    let account_xml_value = fhirbolt::model::DeserializationContext::new(FhirRelease::R4, false)
-        .deserialize(&mut serde_json::Deserializer::from_slice(
-            &account_bytes_xml,
-        ))
+    let account_xml_element = fhirbolt::model::DeserializationContext::new(FhirRelease::R4, false)
+        .deserialize(
+            &mut fhirbolt::xml::de::Deserializer::from_slice::<fhirbolt::model::r4::Resource>(
+                &account_bytes_xml,
+            )
+            .unwrap(),
+        )
         .unwrap();
 
     let mut group = c.benchmark_group("json");
@@ -50,7 +53,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("write account struct", |b| {
         b.iter(|| black_box(fhirbolt::json::to_vec(&account_json_struct)))
     });
-    group.bench_function("read account value", |b| {
+    group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
                 fhirbolt::model::DeserializationContext::new(FhirRelease::R4, true)
@@ -61,11 +64,11 @@ pub fn bench(c: &mut Criterion) {
             )
         })
     });
-    group.bench_function("write account value", |b| {
+    group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
                 fhirbolt::model::SerializationContext::new(
-                    &account_json_value,
+                    &account_json_element,
                     FhirRelease::R4,
                     true,
                 )
@@ -92,22 +95,25 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("write account", |b| {
         b.iter(|| black_box(fhirbolt::xml::to_vec(&account_xml_struct)))
     });
-    group.bench_function("read account value", |b| {
+    group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::model::DeserializationContext::new(FhirRelease::R4, true)
-                    .deserialize(&mut serde_json::Deserializer::from_slice(
-                        &account_bytes_xml,
-                    ))
+                fhirbolt::model::DeserializationContext::new(FhirRelease::R4, false)
+                    .deserialize(
+                        &mut fhirbolt::xml::de::Deserializer::from_slice::<
+                            fhirbolt::model::r4::Resource,
+                        >(&account_bytes_xml)
+                        .unwrap(),
+                    )
                     .unwrap(),
             )
         })
     });
-    group.bench_function("write account value", |b| {
+    group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
                 fhirbolt::model::SerializationContext::new(
-                    &account_xml_value,
+                    &account_xml_element,
                     FhirRelease::R4,
                     true,
                 )
