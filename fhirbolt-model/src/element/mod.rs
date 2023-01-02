@@ -1,18 +1,20 @@
 mod de;
+mod ser;
 
 pub use de::DeserializationContext;
+pub use ser::SerializationContext;
 
 pub type Element = indexmap::IndexMap<String, Value>;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub enum Value {
     Element(Element),
     Sequence(Vec<Element>),
-    PrimitiveValue(PrimitiveValue),
+    Primitive(Primitive),
 }
 
-#[derive(Debug)]
-pub enum PrimitiveValue {
+#[derive(Clone, Debug)]
+pub enum Primitive {
     Bool(bool),
     Integer(i64),
     Decimal(String),

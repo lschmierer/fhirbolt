@@ -38,9 +38,22 @@ fn test_serde_xml<R: Serialize + DeserializeOwned + AnyResource>(mode: Deseriali
 
         use serde::de::DeserializeSeed;
 
-        let _ = fhirbolt::model::DeserializationContext::new(R::fhir_release(), false)
+        let element = fhirbolt::model::DeserializationContext::new(R::fhir_release(), false)
             .deserialize(&mut fhirbolt::xml::de::Deserializer::from_slice::<R>(&buffer).unwrap())
             .unwrap();
+
+        let mut element_buffer = Vec::new();
+        let _ = &fhirbolt::model::SerializationContext::new(&element, R::fhir_release(), false)
+            .serialize(&mut fhirbolt::xml::ser::Serializer::from_writer::<R>(
+                &mut element_buffer,
+            ))
+            .unwrap();
+
+        assert_xml_eq(
+            &element_buffer,
+            &buffer,
+            R::fhir_release() == FhirRelease::R4B && file.name() == "valuesets.xml",
+        );
 
         let resource: R =
             fhirbolt::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode })).unwrap();

@@ -53,25 +53,16 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
             }
         };
 
+        if file.name() != "bundle-response-simplesummary.json" {
+            //continue;
+        }
+
         println!("{}", file.name());
 
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
         let mut json_value: Value = serde_json::from_slice(&buffer).unwrap();
-
-        use serde::de::DeserializeSeed;
-
-        let _ = fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
-            .deserialize(&mut serde_json::Deserializer::from_slice(&buffer))
-            .unwrap();
-
-        let _ = fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
-            .deserialize(json_value.clone())
-            .unwrap();
-
-        let resource: R =
-            fhirbolt::json::from_slice(&buffer, Some(DeserializationConfig { mode })).unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
         if R::fhir_release() == FhirRelease::R4B {
@@ -110,7 +101,44 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                 }
             }
         }
+        use serde::de::DeserializeSeed;
 
+        let element_from_slice =
+            fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
+                .deserialize(&mut serde_json::Deserializer::from_slice(&buffer))
+                .unwrap();
+
+        //println!("{:?}", element_from_slice);
+
+        assert_json_eq!(
+            fhirbolt::model::SerializationContext::new(
+                &element_from_slice,
+                R::fhir_release(),
+                true
+            )
+            .serialize(serde_json::value::Serializer)
+            .unwrap(),
+            json_value
+        );
+
+        let element_from_value =
+            fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
+                .deserialize(json_value.clone())
+                .unwrap();
+
+        assert_json_eq!(
+            fhirbolt::model::SerializationContext::new(
+                &element_from_value,
+                R::fhir_release(),
+                true
+            )
+            .serialize(serde_json::value::Serializer)
+            .unwrap(),
+            json_value
+        );
+
+        let resource: R =
+            fhirbolt::json::from_slice(&buffer, Some(DeserializationConfig { mode })).unwrap();
         assert_json_eq!(fhirbolt::json::to_json_value(resource).unwrap(), json_value);
     }
 }

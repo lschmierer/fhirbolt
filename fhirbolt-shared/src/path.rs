@@ -42,11 +42,31 @@ impl ElementPath {
         }
     }
 
+    pub fn is_empty(&self) -> bool {
+        self.type_stack.len() == 1 && self.type_stack[0].len() == 0
+    }
+
     pub fn current_element(&self) -> Option<&str> {
         self.current_type_path().split().last()
     }
 
-    pub fn resolve_current_type(&self) -> Option<&str> {
+    pub fn currently_in_resource(&self) -> bool {
+        let contained_resource = self.type_stack.len() >= 2
+            && (self.type_stack[self.type_stack.len() - 2]
+                .split()
+                .last()
+                .unwrap()
+                == "contained"
+                || type_hints(self.fhir_release)
+                    .type_paths
+                    .get(&self.type_stack[self.type_stack.len() - 2].path())
+                    == Some(&"Resource"))
+            && self.type_stack.last().unwrap().len() == 1;
+
+        contained_resource
+    }
+
+    fn resolve_current_type(&self) -> Option<&str> {
         let current_type_path = self.current_type_path();
 
         match current_type_path.split().last() {
@@ -70,26 +90,8 @@ impl ElementPath {
             .map(|t| *t)
     }
 
-    pub fn currently_is_empty_resource(&self) -> bool {
-        self.type_stack.len() == 1
-            && self.type_stack[0].len() == 1
-            && self.type_stack[0].path().is_first_letter_uppercase()
-    }
-
     pub fn current_element_is_resource(&self) -> bool {
-        let contained_resource = self.type_stack.len() >= 2
-            && (self.type_stack[self.type_stack.len() - 2]
-                .split()
-                .last()
-                .unwrap()
-                == "contained"
-                || type_hints(self.fhir_release)
-                    .type_paths
-                    .get(&self.type_stack[self.type_stack.len() - 2].path())
-                    == Some(&"Resource"))
-            && self.type_stack.last().unwrap().len() == 1;
-
-        contained_resource
+        self.resolve_current_type() == Some("Resource")
     }
 
     pub fn current_element_is_primitive(&self) -> bool {
@@ -172,7 +174,7 @@ impl ElementPath {
 
         if self.type_stack.len() > 1
             && self.type_stack.last().unwrap().len() <= 1
-            && !self.current_element_is_resource()
+            && !self.currently_in_resource()
         {
             self.type_stack.pop();
         }
@@ -248,6 +250,8 @@ impl TypePath {
     }
 
     fn pop(&mut self) {
+        self.path.truncate(self.path.rfind(".").unwrap_or(0));
+
         if self
             .content_reference_replacement_stack
             .last()
@@ -260,7 +264,5 @@ impl TypePath {
                 .unwrap()
                 .replaced
         }
-
-        self.path.truncate(self.path.rfind(".").unwrap_or(0));
     }
 }

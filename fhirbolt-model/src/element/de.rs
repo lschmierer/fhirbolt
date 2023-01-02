@@ -4,7 +4,7 @@ use serde::de::{DeserializeSeed, Deserializer, Error, MapAccess, SeqAccess, Unex
 
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
-use super::{Element, PrimitiveValue, Value};
+use super::{Element, Primitive, Value};
 
 pub struct DeserializationContext<V> {
     _phantom: PhantomData<V>,
@@ -32,13 +32,14 @@ impl<V> DeserializationContext<V> {
     }
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct InternalElement(indexmap::IndexMap<String, InternalValue>);
 
+#[derive(Debug)]
 enum InternalValue {
     Element(InternalElement),
     Sequence(Vec<Option<InternalElement>>),
-    PrimitiveValue(PrimitiveValue),
+    Primitive(Primitive),
 }
 
 impl InternalElement {
@@ -69,7 +70,7 @@ impl InternalValue {
                     })
                     .collect::<Result<Vec<_>, D::Error>>()?,
             )),
-            InternalValue::PrimitiveValue(p) => Ok(Value::PrimitiveValue(p)),
+            InternalValue::Primitive(p) => Ok(Value::Primitive(p)),
         }
     }
 }
@@ -113,13 +114,12 @@ impl<'de> Visitor<'de> for ValueVisitor {
     {
         if self.0.from_json {
             let mut element = InternalElement::default();
-            element.0.insert(
-                "value".into(),
-                InternalValue::PrimitiveValue(PrimitiveValue::Bool(v)),
-            );
+            element
+                .0
+                .insert("value".into(), InternalValue::Primitive(Primitive::Bool(v)));
             Ok(InternalValue::Element(element))
         } else {
-            Ok(InternalValue::PrimitiveValue(PrimitiveValue::Bool(v)))
+            Ok(InternalValue::Primitive(Primitive::Bool(v)))
         }
     }
 
@@ -131,11 +131,11 @@ impl<'de> Visitor<'de> for ValueVisitor {
             let mut element = InternalElement::default();
             element.0.insert(
                 "value".into(),
-                InternalValue::PrimitiveValue(PrimitiveValue::Integer(v)),
+                InternalValue::Primitive(Primitive::Integer(v)),
             );
             Ok(InternalValue::Element(element))
         } else {
-            Ok(InternalValue::PrimitiveValue(PrimitiveValue::Integer(v)))
+            Ok(InternalValue::Primitive(Primitive::Integer(v)))
         }
     }
 
@@ -160,20 +160,23 @@ impl<'de> Visitor<'de> for ValueVisitor {
         let current_path = self.0.current_path.borrow();
         let current_element = current_path.current_element();
 
-        if self.0.from_json
-            && current_element != Some("resourceType")
+        if self.0.current_path.borrow().current_element_is_resource()
+            && current_element == Some("resourceType")
+        {
+            Ok(InternalValue::Primitive(Primitive::String(v)))
+        } else if self.0.from_json
             && current_element != Some("id")
             && current_element != Some("url")
         {
             let mut element = InternalElement::default();
             element.0.insert(
                 "value".into(),
-                InternalValue::PrimitiveValue(PrimitiveValue::String(v)),
+                InternalValue::Primitive(Primitive::String(v)),
             );
             Ok(InternalValue::Element(element))
         } else {
             if current_path.current_element_is_boolean() {
-                Ok(InternalValue::PrimitiveValue(PrimitiveValue::Bool(
+                Ok(InternalValue::Primitive(Primitive::Bool(
                     v.parse()
                         .map_err(|_| E::invalid_value(Unexpected::Other(&v), &"a boolean"))?,
                 )))
@@ -181,12 +184,12 @@ impl<'de> Visitor<'de> for ValueVisitor {
                 || current_path.current_element_is_positive_integer()
                 || current_path.current_element_is_unsigned_integer()
             {
-                Ok(InternalValue::PrimitiveValue(PrimitiveValue::Integer(
+                Ok(InternalValue::Primitive(Primitive::Integer(
                     v.parse()
                         .map_err(|_| E::invalid_value(Unexpected::Other(&v), &"an integer"))?,
                 )))
             } else {
-                Ok(InternalValue::PrimitiveValue(PrimitiveValue::String(v)))
+                Ok(InternalValue::Primitive(Primitive::String(v)))
             }
         }
     }
@@ -202,6 +205,8 @@ impl<'de> Visitor<'de> for ValueVisitor {
     where
         V: MapAccess<'de>,
     {
+        let mut is_resource = false;
+
         let mut element = InternalElement::default();
 
         while let Some(key) = map_access.next_key::<String>()? {
@@ -211,54 +216,88 @@ impl<'de> Visitor<'de> for ValueVisitor {
                 key
             };
 
-            let context = self.0.clone_for::<InternalValue>();
-            context.current_path.borrow_mut().push(&key);
+            if (self.0.current_path.borrow().current_element_is_resource()
+                || self.0.current_path.borrow().is_empty())
+                && key == "resourceType"
+            {
+                let value: String = map_access.next_value()?;
 
-            if self.0.from_json && self.0.current_path.borrow().current_element_is_decimal() {
-                let value: serde_json::Number = map_access.next_value()?;
-
-                let mut decimal_element = InternalElement::default();
-                decimal_element.0.insert(
-                    "value".into(),
-                    InternalValue::PrimitiveValue(PrimitiveValue::Decimal(value.to_string())),
-                );
+                self.0.current_path.borrow_mut().push(&value);
+                is_resource = true;
 
                 element
                     .0
-                    .insert(key, InternalValue::Element(decimal_element));
+                    .insert(key, InternalValue::Primitive(Primitive::String(value)));
             } else {
-                let value = map_access.next_value_seed(self.0.clone_for::<InternalValue>())?;
+                self.0.current_path.as_ref().borrow_mut().push(&key);
 
-                if let Some(existing) = element.0.get_mut(&key) {
-                    match (existing, value) {
-                        (InternalValue::Element(e), InternalValue::Element(n)) => e.0.extend(n.0),
-                        (InternalValue::Sequence(ev), InternalValue::Sequence(nv)) => {
-                            *ev = mem::take(ev)
-                                .into_iter()
-                                .zip(nv)
-                                .take_while(|(e, n)| e.is_none() && n.is_none())
-                                .map(|(e, n)| match (e, n) {
-                                    (Some(mut e), Some(n)) => {
-                                        e.0.extend(n.0);
-                                        Some(e)
-                                    }
-                                    (Some(e), None) => Some(e),
-                                    (None, Some(n)) => Some(n),
-                                    _ => None,
-                                })
-                                .collect()
-                        }
-                        (InternalValue::Sequence(ev), InternalValue::Element(n)) => {
-                            ev.push(Some(n))
-                        }
-                        (e, v) => *e = v,
-                    }
+                if self.0.from_json && self.0.current_path.borrow().current_element_is_decimal() {
+                    let value: serde_json::Number = map_access.next_value()?;
+
+                    let mut decimal_element = InternalElement::default();
+                    decimal_element.0.insert(
+                        "value".into(),
+                        InternalValue::Primitive(Primitive::Decimal(value.to_string())),
+                    );
+
+                    element
+                        .0
+                        .insert(key, InternalValue::Element(decimal_element));
                 } else {
-                    element.0.insert(key, value);
-                }
-            }
+                    let value = map_access.next_value_seed(self.0.clone_for::<InternalValue>())?;
 
-            context.current_path.borrow_mut().pop();
+                    if let Some(existing) = element.0.get_mut(&key) {
+                        match (existing, value) {
+                            (InternalValue::Element(e), InternalValue::Element(n)) => {
+                                e.0.extend(n.0)
+                            }
+                            (InternalValue::Sequence(ev), InternalValue::Sequence(nv)) => {
+                                *ev = mem::take(ev)
+                                    .into_iter()
+                                    .zip(nv)
+                                    .take_while(|(e, n)| e.is_some() || n.is_some())
+                                    .map(|(e, n)| match (e, n) {
+                                        (Some(mut e), Some(n)) => {
+                                            e.0.extend(n.0);
+                                            Some(e)
+                                        }
+                                        (Some(e), None) => Some(e),
+                                        (None, Some(n)) => Some(n),
+                                        _ => None,
+                                    })
+                                    .collect()
+                            }
+                            (InternalValue::Sequence(es), InternalValue::Element(n)) => {
+                                es.push(Some(n))
+                            }
+                            (e, v) => *e = v,
+                        }
+                    } else if self.0.current_path.borrow().current_element_is_sequence() {
+                        match value {
+                            InternalValue::Element(e) => element
+                                .0
+                                .insert(key, InternalValue::Sequence(vec![Some(e)])),
+                            InternalValue::Sequence(s) => {
+                                element.0.insert(key, InternalValue::Sequence(s))
+                            }
+                            InternalValue::Primitive(v) => {
+                                return Err(V::Error::invalid_type(
+                                    Unexpected::Other(&format!("primitive value {:?}", v)),
+                                    &"a sequence element",
+                                ))
+                            }
+                        };
+                    } else {
+                        element.0.insert(key, value);
+                    }
+                }
+
+                self.0.current_path.as_ref().borrow_mut().pop();
+            }
+        }
+
+        if is_resource {
+            self.0.current_path.as_ref().borrow_mut().pop();
         }
 
         Ok(InternalValue::Element(element))
@@ -281,7 +320,7 @@ impl<'de> Visitor<'de> for ValueVisitor {
                         &"a sequence element",
                     ))
                 }
-                Some(InternalValue::PrimitiveValue(_)) => {
+                Some(InternalValue::Primitive(_)) => {
                     return Err(V::Error::invalid_type(
                         Unexpected::Seq,
                         &"a sequence element",
