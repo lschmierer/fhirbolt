@@ -50,9 +50,6 @@ pub fn bench(c: &mut Criterion) {
             )
         })
     });
-    group.bench_function("write account struct", |b| {
-        b.iter(|| black_box(fhirbolt::json::to_vec(&account_json_struct)))
-    });
     group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
@@ -63,6 +60,9 @@ pub fn bench(c: &mut Criterion) {
                     .unwrap(),
             )
         })
+    });
+    group.bench_function("write account struct", |b| {
+        b.iter(|| black_box(fhirbolt::json::to_vec(&account_json_struct)))
     });
     group.bench_function("write account element", |b| {
         b.iter(|| {
@@ -79,7 +79,7 @@ pub fn bench(c: &mut Criterion) {
     });
     group.finish();
 
-    let mut group = c.benchmark_group("xml struct");
+    let mut group = c.benchmark_group("xml");
     group.throughput(Throughput::Bytes(account_bytes_xml.len() as u64));
     group.bench_function("read account struct", |b| {
         b.iter(|| {
@@ -91,9 +91,6 @@ pub fn bench(c: &mut Criterion) {
                 .unwrap(),
             )
         })
-    });
-    group.bench_function("write account", |b| {
-        b.iter(|| black_box(fhirbolt::xml::to_vec(&account_xml_struct)))
     });
     group.bench_function("read account element", |b| {
         b.iter(|| {
@@ -108,6 +105,9 @@ pub fn bench(c: &mut Criterion) {
                     .unwrap(),
             )
         })
+    });
+    group.bench_function("write account struct", |b| {
+        b.iter(|| black_box(fhirbolt::xml::to_vec(&account_xml_struct)))
     });
     group.bench_function("write account element", |b| {
         b.iter(|| {
