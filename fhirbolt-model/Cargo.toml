@@ -7,7 +7,9 @@ description = "Internal model library of the fhirbolt project"
 repository = "https://github.com/lschmierer/fhirbolt"
 documentation = "https://docs.rs/fhirbolt"
 license = "MIT OR Apache-2.0"
-keywords = ["hl7", "fhir"]
+
+[package.metadata.docs.rs]
+all-features = true
 
 [features]
 r4 = []
