@@ -1,6 +1,6 @@
 [package]
 name = "fhirbolt-serde"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
 description = "Internal serde library of the fhirbolt project"
