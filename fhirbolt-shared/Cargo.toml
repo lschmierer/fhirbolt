@@ -1,6 +1,6 @@
 [package]
 name = "fhirbolt-shared"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
 description = "Internal shared library of the fhirbolt project"
