@@ -2,6 +2,13 @@
 name = "fhirbolt-serde"
 version = "0.1.0"
 edition = "2021"
+authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
+description = "Internal serde library of the fhirbolt project"
+readme = "../README.md"
+repository = "https://github.com/lschmierer/fhirbolt"
+documentation = "https://docs.rs/fhirbolt"
+license = "MIT OR Apache-2.0"
+keywords = ["hl7", "fhir"]
 
 [dependencies]
 phf = { version = "0.11", features = ["macros"] }
@@ -9,7 +16,7 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0", features = ["arbitrary_precision"] }
 quick-xml = "0.25"
 
-fhirbolt-shared = { path = "../fhirbolt-shared" }
+fhirbolt-shared = {  version = "0.1.0", path = "../fhirbolt-shared" }
 
 [dev-dependencies]
 # used by doc-tests

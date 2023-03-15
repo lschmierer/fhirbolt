@@ -2,6 +2,7 @@
 name = "fhirbolt-codegen"
 version = "0.1.0"
 edition = "2018"
+publish = false
 
 [dependencies]
 linked-hash-map = "0.5"
