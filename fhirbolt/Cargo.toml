@@ -1,12 +1,22 @@
 [package]
 name = "fhirbolt"
-version = "0.1.0"
-edition = "2018"
+version = "0.1.2"
+edition = "2021"
+authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
+description = "FHIR library"
+readme = "../README.md"
+repository = "https://github.com/lschmierer/fhirbolt"
+documentation = "https://docs.rs/fhirbolt"
+license = "MIT OR Apache-2.0"
+keywords = ["hl7", "fhir"]
+
+[package.metadata.docs.rs]
+all-features = true
 
 [features]
 r4 = ["fhirbolt-model/r4"]
 r4b = ["fhirbolt-model/r4b"]
 
 [dependencies]
-fhirbolt-model = { path = "../fhirbolt-model" }
-fhirbolt-serde = { path = "../fhirbolt-serde" }
+fhirbolt-model = { version = "0.1.0", path = "../fhirbolt-model" }
+fhirbolt-serde = { version = "0.1.0", path = "../fhirbolt-serde" }
