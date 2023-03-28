@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionStatusNotificationEvent {
@@ -24,7 +24,7 @@ impl serde::ser::Serialize for SubscriptionStatusNotificationEvent {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -130,7 +130,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatusNotificationEvent {
                 let mut r#additional_context: Option<Vec<Box<super::super::types::Reference>>> =
                     None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -333,9 +333,7 @@ pub struct SubscriptionStatus {
     pub r#error: Vec<Box<super::super::types::CodeableConcept>>,
 }
 impl crate::AnyResource for SubscriptionStatus {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for SubscriptionStatus {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -344,7 +342,7 @@ impl serde::ser::Serialize for SubscriptionStatus {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "SubscriptionStatus")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -570,7 +568,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatus {
                 let mut r#topic: Option<super::super::types::Canonical> = None;
                 let mut r#error: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

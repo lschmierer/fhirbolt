@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the activity being defined."]
 #[derive(Debug, Clone)]
 pub enum ActivityDefinitionSubject {
@@ -60,7 +60,7 @@ impl serde::ser::Serialize for ActivityDefinitionParticipant {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -135,7 +135,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionParticipant {
                 let mut r#type: Option<super::super::types::Code> = None;
                 let mut r#role: Option<Box<super::super::types::CodeableConcept>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -248,7 +248,7 @@ impl serde::ser::Serialize for ActivityDefinitionDynamicValue {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -321,7 +321,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionDynamicValue {
                 let mut r#path: Option<super::super::types::String> = None;
                 let mut r#expression: Option<Box<super::super::types::Expression>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -538,9 +538,7 @@ pub struct ActivityDefinition {
     pub r#dynamic_value: Vec<ActivityDefinitionDynamicValue>,
 }
 impl crate::AnyResource for ActivityDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for ActivityDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -549,7 +547,7 @@ impl serde::ser::Serialize for ActivityDefinition {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "ActivityDefinition")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1434,7 +1432,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinition {
                 let mut r#transform: Option<super::super::types::Canonical> = None;
                 let mut r#dynamic_value: Option<Vec<ActivityDefinitionDynamicValue>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

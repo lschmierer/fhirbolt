@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information."]
 #[derive(Default, Debug, Clone)]
 pub struct Endpoint {
@@ -42,9 +42,7 @@ pub struct Endpoint {
     pub r#header: Vec<super::super::types::String>,
 }
 impl crate::AnyResource for Endpoint {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for Endpoint {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -53,7 +51,7 @@ impl serde::ser::Serialize for Endpoint {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Endpoint")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -353,7 +351,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                 let mut r#address: Option<super::super::types::Url> = None;
                 let mut r#header: Option<Vec<super::super::types::String>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

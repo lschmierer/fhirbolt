@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for dateTime Type: A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a time zone SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates."]
 #[derive(Default, Debug, Clone)]
 pub struct DateTime {
@@ -16,7 +16,7 @@ impl serde::ser::Serialize for DateTime {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -61,7 +61,7 @@ impl<'de> serde::de::Deserialize<'de> for DateTime {
                 let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
                 let mut r#value: Option<std::string::String> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {

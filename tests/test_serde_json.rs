@@ -6,14 +6,18 @@ use serde::Serialize;
 use serde_json::Value;
 
 use fhirbolt::{
-    model::{self, AnyResource, FhirRelease},
-    DeserializationConfig, DeserializationMode,
+    element::Element,
+    model::AnyResource,
+    serde::{DeserializationConfig, DeserializationMode},
+    FhirRelease, FhirReleases,
 };
 
 use test_utils::examples::{examples, JsonOrXml};
 
-fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: DeserializationMode) {
-    let mut examples_iter = examples(R::fhir_release(), JsonOrXml::Json);
+fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirRelease>(
+    mode: DeserializationMode,
+) {
+    let mut examples_iter = examples(R, JsonOrXml::Json);
 
     let mut buffer = Vec::new();
 
@@ -23,8 +27,8 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
             continue;
         }
 
-        match R::fhir_release() {
-            FhirRelease::R4 => {
+        match R {
+            FhirReleases::R4 => {
                 if mode != DeserializationMode::Lax {
                     // all questionnaires seem to have missing linkIds
                     if file.name().ends_with("-questionnaire.json") {
@@ -32,7 +36,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                     }
                 }
             }
-            FhirRelease::R4B => {
+            FhirReleases::R4B => {
                 // R4B examples contain some rubbish
                 if file.name().starts_with("__MACOSX/") {
                     continue;
@@ -51,6 +55,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                     }
                 }
             }
+            _ => (),
         };
 
         if file.name() != "bundle-response-simplesummary.json" {
@@ -65,7 +70,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
         let mut json_value: Value = serde_json::from_slice(&buffer).unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
-        if R::fhir_release() == FhirRelease::R4B {
+        if R == FhirReleases::R4B {
             if file.name().starts_with("examples-json/activitydefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
@@ -101,58 +106,54 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                 }
             }
         }
-        use serde::de::DeserializeSeed;
 
-        let element_from_slice =
-            fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
-                .deserialize(&mut serde_json::Deserializer::from_slice(&buffer))
-                .unwrap();
-
-        //println!("{:?}", element_from_slice);
+        let element_from_slice: Element<R> = fhirbolt::element::json::from_slice(&buffer).unwrap();
 
         assert_json_eq!(
-            fhirbolt::model::SerializationContext::new(
-                &element_from_slice,
-                R::fhir_release(),
-                true
-            )
-            .serialize(serde_json::value::Serializer)
-            .unwrap(),
+            fhirbolt::element::json::to_json_value(element_from_slice).unwrap(),
             json_value
         );
 
-        let element_from_value =
-            fhirbolt::model::DeserializationContext::new(R::fhir_release(), true)
-                .deserialize(json_value.clone())
-                .unwrap();
+        let element_from_value: Element<R> =
+            fhirbolt::element::json::from_json_value(json_value.clone()).unwrap();
 
         assert_json_eq!(
-            fhirbolt::model::SerializationContext::new(
-                &element_from_value,
-                R::fhir_release(),
-                true
-            )
-            .serialize(serde_json::value::Serializer)
-            .unwrap(),
+            fhirbolt::element::json::to_json_value(element_from_value).unwrap(),
             json_value
         );
 
-        let resource: R =
-            fhirbolt::json::from_slice(&buffer, Some(DeserializationConfig { mode })).unwrap();
-        assert_json_eq!(fhirbolt::json::to_json_value(resource).unwrap(), json_value);
+        let resource: E =
+            fhirbolt::model::json::from_slice(&buffer, Some(DeserializationConfig { mode }))
+                .unwrap();
+        assert_json_eq!(
+            fhirbolt::model::json::to_json_value(resource).unwrap(),
+            json_value
+        );
     }
 }
 
 #[test]
 fn test_serde_json_r4() {
-    test_serde_json::<model::r4::Resource>(DeserializationMode::Strict);
-    test_serde_json::<model::r4::Resource>(DeserializationMode::Compatibility);
-    test_serde_json::<model::r4::Resource>(DeserializationMode::Lax);
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Strict,
+    );
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Compatibility,
+    );
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Lax,
+    );
 }
 
 #[test]
 fn test_serde_json_r4b() {
-    test_serde_json::<model::r4b::Resource>(DeserializationMode::Strict);
-    test_serde_json::<model::r4b::Resource>(DeserializationMode::Compatibility);
-    test_serde_json::<model::r4b::Resource>(DeserializationMode::Lax);
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+        DeserializationMode::Strict,
+    );
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+        DeserializationMode::Compatibility,
+    );
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+        DeserializationMode::Lax,
+    );
 }

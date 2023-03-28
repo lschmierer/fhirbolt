@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Debug, Clone)]
 pub enum CoverageEligibilityRequestServiced {
@@ -46,7 +46,7 @@ impl serde::ser::Serialize for CoverageEligibilityRequestSupportingInfo {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -143,7 +143,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
                 let mut r#information: Option<Box<super::super::types::Reference>> = None;
                 let mut r#applies_to_all: Option<super::super::types::Boolean> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -326,7 +326,7 @@ impl serde::ser::Serialize for CoverageEligibilityRequestInsurance {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -427,7 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
                 let mut r#coverage: Option<Box<super::super::types::Reference>> = None;
                 let mut r#business_arrangement: Option<super::super::types::String> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -602,7 +602,7 @@ impl serde::ser::Serialize for CoverageEligibilityRequestItemDiagnosis {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -671,7 +671,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
                     None;
                 let mut r#diagnosis: Option<CoverageEligibilityRequestItemDiagnosisDiagnosis> =
                     None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DiagnosisCodeableConcept => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisCodeableConcept")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DiagnosisReference => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisReference")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "diagnosisCodeableConcept" , "diagnosisReference" ,])) ; } } } Ok (CoverageEligibilityRequestItemDiagnosis { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#diagnosis , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: DiagnosisCodeableConcept => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisCodeableConcept")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DiagnosisReference => { if r#diagnosis . is_some () { return Err (serde :: de :: Error :: duplicate_field ("diagnosisReference")) ; } r#diagnosis = Some (CoverageEligibilityRequestItemDiagnosisDiagnosis :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "diagnosisCodeableConcept" , "diagnosisReference" ,])) ; } } } Ok (CoverageEligibilityRequestItemDiagnosis { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#diagnosis , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -714,7 +714,7 @@ impl serde::ser::Serialize for CoverageEligibilityRequestItem {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -865,7 +865,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
                 let mut r#diagnosis: Option<Vec<CoverageEligibilityRequestItemDiagnosis>> = None;
                 let mut r#detail: Option<Vec<Box<super::super::types::Reference>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1122,9 +1122,7 @@ pub struct CoverageEligibilityRequest {
     pub r#item: Vec<CoverageEligibilityRequestItem>,
 }
 impl crate::AnyResource for CoverageEligibilityRequest {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for CoverageEligibilityRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1133,7 +1131,7 @@ impl serde::ser::Serialize for CoverageEligibilityRequest {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "CoverageEligibilityRequest")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1423,7 +1421,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequest {
                 let mut r#insurance: Option<Vec<CoverageEligibilityRequestInsurance>> = None;
                 let mut r#item: Option<Vec<CoverageEligibilityRequestItem>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

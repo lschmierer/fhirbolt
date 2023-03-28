@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Debug, Clone)]
 pub enum ProcedurePerformed {
@@ -37,7 +37,7 @@ impl serde::ser::Serialize for ProcedurePerformer {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -99,7 +99,7 @@ impl<'de> serde::de::Deserialize<'de> for ProcedurePerformer {
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
                 let mut r#on_behalf_of: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -198,7 +198,7 @@ impl serde::ser::Serialize for ProcedureFocalDevice {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -254,7 +254,7 @@ impl<'de> serde::de::Deserialize<'de> for ProcedureFocalDevice {
                 let mut r#action: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#manipulated: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -401,9 +401,7 @@ pub struct Procedure {
     pub r#used_code: Vec<Box<super::super::types::CodeableConcept>>,
 }
 impl crate::AnyResource for Procedure {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for Procedure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -412,7 +410,7 @@ impl serde::ser::Serialize for Procedure {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Procedure")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -847,7 +845,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                 let mut r#used_reference: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#used_code: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

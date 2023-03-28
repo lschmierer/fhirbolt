@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice."]
 #[derive(Default, Debug, Clone)]
 pub struct PractitionerRoleAvailableTime {
@@ -24,7 +24,7 @@ impl serde::ser::Serialize for PractitionerRoleAvailableTime {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -188,7 +188,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
                 let mut r#available_start_time: Option<super::super::types::Time> = None;
                 let mut r#available_end_time: Option<super::super::types::Time> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -485,7 +485,7 @@ impl serde::ser::Serialize for PractitionerRoleNotAvailable {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -560,7 +560,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
                 let mut r#description: Option<super::super::types::String> = None;
                 let mut r#during: Option<Box<super::super::types::Period>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -719,9 +719,7 @@ pub struct PractitionerRole {
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
 }
 impl crate::AnyResource for PractitionerRole {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for PractitionerRole {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -730,7 +728,7 @@ impl serde::ser::Serialize for PractitionerRole {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "PractitionerRole")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -966,7 +964,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRole {
                 let mut r#availability_exceptions: Option<super::super::types::String> = None;
                 let mut r#endpoint: Option<Vec<Box<super::super::types::Reference>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

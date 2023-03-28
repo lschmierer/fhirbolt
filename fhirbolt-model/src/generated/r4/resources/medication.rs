@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication of a medication."]
 #[derive(Debug, Clone)]
 pub enum MedicationIngredientItem {
@@ -34,7 +34,7 @@ impl serde::ser::Serialize for MedicationIngredient {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -126,7 +126,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationIngredient {
                 let mut r#is_active: Option<super::super::types::Boolean> = None;
                 let mut r#strength: Option<Box<super::super::types::Ratio>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -274,7 +274,7 @@ impl serde::ser::Serialize for MedicationBatch {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -368,7 +368,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationBatch {
                 let mut r#lot_number: Option<super::super::types::String> = None;
                 let mut r#expiration_date: Option<super::super::types::DateTime> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -545,9 +545,7 @@ pub struct Medication {
     pub r#batch: Option<MedicationBatch>,
 }
 impl crate::AnyResource for Medication {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for Medication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -556,7 +554,7 @@ impl serde::ser::Serialize for Medication {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Medication")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -737,7 +735,7 @@ impl<'de> serde::de::Deserialize<'de> for Medication {
                 let mut r#ingredient: Option<Vec<MedicationIngredient>> = None;
                 let mut r#batch: Option<MedicationBatch> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Debug, Clone)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
@@ -47,7 +47,7 @@ impl serde::ser::Serialize for PackagedProductDefinitionLegalStatusOfSupply {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -108,7 +108,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionLegalStatusOf
                 let mut r#code: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#jurisdiction: Option<Box<super::super::types::CodeableConcept>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -195,7 +195,7 @@ impl serde::ser::Serialize for PackagedProductDefinitionPackageShelfLifeStorage 
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -296,7 +296,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageShelfL
                 let mut r#special_precautions_for_storage: Option<
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: PeriodDuration => { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodDuration")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: Duration (map_access . next_value () ?)) ; } , Field :: PeriodString => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("period[x]")) ; } } else { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (map_access . next_value () ?)) ; } } , Field :: PeriodStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_periodString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_period[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("periodString" , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } , Field :: SpecialPrecautionsForStorage => { if r#special_precautions_for_storage . is_some () { return Err (serde :: de :: Error :: duplicate_field ("specialPrecautionsForStorage")) ; } r#special_precautions_for_storage = Some (map_access . next_value () ?) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } } Ok (PackagedProductDefinitionPackageShelfLifeStorage { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type , r#period , r#special_precautions_for_storage : r#special_precautions_for_storage . unwrap_or (vec ! []) , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: PeriodDuration => { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodDuration")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: Duration (map_access . next_value () ?)) ; } , Field :: PeriodString => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("period[x]")) ; } } else { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (map_access . next_value () ?)) ; } } , Field :: PeriodStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_periodString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_period[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("periodString" , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } , Field :: SpecialPrecautionsForStorage => { if r#special_precautions_for_storage . is_some () { return Err (serde :: de :: Error :: duplicate_field ("specialPrecautionsForStorage")) ; } r#special_precautions_for_storage = Some (map_access . next_value () ?) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } } Ok (PackagedProductDefinitionPackageShelfLifeStorage { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type , r#period , r#special_precautions_for_storage : r#special_precautions_for_storage . unwrap_or (vec ! []) , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -323,7 +323,7 @@ impl serde::ser::Serialize for PackagedProductDefinitionPackageProperty {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -443,7 +443,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageProper
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<PackagedProductDefinitionPackagePropertyValue> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -714,7 +714,7 @@ impl serde::ser::Serialize for PackagedProductDefinitionPackageContainedItem {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -773,7 +773,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageContai
                 let mut r#item: Option<Box<super::super::types::CodeableReference>> = None;
                 let mut r#amount: Option<Box<super::super::types::Quantity>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -874,7 +874,7 @@ impl serde::ser::Serialize for PackagedProductDefinitionPackage {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1007,7 +1007,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackage {
                 > = None;
                 let mut r#package: Option<Vec<PackagedProductDefinitionPackage>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1230,9 +1230,7 @@ pub struct PackagedProductDefinition {
     pub r#package: Option<PackagedProductDefinitionPackage>,
 }
 impl crate::AnyResource for PackagedProductDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for PackagedProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1241,7 +1239,7 @@ impl serde::ser::Serialize for PackagedProductDefinition {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "PackagedProductDefinition")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1517,7 +1515,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                 let mut r#manufacturer: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#package: Option<PackagedProductDefinitionPackage> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

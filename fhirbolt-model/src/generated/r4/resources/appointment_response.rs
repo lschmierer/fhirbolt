@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection."]
 #[derive(Default, Debug, Clone)]
 pub struct AppointmentResponse {
@@ -36,9 +36,7 @@ pub struct AppointmentResponse {
     pub r#comment: Option<super::super::types::String>,
 }
 impl crate::AnyResource for AppointmentResponse {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for AppointmentResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -47,7 +45,7 @@ impl serde::ser::Serialize for AppointmentResponse {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "AppointmentResponse")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -279,7 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                 let mut r#participant_status: Option<super::super::types::Code> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

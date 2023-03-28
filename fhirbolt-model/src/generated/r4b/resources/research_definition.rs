@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the ResearchDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchDefinition can be anything."]
 #[derive(Debug, Clone)]
 pub enum ResearchDefinitionSubject {
@@ -100,9 +100,7 @@ pub struct ResearchDefinition {
     pub r#outcome: Option<Box<super::super::types::Reference>>,
 }
 impl crate::AnyResource for ResearchDefinition {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for ResearchDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -111,7 +109,7 @@ impl serde::ser::Serialize for ResearchDefinition {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "ResearchDefinition")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -800,7 +798,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchDefinition {
                 let mut r#exposure_alternative: Option<Box<super::super::types::Reference>> = None;
                 let mut r#outcome: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "If the parameter is a data type."]
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
@@ -84,7 +84,7 @@ impl serde::ser::Serialize for ParametersParameter {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -745,7 +745,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                 let mut r#resource: Option<Box<super::super::Resource>> = None;
                 let mut r#part: Option<Vec<ParametersParameter>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -3345,9 +3345,7 @@ pub struct Parameters {
     pub r#parameter: Vec<ParametersParameter>,
 }
 impl crate::AnyResource for Parameters {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for Parameters {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -3356,7 +3354,7 @@ impl serde::ser::Serialize for Parameters {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Parameters")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -3452,7 +3450,7 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
                 let mut r#language: Option<super::super::types::Code> = None;
                 let mut r#parameter: Option<Vec<ParametersParameter>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

@@ -1,0 +1,12 @@
+[package]
+name = "fhirbolt-element"
+version = "0.1.3"
+edition = "2021"
+authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
+description = "Internal element model library of the fhirbolt project"
+repository = "https://github.com/lschmierer/fhirbolt"
+documentation = "https://docs.rs/fhirbolt"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+fhirbolt-shared = { version = "0.1.0", path = "../fhirbolt-shared" }

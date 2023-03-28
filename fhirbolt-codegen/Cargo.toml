@@ -18,4 +18,4 @@ proc-macro2 = "1.0"
 convert_case = "0.4"
 chrono = "0.4"
 
-fhirbolt-shared = { path = "../fhirbolt-shared", default-features = false  }
+fhirbolt-shared = { path = "../fhirbolt-shared"  }

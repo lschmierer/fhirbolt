@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Debug, Clone)]
 pub enum AllergyIntoleranceOnset {
@@ -45,7 +45,7 @@ impl serde::ser::Serialize for AllergyIntoleranceReaction {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -188,7 +188,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                 let mut r#exposure_route: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -468,9 +468,7 @@ pub struct AllergyIntolerance {
     pub r#reaction: Vec<AllergyIntoleranceReaction>,
 }
 impl crate::AnyResource for AllergyIntolerance {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for AllergyIntolerance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -479,7 +477,7 @@ impl serde::ser::Serialize for AllergyIntolerance {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "AllergyIntolerance")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -859,7 +857,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 let mut r#reaction: Option<Vec<AllergyIntoleranceReaction>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

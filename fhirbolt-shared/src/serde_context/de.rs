@@ -1,26 +1,70 @@
-use std::cell::Cell;
+use std::{cell::RefCell, marker::PhantomData, rc::Rc};
+
+use crate::{element::Element, path::ElementPath, FhirRelease};
 
 thread_local! {
-    pub static DESERIALIZATION_CONTEXT: Cell<DeserializationContext> = Cell::new(Default::default());
+    pub static DESERIALIZATION_CONTEXT: RefCell<DeserializationContext<()>> = RefCell::new(Default::default());
 }
 
-pub fn with_context<F, R>(config: DeserializationContext, f: F) -> R
+pub fn with_context<F, R>(context: DeserializationContext<()>, f: F) -> R
 where
     F: FnOnce() -> R,
 {
     DESERIALIZATION_CONTEXT.with(|c| {
-        c.set(config);
+        c.replace(context);
         f()
     })
 }
 
 /// Context for deserialization.
-#[derive(Default, Copy, Clone)]
-pub struct DeserializationContext {
+#[derive(Default, Clone)]
+pub struct DeserializationContext<V> {
+    _phantom: PhantomData<V>,
     // Deserialization config
     pub config: DeserializationConfig,
     // The JSON data model differs from the FHIR data model
     pub from_json: bool,
+    // Used by the element model to keep track of its state in the element tree
+    pub current_path: Option<Rc<RefCell<ElementPath>>>,
+}
+
+impl<V> DeserializationContext<V> {
+    pub fn unwrap_current_path(&self) -> &Rc<RefCell<ElementPath>> {
+        self.current_path.as_ref().unwrap()
+    }
+}
+
+impl<const R: FhirRelease> DeserializationContext<Element<R>> {
+    pub fn with_path_tracking(from_json: bool) -> Self {
+        DeserializationContext {
+            _phantom: PhantomData,
+            config: Default::default(),
+            from_json,
+            current_path: Some(Rc::new(RefCell::new(ElementPath::new(R)))),
+        }
+    }
+}
+
+impl DeserializationContext<()> {
+    pub fn without_path_tracking(config: DeserializationConfig, from_json: bool) -> Self {
+        DeserializationContext {
+            _phantom: PhantomData,
+            config,
+            from_json,
+            current_path: None,
+        }
+    }
+}
+
+impl<V> DeserializationContext<V> {
+    pub fn clone_for<F>(&self) -> DeserializationContext<F> {
+        DeserializationContext {
+            _phantom: PhantomData,
+            config: self.config,
+            from_json: self.from_json,
+            current_path: self.current_path.clone(),
+        }
+    }
 }
 
 /// Deserialization configuration options.

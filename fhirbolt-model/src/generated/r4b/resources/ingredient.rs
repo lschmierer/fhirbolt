@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. Unit of presentation refers to the quantity that the item occurs in e.g. a strength per tablet size, perhaps 'per 20mg' (the size of the tablet). It is not generally normalized as a unitary unit, which would be 'per mg')."]
 #[derive(Debug, Clone)]
 pub enum IngredientSubstanceStrengthPresentation {
@@ -56,7 +56,7 @@ impl serde::ser::Serialize for IngredientManufacturer {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -130,7 +130,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientManufacturer {
                 let mut r#role: Option<super::super::types::Code> = None;
                 let mut r#manufacturer: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -259,7 +259,7 @@ impl serde::ser::Serialize for IngredientSubstanceStrengthReferenceStrength {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -360,7 +360,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientSubstanceStrengthReferenceSt
                     None;
                 let mut r#measurement_point: Option<super::super::types::String> = None;
                 let mut r#country: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . get () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Substance => { if r#substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("substance")) ; } r#substance = Some (map_access . next_value () ?) ; } , Field :: StrengthRatio => { if r#strength . is_some () { return Err (serde :: de :: Error :: duplicate_field ("strengthRatio")) ; } r#strength = Some (IngredientSubstanceStrengthReferenceStrengthStrength :: Ratio (map_access . next_value () ?)) ; } , Field :: StrengthRatioRange => { if r#strength . is_some () { return Err (serde :: de :: Error :: duplicate_field ("strengthRatioRange")) ; } r#strength = Some (IngredientSubstanceStrengthReferenceStrengthStrength :: RatioRange (map_access . next_value () ?)) ; } , Field :: MeasurementPoint => { if _ctx . from_json { let some = r#measurement_point . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("measurementPoint")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#measurement_point . is_some () { return Err (serde :: de :: Error :: duplicate_field ("measurementPoint")) ; } r#measurement_point = Some (map_access . next_value () ?) ; } } , Field :: MeasurementPointPrimitiveElement => { if _ctx . from_json { let some = r#measurement_point . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_measurementPoint")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("measurementPoint" , & ["id" , "extension" , "modifierExtension" , "substance" , "strengthRatio" , "strengthRatioRange" , "measurementPoint" , "country" ,])) ; } } , Field :: Country => { if r#country . is_some () { return Err (serde :: de :: Error :: duplicate_field ("country")) ; } r#country = Some (map_access . next_value () ?) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "substance" , "strengthRatio" , "strengthRatioRange" , "measurementPoint" , "country" ,])) ; } } } Ok (IngredientSubstanceStrengthReferenceStrength { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#substance , r#strength : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#strength . unwrap_or (Default :: default ()) } else { r#strength . ok_or (serde :: de :: Error :: missing_field ("strength[x]")) ? } , r#measurement_point , r#country : r#country . unwrap_or (vec ! []) , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Substance => { if r#substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("substance")) ; } r#substance = Some (map_access . next_value () ?) ; } , Field :: StrengthRatio => { if r#strength . is_some () { return Err (serde :: de :: Error :: duplicate_field ("strengthRatio")) ; } r#strength = Some (IngredientSubstanceStrengthReferenceStrengthStrength :: Ratio (map_access . next_value () ?)) ; } , Field :: StrengthRatioRange => { if r#strength . is_some () { return Err (serde :: de :: Error :: duplicate_field ("strengthRatioRange")) ; } r#strength = Some (IngredientSubstanceStrengthReferenceStrengthStrength :: RatioRange (map_access . next_value () ?)) ; } , Field :: MeasurementPoint => { if _ctx . from_json { let some = r#measurement_point . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("measurementPoint")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#measurement_point . is_some () { return Err (serde :: de :: Error :: duplicate_field ("measurementPoint")) ; } r#measurement_point = Some (map_access . next_value () ?) ; } } , Field :: MeasurementPointPrimitiveElement => { if _ctx . from_json { let some = r#measurement_point . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_measurementPoint")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("measurementPoint" , & ["id" , "extension" , "modifierExtension" , "substance" , "strengthRatio" , "strengthRatioRange" , "measurementPoint" , "country" ,])) ; } } , Field :: Country => { if r#country . is_some () { return Err (serde :: de :: Error :: duplicate_field ("country")) ; } r#country = Some (map_access . next_value () ?) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "substance" , "strengthRatio" , "strengthRatioRange" , "measurementPoint" , "country" ,])) ; } } } Ok (IngredientSubstanceStrengthReferenceStrength { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#substance , r#strength : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#strength . unwrap_or (Default :: default ()) } else { r#strength . ok_or (serde :: de :: Error :: missing_field ("strength[x]")) ? } , r#measurement_point , r#country : r#country . unwrap_or (vec ! []) , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -397,7 +397,7 @@ impl serde::ser::Serialize for IngredientSubstanceStrength {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -568,7 +568,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientSubstanceStrength {
                     Vec<IngredientSubstanceStrengthReferenceStrength>,
                 > = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -876,7 +876,7 @@ impl serde::ser::Serialize for IngredientSubstance {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -932,7 +932,7 @@ impl<'de> serde::de::Deserialize<'de> for IngredientSubstance {
                 let mut r#code: Option<Box<super::super::types::CodeableReference>> = None;
                 let mut r#strength: Option<Vec<IngredientSubstanceStrength>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1033,9 +1033,7 @@ pub struct Ingredient {
     pub r#substance: IngredientSubstance,
 }
 impl crate::AnyResource for Ingredient {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for Ingredient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1044,7 +1042,7 @@ impl serde::ser::Serialize for Ingredient {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Ingredient")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1235,7 +1233,7 @@ impl<'de> serde::de::Deserialize<'de> for Ingredient {
                 let mut r#manufacturer: Option<Vec<IngredientManufacturer>> = None;
                 let mut r#substance: Option<IngredientSubstance> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

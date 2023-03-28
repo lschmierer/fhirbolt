@@ -1,41 +1,14 @@
-use std::{cell::RefCell, rc::Rc, str::FromStr};
+use std::str::FromStr;
 
 use serde::{
     ser::{Error, SerializeMap, SerializeSeq, Serializer},
     Serialize,
 };
 
-use fhirbolt_shared::{path::ElementPath, FhirRelease};
-
 use super::{Element, Primitive, Value};
+use crate::{serde_context::ser::SerializationContext, FhirRelease};
 
-pub struct SerializationContext<V> {
-    value: V,
-    output_json: bool,
-    current_path: Rc<RefCell<ElementPath>>,
-}
-
-impl<'a> SerializationContext<&'a Value> {
-    pub fn new(value: &'a Value, fhir_release: FhirRelease, output_json: bool) -> Self {
-        SerializationContext {
-            value,
-            output_json,
-            current_path: Rc::new(RefCell::new(ElementPath::new(fhir_release))),
-        }
-    }
-}
-
-impl<V: Clone> SerializationContext<V> {
-    fn clone_with<W>(&self, value: W) -> SerializationContext<W> {
-        SerializationContext {
-            value,
-            output_json: self.output_json,
-            current_path: self.current_path.clone(),
-        }
-    }
-}
-
-impl Serialize for SerializationContext<&Value> {
+impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -67,7 +40,7 @@ impl Serialize for SerializationContext<&Value> {
     }
 }
 
-impl Serialize for SerializationContext<&Element> {
+impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -76,14 +49,19 @@ impl Serialize for SerializationContext<&Element> {
 
         let mut is_resource = false;
         if let Some(Value::Primitive(Primitive::String(r))) = self.value.get("resourceType") {
-            self.current_path.borrow_mut().push(r);
+            self.unwrap_current_path().borrow_mut().push(r);
             is_resource = true;
         }
 
         for (key, value) in self.value {
-            self.current_path.borrow_mut().push(&key);
+            self.unwrap_current_path().borrow_mut().push(&key);
 
-            if self.output_json && self.current_path.borrow().current_element_is_primitive() {
+            if self.output_json
+                && self
+                    .unwrap_current_path()
+                    .borrow()
+                    .current_element_is_primitive()
+            {
                 match value {
                     Value::Element(element) => {
                         if let Some(v) = element.get("value") {
@@ -135,11 +113,11 @@ impl Serialize for SerializationContext<&Element> {
                 map.serialize_entry(key, &self.clone_with(value))?;
             }
 
-            self.current_path.borrow_mut().pop();
+            self.unwrap_current_path().borrow_mut().pop();
         }
 
         if is_resource {
-            self.current_path.borrow_mut().pop();
+            self.unwrap_current_path().borrow_mut().pop();
         }
 
         map.end()
@@ -147,13 +125,13 @@ impl Serialize for SerializationContext<&Element> {
 }
 
 #[derive(Clone)]
-pub struct PrimitiveElement<'a> {
+pub struct PrimitiveElement<'a, const R: FhirRelease> {
     pub id: Option<&'a str>,
-    pub extension: &'a [Element],
+    pub extension: &'a [Element<R>],
 }
 
-impl<'a> PrimitiveElement<'a> {
-    fn from_element<E>(value: &'a Element) -> Result<PrimitiveElement<'a>, E>
+impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
+    fn from_element<E>(value: &'a Element<R>) -> Result<PrimitiveElement<'a, R>, E>
     where
         E: Error,
     {
@@ -183,7 +161,7 @@ impl<'a> PrimitiveElement<'a> {
     }
 }
 
-impl Serialize for SerializationContext<PrimitiveElement<'_>> {
+impl<const R: FhirRelease> Serialize for SerializationContext<PrimitiveElement<'_, R>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
@@ -199,7 +177,7 @@ impl Serialize for SerializationContext<PrimitiveElement<'_>> {
         }
 
         if !self.value.extension.is_empty() {
-            self.current_path.borrow_mut().push("extension");
+            self.unwrap_current_path().borrow_mut().push("extension");
 
             let elements = self
                 .value
@@ -210,7 +188,7 @@ impl Serialize for SerializationContext<PrimitiveElement<'_>> {
 
             map.serialize_entry("extension", &elements)?;
 
-            self.current_path.borrow_mut().pop();
+            self.unwrap_current_path().borrow_mut().pop();
         }
 
         map.end()

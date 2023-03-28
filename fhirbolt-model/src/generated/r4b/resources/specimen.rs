@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Debug, Clone)]
 pub enum SpecimenCollectionCollected {
@@ -78,7 +78,7 @@ impl serde::ser::Serialize for SpecimenCollection {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -207,7 +207,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenCollection {
                 let mut r#body_site: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#fasting_status: Option<SpecimenCollectionFastingStatus> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -428,7 +428,7 @@ impl serde::ser::Serialize for SpecimenProcessing {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -545,7 +545,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenProcessing {
                 let mut r#additive: Option<Vec<Box<super::super::types::Reference>>> = None;
                 let mut r#time: Option<SpecimenProcessingTime> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -762,7 +762,7 @@ impl serde::ser::Serialize for SpecimenContainer {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -874,7 +874,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenContainer {
                 let mut r#specimen_quantity: Option<Box<super::super::types::Quantity>> = None;
                 let mut r#additive: Option<SpecimenContainerAdditive> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1079,9 +1079,7 @@ pub struct Specimen {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
 impl crate::AnyResource for Specimen {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for Specimen {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1090,7 +1088,7 @@ impl serde::ser::Serialize for Specimen {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Specimen")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1319,7 +1317,7 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
                 let mut r#condition: Option<Vec<Box<super::super::types::CodeableConcept>>> = None;
                 let mut r#note: Option<Vec<Box<super::super::types::Annotation>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

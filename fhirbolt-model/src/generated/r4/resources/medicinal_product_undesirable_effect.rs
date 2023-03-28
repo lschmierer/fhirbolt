@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Describe the undesirable effects of the medicinal product."]
 #[derive(Default, Debug, Clone)]
 pub struct MedicinalProductUndesirableEffect {
@@ -30,9 +30,7 @@ pub struct MedicinalProductUndesirableEffect {
     pub r#population: Vec<Box<super::super::types::Population>>,
 }
 impl crate::AnyResource for MedicinalProductUndesirableEffect {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for MedicinalProductUndesirableEffect {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -41,7 +39,7 @@ impl serde::ser::Serialize for MedicinalProductUndesirableEffect {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "MedicinalProductUndesirableEffect")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -193,7 +191,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductUndesirableEffect {
                 > = None;
                 let mut r#population: Option<Vec<Box<super::super::types::Population>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

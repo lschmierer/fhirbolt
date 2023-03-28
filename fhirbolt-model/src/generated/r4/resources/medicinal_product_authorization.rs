@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Date of procedure."]
 #[derive(Debug, Clone)]
 pub enum MedicinalProductAuthorizationProcedureDate {
@@ -38,7 +38,7 @@ impl serde::ser::Serialize for MedicinalProductAuthorizationJurisdictionalAuthor
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -120,7 +120,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
                 > = None;
                 let mut r#validity_period: Option<Box<super::super::types::Period>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -237,7 +237,7 @@ impl serde::ser::Serialize for MedicinalProductAuthorizationProcedure {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -337,7 +337,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                 let mut r#date: Option<MedicinalProductAuthorizationProcedureDate> = None;
                 let mut r#application: Option<Vec<MedicinalProductAuthorizationProcedure>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -554,9 +554,7 @@ pub struct MedicinalProductAuthorization {
     pub r#procedure: Option<MedicinalProductAuthorizationProcedure>,
 }
 impl crate::AnyResource for MedicinalProductAuthorization {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for MedicinalProductAuthorization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -565,7 +563,7 @@ impl serde::ser::Serialize for MedicinalProductAuthorization {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "MedicinalProductAuthorization")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -857,7 +855,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                 let mut r#regulator: Option<Box<super::super::types::Reference>> = None;
                 let mut r#procedure: Option<MedicinalProductAuthorizationProcedure> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

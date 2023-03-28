@@ -8,7 +8,7 @@ use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 use regex::{Captures, Regex};
 
-use fhirbolt_shared::FhirRelease;
+use fhirbolt_shared::{FhirRelease, FhirReleaseExt};
 
 use crate::{
     casing::RustCasing,
@@ -76,7 +76,7 @@ pub fn generate_resource_enum(
         }
     });
 
-    let release_ident = format_ident!("{}", release.to_string());
+    let release_ident = format_ident!("{}", release.name());
 
     SourceFile {
         name: "resource".into(),
@@ -93,9 +93,7 @@ pub fn generate_resource_enum(
             }
 
             impl crate::AnyResource for Resource {
-                fn fhir_release() -> crate::FhirRelease {
-                    crate::FhirRelease::#release_ident
-                }
+                const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::#release_ident;
             }
         },
     }
@@ -130,13 +128,11 @@ fn generate_struct(
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
 
     let impl_any_resource_tokens = if r#struct.resource_name.is_some() {
-        let release_ident = format_ident!("{}", release.to_string());
+        let release_ident = format_ident!("{}", release.name());
 
         quote! {
             impl crate::AnyResource for #name_ident {
-                fn fhir_release() -> crate::FhirRelease {
-                    crate::FhirRelease::#release_ident
-                }
+                const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::#release_ident;
             }
         }
     } else {

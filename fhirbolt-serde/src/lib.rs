@@ -18,13 +18,15 @@
 //!         \"valueString\": \"some value\"
 //!     }";
 //!
-//! let r: R4BResource = fhirbolt::json::from_str(s, None).unwrap();
+//! let r: R4BResource = fhirbolt::model::json::from_str(s, None).unwrap();
 //! println!("{:?}", r);
 //! # }
 //! ```
 //!
 
-pub mod json;
 pub mod xml;
+
+pub mod element;
+pub mod model;
 
 pub use fhirbolt_shared::serde_context::de::{DeserializationConfig, DeserializationMode};

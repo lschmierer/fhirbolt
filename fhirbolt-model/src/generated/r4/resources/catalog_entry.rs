@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Default, Debug, Clone)]
 pub struct CatalogEntryRelatedEntry {
@@ -20,7 +20,7 @@ impl serde::ser::Serialize for CatalogEntryRelatedEntry {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -90,7 +90,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                 let mut r#relationtype: Option<super::super::types::Code> = None;
                 let mut r#item: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -253,9 +253,7 @@ pub struct CatalogEntry {
     pub r#related_entry: Vec<CatalogEntryRelatedEntry>,
 }
 impl crate::AnyResource for CatalogEntry {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for CatalogEntry {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -264,7 +262,7 @@ impl serde::ser::Serialize for CatalogEntry {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "CatalogEntry")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -535,7 +533,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                 > = None;
                 let mut r#related_entry: Option<Vec<CatalogEntryRelatedEntry>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone)]
 pub enum ImmunizationOccurrence {
@@ -56,7 +56,7 @@ impl serde::ser::Serialize for ImmunizationPerformer {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -112,7 +112,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
                 let mut r#function: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -201,7 +201,7 @@ impl serde::ser::Serialize for ImmunizationEducation {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -343,7 +343,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                 let mut r#publication_date: Option<super::super::types::DateTime> = None;
                 let mut r#presentation_date: Option<super::super::types::DateTime> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -612,7 +612,7 @@ impl serde::ser::Serialize for ImmunizationReaction {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -712,7 +712,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                 let mut r#detail: Option<Box<super::super::types::Reference>> = None;
                 let mut r#reported: Option<super::super::types::Boolean> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -881,7 +881,7 @@ impl serde::ser::Serialize for ImmunizationProtocolApplied {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1070,7 +1070,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                 let mut r#dose_number: Option<ImmunizationProtocolAppliedDoseNumber> = None;
                 let mut r#series_doses: Option<ImmunizationProtocolAppliedSeriesDoses> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1586,9 +1586,7 @@ pub struct Immunization {
     pub r#protocol_applied: Vec<ImmunizationProtocolApplied>,
 }
 impl crate::AnyResource for Immunization {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for Immunization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1597,7 +1595,7 @@ impl serde::ser::Serialize for Immunization {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Immunization")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -2026,7 +2024,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                 let mut r#reaction: Option<Vec<ImmunizationReaction>> = None;
                 let mut r#protocol_applied: Option<Vec<ImmunizationProtocolApplied>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

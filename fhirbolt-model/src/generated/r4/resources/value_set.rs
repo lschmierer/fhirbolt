@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the parameter."]
 #[derive(Debug, Clone)]
 pub enum ValueSetExpansionParameterValue {
@@ -39,7 +39,7 @@ impl serde::ser::Serialize for ValueSetComposeIncludeConceptDesignation {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -138,7 +138,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConceptDesignati
                 let mut r#use: Option<Box<super::super::types::Coding>> = None;
                 let mut r#value: Option<super::super::types::String> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -309,7 +309,7 @@ impl serde::ser::Serialize for ValueSetComposeIncludeConcept {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -408,7 +408,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConcept {
                 let mut r#display: Option<super::super::types::String> = None;
                 let mut r#designation: Option<Vec<ValueSetComposeIncludeConceptDesignation>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -579,7 +579,7 @@ impl serde::ser::Serialize for ValueSetComposeIncludeFilter {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -688,7 +688,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeFilter {
                 let mut r#op: Option<super::super::types::Code> = None;
                 let mut r#value: Option<super::super::types::String> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -910,7 +910,7 @@ impl serde::ser::Serialize for ValueSetComposeInclude {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1059,7 +1059,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeInclude {
                 let mut r#filter: Option<Vec<ValueSetComposeIncludeFilter>> = None;
                 let mut r#value_set: Option<Vec<super::super::types::Canonical>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1313,7 +1313,7 @@ impl serde::ser::Serialize for ValueSetCompose {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1419,7 +1419,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetCompose {
                 let mut r#include: Option<Vec<ValueSetComposeInclude>> = None;
                 let mut r#exclude: Option<Vec<ValueSetComposeInclude>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1598,7 +1598,7 @@ impl serde::ser::Serialize for ValueSetExpansionParameter {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1828,7 +1828,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionParameter {
                 let mut r#name: Option<super::super::types::String> = None;
                 let mut r#value: Option<ValueSetExpansionParameterValue> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -2469,7 +2469,7 @@ impl serde::ser::Serialize for ValueSetExpansionContains {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -2671,7 +2671,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionContains {
                 let mut r#designation: Option<Vec<ValueSetComposeIncludeConceptDesignation>> = None;
                 let mut r#contains: Option<Vec<ValueSetExpansionContains>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -3052,7 +3052,7 @@ impl serde::ser::Serialize for ValueSetExpansion {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -3202,7 +3202,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansion {
                 let mut r#parameter: Option<Vec<ValueSetExpansionParameter>> = None;
                 let mut r#contains: Option<Vec<ValueSetExpansionContains>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -3521,9 +3521,7 @@ pub struct ValueSet {
     pub r#expansion: Option<ValueSetExpansion>,
 }
 impl crate::AnyResource for ValueSet {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for ValueSet {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -3532,7 +3530,7 @@ impl serde::ser::Serialize for ValueSet {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "ValueSet")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -3968,7 +3966,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSet {
                 let mut r#compose: Option<ValueSetCompose> = None;
                 let mut r#expansion: Option<ValueSetExpansion> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

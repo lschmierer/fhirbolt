@@ -1,56 +1,18 @@
-use std::{borrow::Cow, io, mem};
+//! Serialize FHIR resources to XML.
+
+use std::{
+    borrow::Cow,
+    io,
+    mem::{self},
+};
 
 use serde::ser::{self, Impossible, Serialize};
-
-use fhirbolt_shared::{
-    serde_context::ser::{with_context, SerializationContext},
-    AnyResource,
-};
 
 use crate::xml::{
     error::{Error, Result},
     event::{Element, Event},
     write::{self, Write},
 };
-
-/// Serialize the given resource as XML into the IO stream.
-pub fn to_writer<W, T>(writer: W, value: &T) -> Result<()>
-where
-    W: io::Write,
-    T: ?Sized + Serialize + AnyResource,
-{
-    with_context(SerializationContext { output_json: false }, || {
-        let mut ser = Serializer::from_writer::<T>(writer);
-        value.serialize(&mut ser)
-    })
-}
-
-/// Serialize the given resource as a XML byte vector.
-pub fn to_vec<T>(value: &T) -> Result<Vec<u8>>
-where
-    T: ?Sized + Serialize + AnyResource,
-{
-    with_context(SerializationContext { output_json: false }, || {
-        let mut writer = Vec::with_capacity(128);
-        to_writer(&mut writer, value)?;
-        Ok(writer)
-    })
-}
-
-/// Serialize the given resource as a String of JSON.
-pub fn to_string<T>(value: &T) -> Result<String>
-where
-    T: ?Sized + Serialize + AnyResource,
-{
-    with_context(SerializationContext { output_json: false }, || {
-        let vec = to_vec(value)?;
-        let string = unsafe {
-            // We do not emit invalid UTF-8.
-            String::from_utf8_unchecked(vec)
-        };
-        Ok(string)
-    })
-}
 
 #[derive(Debug)]
 struct ElementState {
@@ -94,7 +56,7 @@ pub struct Serializer<W: Write> {
 }
 
 impl<W: io::Write> Serializer<write::IoWrite<W>> {
-    pub fn from_writer<T: ?Sized + AnyResource>(writer: W) -> Self {
+    pub fn new(writer: W) -> Self {
         Serializer {
             writer: write::IoWrite::new(writer),
             state_stack: vec![ElementState::new("", false)],

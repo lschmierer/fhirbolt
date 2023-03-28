@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "A slot of time on a schedule that may be available for booking appointments."]
 #[derive(Default, Debug, Clone)]
 pub struct Slot {
@@ -42,9 +42,7 @@ pub struct Slot {
     pub r#comment: Option<super::super::types::String>,
 }
 impl crate::AnyResource for Slot {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for Slot {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -53,7 +51,7 @@ impl serde::ser::Serialize for Slot {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Slot")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -313,7 +311,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                 let mut r#overbooked: Option<super::super::types::Boolean> = None;
                 let mut r#comment: Option<super::super::types::String> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

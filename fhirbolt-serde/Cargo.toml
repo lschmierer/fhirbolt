@@ -9,7 +9,7 @@ documentation = "https://docs.rs/fhirbolt"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-serde = { version = "1.0", features = ["derive"] }
+serde = { version = "1.0" }
 serde_json = { version = "1.0", features = ["arbitrary_precision"] }
 quick-xml = "0.25"
 

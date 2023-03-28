@@ -1,28 +1,36 @@
+use std::any::Any;
+
+pub mod element;
 pub mod serde_context;
 
-#[cfg(feature = "path")]
 pub mod path;
-#[cfg(feature = "serde_helpers")]
 pub mod serde_helpers;
 
-use std::fmt;
-
 /// Marker trait for all types representing FHIR resources.
-pub trait AnyResource {
-    fn fhir_release() -> FhirRelease;
+pub trait AnyResource: Any {
+    const FHIR_RELEASE: FhirRelease;
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, Debug)]
-pub enum FhirRelease {
-    R4,
-    R4B,
+#[allow(non_snake_case)]
+pub mod FhirReleases {
+    use crate::FhirRelease;
+
+    pub const R4: FhirRelease = 4_0;
+    pub const R4B: FhirRelease = 4_3;
 }
 
-impl fmt::Display for FhirRelease {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match self {
-            FhirRelease::R4 => write!(f, "R4"),
-            FhirRelease::R4B => write!(f, "R4B"),
+pub type FhirRelease = u8;
+
+pub trait FhirReleaseExt {
+    fn name(&self) -> &str;
+}
+
+impl FhirReleaseExt for FhirRelease {
+    fn name(&self) -> &str {
+        match *self {
+            FhirReleases::R4 => "R4",
+            FhirReleases::R4B => "R4B",
+            _ => unreachable!(),
         }
     }
 }

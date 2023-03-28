@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Enum representing all possible FHIR resources."]
 #[derive(Default, Debug, Clone, serde :: Serialize, serde :: Deserialize)]
 #[serde(tag = "resourceType")]
@@ -299,7 +299,5 @@ pub enum Resource {
     Invalid,
 }
 impl crate::AnyResource for Resource {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }

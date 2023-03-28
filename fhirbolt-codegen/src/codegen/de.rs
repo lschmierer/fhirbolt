@@ -88,7 +88,7 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                         )*
 
                         fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                            let _ctx = _ctx.get();
+                            let _ctx = _ctx.borrow();
 
                             while let Some(map_access_key) = map_access.next_key()? {
                                 match map_access_key {

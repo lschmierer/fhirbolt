@@ -25,7 +25,7 @@
 //! // If the resource type is known in advance, you could also use a concrete resource type
 //! // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
 //! use fhirbolt::model::r4b::Resource as R4BResource;
-//! use fhirbolt::{DeserializationConfig, DeserializationMode};
+//! use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
 //!
 //! // The type of `s` is `&str`
 //! let s = "{
@@ -37,14 +37,34 @@
 //!         \"valueString\": \"some value\"
 //!     }";
 //!
-//! let r: R4BResource = fhirbolt::json::from_str(s, None).unwrap();
+//! let r: R4BResource = fhirbolt::model::json::from_str(s, None).unwrap();
 //! println!("{:?}", r);
 //! # }
 //! ```
 //!
-//! You can pass a [`DeserializationConfig`](crate::DeserializationConfig) to configure the deserialization behavior.
+//! You can pass a [`DeserializationConfig`](crate::serde::DeserializationConfig) to configure the deserialization behavior.
 
-#[doc(inline)]
-pub use fhirbolt_model as model;
+pub use fhirbolt_shared::{FhirRelease, FhirReleaseExt, FhirReleases};
 
-pub use fhirbolt_serde::*;
+/// Generated Rust structures for FHIR resources.
+///
+/// You can select which FHIR release to include by speficifying them as Cargo features.
+/// ```toml
+/// [dependencies]
+/// fhirbolt = { version = "0.1", features = ["r4", "r4b"] }
+/// ```
+/// By default, no FHIR release is included.
+///
+pub mod model {
+    pub use fhirbolt_model::*;
+    pub use fhirbolt_serde::model::*;
+}
+
+pub mod element {
+    pub use fhirbolt_element::*;
+    pub use fhirbolt_serde::element::*;
+}
+
+pub mod serde {
+    pub use fhirbolt_serde::{DeserializationConfig, DeserializationMode};
+}

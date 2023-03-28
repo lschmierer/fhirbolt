@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Default, Debug, Clone)]
 pub struct VerificationResultPrimarySource {
@@ -30,7 +30,7 @@ impl serde::ser::Serialize for VerificationResultPrimarySource {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -145,7 +145,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -335,7 +335,7 @@ impl serde::ser::Serialize for VerificationResultAttestation {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -487,7 +487,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                 let mut r#proxy_signature: Option<Box<super::super::types::Signature>> = None;
                 let mut r#source_signature: Option<Box<super::super::types::Signature>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -764,7 +764,7 @@ impl serde::ser::Serialize for VerificationResultValidator {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -847,7 +847,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
                 let mut r#identity_certificate: Option<super::super::types::String> = None;
                 let mut r#attestation_signature: Option<Box<super::super::types::Signature>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1019,9 +1019,7 @@ pub struct VerificationResult {
     pub r#validator: Vec<VerificationResultValidator>,
 }
 impl crate::AnyResource for VerificationResult {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for VerificationResult {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1030,7 +1028,7 @@ impl serde::ser::Serialize for VerificationResult {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "VerificationResult")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -1336,7 +1334,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                 let mut r#attestation: Option<VerificationResultAttestation> = None;
                 let mut r#validator: Option<Vec<VerificationResultValidator>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

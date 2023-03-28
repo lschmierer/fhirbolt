@@ -27,7 +27,7 @@ pub fn implement_serialize(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) ->
                 use serde::ser::SerializeMap;
 
                 fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
 
                     let mut state = serializer.serialize_map(None)?;
                     #serialize_resource_type_tokens

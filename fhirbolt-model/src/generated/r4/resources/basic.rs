@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.\n\nNeed some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources."]
 #[derive(Default, Debug, Clone)]
 pub struct Basic {
@@ -30,9 +30,7 @@ pub struct Basic {
     pub r#author: Option<Box<super::super::types::Reference>>,
 }
 impl crate::AnyResource for Basic {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize for Basic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -41,7 +39,7 @@ impl serde::ser::Serialize for Basic {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "Basic")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -202,7 +200,7 @@ impl<'de> serde::de::Deserialize<'de> for Basic {
                 let mut r#created: Option<super::super::types::Date> = None;
                 let mut r#author: Option<Box<super::super::types::Reference>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {

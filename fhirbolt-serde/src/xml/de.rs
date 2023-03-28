@@ -1,148 +1,23 @@
-use std::{borrow::Cow, io, mem};
+//! Deserialize FHIR resources from XML.
+
+use std::{
+    borrow::Cow,
+    io,
+    mem::{self},
+};
 
 use serde::{
-    de::{self, Deserialize, DeserializeOwned, DeserializeSeed, Visitor},
+    de::{self, DeserializeSeed, Visitor},
     forward_to_deserialize_any,
 };
 
-use fhirbolt_shared::{
-    path::ElementPath,
-    serde_context::de::{with_context, DeserializationConfig, DeserializationContext},
-    AnyResource,
-};
+use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
 use crate::xml::{
     error::{Error, Result},
     event::{Element, Event},
     read::{self, Read},
 };
-
-/// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).
-///
-/// # Example
-/// ```
-/// # fn main() {
-/// // The `Resource` type is an enum that contains all possible FHIR resources.
-/// // If the resource type is known in advance, you could also use a concrete resource type
-/// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
-///
-/// // The type of `s` is `&str`
-/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-///     <Observation xmlns=\"http://hl7.org/fhir\">
-///         <status value=\"final\"/>
-///         <code>
-///             <text value=\"some code\"/>
-///         </code>
-///         <valueString value=\"some value\"/>
-///     </Observation>";
-///
-/// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
-/// let r: R4BResource = fhirbolt::xml::from_reader(s.as_bytes(), None).unwrap();
-/// println!("{:?}", r);
-/// # }
-/// ```
-///
-/// # Errors
-/// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
-/// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_reader<R: io::Read, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
-where
-    T: DeserializeOwned + AnyResource,
-{
-    let mut deserializer = Deserializer::from_reader::<T>(rdr)?;
-    with_context(
-        DeserializationContext {
-            config: config.unwrap_or_default(),
-            from_json: false,
-        },
-        || T::deserialize(&mut deserializer),
-    )
-}
-
-/// Deserialize an instance of resource type `T` from a bytes of XML.
-///
-/// # Example
-/// ```
-/// # fn main() {
-/// // The `Resource` type is an enum that contains all possible FHIR resources.
-/// // If the resource type is known in advance, you could also use a concrete resource type
-/// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
-///
-/// // The type of `s` is `&[u8]`
-/// let b = b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-///     <Observation xmlns=\"http://hl7.org/fhir\">
-///         <status value=\"final\"/>
-///         <code>
-///             <text value=\"some code\"/>
-///         </code>
-///         <valueString value=\"some value\"/>
-///     </Observation>";
-///
-/// let r: R4BResource = fhirbolt::xml::from_slice(b, None).unwrap();
-/// println!("{:?}", r);
-/// # }
-/// ```
-///
-/// # Errors
-/// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
-/// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
-where
-    T: DeserializeOwned + AnyResource,
-{
-    let mut deserializer = Deserializer::from_slice::<T>(v)?;
-    with_context(
-        DeserializationContext {
-            config: config.unwrap_or_default(),
-            from_json: false,
-        },
-        || T::deserialize(&mut deserializer),
-    )
-}
-
-/// Deserialize an instance of resource type `T` from a string of XML.
-///
-/// # Example
-/// ```
-/// # fn main() {
-/// // The `Resource` type is an enum that contains all possible FHIR resources.
-/// // If the resource type is known in advance, you could also use a concrete resource type
-/// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
-///
-/// // The type of `s` is `&str`
-/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-///     <Observation xmlns=\"http://hl7.org/fhir\">
-///         <status value=\"final\"/>
-///         <code>
-///             <text value=\"some code\"/>
-///         </code>
-///         <valueString value=\"some value\"/>
-///     </Observation>";
-///
-/// let r: R4BResource = fhirbolt::xml::from_str(s, None).unwrap();
-/// println!("{:?}", r);
-/// # }
-/// ```
-///
-/// # Errors
-/// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
-/// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Result<T>
-where
-    T: Deserialize<'a> + AnyResource,
-{
-    let mut deserializer = Deserializer::from_str::<T>(s)?;
-    with_context(
-        DeserializationContext {
-            config: config.unwrap_or_default(),
-            from_json: false,
-        },
-        || T::deserialize(&mut deserializer),
-    )
-}
 
 pub struct Deserializer<R: Read> {
     reader: R,
@@ -151,28 +26,28 @@ pub struct Deserializer<R: Read> {
 }
 
 impl<R: io::Read> Deserializer<read::IoRead<R>> {
-    pub fn from_reader<T: AnyResource>(reader: R) -> Result<Self> {
-        Deserializer::new::<T>(read::IoRead::new(reader))
+    pub fn from_reader(reader: R, fhir_release: FhirRelease) -> Result<Self> {
+        Deserializer::new(read::IoRead::new(reader), fhir_release)
     }
 }
 
 impl<'a> Deserializer<read::SliceRead<'a>> {
-    pub fn from_slice<T: AnyResource>(bytes: &'a [u8]) -> Result<Self> {
-        Deserializer::new::<T>(read::SliceRead::new(bytes))
+    pub fn from_slice(bytes: &'a [u8], fhir_release: FhirRelease) -> Result<Self> {
+        Deserializer::new(read::SliceRead::new(bytes), fhir_release)
     }
 }
 
 impl<'a> Deserializer<read::StrRead<'a>> {
-    pub fn from_str<T: AnyResource>(s: &'a str) -> Result<Self> {
-        Deserializer::new::<T>(read::StrRead::new(s))
+    pub fn from_str(s: &'a str, fhir_release: FhirRelease) -> Result<Self> {
+        Deserializer::new(read::StrRead::new(s), fhir_release)
     }
 }
 
 impl<R: Read> Deserializer<R> {
-    fn new<T: AnyResource>(mut reader: R) -> Result<Self> {
+    fn new(mut reader: R, fhir_release: FhirRelease) -> Result<Self> {
         let first_event = reader.next_event()?;
 
-        let mut path = ElementPath::new(T::fhir_release());
+        let mut path = ElementPath::new(fhir_release);
         match &first_event {
             Event::ElementStart(e) | Event::EmptyElement(e) => path.push(&e.name),
             _ => (),

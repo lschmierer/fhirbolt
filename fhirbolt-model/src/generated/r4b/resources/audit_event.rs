@@ -1,4 +1,4 @@
-// Generated on 2022-12-29 by fhirbolt-codegen v0.1.0
+// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
 #[derive(Debug, Clone)]
 pub enum AuditEventEntityDetailValue {
@@ -32,7 +32,7 @@ impl serde::ser::Serialize for AuditEventAgentNetwork {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -126,7 +126,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                 let mut r#address: Option<super::super::types::String> = None;
                 let mut r#type: Option<super::super::types::Code> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -291,7 +291,7 @@ impl serde::ser::Serialize for AuditEventAgent {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -491,7 +491,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                 let mut r#purpose_of_use: Option<Vec<Box<super::super::types::CodeableConcept>>> =
                     None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -860,7 +860,7 @@ impl serde::ser::Serialize for AuditEventSource {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -940,7 +940,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                 let mut r#observer: Option<Box<super::super::types::Reference>> = None;
                 let mut r#type: Option<Vec<Box<super::super::types::Coding>>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1074,7 +1074,7 @@ impl serde::ser::Serialize for AuditEventEntityDetail {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1188,7 +1188,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                 let mut r#type: Option<super::super::types::String> = None;
                 let mut r#value: Option<AuditEventEntityDetailValue> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1459,7 +1459,7 @@ impl serde::ser::Serialize for AuditEventEntity {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             if let Some(some) = self.r#id.as_ref() {
                 state.serialize_entry("id", some)?;
@@ -1613,7 +1613,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                 let mut r#query: Option<super::super::types::Base64Binary> = None;
                 let mut r#detail: Option<Vec<AuditEventEntityDetail>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::Id => {
@@ -1905,9 +1905,7 @@ pub struct AuditEvent {
     pub r#entity: Vec<AuditEventEntity>,
 }
 impl crate::AnyResource for AuditEvent {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize for AuditEvent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -1916,7 +1914,7 @@ impl serde::ser::Serialize for AuditEvent {
     {
         use serde::ser::SerializeMap;
         fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.get();
+            let _ctx = _ctx.borrow();
             let mut state = serializer.serialize_map(None)?;
             state.serialize_entry("resourceType", "AuditEvent")?;
             if let Some(some) = self.r#id.as_ref() {
@@ -2162,7 +2160,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                 let mut r#source: Option<AuditEventSource> = None;
                 let mut r#entity: Option<Vec<AuditEventEntity>> = None;
                 fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.get();
+                    let _ctx = _ctx.borrow();
                     while let Some(map_access_key) = map_access.next_key()? {
                         match map_access_key {
                             Field::ResourceType => {
