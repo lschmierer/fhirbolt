@@ -1,3 +1,5 @@
+#![feature(adt_const_params)]
+
 use std::io::Read;
 
 use assert_json_diff::assert_json_eq;

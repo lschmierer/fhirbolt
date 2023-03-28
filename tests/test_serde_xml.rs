@@ -1,3 +1,5 @@
+#![feature(adt_const_params)]
+
 use std::io::Read;
 
 use serde::de::DeserializeOwned;
