@@ -1534,7 +1534,7 @@ pub struct SubstanceSourceMaterial {
     pub r#part_description: Vec<SubstanceSourceMaterialPartDescription>,
 }
 impl crate::AnyResource for SubstanceSourceMaterial {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for SubstanceSourceMaterial {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

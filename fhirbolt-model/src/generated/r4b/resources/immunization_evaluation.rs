@@ -70,7 +70,7 @@ pub struct ImmunizationEvaluation {
     pub r#series_doses: Option<ImmunizationEvaluationSeriesDoses>,
 }
 impl crate::AnyResource for ImmunizationEvaluation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ImmunizationEvaluation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

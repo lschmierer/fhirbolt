@@ -3345,7 +3345,7 @@ pub struct Parameters {
     pub r#parameter: Vec<ParametersParameter>,
 }
 impl crate::AnyResource for Parameters {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Parameters {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

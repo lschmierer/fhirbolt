@@ -1733,7 +1733,7 @@ pub struct OperationDefinition {
     pub r#overload: Vec<OperationDefinitionOverload>,
 }
 impl crate::AnyResource for OperationDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for OperationDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

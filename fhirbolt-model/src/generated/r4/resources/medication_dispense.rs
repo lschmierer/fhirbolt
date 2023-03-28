@@ -482,7 +482,7 @@ pub struct MedicationDispense {
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
 }
 impl crate::AnyResource for MedicationDispense {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicationDispense {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

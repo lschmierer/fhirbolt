@@ -1,12 +1,12 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion, Throughput};
 
-use fhirbolt::{element::Element, FhirReleases};
+use fhirbolt::{element::Element, FhirRelease};
 
 use test_utils::examples::{examples, ExampleFile, JsonOrXml};
 
 pub fn bench(c: &mut Criterion) {
-    let mut examples_json = examples(FhirReleases::R4, JsonOrXml::Json);
-    let mut examples_xml = examples(FhirReleases::R4, JsonOrXml::Xml);
+    let mut examples_json = examples(FhirRelease::R4, JsonOrXml::Json);
+    let mut examples_xml = examples(FhirRelease::R4, JsonOrXml::Xml);
 
     let account_bytes_json = examples_json
         .get("account-example-with-guarantor.json")
@@ -17,7 +17,7 @@ pub fn bench(c: &mut Criterion) {
 
     let account_struct: fhirbolt::model::r4::resources::Account =
         fhirbolt::model::json::from_slice(&account_bytes_json, None).unwrap();
-    let account_element: Element<{ FhirReleases::R4 }> =
+    let account_element: Element<{ FhirRelease::R4 }> =
         fhirbolt::element::json::from_slice(&account_bytes_json).unwrap();
 
     let mut group = c.benchmark_group("json");
@@ -36,7 +36,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::json::from_slice::<{ FhirReleases::R4 }>(&account_bytes_json)
+                fhirbolt::element::json::from_slice::<{ FhirRelease::R4 }>(&account_bytes_json)
                     .unwrap(),
             )
         })
@@ -47,7 +47,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::json::to_vec::<{ FhirReleases::R4 }>(&account_element).unwrap(),
+                fhirbolt::element::json::to_vec::<{ FhirRelease::R4 }>(&account_element).unwrap(),
             )
         })
     });
@@ -69,7 +69,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::xml::from_slice::<{ FhirReleases::R4 }>(&account_bytes_xml)
+                fhirbolt::element::xml::from_slice::<{ FhirRelease::R4 }>(&account_bytes_xml)
                     .unwrap(),
             )
         })
@@ -80,7 +80,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::xml::to_vec::<{ FhirReleases::R4 }>(&account_element).unwrap(),
+                fhirbolt::element::xml::to_vec::<{ FhirRelease::R4 }>(&account_element).unwrap(),
             )
         })
     });

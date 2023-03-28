@@ -78,7 +78,7 @@ pub struct MedicationStatement {
     pub r#dosage: Vec<Box<super::super::types::Dosage>>,
 }
 impl crate::AnyResource for MedicationStatement {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MedicationStatement {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -44,7 +44,7 @@
 //!
 //! You can pass a [`DeserializationConfig`](crate::serde::DeserializationConfig) to configure the deserialization behavior.
 
-pub use fhirbolt_shared::{FhirRelease, FhirReleaseExt, FhirReleases};
+pub use fhirbolt_shared::FhirRelease;
 
 /// Generated Rust structures for FHIR resources.
 ///
@@ -61,8 +61,8 @@ pub mod model {
 }
 
 pub mod element {
-    pub use fhirbolt_element::*;
     pub use fhirbolt_serde::element::*;
+    pub use fhirbolt_shared::element::*;
 }
 
 pub mod serde {

@@ -333,7 +333,7 @@ pub struct List {
     pub r#empty_reason: Option<Box<super::super::types::CodeableConcept>>,
 }
 impl crate::AnyResource for List {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for List {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

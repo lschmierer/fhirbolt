@@ -9,11 +9,11 @@ use chrono::Utc;
 use proc_macro2::TokenStream;
 use zip::read::{ZipArchive, ZipFile};
 
-use fhirbolt_shared::{FhirRelease, FhirReleaseExt, FhirReleases};
+use fhirbolt_shared::FhirRelease;
 
 use fhirbolt_codegen::{generate_all, model::Bundle, SourceFile};
 
-const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirReleases::R4, FhirReleases::R4B];
+const BUILD_FHIR_RELEASES: &[FhirRelease] = &[FhirRelease::R4, FhirRelease::R4B];
 
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
 
@@ -27,7 +27,7 @@ fn tmp_dir(fhir_release: FhirRelease) -> PathBuf {
         .join("target")
         .join("tmp")
         .join("fhirbolt")
-        .join(format!("{}", fhir_release.name().to_lowercase()));
+        .join(format!("{}", fhir_release.to_string().to_lowercase()));
 
     if !dir.exists() {
         fs::create_dir_all(&dir).unwrap();
@@ -43,7 +43,7 @@ fn fhir_definitions_json_download_url(fhir_release: FhirRelease) -> String {
     str::replace(
         FHIR_DEFINITIONS_JSON_DOWNLOAD_URL,
         "{}",
-        &fhir_release.name().to_lowercase(),
+        &fhir_release.to_string().to_lowercase(),
     )
 }
 
@@ -121,7 +121,7 @@ fn clear_generated() {
 }
 
 fn model_output_release_dir(fhir_release: FhirRelease) -> PathBuf {
-    let dir = generate_dir(MODEL_OUTPUT_DIRECTORY).join(fhir_release.name().to_lowercase());
+    let dir = generate_dir(MODEL_OUTPUT_DIRECTORY).join(fhir_release.to_string().to_lowercase());
     if !dir.exists() {
         fs::create_dir(&dir).unwrap();
     }
@@ -178,10 +178,10 @@ fn write_model_root_mod_file(path: &str) {
         writeln!(
             file,
             "#[cfg(feature = \"{}\")]",
-            fhir_release.name().to_lowercase()
+            fhir_release.to_string().to_lowercase()
         )
         .unwrap();
-        writeln!(file, "pub mod {};", fhir_release.name().to_lowercase()).unwrap();
+        writeln!(file, "pub mod {};", fhir_release.to_string().to_lowercase()).unwrap();
     }
 }
 
@@ -189,7 +189,7 @@ fn write_type_hints_root_mod_file(path: &str) {
     let mut file = File::create(&generate_dir(path).join("mod.rs")).unwrap();
 
     for fhir_release in BUILD_FHIR_RELEASES {
-        writeln!(file, "pub mod {};", fhir_release.name().to_lowercase()).unwrap();
+        writeln!(file, "pub mod {};", fhir_release.to_string().to_lowercase()).unwrap();
     }
 }
 
@@ -222,7 +222,7 @@ fn write_model_source_mod_file(fhir_release: FhirRelease, kind: &str, types: &[&
 
 fn type_hints_output_source_file(fhir_release: FhirRelease) -> PathBuf {
     generate_dir(TYPE_HINTS_OUTPUT_DIRECTORY)
-        .join(format!("{}.rs", fhir_release.name().to_lowercase()))
+        .join(format!("{}.rs", fhir_release.to_string().to_lowercase()))
 }
 
 fn write_type_hints_source_file(fhir_release: FhirRelease, tokens: &TokenStream) {
@@ -292,7 +292,7 @@ fn main() {
 
         generate_and_write(*fhir_release, &types_bundle, &resources_bundle);
 
-        println!("FHIR {} generated succesfully!", fhir_release.name());
+        println!("FHIR {} generated succesfully!", fhir_release);
     }
 
     rustfmt()

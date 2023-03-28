@@ -63,7 +63,7 @@ pub struct GuidanceResponse {
     pub r#data_requirement: Vec<Box<super::super::types::DataRequirement>>,
 }
 impl crate::AnyResource for GuidanceResponse {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for GuidanceResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

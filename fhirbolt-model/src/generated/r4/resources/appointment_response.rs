@@ -36,7 +36,7 @@ pub struct AppointmentResponse {
     pub r#comment: Option<super::super::types::String>,
 }
 impl crate::AnyResource for AppointmentResponse {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for AppointmentResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

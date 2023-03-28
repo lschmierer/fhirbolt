@@ -375,7 +375,7 @@ pub struct DeviceRequest {
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
 }
 impl crate::AnyResource for DeviceRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for DeviceRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

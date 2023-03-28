@@ -24,6 +24,8 @@
 //! ```
 //!
 
+#![feature(adt_const_params)]
+
 pub mod xml;
 
 pub mod element;

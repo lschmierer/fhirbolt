@@ -539,7 +539,7 @@ pub struct ActivityDefinition {
     pub r#dynamic_value: Vec<ActivityDefinitionDynamicValue>,
 }
 impl crate::AnyResource for ActivityDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ActivityDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -431,7 +431,7 @@ pub struct ClinicalImpression {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
 impl crate::AnyResource for ClinicalImpression {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ClinicalImpression {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -2646,7 +2646,7 @@ pub struct MedicationKnowledge {
     pub r#kinetics: Vec<MedicationKnowledgeKinetics>,
 }
 impl crate::AnyResource for MedicationKnowledge {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MedicationKnowledge {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -426,7 +426,7 @@ pub struct CompartmentDefinition {
     pub r#resource: Vec<CompartmentDefinitionResource>,
 }
 impl crate::AnyResource for CompartmentDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for CompartmentDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -3573,7 +3573,7 @@ pub struct PlanDefinition {
     pub r#action: Vec<PlanDefinitionAction>,
 }
 impl crate::AnyResource for PlanDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for PlanDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

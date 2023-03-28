@@ -968,7 +968,7 @@ pub struct StructureDefinition {
     pub r#differential: Option<StructureDefinitionDifferential>,
 }
 impl crate::AnyResource for StructureDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for StructureDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

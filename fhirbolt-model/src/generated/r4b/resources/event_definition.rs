@@ -88,7 +88,7 @@ pub struct EventDefinition {
     pub r#trigger: Vec<Box<super::super::types::TriggerDefinition>>,
 }
 impl crate::AnyResource for EventDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for EventDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

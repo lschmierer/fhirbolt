@@ -3521,7 +3521,7 @@ pub struct ValueSet {
     pub r#expansion: Option<ValueSetExpansion>,
 }
 impl crate::AnyResource for ValueSet {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ValueSet {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

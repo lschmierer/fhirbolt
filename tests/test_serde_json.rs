@@ -9,7 +9,7 @@ use fhirbolt::{
     element::Element,
     model::AnyResource,
     serde::{DeserializationConfig, DeserializationMode},
-    FhirRelease, FhirReleases,
+    FhirRelease,
 };
 
 use test_utils::examples::{examples, JsonOrXml};
@@ -28,7 +28,7 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
         }
 
         match R {
-            FhirReleases::R4 => {
+            FhirRelease::R4 => {
                 if mode != DeserializationMode::Lax {
                     // all questionnaires seem to have missing linkIds
                     if file.name().ends_with("-questionnaire.json") {
@@ -36,7 +36,7 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
                     }
                 }
             }
-            FhirReleases::R4B => {
+            FhirRelease::R4B => {
                 // R4B examples contain some rubbish
                 if file.name().starts_with("__MACOSX/") {
                     continue;
@@ -70,7 +70,7 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
         let mut json_value: Value = serde_json::from_slice(&buffer).unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
-        if R == FhirReleases::R4B {
+        if R == FhirRelease::R4B {
             if file.name().starts_with("examples-json/activitydefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
@@ -134,26 +134,24 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
 
 #[test]
 fn test_serde_json_r4() {
-    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
         DeserializationMode::Strict,
     );
-    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
         DeserializationMode::Compatibility,
     );
-    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
-        DeserializationMode::Lax,
-    );
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(DeserializationMode::Lax);
 }
 
 #[test]
 fn test_serde_json_r4b() {
-    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
         DeserializationMode::Strict,
     );
-    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
         DeserializationMode::Compatibility,
     );
-    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
         DeserializationMode::Lax,
     );
 }

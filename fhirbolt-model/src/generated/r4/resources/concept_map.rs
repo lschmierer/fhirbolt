@@ -2021,7 +2021,7 @@ pub struct ConceptMap {
     pub r#group: Vec<ConceptMapGroup>,
 }
 impl crate::AnyResource for ConceptMap {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ConceptMap {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

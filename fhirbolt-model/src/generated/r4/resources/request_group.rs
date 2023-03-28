@@ -1963,7 +1963,7 @@ pub struct RequestGroup {
     pub r#action: Vec<RequestGroupAction>,
 }
 impl crate::AnyResource for RequestGroup {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for RequestGroup {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

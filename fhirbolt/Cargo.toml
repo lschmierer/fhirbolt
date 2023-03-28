@@ -19,6 +19,5 @@ r4b = ["fhirbolt-model/r4b"]
 
 [dependencies]
 fhirbolt-model = { version = "0.1.0", path = "../fhirbolt-model" }
-fhirbolt-element = { version = "0.1.0", path = "../fhirbolt-element" }
 fhirbolt-serde = { version = "0.1.0", path = "../fhirbolt-serde" }
 fhirbolt-shared = { version = "0.1.0", path = "../fhirbolt-shared" }

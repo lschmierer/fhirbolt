@@ -4616,7 +4616,7 @@ pub struct MolecularSequence {
     pub r#structure_variant: Vec<MolecularSequenceStructureVariant>,
 }
 impl crate::AnyResource for MolecularSequence {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MolecularSequence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

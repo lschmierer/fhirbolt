@@ -3,7 +3,6 @@ members = [
     "fhirbolt",
     "fhirbolt-codegen",
     "fhirbolt-model",
-    "fhirbolt-element",
     "fhirbolt-serde",
     "fhirbolt-shared",
     "tests",

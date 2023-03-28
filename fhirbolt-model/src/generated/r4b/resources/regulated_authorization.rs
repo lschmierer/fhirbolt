@@ -357,7 +357,7 @@ pub struct RegulatedAuthorization {
     pub r#case: Option<RegulatedAuthorizationCase>,
 }
 impl crate::AnyResource for RegulatedAuthorization {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for RegulatedAuthorization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

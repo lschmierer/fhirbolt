@@ -2,7 +2,7 @@ use std::mem;
 
 use crate::{
     serde_helpers::type_hints::{self, TypeHints},
-    FhirRelease, FhirReleases,
+    FhirRelease,
 };
 
 const RESOURCE_COMMON_PRIMITIVE_FIELDS: &[&str] = &["id", "url", "implicitRules", "language"];
@@ -10,9 +10,8 @@ const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 
 fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
     match fhir_release {
-        FhirReleases::R4 => &type_hints::r4::TYPE_HINTS,
-        FhirReleases::R4B => &type_hints::r4b::TYPE_HINTS,
-        _ => todo!("throw error invalid FHIR release"),
+        FhirRelease::R4 => &type_hints::r4::TYPE_HINTS,
+        FhirRelease::R4B => &type_hints::r4b::TYPE_HINTS,
     }
 }
 

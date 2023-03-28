@@ -3,7 +3,7 @@ mod ser;
 
 use std::ops::{Deref, DerefMut};
 
-use crate::{AnyResource, FhirRelease};
+use crate::FhirRelease;
 
 #[derive(Clone, Debug)]
 pub struct Element<const R: FhirRelease> {
@@ -54,10 +54,6 @@ impl<const R: FhirRelease> IntoIterator for Element<R> {
     fn into_iter(self) -> Self::IntoIter {
         indexmap::IndexMap::into_iter(self.map)
     }
-}
-
-impl<const R: FhirRelease> AnyResource for Element<R> {
-    const FHIR_RELEASE: FhirRelease = R;
 }
 
 #[derive(Clone, Debug)]
