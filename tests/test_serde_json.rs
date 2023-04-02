@@ -57,12 +57,7 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
                     }
                 }
             }
-            _ => (),
         };
-
-        if file.name() != "bundle-response-simplesummary.json" {
-            //continue;
-        }
 
         println!("{}", file.name());
 

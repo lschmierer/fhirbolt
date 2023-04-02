@@ -8,11 +8,11 @@ use crate::{serde_context::de::DeserializationContext, FhirRelease};
 impl<'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;
 
-    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: Deserializer<'de>,
     {
-        match deserializer.deserialize_any(ValueVisitor(self.clone_for()))? {
+        match deserializer.deserialize_any(ValueVisitor(self.transmute()))? {
             InternalValue::Element(e) => e.into_element::<D, R>(),
             InternalValue::Sequence(_) => {
                 Err(D::Error::invalid_type(Unexpected::Seq, &"an element"))
@@ -69,7 +69,7 @@ impl InternalValue {
     }
 }
 
-impl<'de> DeserializeSeed<'de> for DeserializationContext<InternalValue> {
+impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalValue> {
     type Value = InternalValue;
 
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
@@ -80,9 +80,9 @@ impl<'de> DeserializeSeed<'de> for DeserializationContext<InternalValue> {
     }
 }
 
-struct ValueVisitor(DeserializationContext<InternalValue>);
+struct ValueVisitor<'a>(&'a mut DeserializationContext<InternalValue>);
 
-impl<'de> Visitor<'de> for ValueVisitor {
+impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
     type Value = InternalValue;
 
     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -138,16 +138,10 @@ impl<'de> Visitor<'de> for ValueVisitor {
     where
         E: Error,
     {
-        let current_path = self.0.unwrap_current_path().borrow();
+        let current_path = self.0.unwrap_current_path();
         let current_element = current_path.current_element();
 
-        if self
-            .0
-            .unwrap_current_path()
-            .borrow()
-            .current_element_is_resource()
-            && current_element == Some("resourceType")
-        {
+        if current_path.current_element_is_resource() && current_element == Some("resourceType") {
             Ok(InternalValue::Primitive(Primitive::String(v)))
         } else if self.0.from_json
             && current_element != Some("id")
@@ -201,32 +195,22 @@ impl<'de> Visitor<'de> for ValueVisitor {
                 key
             };
 
-            if (self
-                .0
-                .unwrap_current_path()
-                .borrow()
-                .current_element_is_resource()
-                || self.0.unwrap_current_path().borrow().is_empty())
+            if (self.0.unwrap_current_path().current_element_is_resource()
+                || self.0.unwrap_current_path().is_empty())
                 && key == "resourceType"
             {
                 let value: String = map_access.next_value()?;
 
-                self.0.unwrap_current_path().borrow_mut().push(&value);
+                self.0.unwrap_current_path_mut().push(&value);
                 is_resource = true;
 
                 element
                     .0
                     .insert(key, InternalValue::Primitive(Primitive::String(value)));
             } else {
-                self.0.unwrap_current_path().borrow_mut().push(&key);
+                self.0.unwrap_current_path_mut().push(&key);
 
-                if self.0.from_json
-                    && self
-                        .0
-                        .unwrap_current_path()
-                        .borrow()
-                        .current_element_is_decimal()
-                {
+                if self.0.from_json && self.0.unwrap_current_path().current_element_is_decimal() {
                     let value: serde_json::Number = map_access.next_value()?;
 
                     let mut decimal_element = InternalElement::default();
@@ -239,7 +223,7 @@ impl<'de> Visitor<'de> for ValueVisitor {
                         .0
                         .insert(key, InternalValue::Element(decimal_element));
                 } else {
-                    let value = map_access.next_value_seed(self.0.clone_for::<InternalValue>())?;
+                    let value = map_access.next_value_seed(self.0.transmute::<InternalValue>())?;
 
                     if let Some(existing) = element.0.get_mut(&key) {
                         match (existing, value) {
@@ -267,12 +251,7 @@ impl<'de> Visitor<'de> for ValueVisitor {
                             }
                             (e, v) => *e = v,
                         }
-                    } else if self
-                        .0
-                        .unwrap_current_path()
-                        .borrow()
-                        .current_element_is_sequence()
-                    {
+                    } else if self.0.unwrap_current_path().current_element_is_sequence() {
                         match value {
                             InternalValue::Element(e) => element
                                 .0
@@ -292,12 +271,12 @@ impl<'de> Visitor<'de> for ValueVisitor {
                     }
                 }
 
-                self.0.unwrap_current_path().borrow_mut().pop();
+                self.0.unwrap_current_path_mut().pop();
             }
         }
 
         if is_resource {
-            self.0.unwrap_current_path().borrow_mut().pop();
+            self.0.unwrap_current_path_mut().pop();
         }
 
         Ok(InternalValue::Element(element))
@@ -310,7 +289,7 @@ impl<'de> Visitor<'de> for ValueVisitor {
         let mut elements = Vec::new();
 
         while let Some(value) =
-            seq_access.next_element_seed(self.0.clone_for::<Option<InternalValue>>())?
+            seq_access.next_element_seed(self.0.transmute::<Option<InternalValue>>())?
         {
             match value {
                 Some(InternalValue::Element(e)) => elements.push(Some(e)),
@@ -334,19 +313,19 @@ impl<'de> Visitor<'de> for ValueVisitor {
     }
 }
 
-impl<'de> DeserializeSeed<'de> for DeserializationContext<Option<InternalValue>> {
+impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<Option<InternalValue>> {
     type Value = Option<InternalValue>;
 
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: Deserializer<'de>,
     {
-        deserializer.deserialize_option(ElementVisitor(self.clone_for()))
+        deserializer.deserialize_option(ElementVisitor(self))
     }
 }
-struct ElementVisitor(DeserializationContext<Option<InternalValue>>);
+struct ElementVisitor<'a>(&'a mut DeserializationContext<Option<InternalValue>>);
 
-impl<'de> Visitor<'de> for ElementVisitor {
+impl<'a, 'de> Visitor<'de> for ElementVisitor<'a> {
     type Value = Option<InternalValue>;
 
     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -357,7 +336,7 @@ impl<'de> Visitor<'de> for ElementVisitor {
     where
         V: MapAccess<'de>,
     {
-        ValueVisitor(self.0.clone_for())
+        ValueVisitor(self.0.transmute())
             .visit_map(map_access)
             .map(Some)
     }
@@ -367,7 +346,7 @@ impl<'de> Visitor<'de> for ElementVisitor {
         D: Deserializer<'de>,
     {
         self.0
-            .clone_for::<InternalValue>()
+            .transmute::<InternalValue>()
             .deserialize(deserializer)
             .map(Some)
     }

@@ -1,4 +1,4 @@
-use std::{cell::RefCell, marker::PhantomData, rc::Rc};
+use std::{cell::RefCell, marker::PhantomData, mem};
 
 use crate::{element::Element, path::ElementPath, FhirRelease};
 
@@ -17,7 +17,8 @@ where
 }
 
 /// Context for deserialization.
-#[derive(Default, Clone)]
+#[derive(Default)]
+#[repr(C)] // important for safe transmutes
 pub struct DeserializationContext<V> {
     _phantom: PhantomData<V>,
     // Deserialization config
@@ -25,12 +26,15 @@ pub struct DeserializationContext<V> {
     // The JSON data model differs from the FHIR data model
     pub from_json: bool,
     // Used by the element model to keep track of its state in the element tree
-    pub current_path: Option<Rc<RefCell<ElementPath>>>,
+    current_path: Option<ElementPath>,
 }
 
 impl<V> DeserializationContext<V> {
-    pub fn unwrap_current_path(&self) -> &Rc<RefCell<ElementPath>> {
+    pub fn unwrap_current_path(&self) -> &ElementPath {
         self.current_path.as_ref().unwrap()
+    }
+    pub fn unwrap_current_path_mut(&mut self) -> &mut ElementPath {
+        self.current_path.as_mut().unwrap()
     }
 }
 
@@ -40,7 +44,7 @@ impl<const R: FhirRelease> DeserializationContext<Element<R>> {
             _phantom: PhantomData,
             config: Default::default(),
             from_json,
-            current_path: Some(Rc::new(RefCell::new(ElementPath::new(R)))),
+            current_path: Some(ElementPath::new(R)),
         }
     }
 }
@@ -57,13 +61,9 @@ impl DeserializationContext<()> {
 }
 
 impl<V> DeserializationContext<V> {
-    pub fn clone_for<F>(&self) -> DeserializationContext<F> {
-        DeserializationContext {
-            _phantom: PhantomData,
-            config: self.config,
-            from_json: self.from_json,
-            current_path: self.current_path.clone(),
-        }
+    pub fn transmute<F>(&mut self) -> &mut DeserializationContext<F> {
+        // DeserializationContext uses #[repr(C)] to make sure this is safe
+        unsafe { mem::transmute(self) }
     }
 }
 
