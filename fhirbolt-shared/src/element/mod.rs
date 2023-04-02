@@ -1,11 +1,14 @@
 mod de;
 mod ser;
 
-use std::ops::{Deref, DerefMut};
+use std::{
+    fmt,
+    ops::{Deref, DerefMut},
+};
 
 use crate::FhirRelease;
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub struct Element<const R: FhirRelease> {
     map: indexmap::IndexMap<String, Value<R>>,
 }
@@ -53,6 +56,18 @@ impl<const R: FhirRelease> IntoIterator for Element<R> {
     type IntoIter = indexmap::map::IntoIter<String, Value<R>>;
     fn into_iter(self) -> Self::IntoIter {
         indexmap::IndexMap::into_iter(self.map)
+    }
+}
+
+impl<const R: FhirRelease> fmt::Debug for Element<R> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> Result<(), fmt::Error> {
+        let mut s = f.debug_struct(&format!("Element<{}>", R));
+
+        for (key, value) in self {
+            s.field(key, value);
+        }
+
+        s.finish()
     }
 }
 
