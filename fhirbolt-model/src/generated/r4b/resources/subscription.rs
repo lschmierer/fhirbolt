@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionChannel {
@@ -191,18 +191,29 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if _ctx.from_json {
@@ -353,10 +364,8 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                         }
                                     }
                                 } else {
-                                    if r#header.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("header"));
-                                    }
-                                    r#header = Some(map_access.next_value()?);
+                                    let vec = r#header.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::HeaderPrimitiveElement => {
@@ -855,24 +864,40 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Status => {
                                 if _ctx.from_json {
@@ -925,10 +950,15 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                 }
                             }
                             Field::Contact => {
-                                if r#contact.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contact"));
+                                if _ctx.from_json {
+                                    if r#contact.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contact"));
+                                    }
+                                    r#contact = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contact.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contact = Some(map_access.next_value()?);
                             }
                             Field::End => {
                                 if _ctx.from_json {

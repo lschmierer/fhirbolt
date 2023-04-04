@@ -320,12 +320,12 @@ impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<Option<InternalVa
     where
         D: Deserializer<'de>,
     {
-        deserializer.deserialize_option(ElementVisitor(self))
+        deserializer.deserialize_option(SeqElementVisitor(self))
     }
 }
-struct ElementVisitor<'a>(&'a mut DeserializationContext<Option<InternalValue>>);
+struct SeqElementVisitor<'a>(&'a mut DeserializationContext<Option<InternalValue>>);
 
-impl<'a, 'de> Visitor<'de> for ElementVisitor<'a> {
+impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
     type Value = Option<InternalValue>;
 
     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {

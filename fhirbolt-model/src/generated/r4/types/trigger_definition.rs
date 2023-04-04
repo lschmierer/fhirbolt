@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
 #[derive(Debug, Clone)]
 pub enum TriggerDefinitionTiming {
@@ -205,10 +205,15 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if _ctx.from_json {
@@ -452,10 +457,15 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                 }
                             }
                             Field::Data => {
-                                if r#data.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("data"));
+                                if _ctx.from_json {
+                                    if r#data.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("data"));
+                                    }
+                                    r#data = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#data.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#data = Some(map_access.next_value()?);
                             }
                             Field::Condition => {
                                 if r#condition.is_some() {

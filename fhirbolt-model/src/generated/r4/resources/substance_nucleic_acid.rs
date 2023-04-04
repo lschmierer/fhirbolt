@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "The linkages between sugar residues will also be captured."]
 #[derive(Default, Debug, Clone)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
@@ -161,18 +161,29 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Connectivity => {
                                 if _ctx.from_json {
@@ -487,18 +498,29 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
                                 if r#identifier.is_some() {
@@ -819,18 +841,29 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Subunit => {
                                 if _ctx.from_json {
@@ -991,16 +1024,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                 r#three_prime = Some(map_access.next_value()?);
                             }
                             Field::Linkage => {
-                                if r#linkage.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("linkage"));
+                                if _ctx.from_json {
+                                    if r#linkage.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("linkage"));
+                                    }
+                                    r#linkage = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#linkage.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#linkage = Some(map_access.next_value()?);
                             }
                             Field::Sugar => {
-                                if r#sugar.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("sugar"));
+                                if _ctx.from_json {
+                                    if r#sugar.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("sugar"));
+                                    }
+                                    r#sugar = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#sugar.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#sugar = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -1398,24 +1441,40 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::SequenceType => {
                                 if r#sequence_type.is_some() {
@@ -1544,10 +1603,15 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                 r#oligo_nucleotide_type = Some(map_access.next_value()?);
                             }
                             Field::Subunit => {
-                                if r#subunit.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("subunit"));
+                                if _ctx.from_json {
+                                    if r#subunit.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("subunit"));
+                                    }
+                                    r#subunit = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#subunit.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#subunit = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

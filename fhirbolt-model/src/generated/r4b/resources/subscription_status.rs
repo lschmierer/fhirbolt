@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Default, Debug, Clone)]
 pub struct SubscriptionStatusNotificationEvent {
@@ -140,18 +140,29 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatusNotificationEvent {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::EventNumber => {
                                 if _ctx.from_json {
@@ -252,12 +263,18 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatusNotificationEvent {
                                 r#focus = Some(map_access.next_value()?);
                             }
                             Field::AdditionalContext => {
-                                if r#additional_context.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "additionalContext",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#additional_context.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "additionalContext",
+                                        ));
+                                    }
+                                    r#additional_context = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#additional_context.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#additional_context = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -705,24 +722,40 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatus {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Status => {
                                 if _ctx.from_json {
@@ -884,12 +917,18 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatus {
                                 }
                             }
                             Field::NotificationEvent => {
-                                if r#notification_event.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "notificationEvent",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#notification_event.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "notificationEvent",
+                                        ));
+                                    }
+                                    r#notification_event = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#notification_event.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#notification_event = Some(map_access.next_value()?);
                             }
                             Field::Subscription => {
                                 if r#subscription.is_some() {
@@ -948,10 +987,15 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionStatus {
                                 }
                             }
                             Field::Error => {
-                                if r#error.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("error"));
+                                if _ctx.from_json {
+                                    if r#error.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("error"));
+                                    }
+                                    r#error = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#error.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#error = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

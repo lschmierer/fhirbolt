@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProdCharacteristic Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone)]
 pub struct ProdCharacteristic {
@@ -252,18 +252,29 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Height => {
                                 if r#height.is_some() {
@@ -375,10 +386,8 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                         }
                                     }
                                 } else {
-                                    if r#color.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("color"));
-                                    }
-                                    r#color = Some(map_access.next_value()?);
+                                    let vec = r#color.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::ColorPrimitiveElement => {
@@ -454,10 +463,8 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                         }
                                     }
                                 } else {
-                                    if r#imprint.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("imprint"));
-                                    }
-                                    r#imprint = Some(map_access.next_value()?);
+                                    let vec = r#imprint.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::ImprintPrimitiveElement => {
@@ -511,10 +518,15 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                 }
                             }
                             Field::Image => {
-                                if r#image.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("image"));
+                                if _ctx.from_json {
+                                    if r#image.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("image"));
+                                    }
+                                    r#image = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#image.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#image = Some(map_access.next_value()?);
                             }
                             Field::Scoring => {
                                 if r#scoring.is_some() {

@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Debug, Clone)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
@@ -109,7 +109,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainerA
                     None;
                 let mut r#additive: Option<SpecimenDefinitionTypeTestedContainerAdditiveAdditive> =
                     None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: AdditiveCodeableConcept => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveCodeableConcept")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AdditiveReference => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveReference")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "additiveCodeableConcept" , "additiveReference" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainerAdditive { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#additive : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#additive . unwrap_or (Default :: default ()) } else { r#additive . ok_or (serde :: de :: Error :: missing_field ("additive[x]")) ? } , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: AdditiveCodeableConcept => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveCodeableConcept")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AdditiveReference => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additiveReference")) ; } r#additive = Some (SpecimenDefinitionTypeTestedContainerAdditiveAdditive :: Reference (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "additiveCodeableConcept" , "additiveReference" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainerAdditive { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#additive : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#additive . unwrap_or (Default :: default ()) } else { r#additive . ok_or (serde :: de :: Error :: missing_field ("additive[x]")) ? } , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -313,7 +313,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                 let mut r#additive: Option<Vec<SpecimenDefinitionTypeTestedContainerAdditive>> =
                     None;
                 let mut r#preparation: Option<super::super::types::String> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } , Field :: ModifierExtension => { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } , Field :: Material => { if r#material . is_some () { return Err (serde :: de :: Error :: duplicate_field ("material")) ; } r#material = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: Cap => { if r#cap . is_some () { return Err (serde :: de :: Error :: duplicate_field ("cap")) ; } r#cap = Some (map_access . next_value () ?) ; } , Field :: Description => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#description . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } r#description = Some (map_access . next_value () ?) ; } } , Field :: DescriptionPrimitiveElement => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("description" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Capacity => { if r#capacity . is_some () { return Err (serde :: de :: Error :: duplicate_field ("capacity")) ; } r#capacity = Some (map_access . next_value () ?) ; } , Field :: MinimumVolumeQuantity => { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeQuantity")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: Quantity (map_access . next_value () ?)) ; } , Field :: MinimumVolumeString => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("minimumVolume[x]")) ; } } else { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (map_access . next_value () ?)) ; } } , Field :: MinimumVolumeStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolumeString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolume[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("minimumVolumeString" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Additive => { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additive")) ; } r#additive = Some (map_access . next_value () ?) ; } , Field :: Preparation => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#preparation . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } r#preparation = Some (map_access . next_value () ?) ; } } , Field :: PreparationPrimitiveElement => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_preparation")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("preparation" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainer { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#material , r#type , r#cap , r#description , r#capacity , r#minimum_volume , r#additive : r#additive . unwrap_or (vec ! []) , r#preparation , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Material => { if r#material . is_some () { return Err (serde :: de :: Error :: duplicate_field ("material")) ; } r#material = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: Cap => { if r#cap . is_some () { return Err (serde :: de :: Error :: duplicate_field ("cap")) ; } r#cap = Some (map_access . next_value () ?) ; } , Field :: Description => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#description . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } r#description = Some (map_access . next_value () ?) ; } } , Field :: DescriptionPrimitiveElement => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("description" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Capacity => { if r#capacity . is_some () { return Err (serde :: de :: Error :: duplicate_field ("capacity")) ; } r#capacity = Some (map_access . next_value () ?) ; } , Field :: MinimumVolumeQuantity => { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeQuantity")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: Quantity (map_access . next_value () ?)) ; } , Field :: MinimumVolumeString => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("minimumVolume[x]")) ; } } else { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (map_access . next_value () ?)) ; } } , Field :: MinimumVolumeStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolumeString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolume[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("minimumVolumeString" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Additive => { if _ctx . from_json { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additive")) ; } r#additive = Some (map_access . next_value () ?) ; } else { let vec = r#additive . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Preparation => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#preparation . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } r#preparation = Some (map_access . next_value () ?) ; } } , Field :: PreparationPrimitiveElement => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_preparation")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("preparation" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainer { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#material , r#type , r#cap , r#description , r#capacity , r#minimum_volume , r#additive : r#additive . unwrap_or (vec ! []) , r#preparation , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -446,18 +446,29 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::TemperatureQualifier => {
                                 if r#temperature_qualifier.is_some() {
@@ -754,18 +765,29 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::IsDerived => {
                                 if _ctx.from_json {
@@ -938,18 +960,29 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                 r#retention_time = Some(map_access.next_value()?);
                             }
                             Field::RejectionCriterion => {
-                                if r#rejection_criterion.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "rejectionCriterion",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#rejection_criterion.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "rejectionCriterion",
+                                        ));
+                                    }
+                                    r#rejection_criterion = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#rejection_criterion.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#rejection_criterion = Some(map_access.next_value()?);
                             }
                             Field::Handling => {
-                                if r#handling.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("handling"));
+                                if _ctx.from_json {
+                                    if r#handling.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("handling"));
+                                    }
+                                    r#handling = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#handling.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#handling = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -1346,24 +1379,40 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
                                 if r#identifier.is_some() {
@@ -1378,12 +1427,18 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                 r#type_collected = Some(map_access.next_value()?);
                             }
                             Field::PatientPreparation => {
-                                if r#patient_preparation.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "patientPreparation",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#patient_preparation.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "patientPreparation",
+                                        ));
+                                    }
+                                    r#patient_preparation = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#patient_preparation.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#patient_preparation = Some(map_access.next_value()?);
                             }
                             Field::TimeAspect => {
                                 if _ctx.from_json {
@@ -1441,16 +1496,30 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                 }
                             }
                             Field::Collection => {
-                                if r#collection.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("collection"));
+                                if _ctx.from_json {
+                                    if r#collection.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "collection",
+                                        ));
+                                    }
+                                    r#collection = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#collection.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#collection = Some(map_access.next_value()?);
                             }
                             Field::TypeTested => {
-                                if r#type_tested.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("typeTested"));
+                                if _ctx.from_json {
+                                    if r#type_tested.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "typeTested",
+                                        ));
+                                    }
+                                    r#type_tested = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#type_tested.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#type_tested = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

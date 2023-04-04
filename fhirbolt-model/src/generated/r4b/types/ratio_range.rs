@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Default, Debug, Clone)]
 pub struct RatioRange {
@@ -87,10 +87,15 @@ impl<'de> serde::de::Deserialize<'de> for RatioRange {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::LowNumerator => {
                                 if r#low_numerator.is_some() {

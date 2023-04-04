@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactDetail Type: Specifies contact information for a person or organization.\n\nNeed to track contact information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone)]
 pub struct ContactDetail {
@@ -97,10 +97,15 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
                                 if _ctx.from_json {
@@ -137,10 +142,15 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
                                 }
                             }
                             Field::Telecom => {
-                                if r#telecom.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("telecom"));
+                                if _ctx.from_json {
+                                    if r#telecom.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("telecom"));
+                                    }
+                                    r#telecom = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#telecom.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#telecom = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

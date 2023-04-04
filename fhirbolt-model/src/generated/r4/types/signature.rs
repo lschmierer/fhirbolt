@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Signature Type: A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.\n\nThere are a number of places where content must be signed in healthcare."]
 #[derive(Default, Debug, Clone)]
 pub struct Signature {
@@ -185,16 +185,26 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
-                                if r#type.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
+                                if _ctx.from_json {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#type.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#type = Some(map_access.next_value()?);
                             }
                             Field::When => {
                                 if _ctx.from_json {

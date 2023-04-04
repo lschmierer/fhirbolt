@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Debug, Clone)]
 pub enum TimingRepeatBounds {
@@ -530,10 +530,15 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::BoundsDuration => {
                                 if r#bounds.is_some() {
@@ -1149,10 +1154,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                         }
                                     }
                                 } else {
-                                    if r#day_of_week.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("dayOfWeek"));
-                                    }
-                                    r#day_of_week = Some(map_access.next_value()?);
+                                    let vec = r#day_of_week.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::DayOfWeekPrimitiveElement => {
@@ -1235,10 +1238,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                         }
                                     }
                                 } else {
-                                    if r#time_of_day.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("timeOfDay"));
-                                    }
-                                    r#time_of_day = Some(map_access.next_value()?);
+                                    let vec = r#time_of_day.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::TimeOfDayPrimitiveElement => {
@@ -1321,10 +1322,8 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                         }
                                     }
                                 } else {
-                                    if r#when.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("when"));
-                                    }
-                                    r#when = Some(map_access.next_value()?);
+                                    let vec = r#when.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::WhenPrimitiveElement => {
@@ -1625,18 +1624,29 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Event => {
                                 if _ctx.from_json {
@@ -1661,10 +1671,8 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                         }
                                     }
                                 } else {
-                                    if r#event.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("event"));
-                                    }
-                                    r#event = Some(map_access.next_value()?);
+                                    let vec = r#event.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::EventPrimitiveElement => {

@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "If the parameter is a data type."]
 #[derive(Debug, Clone)]
 pub enum ParametersParameterValue {
@@ -755,18 +755,29 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
                                 if _ctx.from_json {
@@ -3237,10 +3248,15 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
                                 r#resource = Some(map_access.next_value()?);
                             }
                             Field::Part => {
-                                if r#part.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("part"));
+                                if _ctx.from_json {
+                                    if r#part.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("part"));
+                                    }
+                                    r#part = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#part.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#part = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -3549,10 +3565,15 @@ impl<'de> serde::de::Deserialize<'de> for Parameters {
                                 }
                             }
                             Field::Parameter => {
-                                if r#parameter.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("parameter"));
+                                if _ctx.from_json {
+                                    if r#parameter.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("parameter"));
+                                    }
+                                    r#parameter = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#parameter.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#parameter = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

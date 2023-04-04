@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for HumanName Type: A human's name with the ability to identify parts and usage.\n\nNeed to be able to record names, along with notes about their use."]
 #[derive(Default, Debug, Clone)]
 pub struct HumanName {
@@ -284,10 +284,15 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Use => {
                                 if _ctx.from_json {
@@ -444,10 +449,8 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                         }
                                     }
                                 } else {
-                                    if r#given.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("given"));
-                                    }
-                                    r#given = Some(map_access.next_value()?);
+                                    let vec = r#given.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::GivenPrimitiveElement => {
@@ -518,10 +521,8 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                         }
                                     }
                                 } else {
-                                    if r#prefix.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("prefix"));
-                                    }
-                                    r#prefix = Some(map_access.next_value()?);
+                                    let vec = r#prefix.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::PrefixPrimitiveElement => {
@@ -592,10 +593,8 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                         }
                                     }
                                 } else {
-                                    if r#suffix.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("suffix"));
-                                    }
-                                    r#suffix = Some(map_access.next_value()?);
+                                    let vec = r#suffix.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::SuffixPrimitiveElement => {

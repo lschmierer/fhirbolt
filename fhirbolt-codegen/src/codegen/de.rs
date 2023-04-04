@@ -49,10 +49,14 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
     let field_struct_assign_vars_tokens =
         r#struct.fields.iter().map(|f| field_struct_assign_var(f));
 
-    let deserialize_fields_tokens = r#struct
-        .fields
-        .iter()
-        .map(|f| deserialize_field(f, enums, all_possible_fields_names.clone()));
+    let deserialize_fields_tokens = r#struct.fields.iter().map(|f| {
+        deserialize_field(
+            f,
+            enums,
+            all_possible_fields_names.clone(),
+            r#struct.is_primitive,
+        )
+    });
 
     quote! {
         impl<'de> serde::de::Deserialize<'de> for #stuct_name_ident {
@@ -253,11 +257,14 @@ fn deserialize_field(
     field: &RustFhirStructField,
     enums: &[RustFhirEnum],
     all_possible_fields_names: Vec<String>,
+    in_primitive: bool,
 ) -> TokenStream {
     if field.polymorph {
         deserialize_enum(field, enums, all_possible_fields_names)
     } else {
-        if field.r#type.contains_primitive {
+        if in_primitive && field.name == "value" {
+            deserialize_primitive_value(field)
+        } else if field.r#type.contains_primitive {
             deserialize_primitive(field, all_possible_fields_names)
         } else {
             deserialize_element(field)
@@ -377,6 +384,35 @@ fn deserialize_enum_variant(
     }
 }
 
+fn deserialize_primitive_value(field: &RustFhirStructField) -> TokenStream {
+    let fhir_name = &field.fhir_name;
+    let field_name_ident = format_ident!("r#{}", field.name);
+
+    let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
+
+    if field.r#type.name == "std::string::String" {
+        quote! {
+            Field::#field_enum_type_name => {
+                if #field_name_ident.is_some() {
+                    return Err(serde::de::Error::duplicate_field(#fhir_name));
+                }
+                #field_name_ident = Some(map_access.next_value()?);
+            },
+        }
+    } else {
+        quote! {
+            Field::#field_enum_type_name => {
+                if #field_name_ident.is_some() {
+                    return Err(serde::de::Error::duplicate_field(#fhir_name));
+                }
+
+                let _value: String  = map_access.next_value()?;
+                #field_name_ident = Some(_value.parse().map_err(|err| serde::de::Error::custom(format!("{:?}", err)))?);
+            },
+        }
+    }
+}
+
 fn deserialize_primitive(
     field: &RustFhirStructField,
     all_possible_fields_names: Vec<String>,
@@ -431,10 +467,8 @@ fn deserialize_primitive(
                         }
                     }
                 } else {
-                    if #field_name_ident.is_some() {
-                        return Err(serde::de::Error::duplicate_field(#fhir_name));
-                    }
-                    #field_name_ident = Some(map_access.next_value()?);
+                    let vec = #field_name_ident.get_or_insert(Default::default());
+                    vec.push(map_access.next_value()?);
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
@@ -495,6 +529,7 @@ fn deserialize_primitive(
                     if #field_name_ident.is_some() {
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
+
                     #field_name_ident = Some(map_access.next_value()?);
                 }
             },
@@ -530,12 +565,28 @@ fn deserialize_element(field: &RustFhirStructField) -> TokenStream {
 
     let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
 
-    quote! {
-        Field::#field_enum_type_name => {
-            if #field_name_ident.is_some() {
-                return Err(serde::de::Error::duplicate_field(#fhir_name));
-            }
-            #field_name_ident = Some(map_access.next_value()?);
-        },
+    if field.multiple {
+        quote! {
+            Field::#field_enum_type_name => {
+                if _ctx.from_json {
+                    if #field_name_ident.is_some() {
+                        return Err(serde::de::Error::duplicate_field(#fhir_name));
+                    }
+                    #field_name_ident = Some(map_access.next_value()?);
+                } else {
+                    let vec = #field_name_ident.get_or_insert(Default::default());
+                    vec.push(map_access.next_value()?);
+                }
+            },
+        }
+    } else {
+        quote! {
+            Field::#field_enum_type_name => {
+                if #field_name_ident.is_some() {
+                    return Err(serde::de::Error::duplicate_field(#fhir_name));
+                }
+                #field_name_ident = Some(map_access.next_value()?);
+            },
+        }
     }
 }

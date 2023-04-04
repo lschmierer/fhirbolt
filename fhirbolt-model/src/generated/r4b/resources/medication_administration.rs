@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Debug, Clone)]
 pub enum MedicationAdministrationMedication {
@@ -125,18 +125,29 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministrationPerformer {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Function => {
                                 if r#function.is_some() {
@@ -333,18 +344,29 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministrationDosage {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Text => {
                                 if _ctx.from_json {
@@ -1019,30 +1041,53 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Instantiates => {
                                 if _ctx.from_json {
@@ -1069,12 +1114,8 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                         }
                                     }
                                 } else {
-                                    if r#instantiates.is_some() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "instantiates",
-                                        ));
-                                    }
-                                    r#instantiates = Some(map_access.next_value()?);
+                                    let vec = r#instantiates.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::InstantiatesPrimitiveElement => {
@@ -1145,10 +1186,15 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 }
                             }
                             Field::PartOf => {
-                                if r#part_of.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("partOf"));
+                                if _ctx.from_json {
+                                    if r#part_of.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("partOf"));
+                                    }
+                                    r#part_of = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#part_of.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#part_of = Some(map_access.next_value()?);
                             }
                             Field::Status => {
                                 if _ctx.from_json {
@@ -1215,10 +1261,17 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 }
                             }
                             Field::StatusReason => {
-                                if r#status_reason.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("statusReason"));
+                                if _ctx.from_json {
+                                    if r#status_reason.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusReason",
+                                        ));
+                                    }
+                                    r#status_reason = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#status_reason.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#status_reason = Some(map_access.next_value()?);
                             }
                             Field::Category => {
                                 if r#category.is_some() {
@@ -1260,12 +1313,18 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 r#context = Some(map_access.next_value()?);
                             }
                             Field::SupportingInformation => {
-                                if r#supporting_information.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "supportingInformation",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#supporting_information.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "supportingInformation",
+                                        ));
+                                    }
+                                    r#supporting_information = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#supporting_information.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#supporting_information = Some(map_access.next_value()?);
                             }
                             Field::EffectiveDateTime => {
                                 if _ctx.from_json {
@@ -1375,24 +1434,41 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 ));
                             }
                             Field::Performer => {
-                                if r#performer.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("performer"));
+                                if _ctx.from_json {
+                                    if r#performer.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("performer"));
+                                    }
+                                    r#performer = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#performer.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#performer = Some(map_access.next_value()?);
                             }
                             Field::ReasonCode => {
-                                if r#reason_code.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("reasonCode"));
+                                if _ctx.from_json {
+                                    if r#reason_code.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "reasonCode",
+                                        ));
+                                    }
+                                    r#reason_code = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#reason_code.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#reason_code = Some(map_access.next_value()?);
                             }
                             Field::ReasonReference => {
-                                if r#reason_reference.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "reasonReference",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#reason_reference.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "reasonReference",
+                                        ));
+                                    }
+                                    r#reason_reference = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#reason_reference.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#reason_reference = Some(map_access.next_value()?);
                             }
                             Field::Request => {
                                 if r#request.is_some() {
@@ -1401,16 +1477,26 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 r#request = Some(map_access.next_value()?);
                             }
                             Field::Device => {
-                                if r#device.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("device"));
+                                if _ctx.from_json {
+                                    if r#device.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("device"));
+                                    }
+                                    r#device = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#device.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#device = Some(map_access.next_value()?);
                             }
                             Field::Note => {
-                                if r#note.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("note"));
+                                if _ctx.from_json {
+                                    if r#note.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("note"));
+                                    }
+                                    r#note = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#note.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#note = Some(map_access.next_value()?);
                             }
                             Field::Dosage => {
                                 if r#dosage.is_some() {
@@ -1419,10 +1505,17 @@ impl<'de> serde::de::Deserialize<'de> for MedicationAdministration {
                                 r#dosage = Some(map_access.next_value()?);
                             }
                             Field::EventHistory => {
-                                if r#event_history.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("eventHistory"));
+                                if _ctx.from_json {
+                                    if r#event_history.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "eventHistory",
+                                        ));
+                                    }
+                                    r#event_history = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#event_history.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#event_history = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

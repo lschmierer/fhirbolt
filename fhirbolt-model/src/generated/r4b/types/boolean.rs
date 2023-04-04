@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for boolean Type: Value of \"true\" or \"false\""]
 #[derive(Default, Debug, Clone)]
 pub struct Boolean {
@@ -71,16 +71,24 @@ impl<'de> serde::de::Deserialize<'de> for Boolean {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Value => {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("value"));
                                 }
-                                r#value = Some(map_access.next_value()?);
+                                let _value: String = map_access.next_value()?;
+                                r#value = Some(_value.parse().map_err(|err| {
+                                    serde::de::Error::custom(format!("{:?}", err))
+                                })?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
 #[derive(Debug, Clone)]
 pub enum CitationRelatesToTarget {
@@ -130,18 +130,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationSummary {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Style => {
                                 if r#style.is_some() {
@@ -301,18 +312,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationClassification {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -321,10 +343,17 @@ impl<'de> serde::de::Deserialize<'de> for CitationClassification {
                                 r#type = Some(map_access.next_value()?);
                             }
                             Field::Classifier => {
-                                if r#classifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("classifier"));
+                                if _ctx.from_json {
+                                    if r#classifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "classifier",
+                                        ));
+                                    }
+                                    r#classifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#classifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#classifier = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -460,18 +489,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Activity => {
                                 if r#activity.is_some() {
@@ -703,18 +743,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::RelationshipType => {
                                 if r#relationship_type.is_some() {
@@ -725,12 +776,17 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
                                 r#relationship_type = Some(map_access.next_value()?);
                             }
                             Field::TargetClassifier => {
-                                if r#target_classifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "targetClassifier",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#target_classifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "targetClassifier",
+                                        ));
+                                    }
+                                    r#target_classifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#target_classifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#target_classifier = Some(map_access.next_value()?);
                             }
                             Field::TargetUri => {
                                 if _ctx.from_json {
@@ -979,18 +1035,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactVersion {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Value => {
                                 if _ctx.from_json {
@@ -1187,18 +1254,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Activity => {
                                 if r#activity.is_some() {
@@ -1407,24 +1485,40 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactTitle {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
-                                if r#type.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("type"));
+                                if _ctx.from_json {
+                                    if r#type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("type"));
+                                    }
+                                    r#type = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#type.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#type = Some(map_access.next_value()?);
                             }
                             Field::Language => {
                                 if r#language.is_some() {
@@ -1650,18 +1744,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactAbstract {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -1915,18 +2020,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPart {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -2149,18 +2265,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::RelationshipType => {
                                 if r#relationship_type.is_some() {
@@ -2171,12 +2298,17 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
                                 r#relationship_type = Some(map_access.next_value()?);
                             }
                             Field::TargetClassifier => {
-                                if r#target_classifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "targetClassifier",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#target_classifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "targetClassifier",
+                                        ));
+                                    }
+                                    r#target_classifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#target_classifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#target_classifier = Some(map_access.next_value()?);
                             }
                             Field::TargetUri => {
                                 if _ctx.from_json {
@@ -2479,18 +2611,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPu
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -2499,10 +2642,17 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPu
                                 r#type = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Title => {
                                 if _ctx.from_json {
@@ -2880,18 +3030,29 @@ impl<'de> serde::de::Deserialize<'de>
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Date => {
                                 if _ctx.from_json {
@@ -3343,18 +3504,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPe
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::CitedMedium => {
                                 if r#cited_medium.is_some() {
@@ -3798,18 +3970,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationForm {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::PublishedIn => {
                                 if r#published_in.is_some() {
@@ -3938,10 +4121,15 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationForm {
                                 }
                             }
                             Field::Language => {
-                                if r#language.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("language"));
+                                if _ctx.from_json {
+                                    if r#language.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("language"));
+                                    }
+                                    r#language = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#language.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#language = Some(map_access.next_value()?);
                             }
                             Field::AccessionNumber => {
                                 if _ctx.from_json {
@@ -4412,18 +4600,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactWebLocation {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -4640,18 +4839,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassificationWho
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Person => {
                                 if r#person.is_some() {
@@ -4907,18 +5117,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassification {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -4927,10 +5148,17 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassification {
                                 r#type = Some(map_access.next_value()?);
                             }
                             Field::Classifier => {
-                                if r#classifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("classifier"));
+                                if _ctx.from_json {
+                                    if r#classifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "classifier",
+                                        ));
+                                    }
+                                    r#classifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#classifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#classifier = Some(map_access.next_value()?);
                             }
                             Field::WhoClassified => {
                                 if r#who_classified.is_some() {
@@ -5105,18 +5333,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Affiliation => {
                                 if _ctx.from_json {
@@ -5207,10 +5446,17 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 }
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -5353,18 +5599,29 @@ impl<'de> serde::de::Deserialize<'de>
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -5687,18 +5944,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Name => {
                                 if r#name.is_some() {
@@ -5813,38 +6081,65 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 }
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::AffiliationInfo => {
-                                if r#affiliation_info.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "affiliationInfo",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#affiliation_info.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "affiliationInfo",
+                                        ));
+                                    }
+                                    r#affiliation_info = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#affiliation_info.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#affiliation_info = Some(map_access.next_value()?);
                             }
                             Field::Address => {
-                                if r#address.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("address"));
+                                if _ctx.from_json {
+                                    if r#address.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("address"));
+                                    }
+                                    r#address = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#address.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#address = Some(map_access.next_value()?);
                             }
                             Field::Telecom => {
-                                if r#telecom.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("telecom"));
+                                if _ctx.from_json {
+                                    if r#telecom.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("telecom"));
+                                    }
+                                    r#telecom = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#telecom.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#telecom = Some(map_access.next_value()?);
                             }
                             Field::ContributionType => {
-                                if r#contribution_type.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "contributionType",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#contribution_type.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "contributionType",
+                                        ));
+                                    }
+                                    r#contribution_type = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contribution_type.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contribution_type = Some(map_access.next_value()?);
                             }
                             Field::Role => {
                                 if r#role.is_some() {
@@ -5853,12 +6148,18 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
                                 r#role = Some(map_access.next_value()?);
                             }
                             Field::ContributionInstance => {
-                                if r#contribution_instance.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "contributionInstance",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#contribution_instance.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "contributionInstance",
+                                        ));
+                                    }
+                                    r#contribution_instance = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#contribution_instance.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contribution_instance = Some(map_access.next_value()?);
                             }
                             Field::CorrespondingContact => {
                                 if _ctx.from_json {
@@ -6141,18 +6442,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipSu
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -6371,18 +6683,29 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorship {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Complete => {
                                 if _ctx.from_json {
@@ -6426,16 +6749,26 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorship {
                                 }
                             }
                             Field::Entry => {
-                                if r#entry.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("entry"));
+                                if _ctx.from_json {
+                                    if r#entry.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("entry"));
+                                    }
+                                    r#entry = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#entry.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#entry = Some(map_access.next_value()?);
                             }
                             Field::Summary => {
-                                if r#summary.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("summary"));
+                                if _ctx.from_json {
+                                    if r#summary.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("summary"));
+                                    }
+                                    r#summary = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#summary.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#summary = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -6682,32 +7015,56 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::RelatedIdentifier => {
-                                if r#related_identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "relatedIdentifier",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#related_identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "relatedIdentifier",
+                                        ));
+                                    }
+                                    r#related_identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#related_identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#related_identifier = Some(map_access.next_value()?);
                             }
                             Field::DateAccessed => {
                                 if _ctx.from_json {
@@ -6775,28 +7132,52 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
                                 r#version = Some(map_access.next_value()?);
                             }
                             Field::CurrentState => {
-                                if r#current_state.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("currentState"));
+                                if _ctx.from_json {
+                                    if r#current_state.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "currentState",
+                                        ));
+                                    }
+                                    r#current_state = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#current_state.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#current_state = Some(map_access.next_value()?);
                             }
                             Field::StatusDate => {
-                                if r#status_date.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("statusDate"));
+                                if _ctx.from_json {
+                                    if r#status_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusDate",
+                                        ));
+                                    }
+                                    r#status_date = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#status_date.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#status_date = Some(map_access.next_value()?);
                             }
                             Field::Title => {
-                                if r#title.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("title"));
+                                if _ctx.from_json {
+                                    if r#title.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("title"));
+                                    }
+                                    r#title = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#title.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#title = Some(map_access.next_value()?);
                             }
                             Field::Abstract => {
-                                if r#abstract.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("abstract"));
+                                if _ctx.from_json {
+                                    if r#abstract.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("abstract"));
+                                    }
+                                    r#abstract = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#abstract.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#abstract = Some(map_access.next_value()?);
                             }
                             Field::Part => {
                                 if r#part.is_some() {
@@ -6805,32 +7186,54 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
                                 r#part = Some(map_access.next_value()?);
                             }
                             Field::RelatesTo => {
-                                if r#relates_to.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("relatesTo"));
+                                if _ctx.from_json {
+                                    if r#relates_to.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("relatesTo"));
+                                    }
+                                    r#relates_to = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#relates_to.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#relates_to = Some(map_access.next_value()?);
                             }
                             Field::PublicationForm => {
-                                if r#publication_form.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "publicationForm",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#publication_form.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "publicationForm",
+                                        ));
+                                    }
+                                    r#publication_form = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#publication_form.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#publication_form = Some(map_access.next_value()?);
                             }
                             Field::WebLocation => {
-                                if r#web_location.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("webLocation"));
+                                if _ctx.from_json {
+                                    if r#web_location.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "webLocation",
+                                        ));
+                                    }
+                                    r#web_location = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#web_location.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#web_location = Some(map_access.next_value()?);
                             }
                             Field::Classification => {
-                                if r#classification.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "classification",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#classification.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "classification",
+                                        ));
+                                    }
+                                    r#classification = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#classification.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#classification = Some(map_access.next_value()?);
                             }
                             Field::Contributorship => {
                                 if r#contributorship.is_some() {
@@ -6841,10 +7244,15 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
                                 r#contributorship = Some(map_access.next_value()?);
                             }
                             Field::Note => {
-                                if r#note.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("note"));
+                                if _ctx.from_json {
+                                    if r#note.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("note"));
+                                    }
+                                    r#note = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#note.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -7691,24 +8099,40 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Url => {
                                 if _ctx.from_json {
@@ -7783,10 +8207,17 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                                 }
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Version => {
                                 if _ctx.from_json {
@@ -8301,10 +8732,15 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                                 }
                             }
                             Field::Contact => {
-                                if r#contact.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contact"));
+                                if _ctx.from_json {
+                                    if r#contact.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contact"));
+                                    }
+                                    r#contact = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contact.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contact = Some(map_access.next_value()?);
                             }
                             Field::Description => {
                                 if _ctx.from_json {
@@ -8385,16 +8821,30 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                                 }
                             }
                             Field::UseContext => {
-                                if r#use_context.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("useContext"));
+                                if _ctx.from_json {
+                                    if r#use_context.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "useContext",
+                                        ));
+                                    }
+                                    r#use_context = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#use_context.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#use_context = Some(map_access.next_value()?);
                             }
                             Field::Jurisdiction => {
-                                if r#jurisdiction.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("jurisdiction"));
+                                if _ctx.from_json {
+                                    if r#jurisdiction.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "jurisdiction",
+                                        ));
+                                    }
+                                    r#jurisdiction = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#jurisdiction.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#jurisdiction = Some(map_access.next_value()?);
                             }
                             Field::Purpose => {
                                 if _ctx.from_json {
@@ -8707,66 +9157,120 @@ impl<'de> serde::de::Deserialize<'de> for Citation {
                                 r#effective_period = Some(map_access.next_value()?);
                             }
                             Field::Author => {
-                                if r#author.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("author"));
+                                if _ctx.from_json {
+                                    if r#author.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("author"));
+                                    }
+                                    r#author = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#author.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#author = Some(map_access.next_value()?);
                             }
                             Field::Editor => {
-                                if r#editor.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("editor"));
+                                if _ctx.from_json {
+                                    if r#editor.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("editor"));
+                                    }
+                                    r#editor = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#editor.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#editor = Some(map_access.next_value()?);
                             }
                             Field::Reviewer => {
-                                if r#reviewer.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("reviewer"));
+                                if _ctx.from_json {
+                                    if r#reviewer.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("reviewer"));
+                                    }
+                                    r#reviewer = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#reviewer.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#reviewer = Some(map_access.next_value()?);
                             }
                             Field::Endorser => {
-                                if r#endorser.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("endorser"));
+                                if _ctx.from_json {
+                                    if r#endorser.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("endorser"));
+                                    }
+                                    r#endorser = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#endorser.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#endorser = Some(map_access.next_value()?);
                             }
                             Field::Summary => {
-                                if r#summary.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("summary"));
+                                if _ctx.from_json {
+                                    if r#summary.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("summary"));
+                                    }
+                                    r#summary = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#summary.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#summary = Some(map_access.next_value()?);
                             }
                             Field::Classification => {
-                                if r#classification.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "classification",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#classification.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "classification",
+                                        ));
+                                    }
+                                    r#classification = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#classification.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#classification = Some(map_access.next_value()?);
                             }
                             Field::Note => {
-                                if r#note.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("note"));
+                                if _ctx.from_json {
+                                    if r#note.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("note"));
+                                    }
+                                    r#note = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#note.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#note = Some(map_access.next_value()?);
                             }
                             Field::CurrentState => {
-                                if r#current_state.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("currentState"));
+                                if _ctx.from_json {
+                                    if r#current_state.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "currentState",
+                                        ));
+                                    }
+                                    r#current_state = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#current_state.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#current_state = Some(map_access.next_value()?);
                             }
                             Field::StatusDate => {
-                                if r#status_date.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("statusDate"));
+                                if _ctx.from_json {
+                                    if r#status_date.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "statusDate",
+                                        ));
+                                    }
+                                    r#status_date = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#status_date.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#status_date = Some(map_access.next_value()?);
                             }
                             Field::RelatesTo => {
-                                if r#relates_to.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("relatesTo"));
+                                if _ctx.from_json {
+                                    if r#relates_to.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("relatesTo"));
+                                    }
+                                    r#relates_to = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#relates_to.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#relates_to = Some(map_access.next_value()?);
                             }
                             Field::CitedArtifact => {
                                 if r#cited_artifact.is_some() {

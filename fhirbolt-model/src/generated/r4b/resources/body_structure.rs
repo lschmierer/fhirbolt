@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case."]
 #[derive(Default, Debug, Clone)]
 pub struct BodyStructure {
@@ -383,30 +383,53 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Active => {
                                 if _ctx.from_json {
@@ -472,12 +495,18 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                 r#location = Some(map_access.next_value()?);
                             }
                             Field::LocationQualifier => {
-                                if r#location_qualifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "locationQualifier",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#location_qualifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "locationQualifier",
+                                        ));
+                                    }
+                                    r#location_qualifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#location_qualifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#location_qualifier = Some(map_access.next_value()?);
                             }
                             Field::Description => {
                                 if _ctx.from_json {
@@ -537,10 +566,15 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                 }
                             }
                             Field::Image => {
-                                if r#image.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("image"));
+                                if _ctx.from_json {
+                                    if r#image.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("image"));
+                                    }
+                                    r#image = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#image.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#image = Some(map_access.next_value()?);
                             }
                             Field::Patient => {
                                 if r#patient.is_some() {

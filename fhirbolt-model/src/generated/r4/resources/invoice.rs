@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
 #[derive(Debug, Clone)]
 pub enum InvoiceLineItemChargeItem {
@@ -98,18 +98,29 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Role => {
                                 if r#role.is_some() {
@@ -294,18 +305,29 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if _ctx.from_json {
@@ -567,18 +589,29 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Sequence => {
                                 if _ctx.from_json {
@@ -643,12 +676,17 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                 ));
                             }
                             Field::PriceComponent => {
-                                if r#price_component.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "priceComponent",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#price_component.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "priceComponent",
+                                        ));
+                                    }
+                                    r#price_component = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#price_component.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#price_component = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
@@ -1184,30 +1222,53 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                 r#text = Some(map_access.next_value()?);
                             }
                             Field::Contained => {
-                                if r#contained.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                if _ctx.from_json {
+                                    if r#contained.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("contained"));
+                                    }
+                                    r#contained = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#contained.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#contained = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Identifier => {
-                                if r#identifier.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                if _ctx.from_json {
+                                    if r#identifier.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "identifier",
+                                        ));
+                                    }
+                                    r#identifier = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#identifier.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#identifier = Some(map_access.next_value()?);
                             }
                             Field::Status => {
                                 if _ctx.from_json {
@@ -1411,10 +1472,17 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                 }
                             }
                             Field::Participant => {
-                                if r#participant.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("participant"));
+                                if _ctx.from_json {
+                                    if r#participant.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "participant",
+                                        ));
+                                    }
+                                    r#participant = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#participant.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#participant = Some(map_access.next_value()?);
                             }
                             Field::Issuer => {
                                 if r#issuer.is_some() {
@@ -1429,18 +1497,29 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                 r#account = Some(map_access.next_value()?);
                             }
                             Field::LineItem => {
-                                if r#line_item.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("lineItem"));
+                                if _ctx.from_json {
+                                    if r#line_item.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("lineItem"));
+                                    }
+                                    r#line_item = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#line_item.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#line_item = Some(map_access.next_value()?);
                             }
                             Field::TotalPriceComponent => {
-                                if r#total_price_component.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "totalPriceComponent",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#total_price_component.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "totalPriceComponent",
+                                        ));
+                                    }
+                                    r#total_price_component = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#total_price_component.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#total_price_component = Some(map_access.next_value()?);
                             }
                             Field::TotalNet => {
                                 if r#total_net.is_some() {
@@ -1520,10 +1599,15 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                 }
                             }
                             Field::Note => {
-                                if r#note.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("note"));
+                                if _ctx.from_json {
+                                    if r#note.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("note"));
+                                    }
+                                    r#note = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#note.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#note = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

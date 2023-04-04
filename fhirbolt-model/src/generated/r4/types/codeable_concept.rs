@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for CodeableConcept Type: A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.\n\nThis is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept."]
 #[derive(Default, Debug, Clone)]
 pub struct CodeableConcept {
@@ -97,16 +97,26 @@ impl<'de> serde::de::Deserialize<'de> for CodeableConcept {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Coding => {
-                                if r#coding.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("coding"));
+                                if _ctx.from_json {
+                                    if r#coding.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("coding"));
+                                    }
+                                    r#coding = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#coding.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#coding = Some(map_access.next_value()?);
                             }
                             Field::Text => {
                                 if _ctx.from_json {

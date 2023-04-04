@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
 #[derive(Debug, Clone)]
 pub enum DosageAsNeeded {
@@ -153,10 +153,15 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::Type => {
                                 if r#type.is_some() {
@@ -494,18 +499,29 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::ModifierExtension => {
-                                if r#modifier_extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "modifierExtension",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#modifier_extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "modifierExtension",
+                                        ));
+                                    }
+                                    r#modifier_extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#modifier_extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#modifier_extension = Some(map_access.next_value()?);
                             }
                             Field::Sequence => {
                                 if _ctx.from_json {
@@ -612,12 +628,18 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 }
                             }
                             Field::AdditionalInstruction => {
-                                if r#additional_instruction.is_some() {
-                                    return Err(serde::de::Error::duplicate_field(
-                                        "additionalInstruction",
-                                    ));
+                                if _ctx.from_json {
+                                    if r#additional_instruction.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "additionalInstruction",
+                                        ));
+                                    }
+                                    r#additional_instruction = Some(map_access.next_value()?);
+                                } else {
+                                    let vec =
+                                        r#additional_instruction.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#additional_instruction = Some(map_access.next_value()?);
                             }
                             Field::PatientInstruction => {
                                 if _ctx.from_json {
@@ -786,10 +808,17 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                 r#method = Some(map_access.next_value()?);
                             }
                             Field::DoseAndRate => {
-                                if r#dose_and_rate.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("doseAndRate"));
+                                if _ctx.from_json {
+                                    if r#dose_and_rate.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "doseAndRate",
+                                        ));
+                                    }
+                                    r#dose_and_rate = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#dose_and_rate.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#dose_and_rate = Some(map_access.next_value()?);
                             }
                             Field::MaxDosePerPeriod => {
                                 if r#max_dose_per_period.is_some() {

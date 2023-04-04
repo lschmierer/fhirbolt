@@ -1,4 +1,4 @@
-// Generated on 2023-03-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
 #[derive(Default, Debug, Clone)]
 pub struct Meta {
@@ -202,10 +202,15 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                 r#id = Some(map_access.next_value()?);
                             }
                             Field::Extension => {
-                                if r#extension.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                if _ctx.from_json {
+                                    if r#extension.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("extension"));
+                                    }
+                                    r#extension = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#extension.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#extension = Some(map_access.next_value()?);
                             }
                             Field::VersionId => {
                                 if _ctx.from_json {
@@ -367,10 +372,8 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                         }
                                     }
                                 } else {
-                                    if r#profile.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("profile"));
-                                    }
-                                    r#profile = Some(map_access.next_value()?);
+                                    let vec = r#profile.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
                             }
                             Field::ProfilePrimitiveElement => {
@@ -418,16 +421,26 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                 }
                             }
                             Field::Security => {
-                                if r#security.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("security"));
+                                if _ctx.from_json {
+                                    if r#security.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("security"));
+                                    }
+                                    r#security = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#security.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#security = Some(map_access.next_value()?);
                             }
                             Field::Tag => {
-                                if r#tag.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("tag"));
+                                if _ctx.from_json {
+                                    if r#tag.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("tag"));
+                                    }
+                                    r#tag = Some(map_access.next_value()?);
+                                } else {
+                                    let vec = r#tag.get_or_insert(Default::default());
+                                    vec.push(map_access.next_value()?);
                                 }
-                                r#tag = Some(map_access.next_value()?);
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
