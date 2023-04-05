@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the parameter."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionParameterValue {
     String(Box<super::super::types::String>),
     Boolean(Box<super::super::types::Boolean>),
@@ -17,7 +17,7 @@ impl Default for ValueSetExpansionParameterValue {
     }
 }
 #[doc = "Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetComposeIncludeConceptDesignation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -298,7 +298,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConceptDesignati
     }
 }
 #[doc = "Specifies a concept to be included or excluded."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetComposeIncludeConcept {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -586,7 +586,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeConcept {
     }
 }
 #[doc = "Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetComposeIncludeFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -924,7 +924,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeIncludeFilter {
     }
 }
 #[doc = "Include one or more codes from a code system or other value set(s)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetComposeInclude {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1348,7 +1348,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetComposeInclude {
     }
 }
 #[doc = "A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetCompose {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1658,7 +1658,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetCompose {
     }
 }
 #[doc = "A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetExpansionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2528,7 +2528,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionParameter {
     }
 }
 #[doc = "The codes that are contained in the value set expansion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetExpansionContains {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3138,7 +3138,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansionContains {
     }
 }
 #[doc = "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSetExpansion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3600,7 +3600,7 @@ impl<'de> serde::de::Deserialize<'de> for ValueSetExpansion {
     }
 }
 #[doc = "A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between `CodeSystem` definitions and their use in [coded elements](https://hl7.org/FHIR/terminologies.html))."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ValueSet {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

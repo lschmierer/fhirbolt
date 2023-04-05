@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.\n\nNeed to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContactPoint {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,

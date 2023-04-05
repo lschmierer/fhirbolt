@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
@@ -13,7 +13,7 @@ impl Default for ServiceRequestQuantity {
     }
 }
 #[doc = "The date/time at which the requested service should occur."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ServiceRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -26,7 +26,7 @@ impl Default for ServiceRequestOccurrence {
     }
 }
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ServiceRequestAsNeeded {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -38,7 +38,7 @@ impl Default for ServiceRequestAsNeeded {
     }
 }
 #[doc = "A record of a request for service such as diagnostic investigations, treatments, or operations to be performed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ServiceRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Citation Resource or display of suggested citation for this report."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceReportCiteAs {
     Reference(Box<super::super::types::Reference>),
     Markdown(Box<super::super::types::Markdown>),
@@ -12,7 +12,7 @@ impl Default for EvidenceReportCiteAs {
     }
 }
 #[doc = "Characteristic value."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceReportSubjectCharacteristicValue {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -27,7 +27,7 @@ impl Default for EvidenceReportSubjectCharacteristicValue {
     }
 }
 #[doc = "The target composition/document of this relationship."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceReportRelatesToTarget {
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
@@ -39,7 +39,7 @@ impl Default for EvidenceReportRelatesToTarget {
     }
 }
 #[doc = "Characteristic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceReportSubjectCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -451,7 +451,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportSubjectCharacteristic {
     }
 }
 #[doc = "Specifies the subject or focus of the report. Answers \"What is this report about?\"."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceReportSubject {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -617,7 +617,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportSubject {
     }
 }
 #[doc = "Relationships that this composition has with other compositions or documents that already exist."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceReportRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -857,7 +857,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportRelatesTo {
     }
 }
 #[doc = "The root of the sections that make up the composition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceReportSection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1329,7 +1329,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceReportSection {
     }
 }
 #[doc = "The EvidenceReport Resource is a specialized container for a collection of resources and codable concepts, adapted to support compositions of Evidence, EvidenceVariable, and Citation resources and related concepts."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A value to use if there is no existing value in the source object."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -60,7 +60,7 @@ impl Default for StructureMapGroupRuleSourceDefaultValue {
     }
 }
 #[doc = "Parameter value - variable or literal."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleTargetParameterValue {
     Id(Box<super::super::types::Id>),
     String(Box<super::super::types::String>),
@@ -75,7 +75,7 @@ impl Default for StructureMapGroupRuleTargetParameterValue {
     }
 }
 #[doc = "A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapStructure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -487,7 +487,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
     }
 }
 #[doc = "A name assigned to an instance of data. The instance must be provided when the mapping is invoked."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroupInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -899,7 +899,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
     }
 }
 #[doc = "Source inputs to the mapping."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleSource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5803,7 +5803,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
     }
 }
 #[doc = "Parameters to the transform."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleTargetParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6420,7 +6420,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
     }
 }
 #[doc = "Content to create because of this mapping rule."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7145,7 +7145,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
     }
 }
 #[doc = "Which other rules to apply in the context of this rule."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleDependent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7449,7 +7449,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
     }
 }
 #[doc = "Transform Rule from source to target."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7807,7 +7807,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
     }
 }
 #[doc = "Organizes the mapping into manageable chunks for human review/ease of maintenance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMapGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -8269,7 +8269,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
     }
 }
 #[doc = "A Map of relationships between 2 structures that can be used to transform data."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureMap {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

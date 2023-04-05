@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for boolean Type: Value of \"true\" or \"false\""]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Boolean {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,
@@ -85,10 +85,22 @@ impl<'de> serde::de::Deserialize<'de> for Boolean {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("value"));
                                 }
-                                let _value: String = map_access.next_value()?;
-                                r#value = Some(_value.parse().map_err(|err| {
-                                    serde::de::Error::custom(format!("{:?}", err))
-                                })?);
+                                #[derive(serde :: Deserialize)]
+                                #[serde(untagged)]
+                                enum StringOrValue {
+                                    String(String),
+                                    Value(bool),
+                                }
+                                match map_access.next_value()? {
+                                    StringOrValue::String(s) => {
+                                        r#value = Some(s.parse().map_err(|err| {
+                                            serde::de::Error::custom(format!("{:?}", err))
+                                        })?);
+                                    }
+                                    StringOrValue::Value(v) => {
+                                        r#value = Some(v);
+                                    }
+                                }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
                                 == fhirbolt_shared::serde_context::de::DeserializationMode::Strict

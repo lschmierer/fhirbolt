@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ElementDefinitionDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -60,7 +60,7 @@ impl Default for ElementDefinitionDefaultValue {
     }
 }
 #[doc = "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ElementDefinitionFixed {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -120,7 +120,7 @@ impl Default for ElementDefinitionFixed {
     }
 }
 #[doc = "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern\\[x\\] is used to constrain a primitive, it means that the value provided in the pattern\\[x\\] must match the instance value exactly.\n\nWhen pattern\\[x\\] is used to constrain an array, it means that each element provided in the pattern\\[x\\] array must (recursively) match at least one element from the instance array.\n\nWhen pattern\\[x\\] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ElementDefinitionPattern {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -180,7 +180,7 @@ impl Default for ElementDefinitionPattern {
     }
 }
 #[doc = "The actual value for the element, which must be one of the types allowed for this element."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ElementDefinitionExampleValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -240,7 +240,7 @@ impl Default for ElementDefinitionExampleValue {
     }
 }
 #[doc = "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ElementDefinitionMinValue {
     Date(Box<super::super::types::Date>),
     DateTime(Box<super::super::types::DateTime>),
@@ -259,7 +259,7 @@ impl Default for ElementDefinitionMinValue {
     }
 }
 #[doc = "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ElementDefinitionMaxValue {
     Date(Box<super::super::types::Date>),
     DateTime(Box<super::super::types::DateTime>),
@@ -278,7 +278,7 @@ impl Default for ElementDefinitionMaxValue {
     }
 }
 #[doc = "Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionSlicingDiscriminator {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -501,7 +501,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicingDiscriminator 
     }
 }
 #[doc = "Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionSlicing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -836,7 +836,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionSlicing {
     }
 }
 #[doc = "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionBase {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1119,7 +1119,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBase {
     }
 }
 #[doc = "The data type or resource that the value of this element is permitted to be."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionType {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1723,7 +1723,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionType {
     }
 }
 #[doc = "A sample value for this element demonstrating the type of information that would typically be found in the element."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionExample {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4923,7 +4923,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionExample {
     }
 }
 #[doc = "Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionConstraint {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5545,7 +5545,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionConstraint {
     }
 }
 #[doc = "Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionBinding {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5830,7 +5830,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionBinding {
     }
 }
 #[doc = "Identifies a concept from an external specification that roughly corresponds to this element."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinitionMapping {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6200,7 +6200,7 @@ impl<'de> serde::de::Deserialize<'de> for ElementDefinitionMapping {
     }
 }
 #[doc = "Base StructureDefinition for ElementDefinition Type: Captures constraints on each element within the resource, profile, or extension."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ElementDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,

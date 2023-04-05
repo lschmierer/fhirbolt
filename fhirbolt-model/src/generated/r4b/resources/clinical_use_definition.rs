@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for ClinicalUseDefinitionIndicationDuration {
     }
 }
 #[doc = "The specific medication, food or laboratory test that interacts."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionInteractionInteractantItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -24,7 +24,7 @@ impl Default for ClinicalUseDefinitionInteractionInteractantItem {
     }
 }
 #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the contraindication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -193,7 +193,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionContraindicationO
     }
 }
 #[doc = "Specifics for when this is a contraindication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionContraindication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -427,7 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionContraindication 
     }
 }
 #[doc = "Specifics for when this is an indication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionIndication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -811,7 +811,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionIndication {
     }
 }
 #[doc = "The specific medication, food, substance or laboratory test that interacts."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionInteractionInteractant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -900,7 +900,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionInteractionIntera
     }
 }
 #[doc = "Specifics for when this is an interaction."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1120,7 +1120,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionInteraction {
     }
 }
 #[doc = "Describe the possible undesirable effects (negative outcomes) from the use of the medicinal product as treatment."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionUndesirableEffect {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1303,7 +1303,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionUndesirableEffect
     }
 }
 #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionWarning {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1518,7 +1518,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionWarning {
     }
 }
 #[doc = "A single issue - either an indication, contraindication, interaction or an undesirable effect for a medicinal product, medication, device or procedure."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

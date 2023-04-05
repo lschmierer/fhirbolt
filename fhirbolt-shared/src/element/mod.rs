@@ -1,12 +1,14 @@
-mod de;
-mod ser;
-
 use std::{
     fmt,
     ops::{Deref, DerefMut},
 };
 
 use crate::FhirRelease;
+
+pub mod error;
+
+mod de;
+mod ser;
 
 #[derive(Clone)]
 pub struct Element<const R: FhirRelease> {
@@ -71,11 +73,21 @@ impl<const R: FhirRelease> fmt::Debug for Element<R> {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub enum Value<const R: FhirRelease> {
     Element(Element<R>),
     Sequence(Vec<Element<R>>),
     Primitive(Primitive),
+}
+
+impl<const R: FhirRelease> fmt::Debug for Value<R> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> Result<(), fmt::Error> {
+        match self {
+            Value::Element(e) => e.fmt(f),
+            Value::Sequence(s) => s.fmt(f),
+            Value::Primitive(p) => write!(f, "{:?}", p),
+        }
+    }
 }
 
 #[derive(Clone, Debug)]

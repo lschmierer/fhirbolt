@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the event definition."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EventDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for EventDefinitionSubject {
     }
 }
 #[doc = "The EventDefinition resource provides a reusable description of when a particular event can occur."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EventDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

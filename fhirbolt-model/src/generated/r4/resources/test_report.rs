@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A participant in the test execution, either the execution engine, a client, or a server."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -333,7 +333,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportParticipant {
     }
 }
 #[doc = "The operation performed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportSetupActionOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -667,7 +667,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionOperation {
     }
 }
 #[doc = "The results of the assertion performed on the previous operations."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportSetupActionAssert {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1001,7 +1001,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupActionAssert {
     }
 }
 #[doc = "Action would contain either an operation or an assertion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportSetupAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1155,7 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetupAction {
     }
 }
 #[doc = "The results of the series of required setup operations before the tests were executed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportSetup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1293,7 +1293,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportSetup {
     }
 }
 #[doc = "Action would contain either an operation or an assertion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportTestAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1447,7 +1447,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTestAction {
     }
 }
 #[doc = "A test executed from the test script."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportTest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1734,7 +1734,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTest {
     }
 }
 #[doc = "The teardown action will only contain an operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportTeardownAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1871,7 +1871,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardownAction {
     }
 }
 #[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReportTeardown {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2009,7 +2009,7 @@ impl<'de> serde::de::Deserialize<'de> for TestReportTeardown {
     }
 }
 #[doc = "A summary of information based on the results of executing a TestScript."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

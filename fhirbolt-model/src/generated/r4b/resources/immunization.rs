@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for ImmunizationOccurrence {
     }
 }
 #[doc = "Nominal position in a series."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationProtocolAppliedDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
@@ -24,7 +24,7 @@ impl Default for ImmunizationProtocolAppliedDoseNumber {
     }
 }
 #[doc = "The recommended number of doses to achieve immunity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationProtocolAppliedSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
@@ -36,7 +36,7 @@ impl Default for ImmunizationProtocolAppliedSeriesDoses {
     }
 }
 #[doc = "Indicates who performed the immunization event."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -188,7 +188,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
     }
 }
 #[doc = "Educational material presented to the patient (or guardian) at the time of vaccine administration."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationEducation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -612,7 +612,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
     }
 }
 #[doc = "Categorical data indicating that an adverse event is associated in time to an immunization."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationReaction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -888,7 +888,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
     }
 }
 #[doc = "The protocol (set of recommendations) being followed by the provider who administered the dose."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationProtocolApplied {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1561,7 +1561,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
     }
 }
 #[doc = "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Immunization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

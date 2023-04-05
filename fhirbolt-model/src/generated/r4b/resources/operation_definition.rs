@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinitionParameterBinding {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -265,7 +265,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
     }
 }
 #[doc = "Identifies other resource parameters within the operation invocation that are expected to resolve to this resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinitionParameterReferencedFrom {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -522,7 +522,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
     }
 }
 #[doc = "The parameters for the operation/query."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinitionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1395,7 +1395,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
     }
 }
 #[doc = "Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinitionOverload {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1707,7 +1707,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
     }
 }
 #[doc = "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

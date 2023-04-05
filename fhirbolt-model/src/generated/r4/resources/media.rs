@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date and time(s) at which the media was collected."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MediaCreated {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for MediaCreated {
     }
 }
 #[doc = "A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Media {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

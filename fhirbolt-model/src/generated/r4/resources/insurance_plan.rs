@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The contact for the health insurance product for a certain purpose."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanContact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -191,7 +191,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanContact {
     }
 }
 #[doc = "The specific limits on the benefit."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanCoverageBenefitLimit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -342,7 +342,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefitLimit {
     }
 }
 #[doc = "Specific benefits under this type of coverage."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanCoverageBenefit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -583,7 +583,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverageBenefit {
     }
 }
 #[doc = "Details about the coverage offered by the insurance product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanCoverage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -767,7 +767,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanCoverage {
     }
 }
 #[doc = "Overall costs associated with the plan."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanGeneralCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1066,7 +1066,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanGeneralCost {
     }
 }
 #[doc = "List of the costs associated with a specific benefit."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanSpecificCostBenefitCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1266,7 +1266,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefitCo
     }
 }
 #[doc = "List of the specific benefits under this category of benefit."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanSpecificCostBenefit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1426,7 +1426,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCostBenefit {
     }
 }
 #[doc = "Costs associated with the coverage provided by the product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanSpecificCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1592,7 +1592,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlanSpecificCost {
     }
 }
 #[doc = "Details about an insurance plan."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlan {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1843,7 +1843,7 @@ impl<'de> serde::de::Deserialize<'de> for InsurancePlanPlan {
     }
 }
 #[doc = "Details of a Health Insurance product/plan provided by an organization."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
     String(Box<super::super::types::String>),
     Base64Binary(Box<super::super::types::Base64Binary>),
@@ -12,7 +12,7 @@ impl Default for AuditEventEntityDetailValue {
     }
 }
 #[doc = "Logical network location for application activity, if the activity has a network location."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AuditEventAgentNetwork {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -264,7 +264,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
     }
 }
 #[doc = "An actor taking an active role in the event or activity that is logged."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AuditEventAgent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -870,7 +870,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
     }
 }
 #[doc = "The system that is reporting the event."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AuditEventSource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1102,7 +1102,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
     }
 }
 #[doc = "Tagged value pairs for conveying additional information about the entity."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AuditEventEntityDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1484,7 +1484,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
     }
 }
 #[doc = "Specific instances of data or objects that have been accessed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AuditEventEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1945,7 +1945,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
     }
 }
 #[doc = "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AuditEvent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

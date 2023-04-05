@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "How often the device was used."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum DeviceUseStatementTiming {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
@@ -13,7 +13,7 @@ impl Default for DeviceUseStatementTiming {
     }
 }
 #[doc = "A record of a device being used by a patient where the record is the result of a report from the patient or another clinician."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceUseStatement {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -82,7 +82,7 @@ pub fn generate_resource_enum(
         name: "resource".into(),
         source: quote! {
             #[doc="Enum representing all possible FHIR resources."]
-            #[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
+            #[derive(Default, Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
             #[serde(tag = "resourceType")]
             pub enum Resource {
                 #(
@@ -152,7 +152,7 @@ fn generate_struct(
 
     quote! {
         #[doc=#doc_comment]
-        #[derive(Default, Debug, Clone)]
+        #[derive(Default, Debug, Clone, PartialEq)]
         pub struct #name_ident {
             #(
                 #fields_tokens
@@ -216,7 +216,7 @@ fn generate_enum(r#enum: &RustFhirEnum) -> TokenStream {
 
     quote! {
         #[doc=#doc_comment_tokens]
-        #[derive(Debug, Clone)]
+        #[derive(Debug, Clone, PartialEq)]
         pub enum #name_ident {
             #(
                 #variants_tokens

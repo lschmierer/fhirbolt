@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Condition for which the medicinal use applies."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductSpecialDesignationIndication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for MedicinalProductSpecialDesignationIndication {
     }
 }
 #[doc = "Coding words or phrases of the name."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductNameNamePart {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -215,7 +215,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameNamePart {
     }
 }
 #[doc = "Country where the name applies."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductNameCountryLanguage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -396,7 +396,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductNameCountryLanguage {
     }
 }
 #[doc = "The product's name, including full name and possibly coded parts."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -639,7 +639,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductName {
     }
 }
 #[doc = "An operation applied to the product, for manufacturing or adminsitrative purpose."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductManufacturingBusinessOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -937,7 +937,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufacturingBusinessO
     }
 }
 #[doc = "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductSpecialDesignation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1269,7 +1269,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductSpecialDesignation {
     }
 }
 #[doc = "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

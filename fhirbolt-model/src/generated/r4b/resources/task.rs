@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the input parameter as a basic type."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum TaskInputValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -60,7 +60,7 @@ impl Default for TaskInputValue {
     }
 }
 #[doc = "The value of the Output parameter as a basic type."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum TaskOutputValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -120,7 +120,7 @@ impl Default for TaskOutputValue {
     }
 }
 #[doc = "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TaskRestriction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -354,7 +354,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskRestriction {
     }
 }
 #[doc = "Additional information that may be needed in the execution of the task."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TaskInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3356,7 +3356,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskInput {
     }
 }
 #[doc = "Outputs produced by the Task."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TaskOutput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6374,7 +6374,7 @@ impl<'de> serde::de::Deserialize<'de> for TaskOutput {
     }
 }
 #[doc = "A task to be performed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Task {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

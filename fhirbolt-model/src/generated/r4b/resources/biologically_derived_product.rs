@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Time of product collection."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for BiologicallyDerivedProductCollectionCollected {
     }
 }
 #[doc = "Time of processing."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductProcessingTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -24,7 +24,7 @@ impl Default for BiologicallyDerivedProductProcessingTime {
     }
 }
 #[doc = "Time of manipulation."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductManipulationTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -36,7 +36,7 @@ impl Default for BiologicallyDerivedProductManipulationTime {
     }
 }
 #[doc = "How this product was collected."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductCollection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -322,7 +322,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductCollection {
     }
 }
 #[doc = "Any processing of the product during collection that does not change the fundamental nature of the product. For example adding anti-coagulants during the collection of Peripheral Blood Stem Cells."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductProcessing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -678,7 +678,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
     }
 }
 #[doc = "Any manipulation of product post-collection that is intended to alter the product.  For example a buffy-coat enrichment or CD8 reduction of Peripheral Blood Stem Cells to make it more suitable for infusion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductManipulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -998,7 +998,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
     }
 }
 #[doc = "Product storage."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductStorage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1363,7 +1363,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
     }
 }
 #[doc = "A material substance originating from a biological entity intended to be transplanted or infused\ninto another (possibly the same) biological entity."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

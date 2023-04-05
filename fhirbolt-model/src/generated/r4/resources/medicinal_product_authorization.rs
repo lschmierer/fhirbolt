@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Date of procedure."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductAuthorizationProcedureDate {
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
@@ -12,7 +12,7 @@ impl Default for MedicinalProductAuthorizationProcedureDate {
     }
 }
 #[doc = "Authorization in areas within a country."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductAuthorizationJurisdictionalAuthorization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -238,7 +238,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
     }
 }
 #[doc = "The regulatory procedure for granting or amending a marketing authorization."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductAuthorizationProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -544,7 +544,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
     }
 }
 #[doc = "The regulatory authorization of a medicinal product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductAuthorization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

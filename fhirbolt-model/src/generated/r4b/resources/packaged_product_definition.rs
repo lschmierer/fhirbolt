@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
     Duration(Box<super::super::types::Duration>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for PackagedProductDefinitionPackageShelfLifeStoragePeriod {
     }
 }
 #[doc = "A value for the characteristic."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackagePropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
@@ -27,7 +27,7 @@ impl Default for PackagedProductDefinitionPackagePropertyValue {
     }
 }
 #[doc = "The legal status of supply of the packaged item as classified by the regulator."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionLegalStatusOfSupply {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -184,7 +184,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionLegalStatusOf
     }
 }
 #[doc = "Shelf Life and storage information."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackageShelfLifeStorage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -314,7 +314,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageShelfL
     }
 }
 #[doc = "General characteristics of this item."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackageProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -716,7 +716,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageProper
     }
 }
 #[doc = "The item(s) within the packaging."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackageContainedItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -871,7 +871,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageContai
     }
 }
 #[doc = "A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap (which is not a device or a medication manufactured item)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1274,7 +1274,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackage {
     }
 }
 #[doc = "A medically related item or items, in a container or package."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

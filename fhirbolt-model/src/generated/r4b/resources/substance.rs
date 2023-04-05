@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Another substance that is a component of this substance."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceIngredientSubstance {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for SubstanceIngredientSubstance {
     }
 }
 #[doc = "Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -235,7 +235,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceInstance {
     }
 }
 #[doc = "A substance can be composed of other substances."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -420,7 +420,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceIngredient {
     }
 }
 #[doc = "A homogeneous material with a definite composition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Substance {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

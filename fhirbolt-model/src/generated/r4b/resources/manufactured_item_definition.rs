@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ManufacturedItemDefinitionPropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
@@ -15,7 +15,7 @@ impl Default for ManufacturedItemDefinitionPropertyValue {
     }
 }
 #[doc = "General characteristics of this item."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ManufacturedItemDefinitionProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -410,7 +410,7 @@ impl<'de> serde::de::Deserialize<'de> for ManufacturedItemDefinitionProperty {
     }
 }
 #[doc = "The definition and characteristics of a medicinal manufactured item, such as a tablet or capsule, as contained in a packaged medicinal product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ManufacturedItemDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

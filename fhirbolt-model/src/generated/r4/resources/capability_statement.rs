@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementSoftware {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -340,7 +340,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementSoftware {
     }
 }
 #[doc = "Identifies a specific implementation instance that is described by the capability statement - i.e. a particular installation, rather than the capabilities of a software program."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementImplementation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -627,7 +627,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementImplementation {
     }
 }
 #[doc = "Information about security implementation from an interface perspective - what a client needs to know."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestSecurity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -917,7 +917,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestSecurity {
     }
 }
 #[doc = "Identifies a restful operation supported by the solution."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResourceInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1186,7 +1186,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResourceInterac
     }
 }
 #[doc = "Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResourceSearchParam {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1607,7 +1607,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResourceSearchP
     }
 }
 #[doc = "Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResourceOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1955,7 +1955,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResourceOperati
     }
 }
 #[doc = "A specification of the restful capabilities of the solution for a specific resource type."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3572,7 +3572,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestResource {
     }
 }
 #[doc = "A specification of restful operations supported by the system."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3841,7 +3841,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRestInteraction {
     }
 }
 #[doc = "A definition of the restful capabilities of the solution, if any."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4349,7 +4349,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementRest {
     }
 }
 #[doc = "An endpoint (network accessible address) to which messages and/or replies are to be sent."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementMessagingEndpoint {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4564,7 +4564,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementMessagingEndpoint {
     }
 }
 #[doc = "References to message definitions for messages this system can send or receive."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementMessagingSupportedMessage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4829,7 +4829,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementMessagingSupportedM
     }
 }
 #[doc = "A description of the messaging capabilities of the solution."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementMessaging {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5152,7 +5152,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementMessaging {
     }
 }
 #[doc = "A document definition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementDocument {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5494,7 +5494,7 @@ impl<'de> serde::de::Deserialize<'de> for CapabilityStatementDocument {
     }
 }
 #[doc = "A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatement {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

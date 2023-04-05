@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum DosageAsNeeded {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -12,7 +12,7 @@ impl Default for DosageAsNeeded {
     }
 }
 #[doc = "Amount of medication per dose."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum DosageDoseAndRateDose {
     Range(Box<super::super::types::Range>),
     Quantity(Box<super::super::types::Quantity>),
@@ -24,7 +24,7 @@ impl Default for DosageDoseAndRateDose {
     }
 }
 #[doc = "Amount of medication per unit of time."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum DosageDoseAndRateRate {
     Ratio(Box<super::super::types::Ratio>),
     Range(Box<super::super::types::Range>),
@@ -37,7 +37,7 @@ impl Default for DosageDoseAndRateRate {
     }
 }
 #[doc = "The amount of medication administered."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DosageDoseAndRate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -237,7 +237,7 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
     }
 }
 #[doc = "Base StructureDefinition for Dosage Type: Indicates how the medication is/was taken or should be taken by the patient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Dosage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,

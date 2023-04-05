@@ -387,6 +387,7 @@ fn deserialize_enum_variant(
 fn deserialize_primitive_value(field: &RustFhirStructField) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
+    let field_type_ident: TokenStream = field.r#type.name.parse().unwrap();
 
     let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
 
@@ -406,8 +407,21 @@ fn deserialize_primitive_value(field: &RustFhirStructField) -> TokenStream {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
 
-                let _value: String  = map_access.next_value()?;
-                #field_name_ident = Some(_value.parse().map_err(|err| serde::de::Error::custom(format!("{:?}", err)))?);
+                #[derive(serde::Deserialize)]
+                #[serde(untagged)]
+                enum StringOrValue{
+                    String(String),
+                    Value(#field_type_ident)
+                }
+
+                match map_access.next_value()? {
+                    StringOrValue::String(s) => {
+                        #field_name_ident = Some(s.parse().map_err(|err| serde::de::Error::custom(format!("{:?}", err)))?);
+                    },
+                    StringOrValue::Value(v) => {
+                        #field_name_ident = Some(v);
+                    }
+                }
             },
         }
     }

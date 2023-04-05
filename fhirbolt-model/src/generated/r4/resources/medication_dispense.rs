@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates the reason why a dispense was not performed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicationDispenseStatusReason {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for MedicationDispenseStatusReason {
     }
 }
 #[doc = "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicationDispenseMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -24,7 +24,7 @@ impl Default for MedicationDispenseMedication {
     }
 }
 #[doc = "Indicates who or what performed the event."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationDispensePerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -179,7 +179,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispensePerformer {
     }
 }
 #[doc = "Indicates whether or not substitution was made as part of the dispense.  In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.  If nothing is specified, substitution was not done."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationDispenseSubstitution {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -446,7 +446,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispenseSubstitution {
     }
 }
 #[doc = "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationDispense {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimResponseAddItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for ClaimResponseAddItemServiced {
     }
 }
 #[doc = "Where the product or service was provided."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimResponseAddItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
@@ -25,7 +25,7 @@ impl Default for ClaimResponseAddItemLocation {
     }
 }
 #[doc = "If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseItemAdjudication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -274,7 +274,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemAdjudication {
     }
 }
 #[doc = "A sub-detail adjudication of a simple product or service."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -624,7 +624,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetailSubDetail {
     }
 }
 #[doc = "A claim detail. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -992,7 +992,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItemDetail {
     }
 }
 #[doc = "A claim line. Either a simple (a product or service) or a 'group' of details which can also be a simple items or groups of sub-details."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1358,7 +1358,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseItem {
     }
 }
 #[doc = "The third-tier service adjudications for payor added services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseAddItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1800,7 +1800,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetailSubDetail {
     }
 }
 #[doc = "The second-tier service adjudications for payor added services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseAddItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2262,7 +2262,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItemDetail {
     }
 }
 #[doc = "The first-tier service adjudications for payor added product or service lines."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseAddItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3437,7 +3437,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseAddItem {
     }
 }
 #[doc = "Categorized monetary totals for the adjudication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseTotal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3593,7 +3593,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseTotal {
     }
 }
 #[doc = "Payment details for the adjudication of the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponsePayment {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3878,7 +3878,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponsePayment {
     }
 }
 #[doc = "A note that describes or explains adjudication results in a human readable form."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseProcessNote {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4228,7 +4228,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseProcessNote {
     }
 }
 #[doc = "Financial instruments for reimbursement for the health care products and services specified on the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4611,7 +4611,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseInsurance {
     }
 }
 #[doc = "Errors encountered during the processing of the adjudication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponseError {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4983,7 +4983,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimResponseError {
     }
 }
 #[doc = "This resource provides the adjudication details from the processing of a Claim resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

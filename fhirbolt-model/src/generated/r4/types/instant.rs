@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for instant Type: An instant in time - known at least to the second"]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Instant {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The actual characteristic value corresponding to the type."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum NutritionProductProductCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     String(Box<super::super::types::String>),
@@ -16,7 +16,7 @@ impl Default for NutritionProductProductCharacteristicValue {
     }
 }
 #[doc = "The product's nutritional information expressed by the nutrients."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionProductNutrient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -169,7 +169,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
     }
 }
 #[doc = "Ingredients contained in this product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionProductIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -326,7 +326,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
     }
 }
 #[doc = "Specifies descriptive properties of the nutrition product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionProductProductCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -489,7 +489,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
     }
 }
 #[doc = "Conveys instance-level information about this product item. One or several physical, countable instances or occurrences of the product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionProductInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -865,7 +865,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
     }
 }
 #[doc = "A food or fluid product that is consumed by patients."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

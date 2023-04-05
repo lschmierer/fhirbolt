@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "An abstract server used in operations within this test script in the origin element."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptOrigin {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -206,7 +206,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptOrigin {
     }
 }
 #[doc = "An abstract server used in operations within this test script in the destination element."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptDestination {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -412,7 +412,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptDestination {
     }
 }
 #[doc = "A link to the FHIR specification that this test is covering."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptMetadataLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -672,7 +672,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataLink {
     }
 }
 #[doc = "Capabilities that must exist and are assumed to function correctly on the FHIR server being tested."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptMetadataCapability {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1428,7 +1428,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
     }
 }
 #[doc = "The required capability must exist and are assumed to function correctly on the FHIR server being tested."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptMetadata {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1588,7 +1588,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadata {
     }
 }
 #[doc = "Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptFixture {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1880,7 +1880,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptFixture {
     }
 }
 #[doc = "Variable is set based either on element value in response body or on header field value in the response headers."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptVariable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2620,7 +2620,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
     }
 }
 #[doc = "Header elements would be used to set HTTP headers."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptSetupActionOperationRequestHeader {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2867,7 +2867,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperationRequestH
     }
 }
 #[doc = "The operation to perform."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptSetupActionOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4316,7 +4316,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
     }
 }
 #[doc = "Evaluates the results of previous operations to determine if the server under test behaves appropriately."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptSetupActionAssert {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6469,7 +6469,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
     }
 }
 #[doc = "Action would contain either an operation or an assertion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptSetupAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6623,7 +6623,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupAction {
     }
 }
 #[doc = "A series of required setup operations before tests are executed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptSetup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6761,7 +6761,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetup {
     }
 }
 #[doc = "Action would contain either an operation or an assertion."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptTestAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6915,7 +6915,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTestAction {
     }
 }
 #[doc = "A test in this script."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptTest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7202,7 +7202,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTest {
     }
 }
 #[doc = "The teardown action will only contain an operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptTeardownAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7339,7 +7339,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardownAction {
     }
 }
 #[doc = "A series of operations required to clean up after all the tests are executed (successfully or otherwise)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptTeardown {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7477,7 +7477,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardown {
     }
 }
 #[doc = "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScript {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

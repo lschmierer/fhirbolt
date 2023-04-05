@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Actor participating in the resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioActor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -412,7 +412,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioActor {
     }
 }
 #[doc = "A specific version of the resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioInstanceVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -685,7 +685,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceVersion {
     }
 }
 #[doc = "Resources contained in the instance (e.g. the observations contained in a bundle)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioInstanceContainedInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -956,7 +956,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstanceContainedInstan
     }
 }
 #[doc = "Each resource and each version that is present in the workflow."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1436,7 +1436,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioInstance {
     }
 }
 #[doc = "Each interaction or action."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcessStepOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2223,7 +2223,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStepOperation {
     }
 }
 #[doc = "Indicates an alternative step that can be taken instead of the operations on the base step in exceptional/atypical circumstances."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcessStepAlternative {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2515,7 +2515,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStepAlternative 
     }
 }
 #[doc = "Each step of the process."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcessStep {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2767,7 +2767,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcessStep {
     }
 }
 #[doc = "Each major process - a group of operations."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcess {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3214,7 +3214,7 @@ impl<'de> serde::de::Deserialize<'de> for ExampleScenarioProcess {
     }
 }
 #[doc = "Example of workflow instance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenario {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

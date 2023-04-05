@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position in a series."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationEvaluationDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for ImmunizationEvaluationDoseNumber {
     }
 }
 #[doc = "The recommended number of doses to achieve immunity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationEvaluationSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
@@ -24,7 +24,7 @@ impl Default for ImmunizationEvaluationSeriesDoses {
     }
 }
 #[doc = "Describes a comparison of an immunization event against published recommendations to determine if the administration is \"valid\" in relation to those  recommendations."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationEvaluation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

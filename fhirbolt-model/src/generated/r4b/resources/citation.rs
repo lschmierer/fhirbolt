@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CitationRelatesToTarget {
     Uri(Box<super::super::types::Uri>),
     Identifier(Box<super::super::types::Identifier>),
@@ -14,7 +14,7 @@ impl Default for CitationRelatesToTarget {
     }
 }
 #[doc = "The article or artifact that the cited artifact is related to."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CitationCitedArtifactRelatesToTarget {
     Uri(Box<super::super::types::Uri>),
     Identifier(Box<super::super::types::Identifier>),
@@ -28,7 +28,7 @@ impl Default for CitationCitedArtifactRelatesToTarget {
     }
 }
 #[doc = "A human-readable display of the citation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationSummary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -224,7 +224,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationSummary {
     }
 }
 #[doc = "The assignment to an organizing scheme."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -379,7 +379,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationClassification {
     }
 }
 #[doc = "An effective date or period for a status of the citation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationStatusDate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -610,7 +610,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationStatusDate {
     }
 }
 #[doc = "Artifact related to the Citation Resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -930,7 +930,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationRelatesTo {
     }
 }
 #[doc = "The defined version of the cited artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1141,7 +1141,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactVersion {
     }
 }
 #[doc = "An effective date or period for a status of the cited artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactStatusDate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1375,7 +1375,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactStatusDate {
     }
 }
 #[doc = "The title details of the article or artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactTitle {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1605,7 +1605,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactTitle {
     }
 }
 #[doc = "Summary of the article or artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactAbstract {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1906,7 +1906,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactAbstract {
     }
 }
 #[doc = "The component of the article or artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPart {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2129,7 +2129,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPart {
     }
 }
 #[doc = "The artifact related to the cited artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2460,7 +2460,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactRelatesTo {
     }
 }
 #[doc = "The collection the cited article or artifact is published in."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationFormPublishedIn {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2790,7 +2790,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPu
     }
 }
 #[doc = "Defining the date on which the issue of the journal was published."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3358,7 +3358,7 @@ impl<'de> serde::de::Deserialize<'de>
     }
 }
 #[doc = "The specific issue in which the cited article resides."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationFormPeriodicRelease {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3660,7 +3660,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationFormPe
     }
 }
 #[doc = "If multiple, used to represent alternative forms of the article that are not separate citations."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationForm {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4491,7 +4491,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactPublicationForm {
     }
 }
 #[doc = "Used for any URL for the article or artifact cited."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactWebLocation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4688,7 +4688,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactWebLocation {
     }
 }
 #[doc = "Provenance and copyright of classification."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactClassificationWhoClassified {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5017,7 +5017,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassificationWho
     }
 }
 #[doc = "The assignment to an organizing scheme."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5198,7 +5198,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactClassification {
     }
 }
 #[doc = "Organization affiliated with the entity."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipEntryAffiliationInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5490,7 +5490,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
     }
 }
 #[doc = "Contributions with accounting for time or number."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipEntryContributionInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5695,7 +5695,7 @@ impl<'de> serde::de::Deserialize<'de>
     }
 }
 #[doc = "An individual entity named in the author list or contributor list."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6321,7 +6321,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipEn
     }
 }
 #[doc = "Used to record a display of the author/contributor list without separate coding for each list member."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipSummary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6566,7 +6566,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorshipSu
     }
 }
 #[doc = "This element is used to list authors and other contributors, their contact information, specific contributions, and summary statements."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorship {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6802,7 +6802,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifactContributorship {
     }
 }
 #[doc = "The article or artifact being described."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7310,7 +7310,7 @@ impl<'de> serde::de::Deserialize<'de> for CitationCitedArtifact {
     }
 }
 #[doc = "The Citation Resource enables reference to any knowledge artifact for purposes of identification and attribution. The Citation Resource supports existing reference structures and developing publication practices such as versioning, expressing complex contributorship roles, and referencing computable resources."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Citation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum InvoiceLineItemChargeItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -12,7 +12,7 @@ impl Default for InvoiceLineItemChargeItem {
     }
 }
 #[doc = "Indicates who or what performed or participated in the charged service."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InvoiceParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -164,7 +164,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
     }
 }
 #[doc = "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InvoiceLineItemPriceComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -465,7 +465,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
     }
 }
 #[doc = "Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct InvoiceLineItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -727,7 +727,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
     }
 }
 #[doc = "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Invoice {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

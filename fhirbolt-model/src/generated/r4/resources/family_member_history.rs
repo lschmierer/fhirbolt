@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The actual or approximate date of birth of the relative."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryBorn {
     Period(Box<super::super::types::Period>),
     Date(Box<super::super::types::Date>),
@@ -13,7 +13,7 @@ impl Default for FamilyMemberHistoryBorn {
     }
 }
 #[doc = "The age of the relative at the time the family member history is recorded."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryAge {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
@@ -26,7 +26,7 @@ impl Default for FamilyMemberHistoryAge {
     }
 }
 #[doc = "Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryDeceased {
     Boolean(Box<super::super::types::Boolean>),
     Age(Box<super::super::types::Age>),
@@ -41,7 +41,7 @@ impl Default for FamilyMemberHistoryDeceased {
     }
 }
 #[doc = "Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryConditionOnset {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
@@ -55,7 +55,7 @@ impl Default for FamilyMemberHistoryConditionOnset {
     }
 }
 #[doc = "The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistoryCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -469,7 +469,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
     }
 }
 #[doc = "Significant health conditions for a person related to the patient relevant in the context of care for the patient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistory {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

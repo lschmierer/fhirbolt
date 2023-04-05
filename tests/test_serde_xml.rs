@@ -1,6 +1,6 @@
 #![feature(adt_const_params)]
 
-use std::io::Read;
+use std::{fmt, io::Read};
 
 use serde::de::DeserializeOwned;
 use serde::Serialize;
@@ -17,7 +17,10 @@ use test_utils::{
     examples::{examples, JsonOrXml},
 };
 
-fn test_serde_xml<E: Serialize + DeserializeOwned + AnyResource, const R: FhirRelease>(
+fn test_serde_xml<
+    E: AnyResource + Serialize + DeserializeOwned + PartialEq + fmt::Debug + Clone,
+    const R: FhirRelease,
+>(
     mode: DeserializationMode,
 ) {
     let mut examples_iter = examples(R, JsonOrXml::Xml);
@@ -61,6 +64,12 @@ fn test_serde_xml<E: Serialize + DeserializeOwned + AnyResource, const R: FhirRe
             &fhirbolt::model::xml::to_vec(&resource).unwrap(),
             &buffer,
             R == FhirRelease::R4B && file.name() == "valuesets.xml",
+        );
+
+        assert_eq!(
+            fhirbolt::model::from_element::<R, E>(element, Some(DeserializationConfig { mode }))
+                .unwrap(),
+            resource
         );
     }
 }

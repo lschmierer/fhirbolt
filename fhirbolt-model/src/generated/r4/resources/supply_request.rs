@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SupplyRequestItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for SupplyRequestItem {
     }
 }
 #[doc = "The value of the device detail."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SupplyRequestParameterValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
@@ -26,7 +26,7 @@ impl Default for SupplyRequestParameterValue {
     }
 }
 #[doc = "When the request should be fulfilled."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SupplyRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -39,7 +39,7 @@ impl Default for SupplyRequestOccurrence {
     }
 }
 #[doc = "Specific parameters for the ordered item.  For example, the size of the indicated item."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SupplyRequestParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -318,7 +318,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
     }
 }
 #[doc = "A record of a request for a medication, substance or device used in the healthcare setting."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SupplyRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

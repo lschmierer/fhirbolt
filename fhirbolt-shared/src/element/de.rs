@@ -1,8 +1,15 @@
-use std::mem;
+use std::{mem, vec};
 
-use serde::de::{DeserializeSeed, Deserializer, Error, MapAccess, SeqAccess, Unexpected, Visitor};
+use serde::{
+    de::{
+        self,
+        value::{StrDeserializer, StringDeserializer},
+        DeserializeSeed, Deserializer, Error, MapAccess, SeqAccess, Unexpected, Visitor,
+    },
+    forward_to_deserialize_any,
+};
 
-use super::{Element, Primitive, Value};
+use super::{error, Element, Primitive, Value};
 use crate::{serde_context::de::DeserializationContext, FhirRelease};
 
 impl<'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
@@ -91,7 +98,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
 
     fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         if self.0.from_json {
             let mut element = InternalElement::default();
@@ -106,7 +113,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
 
     fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         if self.0.from_json {
             let mut element = InternalElement::default();
@@ -122,37 +129,38 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
 
     fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         self.visit_i64(v as i64)
     }
 
     fn visit_f64<E>(self, v: f64) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         self.visit_string(v.to_string())
     }
 
     fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         let current_path = self.0.unwrap_current_path();
         let current_element = current_path.current_element();
 
-        if current_path.current_element_is_resource() && current_element == Some("resourceType") {
-            Ok(InternalValue::Primitive(Primitive::String(v)))
-        } else if self.0.from_json
-            && current_element != Some("id")
-            && current_element != Some("url")
-        {
-            let mut element = InternalElement::default();
-            element.0.insert(
-                "value".into(),
-                InternalValue::Primitive(Primitive::String(v)),
-            );
-            Ok(InternalValue::Element(element))
+        if self.0.from_json {
+            if current_element == Some("id")
+                || current_path.currently_in_extension() && current_element == Some("url")
+            {
+                Ok(InternalValue::Primitive(Primitive::String(v)))
+            } else {
+                let mut element = InternalElement::default();
+                element.0.insert(
+                    "value".into(),
+                    InternalValue::Primitive(Primitive::String(v)),
+                );
+                Ok(InternalValue::Element(element))
+            }
         } else {
             if current_path.current_element_is_boolean() {
                 Ok(InternalValue::Primitive(Primitive::Bool(
@@ -175,7 +183,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
 
     fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         self.visit_string(v.to_string())
     }
@@ -353,8 +361,125 @@ impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
 
     fn visit_none<E>(self) -> Result<Self::Value, E>
     where
-        E: Error,
+        E: de::Error,
     {
         Ok(None)
+    }
+}
+
+impl<'de, const R: FhirRelease> Deserializer<'de> for Element<R> {
+    type Error = error::Error;
+
+    fn deserialize_any<V>(self, visitor: V) -> error::Result<V::Value>
+    where
+        V: Visitor<'de>,
+    {
+        visitor.visit_map(ElementAccess::new(self))
+    }
+
+    forward_to_deserialize_any! {
+        bool i8 i16 i32 i64 i128 u8 u16 u32 u64 u128 f32 f64 char str string
+        bytes byte_buf option unit unit_struct newtype_struct tuple
+        tuple_struct map struct enum seq identifier ignored_any
+    }
+}
+
+impl<'de, const R: FhirRelease> Deserializer<'de> for Value<R> {
+    type Error = error::Error;
+
+    fn deserialize_any<V>(self, visitor: V) -> error::Result<V::Value>
+    where
+        V: Visitor<'de>,
+    {
+        match self {
+            Value::Element(e) => visitor.visit_map(ElementAccess::new(e)),
+            Value::Sequence(_) => Err(Error::invalid_type(
+                Unexpected::Seq,
+                &"an element or primitive",
+            )),
+            Value::Primitive(p) => match p {
+                Primitive::Bool(b) => visitor.visit_bool(b),
+                Primitive::Integer(i) => visitor.visit_i64(i),
+                Primitive::Decimal(s) | Primitive::String(s) => visitor.visit_string(s),
+            },
+        }
+    }
+
+    forward_to_deserialize_any! {
+        bool i8 i16 i32 i64 i128 u8 u16 u32 u64 u128 f32 f64 char str string
+        bytes byte_buf option unit unit_struct newtype_struct tuple
+        tuple_struct enum map struct seq identifier ignored_any
+    }
+}
+
+struct ElementAccess<const R: FhirRelease> {
+    iter: indexmap::map::IntoIter<String, Value<R>>,
+    next_key: Option<String>,
+    next_value: Option<Value<R>>,
+    next_seq_iter: Option<vec::IntoIter<Element<R>>>,
+}
+
+impl<const R: FhirRelease> ElementAccess<R> {
+    fn new(element: Element<R>) -> ElementAccess<R> {
+        ElementAccess {
+            iter: element.into_iter(),
+            next_key: None,
+            next_value: None,
+            next_seq_iter: None,
+        }
+    }
+}
+
+impl<'de, const R: FhirRelease> MapAccess<'de> for ElementAccess<R> {
+    type Error = error::Error;
+
+    fn next_key_seed<K>(&mut self, seed: K) -> error::Result<Option<K::Value>>
+    where
+        K: DeserializeSeed<'de>,
+    {
+        if let Some(key) = &self.next_key {
+            seed.deserialize(StrDeserializer::new(key)).map(Some)
+        } else if let Some((key, value)) = self.iter.next() {
+            match value {
+                Value::Sequence(s) => {
+                    self.next_key = Some(key);
+                    self.next_seq_iter = Some(s.into_iter());
+                    self.next_value = self
+                        .next_seq_iter
+                        .as_mut()
+                        .unwrap()
+                        .next()
+                        .map(Value::Element);
+
+                    seed.deserialize(StrDeserializer::new(self.next_key.as_ref().unwrap()))
+                        .map(Some)
+                }
+                _ => {
+                    self.next_value = Some(value);
+
+                    seed.deserialize(StringDeserializer::new(key)).map(Some)
+                }
+            }
+        } else {
+            Ok(None)
+        }
+    }
+
+    fn next_value_seed<V>(&mut self, seed: V) -> error::Result<V::Value>
+    where
+        V: DeserializeSeed<'de>,
+    {
+        let next_value = self.next_value.take().unwrap();
+
+        if let Some(s) = &mut self.next_seq_iter {
+            self.next_value = s.next().map(Value::Element);
+        }
+
+        if self.next_value.is_none() {
+            self.next_key = None;
+            self.next_seq_iter = None;
+        }
+
+        seed.deserialize(next_value)
     }
 }

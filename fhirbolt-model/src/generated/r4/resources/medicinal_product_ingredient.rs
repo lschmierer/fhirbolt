@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Strength expressed in terms of a reference substance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -290,7 +290,7 @@ impl<'de> serde::de::Deserialize<'de>
     }
 }
 #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -616,7 +616,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
     }
 }
 #[doc = "A specified substance that comprises this ingredient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -822,7 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
     }
 }
 #[doc = "The ingredient substance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -984,7 +984,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSubstance {
     }
 }
 #[doc = "An ingredient of a manufactured item or pharmaceutical product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredient {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

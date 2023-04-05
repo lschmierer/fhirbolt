@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date when or period to which this information refers."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitSupportingInfoTiming {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for ExplanationOfBenefitSupportingInfoTiming {
     }
 }
 #[doc = "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitSupportingInfoValue {
     Boolean(Box<super::super::types::Boolean>),
     String(Box<super::super::types::String>),
@@ -27,7 +27,7 @@ impl Default for ExplanationOfBenefitSupportingInfoValue {
     }
 }
 #[doc = "The nature of illness or problem in a coded form or as a reference to an external defined Condition."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitDiagnosisDiagnosis {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -39,7 +39,7 @@ impl Default for ExplanationOfBenefitDiagnosisDiagnosis {
     }
 }
 #[doc = "The code or reference to a Procedure resource which identifies the clinical intervention performed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitProcedureProcedure {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -51,7 +51,7 @@ impl Default for ExplanationOfBenefitProcedureProcedure {
     }
 }
 #[doc = "The physical location of the accident event."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitAccidentLocation {
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
@@ -63,7 +63,7 @@ impl Default for ExplanationOfBenefitAccidentLocation {
     }
 }
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -75,7 +75,7 @@ impl Default for ExplanationOfBenefitItemServiced {
     }
 }
 #[doc = "Where the product or service was provided."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
@@ -88,7 +88,7 @@ impl Default for ExplanationOfBenefitItemLocation {
     }
 }
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitAddItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -100,7 +100,7 @@ impl Default for ExplanationOfBenefitAddItemServiced {
     }
 }
 #[doc = "Where the product or service was provided."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitAddItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
@@ -113,7 +113,7 @@ impl Default for ExplanationOfBenefitAddItemLocation {
     }
 }
 #[doc = "The quantity of the benefit which is permitted under the coverage."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitBenefitBalanceFinancialAllowed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
@@ -126,7 +126,7 @@ impl Default for ExplanationOfBenefitBenefitBalanceFinancialAllowed {
     }
 }
 #[doc = "The quantity of the benefit which have been consumed to date."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitBenefitBalanceFinancialUsed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     Money(Box<super::super::types::Money>),
@@ -138,7 +138,7 @@ impl Default for ExplanationOfBenefitBenefitBalanceFinancialUsed {
     }
 }
 #[doc = "Other claims which are related to this claim such as prior submissions or claims for related services or for the same event."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitRelated {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -311,7 +311,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitRelated {
     }
 }
 #[doc = "The party to be reimbursed for cost of the products and services according to the terms of the policy."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitPayee {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -459,7 +459,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitPayee {
     }
 }
 #[doc = "The members of the team who provided the products and services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitCareTeam {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -786,7 +786,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitCareTeam {
     }
 }
 #[doc = "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitSupportingInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1434,7 +1434,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitSupportingInfo {
     }
 }
 #[doc = "Information about diagnoses relevant to the claim items."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1735,7 +1735,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitDiagnosis {
     }
 }
 #[doc = "Procedures performed on the patient relevant to the billing items with the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2097,7 +2097,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcedure {
     }
 }
 #[doc = "Financial instruments for reimbursement for the health care products and services specified on the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2433,7 +2433,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitInsurance {
     }
 }
 #[doc = "Details of a accident which resulted in injuries which required the products and services listed in the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitAccident {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2687,7 +2687,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAccident {
     }
 }
 #[doc = "If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitItemAdjudication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2936,7 +2936,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemAdjudication {
     }
 }
 #[doc = "Third-tier of goods and services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3546,7 +3546,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetailSubDetai
     }
 }
 #[doc = "Second-tier of goods and services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4180,7 +4180,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItemDetail {
     }
 }
 #[doc = "A claim line. Either a simple (a product or service) or a 'group' of details which can also be a simple items or groups of sub-details."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5682,7 +5682,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitItem {
     }
 }
 #[doc = "The third-tier service adjudications for payor added services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitAddItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6124,7 +6124,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetailSubDe
     }
 }
 #[doc = "The second-tier service adjudications for payor added services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitAddItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6590,7 +6590,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItemDetail {
     }
 }
 #[doc = "The first-tier service adjudications for payor added product or service lines."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitAddItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7777,7 +7777,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitAddItem {
     }
 }
 #[doc = "Categorized monetary totals for the adjudication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitTotal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7933,7 +7933,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitTotal {
     }
 }
 #[doc = "Payment details for the adjudication of the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitPayment {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -8213,7 +8213,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitPayment {
     }
 }
 #[doc = "A note that describes or explains adjudication results in a human readable form."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitProcessNote {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -8564,7 +8564,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitProcessNote {
     }
 }
 #[doc = "Benefits Used to date."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitBenefitBalanceFinancial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -8738,7 +8738,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalanceFina
     }
 }
 #[doc = "Balance by Benefit Category."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefitBenefitBalance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -9181,7 +9181,7 @@ impl<'de> serde::de::Deserialize<'de> for ExplanationOfBenefitBenefitBalance {
     }
 }
 #[doc = "This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally account balance information, for informing the subscriber of the benefits provided."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExplanationOfBenefit {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

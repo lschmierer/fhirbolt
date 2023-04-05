@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "If the parameter is a data type."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ParametersParameterValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -60,7 +60,7 @@ impl Default for ParametersParameterValue {
     }
 }
 #[doc = "A parameter passed to or received from the operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ParametersParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3347,7 +3347,7 @@ impl<'de> serde::de::Deserialize<'de> for ParametersParameter {
     }
 }
 #[doc = "This resource is a non-persisted resource used to pass information into and back from an [operation](https://hl7.org/FHIR/operations.html)). It has no other use, and there is no RESTful endpoint associated with it."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Parameters {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

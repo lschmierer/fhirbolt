@@ -50,22 +50,6 @@ impl ElementPath {
         self.current_type_path().split().last()
     }
 
-    pub fn currently_in_resource(&self) -> bool {
-        let contained_resource = self.type_stack.len() >= 2
-            && (self.type_stack[self.type_stack.len() - 2]
-                .split()
-                .last()
-                .unwrap()
-                == "contained"
-                || type_hints(self.fhir_release)
-                    .type_paths
-                    .get(&self.type_stack[self.type_stack.len() - 2].path())
-                    == Some(&"Resource"))
-            && self.type_stack.last().unwrap().len() == 1;
-
-        contained_resource
-    }
-
     fn resolve_current_type(&self) -> Option<&str> {
         let current_type_path = self.current_type_path();
 
@@ -86,7 +70,7 @@ impl ElementPath {
 
         type_hints(self.fhir_release)
             .type_paths
-            .get(&current_type_path.path())
+            .get(&current_type_path.path)
             .map(|t| *t)
     }
 
@@ -104,7 +88,7 @@ impl ElementPath {
             || self.current_element_is_decimal()
             || type_hints(self.fhir_release)
             .other_primitives_paths
-            .contains(&self.current_type_path().path())
+            .contains(&self.current_type_path().path)
 
             // check if field of resource
             || (current_type_path.len() == 2
@@ -122,37 +106,41 @@ impl ElementPath {
             || current_type_path.len() == 2 && current_type_path.split().last().unwrap() == "contained"
             || type_hints(self.fhir_release)
             .array_paths
-            .contains(&current_type_path.path())
+            .contains(&current_type_path.path)
     }
 
     pub fn current_element_is_boolean(&self) -> bool {
         type_hints(self.fhir_release)
             .boolean_paths
-            .contains(&self.current_type_path().path())
+            .contains(&self.current_type_path().path)
     }
 
     pub fn current_element_is_integer(&self) -> bool {
         type_hints(self.fhir_release)
             .integer_paths
-            .contains(&self.current_type_path().path())
+            .contains(&self.current_type_path().path)
     }
 
     pub fn current_element_is_unsigned_integer(&self) -> bool {
         type_hints(self.fhir_release)
             .unsigned_integer_paths
-            .contains(&self.current_type_path().path())
+            .contains(&self.current_type_path().path)
     }
 
     pub fn current_element_is_positive_integer(&self) -> bool {
         type_hints(self.fhir_release)
             .positive_integer_paths
-            .contains(&self.current_type_path().path())
+            .contains(&self.current_type_path().path)
     }
 
     pub fn current_element_is_decimal(&self) -> bool {
         type_hints(self.fhir_release)
             .decimal_paths
-            .contains(&self.current_type_path().path())
+            .contains(&self.current_type_path().path)
+    }
+
+    pub fn currently_in_extension(&self) -> bool {
+        self.current_type_path().path.starts_with("Extension")
     }
 
     pub fn push(&mut self, element: &str) {
@@ -174,10 +162,22 @@ impl ElementPath {
 
         if self.type_stack.len() > 1
             && self.type_stack.last().unwrap().len() <= 1
-            && !self.currently_in_resource()
+            && !self.in_contained_resource()
         {
             self.type_stack.pop();
         }
+    }
+
+    fn in_contained_resource(&self) -> bool {
+        let second_last_type_path = &self.type_stack[self.type_stack.len() - 2];
+
+        self.current_type_path().len() == 1
+            && self.type_stack.len() >= 2
+            && (second_last_type_path.split().last().unwrap() == "contained"
+                || type_hints(self.fhir_release)
+                    .type_paths
+                    .get(&second_last_type_path.path)
+                    == Some(&"Resource"))
     }
 
     fn current_type_path(&self) -> &TypePath {
@@ -215,10 +215,6 @@ impl TypePath {
         }
     }
 
-    fn path(&self) -> &str {
-        &self.path
-    }
-
     fn split(&self) -> impl Iterator<Item = &str> {
         self.path.split(".")
     }
@@ -234,7 +230,7 @@ impl TypePath {
     fn push(&mut self, element: &str) {
         if let Some(content_reference) = type_hints(self.fhir_release)
             .content_reference_paths
-            .get(self.path())
+            .get(&self.path)
         {
             self.content_reference_replacement_stack
                 .push(ContentReferenceReplacement {

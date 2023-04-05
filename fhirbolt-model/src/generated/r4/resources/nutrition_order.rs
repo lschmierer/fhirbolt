@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
@@ -12,7 +12,7 @@ impl Default for NutritionOrderEnteralFormulaAdministrationRate {
     }
 }
 #[doc = "Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrderOralDietNutrient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -163,7 +163,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
     }
 }
 #[doc = "Class that describes any texture modifications required for the patient to safely consume various types of solid foods."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrderOralDietTexture {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -320,7 +320,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
     }
 }
 #[doc = "Diet given orally in contrast to enteral (tube) feeding."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrderOralDiet {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -630,7 +630,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
     }
 }
 #[doc = "Oral nutritional products given in order to add further nutritional value to the patient's diet."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrderSupplement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -959,7 +959,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
     }
 }
 #[doc = "Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrderEnteralFormulaAdministration {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1157,7 +1157,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
     }
 }
 #[doc = "Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrderEnteralFormula {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1646,7 +1646,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
     }
 }
 #[doc = "A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct NutritionOrder {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

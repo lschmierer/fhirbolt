@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -13,7 +13,7 @@ impl Default for PlanDefinitionSubject {
     }
 }
 #[doc = "The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionGoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
@@ -26,7 +26,7 @@ impl Default for PlanDefinitionGoalTargetDetail {
     }
 }
 #[doc = "A code, group definition, or canonical reference that describes the intended subject of the action and its children, if any. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -39,7 +39,7 @@ impl Default for PlanDefinitionActionSubject {
     }
 }
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
@@ -51,7 +51,7 @@ impl Default for PlanDefinitionActionRelatedActionOffset {
     }
 }
 #[doc = "An optional value describing when the action should be performed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionTiming {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -67,7 +67,7 @@ impl Default for PlanDefinitionActionTiming {
     }
 }
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, or a PlanDefinition that describes a series of actions to be taken."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionDefinition {
     Canonical(Box<super::super::types::Canonical>),
     Uri(Box<super::super::types::Uri>),
@@ -79,7 +79,7 @@ impl Default for PlanDefinitionActionDefinition {
     }
 }
 #[doc = "Indicates what should be done and within what timeframe."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionGoalTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -290,7 +290,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoalTarget {
     }
 }
 #[doc = "A goal describes an expected outcome that activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, meeting the acceptance criteria for a test as specified by a quality specification, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionGoal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -546,7 +546,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoal {
     }
 }
 #[doc = "An expression that describes applicability criteria or start/stop conditions for the action."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -751,7 +751,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionCondition {
     }
 }
 #[doc = "A relationship to another action such as \"before\" or \"30-60 minutes after start of\"."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionRelatedAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1067,7 +1067,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
     }
 }
 #[doc = "Indicates who should participate in performing the action described."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1266,7 +1266,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionParticipant {
     }
 }
 #[doc = "Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionDynamicValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1469,7 +1469,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionDynamicValue {
     }
 }
 #[doc = "An action or group of actions to be taken as part of the plan. For example, in clinical care, an action would be to prescribe a particular indicated medication, or perform a particular test as appropriate. In pharmaceutical quality, an action would be the test that needs to be performed on a drug product as defined in the quality specification."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinitionAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3785,7 +3785,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
     }
 }
 #[doc = "This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical and non-clinical artifacts such as clinical decision support rules, order sets, protocols, and drug quality specifications."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PlanDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

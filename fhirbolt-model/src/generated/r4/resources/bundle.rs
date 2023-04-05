@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A series of links that provide context to this bundle."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BundleLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -256,7 +256,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleLink {
     }
 }
 #[doc = "Information about the search process that lead to the creation of this entry."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BundleEntrySearch {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -498,7 +498,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntrySearch {
     }
 }
 #[doc = "Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BundleEntryRequest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1076,7 +1076,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntryRequest {
     }
 }
 #[doc = "Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BundleEntryResponse {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1506,7 +1506,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntryResponse {
     }
 }
 #[doc = "An entry in a bundle resource - will either contain a resource or information about a resource (transactions and history only)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct BundleEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1785,7 +1785,7 @@ impl<'de> serde::de::Deserialize<'de> for BundleEntry {
     }
 }
 #[doc = "A container for a collection of resources."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Bundle {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

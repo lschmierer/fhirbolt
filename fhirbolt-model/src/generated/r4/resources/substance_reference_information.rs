@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
@@ -13,7 +13,7 @@ impl Default for SubstanceReferenceInformationTargetAmount {
     }
 }
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationGene {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -194,7 +194,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGene {
     }
 }
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationGeneElement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -372,7 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGeneEleme
     }
 }
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -573,7 +573,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationClassific
     }
 }
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -961,7 +961,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationTarget {
     }
 }
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

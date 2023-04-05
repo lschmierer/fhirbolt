@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The answer (or one of the answers) provided by the respondent to the question."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireResponseItemAnswerValue {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -22,7 +22,7 @@ impl Default for QuestionnaireResponseItemAnswerValue {
     }
 }
 #[doc = "The respondent's answer(s) to the question."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireResponseItemAnswer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1051,7 +1051,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItemAnswer {
     }
 }
 #[doc = "A group or question item from the original questionnaire for which answers are provided."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireResponseItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1436,7 +1436,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireResponseItem {
     }
 }
 #[doc = "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.\n\nTo support structured, hierarchical reporting of data gathered using digital forms and other questionnaires."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

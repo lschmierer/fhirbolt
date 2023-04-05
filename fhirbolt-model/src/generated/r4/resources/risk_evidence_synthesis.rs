@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesisSampleSize {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -354,7 +354,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisSampleSize {
     }
 }
 #[doc = "A description of the precision of the estimate for the effect."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesisRiskEstimatePrecisionEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -711,7 +711,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimatePreci
     }
 }
 #[doc = "The estimated risk of the outcome."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesisRiskEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1208,7 +1208,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisRiskEstimate {
     }
 }
 #[doc = "A description of a component of the overall certainty."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1391,7 +1391,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertaintyCertaint
     }
 }
 #[doc = "A description of the certainty of the risk estimate."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesisCertainty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1584,7 +1584,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskEvidenceSynthesisCertainty {
     }
 }
 #[doc = "The RiskEvidenceSynthesis resource describes the likelihood of an outcome in a population plus exposure state where the risk estimate is derived from a combination of research studies."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesis {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the ResearchElementDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchElementDefinition can be anything."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for ResearchElementDefinitionSubject {
     }
 }
 #[doc = "Define members of the research element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionCharacteristicDefinition {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Canonical(Box<super::super::types::Canonical>),
@@ -26,7 +26,7 @@ impl Default for ResearchElementDefinitionCharacteristicDefinition {
     }
 }
 #[doc = "Indicates what effective period the study covers."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionCharacteristicStudyEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -40,7 +40,7 @@ impl Default for ResearchElementDefinitionCharacteristicStudyEffective {
     }
 }
 #[doc = "Indicates what effective period the study covers."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionCharacteristicParticipantEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -54,7 +54,7 @@ impl Default for ResearchElementDefinitionCharacteristicParticipantEffective {
     }
 }
 #[doc = "A characteristic that defines the members of the research element. Multiple characteristics are applied with \"and\" semantics."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ResearchElementDefinitionCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -459,7 +459,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchElementDefinitionCharacteristi
     }
 }
 #[doc = "The ResearchElementDefinition resource describes a \"PICO\" element that knowledge (evidence, assertion, recommendation) is about.\n\nNeed to be able to define and reuse the definition of individual elements of a research question."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ResearchElementDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

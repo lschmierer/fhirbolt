@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The target composition/document of this relationship."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CompositionRelatesToTarget {
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for CompositionRelatesToTarget {
     }
 }
 #[doc = "A participant who has attested to the accuracy of the composition/document."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CompositionAttester {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -290,7 +290,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionAttester {
     }
 }
 #[doc = "Relationships that this composition has with other compositions or documents that already exist."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CompositionRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -530,7 +530,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionRelatesTo {
     }
 }
 #[doc = "The clinical service, such as a colonoscopy or an appendectomy, being documented."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CompositionEvent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -710,7 +710,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionEvent {
     }
 }
 #[doc = "The root of the sections that make up the composition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CompositionSection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1127,7 +1127,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionSection {
     }
 }
 #[doc = "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).\n\nTo support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Composition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the activity being defined."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for ActivityDefinitionSubject {
     }
 }
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
     DateTime(Box<super::super::types::DateTime>),
@@ -28,7 +28,7 @@ impl Default for ActivityDefinitionTiming {
     }
 }
 #[doc = "Identifies the food, drug or other product being consumed or supplied in the activity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionProduct {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -40,7 +40,7 @@ impl Default for ActivityDefinitionProduct {
     }
 }
 #[doc = "Indicates who should participate in performing the action described."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ActivityDefinitionParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -239,7 +239,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionParticipant {
     }
 }
 #[doc = "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ActivityDefinitionDynamicValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -448,7 +448,7 @@ impl<'de> serde::de::Deserialize<'de> for ActivityDefinitionDynamicValue {
     }
 }
 #[doc = "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ActivityDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

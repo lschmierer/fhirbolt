@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -203,7 +203,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceEligibility {
     }
 }
 #[doc = "A collection of times that the Service Site is available."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct HealthcareServiceAvailableTime {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -675,7 +675,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
     }
 }
 #[doc = "The HealthcareService is not available during this period of time due to the provided reason."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct HealthcareServiceNotAvailable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -892,7 +892,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceNotAvailable {
     }
 }
 #[doc = "The details of a healthcare service available at a location."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct HealthcareService {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

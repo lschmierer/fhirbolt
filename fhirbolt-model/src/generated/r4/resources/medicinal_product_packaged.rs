@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Batch numbering."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedBatchIdentifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -166,7 +166,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackagedBatchIdentifie
     }
 }
 #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedPackageItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -564,7 +564,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackagedPackageItem {
     }
 }
 #[doc = "A medicinal product in a container or package."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackaged {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

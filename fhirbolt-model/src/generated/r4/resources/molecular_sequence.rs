@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceReferenceSeq {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -656,7 +656,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
     }
 }
 #[doc = "The definition of variant here originates from Sequence ontology ([variant_of](<http://www.sequenceontology.org/browser/current_svn/term/variant_of>)). This element can represent amino acid or nucleic sequence change(including insertion,deletion,SNP,etc.)  It can represent some complex mutation or segment variation with the assist of CIGAR string."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceVariant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1168,7 +1168,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
     }
 }
 #[doc = "Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceQualityRoc {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2166,7 +2166,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
     }
 }
 #[doc = "An experimental feature attribute that defines the quality of the feature in a quantitative way, such as a phred quality score ([SO:0001686](<http://www.sequenceontology.org/browser/current_svn/term/SO:0001686>))."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceQuality {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3266,7 +3266,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
     }
 }
 #[doc = "Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceRepository {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3835,7 +3835,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
     }
 }
 #[doc = "Structural variant outer."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceStructureVariantOuter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4078,7 +4078,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
     }
 }
 #[doc = "Structural variant inner."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceStructureVariantInner {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4321,7 +4321,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
     }
 }
 #[doc = "Information about chromosome structure variation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceStructureVariant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4636,7 +4636,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
     }
 }
 #[doc = "Raw data describing a biological sequence."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

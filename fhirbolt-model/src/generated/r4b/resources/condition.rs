@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ConditionOnset {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -15,7 +15,7 @@ impl Default for ConditionOnset {
     }
 }
 #[doc = "The date or estimated date that the condition resolved or went into remission. This is called \"abatement\" because of the many overloaded connotations associated with \"remission\" or \"resolution\" - Conditions are never really resolved, but they can abate."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ConditionAbatement {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -30,7 +30,7 @@ impl Default for ConditionAbatement {
     }
 }
 #[doc = "Clinical stage or grade of a condition. May include formal severity assessments."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConditionStage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -207,7 +207,7 @@ impl<'de> serde::de::Deserialize<'de> for ConditionStage {
     }
 }
 #[doc = "Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConditionEvidence {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -365,7 +365,7 @@ impl<'de> serde::de::Deserialize<'de> for ConditionEvidence {
     }
 }
 #[doc = "A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Condition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

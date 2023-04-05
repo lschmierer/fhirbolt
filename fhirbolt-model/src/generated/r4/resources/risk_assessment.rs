@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum RiskAssessmentOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for RiskAssessmentOccurrence {
     }
 }
 #[doc = "Indicates how likely the outcome is (in the specified timeframe)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum RiskAssessmentPredictionProbability {
     Decimal(Box<super::super::types::Decimal>),
     Range(Box<super::super::types::Range>),
@@ -24,7 +24,7 @@ impl Default for RiskAssessmentPredictionProbability {
     }
 }
 #[doc = "Indicates the period of time or age range of the subject to which the specified probability applies."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum RiskAssessmentPredictionWhen {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
@@ -36,7 +36,7 @@ impl Default for RiskAssessmentPredictionWhen {
     }
 }
 #[doc = "Describes the expected outcome for the subject."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskAssessmentPrediction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -521,7 +521,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
     }
 }
 #[doc = "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RiskAssessment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

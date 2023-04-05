@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The value of this property."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CodeSystemConceptPropertyValue {
     Code(Box<super::super::types::Code>),
     Coding(Box<super::super::types::Coding>),
@@ -17,7 +17,7 @@ impl Default for CodeSystemConceptPropertyValue {
     }
 }
 #[doc = "A filter that can be used in a value set compose statement when selecting concepts using a filter."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeSystemFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -476,7 +476,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemFilter {
     }
 }
 #[doc = "A property defines an additional slot through which additional information can be provided about a concept."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeSystemProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -888,7 +888,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemProperty {
     }
 }
 #[doc = "Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeSystemConceptDesignation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1169,7 +1169,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptDesignation {
     }
 }
 #[doc = "A property value for this concept."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeSystemConceptProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1942,7 +1942,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConceptProperty {
     }
 }
 #[doc = "Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeSystemConcept {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2353,7 +2353,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeSystemConcept {
     }
 }
 #[doc = "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeSystem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

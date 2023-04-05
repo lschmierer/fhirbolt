@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionResourceExample {
     Boolean(Box<super::super::types::Boolean>),
     Canonical(Box<super::super::types::Canonical>),
@@ -12,7 +12,7 @@ impl Default for ImplementationGuideDefinitionResourceExample {
     }
 }
 #[doc = "The source address for the page."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionPageName {
     Url(Box<super::super::types::Url>),
     Reference(Box<super::super::types::Reference>),
@@ -24,7 +24,7 @@ impl Default for ImplementationGuideDefinitionPageName {
     }
 }
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImplementationGuideManifestResourceExample {
     Boolean(Box<super::super::types::Boolean>),
     Canonical(Box<super::super::types::Canonical>),
@@ -36,7 +36,7 @@ impl Default for ImplementationGuideManifestResourceExample {
     }
 }
 #[doc = "Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDependsOn {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -372,7 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDependsOn {
     }
 }
 #[doc = "A set of profiles that all resources covered by this implementation guide must conform to."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideGlobal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -628,7 +628,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideGlobal {
     }
 }
 #[doc = "A logical group of resources. Logical groups can be used when building pages."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionGrouping {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -897,7 +897,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionGrouping 
     }
 }
 #[doc = "A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1616,7 +1616,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionResource 
     }
 }
 #[doc = "A page / section in the implementation guide. The root page is the implementation guide home page."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionPage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2034,7 +2034,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionPage {
     }
 }
 #[doc = "Defines how IG is built by tools."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2281,7 +2281,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionParameter
     }
 }
 #[doc = "A template for building resources."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionTemplate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2617,7 +2617,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinitionTemplate 
     }
 }
 #[doc = "The information needed by an IG publisher tool to publish the whole implementation guide."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2842,7 +2842,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideDefinition {
     }
 }
 #[doc = "A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideManifestResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3275,7 +3275,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifestResource {
     }
 }
 #[doc = "Information about a page within the IG."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideManifestPage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3656,7 +3656,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifestPage {
     }
 }
 #[doc = "Information about an assembled implementation guide, created by the publication tooling."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuideManifest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4132,7 +4132,7 @@ impl<'de> serde::de::Deserialize<'de> for ImplementationGuideManifest {
     }
 }
 #[doc = "A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.\n\nAn implementation guide is able to define default profiles that must apply to any use of a resource, so validation services may need to take one or more implementation guide resources when validating."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImplementationGuide {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

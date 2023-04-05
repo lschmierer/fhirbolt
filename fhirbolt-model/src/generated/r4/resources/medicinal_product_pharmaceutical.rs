@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics e.g. a products onset of action."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalCharacteristics {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -155,7 +155,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalCharacte
     }
 }
 #[doc = "A species specific time during which consumption of animal product is not appropriate."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -272,7 +272,7 @@ impl<'de> serde::de::Deserialize<'de>
     }
 }
 #[doc = "A species for which this route applies."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -446,7 +446,7 @@ impl<'de> serde::de::Deserialize<'de>
     }
 }
 #[doc = "The path by which the pharmaceutical product is taken into or makes contact with the body."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalRouteOfAdministration {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -701,7 +701,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPharmaceuticalRouteOfA
     }
 }
 #[doc = "A pharmaceutical product described in terms of its composition and dose form."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceutical {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

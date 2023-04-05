@@ -1,9 +1,6 @@
 #![feature(adt_const_params)]
-#![feature(generic_const_exprs)]
 
 use std::fmt;
-
-use element::Element;
 
 pub mod element;
 pub mod serde_context;
@@ -14,10 +11,6 @@ pub mod serde_helpers;
 /// Marker trait for all types representing FHIR resources.
 pub trait AnyResource: Sized {
     const FHIR_RELEASE: FhirRelease;
-
-    fn to_element(self) -> Element<{ Self::FHIR_RELEASE }> {
-        unimplemented!()
-    }
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]

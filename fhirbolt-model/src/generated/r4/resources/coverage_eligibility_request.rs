@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for CoverageEligibilityRequestServiced {
     }
 }
 #[doc = "The nature of illness or problem in a coded form or as a reference to an external defined Condition."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestItemDiagnosisDiagnosis {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -24,7 +24,7 @@ impl Default for CoverageEligibilityRequestItemDiagnosisDiagnosis {
     }
 }
 #[doc = "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityRequestSupportingInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -315,7 +315,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestSupportingIn
     }
 }
 #[doc = "Financial instruments for reimbursement for the health care products and services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityRequestInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -606,7 +606,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestInsurance {
     }
 }
 #[doc = "Patient diagnosis for which care is sought."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityRequestItemDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -700,7 +700,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItemDiagnosi
     }
 }
 #[doc = "Service categories or billable services for which benefit details and/or an authorization prior to service delivery may be required by the payor."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityRequestItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1119,7 +1119,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityRequestItem {
     }
 }
 #[doc = "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

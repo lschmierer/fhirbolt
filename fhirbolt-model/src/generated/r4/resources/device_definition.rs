@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A name of the manufacturer."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum DeviceDefinitionManufacturer {
     String(Box<super::super::types::String>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for DeviceDefinitionManufacturer {
     }
 }
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinitionUdiDeviceIdentifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -367,7 +367,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
     }
 }
 #[doc = "A name given to the device to identify it."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinitionDeviceName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -611,7 +611,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
     }
 }
 #[doc = "The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinitionSpecialization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -880,7 +880,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
     }
 }
 #[doc = "Device capabilities."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinitionCapability {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1046,7 +1046,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionCapability {
     }
 }
 #[doc = "The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinitionProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1232,7 +1232,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionProperty {
     }
 }
 #[doc = "A substance used to create the material(s) of which the device is made."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinitionMaterial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1522,7 +1522,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
     }
 }
 #[doc = "The characteristics, operational status and capabilities of a medical-related component of a medical device."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PatientDeceased {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
@@ -12,7 +12,7 @@ impl Default for PatientDeceased {
     }
 }
 #[doc = "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum PatientMultipleBirth {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
@@ -24,7 +24,7 @@ impl Default for PatientMultipleBirth {
     }
 }
 #[doc = "A contact party (e.g. guardian, partner, friend) for the patient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PatientContact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -328,7 +328,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
     }
 }
 #[doc = "A language which may be used to communicate with the patient about his or her health."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PatientCommunication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -540,7 +540,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
     }
 }
 #[doc = "Link to another patient resource that concerns the same actual patient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PatientLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -740,7 +740,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
     }
 }
 #[doc = "Demographics and other administrative information about an individual or animal receiving care or other health-related services.\n\nTracking patient is the center of the healthcare process."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Patient {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

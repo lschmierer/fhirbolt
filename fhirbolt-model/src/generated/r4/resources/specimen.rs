@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for SpecimenCollectionCollected {
     }
 }
 #[doc = "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionFastingStatus {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Duration(Box<super::super::types::Duration>),
@@ -24,7 +24,7 @@ impl Default for SpecimenCollectionFastingStatus {
     }
 }
 #[doc = "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenProcessingTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -36,7 +36,7 @@ impl Default for SpecimenProcessingTime {
     }
 }
 #[doc = "Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenContainerAdditive {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -48,7 +48,7 @@ impl Default for SpecimenContainerAdditive {
     }
 }
 #[doc = "Details concerning the specimen collection."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenCollection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -415,7 +415,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenCollection {
     }
 }
 #[doc = "Details concerning processing and processing steps for the specimen."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenProcessing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -761,7 +761,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenProcessing {
     }
 }
 #[doc = "The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenContainer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1078,7 +1078,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenContainer {
     }
 }
 #[doc = "A sample to be used for analysis."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Specimen {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

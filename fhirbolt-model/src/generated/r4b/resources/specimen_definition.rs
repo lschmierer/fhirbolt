@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for SpecimenDefinitionTypeTestedContainerMinimumVolume {
     }
 }
 #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -24,7 +24,7 @@ impl Default for SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
     }
 }
 #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTestedContainerAdditive {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -116,7 +116,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainerA
     }
 }
 #[doc = "The specimen's container."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTestedContainer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -320,7 +320,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
     }
 }
 #[doc = "Set of instructions for preservation/transport of the specimen at a defined temperature interval, prior the testing process."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTestedHandling {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -574,7 +574,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
     }
 }
 #[doc = "Specimen conditioned in a container as expected by the testing laboratory."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTested {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1032,7 +1032,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
     }
 }
 #[doc = "A kind of specimen with associated set of requirements."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SpecimenDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

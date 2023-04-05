@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PractitionerRoleAvailableTime {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -472,7 +472,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleAvailableTime {
     }
 }
 #[doc = "The practitioner is not available or performing this role during this period of time due to the provided reason."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PractitionerRoleNotAvailable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -689,7 +689,7 @@ impl<'de> serde::de::Deserialize<'de> for PractitionerRoleNotAvailable {
     }
 }
 #[doc = "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.\n\nNeed to track services that a healthcare provider is able to provide at an organization's location, and the services that they can perform there."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PractitionerRole {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

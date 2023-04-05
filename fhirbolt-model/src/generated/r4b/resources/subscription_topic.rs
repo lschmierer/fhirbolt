@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -502,7 +502,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
     }
 }
 #[doc = "A definition of a resource-based event that triggers a notification based on the SubscriptionTopic. The criteria may be just a human readable description and/or a full FHIR search string or FHIRPath expression. Multiple triggers are considered OR joined (e.g., a resource update matching ANY of the definitions will trigger a notification)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTrigger {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -996,7 +996,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
     }
 }
 #[doc = "Event definition which can be used to trigger the SubscriptionTopic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicEventTrigger {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1287,7 +1287,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
     }
 }
 #[doc = "List of properties by which Subscriptions on the SubscriptionTopic can be filtered. May be defined Search Parameters (e.g., Encounter.patient) or parameters defined within this SubscriptionTopic context (e.g., hub.event)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicCanFilterBy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1839,7 +1839,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
     }
 }
 #[doc = "List of properties to describe the shape (e.g., resources) included in notifications from this Subscription Topic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicNotificationShape {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2271,7 +2271,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
     }
 }
 #[doc = "Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopic {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

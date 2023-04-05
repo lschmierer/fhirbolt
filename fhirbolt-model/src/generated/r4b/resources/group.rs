@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Boolean(Box<super::super::types::Boolean>),
@@ -15,7 +15,7 @@ impl Default for GroupCharacteristicValue {
     }
 }
 #[doc = "Identifies traits whose presence r absence is shared by members of the group."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct GroupCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -411,7 +411,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
     }
 }
 #[doc = "Identifies the resource instances that are members of the group."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct GroupMember {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -638,7 +638,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupMember {
     }
 }
 #[doc = "Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Group {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

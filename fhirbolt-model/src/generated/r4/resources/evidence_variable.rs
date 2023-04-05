@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
     Reference(Box<super::super::types::Reference>),
     Canonical(Box<super::super::types::Canonical>),
@@ -16,7 +16,7 @@ impl Default for EvidenceVariableCharacteristicDefinition {
     }
 }
 #[doc = "Indicates what effective period the study covers."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicParticipantEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -30,7 +30,7 @@ impl Default for EvidenceVariableCharacteristicParticipantEffective {
     }
 }
 #[doc = "A characteristic that defines the members of the evidence element. Multiple characteristics are applied with \"and\" semantics."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -303,7 +303,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
     }
 }
 #[doc = "The EvidenceVariable resource describes a \"PICO\" element that knowledge (evidence, assertion, recommendation) is about.\n\nNeed to be able to define and reuse the definition of individual elements of a research question."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceVariable {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

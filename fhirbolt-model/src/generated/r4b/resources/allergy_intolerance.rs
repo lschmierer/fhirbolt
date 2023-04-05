@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum AllergyIntoleranceOnset {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -15,7 +15,7 @@ impl Default for AllergyIntoleranceOnset {
     }
 }
 #[doc = "Details about each adverse reaction event linked to exposure to the identified substance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AllergyIntoleranceReaction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -439,7 +439,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
     }
 }
 #[doc = "Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.\n\nTo record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct AllergyIntolerance {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

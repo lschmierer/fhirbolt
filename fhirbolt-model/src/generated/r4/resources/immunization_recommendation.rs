@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for ImmunizationRecommendationRecommendationDoseNumber {
     }
 }
 #[doc = "The recommended number of doses to achieve immunity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
@@ -24,7 +24,7 @@ impl Default for ImmunizationRecommendationRecommendationSeriesDoses {
     }
 }
 #[doc = "Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendationRecommendationDateCriterion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -227,7 +227,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
     }
 }
 #[doc = "Vaccine administration recommendations."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendationRecommendation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -545,7 +545,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationRecommendationRecommendati
     }
 }
 #[doc = "A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

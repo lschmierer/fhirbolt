@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Distribution of the payment amount for a previously acknowledged payable."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentReconciliationDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -349,7 +349,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
     }
 }
 #[doc = "A note that describes or explains the processing in a human readable form."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentReconciliationProcessNote {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -592,7 +592,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
     }
 }
 #[doc = "This resource provides the details including amount of a payment and allocates the payment items being paid."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentReconciliation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

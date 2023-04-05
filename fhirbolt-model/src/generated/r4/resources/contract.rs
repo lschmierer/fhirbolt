@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractTopic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for ContractTopic {
     }
 }
 #[doc = "The entity that the term applies to."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractTermTopic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -24,7 +24,7 @@ impl Default for ContractTermTopic {
     }
 }
 #[doc = "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractTermOfferAnswerValue {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -46,7 +46,7 @@ impl Default for ContractTermOfferAnswerValue {
     }
 }
 #[doc = "Specific type of Contract Valued Item that may be priced."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractTermAssetValuedItemEntity {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -58,7 +58,7 @@ impl Default for ContractTermAssetValuedItemEntity {
     }
 }
 #[doc = "When action happens."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractTermActionOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -71,7 +71,7 @@ impl Default for ContractTermActionOccurrence {
     }
 }
 #[doc = "Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractFriendlyContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -83,7 +83,7 @@ impl Default for ContractFriendlyContent {
     }
 }
 #[doc = "Contract legal text in human renderable form."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractLegalContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -95,7 +95,7 @@ impl Default for ContractLegalContent {
     }
 }
 #[doc = "Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractRuleContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -107,7 +107,7 @@ impl Default for ContractRuleContent {
     }
 }
 #[doc = "Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the \"source of truth\" and which would be the basis for legal action related to enforcement of this Contract."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ContractLegallyBinding {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -119,7 +119,7 @@ impl Default for ContractLegallyBinding {
     }
 }
 #[doc = "Precusory content developed with a focus and intent of supporting the formation a Contract instance, which may be associated with and transformable into a Contract."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractContentDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -530,7 +530,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
     }
 }
 #[doc = "Security labels that protect the handling of information about the term and its elements, which may be specifically identified.."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermSecurityLabel {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -834,7 +834,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
     }
 }
 #[doc = "Offer Recipient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermOfferParty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -991,7 +991,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferParty {
     }
 }
 #[doc = "Response to offer text."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermOfferAnswer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1922,7 +1922,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
     }
 }
 #[doc = "The matter of concern in the context of this provision of the agrement."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermOffer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2509,7 +2509,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
     }
 }
 #[doc = "Circumstance of the asset."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermAssetContext {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2737,7 +2737,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetContext {
     }
 }
 #[doc = "Contract Valued Item List."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermAssetValuedItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3685,7 +3685,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
     }
 }
 #[doc = "Contract Term Asset List."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermAsset {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4461,7 +4461,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
     }
 }
 #[doc = "Entity of the action."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermActionSubject {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -4614,7 +4614,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermActionSubject {
     }
 }
 #[doc = "An actor taking a role in an activity for which it can be assigned some degree of responsibility for the activity taking place."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTermAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6200,7 +6200,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
     }
 }
 #[doc = "One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractTerm {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6692,7 +6692,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
     }
 }
 #[doc = "Parties with legal standing in the Contract, including the principal parties, the grantor(s) and grantee(s), which are any person or organization bound by the contract, and any ancillary parties, which facilitate the execution of the contract such as a notary or witness."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractSigner {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -6875,7 +6875,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractSigner {
     }
 }
 #[doc = "The \"patient friendly language\" versionof the Contract in whole or in parts. \"Patient friendly language\" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractFriendly {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7044,7 +7044,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractFriendly {
     }
 }
 #[doc = "List of Legal expressions or representations of this Contract."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractLegal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7212,7 +7212,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractLegal {
     }
 }
 #[doc = "List of Computable Policy Rule Language Representations of this Contract."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContractRule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -7379,7 +7379,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractRule {
     }
 }
 #[doc = "Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Contract {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

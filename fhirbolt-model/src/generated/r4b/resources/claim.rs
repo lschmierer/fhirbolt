@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date when or period to which this information refers."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimSupportingInfoTiming {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for ClaimSupportingInfoTiming {
     }
 }
 #[doc = "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimSupportingInfoValue {
     Boolean(Box<super::super::types::Boolean>),
     String(Box<super::super::types::String>),
@@ -27,7 +27,7 @@ impl Default for ClaimSupportingInfoValue {
     }
 }
 #[doc = "The nature of illness or problem in a coded form or as a reference to an external defined Condition."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimDiagnosisDiagnosis {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -39,7 +39,7 @@ impl Default for ClaimDiagnosisDiagnosis {
     }
 }
 #[doc = "The code or reference to a Procedure resource which identifies the clinical intervention performed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimProcedureProcedure {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -51,7 +51,7 @@ impl Default for ClaimProcedureProcedure {
     }
 }
 #[doc = "The physical location of the accident event."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimAccidentLocation {
     Address(Box<super::super::types::Address>),
     Reference(Box<super::super::types::Reference>),
@@ -63,7 +63,7 @@ impl Default for ClaimAccidentLocation {
     }
 }
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimItemServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -75,7 +75,7 @@ impl Default for ClaimItemServiced {
     }
 }
 #[doc = "Where the product or service was provided."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ClaimItemLocation {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Address(Box<super::super::types::Address>),
@@ -88,7 +88,7 @@ impl Default for ClaimItemLocation {
     }
 }
 #[doc = "Other claims which are related to this claim such as prior submissions or claims for related services or for the same event."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimRelated {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -258,7 +258,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimRelated {
     }
 }
 #[doc = "The party to be reimbursed for cost of the products and services according to the terms of the policy."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimPayee {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -410,7 +410,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimPayee {
     }
 }
 #[doc = "The members of the team who provided the products and services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimCareTeam {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -734,7 +734,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimCareTeam {
     }
 }
 #[doc = "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimSupportingInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1347,7 +1347,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
     }
 }
 #[doc = "Information about diagnoses relevant to the claim items."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1643,7 +1643,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimDiagnosis {
     }
 }
 #[doc = "Procedures performed on the patient relevant to the billing items with the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2000,7 +2000,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimProcedure {
     }
 }
 #[doc = "Financial instruments for reimbursement for the health care products and services specified on the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2529,7 +2529,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
     }
 }
 #[doc = "Details of an accident which resulted in injuries which required the products and services listed in the claim."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimAccident {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2781,7 +2781,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimAccident {
     }
 }
 #[doc = "A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3231,7 +3231,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetailSubDetail {
     }
 }
 #[doc = "A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3704,7 +3704,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetail {
     }
 }
 #[doc = "A claim line. Either a simple  product or service or a 'group' of details which can each be a simple items or groups of sub-details."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClaimItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -5017,7 +5017,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
     }
 }
 #[doc = "A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.\n\nThe Claim resource is used by providers to exchange services and products rendered to patients or planned to be rendered with insurers for reimbuserment. It is also used by insurers to exchange claims information with statutory reporting and data analytics firms."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Claim {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ConceptMapSource {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
@@ -12,7 +12,7 @@ impl Default for ConceptMapSource {
     }
 }
 #[doc = "The target value set provides context for the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ConceptMapTarget {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
@@ -24,7 +24,7 @@ impl Default for ConceptMapTarget {
     }
 }
 #[doc = "A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupElementTargetDependsOn {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -433,7 +433,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
     }
 }
 #[doc = "A concept from the target value set that this concept maps to."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupElementTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -896,7 +896,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
     }
 }
 #[doc = "Mappings for an individual concept in the source to one or more concepts in the target."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupElement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1177,7 +1177,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
     }
 }
 #[doc = "What to do when there is no mapping for the source concept. \"Unmapped\" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupUnmapped {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1581,7 +1581,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
     }
 }
 #[doc = "A group of mappings that all have the same source and target system."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConceptMapGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2040,7 +2040,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
     }
 }
 #[doc = "A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConceptMap {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

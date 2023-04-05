@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Citation Resource or display of suggested citation for this evidence."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
     Reference(Box<super::super::types::Reference>),
     Markdown(Box<super::super::types::Markdown>),
@@ -12,7 +12,7 @@ impl Default for EvidenceCiteAs {
     }
 }
 #[doc = "Evidence variable such as population, exposure, or outcome."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceVariableDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -305,7 +305,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableDefinition {
     }
 }
 #[doc = "Number of samples in the statistic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticSampleSize {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -763,7 +763,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticSampleSize {
     }
 }
 #[doc = "A statistical attribute of the statistic such as a measure of heterogeneity."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticAttributeEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1136,7 +1136,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticAttributeEstimate {
     }
 }
 #[doc = "A variable adjusted for in the adjusted analysis."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticModelCharacteristicVariable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1425,7 +1425,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticModelCharacteristicVa
     }
 }
 #[doc = "A component of the method to generate the statistic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticModelCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1633,7 +1633,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatisticModelCharacteristic {
     }
 }
 #[doc = "Values and parameters for a single statistic."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceStatistic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2136,7 +2136,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceStatistic {
     }
 }
 #[doc = "Assessment of certainty, confidence in the estimates, or quality of the evidence."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EvidenceCertainty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2484,7 +2484,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceCertainty {
     }
 }
 #[doc = "The Evidence Resource provides a machine-interpretable expression of an evidence concept including the evidence variables (eg population, exposures/interventions, comparators, outcomes, measured variables, confounding variables), the statistics, and the certainty of this evidence."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Evidence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisSampleSize {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -354,7 +354,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisSampleSize {
     }
 }
 #[doc = "A description of the results for each exposure considered in the effect estimate."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisResultsByExposure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -671,7 +671,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisResultsByExposu
     }
 }
 #[doc = "A description of the precision of the estimate for the effect."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1028,7 +1028,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimateP
     }
 }
 #[doc = "The estimated effect of the exposure variant."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisEffectEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1379,7 +1379,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisEffectEstimate 
     }
 }
 #[doc = "A description of a component of the overall certainty."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1562,7 +1562,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertaintyCertai
     }
 }
 #[doc = "A description of the certainty of the effect estimate."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisCertainty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1755,7 +1755,7 @@ impl<'de> serde::de::Deserialize<'de> for EffectEvidenceSynthesisCertainty {
     }
 }
 #[doc = "The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesis {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

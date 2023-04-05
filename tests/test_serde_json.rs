@@ -1,6 +1,6 @@
 #![feature(adt_const_params)]
 
-use std::io::Read;
+use std::{fmt, io::Read};
 
 use assert_json_diff::assert_json_eq;
 use serde::de::DeserializeOwned;
@@ -16,7 +16,10 @@ use fhirbolt::{
 
 use test_utils::examples::{examples, JsonOrXml};
 
-fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirRelease>(
+fn test_serde_json<
+    E: AnyResource + Serialize + DeserializeOwned + PartialEq + fmt::Debug + Clone,
+    const R: FhirRelease,
+>(
     mode: DeserializationMode,
 ) {
     let mut examples_iter = examples(R, JsonOrXml::Json);
@@ -107,7 +110,7 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
         let element_from_slice: Element<R> = fhirbolt::element::json::from_slice(&buffer).unwrap();
 
         assert_json_eq!(
-            fhirbolt::element::json::to_json_value(element_from_slice).unwrap(),
+            fhirbolt::element::json::to_json_value(element_from_slice.clone()).unwrap(),
             json_value
         );
 
@@ -123,8 +126,17 @@ fn test_serde_json<E: Serialize + DeserializeOwned + AnyResource, const R: FhirR
             fhirbolt::model::json::from_slice(&buffer, Some(DeserializationConfig { mode }))
                 .unwrap();
         assert_json_eq!(
-            fhirbolt::model::json::to_json_value(resource).unwrap(),
+            fhirbolt::model::json::to_json_value(resource.clone()).unwrap(),
             json_value
+        );
+
+        assert_eq!(
+            fhirbolt::model::from_element::<R, E>(
+                element_from_slice,
+                Some(DeserializationConfig { mode })
+            )
+            .unwrap(),
+            resource
         );
     }
 }

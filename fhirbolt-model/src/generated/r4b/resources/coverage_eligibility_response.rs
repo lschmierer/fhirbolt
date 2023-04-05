@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
@@ -12,7 +12,7 @@ impl Default for CoverageEligibilityResponseServiced {
     }
 }
 #[doc = "The quantity of the benefit which is permitted under the coverage."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseInsuranceItemBenefitAllowed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
@@ -25,7 +25,7 @@ impl Default for CoverageEligibilityResponseInsuranceItemBenefitAllowed {
     }
 }
 #[doc = "The quantity of the benefit which have been consumed to date."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseInsuranceItemBenefitUsed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
@@ -38,7 +38,7 @@ impl Default for CoverageEligibilityResponseInsuranceItemBenefitUsed {
     }
 }
 #[doc = "Benefits used to date."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseInsuranceItemBenefit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -236,7 +236,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
     }
 }
 #[doc = "Benefits and optionally current balances, and authorization details by category or service."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseInsuranceItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -952,7 +952,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
     }
 }
 #[doc = "Financial instruments for reimbursement for the health care products and services."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1204,7 +1204,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
     }
 }
 #[doc = "Errors encountered during the processing of the request."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseError {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1344,7 +1344,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
     }
 }
 #[doc = "This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

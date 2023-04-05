@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupPopulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -228,7 +228,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
     }
 }
 #[doc = "A stratifier component value."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratumComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -387,7 +387,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
     }
 }
 #[doc = "The populations that make up the stratum, one for each type of population appropriate to the measure."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratumPopulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -615,7 +615,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
     }
 }
 #[doc = "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratum {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -818,7 +818,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
     }
 }
 #[doc = "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -979,7 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
     }
 }
 #[doc = "The results of the calculation, one for each population group in the measure."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1179,7 +1179,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
     }
 }
 #[doc = "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

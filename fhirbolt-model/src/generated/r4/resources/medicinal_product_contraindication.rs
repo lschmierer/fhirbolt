@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductContraindicationOtherTherapyMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for MedicinalProductContraindicationOtherTherapyMedication {
     }
 }
 #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the indication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductContraindicationOtherTherapy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -113,7 +113,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductContraindicationOtherT
     }
 }
 #[doc = "The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductContraindication {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

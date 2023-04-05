@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductInteractionInteractantItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -12,7 +12,7 @@ impl Default for MedicinalProductInteractionInteractantItem {
     }
 }
 #[doc = "The specific medication, food or laboratory test that interacts."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductInteractionInteractant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -185,7 +185,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteractionInteractant
     }
 }
 #[doc = "The interactions of the medicinal product with other medicinal products, or other forms of interactions."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductInteraction {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

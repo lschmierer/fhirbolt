@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemEnableWhenAnswer {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -20,7 +20,7 @@ impl Default for QuestionnaireItemEnableWhenAnswer {
     }
 }
 #[doc = "A potential answer that's allowed as the answer to this question."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemAnswerOptionValue {
     Integer(Box<super::super::types::Integer>),
     Date(Box<super::super::types::Date>),
@@ -36,7 +36,7 @@ impl Default for QuestionnaireItemAnswerOptionValue {
     }
 }
 #[doc = "The actual value to for an initial answer."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemInitialValue {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -58,7 +58,7 @@ impl Default for QuestionnaireItemInitialValue {
     }
 }
 #[doc = "A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireItemEnableWhen {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1108,7 +1108,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
     }
 }
 #[doc = "One of the permitted answers for a \"choice\" or \"open-choice\" question."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireItemAnswerOption {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1737,7 +1737,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
     }
 }
 #[doc = "One or more values that should be pre-populated in the answer when initially rendering the questionnaire for user input."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireItemInitial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2674,7 +2674,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
     }
 }
 #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct QuestionnaireItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3831,7 +3831,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
     }
 }
 #[doc = "A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.\n\nTo support structured, hierarchical registration of data gathered using digital forms and other questionnaires.  Questionnaires provide greater control over presentation and allow capture of data in a domain-independent way (i.e. capturing information that would otherwise require multiple distinct types of resources)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Questionnaire {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

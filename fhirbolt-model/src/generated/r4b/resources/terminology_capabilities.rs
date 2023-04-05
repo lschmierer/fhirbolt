@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Software that is covered by this terminology capability statement.  It is used when the statement describes the capabilities of a particular software version, independent of an installation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesSoftware {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -257,7 +257,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesSoftware {
     }
 }
 #[doc = "Identifies a specific implementation instance that is described by the terminology capability statement - i.e. a particular installation, rather than the capabilities of a software program."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesImplementation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -520,7 +520,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesImplementation 
     }
 }
 #[doc = "Filter Properties supported."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesCodeSystemVersionFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -812,7 +812,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystemVersi
     }
 }
 #[doc = "For the code system, a list of versions that are supported by the server."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesCodeSystemVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1421,7 +1421,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystemVersi
     }
 }
 #[doc = "Identifies a code system that is supported by the server. If there is a no code system URL, then this declares the general assumptions a client can make about support for any CodeSystem resource."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesCodeSystem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1711,7 +1711,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesCodeSystem {
     }
 }
 #[doc = "Supported expansion parameter."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesExpansionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1980,7 +1980,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesExpansionParame
     }
 }
 #[doc = "Information about the [ValueSet/$expand](https://hl7.org/FHIR/valueset-operation-expand.html)) operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesExpansion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2428,7 +2428,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesExpansion {
     }
 }
 #[doc = "Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesValidateCode {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2618,7 +2618,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesValidateCode {
     }
 }
 #[doc = "Information about the [ConceptMap/$translate](https://hl7.org/FHIR/conceptmap-operation-translate.html)) operation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesTranslation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2802,7 +2802,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesTranslation {
     }
 }
 #[doc = "Whether the $closure operation is supported."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesClosure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2990,7 +2990,7 @@ impl<'de> serde::de::Deserialize<'de> for TerminologyCapabilitiesClosure {
     }
 }
 #[doc = "A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilities {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

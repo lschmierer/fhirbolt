@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The amount due from the patient for the cost category."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CoverageCostToBeneficiaryValue {
     Quantity(Box<super::super::types::Quantity>),
     Money(Box<super::super::types::Money>),
@@ -12,7 +12,7 @@ impl Default for CoverageCostToBeneficiaryValue {
     }
 }
 #[doc = "A suite of underwriter specific classifiers."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageClass {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -294,7 +294,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageClass {
     }
 }
 #[doc = "A suite of codes indicating exceptions or reductions to patient costs and their effective periods."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageCostToBeneficiaryException {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -449,7 +449,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiaryException {
     }
 }
 #[doc = "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CoverageCostToBeneficiary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -651,7 +651,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiary {
     }
 }
 #[doc = "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.\n\nCoverage provides a link between covered parties (patients) and the payors of their healthcare costs (both insurance and self-pay)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Coverage {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

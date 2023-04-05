@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum RequestGroupActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
@@ -12,7 +12,7 @@ impl Default for RequestGroupActionRelatedActionOffset {
     }
 }
 #[doc = "An optional value describing when the action should be performed."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum RequestGroupActionTiming {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -28,7 +28,7 @@ impl Default for RequestGroupActionTiming {
     }
 }
 #[doc = "An expression that describes applicability criteria, or start/stop conditions for the action."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RequestGroupActionCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -233,7 +233,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionCondition {
     }
 }
 #[doc = "A relationship to another action such as \"before\" or \"30-60 minutes after start of\"."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RequestGroupActionRelatedAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -549,7 +549,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionRelatedAction {
     }
 }
 #[doc = "The actions, if any, produced by the evaluation of the artifact."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RequestGroupAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1976,7 +1976,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
     }
 }
 #[doc = "A group of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\"."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct RequestGroup {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Quantitative value for this moiety."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationMoietyAmount {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
@@ -12,7 +12,7 @@ impl Default for SubstanceSpecificationMoietyAmount {
     }
 }
 #[doc = "A substance upon which a defining property depends (e.g. for solubility: in water, in alcohol)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationPropertyDefiningSubstance {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -24,7 +24,7 @@ impl Default for SubstanceSpecificationPropertyDefiningSubstance {
     }
 }
 #[doc = "Quantitative value for this property."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationPropertyAmount {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
@@ -36,7 +36,7 @@ impl Default for SubstanceSpecificationPropertyAmount {
     }
 }
 #[doc = "A pointer to another substance, as a resource or just a representational code."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationRelationshipSubstance {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -48,7 +48,7 @@ impl Default for SubstanceSpecificationRelationshipSubstance {
     }
 }
 #[doc = "A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationRelationshipAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
@@ -62,7 +62,7 @@ impl Default for SubstanceSpecificationRelationshipAmount {
     }
 }
 #[doc = "Moiety, for structural modifications."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationMoiety {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -538,7 +538,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
     }
 }
 #[doc = "General specifications for this substance, including how it is related to other substances."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -710,7 +710,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
     }
 }
 #[doc = "The molecular weight or weight range (for proteins, polymers or nucleic acids)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationStructureIsotopeMolecularWeight {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -883,7 +883,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
     }
 }
 #[doc = "Applicable for single substances that contain a radionuclide or a non-natural isotopic ratio."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationStructureIsotope {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1092,7 +1092,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
     }
 }
 #[doc = "Molecular structural representation."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationStructureRepresentation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1324,7 +1324,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
     }
 }
 #[doc = "Structural information."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationStructure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1737,7 +1737,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
     }
 }
 #[doc = "Codes associated with the substance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationCode {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2060,7 +2060,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
     }
 }
 #[doc = "Details of the official nature of this name."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationNameOfficial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2286,7 +2286,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
     }
 }
 #[doc = "Names applicable to this substance."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2750,7 +2750,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
     }
 }
 #[doc = "A link between this substance and another, with details of the relationship."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecificationRelationship {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -3236,7 +3236,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
     }
 }
 #[doc = "The detailed description of a substance, typically at a level beyond what is used for prescribing."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSpecification {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

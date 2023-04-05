@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CommunicationPayloadContent {
     String(Box<super::super::types::String>),
     Attachment(Box<super::super::types::Attachment>),
@@ -13,7 +13,7 @@ impl Default for CommunicationPayloadContent {
     }
 }
 #[doc = "Text, attachment(s), or resource(s) that was communicated to the recipient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CommunicationPayload {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -269,7 +269,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
     }
 }
 #[doc = "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Communication {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

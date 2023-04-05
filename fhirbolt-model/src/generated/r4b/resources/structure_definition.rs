@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "An external specification that the content is mapped to."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureDefinitionMapping {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -404,7 +404,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionMapping {
     }
 }
 #[doc = "Identifies the types of resource or data type elements to which the extension can be applied."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureDefinitionContext {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -666,7 +666,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionContext {
     }
 }
 #[doc = "A snapshot view is expressed in a standalone form that can be used and interpreted without considering the base StructureDefinition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureDefinitionSnapshot {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -807,7 +807,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionSnapshot {
     }
 }
 #[doc = "A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureDefinitionDifferential {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -948,7 +948,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureDefinitionDifferential {
     }
 }
 #[doc = "A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

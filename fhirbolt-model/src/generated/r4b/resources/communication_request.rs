@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CommunicationRequestPayloadContent {
     String(Box<super::super::types::String>),
     Attachment(Box<super::super::types::Attachment>),
@@ -13,7 +13,7 @@ impl Default for CommunicationRequestPayloadContent {
     }
 }
 #[doc = "The time when this communication is to occur."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CommunicationRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -25,7 +25,7 @@ impl Default for CommunicationRequestOccurrence {
     }
 }
 #[doc = "Text, attachment(s), or resource(s) to be communicated to the recipient."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CommunicationRequestPayload {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -292,7 +292,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationRequestPayload {
     }
 }
 #[doc = "A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CommunicationRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

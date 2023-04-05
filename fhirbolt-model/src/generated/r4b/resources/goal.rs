@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The date or event after which the goal should begin being pursued."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum GoalStart {
     Date(Box<super::super::types::Date>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -12,7 +12,7 @@ impl Default for GoalStart {
     }
 }
 #[doc = "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum GoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
@@ -29,7 +29,7 @@ impl Default for GoalTargetDetail {
     }
 }
 #[doc = "Indicates either the date or the duration after start by which the goal should be met."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum GoalTargetDue {
     Date(Box<super::super::types::Date>),
     Duration(Box<super::super::types::Duration>),
@@ -41,7 +41,7 @@ impl Default for GoalTargetDue {
     }
 }
 #[doc = "Indicates what should be done by when."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct GoalTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -629,7 +629,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
     }
 }
 #[doc = "Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct Goal {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

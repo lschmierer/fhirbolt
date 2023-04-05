@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeIngredientItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -12,7 +12,7 @@ impl Default for MedicationKnowledgeIngredientItem {
     }
 }
 #[doc = "Indication for use that apply to the specific administration guidelines."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeAdministrationGuidelinesIndication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -24,7 +24,7 @@ impl Default for MedicationKnowledgeAdministrationGuidelinesIndication {
     }
 }
 #[doc = "Specific characteristic that is relevant to the administration guideline (e.g. height, weight, gender)."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
@@ -37,7 +37,7 @@ impl Default for MedicationKnowledgeAdministrationGuidelinesPatientCharacteristi
     }
 }
 #[doc = "Description of the characteristic."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeDrugCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     String(Box<super::super::types::String>),
@@ -51,7 +51,7 @@ impl Default for MedicationKnowledgeDrugCharacteristicValue {
     }
 }
 #[doc = "Associated or related knowledge about a medication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRelatedMedicationKnowledge {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -211,7 +211,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRelatedMedicationKn
     }
 }
 #[doc = "Associated documentation about the medication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeMonograph {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -362,7 +362,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonograph {
     }
 }
 #[doc = "Identifies a particular constituent of interest in the product."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -618,7 +618,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
     }
 }
 #[doc = "The price of the medication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -849,7 +849,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeCost {
     }
 }
 #[doc = "The program under which the medication is reviewed."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeMonitoringProgram {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1046,7 +1046,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonitoringProgram {
     }
 }
 #[doc = "Dosage for the medication for the specific guidelines."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeAdministrationGuidelinesDosage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1206,7 +1206,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
     }
 }
 #[doc = "Characteristics of the patient that are relevant to the administration guidelines (for example, height, weight, gender, etc.)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1284,7 +1284,7 @@ impl<'de> serde::de::Deserialize<'de>
     }
 }
 #[doc = "Guidelines for the administration of the medication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeAdministrationGuidelines {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1399,7 +1399,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
     }
 }
 #[doc = "Categorization of the medication within a formulary or classification system."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeMedicineClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1568,7 +1568,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMedicineClassificat
     }
 }
 #[doc = "Information that only applies to packages (not products)."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgePackaging {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1719,7 +1719,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgePackaging {
     }
 }
 #[doc = "Specifies descriptive properties of the medicine, such as color, shape, imprints, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeDrugCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1862,7 +1862,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
     }
 }
 #[doc = "Specifies if changes are allowed when dispensing a medication from a regulatory perspective."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatorySubstitution {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2071,7 +2071,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySubstitut
     }
 }
 #[doc = "Specifies the schedule of a medication in jurisdiction."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatorySchedule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2211,7 +2211,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySchedule 
     }
 }
 #[doc = "The maximum number of units of the medication that can be dispensed in a period."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatoryMaxDispense {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2366,7 +2366,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatoryMaxDispen
     }
 }
 #[doc = "Regulatory information about a medication."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2575,7 +2575,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatory {
     }
 }
 #[doc = "The time course of drug absorption, distribution, metabolism and excretion of a medication from the body."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeKinetics {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -2764,7 +2764,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeKinetics {
     }
 }
 #[doc = "Information about a medication that is used to support knowledge."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicationKnowledge {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

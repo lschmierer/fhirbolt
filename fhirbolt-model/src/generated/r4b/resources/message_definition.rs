@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "Event code or link to the EventDefinition."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MessageDefinitionEvent {
     Coding(Box<super::super::types::Coding>),
     Uri(Box<super::super::types::Uri>),
@@ -12,7 +12,7 @@ impl Default for MessageDefinitionEvent {
     }
 }
 #[doc = "Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MessageDefinitionFocus {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -418,7 +418,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
     }
 }
 #[doc = "Indicates what types of messages may be sent as an application-level response to this message."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MessageDefinitionAllowedResponse {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -683,7 +683,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
     }
 }
 #[doc = "Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.\n\nAllows messages to be defined once and re-used across systems."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct MessageDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-04 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailScheduled {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
@@ -13,7 +13,7 @@ impl Default for CarePlanActivityDetailScheduled {
     }
 }
 #[doc = "Identifies the food, drug or other product to be consumed or supplied in the activity."]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailProduct {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
@@ -25,7 +25,7 @@ impl Default for CarePlanActivityDetailProduct {
     }
 }
 #[doc = "A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CarePlanActivityDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1144,7 +1144,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
     }
 }
 #[doc = "Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CarePlanActivity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -1370,7 +1370,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivity {
     }
 }
 #[doc = "Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions."]
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub struct CarePlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
