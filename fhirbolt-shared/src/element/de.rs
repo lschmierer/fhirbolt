@@ -161,23 +161,27 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                 );
                 Ok(InternalValue::Element(element))
             }
-        } else {
-            if current_path.current_element_is_boolean() {
+        } else if current_element == Some("value") {
+            if current_path.parent_element_is_boolean() {
                 Ok(InternalValue::Primitive(Primitive::Bool(
                     v.parse()
                         .map_err(|_| E::invalid_value(Unexpected::Other(&v), &"a boolean"))?,
                 )))
-            } else if current_path.current_element_is_integer()
-                || current_path.current_element_is_positive_integer()
-                || current_path.current_element_is_unsigned_integer()
+            } else if current_path.parent_element_is_integer()
+                || current_path.parent_element_is_positive_integer()
+                || current_path.parent_element_is_unsigned_integer()
             {
                 Ok(InternalValue::Primitive(Primitive::Integer(
                     v.parse()
                         .map_err(|_| E::invalid_value(Unexpected::Other(&v), &"an integer"))?,
                 )))
+            } else if current_path.parent_element_is_decimal() {
+                Ok(InternalValue::Primitive(Primitive::Decimal(v)))
             } else {
                 Ok(InternalValue::Primitive(Primitive::String(v)))
             }
+        } else {
+            Ok(InternalValue::Primitive(Primitive::String(v)))
         }
     }
 

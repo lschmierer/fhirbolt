@@ -7,10 +7,10 @@ use crate::FhirRelease;
 
 pub mod error;
 
-mod de;
-mod ser;
+pub mod de;
+pub mod ser;
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 pub struct Element<const R: FhirRelease> {
     map: indexmap::IndexMap<String, Value<R>>,
 }
@@ -73,7 +73,7 @@ impl<const R: FhirRelease> fmt::Debug for Element<R> {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 pub enum Value<const R: FhirRelease> {
     Element(Element<R>),
     Sequence(Vec<Element<R>>),
@@ -90,7 +90,7 @@ impl<const R: FhirRelease> fmt::Debug for Value<R> {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Primitive {
     Bool(bool),
     Integer(i64),

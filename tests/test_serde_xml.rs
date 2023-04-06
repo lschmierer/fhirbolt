@@ -67,10 +67,23 @@ fn test_serde_xml<
         );
 
         assert_eq!(
-            fhirbolt::model::from_element::<R, E>(element, Some(DeserializationConfig { mode }))
-                .unwrap(),
+            fhirbolt::model::from_element::<R, E>(
+                element.clone(),
+                Some(DeserializationConfig { mode })
+            )
+            .unwrap(),
             resource
         );
+
+        if !(
+            // missing status
+            R == FhirRelease::R4B && file.name() == "valuesets.xml"
+        ) {
+            assert_eq!(
+                fhirbolt::model::to_element::<R, E>(resource).unwrap(),
+                element
+            );
+        }
     }
 }
 

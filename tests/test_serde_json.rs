@@ -16,6 +16,12 @@ use fhirbolt::{
 
 use test_utils::examples::{examples, JsonOrXml};
 
+const MISSING_STATUS_FILES: &[&str] = &[
+    &"examples-json/codesystem-catalogType.json",
+    &"examples-json/valueset-catalogType.json",
+    &"examples-json/valuesets.json",
+];
+
 fn test_serde_json<
     E: AnyResource + Serialize + DeserializeOwned + PartialEq + fmt::Debug + Clone,
     const R: FhirRelease,
@@ -49,13 +55,7 @@ fn test_serde_json<
 
                 if mode != DeserializationMode::Lax {
                     // missing status
-                    if [
-                        "examples-json/codesystem-catalogType.json",
-                        "examples-json/valueset-catalogType.json",
-                        "examples-json/valuesets.json",
-                    ]
-                    .contains(&file.name())
-                    {
+                    if MISSING_STATUS_FILES.contains(&file.name()) {
                         continue;
                     }
                 }
@@ -132,12 +132,25 @@ fn test_serde_json<
 
         assert_eq!(
             fhirbolt::model::from_element::<R, E>(
-                element_from_slice,
+                element_from_slice.clone(),
                 Some(DeserializationConfig { mode })
             )
             .unwrap(),
             resource
         );
+
+        if !(
+            // all questionnaires seem to have missing linkIds
+            R == FhirRelease::R4 && file.name().ends_with("-questionnaire.json")
+            ||
+            // missing status
+            R == FhirRelease::R4B && MISSING_STATUS_FILES.contains(&file.name())
+        ) {
+            assert_eq!(
+                fhirbolt::model::to_element::<R, E>(resource).unwrap(),
+                element_from_slice
+            );
+        }
     }
 }
 

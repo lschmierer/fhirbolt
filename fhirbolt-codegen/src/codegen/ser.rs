@@ -16,7 +16,10 @@ pub fn implement_serialize(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) ->
             quote!()
         };
 
-    let serialized_fields_tokens = r#struct.fields.iter().map(|f| serialize_field(f, enums));
+    let serialized_fields_tokens = r#struct
+        .fields
+        .iter()
+        .map(|f| serialize_field(f, enums, r#struct.struct_name == "Decimal"));
 
     quote! {
         impl serde::ser::Serialize for #struct_name_ident {
@@ -44,11 +47,17 @@ pub fn implement_serialize(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) ->
     }
 }
 
-fn serialize_field(field: &RustFhirStructField, enums: &[RustFhirEnum]) -> TokenStream {
+fn serialize_field(
+    field: &RustFhirStructField,
+    enums: &[RustFhirEnum],
+    is_decimal: bool,
+) -> TokenStream {
     if field.polymorph {
         serialize_enum(field, enums)
     } else {
-        if field.r#type.contains_primitive {
+        if is_decimal && field.name == "value" {
+            serialize_decimal_value(field)
+        } else if field.r#type.contains_primitive {
             serialize_primitive(field)
         } else {
             serialize_element(field)
@@ -282,6 +291,19 @@ fn serialize_element(field: &RustFhirStructField) -> TokenStream {
     } else {
         quote! {
             state.serialize_entry(#fhir_name, &self.#field_name_ident)?;
+        }
+    }
+}
+
+fn serialize_decimal_value(field: &RustFhirStructField) -> TokenStream {
+    let field_name_ident = format_ident!("r#{}", field.name);
+
+    quote! {
+        if let Some(some) = self.#field_name_ident.as_ref() {
+            let _value = some
+                .parse::<serde_json::Number>()
+                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+            state.serialize_entry("value", &_value)?;
         }
     }
 }

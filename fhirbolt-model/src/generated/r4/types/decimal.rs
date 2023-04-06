@@ -25,7 +25,10 @@ impl serde::ser::Serialize for Decimal {
                 state.serialize_entry("extension", &self.r#extension)?;
             }
             if let Some(some) = self.r#value.as_ref() {
-                state.serialize_entry("value", some)?;
+                let _value = some
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("value", &_value)?;
             }
             state.end()
         })

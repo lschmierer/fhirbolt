@@ -6,6 +6,7 @@ use std::{
     mem::{self},
 };
 
+use fhirbolt_shared::serde_helpers::number::NumberValueEmitter;
 use serde::ser::{self, Impossible, Serialize};
 
 use crate::xml::{
@@ -417,8 +418,7 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
     }
 
     fn serialize_struct(self, _name: &'static str, _len: usize) -> Result<Self::SerializeStruct> {
-        self.enter_map()?;
-
+        // serde_json Number is the only struct that cann occur
         Ok(self)
     }
 
@@ -483,11 +483,18 @@ impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
     where
         T: ?Sized + Serialize,
     {
-        key.serialize(&mut **self)?;
-        value.serialize(&mut **self)
+        if key == "$serde_json::private::Number" {
+            self.put(
+                value
+                    .serialize(NumberValueEmitter)
+                    .map_err(|err| Error::Message(err.to_string()))?,
+            )
+        } else {
+            Err(Error::Message("expected decimal".into()))
+        }
     }
 
     fn end(self) -> Result<()> {
-        self.leave_map()
+        Ok(())
     }
 }

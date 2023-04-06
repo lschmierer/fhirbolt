@@ -139,6 +139,50 @@ impl ElementPath {
             .contains(&self.current_type_path().path)
     }
 
+    pub fn parent_element_is_boolean(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).boolean_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
+    pub fn parent_element_is_integer(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).integer_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
+    pub fn parent_element_is_unsigned_integer(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release)
+                .unsigned_integer_paths
+                .contains(path)
+        } else {
+            false
+        }
+    }
+
+    pub fn parent_element_is_positive_integer(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release)
+                .positive_integer_paths
+                .contains(path)
+        } else {
+            false
+        }
+    }
+
+    pub fn parent_element_is_decimal(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).decimal_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
     pub fn currently_in_extension(&self) -> bool {
         self.current_type_path().path.starts_with("Extension")
     }
@@ -213,6 +257,10 @@ impl TypePath {
             path: String::new(),
             content_reference_replacement_stack: vec![],
         }
+    }
+
+    fn parent(&self) -> Option<&str> {
+        self.path.rsplit_once(".").map(|s| s.0)
     }
 
     fn split(&self) -> impl Iterator<Item = &str> {
