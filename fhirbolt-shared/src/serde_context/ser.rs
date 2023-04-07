@@ -1,4 +1,4 @@
-use std::{cell::RefCell, rc::Rc};
+use std::cell::{Ref, RefCell, RefMut};
 
 use crate::{element::Element, path::ElementPath, FhirRelease};
 
@@ -17,18 +17,38 @@ where
 }
 
 /// Context for serialization.
-#[derive(Default, Clone)]
+#[derive(Default)]
 pub struct SerializationContext<V> {
     pub value: V,
     // The JSON data model differs from the FHIR data model
     pub output_json: bool,
     // Used by the element model to keep track of its state in the element tree
-    pub current_path: Option<Rc<RefCell<ElementPath>>>,
+    pub current_path: RefCell<Option<ElementPath>>,
 }
 
 impl<V> SerializationContext<V> {
-    pub fn unwrap_current_path(&self) -> &Rc<RefCell<ElementPath>> {
-        self.current_path.as_ref().unwrap()
+    pub fn unwrap_current_path(&self) -> Ref<ElementPath> {
+        Ref::map(self.current_path.borrow(), |p| p.as_ref().unwrap())
+    }
+
+    pub fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
+        RefMut::map(self.current_path.borrow_mut(), |p| p.as_mut().unwrap())
+    }
+
+    pub fn with_context<P, R, F>(&self, value: P, with_fn: F) -> R
+    where
+        F: FnOnce(&SerializationContext<P>) -> R,
+    {
+        let context = SerializationContext {
+            value,
+            output_json: self.output_json,
+            current_path: RefCell::new(self.current_path.borrow_mut().take()),
+        };
+        let result = with_fn(&context);
+        self.current_path
+            .borrow_mut()
+            .replace(context.current_path.borrow_mut().take().unwrap());
+        result
     }
 }
 
@@ -37,7 +57,7 @@ impl<'a, const R: FhirRelease> SerializationContext<&'a Element<R>> {
         SerializationContext {
             value: element,
             output_json,
-            current_path: Some(Rc::new(RefCell::new(ElementPath::new(R)))),
+            current_path: RefCell::new(Some(ElementPath::new(R))),
         }
     }
 }
@@ -47,17 +67,7 @@ impl SerializationContext<()> {
         SerializationContext {
             value: (),
             output_json,
-            current_path: None,
-        }
-    }
-}
-
-impl<V: Clone> SerializationContext<V> {
-    pub fn clone_with<W>(&self, value: W) -> SerializationContext<W> {
-        SerializationContext {
-            value,
-            output_json: self.output_json,
-            current_path: self.current_path.clone(),
+            current_path: RefCell::new(None),
         }
     }
 }

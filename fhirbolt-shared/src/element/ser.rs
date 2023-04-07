@@ -17,11 +17,11 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
         S: ser::Serializer,
     {
         match self.value {
-            Value::Element(element) => self.clone_with(element).serialize(serializer),
+            Value::Element(element) => self.with_context(element, |ctx| ctx.serialize(serializer)),
             Value::Sequence(sequence) => {
                 let mut seq = serializer.serialize_seq(Some(sequence.len()))?;
                 for e in sequence {
-                    seq.serialize_element(&self.clone_with(e))?;
+                    self.with_context(e, |ctx| seq.serialize_element(&ctx))?;
                 }
                 seq.end()
             }
@@ -43,6 +43,36 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
     }
 }
 
+impl<const R: FhirRelease> Serialize for SerializationContext<Vec<Option<&Value<R>>>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: ser::Serializer,
+    {
+        let mut seq_serialzier = serializer.serialize_seq(Some(self.value.len()))?;
+
+        for value in &self.value {
+            self.with_context(value.as_deref(), |ctx| {
+                seq_serialzier.serialize_element(&ctx)
+            })?
+        }
+
+        seq_serialzier.end()
+    }
+}
+
+impl<const R: FhirRelease> Serialize for SerializationContext<Option<&Value<R>>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: ser::Serializer,
+    {
+        if let Some(value) = self.value {
+            self.with_context(value, |ctx| serializer.serialize_some(&ctx))
+        } else {
+            serializer.serialize_none()
+        }
+    }
+}
+
 impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -52,78 +82,85 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
 
         let mut is_resource = false;
         if let Some(Value::Primitive(Primitive::String(r))) = self.value.get("resourceType") {
-            self.unwrap_current_path().borrow_mut().push(r);
+            self.unwrap_current_path_mut().push(r);
             is_resource = true;
         }
 
         for (key, value) in self.value {
-            self.unwrap_current_path().borrow_mut().push(&key);
+            self.unwrap_current_path_mut().push(&key);
 
-            if self.output_json
-                && self
-                    .unwrap_current_path()
-                    .borrow()
-                    .current_element_is_primitive()
-            {
+            if self.output_json && self.unwrap_current_path().current_element_is_primitive() {
                 match value {
                     Value::Element(element) => {
                         if let Some(v) = element.get("value") {
-                            map.serialize_entry(key, &self.clone_with(v))?;
+                            self.with_context(v, |ctx| map.serialize_entry(key, &ctx))?;
                         }
 
                         let primitive_element = PrimitiveElement::from_element(element)?;
 
                         if primitive_element.id.is_some() || !primitive_element.extension.is_empty()
                         {
-                            map.serialize_entry(
-                                &format!("_{}", key),
-                                &self.clone_with(primitive_element),
-                            )?;
+                            self.with_context(&primitive_element, |ctx| {
+                                map.serialize_entry(&format!("_{}", key), &ctx)
+                            })?;
                         }
                     }
                     Value::Sequence(sequence) => {
-                        let values = sequence
-                            .iter()
-                            .map(|e| e.get("value").map(|v| self.clone_with(v)))
-                            .collect::<Vec<_>>();
+                        let values = sequence.iter().map(|e| e.get("value")).collect::<Vec<_>>();
 
                         if values.iter().any(|e| e.is_some()) {
-                            map.serialize_entry(key, &values)?
+                            self.with_context(values, |ctx| map.serialize_entry(key, &ctx))?
                         }
 
                         let elements = sequence
                             .iter()
                             .map(|e| {
-                                PrimitiveElement::from_element(e)
-                                    .map(|e| self.clone_with(e))
-                                    .map(|c| {
-                                        if c.value.id.is_some() || !c.value.extension.is_empty() {
-                                            Some(c)
-                                        } else {
-                                            None
-                                        }
-                                    })
+                                PrimitiveElement::from_element(e).map(|v| {
+                                    if v.id.is_some() || !v.extension.is_empty() {
+                                        Some(v)
+                                    } else {
+                                        None
+                                    }
+                                })
                             })
                             .collect::<Result<Vec<_>, _>>()?;
 
                         if elements.iter().any(|e| e.is_some()) {
-                            map.serialize_entry(&format!("_{}", key), &elements)?
+                            self.with_context(
+                                elements.iter().map(|e| e.as_ref()).collect::<Vec<_>>(),
+                                |ctx| map.serialize_entry(&format!("_{}", key), &ctx),
+                            )?
                         }
                     }
-                    _ => map.serialize_entry(key, &self.clone_with(value))?,
+                    _ => self.with_context(value, |ctx| map.serialize_entry(key, &ctx))?,
                 }
             } else {
-                map.serialize_entry(key, &self.clone_with(value))?;
+                self.with_context(value, |ctx| map.serialize_entry(key, &ctx))?;
             }
 
-            self.unwrap_current_path().borrow_mut().pop();
+            self.unwrap_current_path_mut().pop();
         }
 
         if is_resource {
-            self.unwrap_current_path().borrow_mut().pop();
+            self.unwrap_current_path_mut().pop();
         }
 
         map.end()
+    }
+}
+
+impl<const R: FhirRelease> Serialize for SerializationContext<Vec<&Element<R>>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: ser::Serializer,
+    {
+        let mut seq_serialzier = serializer.serialize_seq(Some(self.value.len()))?;
+
+        for value in &self.value {
+            self.with_context(*value, |ctx| seq_serialzier.serialize_element(&ctx))?
+        }
+
+        seq_serialzier.end()
     }
 }
 
@@ -164,7 +201,7 @@ impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
     }
 }
 
-impl<const R: FhirRelease> Serialize for SerializationContext<PrimitiveElement<'_, R>> {
+impl<const R: FhirRelease> Serialize for SerializationContext<&PrimitiveElement<'_, R>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -180,21 +217,48 @@ impl<const R: FhirRelease> Serialize for SerializationContext<PrimitiveElement<'
         }
 
         if !self.value.extension.is_empty() {
-            self.unwrap_current_path().borrow_mut().push("extension");
+            self.unwrap_current_path_mut().push("extension");
 
-            let elements = self
-                .value
-                .extension
-                .iter()
-                .map(|e| self.clone_with(e))
-                .collect::<Vec<_>>();
+            let elements = self.value.extension.iter().collect::<Vec<_>>();
 
-            map.serialize_entry("extension", &elements)?;
+            self.with_context(elements, |ctx| map.serialize_entry("extension", &ctx))?;
 
-            self.unwrap_current_path().borrow_mut().pop();
+            self.unwrap_current_path_mut().pop();
         }
 
         map.end()
+    }
+}
+
+impl<const R: FhirRelease> Serialize
+    for SerializationContext<Vec<Option<&PrimitiveElement<'_, R>>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: ser::Serializer,
+    {
+        let mut seq_serialzier = serializer.serialize_seq(Some(self.value.len()))?;
+
+        for value in &self.value {
+            self.with_context(value.as_deref(), |ctx| {
+                seq_serialzier.serialize_element(&ctx)
+            })?
+        }
+
+        seq_serialzier.end()
+    }
+}
+
+impl<const R: FhirRelease> Serialize for SerializationContext<Option<&PrimitiveElement<'_, R>>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: ser::Serializer,
+    {
+        if let Some(value) = self.value {
+            self.with_context(value, |ctx| serializer.serialize_some(&ctx))
+        } else {
+            serializer.serialize_none()
+        }
     }
 }
 
