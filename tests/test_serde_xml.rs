@@ -87,6 +87,7 @@ fn test_serde_xml<
     }
 }
 
+#[cfg(r4)]
 #[test]
 fn test_serde_xml_r4() {
     test_serde_xml::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
@@ -98,6 +99,7 @@ fn test_serde_xml_r4() {
     test_serde_xml::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(DeserializationMode::Lax);
 }
 
+#[cfg(r4b)]
 #[test]
 fn test_serde_xml_r4b() {
     test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(

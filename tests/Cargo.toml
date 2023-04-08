@@ -18,6 +18,10 @@ quick-xml = "0.25"
 
 fhirbolt = { path = "../fhirbolt", features = ["r4", "r4b"] }
 
+[features]
+default = ["r4", "r4b"]
+r4 = []
+r4b = []
 
 [[test]]
 name = "test_serde_json"
